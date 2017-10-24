@@ -16,7 +16,7 @@ using Dev2.Interfaces;
 using Dev2.Tests.Activities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
-
+using Dev2.Common;
 
 namespace ActivityUnitTests.ActivityTests
 
@@ -51,9 +51,7 @@ namespace ActivityUnitTests.ActivityTests
 
             IDSFDataObject result = ExecuteProcess();
             const string expected = "209";
-            string actual;
-            string error;
-            GetScalarValueFromEnvironment(result.Environment, "Result", out actual, out error);
+            GetScalarValueFromEnvironment(result.Environment, "Result", out string actual, out string error);
             // remove test datalist ;)
 
             Assert.AreEqual(expected, actual);
@@ -73,65 +71,34 @@ namespace ActivityUnitTests.ActivityTests
                          );
 
             IDSFDataObject result = ExecuteProcess();
-            string error;
-            IList<string> results;
-            GetRecordSetFieldValueFromDataList(result.Environment, "resCol", "res", out results, out error);
+            GetRecordSetFieldValueFromDataList(result.Environment, "resCol", "res", out IList<string> results, out string error);
             // remove test datalist ;)
 
             Assert.AreEqual("8847", results[0]);
             Assert.AreEqual("9477", results[1]);
             Assert.AreEqual("9090", results[2]);
         }
-
-        //2013.03.11: Ashley Lewis - PBI 9167 Moved to positive tests
+        
         [TestMethod]
         public void Blank_InputFormat_Expected_Error()
         {
             SetupArguments(
                               "<root>" + ActivityStrings.DateTimeDiff_DataListShape + "</root>"
                             , ActivityStrings.DateTimeDiff_DataListShape
-                            , DateTime.Now.ToString(CultureInfo.InvariantCulture)
-                            , DateTime.Now.AddDays(209).ToString(CultureInfo.InvariantCulture)
+                            , DateTime.Now.ToString(GlobalConstants.Dev2DotNetDefaultDateTimeFormat)
+                            , DateTime.Now.AddDays(209).ToString(GlobalConstants.Dev2DotNetDefaultDateTimeFormat)
                             , ""
                             , "Days"
                             , "[[Result]]"
                             );
             IDSFDataObject result = ExecuteProcess();
             const string expected = "209";
-            string actual;
-            string error;
-            GetScalarValueFromEnvironment(result.Environment, "Result", out actual, out error);
+            GetScalarValueFromEnvironment(result.Environment, "Result", out string actual, out string error);
 
             // remove test datalist ;)
 
             Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        [TestCategory("DateTimeDifferenceUnitTest")]
-        [Owner("Massimo Guerrera")]
-        
-        public void DateTimeDifference_DateTimeDifferenceUnitTest_ExecuteWithBlankInput_DateTimeNowIsUsed()
-
-        {
-            const string currDL = @"<root><MyTestResult></MyTestResult></root>";
-            SetupArguments(currDL
-                         , currDL
-                         , ""
-                         , ""
-                         , ""
-                         , "Seconds"
-                         , "[[MyTestResult]]");
-
-            IDSFDataObject result = ExecuteProcess();
-
-            string actual;
-            string error;
-            GetScalarValueFromEnvironment(result.Environment, "MyTestResult", out actual, out error);
-
-            Assert.AreEqual("0", actual);
-        }
-
+        }              
         #endregion Positive Test Cases
 
         #region Error Test Cases

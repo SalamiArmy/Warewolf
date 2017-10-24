@@ -10,7 +10,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text;
 using Dev2.Common;
@@ -37,8 +36,7 @@ namespace Dev2.Runtime.ESB.Management.Services
         public Guid GetResourceID(Dictionary<string, StringBuilder> requestArgs)
         {
             _existingResource = false;
-            StringBuilder resourceDefinition;
-            requestArgs.TryGetValue("ResourceDefinition", out resourceDefinition);
+            requestArgs.TryGetValue("ResourceDefinition", out StringBuilder resourceDefinition);
             if (resourceDefinition!=null && resourceDefinition.Length!=0)
             {
                 var xml = resourceDefinition.ToXElement();
@@ -64,15 +62,13 @@ namespace Dev2.Runtime.ESB.Management.Services
         }
         public StringBuilder Execute(Dictionary<string, StringBuilder> values, IWorkspace theWorkspace)
         {
-            StringBuilder resourceDefinition;
 
-            StringBuilder savePathValue;
-            values.TryGetValue("savePath", out savePathValue);
+            values.TryGetValue("savePath", out StringBuilder savePathValue);
             if (savePathValue == null)
             {
                 throw new InvalidDataContractException("SavePath is missing");
             }
-            values.TryGetValue("ResourceDefinition", out resourceDefinition);
+            values.TryGetValue("ResourceDefinition", out StringBuilder resourceDefinition);
             Dev2Logger.Info("Deploy Resource.", GlobalConstants.WarewolfInfo);
             if(resourceDefinition == null || resourceDefinition.Length == 0)
             {

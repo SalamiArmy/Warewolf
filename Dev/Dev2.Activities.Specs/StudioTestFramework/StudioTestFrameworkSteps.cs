@@ -3,7 +3,6 @@ using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -39,10 +38,8 @@ using TechTalk.SpecFlow;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 using Warewolf.Studio.ViewModels;
 using Dev2.Studio.Interfaces.Enums;
-
-
-
-
+using Dev2.Activities.Specs.BaseTypes;
+using System.IO;
 
 namespace Dev2.Activities.Specs.TestFramework
 {
@@ -50,14 +47,48 @@ namespace Dev2.Activities.Specs.TestFramework
 
     public class StudioTestFrameworkSteps
     {
-
         public StudioTestFrameworkSteps(ScenarioContext scenarioContext)
         {
-            if (scenarioContext == null) throw new ArgumentNullException(nameof(scenarioContext));
-            MyContext = scenarioContext;
+            MyContext = scenarioContext ?? throw new ArgumentNullException(nameof(scenarioContext));
         }
 
         ScenarioContext MyContext { get; }
+
+        [AfterFeature("StudioTestFramework")]
+        public static void ScenarioCleaning()
+        {
+            var environmentModel = ServerRepository.Instance.Source;
+            environmentModel.Connect();
+            ((ResourceRepository)environmentModel.ResourceRepository).DeleteAlltests(new List<string>() { "0bdc3207-ff6b-4c01-a5eb-c7060222f75d" });
+        }
+
+        [AfterScenario("StudioTestFrameworkWithDropboxTools")]
+        public static void DropboxScenarioCleaning()
+        {
+            if (ScenarioContext.Current.ContainsKey("localFileUniqueNameGuid"))
+            {
+                var localFileUniqueNameGuid = ScenarioContext.Current.Get<string>("localFileUniqueNameGuid");
+                var localFile = "C:\\Home.Delete";
+                if (File.Exists(localFile))
+                {
+                    File.Delete(localFile);
+                }
+                localFile = CommonSteps.AddGuidToPath(localFile, localFileUniqueNameGuid);
+                if (File.Exists(localFile))
+                {
+                    File.Delete(localFile);
+                }
+            }
+        }
+
+        [AfterScenario]
+        public void CleanupTestFramework()
+        {
+            if (MyContext.TryGetValue("testFramework", out ServiceTestViewModel serviceTest))
+            {
+                serviceTest?.Dispose();
+            }
+        }
 
         [Given(@"test folder is cleaned")]
         [When(@"test folder is cleaned")]
@@ -83,16 +114,6 @@ namespace Dev2.Activities.Specs.TestFramework
         [Then(@"test folder is cleaned")]
         public void ThenTestFolderIsCleaned()
         {
-            //DirectoryHelper.CleanUp(EnvironmentVariables.TestPath);
-            var environmentModel = ServerRepository.Instance.Source;
-            environmentModel.Connect();
-            ((ResourceRepository)environmentModel.ResourceRepository).DeleteAlltests(new List<string>() { "0bdc3207-ff6b-4c01-a5eb-c7060222f75d" });
-        }
-
-        [AfterFeature("@StudioTestFramework")]
-        public static void ScenarioCleaning()
-        {
-
             var environmentModel = ServerRepository.Instance.Source;
             environmentModel.Connect();
             ((ResourceRepository)environmentModel.ResourceRepository).DeleteAlltests(new List<string>() { "0bdc3207-ff6b-4c01-a5eb-c7060222f75d" });
@@ -252,7 +273,6 @@ namespace Dev2.Activities.Specs.TestFramework
 
         private static void AddVariables(string variableName, DataListViewModel datalistViewModel, enDev2ColumnArgumentDirection ioDirection)
         {
-
             if (DataListUtil.IsValueScalar(variableName))
             {
                 var scalarName = DataListUtil.RemoveLanguageBrackets(variableName);
@@ -284,6 +304,7 @@ namespace Dev2.Activities.Specs.TestFramework
                 }
             }
         }
+
         [Given(@"""(.*)"" Tests as")]
         public void GivenTestsAs(string workFlowName, Table table)
         {
@@ -376,11 +397,9 @@ namespace Dev2.Activities.Specs.TestFramework
         [Given(@"""(.*)"" has outputs as")]
         public void GivenHasOutputsAs(string workflowName, Table outputVariables)
         {
-            ResourceModel resourceModel;
-            if (MyContext.TryGetValue(workflowName, out resourceModel))
+            if (MyContext.TryGetValue(workflowName, out ResourceModel resourceModel))
             {
-                DataListViewModel dataListViewModel;
-                if (MyContext.TryGetValue($"{workflowName}dataListViewModel", out dataListViewModel))
+                if (MyContext.TryGetValue($"{workflowName}dataListViewModel", out DataListViewModel dataListViewModel))
                 {
                     foreach (var variablesRow in outputVariables.Rows)
                     {
@@ -406,8 +425,7 @@ namespace Dev2.Activities.Specs.TestFramework
         [Then(@"the test builder is open with ""(.*)""")]
         public void GivenTheTestBuilderIsOpenWith(string workflowName)
         {
-            ResourceModel resourceModel;
-            if (MyContext.TryGetValue(workflowName, out resourceModel))
+            if (MyContext.TryGetValue(workflowName, out ResourceModel resourceModel))
             {
                 var vm = new ServiceTestViewModel(resourceModel, new SynchronousAsyncWorker(), new Mock<IEventAggregator>().Object, new SpecExternalProcessExecutor(), new Mock<IWorkflowDesignerViewModel>().Object);
                 vm.WebClient = new Mock<IWarewolfWebClient>().Object;
@@ -725,6 +743,8 @@ namespace Dev2.Activities.Specs.TestFramework
                 case "Workflow changed":
                     popupController.Verify(controller => controller.Show(Warewolf.Studio.Resources.Languages.Core.ServiceTestResourceCategoryChangedMessage, Warewolf.Studio.Resources.Languages.Core.ServiceTestResourceCategoryChangedHeader, It.IsAny<MessageBoxButton>(), It.IsAny<MessageBoxImage>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<bool>()));
                     break;
+                default:
+                    break;
             }
         }
 
@@ -741,8 +761,7 @@ namespace Dev2.Activities.Specs.TestFramework
         [Given(@"a decision variable ""(.*)"" value ""(.*)""")]
         public void GivenADecisionVariableValue(string variable, string value)
         {
-            List<Tuple<string, string>> variableList;
-            MyContext.TryGetValue("variableList", out variableList);
+            MyContext.TryGetValue("variableList", out List<Tuple<string, string>> variableList);
 
             if (variableList == null)
             {
@@ -756,8 +775,7 @@ namespace Dev2.Activities.Specs.TestFramework
         [Given(@"decide if ""(.*)"" ""(.*)""")]
         public void GivenDecideIf(string variable1, string decision)
         {
-            List<Tuple<string, enDecisionType, string, string>> decisionModels;
-            MyContext.TryGetValue("decisionModels", out decisionModels);
+            MyContext.TryGetValue("decisionModels", out List<Tuple<string, enDecisionType, string, string>> decisionModels);
 
             if (decisionModels == null)
             {
@@ -772,8 +790,7 @@ namespace Dev2.Activities.Specs.TestFramework
         [Given(@"I need to switch on variable ""(.*)"" with the value ""(.*)""")]
         public void GivenINeedToSwitchOnVariableWithTheValue(string variable, string value)
         {
-            List<Tuple<string, string>> variableList;
-            MyContext.TryGetValue("variableList", out variableList);
+            MyContext.TryGetValue("variableList", out List<Tuple<string, string>> variableList);
 
             if (variableList == null)
             {
@@ -881,8 +898,7 @@ namespace Dev2.Activities.Specs.TestFramework
         public void ThenTestAuthenticationTypeAs(string AuthType)
         {
             var serviceTest = GetTestFrameworkFromContext();
-            AuthenticationType auth;
-            Enum.TryParse(AuthType, true, out auth);
+            Enum.TryParse(AuthType, true, out AuthenticationType auth);
             serviceTest.SelectedServiceTest.AuthenticationType = auth;
         }
 
@@ -970,8 +986,7 @@ namespace Dev2.Activities.Specs.TestFramework
         {
             var serviceTest = GetTestFrameworkFromContext();
             var fieldInfo = typeof(ServiceTestViewModel).GetField("_processExecutor", BindingFlags.NonPublic | BindingFlags.Instance);
-            var specExternalProcessExecutor = fieldInfo?.GetValue(serviceTest) as ISpecExternalProcessExecutor;
-            if (specExternalProcessExecutor != null)
+            if (fieldInfo?.GetValue(serviceTest) is ISpecExternalProcessExecutor specExternalProcessExecutor)
             {
                 var webResult = specExternalProcessExecutor.WebResult;
                 foreach (var result in webResult)
@@ -985,7 +1000,7 @@ namespace Dev2.Activities.Specs.TestFramework
                             foreach (var resultPairs in jObject)
                             {
                                 var testObj = resultPairs as JObject;
-                                
+
                                 var testName = testObj.Property("Test Name").Value.ToString();
                                 if (testName != tableRow["Test Name"])
                                 {
@@ -993,8 +1008,7 @@ namespace Dev2.Activities.Specs.TestFramework
                                 }
                                 var testResult = testObj.Property("Result").Value.ToString();
                                 Assert.AreEqual(tableRow["Result"], testResult, "Result message dont match");
-                                JToken testMessageToken;
-                                var hasMessage = testObj.TryGetValue("Message", out testMessageToken);
+                                var hasMessage = testObj.TryGetValue("Message", out JToken testMessageToken);
                                 if (hasMessage)
                                 {
                                     var testMessage = testMessageToken.ToString();
@@ -1038,8 +1052,7 @@ namespace Dev2.Activities.Specs.TestFramework
         [When(@"""(.*)"" is deleted")]
         public void WhenIsDeleted(string workflowName)
         {
-            ResourceModel resourceModel;
-            if (MyContext.TryGetValue(workflowName, out resourceModel))
+            if (MyContext.TryGetValue(workflowName, out ResourceModel resourceModel))
             {
                 var env = ServerRepository.Instance.Source;
                 env.ResourceRepository.DeleteResource(resourceModel);
@@ -1049,8 +1062,7 @@ namespace Dev2.Activities.Specs.TestFramework
         [When(@"""(.*)"" is moved")]
         public void WhenIsMoved(string workflowName)
         {
-            ResourceModel resourceModel;
-            if (MyContext.TryGetValue(workflowName, out resourceModel))
+            if (MyContext.TryGetValue(workflowName, out ResourceModel resourceModel))
             {
                 var env = ServerRepository.Instance.Source;
                 resourceModel.Category = "bob\\" + workflowName;
@@ -1144,7 +1156,9 @@ namespace Dev2.Activities.Specs.TestFramework
         {
             var serviceTest = GetTestFrameworkFromContext();
             if (value == "true")
+            {
                 serviceTest.SelectedServiceTest.ErrorExpected = true;
+            }
         }
 
         [Then(@"change ErrorContainsText to ""(.*)""")]
@@ -1225,8 +1239,7 @@ namespace Dev2.Activities.Specs.TestFramework
             {
                 var testName = tableRow["TestName"];
                 var authenticationType = tableRow["AuthenticationType"];
-                AuthenticationType authent;
-                Enum.TryParse(authenticationType, true, out authent);
+                Enum.TryParse(authenticationType, true, out AuthenticationType authent);
                 var error = tableRow["Error"];
                 serviceTest.SelectedServiceTest.TestName = testName;
                 serviceTest.SelectedServiceTest.ErrorExpected = bool.Parse(error);
@@ -1573,8 +1586,7 @@ namespace Dev2.Activities.Specs.TestFramework
         [Given(@"I add ""(.*)"" to ""(.*)""")]
         public void GivenIAddTo(string testNames, string rName)
         {
-            string path;
-            MyContext.TryGetValue("folderPath", out path);
+            MyContext.TryGetValue("folderPath", out string path);
             var environmentModel = ServerRepository.Instance.Source;
             var serviceTestModelTos = new List<IServiceTestModelTO>();
             environmentModel.ResourceRepository.ForceLoad();
@@ -1773,8 +1785,7 @@ namespace Dev2.Activities.Specs.TestFramework
                     {
                         var foundNode = act.Nodes.FirstOrDefault(node =>
                         {
-                            var searchNode = node as FlowDecision;
-                            if (searchNode != null)
+                            if (node is FlowDecision searchNode)
                             {
                                 return searchNode.DisplayName.TrimEnd(' ').Equals(actNameToFind, StringComparison.InvariantCultureIgnoreCase);
                             }
@@ -1816,8 +1827,7 @@ namespace Dev2.Activities.Specs.TestFramework
                     {
                         var foundNode = act.Nodes.FirstOrDefault(node =>
                         {
-                            var searchNode = node as FlowStep;
-                            if (searchNode != null)
+                            if (node is FlowStep searchNode)
                             {
                                 return searchNode.Action.DisplayName.TrimEnd(' ').Equals(actNameToFind, StringComparison.InvariantCultureIgnoreCase);
                             }
@@ -1895,9 +1905,8 @@ namespace Dev2.Activities.Specs.TestFramework
                 {
 
                     bool isCorr;
-                    var node = searchNode as FlowDecision;
-                    
-                    if (node != null)
+
+                    if (searchNode is FlowDecision node)
                     {
                         isCorr = node.DisplayName.TrimEnd(' ').Equals(actNameToFind, StringComparison.InvariantCultureIgnoreCase);
                     }
@@ -1924,8 +1933,7 @@ namespace Dev2.Activities.Specs.TestFramework
                 {
                     dynamic searchNode = flowNode as FlowStep ?? (dynamic)(actStartNode as FlowDecision);
                     bool isCorr;
-                    var node = searchNode as FlowDecision;
-                    if (node != null)
+                    if (searchNode is FlowDecision node)
                     {
                         isCorr = node.DisplayName.TrimEnd(' ').Equals(actNameToFind, StringComparison.InvariantCultureIgnoreCase);
                     }
@@ -1980,9 +1988,8 @@ namespace Dev2.Activities.Specs.TestFramework
                 {
 
                     bool isCorr;
-                    var node = searchNode as FlowSwitch<string>;
-                    
-                    if (node != null)
+
+                    if (searchNode is FlowSwitch<string> node)
                     {
                         isCorr = node.DisplayName.TrimEnd(' ').Equals(actNameToFind, StringComparison.InvariantCultureIgnoreCase);
                     }
@@ -2013,8 +2020,7 @@ namespace Dev2.Activities.Specs.TestFramework
                     {
                         searchNode = flowNode as FlowSwitch<string>;
                     }
-                    var node = searchNode as FlowSwitch<string>;
-                    if (node != null)
+                    if (searchNode is FlowSwitch<string> node)
                     {
                         isCorr = node.DisplayName.TrimEnd(' ').Equals(actNameToFind, StringComparison.InvariantCultureIgnoreCase);
                     }
@@ -2203,7 +2209,10 @@ namespace Dev2.Activities.Specs.TestFramework
                 var value = tableRow["Value"];
                 var serviceTestStep = serviceTest.SelectedServiceTest.TestSteps.First().Children.First();
                 if (count == 1)
+                {
                     serviceTestStep.StepOutputs = new BindableCollection<IServiceTestOutput>();
+                }
+
                 serviceTestStep.StepOutputs.Add(new ServiceTestOutput(varName, value, "", "")
                 {
                     AssertOp = condition
@@ -2238,8 +2247,7 @@ namespace Dev2.Activities.Specs.TestFramework
                     {
                         var foundNode = act.Nodes.FirstOrDefault(node =>
                         {
-                            var searchNode = node as FlowDecision;
-                            if (searchNode != null)
+                            if (node is FlowDecision searchNode)
                             {
                                 return searchNode.DisplayName.TrimEnd(' ').Equals(actNameToFind, StringComparison.InvariantCultureIgnoreCase);
                             }
@@ -2272,8 +2280,7 @@ namespace Dev2.Activities.Specs.TestFramework
                     {
                         var foundNode = act.Nodes.FirstOrDefault(node =>
                         {
-                            var searchNode = node as FlowStep;
-                            if (searchNode != null)
+                            if (node is FlowStep searchNode)
                             {
                                 return searchNode.Action.DisplayName.TrimEnd(' ').Equals(actNameToFind, StringComparison.InvariantCultureIgnoreCase);
                             }
@@ -2306,24 +2313,12 @@ namespace Dev2.Activities.Specs.TestFramework
 
         ServiceTestViewModel GetTestFrameworkFromContext()
         {
-            ServiceTestViewModel serviceTest;
-            if (MyContext.TryGetValue("testFramework", out serviceTest))
+            if (MyContext.TryGetValue("testFramework", out ServiceTestViewModel serviceTest))
             {
                 return serviceTest;
             }
             Assert.Fail("Test Framework ViewModel not found");
             return null;
         }
-
-        [AfterScenario("TestFramework")]
-        public void CleanupTestFramework()
-        {
-            ServiceTestViewModel serviceTest;
-            if (MyContext.TryGetValue("testFramework", out serviceTest))
-            {
-                serviceTest?.Dispose();
-            }
-        }
-
     }
 }

@@ -188,8 +188,7 @@ namespace Dev2
             var daysToKeepTempFilesValue = ConfigurationManager.AppSettings.Get("DaysToKeepTempFiles");
             if (!string.IsNullOrEmpty(daysToKeepTempFilesValue))
             {
-                int daysToKeepTempFiles;
-                if (int.TryParse(daysToKeepTempFilesValue, out daysToKeepTempFiles))
+                if (int.TryParse(daysToKeepTempFilesValue, out int daysToKeepTempFiles))
                 {
                     _daysToKeepTempFiles = daysToKeepTempFiles;
                 }
@@ -375,9 +374,8 @@ namespace Dev2
                         throw new ArgumentException("Web server port not set but web server is enabled. Please set the webServerPort value in the configuration file.");
                     }
 
-                    int realPort;
 
-                    if (!int.TryParse(webServerPort, out realPort))
+                    if (!int.TryParse(webServerPort, out int realPort))
                     {
                         throw new ArgumentException("Web server port is not valid. Please set the webServerPort value in the configuration file.");
                     }
@@ -406,8 +404,7 @@ namespace Dev2
         {
             if (!string.IsNullOrEmpty(webServerSslPort) && _isWebServerSslEnabled)
             {
-                int realWebServerSslPort;
-                int.TryParse(webServerSslPort, out realWebServerSslPort);
+                int.TryParse(webServerSslPort, out int realWebServerSslPort);
 
                 var sslCertPath = ConfigurationManager.AppSettings["sslCertificateName"];
 
@@ -477,7 +474,10 @@ namespace Dev2
         public void Dispose()
         {
             if (_isDisposed)
+            {
                 return;
+            }
+
             _isDisposed = true;
             Dispose(true);
             GC.SuppressFinalize(this);
@@ -554,8 +554,7 @@ namespace Dev2
             Write("Loading resource activity cache...  ");
             catalog.LoadServerActivityCache();
             CustomContainer.Register<IExecutionManager>(new ExecutionManager());
-            WriteLine("done.");            
-            SetStarted();
+            WriteLine("done.");
         }
 
         static void MigrateOldResources()
@@ -665,6 +664,7 @@ namespace Dev2
                     Console.ReadLine();
                 }
             }
+            SetAsStarted();
         }
 
         
@@ -696,7 +696,7 @@ namespace Dev2
             }
         }
 
-        static void SetStarted()
+        static void SetAsStarted()
         {
             try
             {
@@ -711,6 +711,7 @@ namespace Dev2
                 Dev2Logger.Error(err, GlobalConstants.WarewolfError);
             }
         }
+
         static void LogException(Exception ex)
         {
             Dev2Logger.Error("Dev2.ServerLifecycleManager", ex, GlobalConstants.WarewolfError);

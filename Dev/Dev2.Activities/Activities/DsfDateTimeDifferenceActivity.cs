@@ -134,7 +134,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                 {
                     if(string.IsNullOrEmpty(Input1))
                     {
-                        AddDebugInputItem(new DebugItemStaticDataParams(DateTime.Now.ToString(GlobalConstants.GlobalDefaultNowFormat), "now()", "Input 1", "="));
+                        AddDebugInputItem(new DebugItemStaticDataParams(DateTime.Now.ToString(GlobalConstants.Dev2DotNetDefaultDateTimeFormat), "now()", "Input 1", "="));
                     }
                     else
                     {
@@ -143,7 +143,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
 
                     if(string.IsNullOrEmpty(Input2))
                     {
-                        AddDebugInputItem(new DebugItemStaticDataParams(DateTime.Now.ToString(GlobalConstants.GlobalDefaultNowFormat), "now()", "Input 2", "="));
+                        AddDebugInputItem(new DebugItemStaticDataParams(DateTime.Now.ToString(GlobalConstants.Dev2DotNetDefaultDateTimeFormat), "now()", "Input 2", "="));
                     }
                     else
                     {
@@ -177,12 +177,9 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                         OutputType);
                     //Create a DateTimeComparer using the DateTimeConverterFactory
                     IDateTimeComparer comparer = DateTimeConverterFactory.CreateComparer();
-                    //Call the TryComparer method on the DateTimeComparer and pass it the IDateTimeDiffTO created from the ConvertToDateTimeDiffTO Method                
-                    string result;
-                    string error;
                     string expression = Result;
 
-                    if(comparer.TryCompare(transObj, out result, out error))
+                    if (comparer.TryCompare(transObj, out string result, out string error))
                     {
                         if (DataListUtil.IsValueRecordset(Result) &&
                            DataListUtil.GetRecordsetIndexType(Result) == enRecordsetIndexType.Star)

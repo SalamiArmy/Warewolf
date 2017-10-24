@@ -94,8 +94,7 @@ namespace Dev2
         {
             if(_serverServiceStartedFromStudio)
             {
-                var app = Application.Current as IApp;
-                if(app != null)
+                if (Application.Current is IApp app)
                 {
                     app.ShouldRestart = true;
                 }
@@ -146,10 +145,7 @@ namespace Dev2
 
         #region Private Methods
 
-        /*
-         * You must be in Release config to see the only reference to this function. - Ashley
-         */
-        
+#if !DEBUG
         private bool CheckWindowsService()
         {
             IWindowsServiceManager windowsServiceManager = CustomContainer.Get<IWindowsServiceManager>();
@@ -175,20 +171,23 @@ namespace Dev2
 
             return false;
         }
+#endif
 
         private void CheckPath()
         {
             var sysUri = new Uri(AppDomain.CurrentDomain.BaseDirectory);
 
-            if(IsLocal(sysUri)) return;
+            if(IsLocal(sysUri))
+            {
+                return;
+            }
 
             var popup = new PopupController
                 {
                     Header = "Load Error",
                     Description = 
                         $@"The Design Studio could not be launched from a network location.
-                                                    {Environment
-                            .NewLine}Please install the application on your local machine",
+                        {Environment.NewLine}Please install the application on your local machine",
                     Buttons = MessageBoxButton.OK
                 };
 
@@ -227,6 +226,6 @@ namespace Dev2
             return sysUri.IsUnc;
         }
 
-        #endregion Private Methods
+#endregion Private Methods
     }
 }

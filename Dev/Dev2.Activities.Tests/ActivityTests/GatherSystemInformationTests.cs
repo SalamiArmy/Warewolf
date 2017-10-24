@@ -20,6 +20,7 @@ using Dev2.Data.Interfaces.Enums;
 using Dev2.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System.Globalization;
 
 namespace Dev2.Tests.Activities.ActivityTests
 {
@@ -201,15 +202,15 @@ namespace Dev2.Tests.Activities.ActivityTests
             //------------Execute Test---------------------------
             var dateTimeInformation = activity.GetCorrectSystemInformation(enTypeOfSystemInformationToGather.FullDateTime);
             //------------Assert Results-------------------------
-            DateTime result = DateTime.Parse(dateTimeInformation);
-            if(result.Millisecond == 0)
+            DateTime result = DateTime.Parse(dateTimeInformation,CultureInfo.InvariantCulture);
+            if(result.Second == 0)
             {
-                Thread.Sleep(10);
+                Thread.Sleep(100);
                 dateTimeInformation = activity.GetCorrectSystemInformation(enTypeOfSystemInformationToGather.FullDateTime);
                 result = DateTime.Parse(dateTimeInformation);
-                Assert.IsTrue(result.Millisecond > 0);
+                Assert.IsTrue(result.Second > 0);
             }
-            Assert.IsTrue(result.Millisecond > 0);
+            Assert.IsTrue(result.Second > 0);
         }
 
         [TestMethod]
@@ -504,13 +505,11 @@ namespace Dev2.Tests.Activities.ActivityTests
                 Action = activity
             };
             TestData = "<root><testVar /></root>";
-            string actual;
-            string error;
             //------------Execute Test---------------------------
             var result = ExecuteProcess();
 
             //------------Assert Results-------------------------
-            GetScalarValueFromEnvironment(result.Environment, "testVar", out actual, out error);
+            GetScalarValueFromEnvironment(result.Environment, "testVar", out string actual, out string error);
             // remove test datalist ;)
 
             Assert.AreEqual(ExpectedValue, actual);
@@ -532,11 +531,10 @@ namespace Dev2.Tests.Activities.ActivityTests
             };
             CurrentDl = "<ADL><recset1><field1/></recset1></ADL>";
             TestData = "<root><recset1><field1>Some Other Value</field1></recset1></root>";
-            string error;
             //------------Execute Test---------------------------
             var result = ExecuteProcess();
             //------------Assert Results-------------------------
-            List<string> actual = RetrieveAllRecordSetFieldValues(result.Environment, "recset1", "field1", out error);
+            List<string> actual = RetrieveAllRecordSetFieldValues(result.Environment, "recset1", "field1", out string error);
 
             // remove test datalist ;)
 
@@ -591,11 +589,10 @@ namespace Dev2.Tests.Activities.ActivityTests
             CurrentDl = "<ADL><recset1><field1/></recset1></ADL>";
             TestData = "<root><recset1><field1>Some Other Value</field1></recset1></root>";
             var expected = new List<string> { expectedValue };
-            string error;
             //------------Execute Test---------------------------
             var result = ExecuteProcess();
             //------------Assert Results-------------------------
-            List<string> actual = RetrieveAllRecordSetFieldValues(result.Environment, "recset1", "field1", out error);
+            List<string> actual = RetrieveAllRecordSetFieldValues(result.Environment, "recset1", "field1", out string error);
             // remove test datalist ;)
 
             var actualArray = actual.ToArray();
@@ -620,11 +617,10 @@ namespace Dev2.Tests.Activities.ActivityTests
             CurrentDl = "<ADL><recset1><field1/></recset1></ADL>";
             TestData = "<root><recset1><field1>Some Other Value</field1></recset1><recset1><field1>Some Other Value 2</field1></recset1><recset1><field1>Some Other Value 2</field1></recset1></root>";
             var expected = new List<string> { "Some Other Value", expectedValue, "Some Other Value 2" };
-            string error;
             //------------Execute Test---------------------------
             var result = ExecuteProcess();
             //------------Assert Results-------------------------
-            List<string> actual = RetrieveAllRecordSetFieldValues(result.Environment, "recset1", "field1", out error);
+            List<string> actual = RetrieveAllRecordSetFieldValues(result.Environment, "recset1", "field1", out string error);
 
             // remove test datalist ;)
 
