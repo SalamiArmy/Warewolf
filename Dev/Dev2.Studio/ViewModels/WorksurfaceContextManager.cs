@@ -949,10 +949,13 @@ namespace Dev2.Studio.ViewModels
                 def.FileSystemAssemblyName = db.AssemblyLocation;
                 def.GACAssemblyName = string.Empty;
             }
-            else if (db.AssemblyLocation.StartsWith("GAC:"))
+            else
             {
-                def.GACAssemblyName = db.AssemblyLocation;
-                def.FileSystemAssemblyName = string.Empty;
+                if (db.AssemblyLocation.StartsWith("GAC:"))
+                {
+                    def.GACAssemblyName = db.AssemblyLocation;
+                    def.FileSystemAssemblyName = string.Empty;
+                }
             }
             var workSurfaceKey = WorkSurfaceKeyFactory.CreateKey(WorkSurfaceContext.PluginSource);
             workSurfaceKey.EnvironmentID = resourceModel.Environment.EnvironmentID;
@@ -1504,10 +1507,13 @@ namespace Dev2.Studio.ViewModels
                         e.Cancel = true;
                     }
                 }
-                else if (e != null)
+                else
                 {
-                    e.Handled = true;
-                    e.Cancel = false;
+                    if (e != null)
+                    {
+                        e.Handled = true;
+                        e.Cancel = false;
+                    }
                 }
             }
             return true;
