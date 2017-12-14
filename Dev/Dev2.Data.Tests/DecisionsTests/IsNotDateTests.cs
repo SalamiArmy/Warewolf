@@ -22,10 +22,10 @@ namespace Dev2.Data.Tests.DecisionsTests
         {
             //------------Setup for test--------------------------
             var isNotDate = new IsNotDate();
-            string[] cols = new string[2];
+            var cols = new string[2];
             cols[0] = "Yersteday";
             //------------Execute Test---------------------------
-            bool result = isNotDate.Invoke(cols);
+            var result = isNotDate.Invoke(cols);
             //------------Assert Results-------------------------
             Assert.IsTrue(result);
         }
@@ -37,10 +37,10 @@ namespace Dev2.Data.Tests.DecisionsTests
         {
             //------------Setup for test--------------------------
             var notStartsWith = new IsNotDate();
-            string[] cols = new string[2];
+            var cols = new string[2];
             cols[0] = "01/12/2000";
             //------------Execute Test---------------------------
-            bool result = notStartsWith.Invoke(cols);
+            var result = notStartsWith.Invoke(cols);
             //------------Assert Results-------------------------
             Assert.IsFalse(result);
         }

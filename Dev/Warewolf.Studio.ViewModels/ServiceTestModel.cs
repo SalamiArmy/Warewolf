@@ -15,41 +15,41 @@ namespace Warewolf.Studio.ViewModels
 {
     public class ServiceTestModel : BindableBase, IServiceTestModel
     {
-        private string _testName;
-        private string _userName;
-        private bool _testPassed;
-        private bool _testFailing;
-        private bool _testPending;
-        private bool _testInvalid;
-        private string _password;
-        private ObservableCollection<IServiceTestInput> _inputs;
-        private ObservableCollection<IServiceTestOutput> _outputs;
-        private bool _noErrorExpected;
-        private bool _errorExpected;
-        private bool _isNewTest;
-        private bool _isTestSelected;
-        private DateTime _lastRunDate;
-        private bool _enabled;
-        private string _runSelectedTestUrl;
-        private AuthenticationType _authenticationType;
-        private Guid _parentId;
-        private string _oldTestName;
-        private bool _newTest;
-        private string _nameForDisplay;
-        private ServiceTestModel _item;
-        private bool _isTestRunning;
-        private string _neverRunString;
-        private string _duplicateTestTooltip;
-        private bool _lastRunDateVisibility;
-        private bool _neverRunStringVisibility;
-        private IList<IDebugState> _debugForTest;
-        private IServiceTestStep _selectedTestStep;
-        private ObservableCollection<IServiceTestStep> _testSteps;
-        private string _errorContainsText;
-        private bool _isTestLoading;
-        private bool _isValidatingIsDirty;
+        string _testName;
+        string _userName;
+        bool _testPassed;
+        bool _testFailing;
+        bool _testPending;
+        bool _testInvalid;
+        string _password;
+        ObservableCollection<IServiceTestInput> _inputs;
+        ObservableCollection<IServiceTestOutput> _outputs;
+        bool _noErrorExpected;
+        bool _errorExpected;
+        bool _isNewTest;
+        bool _isTestSelected;
+        DateTime _lastRunDate;
+        bool _enabled;
+        string _runSelectedTestUrl;
+        AuthenticationType _authenticationType;
+        Guid _parentId;
+        string _oldTestName;
+        bool _newTest;
+        string _nameForDisplay;
+        ServiceTestModel _item;
+        bool _isTestRunning;
+        string _neverRunString;
+        string _duplicateTestTooltip;
+        bool _lastRunDateVisibility;
+        bool _neverRunStringVisibility;
+        IList<IDebugState> _debugForTest;
+        IServiceTestStep _selectedTestStep;
+        ObservableCollection<IServiceTestStep> _testSteps;
+        string _errorContainsText;
+        bool _isTestLoading;
+        bool _isValidatingIsDirty;
 #pragma warning disable S1450 // Private fields only used as local variables in methods should become local variables
-        private bool _isDirty;
+        bool _isDirty;
 #pragma warning restore S1450 // Private fields only used as local variables in methods should become local variables
 
         public string NeverRunString
@@ -426,7 +426,7 @@ namespace Warewolf.Studio.ViewModels
             }
         }
 
-        private void SetDisplayName(bool isDirty)
+        void SetDisplayName(bool isDirty)
         {
             NameForDisplay = isDirty ? TestName + " *" : TestName;
         }
@@ -508,7 +508,7 @@ namespace Warewolf.Studio.ViewModels
             if (itemToAdd != null && DataListUtil.IsValueRecordset(itemToAdd.Variable))
             {
                 var recordsetNameFromValue = DataListUtil.ExtractRecordsetNameFromValue(itemToAdd.Variable);
-                IRecordSet recordset = dataList.ShapeRecordSets.FirstOrDefault(set => set.Name == recordsetNameFromValue);
+                var recordset = dataList.ShapeRecordSets.FirstOrDefault(set => set.Name == recordsetNameFromValue);
                 if (recordset == null)
                 {
                     return;
@@ -543,7 +543,7 @@ namespace Warewolf.Studio.ViewModels
             }
         }
 
-        private void AddBlankRowToRecordset(IServiceTestInput dlItem, IList<IScalar> columns, int indexToInsertAt, int indexNum, IDataListModel dataList)
+        void AddBlankRowToRecordset(IServiceTestInput dlItem, IList<IScalar> columns, int indexToInsertAt, int indexNum, IDataListModel dataList)
         {
             IList<IScalar> recsetCols = columns.Distinct(Scalar.Comparer).ToList();
             string colName = null;
@@ -567,7 +567,7 @@ namespace Warewolf.Studio.ViewModels
             if (itemToAdd != null && DataListUtil.IsValueRecordset(itemToAdd.Variable))
             {
                 var recordsetNameFromValue = DataListUtil.ExtractRecordsetNameFromValue(itemToAdd.Variable);
-                IRecordSet recordset = dataList.ShapeRecordSets.FirstOrDefault(set => set.Name == recordsetNameFromValue);
+                var recordset = dataList.ShapeRecordSets.FirstOrDefault(set => set.Name == recordsetNameFromValue);
                 if (recordset == null)
                 {
                     return;
@@ -602,7 +602,7 @@ namespace Warewolf.Studio.ViewModels
             }
         }
 
-        private void AddBlankRowToRecordset(IServiceTestOutput dlItem, IList<IScalar> columns, int indexToInsertAt, int indexNum, IDataListModel dataList)
+        void AddBlankRowToRecordset(IServiceTestOutput dlItem, IList<IScalar> columns, int indexToInsertAt, int indexNum, IDataListModel dataList)
         {
             IList<IScalar> recsetCols = columns.Distinct(Scalar.Comparer).ToList();
             string colName = null;
@@ -621,7 +621,7 @@ namespace Warewolf.Studio.ViewModels
             }
         }
 
-        private bool Equals(ServiceTestModel other)
+        bool Equals(ServiceTestModel other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -641,7 +641,7 @@ namespace Warewolf.Studio.ViewModels
             return @equals;
         }
 
-        private bool TestStepCompare(ServiceTestModel other)
+        bool TestStepCompare(ServiceTestModel other)
         {
             if (_testSteps == null)
             {
@@ -651,7 +651,7 @@ namespace Warewolf.Studio.ViewModels
             {
                 return false;
             }
-            bool stepCompare = true;
+            var stepCompare = true;
             for (int i = 0; i < _testSteps.Count; i++)
             {
                 stepCompare &= TestSteps[i].Type == other.TestSteps[i].Type;
@@ -680,9 +680,9 @@ namespace Warewolf.Studio.ViewModels
             return stepCompare;
         }
 
-        private static bool StepChildrenCompare(ObservableCollection<IServiceTestStep> stepChildren, ObservableCollection<IServiceTestStep> otherStepChildren)
+        static bool StepChildrenCompare(ObservableCollection<IServiceTestStep> stepChildren, ObservableCollection<IServiceTestStep> otherStepChildren)
         {
-            bool stepCompare = true;
+            var stepCompare = true;
             for (int c = 0; c < stepChildren.Count; c++)
             {
                 stepCompare &= stepChildren[c].Type == otherStepChildren[c].Type;
@@ -714,9 +714,9 @@ namespace Warewolf.Studio.ViewModels
             return stepCompare;
         }
 
-        private static bool StepOutputsCompare(ObservableCollection<IServiceTestOutput> stepOutputs, ObservableCollection<IServiceTestOutput> otherStepOutputs)
+        static bool StepOutputsCompare(ObservableCollection<IServiceTestOutput> stepOutputs, ObservableCollection<IServiceTestOutput> otherStepOutputs)
         {
-            bool stepCompare = true;
+            var stepCompare = true;
             for (int c = 0; c < stepOutputs.Count; c++)
             {
                 stepCompare &= stepOutputs[c].AssertOp == otherStepOutputs[c].AssertOp;
@@ -732,7 +732,7 @@ namespace Warewolf.Studio.ViewModels
             return stepCompare;
         }
 
-        private bool InputCompare(ServiceTestModel other)
+        bool InputCompare(ServiceTestModel other)
         {
             if (_inputs == null)
             {
@@ -742,7 +742,7 @@ namespace Warewolf.Studio.ViewModels
             {
                 return false;
             }
-            bool inputCompare = true;
+            var inputCompare = true;
             for (int i = 0; i < _inputs.Count; i++)
             {
                 inputCompare &= Inputs[i].Value == other.Inputs[i].Value;
@@ -756,7 +756,7 @@ namespace Warewolf.Studio.ViewModels
             return inputCompare;
         }
 
-        private bool OutputCompare(ServiceTestModel other)
+        bool OutputCompare(ServiceTestModel other)
         {
             if (_outputs == null)
             {
@@ -766,7 +766,7 @@ namespace Warewolf.Studio.ViewModels
             {
                 return false;
             }
-            bool outputCompare = true;
+            var outputCompare = true;
             for (int i = 0; i < _outputs.Count; i++)
             {
                 outputCompare &= _outputs[i].Value == other._outputs[i].Value;
@@ -782,9 +782,9 @@ namespace Warewolf.Studio.ViewModels
             return outputCompare;
         }
 
-        private bool EqualsSeq(ServiceTestModel other)
+        bool EqualsSeq(ServiceTestModel other)
         {
-            bool equalsSeq = string.Equals(_testName, other._testName);
+            var equalsSeq = string.Equals(_testName, other._testName);
             equalsSeq &= string.Equals(_userName, other._userName);
             equalsSeq &= string.Equals(_password, other._password);
             equalsSeq &= _noErrorExpected == other._noErrorExpected;
@@ -798,10 +798,10 @@ namespace Warewolf.Studio.ViewModels
 
         public IServiceTestModel Clone()
         {
-            Dev2JsonSerializer serializer = new Dev2JsonSerializer();
+            var serializer = new Dev2JsonSerializer();
             IServiceTestModel serviceTestModel = this;
             var ser = serializer.SerializeToBuilder(serviceTestModel);
-            IServiceTestModel clone = serializer.Deserialize<IServiceTestModel>(ser);
+            var clone = serializer.Deserialize<IServiceTestModel>(ser);
             return clone;
         }
     }

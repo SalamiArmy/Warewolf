@@ -25,7 +25,7 @@ namespace System.Windows.Controls
     /// <summary>
     /// A static class providing methods for working with the visual tree.  
     /// </summary>
-    internal static class VisualTreeExtensions
+    static class VisualTreeExtensions
     {
         /// <summary>
         /// Retrieves all the visual children of a framework element.
@@ -36,8 +36,8 @@ namespace System.Windows.Controls
         {
             Debug.Assert(parent != null, ErrorResource.ParentCannotBeNull);
 
-            int childCount = VisualTreeHelper.GetChildrenCount(parent);
-            for(int counter = 0; counter < childCount; counter++)
+            var childCount = VisualTreeHelper.GetChildrenCount(parent);
+            for (int counter = 0; counter < childCount; counter++)
             {
                 yield return VisualTreeHelper.GetChild(parent, counter);
             }
@@ -56,12 +56,12 @@ namespace System.Windows.Controls
         {
             Debug.Assert(parent != null, ErrorResource.ParentCannotBeNull);
 
-            Queue<FrameworkElement> queue =
+            var queue =
                 new Queue<FrameworkElement>(parent.GetVisualChildren().OfType<FrameworkElement>());
 
-            while(queue.Count > 0)
+            while (queue.Count > 0)
             {
-                FrameworkElement element = queue.Dequeue();
+                var element = queue.Dequeue();
                 yield return element;
 
                 foreach(FrameworkElement visualChild in element.GetVisualChildren().OfType<FrameworkElement>())

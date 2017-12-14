@@ -202,12 +202,12 @@ namespace Dev2.Runtime.WebServer.Hubs
                 var user = hubCallerConnectionContext.User(Context.User.Identity.Name);
                 user.SendDebugState(debugSerializated);
             }
-            catch
+            catch (Exception ex)
             {
                 var user = hubCallerConnectionContext.Caller;
                 user.SendDebugState(debugSerializated);
             }
-           
+
         }
 
         void WriteEventProviderClientMessage<TMemo>(IEnumerable<ICompileMessageTO> messages, Action<TMemo, ICompileMessageTO> coalesceErrors)
@@ -242,7 +242,7 @@ namespace Dev2.Runtime.WebServer.Hubs
                 foreach (var message in grouping)
                 {
                     memo.WorkspaceID = message.WorkspaceID;
-                    coalesceErrors(memo, message);
+                    coalesceErrors?.Invoke(memo, message);
                 }
             }
         }
@@ -370,7 +370,7 @@ namespace Dev2.Runtime.WebServer.Hubs
             
             SetupEvents();
 
-            Task t = new Task(() =>
+            var t = new Task(() =>
             {
                 var workspaceId = Server.GetWorkspaceID(Context.User.Identity);
                 ResourceCatalog.Instance.LoadServerActivityCache();

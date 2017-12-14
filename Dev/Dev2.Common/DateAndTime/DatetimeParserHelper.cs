@@ -1,19 +1,19 @@
 using System;
 using System.Globalization;
 using Dev2.Common.Interfaces;
-using System.Collections.Generic;
 
 namespace Dev2.Common.DateAndTime
 {
-    public class DateTimeParserHelper : IDatetimeParserHelper
+    public class DateTimeParserHelper: IDatetimeParserHelper
     {
         #region Implementation of IDatetimeParserHelper
 
         public bool IsNumberWeekOfYear(string data, bool treatAsTime)
         {
-            bool nothingDied = true;
+            var nothingDied = true;
 
-            if (int.TryParse(data, NumberStyles.None, null, out int numericData))
+            int numericData;
+            if (int.TryParse(data, NumberStyles.None, null, out numericData))
             {
                 if (!treatAsTime)
                 {
@@ -30,9 +30,10 @@ namespace Dev2.Common.DateAndTime
 
         public bool IsNumberDayOfYear(string data, bool treatAsTime)
         {
-            bool nothingDied = true;
+            var nothingDied = true;
 
-            if (int.TryParse(data, NumberStyles.None, null, out int numericData) && numericData >= 1 && numericData <= 365)
+            int numericData;
+            if (int.TryParse(data, NumberStyles.None, null, out numericData) && numericData >= 1 && numericData <= 365)
             {
                 //nothing to do since nothignDied is already true
             }
@@ -46,9 +47,10 @@ namespace Dev2.Common.DateAndTime
 
         public bool IsNumberDayOfWeek(string data, bool treatAsTime)
         {
-            bool nothingDied = true;
+            var nothingDied = true;
 
-            if (int.TryParse(data, NumberStyles.None, null, out int numericData))
+            int numericData;
+            if (int.TryParse(data, NumberStyles.None, null, out numericData))
             {
                 if (!treatAsTime)
                 {
@@ -66,16 +68,24 @@ namespace Dev2.Common.DateAndTime
         internal static int GetDayOfWeekInt(DayOfWeek dayOfWeek)
         {
             int val;
-            val = dayOfWeek == DayOfWeek.Sunday ? 7 : (int)dayOfWeek;
+            if (dayOfWeek == DayOfWeek.Sunday)
+            {
+                val = 7;
+            }
+            else
+            {
+                val = (int)dayOfWeek;
+            }
 
             return val;
         }
 
         public bool IsNumberDay(string data, bool treatAsTime)
         {
-            bool nothingDied = true;
+            var nothingDied = true;
 
-            if (int.TryParse(data, NumberStyles.None, null, out int numericData))
+            int numericData;
+            if (int.TryParse(data, NumberStyles.None, null, out numericData))
             {
                 if (!treatAsTime)
                 {
@@ -92,9 +102,10 @@ namespace Dev2.Common.DateAndTime
 
         public bool IsNumberMonth(string data, bool treatAsTime)
         {
-            bool nothingDied = true;
+            var nothingDied = true;
 
-            if (int.TryParse(data, NumberStyles.None, null, out int numericData))
+            int numericData;
+            if (int.TryParse(data, NumberStyles.None, null, out numericData))
             {
                 if (!treatAsTime)
                 {
@@ -111,9 +122,10 @@ namespace Dev2.Common.DateAndTime
 
         public bool IsNumber12H(string data, bool treatAsTime)
         {
-            bool nothingDied = true;
+            var nothingDied = true;
 
-            if (int.TryParse(data, NumberStyles.None, null, out int numericData))
+            int numericData;
+            if (int.TryParse(data, NumberStyles.None, null, out numericData))
             {
                 if (!treatAsTime)
                 {
@@ -130,9 +142,10 @@ namespace Dev2.Common.DateAndTime
 
         public bool IsNumber24H(string data, bool treatAsTime)
         {
-            bool nothingDied = true;
+            var nothingDied = true;
 
-            if (data.Length == 2 && int.TryParse(data, out int numericData))
+            int numericData;
+            if (data.Length == 2 && int.TryParse(data, out numericData))
             {
                 if (!treatAsTime)
                 {
@@ -149,9 +162,10 @@ namespace Dev2.Common.DateAndTime
 
         public bool IsNumberMinutes(string data, bool treatAsTime)
         {
-            bool nothingDied = true;
+            var nothingDied = true;
 
-            if (int.TryParse(data, NumberStyles.None, null, out int numericData))
+            int numericData;
+            if (int.TryParse(data, NumberStyles.None, null, out numericData))
             {
                 if (!treatAsTime)
                 {
@@ -168,9 +182,10 @@ namespace Dev2.Common.DateAndTime
 
         public bool IsNumberMilliseconds(string data, bool treatAsTime)
         {
-            bool nothingDied = true;
+            var nothingDied = true;
 
-            if (int.TryParse(data, NumberStyles.None, null, out int numericData))
+            int numericData;
+            if (int.TryParse(data, NumberStyles.None, null, out numericData))
             {
                 if (!treatAsTime)
                 {
@@ -187,9 +202,10 @@ namespace Dev2.Common.DateAndTime
 
         public bool IsNumberSeconds(string data, bool treatAsTime)
         {
-            bool nothingDied = true;
+            var nothingDied = true;
 
-            if (int.TryParse(data, NumberStyles.None, null, out int numericData))
+            int numericData;
+            if (int.TryParse(data, NumberStyles.None, null, out numericData))
             {
                 if (!treatAsTime)
                 {
@@ -204,24 +220,8 @@ namespace Dev2.Common.DateAndTime
             return nothingDied;
         }
 
-
+        
 
         #endregion
-        static readonly List<string> dev2Stuff = new List<string>
-        {
-            "12h","24h","am//pm","dw","dW","DW","dy","Era","min","sp","ww","w","ZZZ"
-        };
-        public static bool DateIsDev2DateFormat(string dateFormat)
-        {
-            foreach (var item in dev2Stuff)
-            {
-                var hasDev2Formats = dateFormat?.IndexOf(item, StringComparison.OrdinalIgnoreCase) >= 0;
-                if (hasDev2Formats)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
     }
 }

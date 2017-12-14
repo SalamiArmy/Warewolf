@@ -22,7 +22,7 @@ namespace Dev2.SignalR.Wrappers.New
 
         #region Implementation of IHubConnectionWrapper
 
-        private HubConnectionWrapper(HubConnection wrapped)
+        HubConnectionWrapper(HubConnection wrapped)
         {
             _wrapped = wrapped;
             _wrapped.DeadlockErrorTimeout = TimeSpan.FromSeconds(30);
@@ -66,7 +66,7 @@ namespace Dev2.SignalR.Wrappers.New
         {
             add
             {
-                _wrapped.StateChanged += change => value(new StateChangeWrapped(change));
+                _wrapped.StateChanged += change => value?.Invoke(new StateChangeWrapped(change));
             }
             remove
             {

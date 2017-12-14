@@ -53,10 +53,10 @@ namespace Dev2.Settings
 
         SecurityViewModel _securityViewModel;
         LogSettingsViewModel _logSettingsViewModel;
-        private IServer _currentEnvironment;
-        private Func<IServer, IServer> _toEnvironmentModel;
-        private PerfcounterViewModel _perfmonViewModel;
-        private string _displayName;
+        IServer _currentEnvironment;
+        Func<IServer, IServer> _toEnvironmentModel;
+        PerfcounterViewModel _perfmonViewModel;
+        string _displayName;
 
         // ReSharper disable once MemberCanBeProtected.Global
         public SettingsViewModel()
@@ -80,7 +80,7 @@ namespace Dev2.Settings
             SaveCommand = new RelayCommand(o => SaveSettings(), o => IsDirty);
 
             ToEnvironmentModel = toEnvironmentModel??( a=>a.ToEnvironmentModel());
-            CurrentEnvironment= ToEnvironmentModel(server);
+            CurrentEnvironment= ToEnvironmentModel?.Invoke(server);
             LoadSettings();
             // ReSharper disable once VirtualMemberCallInContructor
             DisplayName = StringResources.SettingsTitle + " - " + Server.DisplayName;
@@ -105,7 +105,7 @@ namespace Dev2.Settings
             }
         }
 
-        private void SetDisplayName()
+        void SetDisplayName()
         {
             if (IsDirty)
             {
@@ -594,7 +594,7 @@ namespace Dev2.Settings
             return false;
         }
 
-        private bool ValidateDuplicateServerPermissions()
+        bool ValidateDuplicateServerPermissions()
         {
             if (SecurityViewModel.HasDuplicateServerPermissions())
             {
@@ -606,7 +606,7 @@ namespace Dev2.Settings
             return true;
         }
 
-        private bool ValidateDuplicateResourcePermissions()
+        bool ValidateDuplicateResourcePermissions()
         {
             if (SecurityViewModel.HasDuplicateResourcePermissions())
             {

@@ -34,7 +34,7 @@ namespace Dev2.Integration.Tests.Dev2.Studio.Core.Tests
         [TestMethod]
         public void EnvironmentConnectionWithServerAuthenticationExpectedClientDetailsRecieved()
         {
-            IEnvironmentConnection conn = CreateConnection();
+            var conn = CreateConnection();
 
             conn.Connect(Guid.Empty);
             // The IsConnected property of the EnvironmentConnection references the TCPDispatch Client
@@ -50,14 +50,14 @@ namespace Dev2.Integration.Tests.Dev2.Studio.Core.Tests
         [TestMethod]
         public void EnvironmentConnectionReconnectToServerExpecetedClientConnectionSuccessful()
         {
-            IEnvironmentConnection conn = CreateConnection();
+            var conn = CreateConnection();
 
             conn.Connect(Guid.Empty);
             conn.Disconnect();
             Thread.Sleep(100);
             conn.Connect(Guid.Empty);
             Thread.Sleep(500);
-            bool afterReconnection = conn.IsConnected;
+            var afterReconnection = conn.IsConnected;
 
             Assert.IsTrue(afterReconnection);
 

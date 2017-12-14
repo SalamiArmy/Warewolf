@@ -75,10 +75,6 @@ namespace Unlimited.Framework.Converters.Graph.String
             {
                 navigator = new PocoNavigator(data);
             }
-            else if( pathType == typeof(StringPath))
-            {
-                navigator = new StringNavigator(data);
-            }
             else
             {
                 navigator = null;
@@ -91,9 +87,9 @@ namespace Unlimited.Framework.Converters.Graph.String
 
         #region Private Methods
 
-        private bool IsXml(string data)
+        bool IsXml(string data)
         {
-            bool result = true;
+            var result = true;
 
             try
             {
@@ -110,9 +106,9 @@ namespace Unlimited.Framework.Converters.Graph.String
             return result;
         }
 
-        private bool IsJson(string data)
+        bool IsJson(string data)
         {
-            bool result = true;
+            var result = true;
 
             try
             {

@@ -25,15 +25,15 @@ namespace Warewolf.Studio.ViewModels.Tests
     {
         #region Fields
 
-        private ExplorerItemViewModel _target;
-        private Mock<IServer> _serverMock;
-        private Mock<IStudioUpdateManager> _updateManager;
-        private Mock<IExplorerTreeItem> _explorerTreeItemMock;
-        private Mock<IShellViewModel> _shellViewModelMock;
-        private Mock<IExplorerRepository> _explorerRepositoryMock;
-        private Mock<IPopupController> _popupControllerMock;
-        private Mock<IWindowsGroupPermission> _windowsGroupPermissionsMock;
-        private Mock<IExplorerTooltips> _explorerTooltips;
+        ExplorerItemViewModel _target;
+        Mock<IServer> _serverMock;
+        Mock<IStudioUpdateManager> _updateManager;
+        Mock<IExplorerTreeItem> _explorerTreeItemMock;
+        Mock<IShellViewModel> _shellViewModelMock;
+        Mock<IExplorerRepository> _explorerRepositoryMock;
+        Mock<IPopupController> _popupControllerMock;
+        Mock<IWindowsGroupPermission> _windowsGroupPermissionsMock;
+        Mock<IExplorerTooltips> _explorerTooltips;
 
         #endregion Fields
 
@@ -164,6 +164,40 @@ namespace Warewolf.Studio.ViewModels.Tests
             //assert
             _shellViewModelMock.Verify(it => it.SetActiveServer(_target.Server.EnvironmentID));
             _shellViewModelMock.Verify(it => it.NewMySqlSource(_target.ResourcePath));
+        }
+
+        [TestMethod]
+        public void TestIsMergeVisibleFalse()
+        {
+            //assert
+            Assert.IsFalse(_target.IsMergeVisible);
+        }
+
+        [TestMethod]
+        public void TestIsMergeVisibleTrue()
+        {
+            _target.IsSaveDialog = false;
+            _target.IsMergeVisible = true;
+            var id1 = Guid.NewGuid();
+            var v1 = new Mock<IVersionInfo>();
+            v1.SetupAllProperties();
+            v1.Setup(info => info.Reason).Returns("a");
+            v1.Setup(info => info.ResourceId).Returns(id1);
+            var versionInfos = new List<IVersionInfo>()
+            {
+                v1.Object
+            };
+            _serverMock.Setup(server => server.GetPermissions(Guid.Empty)).Returns(Permissions.View | Permissions.DeployTo);
+            var explorerRepositoryMock = new Mock<IExplorerRepository>();
+            explorerRepositoryMock.Setup(it => it.GetVersions(It.IsAny<Guid>())).Returns(versionInfos);
+            _serverMock.SetupGet(it => it.ExplorerRepository).Returns(explorerRepositoryMock.Object);
+            _explorerRepositoryMock.Setup(it => it.GetVersions(It.IsAny<Guid>())).Returns(versionInfos);
+            _target.ShowVersionHistory.Execute(_target);
+            //------------Assert Results-------------------------
+            Assert.IsTrue(_target.ShowVersionHistory.CanExecute(null));
+            Assert.IsTrue(_target.AreVersionsVisible);
+            //assert
+            Assert.IsTrue(_target.IsMergeVisible);
         }
 
         [TestMethod]
@@ -447,7 +481,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             Assert.IsTrue(_target.RunAllTestsCommand.CanExecute(null));
 
             //assert
-            _shellViewModelMock.Verify(it => it.RunAllTests(_target.ResourceId));
+            _shellViewModelMock.Verify(it => it.RunAllTests(null, _target.ResourceId));
         }
 
         [TestMethod]
@@ -847,7 +881,6 @@ namespace Warewolf.Studio.ViewModels.Tests
 
             //assert
             Assert.IsTrue(_target.IsExpanded);
-            //_explorerRepositoryMock.Verify(it => it.CreateFolder(_target.ResourcePath, "New Folder", It.IsAny<Guid>()));
             var createdFolder = _target.Children.Single();
             Assert.AreEqual("New Folder", createdFolder.ResourceName);
             Assert.AreEqual("Folder", createdFolder.ResourceType);
@@ -868,7 +901,6 @@ namespace Warewolf.Studio.ViewModels.Tests
             Assert.AreEqual(_target.CanCreateWorkflowService, createdFolder.CanCreateWorkflowService);
             Assert.AreEqual(_target.ShowContextMenu, createdFolder.ShowContextMenu);
             Assert.IsTrue(createdFolder.IsRenaming);
-
             _explorerTooltips.Verify(it => it.SetSourceTooltips(_target.CanCreateSource));
         }
 
@@ -1508,7 +1540,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var child = new Mock<IExplorerItemViewModel>();
             _target.Children.Add(child.Object);
 
-            PrivateObject privateObject = new PrivateObject(_target);
+            var privateObject = new PrivateObject(_target);
             privateObject.SetField("_explorerRepository", mock.Object);
             //act
             _target.Delete();
@@ -1660,7 +1692,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //arrange
             var child = new Mock<IExplorerItemViewModel>().Object;
             _target.Children.Add(child);
-            bool wasCalled = false;
+            var wasCalled = false;
             _target.PropertyChanged += (sender, args) =>
             {
                 if (args.PropertyName == "Children")
@@ -1685,7 +1717,7 @@ namespace Warewolf.Studio.ViewModels.Tests
 
             _target.Children.Clear();
 
-            bool wasCalled = false;
+            var wasCalled = false;
             _target.PropertyChanged += (sender, args) =>
             {
                 if (args.PropertyName == "Children")
@@ -1822,7 +1854,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //arrange
             var child = new Mock<IExplorerItemViewModel>();
             child.Setup(model => model.IsVisible).Returns(true);
-            bool actionRun = false;
+            var actionRun = false;
             _target.AddChild(child.Object);
             Action<IExplorerItemViewModel> action = a => actionRun = ReferenceEquals(_target, a);
             //act
@@ -2029,6 +2061,46 @@ namespace Warewolf.Studio.ViewModels.Tests
         }
 
         [TestMethod]
+        public void TestCanViewMergeIsVisible()
+        {
+            //arrange
+            _target.ResourceType = "WorkflowService";
+            _target.CanView = true;
+            _target.IsService = true;
+            _target.IsSource = false;
+            _target.IsSaveDialog = false;
+
+            var connection = new Mock<IEnvironmentConnection>();
+            connection.SetupGet(it => it.ID).Returns(Guid.NewGuid());
+            var mock = new Mock<IServer>();
+            mock.SetupGet(it => it.Connection).Returns(connection.Object);
+            mock.SetupGet(it => it.Connection.WebServerUri).Returns(new Uri("http://localhost:3142"));
+            mock.SetupGet(it => it.IsLocalHost).Returns(true);
+            _target.Server = mock.Object;
+
+            //act
+
+            //assert
+            Assert.IsTrue(_target.IsService);
+            Assert.IsTrue(_target.CanMerge);
+        }
+
+        [TestMethod]
+        public void TestCanViewMergeIsNotVisible()
+        {
+            //arrange
+            _target.ResourceType = "Folder";
+            _target.CanView = true;
+            _target.IsService = false;
+            _target.IsFolder = true;
+            //act
+
+            //assert
+            Assert.IsTrue(_target.IsFolder);
+            Assert.IsFalse(_target.CanMerge);
+        }
+
+        [TestMethod]
         public void TestCanViewApisJsonIsVisible()
         {
             //arrange
@@ -2097,7 +2169,7 @@ namespace Warewolf.Studio.ViewModels.Tests
                 childDestItem.Object
             });
             //act
-            var result = await _target.Move(movedItem.Object);
+            var result = await _target.MoveAsync(movedItem.Object);
             //assert
             Assert.IsFalse(result);
             _shellViewModelMock.Verify(it => it.ShowPopup(It.IsAny<IPopupMessage>()));
@@ -2128,7 +2200,7 @@ namespace Warewolf.Studio.ViewModels.Tests
 
             _serverMock.SetupGet(it => it.UpdateRepository).Returns(studioUpdateManagerMock.Object);
             //act
-            var result = await _target.Move(destinationMock.Object);
+            var result = await _target.MoveAsync(destinationMock.Object);
             //assert
             Assert.IsFalse(result);
             _explorerRepositoryMock.Verify(it => it.Move(_target, destinationMock.Object));
@@ -2246,7 +2318,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _explorerRepositoryMock.Setup(a => a.Move(It.IsAny<IExplorerItemViewModel>(), It.IsAny<IExplorerTreeItem>())).Throws(new Exception());
             _serverMock.SetupGet(it => it.UpdateRepository).Returns(studioUpdateManagerMock.Object);
             //act
-            var result = await _target.Move(destinationMock.Object);
+            var result = await _target.MoveAsync(destinationMock.Object);
             //assert
             Assert.IsFalse(result);
         }

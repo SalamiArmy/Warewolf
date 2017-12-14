@@ -33,7 +33,7 @@ namespace Dev2.Common.Utils
 
                 if (stringToScrub.EndsWith("\""))
                 {
-                    int indexTORemoveFrom = stringToScrub.Length - 1;
+                    var indexTORemoveFrom = stringToScrub.Length - 1;
                     stringToScrub = stringToScrub.Remove(indexTORemoveFrom, 1);
                 }
             }
@@ -47,7 +47,7 @@ namespace Dev2.Common.Utils
                 return String.Empty;
             }
 
-            string cleanText = text.Replace(Environment.NewLine, String.Empty).Replace("\t", String.Empty);
+            var cleanText = text.Replace(Environment.NewLine, String.Empty).Replace("\t", String.Empty);
 
             var offset = 0;
             var output = new StringBuilder();

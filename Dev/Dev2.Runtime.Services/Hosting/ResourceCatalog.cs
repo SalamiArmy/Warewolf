@@ -32,7 +32,7 @@ using Dev2.Runtime.Interfaces;
 using Dev2.Runtime.ResourceCatalogImpl;
 using Dev2.Runtime.ServiceModel.Data;
 using Warewolf.ResourceManagement;
-
+using Dev2.Common.Interfaces.Wrappers;
 
 namespace Dev2.Runtime.Hosting
 {
@@ -42,25 +42,32 @@ namespace Dev2.Runtime.Hosting
         readonly object _loadLock = new object();
         ResourceCatalogBuilder Builder { get; set; }
 
-        private readonly ResourceCatalogPluginContainer _catalogPluginContainer;
-        private static readonly Lazy<ResourceCatalog> LazyCat = new Lazy<ResourceCatalog>(() =>
+        readonly ResourceCatalogPluginContainer _catalogPluginContainer;
+        static readonly Lazy<ResourceCatalog> LazyCat = new Lazy<ResourceCatalog>(() =>
         {
             var c = new ResourceCatalog(EsbManagementServiceLocator.GetServices());
             CompileMessageRepo.Instance.Ping();
             return c;
         }, LazyThreadSafetyMode.PublicationOnly);
-        
+
         public static ResourceCatalog Instance => LazyCat.Value;
 
         [ExcludeFromCodeCoverage]//used by tests for constructor injection
         public ResourceCatalog(IEnumerable<DynamicService> managementServices = null)
         {
             InitializeWorkspaceResources();
-            IServerVersionRepository versioningRepository = new ServerVersionRepository(new VersionStrategy(), this, new DirectoryWrapper(), EnvironmentVariables.GetWorkspacePath(GlobalConstants.ServerWorkspaceID), new FileWrapper());
-            _catalogPluginContainer = new ResourceCatalogPluginContainer(versioningRepository, WorkspaceResources, managementServices);
+            _serverVersionRepository = new ServerVersionRepository(new VersionStrategy(), this, _directoryWrapper, EnvironmentVariables.GetWorkspacePath(GlobalConstants.ServerWorkspaceID), new FileWrapper(), new FilePathWrapper());
+            _catalogPluginContainer = new ResourceCatalogPluginContainer(_serverVersionRepository, WorkspaceResources, managementServices);
             _catalogPluginContainer.Build(this);
-            var _directoryWrapper = new DirectoryWrapper();
-            versioningRepository.CleanUpOldVersionControlStructure(_directoryWrapper);
+            
+            
+           
+        }
+        IServerVersionRepository _serverVersionRepository;
+        IDirectory _directoryWrapper = new DirectoryWrapper();
+        public void CleanUpOldVersionControlStructure()
+        {
+            _serverVersionRepository.CleanUpOldVersionControlStructure(_directoryWrapper);
         }
 
         [ExcludeFromCodeCoverage]//used by tests for constructor injection
@@ -72,11 +79,11 @@ namespace Dev2.Runtime.Hosting
             _catalogPluginContainer.Build(this);
         }
 
-        private void InitializeWorkspaceResources()
+        void InitializeWorkspaceResources()
         {
             WorkspaceResources = new ConcurrentDictionary<Guid, List<IResource>>();
         }
-        
+
 
         public ConcurrentDictionary<Guid, ManagementServiceResource> ManagementServices => _catalogPluginContainer.LoadProvider.ManagementServices;
         public ConcurrentDictionary<Guid, object> WorkspaceLocks => _catalogPluginContainer.LoadProvider.WorkspaceLocks;
@@ -177,7 +184,7 @@ namespace Dev2.Runtime.Hosting
             }
         }
 
-        private void BuildResourceActivityCache(IEnumerable<IResource> userServices)
+        void BuildResourceActivityCache(IEnumerable<IResource> userServices)
         {
             if (_parsers.ContainsKey(GlobalConstants.ServerWorkspaceID))
             {
@@ -310,6 +317,7 @@ namespace Dev2.Runtime.Hosting
                 _catalogPluginContainer.SaveProvider.ResourceSaved = value;
             }
         }
+
         public Action<Guid, IList<ICompileMessageTO>> SendResourceMessages
         {
             get
@@ -322,7 +330,9 @@ namespace Dev2.Runtime.Hosting
             }
         }
 
-        internal ResourceCatalogResult SaveImpl(Guid workspaceID, IResource resource, StringBuilder contents, bool overwriteExisting = true, string savedPath = "", string reason = "") => ((ResourceSaveProvider)_catalogPluginContainer.SaveProvider).SaveImpl(workspaceID, resource, contents, overwriteExisting, savedPath, reason);
+        internal ResourceCatalogResult SaveImpl(Guid workspaceID, IResource resource, StringBuilder contents) => ((ResourceSaveProvider)_catalogPluginContainer.SaveProvider).SaveImpl(workspaceID, resource, contents, true, "", "");
+        internal ResourceCatalogResult SaveImpl(Guid workspaceID, IResource resource, StringBuilder contents, string savedPath) => ((ResourceSaveProvider)_catalogPluginContainer.SaveProvider).SaveImpl(workspaceID, resource, contents, true, savedPath, "");
+        internal ResourceCatalogResult SaveImpl(Guid workspaceID, IResource resource, StringBuilder contents, string savedPath, string reason) => ((ResourceSaveProvider)_catalogPluginContainer.SaveProvider).SaveImpl(workspaceID, resource, contents, true, savedPath, reason);
 
         public ResourceCatalogResult DeleteResource(Guid workspaceID, string resourceName, string type) => _catalogPluginContainer.DeleteProvider.DeleteResource(workspaceID, resourceName, type, true);
         public ResourceCatalogResult DeleteResource(Guid workspaceID, string resourceName, string type, bool deleteVersions) => _catalogPluginContainer.DeleteProvider.DeleteResource(workspaceID, resourceName, type, deleteVersions);
@@ -391,7 +401,7 @@ namespace Dev2.Runtime.Hosting
             _parsers = new ConcurrentDictionary<Guid, IResourceActivityCache>();
         }
 
-        private static ConcurrentDictionary<Guid, IResourceActivityCache> _parsers = new ConcurrentDictionary<Guid, IResourceActivityCache>();
+        static ConcurrentDictionary<Guid, IResourceActivityCache> _parsers = new ConcurrentDictionary<Guid, IResourceActivityCache>();
         bool _loading;
 
         public IDev2Activity Parse(Guid workspaceID, Guid resourceID)

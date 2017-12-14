@@ -34,8 +34,8 @@ namespace Dev2.Tests.Runtime.Plugins
                     return string.Empty;
                 }
 
-                int len = (int)stream.Length;
-                byte[] data = new byte[len];
+                var len = (int)stream.Length;
+                var data = new byte[len];
                 stream.Read(data, 0, len);
 
                 var location = name + ".dll";

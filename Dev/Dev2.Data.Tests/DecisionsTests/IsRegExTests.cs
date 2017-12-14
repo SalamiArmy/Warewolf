@@ -23,11 +23,11 @@ namespace Dev2.Data.Tests.DecisionsTests
         {
             //------------Setup for test--------------------------
             var isRegEx = new IsRegEx();
-            string[] cols = new string[2];
+            var cols = new string[2];
             cols[0] = "Number 5 should";
             cols[1] = "d";
             //------------Execute Test---------------------------
-            bool result = isRegEx.Invoke(cols);
+            var result = isRegEx.Invoke(cols);
             //------------Assert Results-------------------------
             Assert.IsTrue(result);
         }
@@ -39,11 +39,11 @@ namespace Dev2.Data.Tests.DecisionsTests
         {
             //------------Setup for test--------------------------
             var notStartsWith = new IsRegEx();
-            string[] cols = new string[2];
+            var cols = new string[2];
             cols[0] = "324";
             cols[1] = "d";
             //------------Execute Test---------------------------
-            bool result = notStartsWith.Invoke(cols);
+            var result = notStartsWith.Invoke(cols);
             //------------Assert Results-------------------------
             Assert.IsFalse(result);
         }

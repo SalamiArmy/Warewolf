@@ -14,7 +14,7 @@ using System.Text;
 
 namespace Dev2.Common
 {
-    internal class Dev2IndexOp : IDev2SplitOp
+    class Dev2IndexOp : IDev2SplitOp
     {
         internal Dev2IndexOp(int index)
         {
@@ -37,8 +37,8 @@ namespace Dev2.Common
         {
             var result = new StringBuilder();
 
-            int start = startIdx;
-            int end = startIdx + ToIndex;
+            var start = startIdx;
+            var end = startIdx + ToIndex;
 
             // Avoid boundry over-run
             if (end > candidate.Length)

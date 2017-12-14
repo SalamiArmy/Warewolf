@@ -126,7 +126,7 @@ namespace Warewolf.Studio.ViewModels
             }
 
             Protocol = source.Address.Contains("https") ? Protocols[0] : Protocols[1];
-            int portIndex = GetSpecifiedIndexOf(source.Address, ':', 2);
+            var portIndex = GetSpecifiedIndexOf(source.Address, ':', 2);
             var ports = source.Address.Substring(portIndex + 1).Split('/');
             if (ports.Any())
             {
@@ -138,9 +138,10 @@ namespace Warewolf.Studio.ViewModels
             Header = ResourceName;
         }
 
-        private static int GetSpecifiedIndexOf(string str, char ch, int index)
+        static int GetSpecifiedIndexOf(string str, char ch, int index)
         {
-            int i = 0, o = 1;
+            var i = 0;
+            var o = 1;
             while ((i = str.IndexOf(ch, i)) != -1)
             {
                 if (o == index)
@@ -543,7 +544,7 @@ namespace Warewolf.Studio.ViewModels
 
         #endregion
 
-        private string GetAddressName()
+        string GetAddressName()
         {
             string addressName = null;
             if (!string.IsNullOrEmpty(ServerName?.Name))

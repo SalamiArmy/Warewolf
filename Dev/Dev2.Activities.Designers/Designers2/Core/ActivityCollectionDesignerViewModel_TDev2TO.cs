@@ -311,7 +311,7 @@ namespace Dev2.Activities.Designers2.Core
             var idx = indexNumber - 1;
             if (ModelItemCollection != null && idx >= ModelItemCollection.Count)
             {
-                ModelItem modelItem = ModelItemUtils.CreateModelItem(dto);
+                var modelItem = ModelItemUtils.CreateModelItem(dto);
                 ModelItemCollection.Add(modelItem);
 
             }
@@ -352,19 +352,14 @@ namespace Dev2.Activities.Designers2.Core
                 return;
             }
 
-            bool canAdd = true;
+            var canAdd = true;
             var parent = ModelItemCollection.Parent;
             if (parent != null)
             {
-                DesignerView parentContentPane = FindDependencyParent.FindParent<DesignerView>(parent.View);
+                var parentContentPane = FindDependencyParent.FindParent<DesignerView>(parent.View);
                 var dataContext = parentContentPane?.DataContext;
-                if (dataContext != null)
-                {
-                    if (dataContext.GetType().Name == "ServiceTestViewModel")
-                    {
-                        canAdd = false;
-                    }
-                }
+                if (dataContext != null && (dataContext.GetType().Name == "ServiceTestViewModel"))
+                    canAdd = false;
             }
 
             if (canAdd)
@@ -423,7 +418,7 @@ namespace Dev2.Activities.Designers2.Core
                 startIndex = Math.Max(startIndex, 0);
                 for (var i = startIndex; i < ModelItemCollection.Count; i++)
                 {
-                    processModelItem(ModelItemCollection[i]);
+                    processModelItem?.Invoke(ModelItemCollection[i]);
                 }
             }
         }

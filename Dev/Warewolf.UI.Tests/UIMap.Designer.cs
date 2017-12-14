@@ -54,12 +54,26 @@ namespace Warewolf.UI.Tests
                 return this.mScriptErrorMessagebox;
             }
         }
+        
+        public UIWarewolfDEV2ASHLEYLEWindow UIWarewolfDEV2ASHLEYLEWindow
+        {
+            get
+            {
+                if ((this.mUIWarewolfDEV2ASHLEYLEWindow == null))
+                {
+                    this.mUIWarewolfDEV2ASHLEYLEWindow = new UIWarewolfDEV2ASHLEYLEWindow();
+                }
+                return this.mUIWarewolfDEV2ASHLEYLEWindow;
+            }
+        }
         #endregion
         
         #region Fields
         private MainStudioWindow mMainStudioWindow;
         
         private ScriptErrorMessagebox mScriptErrorMessagebox;
+        
+        private UIWarewolfDEV2ASHLEYLEWindow mUIWarewolfDEV2ASHLEYLEWindow;
         #endregion
     }
     
@@ -1039,6 +1053,34 @@ namespace Warewolf.UI.Tests
                 return this.mComboboxListItemAsLocalServerSource;
             }
         }
+        
+        public IntellisenseOptionsList IntellisenseOptionsList
+        {
+            get
+            {
+                if ((this.mIntellisenseOptionsList == null))
+                {
+                    this.mIntellisenseOptionsList = new IntellisenseOptionsList(this);
+                }
+                return this.mIntellisenseOptionsList;
+            }
+        }
+        
+        public WpfListItem ComboboxListItemAsSharepointTestServer
+        {
+            get
+            {
+                if ((this.mComboboxListItemAsSharepointTestServer == null))
+                {
+                    this.mComboboxListItemAsSharepointTestServer = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mComboboxListItemAsSharepointTestServer.SearchProperties[WpfListItem.PropertyNames.Name] = @"{""Server"":""http://rsaklfsvrdev/"",""AuthenticationType"":""Windows"",""UserName"":"""",""Password"":"""",""IsSource"":true,""IsService"":false,""IsFolder"":false,""IsReservedService"":false,""IsServer"":false,""IsResourceVersion"":false,""IsSharepointOnline"":false,""Version"":null,""ResourceID"":""94d4b4ca-31e1-494d-886b-cd94224c9a8b"",""ResourceType"":""SharepointServerSource"",""ResourceName"":""SharePoint Test Server"",""IsValid"":false,""Errors"":[],""ReloadActions"":false,""UserPermissions"":0,""VersionInfo"":{""DateTimeStamp"":""2015-07-07T09:49:43.2102319+02:00"",""Reason"":""Save"",""User"":""Unknown"",""VersionNumber"":""1"",""ResourceId"":""94d4b4ca-31e1-494d-886b-cd94224c9a8b"",""VersionId"":""6d47f370-c0d3-4b96-89d7-52090a38331a""}}";
+                    this.mComboboxListItemAsSharepointTestServer.WindowTitles.Add("Warewolf (DEV2\\ASHLEY.LEWIS)");
+                    #endregion
+                }
+                return this.mComboboxListItemAsSharepointTestServer;
+            }
+        }
         #endregion
         
         #region Fields
@@ -1173,6 +1215,10 @@ namespace Warewolf.UI.Tests
         private WpfText mDependenciesText;
         
         private ComboboxListItemAsLocalServerSource mComboboxListItemAsLocalServerSource;
+        
+        private IntellisenseOptionsList mIntellisenseOptionsList;
+        
+        private WpfListItem mComboboxListItemAsSharepointTestServer;
         #endregion
     }
     
@@ -2085,6 +2131,22 @@ namespace Warewolf.UI.Tests
                 return this.mHideVersionHistoryMenuItem;
             }
         }
+        
+        public WpfMenuItem Merge
+        {
+            get
+            {
+                if ((this.mMerge == null))
+                {
+                    this.mMerge = new WpfMenuItem(this);
+                    #region Search Criteria
+                    this.mMerge.SearchProperties[WpfMenuItem.PropertyNames.AutomationId] = "MergeItem";
+                    this.mMerge.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+                    #endregion
+                }
+                return this.mMerge;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2141,6 +2203,8 @@ namespace Warewolf.UI.Tests
         private SourcesMenuItem mSourcesMenuItem;
         
         private WpfMenuItem mHideVersionHistoryMenuItem;
+        
+        private WpfMenuItem mMerge;
         #endregion
     }
     
@@ -19910,6 +19974,42 @@ namespace Warewolf.UI.Tests
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class IntellisenseOptionsList : WpfList
+    {
+        
+        public IntellisenseOptionsList(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfList.PropertyNames.AutomationId] = "Selector";
+            this.WindowTitles.Add("Warewolf (DEV2\\ASHLEY.LEWIS)");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfListItem FirstOption
+        {
+            get
+            {
+                if ((this.mFirstOption == null))
+                {
+                    this.mFirstOption = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mFirstOption.SearchProperties[WpfListItem.PropertyNames.Name] = "[[val]]";
+                    this.mFirstOption.WindowTitles.Add("Warewolf (DEV2\\ASHLEY.LEWIS)");
+                    #endregion
+                }
+                return this.mFirstOption;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfListItem mFirstOption;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
     public class ScriptErrorMessagebox : BrowserWindow
     {
         
@@ -19991,6 +20091,107 @@ namespace Warewolf.UI.Tests
         
         #region Fields
         private HtmlButton mNOButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIWarewolfDEV2ASHLEYLEWindow : WpfWindow
+    {
+        
+        public UIWarewolfDEV2ASHLEYLEWindow()
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfWindow.PropertyNames.Name] = "Warewolf (DEV2\\ASHLEY.LEWIS)";
+            this.SearchProperties.Add(new PropertyExpression(WpfWindow.PropertyNames.ClassName, "HwndWrapper", PropertyExpressionOperator.Contains));
+            this.WindowTitles.Add("Warewolf (DEV2\\ASHLEY.LEWIS)");
+            #endregion
+        }
+        
+        #region Properties
+        public UILargeViewContentCustom UILargeViewContentCustom
+        {
+            get
+            {
+                if ((this.mUILargeViewContentCustom == null))
+                {
+                    this.mUILargeViewContentCustom = new UILargeViewContentCustom(this);
+                }
+                return this.mUILargeViewContentCustom;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UILargeViewContentCustom mUILargeViewContentCustom;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UILargeViewContentCustom : WpfCustom
+    {
+        
+        public UILargeViewContentCustom(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.Large";
+            this.SearchProperties[WpfControl.PropertyNames.AutomationId] = "LargeViewContent";
+            this.WindowTitles.Add("Warewolf (DEV2\\ASHLEY.LEWIS)");
+            #endregion
+        }
+        
+        #region Properties
+        public UIActionsComboBoxComboBox UIActionsComboBoxComboBox
+        {
+            get
+            {
+                if ((this.mUIActionsComboBoxComboBox == null))
+                {
+                    this.mUIActionsComboBoxComboBox = new UIActionsComboBoxComboBox(this);
+                }
+                return this.mUIActionsComboBoxComboBox;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIActionsComboBoxComboBox mUIActionsComboBoxComboBox;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIActionsComboBoxComboBox : WpfComboBox
+    {
+        
+        public UIActionsComboBoxComboBox(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfComboBox.PropertyNames.AutomationId] = "ActionsComboBox";
+            this.WindowTitles.Add("Warewolf (DEV2\\ASHLEY.LEWIS)");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfListItem Get_countriesListItem
+        {
+            get
+            {
+                if ((this.mGet_countriesListItem == null))
+                {
+                    this.mGet_countriesListItem = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mGet_countriesListItem.SearchProperties[WpfListItem.PropertyNames.Name] = "get_countries";
+                    this.mGet_countriesListItem.WindowTitles.Add("Warewolf (DEV2\\ASHLEY.LEWIS)");
+                    #endregion
+                }
+                return this.mGet_countriesListItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfListItem mGet_countriesListItem;
         #endregion
     }
 }

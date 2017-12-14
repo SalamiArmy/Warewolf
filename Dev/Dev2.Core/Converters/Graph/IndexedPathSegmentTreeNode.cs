@@ -21,9 +21,9 @@ namespace Unlimited.Framework.Converters.Graph
         {
             get
             {
-                IndexedPathSegmentTreeNode<T> returnNode = this;
+                var returnNode = this;
 
-                int count = 0;
+                var count = 0;
                 while (count < complexKey.Count && returnNode != null)
                 {
                     returnNode.TryGetValue(complexKey[count], out returnNode);

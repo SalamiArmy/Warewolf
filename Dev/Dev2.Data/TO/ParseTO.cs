@@ -15,7 +15,7 @@ namespace Dev2.Data.TO
     public class ParseTO : IParseTO
     {
 
-        private string _payload = string.Empty;
+        string _payload = string.Empty;
 
         public string Payload {
             get {
@@ -39,7 +39,7 @@ namespace Dev2.Data.TO
         public bool IsRecordSet {
 
             get {
-                bool result = Payload != null && Payload.Contains("(");
+                var result = Payload != null && Payload.Contains("(");
 
                 return result;
             }

@@ -32,7 +32,7 @@ namespace Warewolf.Tools.Specs.BaseTypes
     [Binding]
     public abstract class RecordSetBases : BaseActivityUnitTest
     {
-        private readonly ScenarioContext scenarioContext;
+        readonly ScenarioContext scenarioContext;
 
         public RecordSetBases(ScenarioContext scenarioContext)
         {
@@ -46,7 +46,7 @@ namespace Warewolf.Tools.Specs.BaseTypes
         }
 
         protected const string ResultVariable = "[[result]]";
-        private readonly CommonSteps _commonSteps;
+        readonly CommonSteps _commonSteps;
 
         protected abstract void BuildDataList();
 
@@ -68,7 +68,7 @@ namespace Warewolf.Tools.Specs.BaseTypes
             dataListViewModel.InitializeDataListViewModel(new ResourceModel(null));
             DataListSingleton.SetDataList(dataListViewModel);
             
-            int row = 0;
+            var row = 0;
             scenarioContext.TryGetValue("variableList", out dynamic variableList);
             if (variableList != null)
             {
@@ -132,7 +132,7 @@ namespace Warewolf.Tools.Specs.BaseTypes
                 }
             }
 
-            bool isAdded = scenarioContext.TryGetValue("rs", out List<Tuple<string, string>> emptyRecordset);
+            var isAdded = scenarioContext.TryGetValue("rs", out List<Tuple<string, string>> emptyRecordset);
             if (isAdded)
             {
                 foreach (Tuple<string, string> emptyRecord in emptyRecordset)
@@ -182,8 +182,8 @@ namespace Warewolf.Tools.Specs.BaseTypes
 
         protected string ReadFile(string resourceName)
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            using(Stream stream = assembly.GetManifestResourceStream(resourceName))
+            var assembly = Assembly.GetExecutingAssembly();
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             {
                 if(stream == null)
                 {

@@ -22,10 +22,10 @@ namespace Dev2.Studio.AppResources.Comparers
     public class WorkSurfaceKeyEqualityComparer : IEqualityComparer<WorkSurfaceKey>
     {
 
-        private static readonly Lazy<WorkSurfaceKeyEqualityComparer> _current
+        static readonly Lazy<WorkSurfaceKeyEqualityComparer> _current
             = new Lazy<WorkSurfaceKeyEqualityComparer>(() => new WorkSurfaceKeyEqualityComparer());
 
-        private WorkSurfaceKeyEqualityComparer()
+        WorkSurfaceKeyEqualityComparer()
         {
 
         }
@@ -34,7 +34,7 @@ namespace Dev2.Studio.AppResources.Comparers
 
         public bool Equals(WorkSurfaceKey x, WorkSurfaceKey y)
         {
-            bool res = false;
+            var res = false;
             if (x.EnvironmentID != null && y.EnvironmentID != null)
             {
                 if (x.ResourceID == y.ResourceID

@@ -26,10 +26,10 @@ namespace Dev2.Data.Tests.DecisionsTests
         {
             //------------Setup for test--------------------------
             var endsWith = new IsNotHex();
-            string[] cols = new string[1];
+            var cols = new string[1];
             cols[0] = "01";
             //------------Execute Test---------------------------
-            bool result = endsWith.Invoke(cols);
+            var result = endsWith.Invoke(cols);
             //------------Assert Results-------------------------
             Assert.IsFalse(result);
         }
@@ -41,10 +41,10 @@ namespace Dev2.Data.Tests.DecisionsTests
         {
             //------------Setup for test--------------------------
             var endsWith = new IsNotHex();
-            string[] cols = new string[1];
+            var cols = new string[1];
             cols[0] = "BBB";
             //------------Execute Test---------------------------
-            bool result = endsWith.Invoke(cols);
+            var result = endsWith.Invoke(cols);
             //------------Assert Results-------------------------
             Assert.IsTrue(result);
         }
@@ -56,10 +56,10 @@ namespace Dev2.Data.Tests.DecisionsTests
         {
             //------------Setup for test--------------------------
             var endsWith = new IsNotHex();
-            string[] cols = new string[1];
+            var cols = new string[1];
             cols[0] = "0x01";
             //------------Execute Test---------------------------
-            bool result = endsWith.Invoke(cols);
+            var result = endsWith.Invoke(cols);
             //------------Assert Results-------------------------
             Assert.IsFalse(result);
         }
@@ -71,10 +71,10 @@ namespace Dev2.Data.Tests.DecisionsTests
         {
             //------------Setup for test--------------------------
             var endsWith = new IsNotHex();
-            string[] cols = new string[2];
+            var cols = new string[2];
             cols[0] = "TestData";
             //------------Execute Test---------------------------
-            bool result = endsWith.Invoke(cols);
+            var result = endsWith.Invoke(cols);
             //------------Assert Results-------------------------
             Assert.IsTrue(result);
         }

@@ -41,8 +41,8 @@ namespace Dev2.FindMissingStrategies
         /// <returns>Returns all the fields in a list of strings</returns>
         public List<string> GetActivityFields(object activity)
         {
-            List<string> results = new List<string>();
-            Type activityType = activity.GetType();
+            var results = new List<string>();
+            var activityType = activity.GetType();
 
             if (activityType == typeof(DsfBaseConvertActivity))
             {
@@ -72,9 +72,30 @@ namespace Dev2.FindMissingStrategies
                     results.AddRange(InternalFindMissing(maAct.FieldsCollection));
                 }
             }
+            else if (activityType == typeof(DsfDotNetMultiAssignActivity))
+            {
+                if (activity is DsfDotNetMultiAssignActivity maAct)
+                {
+                    results.AddRange(InternalFindMissing(maAct.FieldsCollection));
+                }
+            }
+            else if (activityType == typeof(DsfDotNetMultiAssignObjectActivity))
+            {
+                if (activity is DsfDotNetMultiAssignObjectActivity maAct)
+                {
+                    results.AddRange(InternalFindMissing(maAct.FieldsCollection));
+                }
+            }
             else if (activityType == typeof(DsfGatherSystemInformationActivity))
             {
                 if (activity is DsfGatherSystemInformationActivity maAct)
+                {
+                    results.AddRange(InternalFindMissing(maAct.SystemInformationCollection));
+                }
+            }
+            else if (activityType == typeof(DsfDotNetGatherSystemInformationActivity))
+            {
+                if (activity is DsfDotNetGatherSystemInformationActivity maAct)
                 {
                     results.AddRange(InternalFindMissing(maAct.SystemInformationCollection));
                 }
@@ -546,15 +567,15 @@ namespace Dev2.FindMissingStrategies
         }
 
 
-        private IList<string> InternalFindMissing<T>(IEnumerable<T> data)
+        IList<string> InternalFindMissing<T>(IEnumerable<T> data)
         {
             IList<string> results = new List<string>();
             foreach (T row in data)
             {
-                IEnumerable<PropertyInfo> properties = StringAttributeRefectionUtils.ExtractAdornedProperties<FindMissingAttribute>(row);
+                var properties = StringAttributeRefectionUtils.ExtractAdornedProperties<FindMissingAttribute>(row);
                 foreach (PropertyInfo propertyInfo in properties)
                 {
-                    object property = propertyInfo.GetValue(row, null);
+                    var property = propertyInfo.GetValue(row, null);
                     if (property != null)
                     {
                         results.Add(property.ToString());

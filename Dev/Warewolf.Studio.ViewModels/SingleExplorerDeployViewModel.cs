@@ -17,6 +17,7 @@ using Dev2.Studio.Core;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.Interfaces.Deploy;
 using Dev2.Common.Interfaces.Threading;
+using Dev2.Threading;
 using System.Globalization;
 
 namespace Warewolf.Studio.ViewModels
@@ -67,6 +68,7 @@ namespace Warewolf.Studio.ViewModels
             _shell = shell;
             _stats.CalculateAction = () =>
             {
+                IsDeployLoading = true;
                 ServicesCount = _stats.Services.ToString();
                 SourcesCount = _stats.Sources.ToString();
                 NewResourcesCount = _stats.NewResources.ToString();
@@ -75,6 +77,7 @@ namespace Warewolf.Studio.ViewModels
                 NewItems = _stats.New;
                 ShowConflicts = false;
                 ViewModelUtils.RaiseCanExecuteChanged(DeployCommand);
+                IsDeployLoading = false;
             };
             SourceConnectControlViewModel = _source.ConnectControlViewModel;
             DestinationConnectControlViewModel = _destination.ConnectControlViewModel;
@@ -90,7 +93,7 @@ namespace Warewolf.Studio.ViewModels
             ShowConflicts = false;
         }
 
-        private void DestinationOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        void DestinationOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
             if (propertyChangedEventArgs.PropertyName == "IsConnected")
             {
@@ -105,7 +108,7 @@ namespace Warewolf.Studio.ViewModels
             _stats.Calculate(items);
         }
 
-        private List<IExplorerTreeItem> GetItemsToUpdateStats()
+        List<IExplorerTreeItem> GetItemsToUpdateStats()
         {
             var items = Source?.SourceLoadedItems?.ToList();
             if (Source?.SelectedItems?.Count > 0)
@@ -126,15 +129,14 @@ namespace Warewolf.Studio.ViewModels
                 return canSelectDependencies;
             }
         }
-        private bool _canDeployTests;
+        bool _canDeployTests;
+        private bool _isDeployLoading;
+
         public bool CanDeployTests => _canDeployTests;
 
         public IList<IExplorerTreeItem> NewItems
         {
-            get
-            {
-                return _newItems;
-            }
+            get => _newItems;
             private set
             {
                 _newItems = value;
@@ -144,10 +146,7 @@ namespace Warewolf.Studio.ViewModels
 
         public IList<Conflict> ConflictItems
         {
-            get
-            {
-                return _conflictItems;
-            }
+            get => _conflictItems;
             private set
             {
                 _conflictItems = value;
@@ -162,7 +161,7 @@ namespace Warewolf.Studio.ViewModels
             SourcesCount = _stats.Sources.ToString();
             NewResourcesCount = _stats.NewResources.ToString();
             OverridesCount = _stats.Overrides.ToString();
-            IEnvironmentViewModel environmentViewModel = Destination?.Environments?.FirstOrDefault(model => model.ResourceId == environmentid);
+            var environmentViewModel = Destination?.Environments?.FirstOrDefault(model => model.ResourceId == environmentid);
             if (environmentViewModel != null)
             {
                 _destination.SelectedEnvironment = environmentViewModel;
@@ -182,10 +181,7 @@ namespace Warewolf.Studio.ViewModels
 
         public bool ShowConflictItemsList
         {
-            get
-            {
-                return _showConflictItemsList;
-            }
+            get => _showConflictItemsList;
             private set
             {
                 _showConflictItemsList = value;
@@ -195,10 +191,7 @@ namespace Warewolf.Studio.ViewModels
 
         public bool ShowNewItemsList
         {
-            get
-            {
-                return _showNewItemsList;
-            }
+            get => _showNewItemsList;
             private set
             {
                 _showNewItemsList = value;
@@ -208,10 +201,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string ConflictNewResourceText
         {
-            get
-            {
-                return _conflictNewResourceText;
-            }
+            get => _conflictNewResourceText;
             private set
             {
                 _conflictNewResourceText = value;
@@ -221,10 +211,7 @@ namespace Warewolf.Studio.ViewModels
 
         public bool ShowConflicts
         {
-            get
-            {
-                return _showConflicts;
-            }
+            get => _showConflicts;
             private set
             {
                 _showConflicts = value;
@@ -272,7 +259,7 @@ namespace Warewolf.Studio.ViewModels
 
                 var notfolders = GetNotFoldersList();
                 ValidateDirectDeploy(notfolders);
-                await Destination.RefreshSelectedEnvironment().ConfigureAwait(true);
+                await Destination.RefreshSelectedEnvironmentAsync().ConfigureAwait(true);
                 UpdateDeploySuccess(notfolders);
             }
             catch (Exception e)
@@ -283,7 +270,7 @@ namespace Warewolf.Studio.ViewModels
             DeployInProgress = false;
         }
 
-        private bool ValidateDeployConflicts()
+        bool ValidateDeployConflicts()
         {
             if (ConflictItems != null && ConflictItems.Count >= 1)
             {
@@ -300,7 +287,7 @@ namespace Warewolf.Studio.ViewModels
             return false;
         }
 
-        private void UpdateDeploySuccess(List<Guid> notfolders)
+        void UpdateDeploySuccess(List<Guid> notfolders)
         {
             DeploySuccessfull = true;
             DeploySuccessMessage = $"{notfolders.Count} Resource{(notfolders.Count == 1 ? "" : "s")} Deployed Successfully.";
@@ -313,7 +300,7 @@ namespace Warewolf.Studio.ViewModels
             _stats.ReCalculate();
         }
 
-        private void ValidateDirectDeploy(List<Guid> notfolders)
+        void ValidateDirectDeploy(List<Guid> notfolders)
         {
             var destEnv = Destination.ConnectControlViewModel.SelectedConnection;
             var sourceEnv = Source.Environments.First();
@@ -322,7 +309,7 @@ namespace Warewolf.Studio.ViewModels
                 return;
             }
             var deployResponse = new List<IDeployResult>();
-            bool supportsDirectServerDeploy = GetServerInformation();
+            var supportsDirectServerDeploy = GetServerInformation();
             if (supportsDirectServerDeploy)
             {
                 var destConnection = CreateNewConnection(destEnv);
@@ -336,7 +323,7 @@ namespace Warewolf.Studio.ViewModels
             Source.SelectedEnvironment.IsResourceChecked = false;
         }
 
-        private bool GetServerInformation()
+        bool GetServerInformation()
         {
             var serverInformation = Source.SelectedServer.GetServerInformation();
             var supportsDirectServerDeploy = false;
@@ -348,7 +335,7 @@ namespace Warewolf.Studio.ViewModels
             return supportsDirectServerDeploy;
         }
 
-        private static Connection CreateNewConnection(IServer destEnv)
+        static Connection CreateNewConnection(IServer destEnv)
         {
             return new Connection
             {
@@ -359,14 +346,14 @@ namespace Warewolf.Studio.ViewModels
             };
         }
 
-        private List<Guid> GetNotFoldersList()
+        List<Guid> GetNotFoldersList()
         {
             var selectedItems = Source.SelectedItems.Where(a => a.ResourceType != "Folder");
             var explorerTreeItems = selectedItems as IExplorerTreeItem[] ?? selectedItems.ToArray();
             var notfolders = explorerTreeItems.Select(a => a.ResourceId).ToList();
             return notfolders;
         }
-        
+
         void CheckVersionConflict()
         {
             var sourceVersionNumber = Source.ServerVersion;
@@ -418,7 +405,7 @@ namespace Warewolf.Studio.ViewModels
             }
         }
 
-        private void SelectDependencies()
+        void SelectDependencies()
         {
             if (Source?.SelectedEnvironment?.Server != null)
             {
@@ -433,10 +420,7 @@ namespace Warewolf.Studio.ViewModels
         /// </summary>
         public bool DeploySuccessfull
         {
-            get
-            {
-                return _deploySuccessfull;
-            }
+            get => _deploySuccessfull;
             private set
             {
                 _deploySuccessfull = value;
@@ -449,10 +433,7 @@ namespace Warewolf.Studio.ViewModels
         /// </summary>
         public bool IsDeploying
         {
-            get
-            {
-                return _isDeploying;
-            }
+            get => _isDeploying;
             private set
             {
                 _isDeploying = value;
@@ -466,10 +447,7 @@ namespace Warewolf.Studio.ViewModels
         /// </summary>
         public bool DeployInProgress
         {
-            get
-            {
-                return _deployInProgress;
-            }
+            get => _deployInProgress;
             private set
             {
                 _deployInProgress = value;
@@ -479,7 +457,7 @@ namespace Warewolf.Studio.ViewModels
         /// <summary>
         /// Can Deploy test to enable button
         /// </summary>
-        private bool CanDeploy
+        bool CanDeploy
         {
             get
             {
@@ -496,7 +474,7 @@ namespace Warewolf.Studio.ViewModels
             }
         }
 
-        private bool SetErrorMessage()
+        bool SetErrorMessage()
         {
             if (!SetDeploySourceNotConnectedMessage())
             {
@@ -525,7 +503,7 @@ namespace Warewolf.Studio.ViewModels
             return true;
         }
 
-        private bool SetDeploySourceNotConnectedMessage()
+        bool SetDeploySourceNotConnectedMessage()
         {
             if (SourceConnectControlViewModel.SelectedConnection != null && !SourceConnectControlViewModel.SelectedConnection.IsConnected)
             {
@@ -540,7 +518,7 @@ namespace Warewolf.Studio.ViewModels
             return true;
         }
 
-        private bool SetDeployDestinationNotConnectedMessage()
+        bool SetDeployDestinationNotConnectedMessage()
         {
             if (Destination.SelectedEnvironment == null || !Destination.ConnectControlViewModel.SelectedConnection.IsConnected)
             {
@@ -555,7 +533,7 @@ namespace Warewolf.Studio.ViewModels
             return true;
         }
 
-        private bool SetDeployPermissionsErrorMessage()
+        bool SetDeployPermissionsErrorMessage()
         {
             if (Source.ConnectControlViewModel.SelectedConnection.Permissions == null || !Source.ConnectControlViewModel.SelectedConnection.CanDeployFrom)
             {
@@ -570,12 +548,19 @@ namespace Warewolf.Studio.ViewModels
             return true;
         }
 
+        public bool IsDeployLoading
+        {
+            get { return _isDeployLoading; }
+            set
+            {
+                _isDeployLoading = value;
+                OnPropertyChanged(() => IsDeployLoading);
+            }
+        }
+
         public string OverridesCount
         {
-            get
-            {
-                return _overridesCount;
-            }
+            get => _overridesCount;
             set
             {
                 if (_overridesCount != value)
@@ -599,10 +584,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string NewResourcesCount
         {
-            get
-            {
-                return _newResourcesCount;
-            }
+            get => _newResourcesCount;
             set
             {
                 if (_newResourcesCount != value)
@@ -617,10 +599,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string SourcesCount
         {
-            get
-            {
-                return _sourcesCount;
-            }
+            get => _sourcesCount;
             set
             {
                 if (_sourcesCount != value)
@@ -634,10 +613,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string ServicesCount
         {
-            get
-            {
-                return _servicesCount;
-            }
+            get => _servicesCount;
             set
             {
                 if (_servicesCount != value)
@@ -654,10 +630,7 @@ namespace Warewolf.Studio.ViewModels
         /// </summary>
         public IConnectControlViewModel SourceConnectControlViewModel
         {
-            get
-            {
-                return _sourceconnectControlViewModel;
-            }
+            get => _sourceconnectControlViewModel;
             private set
             {
                 if (Equals(value, _sourceconnectControlViewModel))
@@ -673,10 +646,7 @@ namespace Warewolf.Studio.ViewModels
         /// </summary>
         public IConnectControlViewModel DestinationConnectControlViewModel
         {
-            get
-            {
-                return _destinationConnectControlViewModel;
-            }
+            get => _destinationConnectControlViewModel;
             private set
             {
                 if (Equals(value, _destinationConnectControlViewModel))
@@ -692,10 +662,7 @@ namespace Warewolf.Studio.ViewModels
         /// </summary>
         public IDeploySourceExplorerViewModel Source
         {
-            get
-            {
-                return _source;
-            }
+            get => _source;
             set
             {
                 if (!Equals(_source, value))
@@ -711,10 +678,7 @@ namespace Warewolf.Studio.ViewModels
         /// </summary>
         public IDeployDestinationExplorerViewModel Destination
         {
-            get
-            {
-                return _destination;
-            }
+            get => _destination;
             set
             {
                 _destination = value;
@@ -756,10 +720,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string ErrorMessage
         {
-            get
-            {
-                return _errorMessage;
-            }
+            get => _errorMessage;
             set
             {
                 _errorMessage = value;
@@ -773,10 +734,7 @@ namespace Warewolf.Studio.ViewModels
         }
         public string DeploySuccessMessage
         {
-            get
-            {
-                return _deploySuccessMessage;
-            }
+            get => _deploySuccessMessage;
             set
             {
                 _deploySuccessMessage = value;
