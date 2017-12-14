@@ -71,9 +71,7 @@
                       DisplayMemberPath="ResourceName"
                       ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
                       ItemsSource="{Binding Sources}"
-                      SelectedItem="{Binding SelectedSource,
-                                             Mode=TwoWay,
-                                             UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding SelectedSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       ToolTip="{x:Static languages:Tooltips.DropboxSourceToolTip}">
                 <i:Interaction.Behaviors>
                     <core1:HelpSetter DataContext="{Binding}" Text="{x:Static languages:Tooltips.DropboxSourceToolTip}" />
@@ -88,8 +86,7 @@
                     Grid.Row="0"
                     Grid.Column="1"
                     Margin="{StaticResource ControlBorderRight}"
-                    Command="{Binding Path=EditDropboxSourceCommand,
-                                      Mode=TwoWay}"
+                    Command="{Binding Path=EditDropboxSourceCommand, Mode=TwoWay}"
                     Content="..."
                     ToolTip="{x:Static languages:Tooltips.DropBoxToolTipEditSource}">
                 <i:Interaction.Behaviors>
@@ -100,8 +97,7 @@
                     Grid.Row="0"
                     Grid.Column="2"
                     Width="Auto"
-                    Command="{Binding Path=NewSourceCommand,
-                                      Mode=TwoWay}"
+                    Command="{Binding Path=NewSourceCommand, Mode=TwoWay}"
                     Content="{x:Static languages:Core.New}"
                     Style="{StaticResource ButtonOrangeStyle}"
                     ToolTip="{x:Static languages:Tooltips.DropBoxToolTipNewSource}">
@@ -131,24 +127,20 @@
                                     Grid.Column="1"
                                     Margin="0,1,0,0"
                                     attachedProperties:WizardEngineAttachedProperties.DontOpenWizard="True"
-                                    AutomationProperties.AutomationId="{Binding ModelItem.AutomationID,
-                                                                                StringFormat=UI_{0}_fxtxt_AutoID}"
+                                    AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                     DefaultText="[[Dropbox location]]"
                                     FilterType="All"
                                     AllowUserInsertLine="False"
                                     IsInCalculateMode="False"
                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                    Text="{Binding ToPath,
-                                                   Mode=TwoWay,
-                                                   UpdateSourceTrigger=PropertyChanged}"
-                                    ToolTip="{x:Static languages:Tooltips.DropBoxFileListFileNameToolTip}">
+                                    Text="{Binding ToPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{Binding ToPath}">
                 <i:Interaction.Behaviors>
                     <core1:HelpSetter DataContext="{Binding}" Text="{x:Static languages:HelpText.DropBoxFileListFileNameHelp}" />
                     <errors:ErrorsSetter Source="{Binding}"
                                          SourcePropertyName="ToPath"
-                                         SourcePropertyValue="{Binding ToPath,
-                                                                       UpdateSourceTrigger=PropertyChanged}"
+                                         SourcePropertyValue="{Binding ToPath, UpdateSourceTrigger=PropertyChanged}"
                                          Target="{Binding}" />
                 </i:Interaction.Behaviors>
             </ui:IntellisenseTextBox>
@@ -240,25 +232,21 @@
                                     Grid.Column="1"
                                     Margin="0,-1,0,0"
                                     attachedProperties:WizardEngineAttachedProperties.DontOpenWizard="True"
-                                    AutomationProperties.AutomationId="{Binding ModelItem.AutomationID,
-                                                                                StringFormat=UI_{0}_fxtxt_AutoID}"
+                                    AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                     DefaultText="[[Result]]"
                                     FilterType="All"
                                     AllowUserInsertLine="False"
                                     IsInCalculateMode="False"
                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                    Text="{Binding Result,
-                                                   Mode=TwoWay,
-                                                   UpdateSourceTrigger=PropertyChanged}"
-                                    ToolTip="{x:Static languages:HelpText.DropboxResultHelpText}"
+                                    Text="{Binding Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{Binding Result}"
                                     WrapInBrackets="True">
                 <i:Interaction.Behaviors>
                     <core1:HelpSetter DataContext="{Binding}" Text="{x:Static languages:HelpText.DropboxResultHelpText}" />
                     <errors:ErrorsSetter Source="{Binding}"
                                          SourcePropertyName="Result"
-                                         SourcePropertyValue="{Binding Result,
-                                                                       UpdateSourceTrigger=PropertyChanged}"
+                                         SourcePropertyValue="{Binding Result, UpdateSourceTrigger=PropertyChanged}"
                                          Target="{Binding}" />
                 </i:Interaction.Behaviors>
             </ui:IntellisenseTextBox>

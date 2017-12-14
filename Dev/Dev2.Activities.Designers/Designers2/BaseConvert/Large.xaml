@@ -13,7 +13,6 @@
                                xmlns:behaviors="clr-namespace:Dev2.Studio.AppResources.Behaviors;assembly=Dev2.CustomControls"
                                xmlns:system="clr-namespace:System;assembly=mscorlib"
                                xmlns:dev2="clr-namespace:Dev2;assembly=Dev2.Core"
-                               xmlns:behavior="clr-namespace:Dev2.CustomControls.Behavior;assembly=Dev2.CustomControls"
                                xmlns:converters="clr-namespace:Dev2.CustomControls.Converters;assembly=Dev2.CustomControls"
                                xmlns:core1="clr-namespace:Warewolf.Studio.Core;assembly=Warewolf.Studio.Core"
                                xmlns:languages="clr-namespace:Warewolf.Studio.Resources.Languages;assembly=Warewolf.Studio.Resources"
@@ -90,7 +89,7 @@
                                                     Margin="0,0,1,1"
                                                     Text="{Binding FromExpression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource DatagridIntellisenseTextBoxStyle}"
-                                                    ToolTip="{x:Static languages:Tooltips.BaseConversionToolTipBaseInput}"
+                                                    ToolTip="{Binding FromExpression}"
                                                     MaxHeight="52"
                                                     attachedProperties:FocusSetter.IsFocused="{Binding IsFromExpressionFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 <i:Interaction.Behaviors>
@@ -167,7 +166,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </controls:Dev2DataGrid>
-        <errors:OnError Grid.Row="1"
-                        />
+        <errors:OnError Grid.Row="1" />
     </Grid>
 </core:ActivityDesignerTemplate>

@@ -49,7 +49,7 @@
                                 DefaultText="[[Dropbox location]]"
                                 FilterType="All"
                                 AllowUserInsertLine="False"
-                                ToolTip="{x:Static languages:Tooltips.DropBoxFileListFileNameToolTip}"
+                                ToolTip="{Binding ToPath}"
                                 Text="{Binding ToPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                 attachedProperties1:WizardEngineAttachedProperties.DontOpenWizard="True">
@@ -72,25 +72,21 @@
                                     Grid.Column="1"
                                     Margin="{StaticResource ControlBorderTop}"
                                     attachedProperties1:WizardEngineAttachedProperties.DontOpenWizard="True"
-                                    AutomationProperties.AutomationId="{Binding ModelItem.AutomationID,
-                                                                                StringFormat=UI_{0}_fxtxt_AutoID}"
+                                    AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                     DefaultText="[[Result]]"
                                     FilterType="All"
                                     IsInCalculateMode="False"
                                     AllowUserInsertLine="False"
                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                    Text="{Binding Result,
-                                                   Mode=TwoWay,
-                                                   UpdateSourceTrigger=PropertyChanged}"
-                                    ToolTip="{x:Static languages:HelpText.DropboxResultHelpText}"
+                                    Text="{Binding Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{Binding Result}"
                                     WrapInBrackets="True">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter DataContext="{Binding}" Text="{x:Static languages:HelpText.DropboxResultHelpText}" />
                 <errors:ErrorsSetter Source="{Binding}"
                                          SourcePropertyName="Result"
-                                         SourcePropertyValue="{Binding Result,
-                                                                       UpdateSourceTrigger=PropertyChanged}"
+                                         SourcePropertyValue="{Binding Result, UpdateSourceTrigger=PropertyChanged}"
                                          Target="{Binding}" />
             </i:Interaction.Behaviors>
         </ui:IntellisenseTextBox>

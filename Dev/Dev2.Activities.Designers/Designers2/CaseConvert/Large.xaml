@@ -89,7 +89,7 @@
                                                     DefaultText="{Binding WatermarkTextVariable}"
                                                     WrapInBrackets="True"
                                                     Text="{Binding StringToConvert, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                    ToolTip="{x:Static languages:Tooltips.CaseConversionToolTipTextInput}"
+                                                    ToolTip="{Binding StringToConvert}"
                                                     Style="{StaticResource DatagridIntellisenseTextBoxStyle}"
                                                     attachedProperties:FocusSetter.IsFocused="{Binding IsStringToConvertFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 <i:Interaction.Behaviors>

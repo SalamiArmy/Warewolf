@@ -7,7 +7,6 @@
                                xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                                xmlns:core="clr-namespace:Dev2.Activities.Designers2.Core"
                                xmlns:local="clr-namespace:Dev2.Activities.Designers2.FindIndex"
-                               
                                xmlns:errors="clr-namespace:Dev2.Activities.Designers2.Core.Errors"
                                xmlns:attachedProperties2="clr-namespace:Dev2.Studio.AppResources.AttachedProperties"
                                xmlns:core1="clr-namespace:Warewolf.Studio.Core;assembly=Warewolf.Studio.Core"
@@ -62,7 +61,7 @@
                                 AllowUserInsertLine="False"
                                 FilterType="All"
                                 WrapInBrackets="True"
-                                ToolTip="{x:Static languages:Tooltips.FindIndexToolTipInField}"
+                                ToolTip="{Binding Path=ModelItem.InField}"
                                 Text="{Binding Path=ModelItem.InField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_InFieldtxt_AutoID}">
             <i:Interaction.Behaviors>
@@ -104,7 +103,7 @@
                                 DefaultText="Look for info" 
                                 Text="{Binding Path=ModelItem.Characters,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{x:Static languages:Tooltips.FindIndexToolTipCharacters}"
+                                ToolTip="{Binding Path=ModelItem.Characters}"
                                 attachedProperties2:WizardEngineAttachedProperties.DontOpenWizard="True"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Characterstxt_AutoID}">
             <i:Interaction.Behaviors>
@@ -143,7 +142,7 @@
                                 AllowUserInsertLine="False"
                                 WrapInBrackets="True" 
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{x:Static languages:Tooltips.FindIndexToolTipResult}"
+                                ToolTip="{Binding Path=ModelItem.Result}"
                                 Text="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Resulttxt_AutoID}">
             <i:Interaction.Behaviors>
@@ -154,8 +153,6 @@
                                      Target="{Binding}" />
             </i:Interaction.Behaviors>
         </ui:IntellisenseTextBox>
-        <errors:OnError Grid.Column="0"
-                        Grid.Row="5"
-                        Grid.ColumnSpan="2" />
+        <errors:OnError Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" />
     </Grid>
 </core:ActivityDesignerTemplate>

@@ -59,7 +59,7 @@
                                 VerticalContentAlignment="Top"
                                 DefaultText="Excel like function."
                                 FilterType="All"
-                                ToolTip="{x:Static languages:Tooltips.CalculateForAggregatesToolTipFx}"
+                                ToolTip="{Binding Path=ModelItem.Expression}"
                                 Text="{Binding Path=ModelItem.Expression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                 attachedProperties2:WizardEngineAttachedProperties.DontOpenWizard="True">
@@ -84,7 +84,7 @@
                                 DefaultText="[[fxResult]]"
                                 FilterType="All"
                                 AllowUserInsertLine="False"
-                                ToolTip="{x:Static languages:Tooltips.CalculateForAggregatesToolTipResult}"
+                                ToolTip="{Binding Path=ModelItem.Result}"
                                 WrapInBrackets="True"
                                 Margin="{StaticResource ControlBorderTop}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"

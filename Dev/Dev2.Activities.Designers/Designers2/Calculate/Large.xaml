@@ -7,7 +7,6 @@
                                xmlns:calculate="clr-namespace:Dev2.Activities.Designers2.Calculate"
                                xmlns:luna="clr-namespace:Warewolf.Studio.Themes.Luna;assembly=Warewolf.Studio.Themes.Luna"
                                xmlns:ui="clr-namespace:Dev2.UI;assembly=Dev2.Intellisense"
-                               
                                xmlns:attachedProperties="clr-namespace:Dev2.Studio.AppResources.AttachedProperties"
                                xmlns:interfaceImplementors="clr-namespace:Dev2.Studio.InterfaceImplementors;assembly=Dev2.Intellisense"
                                xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -75,7 +74,7 @@
                                 VerticalContentAlignment="Top"
                                 DefaultText="Excel like function."
                                 FilterType="All"
-                                ToolTip="{x:Static languages:Tooltips.CalculateToolTipFx}"
+                                ToolTip="{Binding Path=ModelItem.Expression}"
                                 Text="{Binding Path=ModelItem.Expression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                 attachedProperties:WizardEngineAttachedProperties.DontOpenWizard="True">
@@ -101,7 +100,7 @@
                                 DefaultText="[[fxResult]]"
                                 FilterType="All"
                                 AllowUserInsertLine="False"
-                                ToolTip="{x:Static languages:Tooltips.CalculateToolTipResult}"
+                                ToolTip="{Binding Path=ModelItem.Result}"
                                 WrapInBrackets="True"
                                 Margin="{StaticResource ControlBorderTop}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"

@@ -8,11 +8,9 @@
                                xmlns:core="clr-namespace:Dev2.Activities.Designers2.Core"
                                xmlns:local="clr-namespace:Dev2.Activities.Designers2.ExchangeEmail"
                                xmlns:errors="clr-namespace:Dev2.Activities.Designers2.Core.Errors"
-                               xmlns:designers2="clr-namespace:Dev2.Activities.Designers2"
                                xmlns:core1="clr-namespace:Warewolf.Studio.Core;assembly=Warewolf.Studio.Core"
                                xmlns:languages="clr-namespace:Warewolf.Studio.Resources.Languages;assembly=Warewolf.Studio.Resources"
                                xmlns:luna="clr-namespace:Warewolf.Studio.Themes.Luna;assembly=Warewolf.Studio.Themes.Luna"
-                               xmlns:customControls="clr-namespace:Dev2.CustomControls;assembly=Dev2.CustomControls"
                                Width="250"
                                MaxWidth="250"
                                mc:Ignorable="d"
@@ -86,7 +84,7 @@
                                 Margin="{StaticResource ControlBorderTop}"
                                 DefaultText="Account or email address"
                                 AllowUserInsertLine="False"
-                                ToolTip="{x:Static languages:Tooltips.EmailToolTipTo}"
+                                ToolTip="{Binding ModelItem.To}"
                                 Text="{Binding ModelItem.To,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_tostxt_AutoID}">
             <i:Interaction.Behaviors>
@@ -105,7 +103,7 @@
                                 AllowUserInsertLine="False"
                                 Margin="{StaticResource ControlBorderTop}"
                                 Text="{Binding ModelItem.Subject,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{x:Static languages:Tooltips.EmailToolTipSubject}"
+                                ToolTip="{Binding ModelItem.Subject}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_subjecttxt_AutoID}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.EmailHelpSubject}" DataContext="{Binding}" />
@@ -119,7 +117,7 @@
         <TextBlock Name="BodyTextBox" Grid.Column="0" Grid.Row="3" Text="Body" Margin="{StaticResource ControlBorderTop}" />
         <ui:IntellisenseTextBox Grid.Column="1"
                                 Grid.Row="3"
-                                ToolTip="{x:Static languages:Tooltips.EmailToolTipBody}"
+                                ToolTip="{Binding ModelItem.Body}"
                                 Text="{Binding ModelItem.Body,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Margin="{StaticResource ControlBorderTop}"
                                 AcceptsReturn="True"
@@ -150,7 +148,7 @@
                                 Grid.Row="4"                               
                                 DefaultText="[[EmailSuccess]]"
                                 Margin="{StaticResource ControlBorderTop}"
-                                ToolTip="{x:Static languages:Tooltips.EmailToolTipResult}"
+                                ToolTip="{Binding ModelItem.Result}"
                                 Text="{Binding ModelItem.Result,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="True"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
