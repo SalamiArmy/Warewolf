@@ -47,7 +47,7 @@
                                  Height="53"
                                  MinHeight="53"
                                  FilterType="All"
-                                 ToolTip="{x:Static languages:Tooltips.ScriptingToolTipScript}"
+                                 ToolTip="{Binding Path=ModelItem.Script}"
                                  AllowUserCalculateMode="False"
                                  IsInCalculateMode="True"
                                  Margin="{StaticResource ControlBorderTop}"
@@ -75,7 +75,7 @@
                                 AllowUserInsertLine="False"
                                 Margin="{StaticResource ControlBorderTop}"
                                 FilterType="All"
-                                ToolTip="{x:Static languages:Tooltips.ScriptingToolTipResult}"
+                                ToolTip="{Binding Path=ModelItem.Result}"
                                 Text="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Resulttxt_AutoID}">
             <i:Interaction.Behaviors>

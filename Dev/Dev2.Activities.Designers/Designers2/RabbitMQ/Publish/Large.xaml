@@ -102,7 +102,7 @@
                                 DefaultText="Queue Name"
                                 AllowUserInsertLine="False"
                                 Text="{Binding QueueName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{x:Static languages:Tooltips.RabbitMQToolTipQueueName}"
+                                ToolTip="{Binding QueueName}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Margin="{StaticResource ControlBorderTop}"
                                 IsEnabled="{Binding IsRabbitMQSourceSelected, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
@@ -129,11 +129,11 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0" Text="Queue Settings" />
             <CheckBox Grid.Column="1"
-                  Grid.Row="0"
-                  Margin="-6,0,0,0"
+                      Grid.Row="0"
+                      Margin="-6,0,0,0"
                       Content="Durable"
-                  IsChecked="{Binding IsDurable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  ToolTip="{x:Static languages:Tooltips.RabbitMQToolTipIsDurable}">
+                      IsChecked="{Binding IsDurable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      ToolTip="{x:Static languages:Tooltips.RabbitMQToolTipIsDurable}">
                 <i:Interaction.Behaviors>
                     <core1:HelpSetter Text="{x:Static languages:HelpText.RabbitMQHelpIsDurable}" DataContext="{Binding}" />
                     <errors:ErrorsSetter Source="{Binding}"
@@ -144,11 +144,11 @@
             </CheckBox>
 
             <CheckBox Grid.Column="1"
-                  Grid.Row="1"
-                  Margin="-6,-4,0,0"
+                      Grid.Row="1"
+                      Margin="-6,-4,0,0"
                       Content="Exclusive"
-                  IsChecked="{Binding Path=IsExclusive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  ToolTip="{x:Static languages:Tooltips.RabbitMQToolTipIsExclusive}">
+                      IsChecked="{Binding Path=IsExclusive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      ToolTip="{x:Static languages:Tooltips.RabbitMQToolTipIsExclusive}">
                 <i:Interaction.Behaviors>
                     <core1:HelpSetter Text="{x:Static languages:HelpText.RabbitMQHelpIsExclusive}" DataContext="{Binding}" />
                     <errors:ErrorsSetter Source="{Binding}"
@@ -191,7 +191,7 @@
                                 VerticalScrollBarVisibility="Auto"
                                 HorizontalScrollBarVisibility="Auto"
                                 Text="{Binding Message, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{x:Static languages:Tooltips.RabbitMQToolTipMessage}"
+                                ToolTip="{Binding Message}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 IsEnabled="{Binding IsRabbitMQSourceSelected, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                 attachedProperties:FocusSetter.IsFocused="{Binding IsMessageFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -215,7 +215,7 @@
                                 AllowUserInsertLine="False"
                                 WrapInBrackets="True"
                                 Text="{Binding Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{x:Static languages:Tooltips.RabbitMQToolTipResult}"
+                                ToolTip="{Binding Result}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Margin="{StaticResource ControlBorderTop}"
                                 IsEnabled="{Binding IsRabbitMQSourceSelected, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
