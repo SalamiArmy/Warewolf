@@ -65,7 +65,7 @@
                                 DefaultText="Date Time"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Text="{Binding Path=ModelItem.DateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ModelTextConverter}, ConverterParameter=True}"
-                                ToolTip="{Binding Path=ModelItem.DateTime}"
+                                ToolTip="{Binding Path=ModelItem.DateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Inputtxt_AutoID}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.DateTimeHelpDatetime}" DataContext="{Binding}" />
@@ -92,7 +92,7 @@
                                 Text="{Binding Path=ModelItem.InputFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 IntellisenseProvider="{StaticResource DateTimeCompositeIntellisenseProvider}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_InputFormattxt_AutoID}"
-                                ToolTip="{Binding Path=ModelItem.InputFormat}">
+                                ToolTip="{Binding Path=ModelItem.InputFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.DateTimeHelpInputformat}" DataContext="{Binding}" />
                 <errors:ErrorsSetter Source="{Binding}"
@@ -129,7 +129,7 @@
                                 IsEnabled="{Binding SelectedTimeModifierType, Converter={StaticResource EmptyStringToBoolConverter}}"
                                 Text="{Binding Path=ModelItem.TimeModifierAmountDisplay,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_AddTimeAmounttxt_AutoID}"
-                                ToolTip="{Binding Path=ModelItem.TimeModifierAmountDisplay}">
+                                ToolTip="{Binding Path=ModelItem.TimeModifierAmountDisplay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.DateTimeHelpAddtime}" DataContext="{Binding}" />
                 <errors:ErrorsSetter Source="{Binding}"
@@ -154,7 +154,7 @@
                                 Text="{Binding Path=ModelItem.OutputFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_OutputFormattxt_AutoID}"
                                 IntellisenseProvider="{StaticResource DateTimeCompositeIntellisenseProvider}"
-                                ToolTip="{Binding Path=ModelItem.OutputFormat}">
+                                ToolTip="{Binding Path=ModelItem.OutputFormat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.DateTimeHelpOutputformat}" DataContext="{Binding}" />
                 <errors:ErrorsSetter Source="{Binding}"
@@ -175,7 +175,7 @@
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Text="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Resulttxt_AutoID}"
-                                ToolTip="{Binding Path=ModelItem.Result}">
+                                ToolTip="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.DateTimeHelpResult}" DataContext="{Binding}" />
                 <errors:ErrorsSetter Source="{Binding}"

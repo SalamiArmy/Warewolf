@@ -135,7 +135,7 @@
                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                     Text="{Binding ToPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    ToolTip="{Binding ToPath}">
+                                    ToolTip="{Binding ToPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <i:Interaction.Behaviors>
                     <core1:HelpSetter DataContext="{Binding}" Text="{x:Static languages:HelpText.DropBoxFileListFileNameHelp}" />
                     <errors:ErrorsSetter Source="{Binding}"
@@ -240,7 +240,7 @@
                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                     Text="{Binding Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    ToolTip="{Binding Result}"
+                                    ToolTip="{Binding Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     WrapInBrackets="True">
                 <i:Interaction.Behaviors>
                     <core1:HelpSetter DataContext="{Binding}" Text="{x:Static languages:HelpText.DropboxResultHelpText}" />

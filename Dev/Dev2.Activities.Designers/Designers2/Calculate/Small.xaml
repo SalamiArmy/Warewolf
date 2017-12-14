@@ -59,7 +59,7 @@
                                 VerticalContentAlignment="Top"
                                 DefaultText="Excel like function."
                                 FilterType="All"
-                                ToolTip="{Binding Path=ModelItem.Expression}"
+                                ToolTip="{Binding Path=ModelItem.Expression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding Path=ModelItem.Expression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                 attachedProperties2:WizardEngineAttachedProperties.DontOpenWizard="True">
@@ -84,7 +84,7 @@
                                 DefaultText="[[fxResult]]"
                                 FilterType="All"
                                 AllowUserInsertLine="False"
-                                ToolTip="{Binding Path=ModelItem.Result}"
+                                ToolTip="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="True"
                                 Margin="{StaticResource ControlBorderTop}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"

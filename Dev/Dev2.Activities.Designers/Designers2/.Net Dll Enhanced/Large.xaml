@@ -230,7 +230,7 @@
                                                                                             TextWrapping="Wrap"
                                                                                             WrapInBrackets="False"
                                                                                             TextChanged="AutoCompleteBox_OnTextChanged"
-                                                                                            ToolTip="{Binding Path=Value}"
+                                                                                            ToolTip="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                                             Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                                             Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                                                         <i:Interaction.Behaviors>
@@ -376,7 +376,7 @@
                                                                                 AutomationProperties.AutomationId="UI_TextBox_AutoID"
                                                                                 TextChanged="AutoCompleteBox_OnTextChanged"
                                                                                 IntellisenseProvider="{StaticResource CalculateCompositeIntellisenseProvider}"
-                                                                                ToolTip="{Binding RecordsetName}"
+                                                                                ToolTip="{Binding RecordsetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                                 Text="{Binding RecordsetName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" >
                                                             
                                                             <i:Interaction.Behaviors>
@@ -406,7 +406,7 @@
                                                                                 IntellisenseProvider="{StaticResource CalculateCompositeIntellisenseProvider}"
                                                                                 Style="{StaticResource DatagridIntellisenseTextBoxStyle}"
                                                                                 AutomationProperties.AutomationId="UI_TextBox_AutoID"
-                                                                                ToolTip="{Binding ObjectName}">
+                                                                                ToolTip="{Binding ObjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                             <i:Interaction.Behaviors>
                                                                 <core1:HelpSetter Text="{x:Static languages:HelpText.MappingsObjectNameHelp}" DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core:ActivityDesignerTemplate}}" />
                                                                 <errors:ErrorsSetter Source="{Binding}"

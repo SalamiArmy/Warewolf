@@ -44,7 +44,7 @@
                                 AllowUserInsertLine="False"
                                 WrapInBrackets="True"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{Binding ModelItem.FieldsToSearch}"
+                                ToolTip="{Binding ModelItem.FieldsToSearch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 DefaultText="[[Recordset().Field]]"
                                 Text="{Binding ModelItem.FieldsToSearch,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_InFiledstxt_AutoID}">
@@ -68,7 +68,7 @@
                                 Margin="{StaticResource ControlBorderTop}"
                                 TextWrapping="Wrap"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{Binding ModelItem.Find}"
+                                ToolTip="{Binding ModelItem.Find, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 DefaultText="Some Text"
                                 Text="{Binding ModelItem.Find, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Findtxt_AutoID}">
@@ -93,7 +93,7 @@
                                 TextWrapping="Wrap"
                                 Margin="{StaticResource ControlBorderTop}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{Binding ModelItem.ReplaceWith}"
+                                ToolTip="{Binding ModelItem.ReplaceWith, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding ModelItem.ReplaceWith,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Replacetxt_AutoID}">
             <i:Interaction.Behaviors>
@@ -112,7 +112,7 @@
                                 AllowUserInsertLine="False"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 DefaultText="[[ReplacementCount]]"
-                                ToolTip="{Binding ModelItem.Result}"
+                                ToolTip="{Binding ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="True"
                                 Text="{Binding ModelItem.Result,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Resulttxt_AutoID}">

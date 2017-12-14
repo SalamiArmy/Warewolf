@@ -54,7 +54,7 @@
                                 AllowUserInsertLine="False"
                                 DefaultText="[[Recordset()]]"
                                 FilterType="RecordsetsOnly"
-                                ToolTip="{Binding Path=RecordsetNameValue}"
+                                ToolTip="{Binding Path=RecordsetNameValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="True"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Text="{Binding Path=RecordsetNameValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
@@ -75,7 +75,7 @@
                                 Margin="{StaticResource ControlBorderTop}"
                                 DefaultText="[[Length]]"
                                 AllowUserInsertLine="False"
-                                ToolTip="{Binding Path=ModelItem.RecordsLength}"
+                                ToolTip="{Binding Path=ModelItem.RecordsLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="True"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Text="{Binding Path=ModelItem.RecordsLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

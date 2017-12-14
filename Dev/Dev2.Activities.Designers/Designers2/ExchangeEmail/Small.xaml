@@ -84,7 +84,7 @@
                                 Margin="{StaticResource ControlBorderTop}"
                                 DefaultText="Account or email address"
                                 AllowUserInsertLine="False"
-                                ToolTip="{Binding ModelItem.To}"
+                                ToolTip="{Binding ModelItem.To, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding ModelItem.To,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_tostxt_AutoID}">
             <i:Interaction.Behaviors>
@@ -103,7 +103,7 @@
                                 AllowUserInsertLine="False"
                                 Margin="{StaticResource ControlBorderTop}"
                                 Text="{Binding ModelItem.Subject,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{Binding ModelItem.Subject}"
+                                ToolTip="{Binding ModelItem.Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_subjecttxt_AutoID}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.EmailHelpSubject}" DataContext="{Binding}" />
@@ -117,7 +117,7 @@
         <TextBlock Name="BodyTextBox" Grid.Column="0" Grid.Row="3" Text="Body" Margin="{StaticResource ControlBorderTop}" />
         <ui:IntellisenseTextBox Grid.Column="1"
                                 Grid.Row="3"
-                                ToolTip="{Binding ModelItem.Body}"
+                                ToolTip="{Binding ModelItem.Body, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding ModelItem.Body,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Margin="{StaticResource ControlBorderTop}"
                                 AcceptsReturn="True"
@@ -148,7 +148,7 @@
                                 Grid.Row="4"                               
                                 DefaultText="[[EmailSuccess]]"
                                 Margin="{StaticResource ControlBorderTop}"
-                                ToolTip="{Binding ModelItem.Result}"
+                                ToolTip="{Binding ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding ModelItem.Result,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="True"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"

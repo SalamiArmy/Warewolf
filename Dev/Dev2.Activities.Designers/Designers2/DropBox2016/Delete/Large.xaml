@@ -110,7 +110,7 @@
                                 Margin="{StaticResource ControlBorderTop}"
                                 DefaultText="Dropbox File"
                                 FilterType="All"
-                                ToolTip="{Binding DeletePath}"
+                                ToolTip="{Binding DeletePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding DeletePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                 attachedProperties1:WizardEngineAttachedProperties.DontOpenWizard="True">
@@ -132,7 +132,7 @@
                                 IsInCalculateMode="False"
                                 FilterType="All"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{Binding Result}"
+                                ToolTip="{Binding Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 DefaultText="[[Result]]"
                                 AllowUserInsertLine="False"
                                 WrapInBrackets="True"

@@ -54,7 +54,7 @@
                                 AllowUserInsertLine="False"
                                 DefaultText="[[Recordset(*)]]"
                                 FilterType="RecordsetsOnly"
-                                ToolTip="{Binding Path=ModelItem.RecordsetName}"
+                                ToolTip="{Binding Path=ModelItem.RecordsetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="True"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Text="{Binding Path=ModelItem.RecordsetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
@@ -74,7 +74,7 @@
                                 Grid.Column="1"
                                 AllowUserInsertLine="False"
                                 DefaultText="[[Success]]"
-                                ToolTip="{Binding Path=ModelItem.Result}"
+                                ToolTip="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="True"
                                 Margin="{StaticResource ControlBorderTop}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"

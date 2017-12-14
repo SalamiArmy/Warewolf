@@ -61,7 +61,7 @@
                                 AllowUserInsertLine="False"
                                 FilterType="All"
                                 WrapInBrackets="True"
-                                ToolTip="{Binding Path=ModelItem.InField}"
+                                ToolTip="{Binding Path=ModelItem.InField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding Path=ModelItem.InField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_InFieldtxt_AutoID}">
             <i:Interaction.Behaviors>
@@ -103,7 +103,7 @@
                                 DefaultText="Look for info" 
                                 Text="{Binding Path=ModelItem.Characters,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{Binding Path=ModelItem.Characters}"
+                                ToolTip="{Binding Path=ModelItem.Characters, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 attachedProperties2:WizardEngineAttachedProperties.DontOpenWizard="True"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Characterstxt_AutoID}">
             <i:Interaction.Behaviors>
@@ -142,7 +142,7 @@
                                 AllowUserInsertLine="False"
                                 WrapInBrackets="True" 
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{Binding Path=ModelItem.Result}"
+                                ToolTip="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Resulttxt_AutoID}">
             <i:Interaction.Behaviors>

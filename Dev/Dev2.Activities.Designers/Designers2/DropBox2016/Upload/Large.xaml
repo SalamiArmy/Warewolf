@@ -113,7 +113,7 @@
                                 Margin="0,1,0,0"
                                 AllowUserInsertLine="False"
                                 Text="{Binding Path=FromPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{Binding Path=FromPath}"
+                                ToolTip="{Binding Path=FromPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 attachedProperties1:FocusSetter.IsFocused="{Binding IsInputPathFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_FileNametxt_AutoID}">
@@ -179,7 +179,7 @@
                                 DefaultText="Dropbox location"
                                 FilterType="All"
                                 AllowUserInsertLine="False"
-                                ToolTip="{Binding ToPath}"
+                                ToolTip="{Binding ToPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding ToPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                 attachedProperties:WizardEngineAttachedProperties.DontOpenWizard="True">
@@ -201,7 +201,7 @@
                                 IsInCalculateMode="False"
                                 FilterType="All"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{Binding Result}"
+                                ToolTip="{Binding Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 DefaultText="[[Result]]"
                                 WrapInBrackets="True"
                                 AllowUserInsertLine="False"

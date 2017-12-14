@@ -55,7 +55,7 @@
                                 AllowUserInsertLine="False"
                                 FilterType="RecordsetFields"
                                 WrapInBrackets="True"
-                                ToolTip="{Binding Path=ModelItem.SortField}"
+                                ToolTip="{Binding Path=ModelItem.SortField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Text="{Binding Path=ModelItem.SortField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                 Converter={StaticResource ModelTextConverter}, ConverterParameter=True}"

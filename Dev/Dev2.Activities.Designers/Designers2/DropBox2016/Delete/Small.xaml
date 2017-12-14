@@ -52,7 +52,7 @@
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 DefaultText="[[Dropbox location]]"
                                 FilterType="All"
-                                ToolTip="{Binding DeletePath}"
+                                ToolTip="{Binding DeletePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding DeletePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                 attachedProperties1:WizardEngineAttachedProperties.DontOpenWizard="True">

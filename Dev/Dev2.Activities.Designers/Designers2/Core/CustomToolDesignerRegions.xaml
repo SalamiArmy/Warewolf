@@ -130,7 +130,7 @@
             <ui:IntellisenseTextBox x:Name="ActionsComboBox"
                                     Grid.Column="1"
                                     Grid.Row="0"
-                                    ToolTip="{Binding ActionRegion.CommandText}"
+                                    ToolTip="{Binding ActionRegion.CommandText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Height="Auto"
                                     MinLines="5"
                                     VerticalContentAlignment="Top"
@@ -412,7 +412,7 @@
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
                                                     WrapInBrackets="False"
-                                                    ToolTip="{Binding Path=Value}"
+                                                    ToolTip="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>
@@ -543,7 +543,7 @@
                                                         Margin="0,0,1,1"
                                                         TextWrapping="Wrap"
                                                         WrapInBrackets="False"
-                                                        ToolTip="{Binding Path=Value}"
+                                                        ToolTip="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                         IntellisenseProvider="{StaticResource CalculateCompositeIntellisenseProvider}"
                                                         Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                         Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
@@ -672,7 +672,7 @@
                                         IntellisenseProvider="{StaticResource CalculateCompositeIntellisenseProvider}"
                                         Style="{StaticResource DatagridIntellisenseTextBoxStyle}"
                                         AutomationProperties.AutomationId="UI_TextBox_AutoID"
-                                        ToolTip="{Binding OutputsRegion.ObjectName}">
+                                        ToolTip="{Binding OutputsRegion.ObjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <i:Interaction.Behaviors>
                         <core:HelpSetter Text="{x:Static languages:HelpText.MappingsObjectNameHelp}" DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core1:ActivityDesignerTemplate}}" />
                         <errors:ErrorsSetter Source="{Binding}"
@@ -768,7 +768,7 @@
                                                     MaxHeight="80"
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
-                                                    ToolTip="{Binding Path=MappedTo}"
+                                                    ToolTip="{Binding Path=MappedTo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Text="{Binding Path=MappedTo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                             <i:Interaction.Behaviors>
@@ -841,7 +841,7 @@
                                         IntellisenseProvider="{StaticResource CalculateCompositeIntellisenseProvider}"
                                         Style="{StaticResource DatagridIntellisenseTextBoxStyle}"
                                         AutomationProperties.AutomationId="UI_TextBox_AutoID"
-                                        ToolTip="{Binding ObjectName}">
+                                        ToolTip="{Binding ObjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <i:Interaction.Behaviors>
                         <core:HelpSetter Text="{x:Static languages:HelpText.MappingsObjectNameHelp}" DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core1:ActivityDesignerTemplate}}" />
                         <errors:ErrorsSetter Source="{Binding}"
@@ -1008,7 +1008,7 @@
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
                                                     WrapInBrackets="False"
-                                                    ToolTip="{Binding Path=Value}"
+                                                    ToolTip="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>
@@ -1251,7 +1251,7 @@
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
                                                     WrapInBrackets="False"
-                                                    ToolTip="{Binding Path=Value}"
+                                                    ToolTip="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>
@@ -1460,7 +1460,7 @@
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
                                                     WrapInBrackets="False"
-                                                    ToolTip="{Binding Path=Value}"
+                                                    ToolTip="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>

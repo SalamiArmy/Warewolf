@@ -46,7 +46,7 @@
                                 AllowUserInsertLine="False"
                                 FilterType="All"
                                 WrapInBrackets="False"
-                                ToolTip="{Binding Path=ModelItem.InputPath}"
+                                ToolTip="{Binding Path=ModelItem.InputPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Text="{Binding Path=ModelItem.InputPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_FileOrFoldertxt_AutoID}">
@@ -74,7 +74,7 @@
                                  WrapInBrackets="False" 
                                  Margin="{StaticResource ControlBorderTop}"
                                  Text="{Binding Path=ModelItem.OutputPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 ToolTip="{Binding Path=ModelItem.OutputPath}"
+                                 ToolTip="{Binding Path=ModelItem.OutputPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                  AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Destinationtxt_AutoID}">
             <ui:IntellisenseTextBox.IntellisenseProvider>

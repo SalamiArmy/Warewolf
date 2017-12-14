@@ -45,7 +45,7 @@
                                 WrapInBrackets="False" 
                                 HorizontalScrollBarVisibility="Auto"
                                 Style="{StaticResource AutoCompleteBoxWithWrapStyle}"
-                                ToolTip="{Binding Path=ModelItem.Text}"
+                                ToolTip="{Binding Path=ModelItem.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding Path=ModelItem.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Commenttxt_AutoID}"
                                 attachedProperties:WizardEngineAttachedProperties.DontOpenWizard="True">

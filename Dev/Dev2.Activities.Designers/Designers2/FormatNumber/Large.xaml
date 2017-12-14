@@ -59,7 +59,7 @@
                                 DefaultText="Whole or decimal"
                                 FilterType="All"
                                 AllowUserInsertLine="False"
-                                ToolTip="{Binding Path=ModelItem.Expression}"
+                                ToolTip="{Binding Path=ModelItem.Expression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="False"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Text="{Binding Path=ModelItem.Expression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -105,7 +105,7 @@
                                 attachedProperties2:WizardEngineAttachedProperties.DontOpenWizard="True"
                                 IsEnabled="{Binding ModelItem.RoundingType, Mode=OneWay, Converter={StaticResource EnumToBoolConverterenRoundingType}}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Rounding_Inputtxt_AutoID}"
-                                ToolTip="{Binding Path=ModelItem.RoundingDecimalPlaces}">
+                                ToolTip="{Binding Path=ModelItem.RoundingDecimalPlaces, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.FormatNumberHelpRoundValue}" DataContext="{Binding}" />
                 <errors:ErrorsSetter Source="{Binding}"
@@ -120,7 +120,7 @@
                                 Grid.Row="2"
                                 FilterType="All"
                                 Margin="{StaticResource ControlBorderTop}"
-                                ToolTip="{Binding Path=ModelItem.DecimalPlacesToShow}"
+                                ToolTip="{Binding Path=ModelItem.DecimalPlacesToShow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="False"
                                 AllowUserInsertLine="False"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
@@ -143,7 +143,7 @@
                                 DefaultText="[[Result]]"
                                 AllowUserInsertLine="False"
                                 FilterType="All"
-                                ToolTip="{Binding Path=ModelItem.Result}"
+                                ToolTip="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 WrapInBrackets="True"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Text="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

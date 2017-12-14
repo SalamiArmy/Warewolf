@@ -80,7 +80,7 @@
                                     DefaultText="From" 
                                     Margin="0,0,1,1"
                                     AllowUserInsertLine="False"
-                                    ToolTip="{Binding ModelItem.From}"
+                                    ToolTip="{Binding ModelItem.From, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Text="{Binding ModelItem.From,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                     AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Lengthstxt_AutoID}">
@@ -101,7 +101,7 @@
                                     Margin="0,0,1,1"
                                     IsEnabled="{Binding Path=IsLengthPath}"
                                     Text="{Binding ModelItem.Length,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                    ToolTip="{Binding ModelItem.Length}"
+                                    ToolTip="{Binding ModelItem.Length, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                     AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Lengthstxt_AutoID}">
                 <i:Interaction.Behaviors>
@@ -121,7 +121,7 @@
                                     Text="{Binding ModelItem.To,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                     AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Lengthstxt_AutoID}"
-                                    ToolTip="{Binding ModelItem.To}">
+                                    ToolTip="{Binding ModelItem.To, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <i:Interaction.Behaviors>
                     <core1:HelpSetter Text="{x:Static languages:HelpText.RandomHelpRangeTo}" DataContext="{Binding}" />
                     <errors:ErrorsSetter Source="{Binding}"
@@ -139,7 +139,7 @@
                                 AllowUserInsertLine="False"
                                 WrapInBrackets="True"
                                 Margin="{StaticResource ControlBorderTop}"
-                                ToolTip="{Binding ModelItem.Result}"
+                                ToolTip="{Binding ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding ModelItem.Result,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Resulttxt_AutoID}">

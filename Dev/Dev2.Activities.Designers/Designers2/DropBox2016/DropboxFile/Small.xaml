@@ -49,7 +49,7 @@
                                 DefaultText="[[Dropbox location]]"
                                 FilterType="All"
                                 AllowUserInsertLine="False"
-                                ToolTip="{Binding ToPath}"
+                                ToolTip="{Binding ToPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding ToPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_fxtxt_AutoID}"
                                 attachedProperties1:WizardEngineAttachedProperties.DontOpenWizard="True">
@@ -80,7 +80,7 @@
                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                     Text="{Binding Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    ToolTip="{Binding Result}"
+                                    ToolTip="{Binding Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     WrapInBrackets="True">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter DataContext="{Binding}" Text="{x:Static languages:HelpText.DropboxResultHelpText}" />

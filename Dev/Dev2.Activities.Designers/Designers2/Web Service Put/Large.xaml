@@ -116,7 +116,7 @@
                                                                     TextWrapping="Wrap"
                                                                     TextChanged="AutoCompleteBox_OnTextChanged"
                                                                     WrapInBrackets="False"
-                                                                    ToolTip="{Binding Path=Name}"
+                                                                    ToolTip="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                     Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                                 <i:Interaction.Behaviors>
@@ -151,7 +151,7 @@
                                                                     Margin="0,0,1,1"
                                                                     TextWrapping="Wrap"
                                                                     WrapInBrackets="False"
-                                                                    ToolTip="{Binding Path=Value}"
+                                                                    ToolTip="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                     Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                                 <i:Interaction.Behaviors>

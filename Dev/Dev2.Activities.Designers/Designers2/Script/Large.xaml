@@ -96,7 +96,7 @@
                                     Margin="{StaticResource ControlBorderRight}"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                     AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_AttachmentsTxt_AutoID}"
-                                    ToolTip="{Binding ModelItem.IncludeFile}">
+                                    ToolTip="{Binding ModelItem.IncludeFile, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <i:Interaction.Behaviors>
                     <core1:HelpSetter Text="{x:Static languages:HelpText.ScriptingHelpIncludeFile}" DataContext="{Binding}" />
                     <errors:ErrorsSetter Source="{Binding}"
@@ -127,7 +127,7 @@
                                  MinHeight="53"
                                  FilterType="All"
                                  Margin="0,1,0,0"
-                                 ToolTip="{Binding Path=ModelItem.Script}"
+                                 ToolTip="{Binding Path=ModelItem.Script, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  AllowUserCalculateMode="False"
                                  IsInCalculateMode="True"
                                  VerticalContentAlignment="Top"
@@ -154,7 +154,7 @@
                                 DefaultText="[[Result]]"
                                 Margin="0,2,0,0"
                                 FilterType="All"
-                                ToolTip="{Binding Path=ModelItem.Result}"
+                                ToolTip="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Text="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Resulttxt_AutoID}">
             <i:Interaction.Behaviors>
