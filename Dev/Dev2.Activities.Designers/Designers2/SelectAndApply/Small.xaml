@@ -54,7 +54,7 @@
                                 DefaultText="[[Datasource]]"
                                 WrapInBrackets="True"
                                 Text="{Binding ModelItem.DataSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{x:Static languages:Tooltips.SelectAndApplyDataSourceToolTip}"
+                                ToolTip="{Binding ModelItem.DataSource}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 attachedProperties:FocusSetter.IsFocused="False"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_FileNametxt_AutoID}">
@@ -80,7 +80,7 @@
                                 WrapInBrackets="True"
                                 Margin="{StaticResource ControlBorderTop}"
                                 Text="{Binding ModelItem.Alias, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{x:Static languages:Tooltips.SelectAndApplyAliasToolTip}"
+                                ToolTip="{Binding ModelItem.Alias}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 attachedProperties:FocusSetter.IsFocused="False"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_FileNametxt_AutoID}">

@@ -183,7 +183,7 @@
                                                             MaxHeight="52"
                                                             Margin="0,0,1,1"
                                                             TextWrapping="NoWrap"
-                                                            ToolTip="{x:Static languages:Tooltips.SharepointToolTipToVariable}"
+                                                            ToolTip="{Binding VariableName}"
                                                             Text="{Binding VariableName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>
@@ -340,7 +340,7 @@
                                                             attachedProperties:FocusSetter.IsFocused="{Binding IsSearchCriteriaFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             Text="{Binding ValueToMatch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             Style="{StaticResource DatagridIntellisenseTextBoxStyle}"
-                                                            ToolTip="{x:Static languages:Tooltips.FindToolTipMatch}">
+                                                            ToolTip="{Binding ValueToMatch}">
                                         <i:Interaction.Behaviors>
                                             <core1:HelpSetter Text="{x:Static languages:HelpText.FindHelpMatch}"
                                                          DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core:ActivityDesignerTemplate}}" />

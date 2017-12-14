@@ -88,40 +88,40 @@
                         <TextBlock x:Name="HeadersLabel" Text="Headers" Grid.Column="0" Grid.Row="0" />
 
                         <controls:Dev2DataGrid x:Name="Headers"
-                                   Grid.Row="1" 
-                                   ItemsSource="{Binding InputArea.Headers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                   Style="{StaticResource ActivityMappingDataGridStyle}"
-                                   Height="Auto"
-                                   IsEnabled="{Binding InputArea.IsEnabled}"
-                                   ColumnWidth="*"
-                                   Margin="{StaticResource ControlBorderTop}">
+                                               Grid.Row="1" 
+                                               ItemsSource="{Binding InputArea.Headers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Style="{StaticResource ActivityMappingDataGridStyle}"
+                                               Height="Auto"
+                                               IsEnabled="{Binding InputArea.IsEnabled}"
+                                               ColumnWidth="*"
+                                               Margin="{StaticResource ControlBorderTop}">
 
                             <!-- DO NOT override ItemsPanel - doing so causes column sizing issues on first drop -->
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn Width="*"
-                                        MinWidth="125"
-                                        Header="Header"
-                                        HeaderStyle="{StaticResource ActivityMappingDataGridHeaderStyle}"
-                                        d:DataContext="{d:DesignInstance Type=interfaces:INameValue}">
+                                                        MinWidth="125"
+                                                        Header="Header"
+                                                        HeaderStyle="{StaticResource ActivityMappingDataGridHeaderStyle}"
+                                                        d:DataContext="{d:DesignInstance Type=interfaces:INameValue}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ui:IntellisenseTextBox DefaultText="Header"
-                                                    AllowMultilinePaste="True"
-                                                    AcceptsReturn="True"
-                                                    AllowUserInsertLine="True"
-                                                    MaxHeight="80"
-                                                    Margin="0,0,1,1"
-                                                    TextWrapping="Wrap"
-                                                    WrapInBrackets="False"
-                                                    ToolTip="{x:Static languages:Tooltips.WebRequestToolTipHeader}"
-                                                    Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                    Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
+                                                                    AllowMultilinePaste="True"
+                                                                    AcceptsReturn="True"
+                                                                    AllowUserInsertLine="True"
+                                                                    MaxHeight="80"
+                                                                    Margin="0,0,1,1"
+                                                                    TextWrapping="Wrap"
+                                                                    WrapInBrackets="False"
+                                                                    ToolTip="{Binding Path=Name}"
+                                                                    Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                    Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                                 <i:Interaction.Behaviors>
                                                     <core1:HelpSetter Text="{x:Static languages:HelpText.WebServiceRequestHeadersTableHelp}" DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core:ActivityDesignerTemplate}}" />
                                                     <errors:ErrorsSetter Source="{Binding}"
-                                                         SourcePropertyName="Name"
-                                                         SourcePropertyValue="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"
-                                                         Target="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core:ActivityDesignerTemplate}}" />
+                                                                         SourcePropertyName="Name"
+                                                                         SourcePropertyValue="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"
+                                                                         Target="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core:ActivityDesignerTemplate}}" />
                                                 </i:Interaction.Behaviors>
                                                 <AutomationProperties.AutomationId>
                                                     <MultiBinding StringFormat="UI_{0}_Row{1}_InputColumn_AutoID">
@@ -134,23 +134,23 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn Width="*"
-                                            MinWidth="125"
-                                            Header="Value"
-                                            HeaderStyle="{StaticResource ActivityMappingDataGridHeaderStyle}"
-                                            d:DataContext="{d:DesignInstance Type=interfaces:INameValue}">
+                                                        MinWidth="125"
+                                                        Header="Value"
+                                                        HeaderStyle="{StaticResource ActivityMappingDataGridHeaderStyle}"
+                                                        d:DataContext="{d:DesignInstance Type=interfaces:INameValue}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ui:IntellisenseTextBox DefaultText="Value"
-                                                    AllowMultilinePaste="True"
-                                                    AcceptsReturn="True"
-                                                    AllowUserInsertLine="True"
-                                                    MaxHeight="80"
-                                                    Margin="0,0,1,1"
-                                                    TextWrapping="Wrap"
-                                                    WrapInBrackets="False"
-                                                    ToolTip="{x:Static languages:Tooltips.WebRequestToolTipHeader}"
-                                                    Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                    Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
+                                                                    AllowMultilinePaste="True"
+                                                                    AcceptsReturn="True"
+                                                                    AllowUserInsertLine="True"
+                                                                    MaxHeight="80"
+                                                                    Margin="0,0,1,1"
+                                                                    TextWrapping="Wrap"
+                                                                    WrapInBrackets="False"
+                                                                    ToolTip="{Binding Path=Value}"
+                                                                    Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                    Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                                 <i:Interaction.Behaviors>
                                                     <core1:HelpSetter Text="{x:Static languages:HelpText.WebServiceRequestHeadersTableHelp}"  DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core:ActivityDesignerTemplate}}" />
                                                     <errors:ErrorsSetter Source="{Binding}"

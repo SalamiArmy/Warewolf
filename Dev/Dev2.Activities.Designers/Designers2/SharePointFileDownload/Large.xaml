@@ -96,7 +96,7 @@
                                 Margin="{StaticResource ControlBorderTop}"
                                 Text="{Binding Path=ModelItem.ServerInputPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                 attachedProperties:FocusSetter.IsFocused="{Binding IsInputPathFocused, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{x:Static languages:Tooltips.SharePointDownloadPathToolTip}"
+                                ToolTip="{Binding Path=ModelItem.ServerInputPath}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Directorytxt_AutoID}">
                 <ui:IntellisenseTextBox.IntellisenseProvider>
@@ -124,7 +124,7 @@
                                 WrapInBrackets="False"
                                 Text="{Binding Path=ModelItem.LocalInputPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                 attachedProperties:FocusSetter.IsFocused="{Binding IsInputPathFocused, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{x:Static languages:Tooltips.ReadLocalFolderToolTipFolder}"
+                                ToolTip="{Binding Path=ModelItem.LocalInputPath}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Directorytxt_AutoID}">
                 <ui:IntellisenseTextBox.IntellisenseProvider>
@@ -166,7 +166,7 @@
                                 Margin="0,-1,0,0"
                                 WrapInBrackets="True"
                                 Text="{Binding Path=ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                ToolTip="{x:Static languages:Tooltips.ReadFolderToolTipResult}"
+                                ToolTip="{Binding Path=ModelItem.Result}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Resulttxt_AutoID}">
                 <i:Interaction.Behaviors>
@@ -178,7 +178,6 @@
                 </i:Interaction.Behaviors>
             </ui:IntellisenseTextBox>
         </Grid>
-        <errors:OnError Grid.Row="1"
-                        Grid.ColumnSpan="2" />
+        <errors:OnError Grid.Row="1" Grid.ColumnSpan="2" />
     </Grid>
 </core:ActivityDesignerTemplate>

@@ -158,7 +158,7 @@
                                                             Margin="0,0,1,1"
                                                             TextWrapping="Wrap"
                                                             WrapInBrackets="False"
-                                                            ToolTip="{x:Static languages:Tooltips.SharepointToolTipToVariable}"
+                                                            ToolTip="{Binding VariableName}"
                                                             Text="{Binding VariableName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>
@@ -371,7 +371,7 @@
                                                             attachedProperties:FocusSetter.IsFocused="{Binding IsSearchCriteriaFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             Text="{Binding ValueToMatch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             Style="{StaticResource DatagridIntellisenseTextBoxStyle}"
-                                                            ToolTip="{x:Static languages:Tooltips.FindToolTipMatch}">
+                                                            ToolTip="{Binding ValueToMatch}">
                                         <i:Interaction.Behaviors>
                                             <core1:HelpSetter Text="{x:Static languages:HelpText.FindHelpMatch}"
                                                          DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core:ActivityDesignerTemplate}}" />
@@ -420,7 +420,7 @@
                                     AllowUserInsertLine="False"                                    
                                     Text="{Binding ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                    ToolTip="{x:Static languages:Tooltips.SharepointInsertToolTipResult}"
+                                    ToolTip="{Binding ModelItem.Result}"
                                     attachedProperties:FocusSetter.IsFocused="{Binding IsResultFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Result_AutoID}">
                 <i:Interaction.Behaviors>

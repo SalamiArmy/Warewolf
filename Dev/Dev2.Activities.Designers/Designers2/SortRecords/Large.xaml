@@ -55,11 +55,11 @@
                                 AllowUserInsertLine="False"
                                 FilterType="RecordsetFields"
                                 WrapInBrackets="True"
-                                ToolTip="{x:Static languages:Tooltips.SortToolTipSortField}"
+                                ToolTip="{Binding Path=ModelItem.SortField}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
                                 Text="{Binding Path=ModelItem.SortField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                 Converter={StaticResource ModelTextConverter}, ConverterParameter=True}"
-            AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_SortFieldtxt_AutoID}">
+                                AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_SortFieldtxt_AutoID}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.SortHelpSortField}" DataContext="{Binding}" />
                 <errors:ErrorsSetter Source="{Binding}"

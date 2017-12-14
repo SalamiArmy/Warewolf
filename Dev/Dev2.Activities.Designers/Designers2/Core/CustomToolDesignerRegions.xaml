@@ -130,7 +130,7 @@
             <ui:IntellisenseTextBox x:Name="ActionsComboBox"
                                     Grid.Column="1"
                                     Grid.Row="0"
-                                    ToolTip="{x:Static languages:Tooltips.ManageOdbcServiceActionsTooltip}"
+                                    ToolTip="{Binding ActionRegion.CommandText}"
                                     Height="Auto"
                                     MinLines="5"
                                     VerticalContentAlignment="Top"
@@ -412,7 +412,7 @@
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
                                                     WrapInBrackets="False"
-                                                    ToolTip="{x:Static languages:Tooltips.InputDefaultValueToolTip}"
+                                                    ToolTip="{Binding Path=Value}"
                                                     Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>
@@ -543,7 +543,7 @@
                                                         Margin="0,0,1,1"
                                                         TextWrapping="Wrap"
                                                         WrapInBrackets="False"
-                                                        ToolTip="{x:Static languages:Tooltips.InputDefaultValueToolTip}"
+                                                        ToolTip="{Binding Path=Value}"
                                                         IntellisenseProvider="{StaticResource CalculateCompositeIntellisenseProvider}"
                                                         Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                         Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
@@ -672,7 +672,7 @@
                                         IntellisenseProvider="{StaticResource CalculateCompositeIntellisenseProvider}"
                                         Style="{StaticResource DatagridIntellisenseTextBoxStyle}"
                                         AutomationProperties.AutomationId="UI_TextBox_AutoID"
-                                        ToolTip="{x:Static languages:Tooltips.MappingsObjectNameTooltip}">
+                                        ToolTip="{Binding OutputsRegion.ObjectName}">
                     <i:Interaction.Behaviors>
                         <core:HelpSetter Text="{x:Static languages:HelpText.MappingsObjectNameHelp}" DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core1:ActivityDesignerTemplate}}" />
                         <errors:ErrorsSetter Source="{Binding}"
@@ -768,7 +768,7 @@
                                                     MaxHeight="80"
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
-                                                    ToolTip="{x:Static languages:HelpText.MappingsDefaultValueHelp}"
+                                                    ToolTip="{Binding Path=MappedTo}"
                                                     Text="{Binding Path=MappedTo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                             <i:Interaction.Behaviors>
@@ -841,7 +841,7 @@
                                         IntellisenseProvider="{StaticResource CalculateCompositeIntellisenseProvider}"
                                         Style="{StaticResource DatagridIntellisenseTextBoxStyle}"
                                         AutomationProperties.AutomationId="UI_TextBox_AutoID"
-                                        ToolTip="{x:Static languages:Tooltips.MappingsObjectNameTooltip}">
+                                        ToolTip="{Binding ObjectName}">
                     <i:Interaction.Behaviors>
                         <core:HelpSetter Text="{x:Static languages:HelpText.MappingsObjectNameHelp}" DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core1:ActivityDesignerTemplate}}" />
                         <errors:ErrorsSetter Source="{Binding}"
@@ -1008,7 +1008,7 @@
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
                                                     WrapInBrackets="False"
-                                                    ToolTip="{x:Static languages:Tooltips.DbInsertToolTipColumn}"
+                                                    ToolTip="{Binding Path=Value}"
                                                     Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>
@@ -1165,7 +1165,7 @@
                          customControls:WatermarkTextBox.Watermark="Paste response here"
                          SnapsToDevicePixels="True" 
                          VerticalScrollBarVisibility="Auto"
-                         ToolTip="{x:Static languages:Tooltips.ManageWebPasteResponseTooltip}"
+                         ToolTip="{Binding TestResults}"
                          HorizontalScrollBarVisibility="Disabled" >
                 <i:Interaction.Behaviors>
                     <core:HelpSetter Text="{x:Static languages:HelpText.WebServicePasteInputHelp}" DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=core1:ActivityDesignerTemplate}}" />
@@ -1251,7 +1251,7 @@
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
                                                     WrapInBrackets="False"
-                                                    ToolTip="{x:Static languages:Tooltips.WebInsertToolTipColumn}"
+                                                    ToolTip="{Binding Path=Value}"
                                                     Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>
@@ -1460,7 +1460,7 @@
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
                                                     WrapInBrackets="False"
-                                                    ToolTip="{x:Static languages:Tooltips.DotNetInsertToolTipColumn}"
+                                                    ToolTip="{Binding Path=Value}"
                                                     Text="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>

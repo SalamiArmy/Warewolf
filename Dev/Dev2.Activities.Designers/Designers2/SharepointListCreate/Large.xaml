@@ -154,7 +154,7 @@
                                                             MaxHeight="52"
                                                             Margin="0,0,1,1"
                                                             TextWrapping="Wrap"
-                                                            ToolTip="{x:Static languages:Tooltips.SharepointToolTipToVariable}"
+                                                            ToolTip="{Binding VariableName}"
                                                             Text="{Binding VariableName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                             Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                         <i:Interaction.Behaviors>
@@ -250,7 +250,7 @@
                                     AllowUserInsertLine="False"
                                     Text="{Binding ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                    ToolTip="{x:Static languages:Tooltips.SharepointInsertToolTipResult}"
+                                    ToolTip="{Binding ModelItem.Result}"
                                     attachedProperties:FocusSetter.IsFocused="{Binding IsResultFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Result_AutoID}">
                 <i:Interaction.Behaviors>

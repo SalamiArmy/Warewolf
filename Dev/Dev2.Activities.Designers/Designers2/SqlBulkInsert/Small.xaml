@@ -132,7 +132,7 @@
                                                     Margin="0,0,1,1"
                                                     TextWrapping="Wrap"
                                                     WrapInBrackets="False"
-                                                    ToolTip="{x:Static languages:Tooltips.SqlBulkInsertToolTipInputColumn}"
+                                                    ToolTip="{Binding InputColumn}"
                                                     Text="{Binding InputColumn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                     Style="{StaticResource ActivityMappingDataGridIntellisenseTextBoxStyle}">
                                 <i:Interaction.Behaviors>
@@ -194,7 +194,7 @@
                                 WrapInBrackets="True"
                                 Text="{Binding ModelItem.Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{x:Static languages:Tooltips.SqlBulkInsertToolTipResult}"
+                                ToolTip="{Binding ModelItem.Result}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Result_AutoID}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.SQLBulkInsertHelpResult}" DataContext="{Binding}" />

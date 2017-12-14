@@ -116,7 +116,7 @@
                                 Margin="{StaticResource ControlBorderTop}"
                                 Text="{Binding ModelItem.DeleteCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
-                                ToolTip="{x:Static languages:Tooltips.SharepointDelteToolTipResult}"
+                                ToolTip="{Binding ModelItem.DeleteCount}"
                                 AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_Result_AutoID}">
             <i:Interaction.Behaviors>
                 <core1:HelpSetter Text="{x:Static languages:HelpText.SharepointDeleteHelpResult}" DataContext="{Binding}" />
