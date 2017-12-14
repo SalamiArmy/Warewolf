@@ -22,6 +22,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         Mock<ICommand> _deployCommandMock;
         AuthorizeCommand _saveCommand;
         AuthorizeCommand _openSchedulerCommand;
+        AuthorizeCommand _openSearchCommand;
         AuthorizeCommand _openSettingsCommand;
         AuthorizeCommand _executeServiceCommand;
         Mock<ICommand> _startPageCommandMock;

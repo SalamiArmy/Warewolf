@@ -1006,6 +1006,36 @@ namespace Dev2.Studio.ViewModels
             }
         }
 
+        public void OpenSelectedTest(Guid resourceId, string testName)
+        {
+            var environmentModel = ServerRepository.Get(ActiveServer.EnvironmentID);
+            if (environmentModel != null)
+            {
+                var contextualResourceModel = environmentModel.ResourceRepository.LoadContextualResourceModel(resourceId);
+
+                var workSurfaceKey = WorkSurfaceKeyFactory.CreateKey(WorkSurfaceContext.ServiceTestsViewer);
+                if (contextualResourceModel != null)
+                {
+                    workSurfaceKey.EnvironmentID = contextualResourceModel.Environment.EnvironmentID;
+                    workSurfaceKey.ResourceID = contextualResourceModel.ID;
+                    workSurfaceKey.ServerID = contextualResourceModel.ServerID;
+
+                    var loadTests = environmentModel.ResourceRepository.LoadResourceTests(resourceId);
+                    var selectedTest = loadTests.FirstOrDefault(model => model.TestName.ToLower().Contains(testName.ToLower()));
+
+                    if (selectedTest != null)
+                    {
+                        var workflow = new WorkflowDesignerViewModel(contextualResourceModel);
+                        var testViewModel = new ServiceTestViewModel(contextualResourceModel, new AsyncWorker(), EventPublisher, new ExternalProcessExecutor(), workflow);
+
+                        var serviceTestModel = testViewModel.ToServiceTestModel(selectedTest);
+                        _worksurfaceContextManager.ViewSelectedTestForService(contextualResourceModel, serviceTestModel, testViewModel, workSurfaceKey);
+                        testViewModel.SelectedServiceTest = serviceTestModel;
+                    }
+                }
+            }
+        }
+
         public void RunAllTests(string ResourcePath, Guid resourceId)
         {
             var environmentModel = ServerRepository.Get(ActiveServer.EnvironmentID);
