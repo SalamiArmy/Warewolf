@@ -62,14 +62,17 @@ namespace Dev2.Activities.Specs.Deploy
             Assert.AreEqual(p0, loadContextualResourceModel.DisplayName, "Expected Resource to be " + p0 + " on load for ci-remote");
         }
 
-        [Given(@"I select resource ""(.*)"" from source server")]
-        public void GivenISelectResourceFromSourceServer(string p0)
-        {
-            var loaclHost = ScenarioContext.Current.Get<IServer>("sourceServer");
-            var loadContextualResourceModel = loaclHost.ResourceRepository.LoadContextualResourceModel(_resourceId);
-            Assert.IsNotNull(loadContextualResourceModel, p0 + "does not exist on the local machine " + Environment.MachineName);
-            ScenarioContext.Current.Add("localResource", loadContextualResourceModel);
-        }
+        //[Given(@"I select resource ""(.*)"" from source server")]
+        //[When(@"I select resource ""(.*)"" from source server")]
+        //[Then(@"I select resource ""(.*)"" from source server")]
+        //public void GivenISelectResourceFromSourceServer(string workflowName)
+        //{
+        //    //TryGetValue(workflowName, out IContextualResourceModel resourceModel);
+        //    var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");            
+        //    var loadContextualResourceModel = localhost.ResourceRepository.LoadContextualResourceModel(_resourceId);
+        //    Assert.IsNotNull(loadContextualResourceModel, workflowName + "does not exist on the local machine " + Environment.MachineName);
+        //    ScenarioContext.Current.Add("localResource", loadContextualResourceModel);
+        //}
 
         [Given(@"And the localhost resource is ""(.*)""")]
         public void GivenAndTheLocalhostResourceIs(string p0)
@@ -80,20 +83,7 @@ namespace Dev2.Activities.Specs.Deploy
             Assert.AreEqual(p0, loadContextualResourceModel.ResourceName, "Expected Resource to be " + p0 + " on load for localhost");
         }
 
-        [When(@"I Deploy resource to remote")]
-        public void WhenIDeployResourceToRemote()
-        {
-            var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
-            var remoteServer = ScenarioContext.Current.Get<IServer>("destinationServer");
-            var destConnection = new Connection
-            {
-                Address = remoteServer.Connection.AppServerUri.ToString(),
-                AuthenticationType = remoteServer.Connection.AuthenticationType,
-                UserName = remoteServer.Connection.UserName,
-                Password = remoteServer.Connection.Password
-            };
-            localhost.UpdateRepository.Deploy(new List<Guid>() { _resourceId }, false, destConnection);
-        }
+       
 
         [Given(@"I reload the destination resources")]
         [When(@"I reload the destination resources")]
@@ -104,7 +94,14 @@ namespace Dev2.Activities.Specs.Deploy
             var loadContextualResourceModel = remoteServer.ResourceRepository.LoadContextualResourceModel(_resourceId);
             ScenarioContext.Current["serverResource"] = loadContextualResourceModel;
         }
-
+        [Given(@"I reload the source resources")]
+        [When(@"I reload the source resources")]
+        [Then(@"I reload the source resources")]
+        public void WhenIReloadTheSourceResources()
+        {
+            var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
+            localhost.ResourceRepository.ForceLoad();
+        }
 
         [Then(@"the destination resource is ""(.*)""")]
         [Given(@"the destination resource is ""(.*)""")]

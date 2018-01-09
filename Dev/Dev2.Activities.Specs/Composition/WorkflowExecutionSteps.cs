@@ -32,7 +32,7 @@ using Dev2.Activities.Scripting;
 using Dev2.Activities.RabbitMQ.Publish;
 using Dev2.Activities.SelectAndApply;
 using Dev2.Activities.Sharepoint;
-using Dev2.Activities.Specs.BaseTypes;            
+using Dev2.Activities.Specs.BaseTypes;
 using Dev2.Common.Common;
 using Dev2.Common.ExtMethods;
 using Dev2.Common.Interfaces.Core.DynamicServices;
@@ -86,7 +86,8 @@ using TestingDotnetDllCascading;
 using Warewolf.Sharepoint;
 using Dev2.Studio.ViewModels;
 using Caliburn.Micro;
-using Dev2.Studio.Core.Helpers;      
+using Dev2.Studio.Core.Helpers;
+using Dev2.Common;
 
 namespace Dev2.Activities.Specs.Composition
 {
@@ -166,7 +167,7 @@ namespace Dev2.Activities.Specs.Composition
         {
             TryGetValue("activityList", out Dictionary<string, Activity> activityList);
             TryGetValue("parentWorkflowName", out string parentWorkflowName);
-            var debugStates = Get<List<IDebugState>>("debugStates").ToList();            
+            var debugStates = Get<List<IDebugState>>("debugStates").ToList();
             if (hasError == "AN")
             {
                 var hasErrorState = debugStates.FirstOrDefault(state => state.HasError);
@@ -251,15 +252,17 @@ namespace Dev2.Activities.Specs.Composition
         [Given(@"I have a workflow ""(.*)""")]
         public void GivenIHaveAWorkflow(string workflowName)
         {
+            var resourceId = Guid.NewGuid();
             var environmentModel = LocalEnvModel;
             EnsureEnvironmentConnected(environmentModel, EnvironmentConnectionTimeout);
-            var resourceModel = new ResourceModel(environmentModel) { Category = "Acceptance Tests\\" + workflowName, ResourceName = workflowName, ID = Guid.NewGuid(), ResourceType = ResourceType.WorkflowService };
+            var resourceModel = new ResourceModel(environmentModel) { Category = "Acceptance Tests\\" + workflowName, ResourceName = workflowName, ID = resourceId, ResourceType = ResourceType.WorkflowService };
 
             environmentModel.ResourceRepository.Add(resourceModel);
             _debugWriterSubscriptionService = new SubscriptionService<DebugWriterWriteMessage>(environmentModel.Connection.ServerEvents);
 
             _debugWriterSubscriptionService.Subscribe(msg => Append(msg.DebugState));
             Add(workflowName, resourceModel);
+            Add("resourceId", resourceId);
             Add("parentWorkflowName", workflowName);
             Add("environment", environmentModel);
             Add("resourceRepo", environmentModel.ResourceRepository);
@@ -275,7 +278,7 @@ namespace Dev2.Activities.Specs.Composition
                 {
                     PerformanceCounterCategory.Delete("Warewolf");
                 }
-                
+
                 catch { }
                 var register = new WarewolfPerformanceCounterRegister(new List<IPerformanceCounter>
                                                             {   new WarewolfCurrentExecutionsPerformanceCounter(),
@@ -1208,7 +1211,7 @@ namespace Dev2.Activities.Specs.Composition
             return stringBuilder.ToString();
         }
 
-        
+
         public double GetServerCPUUsage()
         {
             var processorTimeCounter = new PerformanceCounter(
@@ -1349,7 +1352,7 @@ namespace Dev2.Activities.Specs.Composition
                 {
                     throw new InvalidOperationException("SpecFlow broke.");
                 }
-           }
+            }
 
             var toolSpecificDebug =
                 debugStates.Where(ds => ds.ParentID.GetValueOrDefault() == workflowId && ds.DisplayName.Equals(toolName)).ToList();
@@ -1372,7 +1375,7 @@ namespace Dev2.Activities.Specs.Composition
             Assert.IsNotNull(debugItemResults);
             Assert.IsTrue(debugItemResults.Any(result => result.Value.Contains("{\r\n  \"Name\": \"Bob\"\r\n}")));
         }
-    
+
         [Given(@"""(.*)"" contains an SQL Bulk Insert ""(.*)"" using database ""(.*)"" and table ""(.*)"" and KeepIdentity set ""(.*)"" and Result set ""(.*)"" for testing as")]
         [Given(@"""(.*)"" contains an SQL Bulk Insert ""(.*)"" using database ""(.*)"" and table ""(.*)"" and KeepIdentity set ""(.*)"" and Result set ""(.*)"" as")]
         public void GivenContainsAnSQLBulkInsertUsingDatabaseAndTableAndKeepIdentitySetAndResultSetForTestingAs(string workflowName, string activityName, string dbSrcName, string tableName, string keepIdentity, string result, Table table)
@@ -1411,9 +1414,9 @@ namespace Dev2.Activities.Specs.Composition
             var mappings = new List<DataColumnMapping>();
 
             var pos = 1;
-            
+
             foreach (var row in table.Rows)
-            
+
             {
                 var outputColumn = row["Column"];
                 var inputColumn = row["Mapping"];
@@ -2244,7 +2247,7 @@ namespace Dev2.Activities.Specs.Composition
 
 
         [Given(@"""(.*)"" contains an Delete ""(.*)"" as")]
-        
+
         public void GivenContainsAnDeleteAs(string parentName, string activityName, Table table)
 
         {
@@ -2287,7 +2290,7 @@ namespace Dev2.Activities.Specs.Composition
 
 
         [Given(@"""(.*)"" contains workflow ""(.*)"" with mapping as")]
-        
+
         public void GivenContainsWorkflowWithMappingAs(string forEachName, string nestedWF, Table mappings)
 
         {
@@ -2306,9 +2309,9 @@ namespace Dev2.Activities.Specs.Composition
             }
             if (resource == null)
             {
-                
+
                 throw new ArgumentNullException("resource");
-                
+
             }
             var dataMappingViewModel = GetDataMappingViewModel(resource, mappings);
 
@@ -2918,13 +2921,13 @@ namespace Dev2.Activities.Specs.Composition
                     throw new Exception(errorMessage);
                 }
                 dsfEnhancedDotNetDllActivity.OutputDescription = responseService.Description;
-                
+
                 var outputMapping = _recordsetList.SelectMany(recordset => recordset.Fields, (recordset, recordsetField) =>
                 {
                     var serviceOutputMapping = new ServiceOutputMapping(recordsetField.Name, recordsetField.Alias, recordset.Name) { Path = recordsetField.Path };
                     return serviceOutputMapping;
                 }).Cast<IServiceOutputMapping>().ToList();
-                
+
                 dsfEnhancedDotNetDllActivity.Outputs = outputMapping;
             }
 
@@ -3051,7 +3054,7 @@ namespace Dev2.Activities.Specs.Composition
             ExecuteWorkflow(resourceModel);
         }
 
-       [Then(@"I set logging to ""(.*)""")]
+        [Then(@"I set logging to ""(.*)""")]
         public void ThenISetLoggingTo(string logLevel)
         {
             var allowedLogLevels = new[] { "DEBUG", "NONE" };
@@ -3650,8 +3653,9 @@ namespace Dev2.Activities.Specs.Composition
             var dsfConsumeRabbitMqActivity = new DsfConsumeRabbitMQActivity
             {
                 RabbitMQSourceResourceId = ConfigurationManager.AppSettings["testRabbitMQSource"].ToGuid()
-                
-                ,Response = variable
+
+                ,
+                Response = variable
                 ,
                 DisplayName = activityName
             };
@@ -3848,7 +3852,7 @@ namespace Dev2.Activities.Specs.Composition
             var testResults = dbServiceModel.TestService(databaseService);
 
             var mappings = new List<IServiceOutputMapping>();
-            
+
             if (testResults?.Columns.Count > 1)
             {
                 var recordsetName = string.IsNullOrEmpty(testResults.TableName) ? serviceName.Replace(".", "_") : testResults.TableName;
@@ -3960,7 +3964,7 @@ namespace Dev2.Activities.Specs.Composition
             };
 
             var mappings = new List<IServiceOutputMapping>();
-            
+
             if (testResults?.Columns.Count > 1)
             {
                 var recordsetName = string.IsNullOrEmpty(testResults.TableName) ? serviceName.Replace(".", "_") : testResults.TableName;
@@ -4059,7 +4063,7 @@ namespace Dev2.Activities.Specs.Composition
             };
 
             var mappings = new List<IServiceOutputMapping>();
-            
+
             if (testResults?.Columns.Count > 1)
             {
                 var recordsetName = string.IsNullOrEmpty(testResults.TableName) ? serviceName.Replace(".", "_") : testResults.TableName;
@@ -4137,7 +4141,7 @@ namespace Dev2.Activities.Specs.Composition
             };
 
             var mappings = new List<IServiceOutputMapping>();
-            
+
             if (testResults?.Columns.Count > 1)
             {
                 var recordsetName = string.IsNullOrEmpty(testResults.TableName) ? serviceName.Replace(".", "_") : testResults.TableName;
@@ -4249,15 +4253,15 @@ namespace Dev2.Activities.Specs.Composition
         }
         [When(@"workflow ""(.*)"" merge is opened")]
         public void WhenWorkflowMergeIsOpened(string mergeWfName)
-        {            
+        {
             var environmentModel = ServerRepository.Instance.Source;
             var serverRepository = new Mock<IServerRepository>();
             serverRepository.Setup(p => p.ActiveServer).Returns(new Mock<IServer>().Object);
             serverRepository.Setup(p => p.Source).Returns(new Mock<IServer>().Object);
-            var evntArg  = new Mock<IEventAggregator>().Object;
+            var evntArg = new Mock<IEventAggregator>().Object;
             var versionChecker = new Mock<IVersionChecker>().Object;
             var explorer = new Mock<IExplorerViewModel>().Object;
-            var viewFact = new Mock<IViewFactory>().Object;            
+            var viewFact = new Mock<IViewFactory>().Object;
             var versions = _scenarioContext["Versions"] as IList<IExplorerItem>;
             var repo = _scenarioContext.Get<IResourceRepository>("resourceRepo") as ResourceRepository;
             var localResource = repo.LoadContextualResourceModel(versions.First().ResourceId);
@@ -4265,7 +4269,51 @@ namespace Dev2.Activities.Specs.Composition
             var vm = new Mock<IMergeWorkflowViewModel>();
             var wdvm = new Mock<IWorkflowDesignerViewModel>();
             vm.Setup(p => p.WorkflowDesignerViewModel).Returns(wdvm.Object);
-            
+
+        }
+
+        [Given(@"I select and deploy resource from source server")]
+        [When(@"I select and deploy resource from source server")]
+        [Then(@"I select and deploy resource from source server")]
+        public void GivenISelectResourceFromSourceServer() 
+        {
+            TryGetValue("resourceId", out Guid resourceId);
+            var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
+            var remoteServer = ScenarioContext.Current.Get<IServer>("destinationServer");
+            var destConnection = new Connection
+            {
+                Address = remoteServer.Connection.AppServerUri.ToString(),
+                AuthenticationType = remoteServer.Connection.AuthenticationType,
+                UserName = remoteServer.Connection.UserName,
+                Password = remoteServer.Connection.Password
+            };
+            localhost.UpdateRepository.Deploy(new List<Guid> { resourceId }, false, destConnection);
+        }
+
+        [When(@"I rename ""(.*)"" to ""(.*)"" and re deploy")]
+        public void WhenIRenameToAndReDeploy(string workflowName, string newWorkflowName)
+        {
+            TryGetValue(workflowName, out IContextualResourceModel resourceModel);
+            var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
+            resourceModel.Environment.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, newWorkflowName);
+        }
+
+
+        [Then(@"Destination server has ""(.*)""")]
+        public void ThenDestinationServerHas(string workflowName)
+        {
+            TryGetValue("resourceId", out Guid resourceId);
+            var destinationServer = ScenarioContext.Current.Get<IServer>("destinationServer");
+            var loadContextualResourceModel = destinationServer.ResourceRepository.LoadContextualResourceModel(resourceId);
+            ScenarioContext.Current["serverResource"] = loadContextualResourceModel;
+            Assert.AreEqual(workflowName, loadContextualResourceModel.DisplayName, "Failed to Update " + loadContextualResourceModel.DisplayName + " after deploy");
+            Assert.AreEqual(workflowName, loadContextualResourceModel.ResourceName, "Failed to Update " + loadContextualResourceModel.ResourceName + " after deploy");
+
+            destinationServer.ResourceRepository.DeleteResource(loadContextualResourceModel);
+
+            var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
+            var localResource = localhost.ResourceRepository.LoadContextualResourceModel(resourceId);
+            localhost.ResourceRepository.DeleteResource(localResource);            
         }
     }
 }
