@@ -1021,6 +1021,13 @@ namespace Dev2.Activities.Specs.Composition
         [When(@"""(.*)"" is executed")]
         public void WhenIsExecuted(string parentName)
         {
+            var resourceModel = SaveWorkflow(parentName);
+            ExecuteWorkflow(resourceModel);
+        }
+
+        [When(@"""(.*)"" is Saved")]
+        private IContextualResourceModel SaveWorkflow(string parentName)
+        {
             TryGetValue("parentWorkflowName", out string parentWorkflowName);
             var workflowName = string.IsNullOrEmpty(parentWorkflowName) ? parentName : parentWorkflowName;
 
@@ -1061,10 +1068,8 @@ namespace Dev2.Activities.Specs.Composition
 
             repository.Save(resourceModel);
             repository.SaveToServer(resourceModel);
-
-            ExecuteWorkflow(resourceModel);
+            return resourceModel;
         }
-
 
         [Given(@"the ""(.*)"" in WorkFlow ""(.*)"" debug inputs as")]
         [When(@"the ""(.*)"" in WorkFlow ""(.*)"" debug inputs as")]
@@ -4298,6 +4303,45 @@ namespace Dev2.Activities.Specs.Composition
             localhost.UpdateRepository.Deploy(new List<Guid> { resourceId }, false, destConnection);
         }
 
+        [Given(@"I select and deploy resource from remote server")]
+        [When(@"I select and deploy resource from remote server")]
+        [Then(@"I select and deploy resource from remote server")]
+        public void ThenISelectAndDeployResourceFromRemoteServer()
+        {
+            TryGetValue("resourceId", out Guid resourceId);
+            var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
+            var remoteServer = ScenarioContext.Current.Get<IServer>("destinationServer");
+            var destConnection = new Connection
+            {
+                Address = localhost.Connection.AppServerUri.ToString(),
+                AuthenticationType = localhost.Connection.AuthenticationType,
+                UserName = localhost.Connection.UserName,
+                Password = localhost.Connection.Password
+            };
+            remoteServer.UpdateRepository.Deploy(new List<Guid> { resourceId }, false, destConnection);
+        }
+
+
+        [When(@"I rename ""(.*)"" from Remote to ""(.*)"" and re deploy to localhost")]
+        public void WhenIRenameFromRemoteToAndReDeployToLocalhost(string parentName, string newName)
+        {
+            TryGetValue("resourceId", out Guid resourceId);
+            var newWorkflowName = newName + "_" + resourceId.ToString().Substring(0, 8);
+            var someothername = newWorkflowName.Replace(parentName, newName);
+            Add("newName", newWorkflowName);
+            TryGetValue("parentWorkflowName", out string parentWorkflowName);
+
+            var workflowName = string.IsNullOrEmpty(parentWorkflowName) ? parentName : parentWorkflowName;
+            TryGetValue(workflowName, out IContextualResourceModel resourceModel);
+
+            var destinationServer = ScenarioContext.Current.Get<IServer>("destinationServer");
+            destinationServer.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, someothername);
+
+
+            var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
+            resourceModel.Environment.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, newWorkflowName);
+        }
+
         [When(@"I rename ""(.*)"" to ""(.*)"" and re deploy")]
         public void WhenIRenameToAndReDeploy(string parentName, string newName)
         {
@@ -4311,24 +4355,18 @@ namespace Dev2.Activities.Specs.Composition
             resourceModel.Environment.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, newWorkflowName);
         }
 
-
-        [Then(@"Destination server has new workflow name")]
-        public void ThenDestinationServerHas()
+        [Then(@"Local server has updated name")]
+        public void ThenLocalServerHasUpdatedName()
         {
             TryGetValue("resourceId", out Guid resourceId);
-            TryGetValue("newName", out string newWorkflowName);
+            TryGetValue("parentWorkflowName", out string originalName);
 
-            var destinationServer = ScenarioContext.Current.Get<IServer>("destinationServer");
-            var loadContextualResourceModel = destinationServer.ResourceRepository.LoadContextualResourceModel(resourceId);
-            ScenarioContext.Current["serverResource"] = loadContextualResourceModel;
-
-            destinationServer.ResourceRepository.DeleteResource(loadContextualResourceModel);
             var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
             var localResource = localhost.ResourceRepository.LoadContextualResourceModel(resourceId);
             localhost.ResourceRepository.DeleteResource(localResource);
 
-            Assert.AreEqual(newWorkflowName, loadContextualResourceModel.DisplayName, "Failed to Update " + loadContextualResourceModel.DisplayName + " after deploy");
-            Assert.AreEqual(newWorkflowName, loadContextualResourceModel.ResourceName, "Failed to Update " + loadContextualResourceModel.ResourceName + " after deploy");            
+            Assert.AreEqual(originalName, localResource.DisplayName, "Failed to Update " + localResource.DisplayName + " after deploy");
+            Assert.AreEqual(originalName, localResource.ResourceName, "Failed to Update " + localResource.ResourceName + " after deploy");
         }
     }
 }

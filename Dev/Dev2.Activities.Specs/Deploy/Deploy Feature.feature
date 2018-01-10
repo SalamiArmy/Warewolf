@@ -12,10 +12,8 @@ Scenario: Create and Deploy a renamed resource to localhost
 	| [[rec().a]] | yes   |
 	| [[rec().a]] | no    |
 	And "OriginalName" contains Count Record "CountRec" on "[[rec()]]" into "[[count]]"
-	When "OriginalName" is executed
+	When "OriginalName" is Saved
 	And I select and deploy resource from source server
 	When I rename "OriginalName" to "RenamedResource" and re deploy
-	And I reload the source resources
-	And I select and deploy resource from source server 
-	And I reload the destination resources
-	Then Destination server has new workflow name
+	Then I select and deploy resource from remote server
+	Then Local server has updated name
