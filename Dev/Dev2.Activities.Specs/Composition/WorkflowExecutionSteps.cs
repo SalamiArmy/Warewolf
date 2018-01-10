@@ -133,7 +133,7 @@ namespace Dev2.Activities.Specs.Composition
             CustomContainer.Register(mockshell.Object);
             _externalProcessExecutor = new SpecExternalProcessExecutor();
         }
-
+        
         [AfterScenario]
         public void CleanUp()
         {
@@ -253,17 +253,18 @@ namespace Dev2.Activities.Specs.Composition
         public void GivenIHaveAWorkflow(string workflowName)
         {
             var resourceId = Guid.NewGuid();
+            var resourceName = workflowName + "_" + resourceId.ToString().Substring(0, 8);
             var environmentModel = LocalEnvModel;
             EnsureEnvironmentConnected(environmentModel, EnvironmentConnectionTimeout);
-            var resourceModel = new ResourceModel(environmentModel) { Category = "Acceptance Tests\\" + workflowName, ResourceName = workflowName, ID = resourceId, ResourceType = ResourceType.WorkflowService };
+            var resourceModel = new ResourceModel(environmentModel) { Category = "" + resourceName, ResourceName = resourceName, ID = resourceId, ResourceType = ResourceType.WorkflowService };
 
             environmentModel.ResourceRepository.Add(resourceModel);
             _debugWriterSubscriptionService = new SubscriptionService<DebugWriterWriteMessage>(environmentModel.Connection.ServerEvents);
 
             _debugWriterSubscriptionService.Subscribe(msg => Append(msg.DebugState));
-            Add(workflowName, resourceModel);
+            Add(resourceName, resourceModel);
             Add("resourceId", resourceId);
-            Add("parentWorkflowName", workflowName);
+            Add("parentWorkflowName", resourceName);
             Add("environment", environmentModel);
             Add("resourceRepo", environmentModel.ResourceRepository);
             Add("debugStates", new List<IDebugState>());
@@ -1018,8 +1019,11 @@ namespace Dev2.Activities.Specs.Composition
         }
 
         [When(@"""(.*)"" is executed")]
-        public void WhenIsExecuted(string workflowName)
+        public void WhenIsExecuted(string parentName)
         {
+            TryGetValue("parentWorkflowName", out string parentWorkflowName);
+            var workflowName = string.IsNullOrEmpty(parentWorkflowName) ? parentName : parentWorkflowName;
+
             Get<List<IDebugState>>("debugStates").Clear();
             BuildDataList();
 
@@ -2615,6 +2619,8 @@ namespace Dev2.Activities.Specs.Composition
         [Then(@"""(.*)"" contains an Assign ""(.*)"" as")]
         public void ThenContainsAnAssignAs(string parentName, string assignName, Table table)
         {
+            TryGetValue("parentWorkflowName", out string parentWorkflowName);
+            var workflowName = string.IsNullOrEmpty(parentWorkflowName) ? parentName : parentWorkflowName;
             var assignActivity = new DsfMultiAssignActivity { DisplayName = assignName };
 
             foreach (var tableRow in table.Rows)
@@ -2642,7 +2648,7 @@ namespace Dev2.Activities.Specs.Composition
 
                 assignActivity.FieldsCollection.Add(new ActivityDTO(variable, value, 1, true));
             }
-            _commonSteps.AddActivityToActivityList(parentName, assignName, assignActivity);
+            _commonSteps.AddActivityToActivityList(workflowName, assignName, assignActivity);
         }
 
         [Given(@"""(.*)"" contains a recordset name randomizing Assign ""(.*)"" as")]
@@ -3173,11 +3179,13 @@ namespace Dev2.Activities.Specs.Composition
         [Given(@"""(.*)"" contains Count Record ""(.*)"" on ""(.*)"" into ""(.*)""")]
         public void GivenCountOnInto(string parentName, string activityName, string recordSet, string result)
         {
+            TryGetValue("parentWorkflowName", out string parentWorkflowName);
+            var workflowName = string.IsNullOrEmpty(parentWorkflowName) ? parentName : parentWorkflowName;
             _commonSteps.AddVariableToVariableList(result);
 
             var countRecordsetNullHandlerActivity = new DsfCountRecordsetNullHandlerActivity { CountNumber = result, RecordsetName = recordSet, DisplayName = activityName };
 
-            _commonSteps.AddActivityToActivityList(parentName, activityName, countRecordsetNullHandlerActivity);
+            _commonSteps.AddActivityToActivityList(workflowName, activityName, countRecordsetNullHandlerActivity);
         }
 
         [Given(@"""(.*)"" contains Delete ""(.*)"" as")]
@@ -4275,7 +4283,7 @@ namespace Dev2.Activities.Specs.Composition
         [Given(@"I select and deploy resource from source server")]
         [When(@"I select and deploy resource from source server")]
         [Then(@"I select and deploy resource from source server")]
-        public void GivenISelectResourceFromSourceServer() 
+        public void GivenISelectResourceFromSourceServer()
         {
             TryGetValue("resourceId", out Guid resourceId);
             var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
@@ -4291,29 +4299,36 @@ namespace Dev2.Activities.Specs.Composition
         }
 
         [When(@"I rename ""(.*)"" to ""(.*)"" and re deploy")]
-        public void WhenIRenameToAndReDeploy(string workflowName, string newWorkflowName)
+        public void WhenIRenameToAndReDeploy(string parentName, string newName)
         {
+            TryGetValue("resourceId", out Guid resourceId);
+            var newWorkflowName = newName + "_" + resourceId.ToString().Substring(0, 8);
+            Add("newName", newWorkflowName);
+            TryGetValue("parentWorkflowName", out string parentWorkflowName);
+            var workflowName = string.IsNullOrEmpty(parentWorkflowName) ? parentName : parentWorkflowName;
             TryGetValue(workflowName, out IContextualResourceModel resourceModel);
             var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
             resourceModel.Environment.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, newWorkflowName);
         }
 
 
-        [Then(@"Destination server has ""(.*)""")]
-        public void ThenDestinationServerHas(string workflowName)
+        [Then(@"Destination server has new workflow name")]
+        public void ThenDestinationServerHas()
         {
             TryGetValue("resourceId", out Guid resourceId);
+            TryGetValue("newName", out string newWorkflowName);
+
             var destinationServer = ScenarioContext.Current.Get<IServer>("destinationServer");
             var loadContextualResourceModel = destinationServer.ResourceRepository.LoadContextualResourceModel(resourceId);
             ScenarioContext.Current["serverResource"] = loadContextualResourceModel;
-            Assert.AreEqual(workflowName, loadContextualResourceModel.DisplayName, "Failed to Update " + loadContextualResourceModel.DisplayName + " after deploy");
-            Assert.AreEqual(workflowName, loadContextualResourceModel.ResourceName, "Failed to Update " + loadContextualResourceModel.ResourceName + " after deploy");
 
             destinationServer.ResourceRepository.DeleteResource(loadContextualResourceModel);
-
             var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
             var localResource = localhost.ResourceRepository.LoadContextualResourceModel(resourceId);
-            localhost.ResourceRepository.DeleteResource(localResource);            
+            localhost.ResourceRepository.DeleteResource(localResource);
+
+            Assert.AreEqual(newWorkflowName, loadContextualResourceModel.DisplayName, "Failed to Update " + loadContextualResourceModel.DisplayName + " after deploy");
+            Assert.AreEqual(newWorkflowName, loadContextualResourceModel.ResourceName, "Failed to Update " + loadContextualResourceModel.ResourceName + " after deploy");            
         }
     }
 }

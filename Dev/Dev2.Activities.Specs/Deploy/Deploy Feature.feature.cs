@@ -108,7 +108,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 20
  testRunner.And("I reload the destination resources", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 21
- testRunner.Then("Destination server has \"RenamedResource\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Destination server has new workflow name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

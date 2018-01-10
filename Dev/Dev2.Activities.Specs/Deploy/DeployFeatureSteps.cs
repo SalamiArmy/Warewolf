@@ -62,18 +62,6 @@ namespace Dev2.Activities.Specs.Deploy
             Assert.AreEqual(p0, loadContextualResourceModel.DisplayName, "Expected Resource to be " + p0 + " on load for ci-remote");
         }
 
-        //[Given(@"I select resource ""(.*)"" from source server")]
-        //[When(@"I select resource ""(.*)"" from source server")]
-        //[Then(@"I select resource ""(.*)"" from source server")]
-        //public void GivenISelectResourceFromSourceServer(string workflowName)
-        //{
-        //    //TryGetValue(workflowName, out IContextualResourceModel resourceModel);
-        //    var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");            
-        //    var loadContextualResourceModel = localhost.ResourceRepository.LoadContextualResourceModel(_resourceId);
-        //    Assert.IsNotNull(loadContextualResourceModel, workflowName + "does not exist on the local machine " + Environment.MachineName);
-        //    ScenarioContext.Current.Add("localResource", loadContextualResourceModel);
-        //}
-
         [Given(@"And the localhost resource is ""(.*)""")]
         public void GivenAndTheLocalhostResourceIs(string p0)
         {

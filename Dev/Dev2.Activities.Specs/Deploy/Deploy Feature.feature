@@ -18,4 +18,4 @@ Scenario: Create and Deploy a renamed resource to localhost
 	And I reload the source resources
 	And I select and deploy resource from source server 
 	And I reload the destination resources
-	Then Destination server has "RenamedResource"	
+	Then Destination server has new workflow name
