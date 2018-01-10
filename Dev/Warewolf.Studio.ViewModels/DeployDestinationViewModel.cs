@@ -15,14 +15,27 @@ namespace Warewolf.Studio.ViewModels
         public IDeployStatsViewerViewModel StatsArea { private get; set; }
 
         public DeployDestinationViewModel(IShellViewModel shellViewModel, IEventAggregator aggregator)
-            : base(shellViewModel, aggregator,false)
+            : base(shellViewModel, aggregator, false)
         {
             ConnectControlViewModel = new ConnectControlViewModel(shellViewModel.LocalhostServer, aggregator, shellViewModel.ExplorerViewModel.ConnectControlViewModel.Servers);
             ConnectControlViewModel.ServerConnected += async (sender, server) => { await ServerConnectedAsync(sender, server).ConfigureAwait(true); };
             ConnectControlViewModel.ServerDisconnected += ServerDisconnected;
             SelectedEnvironment = _environments.FirstOrDefault();
+            ConnectControlViewModel.SelectedEnvironmentChanged += ConnectControlSelectedExplorerEnvironmentChanged;
             RefreshCommand = new Microsoft.Practices.Prism.Commands.DelegateCommand(() => RefreshEnvironment(SelectedEnvironment.ResourceId));
             ValidateEnvironments(shellViewModel);
+        }
+
+        void ConnectControlSelectedExplorerEnvironmentChanged(object sender, Guid environmentId)
+        {
+            SelectedEnvironment = _environments.FirstOrDefault(env => env.ResourceId == environmentId);
+            if (SelectedEnvironment == null)
+            {
+                var environment = CreateEnvironmentViewModel(sender, environmentId).ContinueWith(a =>
+                {
+                    SelectedEnvironment = _environments.FirstOrDefault(env => env.ResourceId == environmentId);
+                });
+            }
         }
 
         void ValidateEnvironments(IShellViewModel shellViewModel)
@@ -74,7 +87,7 @@ namespace Warewolf.Studio.ViewModels
             SelectedEnvironment = environmentViewModel;
             if (ServerStateChanged != null)
             {
-                if(SelectedEnvironment != null)
+                if (SelectedEnvironment != null)
                 {
                     ServerStateChanged(this, SelectedEnvironment.Server);
                 }
@@ -93,7 +106,7 @@ namespace Warewolf.Studio.ViewModels
             set
             {
                 _deployTests = value;
-                OnPropertyChanged(()=> DeployTests);
+                OnPropertyChanged(() => DeployTests);
             }
         }
     }
