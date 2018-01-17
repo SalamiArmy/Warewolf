@@ -26,6 +26,17 @@ namespace Dev2.Integration.Tests.Sql
         }
 
         [TestMethod]
+        public void RunWorkflowInContainer()
+        {
+            using (var client = new WebClient())
+            {
+                client.Credentials = new NetworkCredential("WarewolfUser", "Dev2@dmin123");
+                var reponseData = client.DownloadString(string.Format("{0}{1}", "http://localwarewolfservercontainer:3142/services/", "Hello%20World?Name=WarewolfUser"));
+                Assert.IsTrue(reponseData.Contains("Hello WarewolfUser."), "Local Warewolf container is not running correctly.");
+            }
+        }
+
+        [TestMethod]
         public void Warewolf_Community_HasUsers()
         {
             using (var client = new WebClient())

@@ -26,7 +26,8 @@ Param(
   [switch]$RunWarewolfServiceTests,
   [string]$MergeDotCoverSnapshotsInDirectory="",
   [switch]${Startmy.warewolf.io},
-  [string]$sendRecordedMediaForPassedTestCase="false"
+  [string]$sendRecordedMediaForPassedTestCase="false",
+  [switch]$StartContainer
 )
 $JobSpecs = @{}
 #Unit Tests
@@ -638,6 +639,21 @@ function Start-Server([string]$ServerPath,[string]$ResourcesType) {
     }
 }
 
+function Start-Container {
+    if ($ServerPath -eq "" -or !(Test-Path $ServerPath)) {
+        $ServerPath = Find-Warewolf-Server-Exe
+    }
+    $ServerDirectory = (Get-Item $ServerPath).Directory.FullName
+    Write-Host Starting container from $ServerDirectory
+    if (!(Test-Path "$ServerDirectory\Server.zip")) {
+        Compress-Archive "$ServerDirectory\*" "$ServerDirectory\Server.zip"
+    }
+    docker network create "My Container Network"
+    docker container rm warewolfserver
+    docker build -t warewolfserver "$ServerDirectory"
+    docker run --name warewolfserver --hostname localwarewolfservercontainer --network "My Container Network" -d warewolfserver ping -t 4.2.2.3
+}
+
 function Start-my.warewolf.io {
     if ($TestsPath.EndsWith("\")) {
         $WebsPath = $TestsPath + "_PublishedWebsites\Dev2.Web"
@@ -646,7 +662,6 @@ function Start-my.warewolf.io {
     }
     Write-Host Starting my.warewolf.io from $WebsPath
     if (!(Test-Path $WebsPath)) {
-        Write-Warning "Webs not found at $WebsPath. Attempting to find the webs that was deployed to the server directory."
         if ($ServerPath -eq "" -or !(Test-Path $ServerPath)) {
             $ServerPath = Find-Warewolf-Server-Exe
         }
@@ -1053,6 +1068,7 @@ if ($TotalNumberOfJobsToRun -gt 0) {
             if ($StartServer.IsPresent -or $StartStudio.IsPresent -or ${Startmy.warewolf.io}.IsPresent) {
                 Start-my.warewolf.io
                 if ($StartServer.IsPresent -or $StartStudio.IsPresent) {
+                    Start-Container
                     Start-Server $ServerPath $ResourcesType
                     if ($StartStudio.IsPresent) {
                         Start-Studio
@@ -1371,6 +1387,7 @@ if (!$RunAllJobs.IsPresent -and !$Cleanup.IsPresent -and !$AssemblyFileVersionsT
     Start-my.warewolf.io
     if (!${Startmy.warewolf.io}.IsPresent) {
         $ServerPath,$ResourcesType = Install-Server $ServerPath $ResourcesType
+        Start-Container
         Start-Server $ServerPath $ResourcesType
         if (!$StartServer.IsPresent -and !${Startmy.warewolf.io}.IsPresent) {
             Start-Studio

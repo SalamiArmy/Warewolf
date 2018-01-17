@@ -195,20 +195,6 @@ namespace Dev2
         void Run(bool interactiveMode)
         {
             Tracker.StartServer();
-
-            // ** Perform Moq Installer Actions For Development ( DEBUG config ) **
-#if DEBUG
-            try
-            {
-                var miq = MoqInstallerActionFactory.CreateInstallerActions();
-                miq.ExecuteMoqInstallerActions();
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Ensure you are running as an Administrator. Mocking installer actions for DEBUG config failed to create Warewolf Administrators group and/or to add current user to it [ " + e.Message + " ]", e);
-            }
-#endif
-
             try
             {
                 SetWorkingDirectory();
