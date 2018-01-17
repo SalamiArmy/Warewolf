@@ -645,9 +645,6 @@ function Start-Container {
     }
     $ServerDirectory = (Get-Item $ServerPath).Directory.FullName
     Write-Host Starting container from $ServerDirectory
-    if (!(Test-Path "$ServerDirectory\Server.zip")) {
-        Compress-Archive "$ServerDirectory\*" "$ServerDirectory\Server.zip"
-    }
     docker network create "My Container Network"
     docker container rm warewolfserver
     docker build -t warewolfserver "$ServerDirectory"
