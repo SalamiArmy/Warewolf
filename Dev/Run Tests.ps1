@@ -26,8 +26,7 @@ Param(
   [switch]$RunWarewolfServiceTests,
   [string]$MergeDotCoverSnapshotsInDirectory="",
   [switch]${Startmy.warewolf.io},
-  [string]$sendRecordedMediaForPassedTestCase="false",
-  [switch]$StartContainer
+  [string]$sendRecordedMediaForPassedTestCase="false"
 )
 $JobSpecs = @{}
 #Unit Tests
@@ -289,6 +288,13 @@ function Cleanup-ServerStudio([bool]$Force=$true) {
     taskkill /im "operadriver.exe" /f  2>&1 | out-null
     taskkill /im "geckodriver.exe" /f  2>&1 | out-null
     taskkill /im "IEDriverServer.exe" /f  2>&1 | out-null
+
+    #Stop Server Container
+    docker exec warewolfserver sc stop "Warewolf Server"
+    $ServerContainerLogText = docker exec warewolfserver cmd /c type "C:\\ProgramData\\Warewolf\\Server Log\\warewolf-server.log"    
+    $ServerContainerLogText | Out-File -LiteralPath "$TestsResultsPath\ServerContainer.log" -Encoding utf8 -Force
+    docker stop warewolfserver
+    docker container rm -f warewolfserver
 
     #Delete Certain Studio and Server Resources
     $ToClean = "$env:LOCALAPPDATA\Warewolf\DebugData\PersistSettings.dat",
@@ -645,10 +651,13 @@ function Start-Container {
     }
     $ServerDirectory = (Get-Item $ServerPath).Directory.FullName
     Write-Host Starting container from $ServerDirectory
+    $ErrorActionPreference = 'silentlycontinue'
     docker network create "My Container Network"
-    docker container rm warewolfserver
+    docker container rm -f warewolfserver
+    $ErrorActionPreference = 'Continue'
     docker build -t warewolfserver "$ServerDirectory"
     docker run --name warewolfserver --hostname localwarewolfservercontainer --network "My Container Network" -d warewolfserver ping -t 4.2.2.3
+    Write-Host Server container has started.
 }
 
 function Start-my.warewolf.io {

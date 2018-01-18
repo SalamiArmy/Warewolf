@@ -22,32 +22,9 @@ namespace Dev2.Integration.Tests.Dev2.Application.Server.Tests.InternalServices
     [TestClass]
     public class FindResourceServiceTest
     {
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
         [TestMethod]
         public void ExecutionWithStar_ExpectedValidXML()
         {
-
             var path = "http://localhost:3142/services/" + "FindResourcesService?ResourceName=*&ResourceType=*&Roles=*";
 
             var result = TestHelper.PostDataToWebserver(path);
