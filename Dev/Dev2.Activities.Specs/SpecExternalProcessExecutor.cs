@@ -25,7 +25,6 @@ namespace Dev2.Activities.Specs
                     client.Credentials = CredentialCache.DefaultNetworkCredentials;
                     WebResult.Add(client.DownloadString(url));
                 }
-
             }
             catch (Exception e)
             {

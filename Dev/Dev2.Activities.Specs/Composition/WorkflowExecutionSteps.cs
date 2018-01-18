@@ -253,7 +253,7 @@ namespace Dev2.Activities.Specs.Composition
         public void GivenIHaveAWorkflow(string workflowName)
         {
             var resourceId = Guid.NewGuid();
-            var resourceName = workflowName + "_" + resourceId.ToString().Substring(0, 8);
+            var resourceName = workflowName;
             var environmentModel = LocalEnvModel;
             EnsureEnvironmentConnected(environmentModel, EnvironmentConnectionTimeout);
             var resourceModel = new ResourceModel(environmentModel) { Category = "" + resourceName, ResourceName = resourceName, ID = resourceId, ResourceType = ResourceType.WorkflowService };
@@ -2461,7 +2461,6 @@ namespace Dev2.Activities.Specs.Composition
             {
                 id = Guid.NewGuid();
                 _scenarioContext.Add("SavedId", id);
-
             }
             Save(workflowName, count, id);
         }
@@ -4307,9 +4306,8 @@ namespace Dev2.Activities.Specs.Composition
         public void WhenIRenameFromRemoteToAndReDeployToLocalhost(string parentName, string newName)
         {
             TryGetValue("resourceId", out Guid resourceId);
-            var newWorkflowName = newName + "_" + resourceId.ToString().Substring(0, 8);
-            var someothername = newWorkflowName.Replace(parentName, newName);
-            Add("newName", newWorkflowName);
+            var someothername = newName.Replace(parentName, newName);
+            Add("newName", newName);
             TryGetValue("parentWorkflowName", out string parentWorkflowName);
 
             var workflowName = string.IsNullOrEmpty(parentWorkflowName) ? parentName : parentWorkflowName;
@@ -4320,20 +4318,19 @@ namespace Dev2.Activities.Specs.Composition
 
 
             var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
-            resourceModel.Environment.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, newWorkflowName);
+            resourceModel.Environment.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, newName);
         }
 
         [When(@"I rename ""(.*)"" to ""(.*)"" and re deploy")]
         public void WhenIRenameToAndReDeploy(string parentName, string newName)
         {
             TryGetValue("resourceId", out Guid resourceId);
-            var newWorkflowName = newName + "_" + resourceId.ToString().Substring(0, 8);
-            Add("newName", newWorkflowName);
+            Add("newName", newName);
             TryGetValue("parentWorkflowName", out string parentWorkflowName);
             var workflowName = string.IsNullOrEmpty(parentWorkflowName) ? parentName : parentWorkflowName;
             TryGetValue(workflowName, out IContextualResourceModel resourceModel);
             var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
-            resourceModel.Environment.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, newWorkflowName);
+            resourceModel.Environment.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, newName);
         }
     }
 }
