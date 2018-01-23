@@ -104,10 +104,6 @@ namespace Dev2.DataList.Contract
                 }
             }
             return results;
-        }
-
-        #region Private Method
-
-        #endregion
+        }        
     }
 }

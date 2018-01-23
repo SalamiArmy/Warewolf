@@ -105,19 +105,39 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                         }
                         allErrors.MergeErrors(errors);
                     }
-                    //else
-                    //{
-                        //foreach (var region in DataListCleaningUtils.SplitIntoRegions(Result))
-                        //{
-                        //    dataObject.Environment.Assign(region, "", update);
-                        //}
-                    //}
+                    else
+                    {
+                        foreach (var region in DataListCleaningUtils.SplitIntoRegions(Result))
+                        {
+                            if (DataListUtil.IsValueRecordset(region))
+                            {
+                                if (!string.IsNullOrEmpty(DataListUtil.ExtractIndexRegionFromRecordset(region)))
+                                {
+                                    dataObject.Environment.Assign(region, "", update);
+                                }
+                            }
+                            else
+                            {
+                                dataObject.Environment.Assign(region, "", update);
+                            }
+                        }
+                    }
                     if (dataObject.IsDebugMode())
                     {
-                        //if (!String.IsNullOrEmpty(Result))
-                        //{
-                        //    AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
-                        //}
+                        if (!String.IsNullOrEmpty(Result))
+                        {
+                            if (DataListUtil.IsValueRecordset(Result))
+                            {
+                                if (!string.IsNullOrEmpty(DataListUtil.ExtractIndexRegionFromRecordset(Result)))
+                                {
+                                    AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
+                                }
+                            }
+                            else
+                            {
+                                AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)
