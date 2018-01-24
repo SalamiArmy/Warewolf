@@ -17,8 +17,6 @@ using Dev2.Data.ServiceModel;
 using Dev2.Studio.Interfaces;
 using Warewolf.Resource.Errors;
 
-
-
 namespace Dev2.Studio.Core
 {
     public class UpdateProxy : ProxyBase, IUpdateManager

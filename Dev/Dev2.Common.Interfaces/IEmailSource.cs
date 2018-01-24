@@ -1,3 +1,4 @@
+using Dev2.Common.Interfaces.Core.DynamicServices;
 using System;
 
 namespace Dev2.Common.Interfaces
@@ -7,6 +8,7 @@ namespace Dev2.Common.Interfaces
         string Host { get; set; }
         string UserName { get; set; }
         string Password { get; set; }
+        enSourceType Type { get; set; }
         int Port { get; set; }
         bool EnableSsl { get; set; }
         int Timeout { get; set; }

@@ -12,6 +12,8 @@
                                xmlns:luna="clr-namespace:Warewolf.Studio.Themes.Luna;assembly=Warewolf.Studio.Themes.Luna"
                                xmlns:core1="clr-namespace:Warewolf.Studio.Core;assembly=Warewolf.Studio.Core"
                                xmlns:languages="clr-namespace:Warewolf.Studio.Resources.Languages;assembly=Warewolf.Studio.Resources"
+                               xmlns:fa="http://schemas.fontawesome.io/icons/"
+                               xmlns:customcontrols="clr-namespace:Dev2.CustomControls;assembly=Dev2.CustomControls"
                                Width="350"
                                MinWidth="350"
                                MinHeight="500"
@@ -125,6 +127,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <PasswordBox Grid.Column="0"
                          x:Name="ThePasswordBox"
@@ -141,11 +144,34 @@
                                          Target="{Binding}" />
                 </i:Interaction.Behaviors>
             </PasswordBox>
-            <Button Grid.Column="1"
+
+            <fa:ImageAwesome Width="14" 
+                             Height="14" 
+                             Margin="{StaticResource ControlBorderRight}" 
+                             Foreground="{StaticResource WareWolfOrangeBrush}" 
+                             Visibility="{Binding TestPassed,Converter={StaticResource BoolToVisibilityConverter}}" 
+                             Icon="Check" 
+                             Grid.Column="1"
+                             HorizontalAlignment="Right" />
+            <fa:ImageAwesome Width="14" 
+                             Height="14" 
+                             Margin="{StaticResource ControlBorderRight}" 
+                             Foreground="{StaticResource WareWolfOrangeBrush}" 
+                             Visibility="{Binding TestFailed,Converter={StaticResource BoolToVisibilityConverter}}" 
+                             Icon="Ban" 
+                             Grid.Column="1"
+                             HorizontalAlignment="Right" />
+            <customcontrols:CircularProgressBar Width="14" Height="14" 
+                                                Margin="{StaticResource ControlBorderRight}" 
+                                                Grid.Column="2"
+                                                Visibility="{Binding Testing,Converter={StaticResource BoolToVisibilityConverter}}" />
+
+            <Button Grid.Column="2"
                     Width="40"
                     Content="Test"
                     Margin="{StaticResource ControlBorderTop}"
                     Command="{Binding TestEmailAccountCommand}"
+                    Visibility="{Binding Testing,Converter={StaticResource BoolToVisibilityConverterNegative}}"
                     ToolTip="Test Password">
                 <i:Interaction.Behaviors>
                     <core1:HelpSetter Text="{x:Static languages:HelpText.TestEmailAccountHelp}" DataContext="{Binding}" />

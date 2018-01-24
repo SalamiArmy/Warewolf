@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Dev2.Common;
 using Dev2.Common.Interfaces;
+using Dev2.Common.Interfaces.Core.DynamicServices;
 using Dev2.Common.Interfaces.Enums;
 using Dev2.Common.Interfaces.Infrastructure;
 using Dev2.Common.Interfaces.ToolBase.Email;
@@ -45,7 +46,9 @@ namespace Dev2.Runtime.ESB.Management.Services
                     EnableSsl = src.EnableSSL,
                     Timeout = src.Timeout,
                     ResourceName = src.ResourceName,
-                    ResourceID = src.ResourceID
+                    ResourceID = src.ResourceID,
+                    Type = enSourceType.EmailSource,
+                    ResourceType = "EmailSource"
                 };
                 ResourceCatalog.Instance.SaveResource(GlobalConstants.ServerWorkspaceID, con, src.Path);
                 ServerExplorerRepo.UpdateItem(con);

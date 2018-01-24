@@ -15,6 +15,7 @@ using System.Net.Mail;
 using System.Xml.Linq;
 using Dev2.Common.Common;
 using Dev2.Common.Interfaces;
+using Dev2.Common.Interfaces.Core.DynamicServices;
 using Warewolf.Security.Encryption;
 
 
@@ -32,6 +33,7 @@ namespace Dev2.Runtime.ServiceModel.Data
         public string Host { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public enSourceType Type { get; set; }
         public int Port { get; set; }
         public bool EnableSsl { get; set; }
         public int Timeout { get; set; }

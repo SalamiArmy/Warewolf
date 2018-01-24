@@ -1,7 +1,7 @@
 /*
 *  Warewolf - Once bitten, there's no going back
 *  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
-*  Licensed under GNU Affero General Public License 3.0 or later. 
+*  Licensed under GNU Affero General Public License 3.0 or later.
 *  Some rights reserved.
 *  Visit our website for more information <http://warewolf.io/>
 *  AUTHORS <http://warewolf.io/authors.php> , CONTRIBUTORS <http://warewolf.io/contributors.php>
@@ -40,32 +40,20 @@ using Dev2.Comparer;
 namespace Dev2.Activities
 {
     [ToolDescriptorInfo("Utility-SendMail", "SMTP Send", ToolType.Native, "8999E59A-38A3-43BB-A98F-6090C5C9EA1E", "Dev2.Acitivities", "1.0.0.0", "Legacy", "Email", "/Warewolf.Studio.Themes.Luna;component/Images.xaml", "Tool_Email_SMTP_Send")]
-    public class DsfSendEmailActivity : DsfActivityAbstract<string>,IEquatable<DsfSendEmailActivity>
+    public class DsfSendEmailActivity : DsfActivityAbstract<string>, IEquatable<DsfSendEmailActivity>
     {
-        #region Fields
-
         IEmailSender _emailSender;
         IDSFDataObject _dataObject;
         string _password;
         EmailSource _selectedEmailSource;
-    
-        #endregion
 
-        /// <summary>
-        /// The property that holds all the conversions
-        /// </summary>
-
-        
         public EmailSource SelectedEmailSource
         {
-            get
-            {
-                return _selectedEmailSource;
-            }
+            get => _selectedEmailSource;
             set
             {
                 _selectedEmailSource = value;
-                if(_selectedEmailSource != null)
+                if (_selectedEmailSource != null)
                 {
                     var resourceID = _selectedEmailSource.ResourceID;
                     _selectedEmailSource = null;
@@ -73,13 +61,13 @@ namespace Dev2.Activities
                 }
             }
         }
-        
+
         [FindMissing]
         public string FromAccount { get; set; }
         [FindMissing]
         public string Password
         {
-            get { return _password; }
+            get => _password;
             set
             {
                 if (DataListUtil.ShouldEncrypt(value))
@@ -101,7 +89,7 @@ namespace Dev2.Activities
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        
+
         protected string DecryptedPassword => DataListUtil.NotEncrypted(Password) ? Password : DpapiWrapper.Decrypt(Password);
 
         [FindMissing]
@@ -111,9 +99,8 @@ namespace Dev2.Activities
         [FindMissing]
         public string Bcc { get; set; }
 
-        
         public enMailPriorityEnum Priority { get; set; }
-        
+
         [FindMissing]
         public string Subject { get; set; }
         [FindMissing]
@@ -121,28 +108,19 @@ namespace Dev2.Activities
         [FindMissing]
         public string Body { get; set; }
 
-        
         public bool IsHtml { get; set; }
 
-        /// <summary>
-        /// The property that holds the result string the user enters into the "Result" box
-        /// </summary>
         [FindMissing]
         public new string Result { get; set; }
 
         public IEmailSender EmailSender
         {
-            get
-            {
-                return _emailSender ?? (_emailSender = new EmailSender());
-            }
+            get => _emailSender ?? (_emailSender = new EmailSender());
             set
             {
                 _emailSender = value;
             }
         }
-
-        #region Ctor
 
         public DsfSendEmailActivity()
             : base("Email")
@@ -159,14 +137,10 @@ namespace Dev2.Activities
             IsHtml = false;
         }
 
-        #endregion
-
         public override List<string> GetOutputs()
         {
             return new List<string> { Result };
         }
-
-        #region Overrides of DsfNativeActivity<string>
 
         bool IsDebug
         {
@@ -179,13 +153,8 @@ namespace Dev2.Activities
                 return _dataObject.IsDebugMode();
             }
         }
-        /// <summary>
-        /// When overridden runs the activity's execution logic
-        /// </summary>
-        /// <param name="context">The context to be used.</param>
 
         protected override void OnExecute(NativeActivityContext context)
-            
         {
             var dataObject = context.GetExtension<IDSFDataObject>();
             ExecuteTool(dataObject, 0);
@@ -193,8 +162,6 @@ namespace Dev2.Activities
 
         protected override void ExecuteTool(IDSFDataObject dataObject, int update)
         {
-
-
             _dataObject = dataObject;
 
             var allErrors = new ErrorResultTO();
@@ -204,16 +171,16 @@ namespace Dev2.Activities
             try
             {
                 var runtimeSource = ResourceCatalog.GetResource<EmailSource>(dataObject.WorkspaceID, SelectedEmailSource.ResourceID);
-               
-                if(runtimeSource==null)
+
+                if (runtimeSource == null)
                 {
                     dataObject.Environment.Errors.Add(ErrorResource.InvalidEmailSource);
                     return;
                 }
-                if(IsDebug)
+                if (IsDebug)
                 {
                     var fromAccount = FromAccount;
-                    if(String.IsNullOrEmpty(fromAccount))
+                    if (String.IsNullOrEmpty(fromAccount))
                     {
                         fromAccount = runtimeSource.UserName;
                         AddDebugInputItem(fromAccount, "From Account");
@@ -231,7 +198,7 @@ namespace Dev2.Activities
                 var fromAccountItr = new WarewolfIterator(dataObject.Environment.Eval(FromAccount ?? string.Empty, update));
                 colItr.AddVariableToIterateOn(fromAccountItr);
 
-                var passwordItr = new WarewolfIterator(dataObject.Environment.Eval(DecryptedPassword,update));
+                var passwordItr = new WarewolfIterator(dataObject.Environment.Eval(DecryptedPassword, update));
                 colItr.AddVariableToIterateOn(passwordItr);
 
                 var toItr = new WarewolfIterator(dataObject.Environment.Eval(To, update));
@@ -252,18 +219,18 @@ namespace Dev2.Activities
                 var attachmentsItr = new WarewolfIterator(dataObject.Environment.Eval(Attachments ?? string.Empty, update));
                 colItr.AddVariableToIterateOn(attachmentsItr);
 
-                if(!allErrors.HasErrors())
+                if (!allErrors.HasErrors())
                 {
-                    while(colItr.HasMoreData())
+                    while (colItr.HasMoreData())
                     {
                         var result = SendEmail(runtimeSource, colItr, fromAccountItr, passwordItr, toItr, ccItr, bccItr, subjectItr, bodyItr, attachmentsItr, out ErrorResultTO errors);
                         allErrors.MergeErrors(errors);
-                        if(!allErrors.HasErrors())
+                        if (!allErrors.HasErrors())
                         {
                             indexToUpsertTo = UpsertResult(indexToUpsertTo, dataObject.Environment, result, update);
                         }
                     }
-                    if(IsDebug && !allErrors.HasErrors())
+                    if (IsDebug && !allErrors.HasErrors())
                     {
                         if (!string.IsNullOrEmpty(Result))
                         {
@@ -273,7 +240,7 @@ namespace Dev2.Activities
                 }
                 else
                 {
-                    if(IsDebug)
+                    if (IsDebug)
                     {
                         AddDebugInputItem(FromAccount, "From Account");
                         AddDebugInputItem(To, "To");
@@ -282,7 +249,7 @@ namespace Dev2.Activities
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Dev2Logger.Error("DSFEmail", e, GlobalConstants.WarewolfError);
                 allErrors.AddError(e.Message);
@@ -292,20 +259,20 @@ namespace Dev2.Activities
             {
                 // Handle Errors
 
-                if(allErrors.HasErrors())
+                if (allErrors.HasErrors())
                 {
-                    foreach(var err in allErrors.FetchErrors())
+                    foreach (var err in allErrors.FetchErrors())
                     {
                         dataObject.Environment.Errors.Add(err);
                     }
                     UpsertResult(indexToUpsertTo, dataObject.Environment, null, update);
-                    if(dataObject.IsDebugMode())
+                    if (dataObject.IsDebugMode())
                     {
                         AddDebugOutputItem(new DebugItemStaticDataParams("", Result, ""));
                     }
                     DisplayAndWriteError("DsfSendEmailActivity", allErrors);
                 }
-                if(dataObject.IsDebugMode())
+                if (dataObject.IsDebugMode())
                 {
                     DispatchDebugState(dataObject, StateType.Before, update);
                     DispatchDebugState(dataObject, StateType.After, update);
@@ -315,7 +282,7 @@ namespace Dev2.Activities
 
         void AddDebugInputItem(string value, string label)
         {
-            if(string.IsNullOrEmpty(value) || string.IsNullOrEmpty(label))
+            if (string.IsNullOrEmpty(value) || string.IsNullOrEmpty(label))
             {
                 return;
             }
@@ -337,7 +304,6 @@ namespace Dev2.Activities
 
 
         string SendEmail(EmailSource runtimeSource, IWarewolfListIterator colItr, IWarewolfIterator fromAccountItr, IWarewolfIterator passwordItr, IWarewolfIterator toItr, IWarewolfIterator ccItr, IWarewolfIterator bccItr, IWarewolfIterator subjectItr, IWarewolfIterator bodyItr, IWarewolfIterator attachmentsItr, out ErrorResultTO errors)
-            
         {
             errors = new ErrorResultTO();
             var fromAccountValue = colItr.FetchNextValue(fromAccountItr);
@@ -358,28 +324,28 @@ namespace Dev2.Activities
             try
             {
                 // Always use source account unless specifically overridden by From Account
-                if(!string.IsNullOrEmpty(fromAccountValue))
+                if (!string.IsNullOrEmpty(fromAccountValue))
                 {
                     runtimeSource.UserName = fromAccountValue;
                     runtimeSource.Password = passwordValue;
                 }
                 mailMessage.From = new MailAddress(runtimeSource.UserName);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 errors.AddError(string.Format(ErrorResource.FROMAddressInvalidFormat, fromAccountValue));
                 return "Failure";
             }
             mailMessage.Body = bodyValue;
-            if(!String.IsNullOrEmpty(ccValue))
+            if (!String.IsNullOrEmpty(ccValue))
             {
                 AddCcAddresses(ccValue, mailMessage);
             }
-            if(!String.IsNullOrEmpty(bccValue))
+            if (!String.IsNullOrEmpty(bccValue))
             {
                 AddBccAddresses(bccValue, mailMessage);
             }
-            if(!String.IsNullOrEmpty(attachmentsValue))
+            if (!String.IsNullOrEmpty(attachmentsValue))
             {
                 AddAttachmentsValue(attachmentsValue, mailMessage);
             }
@@ -389,7 +355,7 @@ namespace Dev2.Activities
                 EmailSender.Send(runtimeSource, mailMessage);
                 result = "Success";
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 result = "Failure";
                 errors.AddError(e.Message);
@@ -409,7 +375,7 @@ namespace Dev2.Activities
                 var attachements = GetSplitValues(attachmentsValue, new[] { ',', ';' });
                 attachements.ForEach(s => mailMessage.Attachments.Add(new Attachment(s)));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 throw new Exception(string.Format(ErrorResource.AttachmentInvalidFormat, attachmentsValue), exception);
             }
@@ -422,7 +388,7 @@ namespace Dev2.Activities
                 var toAddresses = GetSplitValues(toValue, new[] { ',', ';' });
                 toAddresses.ForEach(s => mailMessage.To.Add(new MailAddress(s)));
             }
-            catch(FormatException exception)
+            catch (FormatException exception)
             {
                 throw new Exception(string.Format(ErrorResource.ToAddressInvalidFormat, toValue), exception);
             }
@@ -435,7 +401,7 @@ namespace Dev2.Activities
                 var ccAddresses = GetSplitValues(toValue, new[] { ',', ';' });
                 ccAddresses.ForEach(s => mailMessage.CC.Add(new MailAddress(s)));
             }
-            catch(FormatException exception)
+            catch (FormatException exception)
             {
                 throw new Exception(string.Format(ErrorResource.CCAddressInvalidFormat, toValue), exception);
             }
@@ -448,7 +414,7 @@ namespace Dev2.Activities
                 var bccAddresses = GetSplitValues(toValue, new[] { ',', ';' });
                 bccAddresses.ForEach(s => mailMessage.Bcc.Add(new MailAddress(s)));
             }
-            catch(FormatException exception)
+            catch (FormatException exception)
             {
                 throw new Exception(string.Format(ErrorResource.BCCAddressInvalidFormat, toValue), exception);
             }
@@ -461,44 +427,43 @@ namespace Dev2.Activities
 
         public override void UpdateForEachInputs(IList<Tuple<string, string>> updates)
         {
-            if(updates != null)
+            if (updates != null)
             {
-                foreach(Tuple<string, string> t in updates)
+                foreach (Tuple<string, string> t in updates)
                 {
 
-                    if(t.Item1 == FromAccount)
+                    if (t.Item1 == FromAccount)
                     {
                         FromAccount = t.Item2;
                     }
-                    if(t.Item1 == Password)
+                    if (t.Item1 == Password)
                     {
                         Password = t.Item2;
                     }
-                    if(t.Item1 == To)
+                    if (t.Item1 == To)
                     {
                         To = t.Item2;
                     }
-                    if(t.Item1 == Cc)
+                    if (t.Item1 == Cc)
                     {
                         Cc = t.Item2;
                     }
-                    if(t.Item1 == Bcc)
+                    if (t.Item1 == Bcc)
                     {
                         Bcc = t.Item2;
                     }
-                    if(t.Item1 == Subject)
+                    if (t.Item1 == Subject)
                     {
                         Subject = t.Item2;
                     }
-                    if(t.Item1 == Attachments)
+                    if (t.Item1 == Attachments)
                     {
                         Attachments = t.Item2;
                     }
-                    if(t.Item1 == Body)
+                    if (t.Item1 == Body)
                     {
                         Body = t.Item2;
                     }
-
                 }
             }
         }
@@ -506,17 +471,15 @@ namespace Dev2.Activities
         public override void UpdateForEachOutputs(IList<Tuple<string, string>> updates)
         {
             var itemUpdate = updates?.FirstOrDefault(tuple => tuple.Item1 == Result);
-            if(itemUpdate != null)
+            if (itemUpdate != null)
             {
                 Result = itemUpdate.Item2;
             }
         }
 
-        #region Overrides of DsfNativeActivity<string>
-
         public override List<DebugItem> GetDebugInputs(IExecutionEnvironment dataList, int update)
         {
-            foreach(IDebugItem debugInput in _debugInputs)
+            foreach (IDebugItem debugInput in _debugInputs)
             {
                 debugInput.FlushStringBuilder();
             }
@@ -525,18 +488,12 @@ namespace Dev2.Activities
 
         public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment dataList, int update)
         {
-            foreach(IDebugItem debugOutput in _debugOutputs)
+            foreach (IDebugItem debugOutput in _debugOutputs)
             {
                 debugOutput.FlushStringBuilder();
             }
             return _debugOutputs;
         }
-
-        #endregion
-
-        #endregion
-
-        #region GetForEachInputs/Outputs
 
         public override IList<DsfForEachItem> GetForEachInputs()
         {
@@ -548,8 +505,6 @@ namespace Dev2.Activities
             return GetForEachItems(Result);
         }
 
-        #endregion
-
         public bool Equals(DsfSendEmailActivity other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -557,18 +512,18 @@ namespace Dev2.Activities
             var emailSourcesComparer = new EmailSourceComparer();
             var emailSourcesAreEqual = emailSourcesComparer.Equals(SelectedEmailSource, other.SelectedEmailSource);
             var paswordsAreEqual = CommonEqualityOps.PassWordsCompare(Password, other.Password);
-            return base.Equals(other) 
+            return base.Equals(other)
                 && paswordsAreEqual
                 && emailSourcesAreEqual
-                && string.Equals(FromAccount, other.FromAccount) 
-                && string.Equals(To, other.To) 
-                && string.Equals(Cc, other.Cc) 
-                && string.Equals(Bcc, other.Bcc) 
-                && Priority == other.Priority 
-                && string.Equals(Subject, other.Subject) 
-                && string.Equals(Attachments, other.Attachments) 
-                && string.Equals(Body, other.Body) 
-                && IsHtml == other.IsHtml 
+                && string.Equals(FromAccount, other.FromAccount)
+                && string.Equals(To, other.To)
+                && string.Equals(Cc, other.Cc)
+                && string.Equals(Bcc, other.Bcc)
+                && Priority == other.Priority
+                && string.Equals(Subject, other.Subject)
+                && string.Equals(Attachments, other.Attachments)
+                && string.Equals(Body, other.Body)
+                && IsHtml == other.IsHtml
                 && string.Equals(Result, other.Result);
         }
 
@@ -577,7 +532,7 @@ namespace Dev2.Activities
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DsfSendEmailActivity) obj);
+            return Equals((DsfSendEmailActivity)obj);
         }
 
         public override int GetHashCode()
@@ -593,7 +548,7 @@ namespace Dev2.Activities
                 hashCode = (hashCode * 397) ^ (To != null ? To.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Cc != null ? Cc.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Bcc != null ? Bcc.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (int) Priority;
+                hashCode = (hashCode * 397) ^ (int)Priority;
                 hashCode = (hashCode * 397) ^ (Subject != null ? Subject.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Attachments != null ? Attachments.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Body != null ? Body.GetHashCode() : 0);

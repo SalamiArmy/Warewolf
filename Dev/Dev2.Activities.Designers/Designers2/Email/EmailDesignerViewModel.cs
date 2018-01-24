@@ -17,31 +17,23 @@ using System.Windows;
 using System.Windows.Input;
 using Caliburn.Micro;
 using Dev2.Activities.Designers2.Core;
-using Dev2.Activities.Designers2.Core.Extensions;
 using Dev2.Activities.Designers2.Core.Source;
-using Dev2.Common.Common;
-using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Core;
-using Dev2.Common.Interfaces.Core.DynamicServices;
 using Dev2.Common.Interfaces.Infrastructure.Providers.Errors;
 using Dev2.Common.Interfaces.Infrastructure.Providers.Validation;
 using Dev2.Common.Interfaces.Threading;
 using Dev2.Common.Interfaces.ToolBase;
 using Dev2.Common.Interfaces.ToolBase.Email;
-using Dev2.Communication;
 using Dev2.Data.Interfaces.Enums;
-using Dev2.Data.Util;
 using Dev2.Providers.Errors;
 using Dev2.Providers.Validation.Rules;
 using Dev2.Runtime.Configuration.ViewModels.Base;
-using Dev2.Runtime.Diagnostics;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Services.Events;
 using Dev2.Studio.Core;
 using Dev2.Studio.Core.Messages;
 using Dev2.Studio.Interfaces;
 using Dev2.Threading;
-using Dev2.Util;
 using Dev2.Validation;
 using Warewolf.Resource.Errors;
 
@@ -83,6 +75,7 @@ namespace Dev2.Activities.Designers2.Email
             _eventPublisher.Subscribe(this);
 
             AddTitleBarLargeToggle();
+            Priorities = new ObservableCollection<enMailPriorityEnum> { enMailPriorityEnum.High, enMailPriorityEnum.Normal, enMailPriorityEnum.Low };
 
             TestEmailAccountCommand = new RelayCommand(o => TestEmailAccount(), o => CanTestEmailAccount);
             ChooseAttachmentsCommand = new DelegateCommand(o => ChooseAttachments());
@@ -92,6 +85,8 @@ namespace Dev2.Activities.Designers2.Email
             Model = model;
             SetupCommonProperties();
             HelpText = Warewolf.Studio.Resources.Languages.HelpText.Tool_Email_Exchange_Send;
+            TestPassed = false;
+            TestFailed = false;
         }
 
         void SetupCommonProperties()
@@ -214,6 +209,26 @@ namespace Dev2.Activities.Designers2.Email
         string Attachments { get => GetProperty<string>(); set => SetProperty(value); }
         string Subject => GetProperty<string>();
         string Body => GetProperty<string>();
+        public ObservableCollection<enMailPriorityEnum> Priorities { get; private set; }
+
+        public bool TestPassed
+        {
+            get => _testPassed;
+            set
+            {
+                _testPassed = value;
+                OnPropertyChanged("TestPassed");
+            }
+        }
+        public bool TestFailed
+        {
+            get => _testFailed;
+            set
+            {
+                _testFailed = value;
+                OnPropertyChanged("TestFailed");
+            }
+        }
 
         public void TestEmailAccount()
         {
@@ -290,7 +305,7 @@ namespace Dev2.Activities.Designers2.Email
                 EnableSSL = SourceRegion.SelectedSource.EnableSSL,
                 EmailFrom = FromAccount,
                 EmailTo = To,
-                Id = SourceRegion.SelectedSource.ResourceID
+                Id = SourceRegion.SelectedSource.ResourceID,
             };
         }
 
@@ -302,10 +317,12 @@ namespace Dev2.Activities.Designers2.Email
                 {
                     var shellViewModel = CustomContainer.Get<IShellViewModel>();
                     shellViewModel?.ActiveServer?.UpdateRepository?.TestConnection(ToNewSource());
+                    TestPassed = true;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    SetStatusMessage("One or more errors occured");
+                    TestFailed = true;
+                    Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo(() => IsToFocused = true) { Message = ex.Message } };
                 }
                 finally
                 {
@@ -351,6 +368,8 @@ namespace Dev2.Activities.Designers2.Email
         }
 
         internal Func<string> GetDatalistString = () => DataListSingleton.ActiveDataList.Resource.DataList;
+        bool _testPassed;
+        bool _testFailed;
 
         IEnumerable<IActionableErrorInfo> ValidateThis()
         {

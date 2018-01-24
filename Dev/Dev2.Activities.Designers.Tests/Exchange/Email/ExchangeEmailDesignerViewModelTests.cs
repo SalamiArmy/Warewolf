@@ -106,7 +106,6 @@ namespace Dev2.Activities.Designers.Tests.Exchange.Email
 
         static TestExchangeEmailDesignerViewModel CreateViewModel(ModelItem modelItem, IExchangeServiceModel model, IEventAggregator eve)
         {
-           
             var testEmailDesignerViewModel = new TestExchangeEmailDesignerViewModel(modelItem, model, eve)
             {              
                 GetDatalistString = () =>
@@ -932,7 +931,7 @@ namespace Dev2.Activities.Designers.Tests.Exchange.Email
         {
             if (emptySource)
             {
-                _sources = new ObservableCollection<IExchangeSource>()
+                _sources = new ObservableCollection<IExchangeSource>
                 {
                     new ExchangeSourceDefinition()
                 };

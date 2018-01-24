@@ -25,13 +25,15 @@ namespace Dev2.Runtime.ESB.Management.Services
                     return new EmailServiceSourceDefinition
                     {
                         Id = res.ResourceID,
+                        ResourceName = res.ResourceName,
                         Host = res.Host,
                         Password = res.Password,
                         UserName = res.UserName,
                         Path = res.GetSavePath(),
                         Port = res.Port,
                         Timeout = res.Timeout,
-                        ResourceName = res.ResourceName,
+                        Type = res.Type,
+                        ResourceType = res.ResourceType,
                         EnableSSL = res.EnableSsl
                     };
                 }

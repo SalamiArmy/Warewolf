@@ -32,7 +32,6 @@ namespace Warewolf.Studio.ViewModels
         {
             _shell.EditResource(selectedSource);
         }
-        
 
         public IStudioUpdateManager UpdateRepository => _updateRepository;
     }

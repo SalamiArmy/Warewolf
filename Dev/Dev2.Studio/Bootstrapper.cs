@@ -50,6 +50,7 @@ namespace Dev2
             CustomContainer.AddToLoadedTypes(typeof(ManageWebServiceModel));
             CustomContainer.AddToLoadedTypes(typeof(ManageWcfServiceModel));
             CustomContainer.AddToLoadedTypes(typeof(ExchangeServiceModel));
+            CustomContainer.AddToLoadedTypes(typeof(SmtpServiceModel));
             CustomContainer.AddToLoadedTypes(typeof(ManageRabbitMQSourceModel));
         }
 

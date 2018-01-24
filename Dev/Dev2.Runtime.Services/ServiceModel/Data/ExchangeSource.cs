@@ -2,7 +2,6 @@
 using Dev2.Common.Exchange;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Core.DynamicServices;
-using Dev2.Common.Interfaces.ToolBase.ExchangeEmail;
 using Microsoft.Exchange.WebServices.Data;
 using System;
 using System.Collections.Generic;
@@ -184,11 +183,6 @@ namespace Dev2.Runtime.ServiceModel.Data
         }
 
         #endregion ToXml
-
-        //public bool Equals(IExchangeSource other)
-        //{
-        //    return true;
-        //}
     }
 
     public class ExchangeTestMessage
