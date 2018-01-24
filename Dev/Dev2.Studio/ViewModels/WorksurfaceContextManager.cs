@@ -46,6 +46,7 @@ using Warewolf.Studio.ViewModels;
 using Warewolf.Studio.Views;
 using Dev2.ViewModels.Merge;
 using Dev2.Views.Merge;
+using Dev2.Common.Interfaces.ToolBase.Email;
 
 namespace Dev2.Studio.ViewModels
 {
@@ -71,8 +72,8 @@ namespace Dev2.Studio.ViewModels
         void EditResource(IComPluginSource selectedSource, IView view, IWorkSurfaceKey workSurfaceKey);
         void EditResource(IWebServiceSource selectedSource, IView view);
         void EditResource(IWebServiceSource selectedSource, IView view, IWorkSurfaceKey workSurfaceKey);
-        void EditResource(IEmailServiceSource selectedSource, IView view);
-        void EditResource(IEmailServiceSource selectedSource, IView view, IWorkSurfaceKey workSurfaceKey);
+        void EditResource(ISmtpSource selectedSource, IView view);
+        void EditResource(ISmtpSource selectedSource, IView view, IWorkSurfaceKey workSurfaceKey);
         void EditResource(IExchangeSource selectedSource, IView view);
         void EditResource(IExchangeSource selectedSource, IView view, IWorkSurfaceKey workSurfaceKey);
         void EditResource(IRabbitMQServiceSourceDefinition selectedSource, IView view);
@@ -415,14 +416,14 @@ namespace Dev2.Studio.ViewModels
             AddAndActivateWorkSurface(workSurfaceContextViewModel);
         }
 
-        public void EditResource(IEmailServiceSource selectedSource, IView view) => EditResource(selectedSource, view, null);
-        public void EditResource(IEmailServiceSource selectedSource, IView view, IWorkSurfaceKey workSurfaceKey)
+        public void EditResource(ISmtpSource selectedSource, IView view) => EditResource(selectedSource, view, null);
+        public void EditResource(ISmtpSource selectedSource, IView view, IWorkSurfaceKey workSurfaceKey)
         {
             var emailSourceViewModel = new ManageEmailSourceViewModel(new ManageEmailSourceModel(ActiveServer.UpdateRepository, ActiveServer.QueryProxy, ""), new Microsoft.Practices.Prism.PubSubEvents.EventAggregator(), selectedSource, _shellViewModel.AsyncWorker);
-            var vm = new SourceViewModel<IEmailServiceSource>(_shellViewModel.EventPublisher, emailSourceViewModel, _shellViewModel.PopupProvider, view, ActiveServer);
+            var vm = new SourceViewModel<ISmtpSource>(_shellViewModel.EventPublisher, emailSourceViewModel, _shellViewModel.PopupProvider, view, ActiveServer);
 
 
-            workSurfaceKey = TryGetOrCreateWorkSurfaceKey(workSurfaceKey, WorkSurfaceContext.EmailSource, selectedSource.Id);
+            workSurfaceKey = TryGetOrCreateWorkSurfaceKey(workSurfaceKey, WorkSurfaceContext.EmailSource, selectedSource.ResourceID);
 
             var key = workSurfaceKey as WorkSurfaceKey;
             var workSurfaceContextViewModel = new WorkSurfaceContextViewModel(key, vm);
@@ -687,7 +688,7 @@ namespace Dev2.Studio.ViewModels
         public void NewEmailSource(string resourcePath)
         {
             var saveViewModel = GetSaveViewModel(resourcePath, Warewolf.Studio.Resources.Languages.Core.EmailSourceNewHeaderLabel);
-            var workSurfaceContextViewModel = new WorkSurfaceContextViewModel(WorkSurfaceKeyFactory.CreateKey(WorkSurfaceContext.EmailSource) as WorkSurfaceKey, new SourceViewModel<IEmailServiceSource>(_shellViewModel.EventPublisher, new ManageEmailSourceViewModel(new ManageEmailSourceModel(ActiveServer.UpdateRepository, ActiveServer.QueryProxy, ActiveServer.Name), saveViewModel, new Microsoft.Practices.Prism.PubSubEvents.EventAggregator()), _shellViewModel.PopupProvider, new ManageEmailSourceControl(), ActiveServer));
+            var workSurfaceContextViewModel = new WorkSurfaceContextViewModel(WorkSurfaceKeyFactory.CreateKey(WorkSurfaceContext.EmailSource) as WorkSurfaceKey, new SourceViewModel<ISmtpSource>(_shellViewModel.EventPublisher, new ManageEmailSourceViewModel(new ManageEmailSourceModel(ActiveServer.UpdateRepository, ActiveServer.QueryProxy, ActiveServer.Name), saveViewModel, new Microsoft.Practices.Prism.PubSubEvents.EventAggregator()), _shellViewModel.PopupProvider, new ManageEmailSourceControl(), ActiveServer));
             AddAndActivateWorkSurface(workSurfaceContextViewModel);
 
         }
@@ -1042,14 +1043,14 @@ namespace Dev2.Studio.ViewModels
             var def = new EmailServiceSourceDefinition
             {
                 Id = db.ResourceID,
-                HostName = db.Host,
+                Host = db.Host,
                 Password = db.Password,
                 UserName = db.UserName,
                 Path = resourceModel.GetSavePath(),
                 Port = db.Port,
                 Timeout = db.Timeout,
                 ResourceName = db.ResourceName,
-                EnableSsl = db.EnableSsl
+                EnableSSL = db.EnableSsl
             };
             var workSurfaceKey = WorkSurfaceKeyFactory.CreateKey(WorkSurfaceContext.EmailSource);
             workSurfaceKey.EnvironmentID = resourceModel.Environment.EnvironmentID;
@@ -1062,7 +1063,7 @@ namespace Dev2.Studio.ViewModels
         {
             var db = new ExchangeSource(resourceModel.WorkflowXaml.ToXElement());
 
-            var def = new ExchangeSourceDefinition()
+            var def = new ExchangeSourceDefinition
             {
                 AutoDiscoverUrl = db.AutoDiscoverUrl,
                 Id = db.ResourceID,

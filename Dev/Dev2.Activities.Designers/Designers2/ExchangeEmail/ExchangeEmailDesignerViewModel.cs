@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+*  Warewolf - Once bitten, there's no going back
+*  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
+*  Licensed under GNU Affero General Public License 3.0 or later.
+*  Some rights reserved.
+*  Visit our website for more information <http://warewolf.io/>
+*  AUTHORS <http://warewolf.io/authors.php> , CONTRIBUTORS <http://warewolf.io/contributors.php>
+*  @license GNU Affero General Public License <http://www.gnu.org/licenses/agpl-3.0.html>
+*/
+
+using System;
 using System.Activities.Presentation.Model;
 using System.Collections.Generic;
 using System.Windows;
@@ -24,24 +34,14 @@ using Dev2.Validation;
 using Warewolf.Resource.Errors;
 using Dev2.Studio.Interfaces;
 
-
-
-
-
-
-
-
-
 namespace Dev2.Activities.Designers2.ExchangeEmail
 {
     public class ExchangeEmailDesignerViewModel : CustomToolWithRegionBase, IExchangeServiceViewModel
     {
-
         readonly IEventAggregator _eventPublisher;
         readonly IServer _server;
         readonly IAsyncWorker _asyncWorker;
         ISourceToolRegion<IExchangeSource> _sourceRegion;
-
 
         public RelayCommand TestEmailAccountCommand { get; private set; }
         public ICommand ChooseAttachmentsCommand { get; private set; }
@@ -51,7 +51,7 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
         {
         }
 
-        public ExchangeEmailDesignerViewModel(ModelItem modelItem, IAsyncWorker asyncWorker, IExchangeServiceModel model,IEventAggregator eventPublisher) : base(modelItem)
+        public ExchangeEmailDesignerViewModel(ModelItem modelItem, IAsyncWorker asyncWorker, IExchangeServiceModel model, IEventAggregator eventPublisher) : base(modelItem)
         {
             TestEmailAccountCommand = new RelayCommand(o => TestEmailAccount(), o => CanTestEmailAccount);
             ChooseAttachmentsCommand = new DelegateCommand(o => ChooseAttachments());
@@ -118,10 +118,7 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
 
         public ISourceToolRegion<IExchangeSource> SourceRegion
         {
-            get
-            {
-                return _sourceRegion;
-            }
+            get => _sourceRegion;
             set
             {
                 _sourceRegion = value;
@@ -132,11 +129,10 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
         string _statusMessage;
         public string StatusMessage
         {
-            get { return _statusMessage; }
+            get => _statusMessage;
             set
             {
                 _statusMessage = value;
-
                 OnPropertyChanged("StatusMessage");
             }
         }
@@ -145,14 +141,10 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
 
         public bool Testing
         {
-            get
-            {
-                return _testing;
-            }
-             set
+            get => _testing;
+            set
             {
                 _testing = value;
-
                 OnPropertyChanged("Testing");
             }
         }
@@ -162,7 +154,7 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
         {
             IList<IToolRegion> regions = new List<IToolRegion>();
 
-            SourceRegion = new ExchangeSourceRegion(Model,ModelItem, "ExchangeSource");
+            SourceRegion = new ExchangeSourceRegion(Model, ModelItem, "ExchangeSource");
             regions.Add(SourceRegion);
 
             return regions;
@@ -171,7 +163,7 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
         public static readonly DependencyProperty CanTestEmailAccountProperty = DependencyProperty.Register("CanTestEmailAccount", typeof(bool), typeof(ExchangeEmailDesignerViewModel), new PropertyMetadata(true));
         public bool IsEmailSourceFocused { get => (bool)GetValue(IsEmailSourceFocusedProperty); set => SetValue(IsEmailSourceFocusedProperty, value); }
         public static readonly DependencyProperty IsEmailSourceFocusedProperty = DependencyProperty.Register("IsEmailSourceFocused", typeof(bool), typeof(ExchangeEmailDesignerViewModel), new PropertyMetadata(default(bool)));
-        
+
         public bool IsToFocused { get => (bool)GetValue(IsToFocusedProperty); set => SetValue(IsToFocusedProperty, value); }
         public static readonly DependencyProperty IsToFocusedProperty = DependencyProperty.Register("IsToFocused", typeof(bool), typeof(ExchangeEmailDesignerViewModel), new PropertyMetadata(default(bool)));
 
@@ -195,10 +187,7 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
 
         public bool CanTestEmailAccount
         {
-            get
-            {
-                return (bool)GetValue(CanTestEmailAccountProperty);
-            }
+            get => (bool)GetValue(CanTestEmailAccountProperty);
             set
             {
                 SetValue(CanTestEmailAccountProperty, value);
@@ -208,7 +197,6 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
 
         public void TestEmailAccount()
         {
-
             if (Errors != null && Errors.Count > 0)
             {
                 return;
@@ -220,7 +208,7 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
             if (string.IsNullOrEmpty(To))
             {
                 Testing = false;
-                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo(() => IsToFocused = true) { Message = ErrorResource.ToAddressRequired} };
+                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo(() => IsToFocused = true) { Message = ErrorResource.ToAddressRequired } };
                 return;
             }
             if (SourceRegion.SelectedSource == null)
@@ -229,15 +217,15 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
                 Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo(() => IsToFocused = true) { Message = ErrorResource.InvalidSource } };
                 return;
             }
-        
-            var testSource = new ExchangeSource()
+
+            var testSource = new ExchangeSource
             {
                 AutoDiscoverUrl = SourceRegion.SelectedSource.AutoDiscoverUrl,
                 Password = SourceRegion.SelectedSource.Password,
                 UserName = SourceRegion.SelectedSource.UserName,
             };
 
-            var testMessage = new ExchangeTestMessage()
+            var testMessage = new ExchangeTestMessage
             {
                 Body = Body,
                 Subject = Subject,
@@ -294,14 +282,13 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
             StatusMessage = message;
         }
 
-
         void ChooseAttachments()
         {
-
-    
             const string Separator = ";";
-            var message = new FileChooserMessage();
-            message.SelectedFiles = Attachments.Split(Separator.ToCharArray());
+            var message = new FileChooserMessage
+            {
+                SelectedFiles = Attachments.Split(Separator.ToCharArray())
+            };
             message.PropertyChanged += (sender, args) =>
             {
                 if (args.PropertyName == "SelectedFiles")
@@ -411,10 +398,3 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
         }
     }
 }
-
-
-
-
-
-
-

@@ -19,6 +19,7 @@ using Dev2.Controller;
 using Dev2.Explorer;
 using Dev2.Studio.Interfaces;
 using Warewolf.Resource.Errors;
+using Dev2.Common.Interfaces.ToolBase.Email;
 
 namespace Dev2.Studio.Core
 {
@@ -180,6 +181,29 @@ namespace Dev2.Studio.Core
             }
             var serializer = new Dev2JsonSerializer();
             return serializer.Deserialize<IList<IDbSource>>(result.Message.ToString());
+        }
+
+        public IList<ISmtpSource> FetchSmtpSources()
+        {
+            var comsController = CommunicationControllerFactory.CreateController(nameof(FetchSmtpSources));
+
+            var workspaceId = Connection.WorkspaceID;
+            var result = comsController.ExecuteCommand<ExecuteMessage>(Connection, workspaceId);
+            if (result == null || result.HasError)
+            {
+                if (!Connection.IsConnected)
+                {
+                    ShowServerDisconnectedPopup();
+                    return new List<ISmtpSource>();
+                }
+                if (result != null)
+                {
+                    throw new WarewolfSupportServiceException(result.Message.ToString(), null);
+                }
+                throw new WarewolfSupportServiceException(ErrorResource.ServiceDoesNotExist, null);
+            }
+            var serializer = new Dev2JsonSerializer();
+            return serializer.Deserialize<IList<ISmtpSource>>(result.Message.ToString());
         }
 
         public IList<IExchangeSource> FetchExchangeSources()

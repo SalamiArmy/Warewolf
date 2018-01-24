@@ -413,12 +413,16 @@
     <Compile Include="ToolBase\Database\IDatabaseServiceViewModel.cs" />
     <Compile Include="ToolBase\DotNet\IDotNetViewModel.cs" />
     <Compile Include="ToolBase\DotNet\INamespaceToolRegion.cs" />
+    <Compile Include="ToolBase\Email\ISmtpServiceModel.cs" />
+    <Compile Include="ToolBase\Email\ISmtpServiceViewModel.cs" />
+    <Compile Include="ToolBase\Email\ISmtpSource.cs" />
     <Compile Include="ToolBase\ExchangeEmail\IExchangeServiceModel.cs" />
     <Compile Include="ToolBase\ExchangeEmail\IExchangeServiceViewModel.cs" />
     <Compile Include="ToolBase\ExchangeEmail\IExchangeSource.cs" />
     <Compile Include="ToolBase\IActionToolRegion.cs" />
     <Compile Include="ToolBase\IConstructorRegion.cs" />
     <Compile Include="ToolBase\ICustomToolViewModelWithRegionBase.cs" />
+    <Compile Include="ToolBase\IEmailSource.cs" />
     <Compile Include="ToolBase\IGenerateInputArea.cs" />
     <Compile Include="ToolBase\IGenerateOutputArea.cs" />
     <Compile Include="ToolBase\IHeaderRegion.cs" />
@@ -494,6 +498,7 @@
       <Name>Warewolf.Studio.Resources</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

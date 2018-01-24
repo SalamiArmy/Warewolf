@@ -70,6 +70,7 @@ using Dev2.Common.Interfaces.Wrappers;
 using Dev2.Common.Interfaces.Data;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Common.Common;
+using Dev2.Common.Interfaces.ToolBase.Email;
 
 namespace Dev2.Studio.ViewModels
 {
@@ -844,7 +845,7 @@ namespace Dev2.Studio.ViewModels
             var emailSourceViewModel = new ManageEmailSourceViewModel(
                 new ManageEmailSourceModel(ActiveServer.UpdateRepository, ActiveServer.QueryProxy, ActiveServer.DisplayName),
                 new Microsoft.Practices.Prism.PubSubEvents.EventAggregator(), def, AsyncWorker);
-            var vm = new SourceViewModel<IEmailServiceSource>(EventPublisher, emailSourceViewModel, PopupProvider, new ManageEmailSourceControl(), ActiveServer);
+            var vm = new SourceViewModel<ISmtpSource>(EventPublisher, emailSourceViewModel, PopupProvider, new ManageEmailSourceControl(), ActiveServer);
 
             var workSurfaceContextViewModel = _worksurfaceContextManager.EditResource(workSurfaceKey, vm);
             return workSurfaceContextViewModel;
@@ -1132,9 +1133,9 @@ namespace Dev2.Studio.ViewModels
             _worksurfaceContextManager.EditResource(selectedSource, view, workSurfaceKey);
         }
 
-        public void EditResource(IEmailServiceSource selectedSource) => EditResource(selectedSource, null);
+        public void EditResource(ISmtpSource selectedSource) => EditResource(selectedSource, null);
 
-        public void EditResource(IEmailServiceSource selectedSource, IWorkSurfaceKey workSurfaceKey = null)
+        public void EditResource(ISmtpSource selectedSource, IWorkSurfaceKey workSurfaceKey = null)
         {
             var view = _factory.GetViewGivenServerResourceType("EmailSource");
             _worksurfaceContextManager.EditResource(selectedSource, view, workSurfaceKey);
@@ -1834,9 +1835,9 @@ namespace Dev2.Studio.ViewModels
                             break;
                         }
                     }
-                    if (vm is SourceViewModel<IEmailServiceSource> emailServiceSourceModel)
+                    if (vm is SourceViewModel<ISmtpSource> smtpSourceModel)
                     {
-                        if (emailServiceSourceModel.IsDirty || emailServiceSourceModel.ViewModel.HasChanged)
+                        if (smtpSourceModel.IsDirty || smtpSourceModel.ViewModel.HasChanged)
                         {
                             closeStudio = CallSaveDialog(closeStudio);
                             break;

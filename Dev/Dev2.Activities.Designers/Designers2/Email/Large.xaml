@@ -59,41 +59,48 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="Mail Source" />
-        <Grid Grid.Column="1" Grid.Row="0">
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="{Binding ElementName=FromAddressTextBlock, Path=ActualWidth}"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-
-            <ComboBox x:Name="InitialFocusElement"
-                      ItemContainerStyle="{StaticResource ComboBoxItemStyle}" 
-                      SelectedItem="{Binding SelectedEmailSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                      ItemsSource="{Binding EmailSources}"
+            <TextBlock Grid.Column="0" x:Name="SourceLabel" Text="Source" />
+            <ComboBox Grid.Column="1" 
+                      x:Name="SourcesComboBox"
+                      DisplayMemberPath="ResourceName" 
                       Margin="{StaticResource ControlBorderRight}"
-                      ToolTip="{x:Static languages:Tooltips.EmailToolTipMailSource}"
-                      DisplayMemberPath="ResourceName"
-                      attachedProperties:FocusSetter.IsFocused="{Binding IsEmailSourceFocused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                      ToolTip="{x:Static languages:Tooltips.ManageExchangeServiceSourcesTooltip}"
+                      ItemsSource="{Binding SourceRegion.Sources}"
+                      SelectedItem="{Binding SourceRegion.SelectedSource , Mode=TwoWay}">
                 <i:Interaction.Behaviors>
-                    <core1:HelpSetter Text="{x:Static languages:HelpText.EmailHelpMailSource}" DataContext="{Binding}" />
-                    <errors:ErrorsSetter Source="{Binding}"
-                                         SourcePropertyName="SelectedEmailSource"
-                                         SourcePropertyValue="{Binding SelectedEmailSource, UpdateSourceTrigger=PropertyChanged}"
-                                         Target="{Binding}" />
+                    <core1:HelpSetter Text="{x:Static languages:HelpText.ExchangeServiceSourceTypesHelp}" DataContext="{Binding}" />
                 </i:Interaction.Behaviors>
             </ComboBox>
-            <Button Grid.Column="1"
+            <Button Grid.Column="2" 
+                    x:Name="SourceEditButton" 
+                    Margin="{StaticResource ControlBorderRight}"
                     Content="..."
-                    Command="{Binding EditEmailSourceCommand}"
-                    ToolTip="Edit Email Source"
-                    AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_EditEmailSourceBtn_AutoID}">
+                    ToolTip="{x:Static languages:Tooltips.ManageExchangeServiceEditSourceTooltip}"
+                    Command="{Binding Path=SourceRegion.EditSourceCommand, Mode=TwoWay}">
                 <i:Interaction.Behaviors>
-                    <core1:HelpSetter Text="{x:Static languages:HelpText.EditEmailSourceHelp}" DataContext="{Binding}" />
+                    <core1:HelpSetter Text="{x:Static languages:HelpText.ExchangeServiceEditSourceHelp}" DataContext="{Binding}" />
+                </i:Interaction.Behaviors>
+            </Button>
+            <Button Grid.Column="3" x:Name="SourceNewButton" 
+                    Content="{x:Static languages:Core.New}" 
+                    Width="Auto"
+                    Style="{StaticResource ButtonOrangeStyle}" 
+                    ToolTip="{x:Static languages:Tooltips.ManageExchangeServiceNewSourceTooltip}"
+                    Command="{Binding Path=SourceRegion.NewSourceCommand, Mode=TwoWay}">
+                <i:Interaction.Behaviors>
+                    <core1:HelpSetter Text="{x:Static languages:HelpText.ExchangeServiceNewSourceHelp}" DataContext="{Binding}" />
                 </i:Interaction.Behaviors>
             </Button>
         </Grid>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="From Address" Margin="{StaticResource ControlBorderTop}" />
+        <TextBlock x:Name="FromAddressTextBlock" Grid.Column="0" Grid.Row="1" Text="From Address" Margin="{StaticResource ControlBorderTop}" />
         <ui:IntellisenseTextBox Grid.Column="1"
                                 Grid.Row="1"                                
                                 DefaultText="Account or email address"

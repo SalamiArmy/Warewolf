@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Dev2;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Help;
+using Dev2.Common.Interfaces.ToolBase.Email;
 using Dev2.Studio.Interfaces;
 using Dev2.Threading;
 using Microsoft.Practices.Prism.PubSubEvents;
@@ -20,7 +21,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         Mock<IManageEmailSourceModel> _updateManagerMock;
         Mock<IRequestServiceNameViewModel> _requestServiceNameViewModelMock;
         Task<IRequestServiceNameViewModel> _requestServiceNameViewModelTask;
-        Mock<IEmailServiceSource> _emailSource;
+        Mock<ISmtpSource> _emailSource;
         Mock<IEventAggregator> _aggregatorMock;
 
         string _emailServiceSourceResourceName;
@@ -40,7 +41,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _updateManagerMock = new Mock<IManageEmailSourceModel>();
             _requestServiceNameViewModelMock = new Mock<IRequestServiceNameViewModel>();
             _aggregatorMock = new Mock<IEventAggregator>();
-            _emailSource = new Mock<IEmailServiceSource>();
+            _emailSource = new Mock<ISmtpSource>();
             _emailServiceSourceResourceName = "emailServiceSourceResourceName";
             _emailSource.SetupGet(it => it.ResourceName).Returns(_emailServiceSourceResourceName);
             _requestServiceNameViewModelTask = Task.FromResult(_requestServiceNameViewModelMock.Object);
@@ -132,7 +133,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _target.UserName = "UserName";
             _target.Password = "Password";
             var emailId = Guid.NewGuid();
-            _emailSource.SetupGet(it => it.Id).Returns(emailId);
+            _emailSource.SetupGet(it => it.ResourceID).Returns(emailId);
 
             //act
             _targetSource.SendCommand.Execute(null);
@@ -162,24 +163,23 @@ namespace Warewolf.Studio.ViewModels.Tests
             Assert.IsFalse(_target.TestPassed);
         }
 
-     
         [TestMethod]
         public void TestOkCommandExecuteSource()
         {
             //arrange
-            var expectedHostName = "HostName";
-            var expectedPassword = "Password";
-            var expectedUserName = "UserName";
-            var expectedPort = 423423;
-            var expectedTimeout = 314313;
-            var expectedEnableSsl = true;
-            var expectedEmailFrom = "EmailFrom";
-            var expectedEmailTo = "EmailTo@example.com";
-            var sourceResourceName = "sourceResourceName";
-            var expectedHeaderText = sourceResourceName;
-            var expectedHeader = sourceResourceName + " *";
-            var expectedPath = "somePath";
-            var expectedResourceName = "someResourceName";
+            const string expectedHostName = "HostName";
+            const string expectedPassword = "Password";
+            const string expectedUserName = "UserName";
+            const int expectedPort = 423423;
+            const int expectedTimeout = 314313;
+            const bool expectedEnableSsl = true;
+            const string expectedEmailFrom = "EmailFrom";
+            const string expectedEmailTo = "EmailTo@example.com";
+            const string sourceResourceName = "sourceResourceName";
+            const string expectedHeaderText = sourceResourceName;
+            const string expectedHeader = sourceResourceName + " *";
+            const string expectedPath = "somePath";
+            const string expectedResourceName = "someResourceName";
 
             _targetSource.HostName = expectedHostName;
             _targetSource.Password = expectedPassword;
@@ -190,7 +190,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _targetSource.EmailFrom = expectedEmailFrom;
             _targetSource.EmailTo = expectedEmailTo;
             _emailSource.SetupGet(it => it.ResourceName).Returns(sourceResourceName);
-            var source = new Mock<IEmailServiceSource>();
+            var source = new Mock<ISmtpSource>();
             source.SetupGet(it => it.Path).Returns(expectedPath);
             source.SetupGet(it => it.ResourceName).Returns(expectedResourceName);
             _targetSource.Item = source.Object;
@@ -201,12 +201,12 @@ namespace Warewolf.Studio.ViewModels.Tests
             //assert
             Assert.IsFalse(_targetSource.TestPassed);
             Assert.AreSame(_emailSource.Object, _targetSource.Item);
-            _emailSource.VerifySet(it => it.HostName = expectedHostName);
+            _emailSource.VerifySet(it => it.Host = expectedHostName);
             _emailSource.VerifySet(it => it.UserName = expectedUserName);
             _emailSource.VerifySet(it => it.Password = expectedPassword);
             _emailSource.VerifySet(it => it.Port = expectedPort);
             _emailSource.VerifySet(it => it.Timeout = expectedTimeout);
-            _emailSource.VerifySet(it => it.EnableSsl = expectedEnableSsl);
+            _emailSource.VerifySet(it => it.EnableSSL = expectedEnableSsl);
             _emailSource.VerifySet(it => it.EmailFrom = expectedEmailFrom);
             _emailSource.VerifySet(it => it.EmailTo = expectedEmailTo);
             Assert.AreEqual(expectedHeaderText, _targetSource.HeaderText);
@@ -222,7 +222,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestName()
         {
             //arrange
-            var expectedValue = "expectedValue";
+            const string expectedValue = "expectedValue";
 
             //act
             _target.Name = expectedValue;
@@ -252,7 +252,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestResourceName()
         {
             //arrange
-            var expectedValue = "expectedValue";
+            const string expectedValue = "expectedValue";
             _changedProperties.Clear();
 
             //act
@@ -268,7 +268,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestHostName()
         {
             //arrange
-            var expectedValue = "expectedValue";
+            const string expectedValue = "expectedValue";
             _changedProperties.Clear();
 
             //act
@@ -288,7 +288,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestUserName()
         {
             //arrange
-            var expectedValue = "expectedValue";
+            const string expectedValue = "expectedValue";
             _changedProperties.Clear();
 
             //act
@@ -309,7 +309,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestPassword()
         {
             //arrange
-            var expectedValue = "expectedValue";
+            const string expectedValue = "expectedValue";
             _changedProperties.Clear();
 
             //act
@@ -329,7 +329,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEmailFromNotEmail()
         {
             //arrange
-            var expectedValue = "expectedValue";
+            const string expectedValue = "expectedValue";
             _changedProperties.Clear();
 
             //act
@@ -351,7 +351,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEmailFromEmailEmailToNull()
         {
             //arrange
-            var expectedValue = "expectedvalue@example.com";
+            const string expectedValue = "expectedvalue@example.com";
             _changedProperties.Clear();
             _target.EmailTo = null;
 
@@ -374,7 +374,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEmailFromEmailEmailToNotEmail()
         {
             //arrange
-            var expectedValue = "expectedvalue@example.com";
+            const string expectedValue = "expectedvalue@example.com";
             _changedProperties.Clear();
             _target.EmailTo = "SomeEmailTo";
 
@@ -397,7 +397,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEmailFromEmailEmailToCorrect()
         {
             //arrange
-            var expectedValue = "expectedvalue@example.com";
+            const string expectedValue = "expectedvalue@example.com";
             _changedProperties.Clear();
             _target.EmailTo = "someemailto@example.com";
 
@@ -420,7 +420,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEmailToNotEmail()
         {
             //arrange
-            var expectedValue = "expectedValue";
+            const string expectedValue = "expectedValue";
             _changedProperties.Clear();
 
             //act
@@ -442,7 +442,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEmailToEmailEmailFromNull()
         {
             //arrange
-            var expectedValue = "expectedvalue@example.com";
+            const string expectedValue = "expectedvalue@example.com";
             _changedProperties.Clear();
             _target.EmailFrom = null;
 
@@ -465,7 +465,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEmailToEmailEmailFromNotEmail()
         {
             //arrange
-            var expectedValue = "expectedvalue@example.com";
+            const string expectedValue = "expectedvalue@example.com";
             _changedProperties.Clear();
             _target.EmailFrom = "SomeEmailTo";
 
@@ -488,7 +488,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEmailToEmailEmailFromCorrect()
         {
             //arrange
-            var expectedValue = "expectedvalue@example.com";
+            const string expectedValue = "expectedvalue@example.com";
             _changedProperties.Clear();
             _target.EmailTo = "someemailto@example.com";
 
@@ -511,7 +511,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestPort()
         {
             //arrange
-            var expectedValue = 423432;
+            const int expectedValue = 423432;
             _changedProperties.Clear();
 
             //act
@@ -531,7 +531,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestTestPassed()
         {
             //arrange
-            var expectedValue = true;
+            const bool expectedValue = true;
             _changedProperties.Clear();
 
             //act
@@ -547,7 +547,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestHeaderText()
         {
             //arrange
-            var expectedValue = "HeaderText";
+            const string expectedValue = "HeaderText";
             _changedProperties.Clear();
 
             //act
@@ -564,7 +564,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestTimeout()
         {
             //arrange
-            var expectedValue = 42432;
+            const int expectedValue = 42432;
             _changedProperties.Clear();
 
             //act
@@ -584,7 +584,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEnableSsl()
         {
             //arrange
-            var expectedValue = true;
+            const bool expectedValue = true;
             _changedProperties.Clear();
 
             //act
@@ -604,7 +604,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEnableSslYes()
         {
             //arrange
-            var expectedValue = true;
+            const bool expectedValue = true;
             _changedProperties.Clear();
 
             //act
@@ -624,7 +624,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEnableSslNo()
         {
             //arrange
-            var expectedValue = true;
+            const bool expectedValue = true;
             _changedProperties.Clear();
 
             //act
@@ -644,7 +644,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestTestFailed()
         {
             //arrange
-            var expectedValue = true;
+            const bool expectedValue = true;
             _changedProperties.Clear();
 
             //act
@@ -660,7 +660,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestEnableSend()
         {
             //arrange
-            var expectedValue = true;
+            const bool expectedValue = true;
             _changedProperties.Clear();
 
             //act
@@ -681,16 +681,16 @@ namespace Warewolf.Studio.ViewModels.Tests
         {
             //arrange
             _target.Item = null;
-            var expectedHostName = "HostName";
-            var expectedPassword = "Password";
-            var expectedUserName = "UserName";
-            var expectedPort = 423423;
-            var expectedTimeout = 314313;
-            var expectedEnableSsl = true;
-            var expectedEmailFrom = "EmailFrom";
-            var expectedEmailTo = "EmailTo@example.com";
-            var expectedPath = "";
-            var expectedResourceName = "ResourceName";
+            const string expectedHostName = "HostName";
+            const string expectedPassword = "Password";
+            const string expectedUserName = "UserName";
+            const int expectedPort = 423423;
+            const int expectedTimeout = 314313;
+            const bool expectedEnableSsl = true;
+            const string expectedEmailFrom = "EmailFrom";
+            const string expectedEmailTo = "EmailTo@example.com";
+            const string expectedPath = "";
+            const string expectedResourceName = "ResourceName";
 
             _target.HostName = expectedHostName;
             _target.Password = expectedPassword;
@@ -710,7 +710,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //assert
             Assert.IsNotNull(result);
             Assert.AreSame(result, _target.Item);
-            Assert.AreEqual(expectedHostName, result.HostName);
+            Assert.AreEqual(expectedHostName, result.Host);
             Assert.AreEqual(expectedPassword, result.Password);
             Assert.AreEqual(expectedUserName, result.UserName);
             Assert.AreEqual(expectedPort, result.Port);
@@ -718,26 +718,26 @@ namespace Warewolf.Studio.ViewModels.Tests
             Assert.AreEqual(expectedPath, result.Path);
             Assert.AreEqual(hashcode, result.GetHashCode());
             Assert.AreEqual(expectedTimeout, result.Timeout);
-            Assert.AreEqual(expectedEnableSsl, result.EnableSsl);
+            Assert.AreEqual(expectedEnableSsl, result.EnableSSL);
             Assert.AreEqual(expectedEmailFrom, result.EmailFrom);
             Assert.AreEqual(expectedEmailTo, result.EmailTo);
-            Assert.AreNotEqual(Guid.Empty, result.Id);
+            Assert.AreNotEqual(Guid.Empty, result.ResourceID);
         }
 
         [TestMethod]
         public void TestToModelItemNotNull_emailServiceSource()
         {
             //arrange
-            var itemMock = new Mock<IEmailServiceSource>();
+            var itemMock = new Mock<ISmtpSource>();
             _targetSource.Item = itemMock.Object;
-            var expectedHostName = "HostName";
-            var expectedPassword = "Password";
-            var expectedUserName = "UserName";
-            var expectedPort = 423423;
-            var expectedTimeout = 314313;
-            var expectedEnableSsl = true;
-            var expectedEmailFrom = "EmailFrom";
-            var expectedEmailTo = "EmailTo@example.com";
+            const string expectedHostName = "HostName";
+            const string expectedPassword = "Password";
+            const string expectedUserName = "UserName";
+            const int expectedPort = 423423;
+            const int expectedTimeout = 314313;
+            const bool expectedEnableSsl = true;
+            const string expectedEmailFrom = "EmailFrom";
+            const string expectedEmailTo = "EmailTo@example.com";
             var expectedId = Guid.NewGuid();
 
             _targetSource.HostName = expectedHostName;
@@ -748,38 +748,38 @@ namespace Warewolf.Studio.ViewModels.Tests
             _targetSource.EnableSsl = expectedEnableSsl;
             _targetSource.EmailFrom = expectedEmailFrom;
             _targetSource.EmailTo = expectedEmailTo;
-            _emailSource.SetupGet(it => it.Id).Returns(expectedId);
+            _emailSource.SetupGet(it => it.ResourceID).Returns(expectedId);
 
             //act
             var result = _targetSource.ToModel();
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expectedHostName, result.HostName);
+            Assert.AreEqual(expectedHostName, result.Host);
             Assert.AreEqual(expectedPassword, result.Password);
             Assert.AreEqual(expectedUserName, result.UserName);
             Assert.AreEqual(expectedPort, result.Port);
             Assert.AreEqual(expectedTimeout, result.Timeout);
-            Assert.AreEqual(expectedEnableSsl, result.EnableSsl);
+            Assert.AreEqual(expectedEnableSsl, result.EnableSSL);
             Assert.AreEqual(expectedEmailFrom, result.EmailFrom);
             Assert.AreEqual(expectedEmailTo, result.EmailTo);
-            Assert.AreEqual(expectedId, result.Id);
+            Assert.AreEqual(expectedId, result.ResourceID);
         }
 
         [TestMethod]
         public void TestToModelItemNotNull()
         {
             //arrange
-            var itemMock = new Mock<IEmailServiceSource>();
+            var itemMock = new Mock<ISmtpSource>();
             _target.Item = itemMock.Object;
-            var expectedHostName = "HostName";
-            var expectedPassword = "Password";
-            var expectedUserName = "UserName";
-            var expectedPort = 423423;
-            var expectedTimeout = 314313;
-            var expectedEnableSsl = true;
-            var expectedEmailFrom = "EmailFrom";
-            var expectedEmailTo = "EmailTo@example.com";
+            const string expectedHostName = "HostName";
+            const string expectedPassword = "Password";
+            const string expectedUserName = "UserName";
+            const int expectedPort = 423423;
+            const int expectedTimeout = 314313;
+            const bool expectedEnableSsl = true;
+            const string expectedEmailFrom = "EmailFrom";
+            const string expectedEmailTo = "EmailTo@example.com";
 
             _target.HostName = expectedHostName;
             _target.Password = expectedPassword;
@@ -795,34 +795,34 @@ namespace Warewolf.Studio.ViewModels.Tests
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(expectedHostName, result.HostName);
+            Assert.AreEqual(expectedHostName, result.Host);
             Assert.AreEqual(expectedPassword, result.Password);
             Assert.AreEqual(expectedUserName, result.UserName);
             Assert.AreEqual(expectedPort, result.Port);
             Assert.AreEqual(expectedTimeout, result.Timeout);
-            Assert.AreEqual(expectedEnableSsl, result.EnableSsl);
+            Assert.AreEqual(expectedEnableSsl, result.EnableSSL);
             Assert.AreEqual(expectedEmailFrom, result.EmailFrom);
             Assert.AreEqual(expectedEmailTo, result.EmailTo);
-            Assert.AreNotEqual(Guid.Empty, result.Id);
+            Assert.AreNotEqual(Guid.Empty, result.ResourceID);
         }
 
         [TestMethod]
         public void TestSaveSource()
         {
             //arrange
-            var expectedHostName = "HostName";
-            var expectedPassword = "Password";
-            var expectedUserName = "UserName";
-            var expectedPort = 423423;
-            var expectedTimeout = 314313;
-            var expectedEnableSsl = true;
-            var expectedEmailFrom = "EmailFrom";
-            var expectedEmailTo = "EmailTo@example.com";
-            var sourceResourceName = "sourceResourceName";
-            var expectedHeaderText = sourceResourceName;
-            var expectedHeader = sourceResourceName + " *";
-            var expectedPath = "somePath";
-            var expectedResourceName = "someResourceName";
+            const string expectedHostName = "HostName";
+            const string expectedPassword = "Password";
+            const string expectedUserName = "UserName";
+            const int expectedPort = 423423;
+            const int expectedTimeout = 314313;
+            const bool expectedEnableSsl = true;
+            const string expectedEmailFrom = "EmailFrom";
+            const string expectedEmailTo = "EmailTo@example.com";
+            const string sourceResourceName = "sourceResourceName";
+            const string expectedHeaderText = sourceResourceName;
+            const string expectedHeader = sourceResourceName + " *";
+            const string expectedPath = "somePath";
+            const string expectedResourceName = "someResourceName";
 
             _targetSource.HostName = expectedHostName;
             _targetSource.Password = expectedPassword;
@@ -833,7 +833,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _targetSource.EmailFrom = expectedEmailFrom;
             _targetSource.EmailTo = expectedEmailTo;
             _emailSource.SetupGet(it => it.ResourceName).Returns(sourceResourceName);
-            var emailServiceSourceMock = new Mock<IEmailServiceSource>();
+            var emailServiceSourceMock = new Mock<ISmtpSource>();
             emailServiceSourceMock.SetupGet(it => it.Path).Returns(expectedPath);
             emailServiceSourceMock.SetupGet(it => it.ResourceName).Returns(expectedResourceName);
             _targetSource.Item = emailServiceSourceMock.Object;
@@ -844,12 +844,12 @@ namespace Warewolf.Studio.ViewModels.Tests
             //assert
             Assert.IsFalse(_targetSource.TestPassed);
             Assert.AreSame(_emailSource.Object, _targetSource.Item);
-            _emailSource.VerifySet(it => it.HostName = expectedHostName);
+            _emailSource.VerifySet(it => it.Host = expectedHostName);
             _emailSource.VerifySet(it => it.UserName = expectedUserName);
             _emailSource.VerifySet(it => it.Password = expectedPassword);
             _emailSource.VerifySet(it => it.Port = expectedPort);
             _emailSource.VerifySet(it => it.Timeout = expectedTimeout);
-            _emailSource.VerifySet(it => it.EnableSsl = expectedEnableSsl);
+            _emailSource.VerifySet(it => it.EnableSSL = expectedEnableSsl);
             _emailSource.VerifySet(it => it.EmailFrom = expectedEmailFrom);
             _emailSource.VerifySet(it => it.EmailTo = expectedEmailTo);
             Assert.AreEqual(expectedHeaderText, _targetSource.HeaderText);
@@ -875,7 +875,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var helpViewModelMock = new Mock<IHelpWindowViewModel>();
             mainViewModelMock.SetupGet(it => it.HelpViewModel).Returns(helpViewModelMock.Object);
             CustomContainer.Register(mainViewModelMock.Object);
-            var helpText = "someText";
+            const string helpText = "someText";
 
             //act
             _target.UpdateHelpDescriptor(helpText);
@@ -974,20 +974,20 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestFromModel()
         {
             //arrange
-            var expectedHostName = "expectedHostName";
-            var expectedUserName = "expectedUserName";
-            var expectedPassword = "expectedPassword";
-            var expectedEnableSsl = true;
-            var expectedPort = 1342;
-            var expectedTimeout = 43242;
-            var expectedEmailFrom = "kidjwgfwg";
-            var expectedEmailTo = "gwgesgfewg";
-            var expectedResourceName = "expectedResourceName";
-            var emailServiceSourceMock = new Mock<IEmailServiceSource>();
-            emailServiceSourceMock.SetupGet(it => it.HostName).Returns(expectedHostName);
+            const string expectedHostName = "expectedHostName";
+            const string expectedUserName = "expectedUserName";
+            const string expectedPassword = "expectedPassword";
+            const bool expectedEnableSsl = true;
+            const int expectedPort = 1342;
+            const int expectedTimeout = 43242;
+            const string expectedEmailFrom = "kidjwgfwg";
+            const string expectedEmailTo = "gwgesgfewg";
+            const string expectedResourceName = "expectedResourceName";
+            var emailServiceSourceMock = new Mock<ISmtpSource>();
+            emailServiceSourceMock.SetupGet(it => it.Host).Returns(expectedHostName);
             emailServiceSourceMock.SetupGet(it => it.UserName).Returns(expectedUserName);
             emailServiceSourceMock.SetupGet(it => it.Password).Returns(expectedPassword);
-            emailServiceSourceMock.SetupGet(it => it.EnableSsl).Returns(expectedEnableSsl);
+            emailServiceSourceMock.SetupGet(it => it.EnableSSL).Returns(expectedEnableSsl);
             emailServiceSourceMock.SetupGet(it => it.Port).Returns(expectedPort);
             emailServiceSourceMock.SetupGet(it => it.Timeout).Returns(expectedTimeout);
             emailServiceSourceMock.SetupGet(it => it.EmailFrom).Returns(expectedEmailFrom);

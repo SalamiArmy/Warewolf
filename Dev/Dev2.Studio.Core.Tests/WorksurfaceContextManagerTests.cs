@@ -15,6 +15,7 @@ using Dev2.Studio.Interfaces;
 using Microsoft.Practices.Prism.Mvvm;
 using Dev2.Studio.Core;
 using Action = System.Action;
+using Dev2.Common.Interfaces.ToolBase.Email;
 
 namespace Dev2.Core.Tests
 {
@@ -691,7 +692,7 @@ namespace Dev2.Core.Tests
             //---------------Execute Test ----------------------
             sorksurfaceContextManager.DisplayResourceWizard(resourceModelMock.Object);
             //---------------Test Result -----------------------
-            var workSurfaceViewModels = ShellViewModel.Items.Any(model => model.WorkSurfaceViewModel is ViewModels.SourceViewModel<IEmailServiceSource>);
+            var workSurfaceViewModels = ShellViewModel.Items.Any(model => model.WorkSurfaceViewModel is ViewModels.SourceViewModel<ISmtpSource>);
             Assert.IsTrue(workSurfaceViewModels);
         }
 

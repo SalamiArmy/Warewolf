@@ -10,6 +10,7 @@ using Dev2.Common.Interfaces.Toolbox;
 using Dev2.Common.Interfaces.ToolBase.ExchangeEmail;
 using Dev2.Common.Interfaces.Versioning;
 using Dev2.Common.Interfaces.Data;
+using Dev2.Common.Interfaces.ToolBase.Email;
 
 namespace Dev2.Studio.Interfaces
 {
@@ -29,8 +30,8 @@ namespace Dev2.Studio.Interfaces
         void EditResource(IPluginSource selectedSource, IWorkSurfaceKey key);
         void EditResource(IWebServiceSource selectedSource);
         void EditResource(IWebServiceSource selectedSource, IWorkSurfaceKey key);
-        void EditResource(IEmailServiceSource selectedSource);
-        void EditResource(IEmailServiceSource selectedSource, IWorkSurfaceKey key);
+        void EditResource(ISmtpSource selectedSource);
+        void EditResource(ISmtpSource selectedSource, IWorkSurfaceKey key);
         void EditResource(IExchangeSource selectedSource);
         void EditResource(IExchangeSource selectedSource, IWorkSurfaceKey key);
         void EditResource(IRabbitMQServiceSourceDefinition selectedSource);

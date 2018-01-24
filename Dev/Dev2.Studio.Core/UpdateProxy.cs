@@ -8,6 +8,7 @@ using Dev2.Common.Interfaces.DB;
 using Dev2.Common.Interfaces.Deploy;
 using Dev2.Common.Interfaces.Infrastructure.Communication;
 using Dev2.Common.Interfaces.ServerProxyLayer;
+using Dev2.Common.Interfaces.ToolBase.Email;
 using Dev2.Common.Interfaces.ToolBase.ExchangeEmail;
 using Dev2.Common.Interfaces.WebServices;
 using Dev2.Communication;
@@ -28,7 +29,7 @@ namespace Dev2.Studio.Core
             : base(communicationControllerFactory, connection)
         {
         }
-        
+
         public void SaveServerSource(IServerSource resource, Guid workspaceId)
         {
             var con = Connection;
@@ -46,7 +47,7 @@ namespace Dev2.Studio.Core
                 throw new WarewolfSaveException(output.Message.ToString(), null);
             }
         }
-        
+
         public void TestConnection(IServerSource resource)
         {
             var con = Connection;
@@ -64,7 +65,7 @@ namespace Dev2.Studio.Core
                 throw new WarewolfTestException(output.Message.ToString(), null);
             }
         }
-        
+
         public IList<string> TestDbConnection(IDbSource resource)
         {
             var con = Connection;
@@ -84,7 +85,7 @@ namespace Dev2.Studio.Core
 
             return serialiser.Deserialize<List<string>>(output.Message);
         }
-        
+
         public void SaveDbSource(IDbSource toDbSource, Guid serverWorkspaceID)
         {
             var con = Connection;
@@ -97,7 +98,7 @@ namespace Dev2.Studio.Core
                 throw new WarewolfSaveException(output.Message.ToString(), null);
             }
         }
-        
+
         public void SaveDbService(IDatabaseService dbService)
         {
             var con = Connection;
@@ -110,7 +111,7 @@ namespace Dev2.Studio.Core
                 throw new WarewolfSaveException(output.Message.ToString(), null);
             }
         }
-        
+
         public DataTable TestDbService(IDatabaseService service)
         {
             var con = Connection;
@@ -130,7 +131,7 @@ namespace Dev2.Studio.Core
 
             return serialiser.Deserialize<DataTable>(output.Message);
         }
-        
+
         public void SaveWebserviceSource(IWebServiceSource resource, Guid serverWorkspaceId)
         {
             var con = Connection;
@@ -143,7 +144,7 @@ namespace Dev2.Studio.Core
                 throw new WarewolfSaveException(output.Message.ToString(), null);
             }
         }
-        
+
         public void TestConnection(IWebServiceSource resource)
         {
             var con = Connection;
@@ -317,7 +318,7 @@ namespace Dev2.Studio.Core
             return output.Message.ToString();
         }
 
-        public string TestEmailServiceSource(IEmailServiceSource emailServiceSource)
+        public string TestEmailServiceSource(ISmtpSource emailServiceSource)
         {
             var con = Connection;
             var comsController = CommunicationControllerFactory.CreateController("TestEmailServiceSource");
@@ -357,7 +358,7 @@ namespace Dev2.Studio.Core
             return output.Message.ToString();
         }
 
-        public void SaveEmailServiceSource(IEmailServiceSource model, Guid serverWorkspaceID)
+        public void SaveSmtpSource(ISmtpSource model, Guid serverWorkspaceID)
         {
             var con = Connection;
             var comsController = CommunicationControllerFactory.CreateController("SaveEmailServiceSource");
@@ -381,6 +382,10 @@ namespace Dev2.Studio.Core
             var serialiser = new Dev2JsonSerializer();
             comsController.AddPayloadArgument("ExchangeSource", serialiser.SerializeToBuilder(model));
             var output = comsController.ExecuteCommand<IExecuteMessage>(con, GlobalConstants.ServerWorkspaceID);
+            if (output == null)
+            {
+                throw new WarewolfSaveException("No response from server. Please ensure server is connected.", null);
+            }
             if (output.HasError)
             {
                 throw new WarewolfSaveException(output.Message.ToString(), null);

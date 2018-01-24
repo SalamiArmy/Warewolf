@@ -59,7 +59,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Dev2.ViewModels;
 using Warewolf.Studio.ViewModels;
-
+using Dev2.Common.Interfaces.ToolBase.Email;
 
 namespace Dev2.Core.Tests
 {
@@ -2187,14 +2187,14 @@ namespace Dev2.Core.Tests
             Assert.IsTrue(ShellViewModel.ActiveServer.IsConnected);
             Assert.IsTrue(ShellViewModel.ActiveServer.CanStudioExecute);
 
-            var source = new Mock<IEmailServiceSource>();
+            var source = new Mock<ISmtpSource>();
             source.Setup(a => a.ResourceName).Returns("TestEmail");
             var view = new Mock<IView>();
             var mockWM = new Mock<IWorksurfaceContextManager>();
-            mockWM.Setup(manager => manager.EditResource(It.IsAny<IEmailServiceSource>(), view.Object)).Verifiable();
+            mockWM.Setup(manager => manager.EditResource(It.IsAny<ISmtpSource>(), view.Object)).Verifiable();
             ShellViewModel.WorksurfaceContextManager = mockWM.Object;
             ShellViewModel.WorksurfaceContextManager.EditResource(source.Object, view.Object);
-            mockWM.Verify(manager => manager.EditResource(It.IsAny<IEmailServiceSource>(), view.Object));
+            mockWM.Verify(manager => manager.EditResource(It.IsAny<ISmtpSource>(), view.Object));
             ShellViewModel.EditResource(source.Object);
         }
 
@@ -2223,6 +2223,34 @@ namespace Dev2.Core.Tests
             ShellViewModel.WorksurfaceContextManager = mockWM.Object;
             ShellViewModel.WorksurfaceContextManager.EditResource(source.Object, view.Object);
             mockWM.Verify(manager => manager.EditResource(It.IsAny<IExchangeSource>(), view.Object));
+            ShellViewModel.EditResource(source.Object);
+        }
+
+        [TestMethod]
+        [Owner("Pieter Terblanche")]
+        [TestCategory("MainViewModel_EditSmtpSource")]
+        public void MainViewModel_EditSmtpSource_Handle_Result()
+        {
+            //------------Setup for test--------------------------
+            CreateFullExportsAndVm();
+
+            var env = SetupEnvironment();
+
+            //------------Execute Test---------------------------
+            ShellViewModel.ActiveServer = env.Object;
+            //------------Assert Results-------------------------
+            Assert.IsNotNull(ShellViewModel.ActiveServer);
+            Assert.IsTrue(ShellViewModel.ActiveServer.IsConnected);
+            Assert.IsTrue(ShellViewModel.ActiveServer.CanStudioExecute);
+            var view = new Mock<IView>();
+            var source = new Mock<ISmtpSource>();
+            source.Setup(a => a.ResourceName).Returns("TestSmtp");
+
+            var mockWM = new Mock<IWorksurfaceContextManager>();
+            mockWM.Setup(manager => manager.EditResource(It.IsAny<ISmtpSource>(), view.Object)).Verifiable();
+            ShellViewModel.WorksurfaceContextManager = mockWM.Object;
+            ShellViewModel.WorksurfaceContextManager.EditResource(source.Object, view.Object);
+            mockWM.Verify(manager => manager.EditResource(It.IsAny<ISmtpSource>(), view.Object));
             ShellViewModel.EditResource(source.Object);
         }
 
@@ -3278,8 +3306,8 @@ namespace Dev2.Core.Tests
             var activetx = ShellViewModel.Items.ToList().First(i => i.WorkSurfaceViewModel.GetType().Name == "SourceViewModel`1");
 
             var vm = new WorkSurfaceContextViewModel(new EventAggregator(), new WorkSurfaceKey(), activetx.WorkSurfaceViewModel, new Mock<Common.Interfaces.Studio.Controller.IPopupController>().Object, (a, b, c) => { });
-            var sourceVM = vm.WorkSurfaceViewModel as SourceViewModel<IEmailServiceSource>;
-            sourceVM.ViewModel.Item = new Mock<IEmailServiceSource>().Object;
+            var sourceVM = vm.WorkSurfaceViewModel as SourceViewModel<ISmtpSource>;
+            sourceVM.ViewModel.Item = new Mock<ISmtpSource>().Object;
             mvm.Items.Add(vm);
             Assert.IsFalse(mvm.OnStudioClosing());
         }

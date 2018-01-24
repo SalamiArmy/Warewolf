@@ -10,7 +10,7 @@ namespace Warewolf.Studio.ViewModels
     public class ManageExchangeSourceModel : IManageExchangeSourceModel
     {
         readonly IStudioUpdateManager _updateRepository;
-        
+
         readonly IQueryManager _queryProxy;
 
         public ManageExchangeSourceModel(IStudioUpdateManager updateRepository, IQueryManager queryProxy, string serverName)
@@ -24,8 +24,6 @@ namespace Warewolf.Studio.ViewModels
                 ServerName = serverName.Substring(0, serverName.IndexOf("(", System.StringComparison.Ordinal));
             }
         }
-
-        #region Implementation of IManageDatabaseSourceModel
 
         public string TestConnection(IExchangeSource resource)
         {
@@ -56,7 +54,5 @@ namespace Warewolf.Studio.ViewModels
         }
 
         public string ServerName { get; private set; }
-
-        #endregion
     }
 }

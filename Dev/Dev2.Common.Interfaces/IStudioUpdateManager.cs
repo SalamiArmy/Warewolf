@@ -6,6 +6,7 @@ using Dev2.Common.Interfaces.WebServices;
 using System.Collections.Generic;
 using System.Data;
 using Dev2.Common.Interfaces.Deploy;
+using Dev2.Common.Interfaces.ToolBase.Email;
 
 namespace Dev2.Common.Interfaces
 {
@@ -16,11 +17,11 @@ namespace Dev2.Common.Interfaces
         void Save(IWebServiceSource model);
         void Save(IPluginSource source);
         void Save(IComPluginSource source);
-        void Save(IEmailServiceSource emailServiceSource);
-        void Save(IExchangeSource emailServiceSource);
+        void Save(ISmtpSource smtpSource);
+        void Save(IExchangeSource exchangeSource);
         void Save(ISharepointServerSource sharePointServiceSource);
         void Save(IRabbitMQServiceSourceDefinition rabbitMqServiceSource);
-        void Save(IWcfServerSource wcfSource);        
+        void Save(IWcfServerSource wcfSource);
         void Save(IOAuthSource sharePointServiceSource);
     }
 
@@ -29,8 +30,8 @@ namespace Dev2.Common.Interfaces
         void TestConnection(IServerSource serverSource);
         void TestConnection(IWebServiceSource serverSource);
         void TestConnection(ISharepointServerSource sharePointServiceSource);
-        string TestConnection(IEmailServiceSource emailServiceSourceSource);
-        string TestConnection(IExchangeSource emailServiceSourceSource);
+        string TestConnection(ISmtpSource smtpSource);
+        string TestConnection(IExchangeSource exchangeSource);
         string TestConnection(IRabbitMQServiceSourceDefinition rabbitMqServiceSource);
         IList<string> TestDbConnection(IDbSource serverSource);
         DataTable TestDbService(IDatabaseService inputValues);

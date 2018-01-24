@@ -1,5 +1,6 @@
 ﻿using System;
 using Dev2.Common.Interfaces;
+using Dev2.Common.Interfaces.ToolBase.Email;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -38,7 +39,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestTestConnection()
         {
             //arrange
-            var resourceMock = new Mock<IEmailServiceSource>();
+            var resourceMock = new Mock<ISmtpSource>();
 
             //act
             _target.TestConnection(resourceMock.Object);
@@ -51,7 +52,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestSave()
         {
             //arrange
-            var resourceMock = new Mock<IEmailServiceSource>();
+            var resourceMock = new Mock<ISmtpSource>();
 
             //act
             _target.Save(resourceMock.Object);
@@ -77,9 +78,9 @@ namespace Warewolf.Studio.ViewModels.Tests
         [TestMethod]
         public void TestEmailSourceServerNameBrackets()
         {
-            //arrange  
+            //arrange
             _target = new ManageEmailSourceModel(_updateRepositoryMock.Object, _queryProxyMock.Object, _serverName+"(sthInBrackets)");
-            
+
             //act
             var value = _target.ServerName;
 

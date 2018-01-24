@@ -1,35 +1,39 @@
-﻿using System;
+﻿/*
+*  Warewolf - Once bitten, there's no going back
+*  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
+*  Licensed under GNU Affero General Public License 3.0 or later.
+*  Some rights reserved.
+*  Visit our website for more information <http://warewolf.io/>
+*  AUTHORS <http://warewolf.io/authors.php> , CONTRIBUTORS <http://warewolf.io/contributors.php>
+*  @license GNU Affero General Public License <http://www.gnu.org/licenses/agpl-3.0.html>
+*/
+
+using Dev2.Common.Interfaces.Core.DynamicServices;
+using Dev2.Common.Interfaces.ToolBase;
+using Dev2.Common.Interfaces.ToolBase.Email;
+using System;
 
 namespace Dev2.Common.Interfaces.Core
 {
-    public class EmailServiceSourceDefinition : IEmailServiceSource, IEquatable<EmailServiceSourceDefinition>
+    public class EmailServiceSourceDefinition : ISmtpSource, IEquatable<EmailServiceSourceDefinition>
     {
-        public EmailServiceSourceDefinition()
-        {
-                
-        }
+        public Guid ResourceID { get; set; }
+        public string Host { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public enSourceType Type { get; set; }
+        public string ResourceType { get; set; }
+        public int Timeout { get; set; }
+        public string EmailTo { get; set; }
+        public string Path { get; set; }
+        public Guid Id { get; set; }
+        public string ResourceName { get; set; }
+        public int Port { get; set; }
+        public string EmailFrom { get; set; }
+        public bool EnableSSL { get; set; }
 
-        public EmailServiceSourceDefinition(IEmailSource db)
-        {
-                Id = db.ResourceID;
-                HostName = db.Host;
-                Password = db.Password;
-                UserName = db.UserName;
-                Path = "";
-                Port = db.Port;
-                Timeout = db.Timeout;
-                ResourceName = db.ResourceName;
-                EnableSsl = db.EnableSsl;
-        }
         #region Equality members
 
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <returns>
-        /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
-        /// </returns>
-        /// <param name="other">An object to compare with this object.</param>
         public bool Equals(EmailServiceSourceDefinition other)
         {
             if (ReferenceEquals(null, other))
@@ -40,29 +44,15 @@ namespace Dev2.Common.Interfaces.Core
             {
                 return true;
             }
-            return string.Equals(HostName, other.HostName) && string.Equals(UserName, other.UserName) && string.Equals(Password, other.Password) 
-                && EnableSsl == other.EnableSsl && string.Equals(Port, other.Port) && string.Equals(Timeout, other.Timeout);
+            return string.Equals(Host, other.Host) && string.Equals(UserName, other.UserName) && string.Equals(Password, other.Password) 
+                && EnableSSL == other.EnableSSL && Port == other.Port && Timeout == other.Timeout;
         }
 
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <returns>
-        /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
-        /// </returns>
-        /// <param name="other">An object to compare with this object.</param>
-        public bool Equals(IEmailServiceSource other)
+        public bool Equals(ISmtpSource other)
         {
             return Equals(other as EmailServiceSourceDefinition);
         }
 
-        /// <summary>
-        /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
-        /// </summary>
-        /// <returns>
-        /// true if the specified object  is equal to the current object; otherwise, false.
-        /// </returns>
-        /// <param name="obj">The object to compare with the current object. </param>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj))
@@ -80,45 +70,22 @@ namespace Dev2.Common.Interfaces.Core
             return Equals((EmailServiceSourceDefinition)obj);
         }
 
-        /// <summary>
-        /// Serves as a hash function for a particular type. 
-        /// </summary>
-        /// <returns>
-        /// A hash code for the current <see cref="T:System.Object"/>.
-        /// </returns>
+        public bool Equals(ToolBase.IEmailSource other)
+        {
+            return Equals(other as EmailServiceSourceDefinition);
+        }
+
         public override int GetHashCode()
         {
             unchecked
             {
-                var hashCode = HostName?.GetHashCode() ?? 0;
+                var hashCode = Host?.GetHashCode() ?? 0;
                 hashCode = (hashCode * 397) ^ (UserName?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ (Password?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }
 
-        public static bool operator ==(EmailServiceSourceDefinition left, EmailServiceSourceDefinition right)
-        {
-            return Equals(left, right);
-        }
-
-        public static bool operator !=(EmailServiceSourceDefinition left, EmailServiceSourceDefinition right)
-        {
-            return !Equals(left, right);
-        }
-
         #endregion
-
-        public string HostName { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public bool EnableSsl { get; set; }
-        public int Port { get; set; }
-        public int Timeout { get; set; }
-        public string EmailFrom { get; set; }
-        public string EmailTo { get; set; }
-        public string Path { get; set; }
-        public Guid Id { get; set; }
-        public string ResourceName { get; set; }
     }
 }

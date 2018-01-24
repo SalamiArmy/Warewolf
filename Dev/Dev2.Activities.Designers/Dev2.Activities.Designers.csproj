@@ -169,6 +169,7 @@
     </Compile>
     <Compile Include="Designers2\Core\ActionRegion\WcfActionMemento.cs" />
     <Compile Include="Designers2\Core\InputRegion\ServiceInputNameComparer.cs" />
+    <Compile Include="Designers2\Core\Source\SmtpSourceRegion.cs" />
     <Compile Include="Designers2\Core\ViewPropertyBuilder.cs" />
     <Compile Include="Designers2\Foreach\SmallErrorView.xaml.cs">
       <DependentUpon>SmallErrorView.xaml</DependentUpon>

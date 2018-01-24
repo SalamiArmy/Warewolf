@@ -185,10 +185,10 @@ namespace Dev2.Runtime.ServiceModel.Data
 
         #endregion ToXml
 
-        public bool Equals(IExchangeSource other)
-        {
-            return true;
-        }
+        //public bool Equals(IExchangeSource other)
+        //{
+        //    return true;
+        //}
     }
 
     public class ExchangeTestMessage

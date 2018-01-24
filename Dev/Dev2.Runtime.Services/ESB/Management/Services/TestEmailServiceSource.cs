@@ -6,6 +6,7 @@ using Dev2.Common;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Core;
 using Dev2.Common.Interfaces.Enums;
+using Dev2.Common.Interfaces.ToolBase.Email;
 using Dev2.Communication;
 using Dev2.DynamicServices;
 using Dev2.Runtime.ServiceModel.Data;
@@ -29,14 +30,14 @@ namespace Dev2.Runtime.ESB.Management.Services
 
                 values.TryGetValue("EmailServiceSource", out StringBuilder resourceDefinition);
 
-                IEmailServiceSource src = serializer.Deserialize<EmailServiceSourceDefinition>(resourceDefinition);
+                ISmtpSource src = serializer.Deserialize<EmailServiceSourceDefinition>(resourceDefinition);
                 var con = new EmailSource
                 {
-                    Host = src.HostName,
+                    Host = src.Host,
                     UserName = src.UserName,
                     Password = src.Password,
                     Port = src.Port,
-                    EnableSsl = src.EnableSsl,
+                    EnableSsl = src.EnableSSL,
                     Timeout = src.Timeout
                 };
                 try

@@ -16,6 +16,7 @@ using Warewolf.Studio.Core.Infragistics_Prism_Region_Adapter;
 using Warewolf.Studio.ViewModels;
 using Warewolf.Studio.Views;
 using Dev2.Studio.Core;
+using Dev2.Common.Interfaces.ToolBase.Email;
 
 namespace Warewolf.UIBindingTests.EmailSource
 {
@@ -72,10 +73,10 @@ namespace Warewolf.UIBindingTests.EmailSource
             var emailServiceSourceDefinition = new EmailServiceSourceDefinition
             {
                 ResourceName = "Test Email Source",
-                HostName = "smtp.gmail.com",
+                Host = "smtp.gmail.com",
                 UserName = "warewolf@dev2.co.za",
                 Password = "Dev_tech*",
-                EnableSsl = false,
+                EnableSSL = false,
                 Port = 25,
                 Timeout = 100,
                 EmailFrom = "warewolf@dev2.co.za",
@@ -222,11 +223,11 @@ namespace Warewolf.UIBindingTests.EmailSource
             var isSuccess = String.Equals(successString, "Successful", StringComparison.InvariantCultureIgnoreCase);
             if (isSuccess)
             {
-                mockUpdateManager.Setup(manager => manager.TestConnection(It.IsAny<IEmailServiceSource>()));
+                mockUpdateManager.Setup(manager => manager.TestConnection(It.IsAny<ISmtpSource>()));
             }
             else
             {
-                mockUpdateManager.Setup(manager => manager.TestConnection(It.IsAny<IEmailServiceSource>()))
+                mockUpdateManager.Setup(manager => manager.TestConnection(It.IsAny<ISmtpSource>()))
                     .Throws(new WarewolfTestException("Failed to Send: One or more errors occurred", null));
             }
             var manageEmailSourceControl = ScenarioContext.Current.Get<ManageEmailSourceControl>(Utils.ViewNameKey);

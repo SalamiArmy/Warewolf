@@ -1,7 +1,7 @@
 ﻿/*
 *  Warewolf - Once bitten, there's no going back
 *  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
-*  Licensed under GNU Affero General Public License 3.0 or later. 
+*  Licensed under GNU Affero General Public License 3.0 or later.
 *  Some rights reserved.
 *  Visit our website for more information <http://warewolf.io/>
 *  AUTHORS <http://warewolf.io/authors.php> , CONTRIBUTORS <http://warewolf.io/contributors.php>
@@ -9,9 +9,9 @@
 */
 
 using Dev2.Common.Interfaces.Core.DynamicServices;
+using Dev2.Common.Interfaces.ToolBase;
 using Dev2.Common.Interfaces.ToolBase.ExchangeEmail;
 using System;
-
 
 namespace Dev2.Common.Interfaces.Core
 {
@@ -30,7 +30,7 @@ namespace Dev2.Common.Interfaces.Core
         public string ResourceName { get; set; }
 
         #region Equality members
-        
+
         public bool Equals(ExchangeSourceDefinition other)
         {
             if (ReferenceEquals(null, other))
@@ -44,12 +44,12 @@ namespace Dev2.Common.Interfaces.Core
             return string.Equals(AutoDiscoverUrl, other.AutoDiscoverUrl) && string.Equals(UserName, other.UserName) && string.Equals(Password, other.Password)
                 && Timeout == other.Timeout;
         }
-        
+
         public bool Equals(IExchangeSource other)
         {
             return Equals(other as ExchangeSourceDefinition);
         }
-        
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj))
@@ -66,7 +66,12 @@ namespace Dev2.Common.Interfaces.Core
             }
             return Equals((ExchangeSourceDefinition)obj);
         }
-        
+
+        public bool Equals(ToolBase.IEmailSource other)
+        {
+            return Equals(other as ExchangeSourceDefinition);
+        }
+
         public override int GetHashCode()
         {
             unchecked

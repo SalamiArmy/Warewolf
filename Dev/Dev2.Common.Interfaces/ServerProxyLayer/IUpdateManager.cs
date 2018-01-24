@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using Dev2.Common.Interfaces.Deploy;
 using Dev2.Common.Interfaces.ToolBase.ExchangeEmail;
-
+using Dev2.Common.Interfaces.ToolBase.Email;
 
 namespace Dev2.Common.Interfaces.ServerProxyLayer
 {
@@ -20,7 +20,7 @@ namespace Dev2.Common.Interfaces.ServerProxyLayer
         void SavePluginSource(IPluginSource source, Guid serverWorkspaceID);
         void SaveComPluginSource(IComPluginSource source, Guid serverWorkspaceID);
         void SaveOAuthSource(IOAuthSource source, Guid serverWorkspaceID);
-        void SaveEmailServiceSource(IEmailServiceSource emailServiceSource, Guid serverWorkspaceID);
+        void SaveSmtpSource(ISmtpSource smtpSource, Guid serverWorkspaceID);
         void SaveExchangeSource(IExchangeSource exchangeSource, Guid serverWorkspaceID);
 
         void SaveRabbitMQServiceSource(IRabbitMQServiceSourceDefinition rabbitMqServiceSource, Guid serverWorkspaceID);
@@ -37,7 +37,7 @@ namespace Dev2.Common.Interfaces.ServerProxyLayer
         string TestWebService(IWebService inputValues);
         string TestPluginService(IPluginService inputValues);
         string TestComPluginService(IComPluginService inputValues);
-        string TestEmailServiceSource(IEmailServiceSource emailServiceSource);
+        string TestEmailServiceSource(ISmtpSource emailServiceSource);
         string TestExchangeServiceSource(IExchangeSource emailServiceSource);
 
         string TestRabbitMQServiceSource(IRabbitMQServiceSourceDefinition rabbitMqServiceSource);

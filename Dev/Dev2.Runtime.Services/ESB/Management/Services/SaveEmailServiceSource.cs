@@ -5,6 +5,7 @@ using Dev2.Common;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Enums;
 using Dev2.Common.Interfaces.Infrastructure;
+using Dev2.Common.Interfaces.ToolBase.Email;
 using Dev2.Communication;
 using Dev2.DynamicServices;
 using Dev2.Runtime.Hosting;
@@ -34,17 +35,17 @@ namespace Dev2.Runtime.ESB.Management.Services
 
                 values.TryGetValue("EmailServiceSource", out StringBuilder resourceDefinition);
 
-                var src = serializer.Deserialize<IEmailServiceSource>(resourceDefinition);
+                var src = serializer.Deserialize<ISmtpSource>(resourceDefinition);
                 var con = new EmailSource
                 {
-                    Host = src.HostName,
+                    Host = src.Host,
                     UserName = src.UserName,
                     Password = src.Password,
                     Port = src.Port,
-                    EnableSsl = src.EnableSsl,
+                    EnableSsl = src.EnableSSL,
                     Timeout = src.Timeout,
                     ResourceName = src.ResourceName,
-                    ResourceID = src.Id
+                    ResourceID = src.ResourceID
                 };
                 ResourceCatalog.Instance.SaveResource(GlobalConstants.ServerWorkspaceID, con, src.Path);
                 ServerExplorerRepo.UpdateItem(con);

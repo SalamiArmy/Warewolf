@@ -38,16 +38,16 @@ namespace Dev2.Activities.Designers.Tests.Email
         }
 
         public int OnSelectedEmailSourceChangedHitCount { get; private set; }
-        protected override void OnSelectedEmailSourceChanged()
-        {
-            OnSelectedEmailSourceChangedHitCount++;
-            base.OnSelectedEmailSourceChanged();
-        }
+        //protected override void OnSelectedEmailSourceChanged()
+        //{
+        //    OnSelectedEmailSourceChangedHitCount++;
+        //    base.OnSelectedEmailSourceChanged();
+        //}
 
         public IWebRequestInvoker WebRequestInvoker { get; set; }
-        protected override IWebRequestInvoker CreateWebRequestInvoker()
-        {
-            return WebRequestInvoker;
-        }
+        //protected override IWebRequestInvoker CreateWebRequestInvoker()
+        //{
+        //    return WebRequestInvoker;
+        //}
     }
 }

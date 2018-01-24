@@ -1,7 +1,7 @@
 /*
 *  Warewolf - Once bitten, there's no going back
 *  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
-*  Licensed under GNU Affero General Public License 3.0 or later. 
+*  Licensed under GNU Affero General Public License 3.0 or later.
 *  Some rights reserved.
 *  Visit our website for more information <http://warewolf.io/>
 *  AUTHORS <http://warewolf.io/authors.php> , CONTRIBUTORS <http://warewolf.io/contributors.php>
@@ -18,12 +18,16 @@ using System.Windows.Input;
 using Caliburn.Micro;
 using Dev2.Activities.Designers2.Core;
 using Dev2.Activities.Designers2.Core.Extensions;
+using Dev2.Activities.Designers2.Core.Source;
 using Dev2.Common.Common;
+using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Core;
 using Dev2.Common.Interfaces.Core.DynamicServices;
 using Dev2.Common.Interfaces.Infrastructure.Providers.Errors;
 using Dev2.Common.Interfaces.Infrastructure.Providers.Validation;
 using Dev2.Common.Interfaces.Threading;
+using Dev2.Common.Interfaces.ToolBase;
+using Dev2.Common.Interfaces.ToolBase.Email;
 using Dev2.Communication;
 using Dev2.Data.Interfaces.Enums;
 using Dev2.Data.Util;
@@ -43,22 +47,29 @@ using Warewolf.Resource.Errors;
 
 namespace Dev2.Activities.Designers2.Email
 {
-    public class EmailDesignerViewModel : ActivityDesignerViewModel, IHandle<UpdateResourceMessage>
+    public class EmailDesignerViewModel : CustomToolWithRegionBase, ISmtpServiceViewModel
     {
-        static readonly EmailSource NewEmailSource = new EmailSource { ResourceID = Guid.NewGuid(), ResourceName = "New Email Source..." };
-        static readonly EmailSource SelectEmailSource = new EmailSource { ResourceID = Guid.NewGuid(), ResourceName = "Select an Email Source..." };
-
         readonly IEventAggregator _eventPublisher;
         readonly IServer _server;
         readonly IAsyncWorker _asyncWorker;
+        ISourceToolRegion<ISmtpSource> _sourceRegion;
 
-        bool _isInitializing;
-        internal Func<string> GetDatalistString = () => DataListSingleton.ActiveDataList.Resource.DataList;
+        public RelayCommand TestEmailAccountCommand { get; private set; }
+        public ICommand ChooseAttachmentsCommand { get; private set; }
 
         public EmailDesignerViewModel(ModelItem modelItem)
             : this(modelItem, new AsyncWorker(), ServerRepository.Instance.ActiveServer, EventPublishers.Aggregator)
         {
-            this.RunViewSetup();
+        }
+
+        public EmailDesignerViewModel(ModelItem modelItem, IAsyncWorker asyncWorker, ISmtpServiceModel model, IEventAggregator eventPublisher) : base(modelItem)
+        {
+            TestEmailAccountCommand = new RelayCommand(o => TestEmailAccount(), o => CanTestEmailAccount);
+            ChooseAttachmentsCommand = new DelegateCommand(o => ChooseAttachments());
+            _eventPublisher = eventPublisher;
+            _asyncWorker = asyncWorker;
+            Model = model;
+            SetupCommonProperties();
         }
 
         public EmailDesignerViewModel(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher)
@@ -66,7 +77,6 @@ namespace Dev2.Activities.Designers2.Email
         {
             VerifyArgument.IsNotNull("asyncWorker", asyncWorker);
             VerifyArgument.IsNotNull("eventPublisher", eventPublisher);
-            VerifyArgument.IsNotNull("environmentModel", server);
             _asyncWorker = asyncWorker;
             _server = server;
             _eventPublisher = eventPublisher;
@@ -74,58 +84,96 @@ namespace Dev2.Activities.Designers2.Email
 
             AddTitleBarLargeToggle();
 
-            EmailSources = new ObservableCollection<EmailSource>();
-            Priorities = new ObservableCollection<enMailPriorityEnum> { enMailPriorityEnum.High, enMailPriorityEnum.Normal, enMailPriorityEnum.Low };
-
-            EditEmailSourceCommand = new RelayCommand(o => EditEmailSource(), o => IsEmailSourceSelected);
             TestEmailAccountCommand = new RelayCommand(o => TestEmailAccount(), o => CanTestEmailAccount);
             ChooseAttachmentsCommand = new DelegateCommand(o => ChooseAttachments());
 
-            RefreshSources(true);
-            HelpText = Warewolf.Studio.Resources.Languages.HelpText.Tool_Email_SMTP_Send;
+            var shellViewModel = CustomContainer.Get<IShellViewModel>();
+            var model = CustomContainer.CreateInstance<ISmtpServiceModel>(server.UpdateRepository, server.QueryProxy, shellViewModel, server);
+            Model = model;
+            SetupCommonProperties();
+            HelpText = Warewolf.Studio.Resources.Languages.HelpText.Tool_Email_Exchange_Send;
         }
 
-        public EmailSource SelectedEmailSource
+        void SetupCommonProperties()
         {
-            get
+            Testing = false;
+            AddTitleBarMappingToggle();
+            InitialiseViewModel();
+        }
+
+        void AddTitleBarMappingToggle()
+        {
+            HasLargeView = true;
+        }
+
+        void InitialiseViewModel()
+        {
+            BuildRegions();
+            InitializeProperties();
+        }
+
+        public List<KeyValuePair<string, string>> Properties { get; set; }
+        void InitializeProperties()
+        {
+            Properties = new List<KeyValuePair<string, string>>();
+            AddProperty("Source :", SourceRegion.SelectedSource == null ? "" : SourceRegion.SelectedSource.ResourceName);
+        }
+
+        public void AddProperty(string key, string value)
+        {
+            if (!string.IsNullOrEmpty(value))
             {
-                return (EmailSource)GetValue(SelectedEmailSourceProperty);
+                Properties.Add(new KeyValuePair<string, string>(key, value));
             }
+        }
+
+        public ISourceToolRegion<ISmtpSource> SourceRegion
+        {
+            get => _sourceRegion;
             set
             {
-                SetValue(SelectedEmailSourceProperty, value);
-                EditEmailSourceCommand.RaiseCanExecuteChanged();
+                _sourceRegion = value;
+                OnPropertyChanged();
             }
         }
-        public static readonly DependencyProperty SelectedEmailSourceProperty = DependencyProperty.Register("SelectedEmailSource", typeof(EmailSource), typeof(EmailDesignerViewModel), new PropertyMetadata(null, OnSelectedEmailSourceChanged));
 
-        static void OnSelectedEmailSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        string _statusMessage;
+        public string StatusMessage
         {
-            var viewModel = (EmailDesignerViewModel)d;
-
-            viewModel.OnSelectedEmailSourceChanged();
+            get => _statusMessage;
+            set
+            {
+                _statusMessage = value;
+                OnPropertyChanged("StatusMessage");
+            }
         }
 
-        public RelayCommand EditEmailSourceCommand { get; }
-        public RelayCommand TestEmailAccountCommand { get; }
-        public ICommand ChooseAttachmentsCommand { get; private set; }
+        bool _testing;
 
-        public bool IsEmailSourceSelected => SelectedEmailSource != SelectEmailSource;
+        public bool Testing
+        {
+            get => _testing;
+            set
+            {
+                _testing = value;
+                OnPropertyChanged("Testing");
+            }
+        }
 
-        public bool CanEditSource { get; set; }
+        ISmtpServiceModel Model { get; set; }
+        public override IList<IToolRegion> BuildRegions()
+        {
+            IList<IToolRegion> regions = new List<IToolRegion>();
 
-        public ObservableCollection<EmailSource> EmailSources { get; }
-        public ObservableCollection<enMailPriorityEnum> Priorities { get; private set; }
+            SourceRegion = new SmtpSourceRegion(Model, ModelItem, "EmailSource");
+            regions.Add(SourceRegion);
 
-        public bool IsRefreshing { get => (bool)GetValue(IsRefreshingProperty); set => SetValue(IsRefreshingProperty, value); }
-        public static readonly DependencyProperty IsRefreshingProperty = DependencyProperty.Register("IsRefreshing", typeof(bool), typeof(EmailDesignerViewModel), new PropertyMetadata(default(bool)));
+            return regions;
+        }
 
         public bool CanTestEmailAccount
         {
-            get
-            {
-                return (bool)GetValue(CanTestEmailAccountProperty);
-            }
+            get => (bool)GetValue(CanTestEmailAccountProperty);
             set
             {
                 SetValue(CanTestEmailAccountProperty, value);
@@ -157,7 +205,7 @@ namespace Dev2.Activities.Designers2.Email
 
         public bool IsAttachmentsFocused { get => (bool)GetValue(IsAttachmentsFocusedProperty); set => SetValue(IsAttachmentsFocusedProperty, value); }
         public static readonly DependencyProperty IsAttachmentsFocusedProperty = DependencyProperty.Register("IsAttachmentsFocused", typeof(bool), typeof(EmailDesignerViewModel), new PropertyMetadata(default(bool)));
-        
+
         public string Password { get => GetProperty<string>(); set => SetProperty(value); }
         string FromAccount => GetProperty<string>();
         string To => GetProperty<string>();
@@ -167,201 +215,108 @@ namespace Dev2.Activities.Designers2.Email
         string Subject => GetProperty<string>();
         string Body => GetProperty<string>();
 
-        EmailSource EmailSource
+        public void TestEmailAccount()
         {
-            
-            get { return GetProperty<EmailSource>("SelectedEmailSource"); }
-            
-            set
+            if (Errors != null && Errors.Count > 0)
             {
-                if(!_isInitializing)
-                {
-                    
-                    SetProperty(value, "SelectedEmailSource");
-                    
-                }
+                return;
             }
-        }
 
-        public void CreateEmailSource()
-        {
-            CustomContainer.Get<IShellViewModel>().NewEmailSource(string.Empty);
-            RefreshSources();
-        }
+            Testing = true;
+            StatusMessage = string.Empty;
 
-        public void EditEmailSource()
-        {
-            var def = new EmailServiceSourceDefinition
+            if (string.IsNullOrEmpty(To))
             {
-                Id = SelectedEmailSource.ResourceID,
-                HostName = SelectedEmailSource.Host,
-                Password = SelectedEmailSource.Password,
-                UserName = SelectedEmailSource.UserName,
-                Port = SelectedEmailSource.Port,
-                Timeout = SelectedEmailSource.Timeout,
-                ResourceName = SelectedEmailSource.ResourceName,
-                EnableSsl = SelectedEmailSource.EnableSsl
-            };
-
-            CustomContainer.Get<IShellViewModel>().EditResource(def);
-
-        }
-
-        string GetTestEmailAccount()
-        {
-            var addresses = new List<string>();
-            addresses.AddRange(To.Split(';'));
-            addresses.AddRange(Cc.Split(';'));
-            addresses.AddRange(Bcc.Split(';'));
-            return addresses.FirstOrDefault();
-        }
-
-        void TestEmailAccount()
-        {
-            var testEmailAccount = GetTestEmailAccount();
-            if(string.IsNullOrEmpty(testEmailAccount))
-            {
+                Testing = false;
                 Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo(() => IsToFocused = true) { Message = ErrorResource.ToAddressRequired } };
                 return;
             }
-            CanTestEmailAccount = false;
-
-            var testSource = new EmailSource(SelectedEmailSource.ToXml());
-            if(!string.IsNullOrEmpty(FromAccount))
+            if (SourceRegion.SelectedSource == null)
             {
-                testSource.UserName = FromAccount;
-                testSource.Password = Password;
-            }
-            testSource.TestFromAddress = testSource.UserName;
-            testSource.TestToAddress = testEmailAccount;
-            if (EmailAddresssIsAVariable(testEmailAccount))
-            {
-                return;
-            }
-            var uri = new Uri(new Uri(AppUsageStats.LocalHost), "wwwroot/sources/Service/EmailSources/Test");
-            var jsonData = testSource.ToString();
-
-            var requestInvoker = CreateWebRequestInvoker();
-            requestInvoker.ExecuteRequest("POST", uri.ToString(), jsonData, null, OnTestCompleted);
-        }
-
-        bool EmailAddresssIsAVariable(string testEmailAccount)
-        {
-            var postResult = "";
-            var hasVariable = false;
-            if(DataListUtil.IsFullyEvaluated(testEmailAccount))
-            {
-                postResult += "Variable " + testEmailAccount + " cannot be used while testing.";
-                hasVariable = true;
-            }
-            if(DataListUtil.IsFullyEvaluated(FromAccount))
-            {
-                var errorMessage = "Variable " + FromAccount + " cannot be used while testing.";
-                postResult += string.IsNullOrEmpty(postResult) ? errorMessage : Environment.NewLine + errorMessage;
-                hasVariable = true;
-            }
-            if(hasVariable)
-            {
-                var validationResult = new ValidationResult
-                {
-                    ErrorMessage = postResult,
-                    IsValid = false
-                };
-                OnTestCompleted(new Dev2JsonSerializer().Serialize(validationResult));
-                return true;
-            }
-            return false;
-        }
-
-        void OnTestCompleted(string postResult)
-        {
-            try
-            {
-                var result = new Dev2JsonSerializer().Deserialize<ValidationResult>(postResult);
-                Errors = result.IsValid
-                    ? null
-                    : new List<IActionableErrorInfo> { new ActionableErrorInfo(() => IsFromAccountFocused = true) { Message = result.ErrorMessage } };
-            }
-            finally
-            {
-                CanTestEmailAccount = true;
-            }
-        }
-
-        protected virtual IWebRequestInvoker CreateWebRequestInvoker()
-        {
-            return new WebRequestInvoker();
-        }
-
-        protected virtual void OnSelectedEmailSourceChanged()
-        {
-            if(SelectedEmailSource == NewEmailSource)
-            {
-                CreateEmailSource();
+                Testing = false;
+                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo(() => IsToFocused = true) { Message = ErrorResource.InvalidSource } };
                 return;
             }
 
-            IsRefreshing = true;
-
-            if(SelectedEmailSource != SelectEmailSource)
+            var testSource = new EmailSource
             {
-                EmailSources.Remove(SelectEmailSource);
+                Host = SourceRegion.SelectedSource.Host,
+                Password = SourceRegion.SelectedSource.Password,
+                UserName = SourceRegion.SelectedSource.UserName,
+            };
+
+            var testMessage = new ExchangeTestMessage
+            {
+                Body = Body,
+                Subject = Subject,
+            };
+
+            if (!string.IsNullOrEmpty(Attachments))
+            {
+                var attachments = Attachments.Split(';');
+                testMessage.Attachments.AddRange(attachments);
             }
-            EmailSource = SelectedEmailSource;
-            EditEmailSourceCommand.RaiseCanExecuteChanged();
+
+            if (!string.IsNullOrEmpty(To))
+            {
+                var tos = To.Split(';');
+                testMessage.Tos.AddRange(tos);
+            }
+
+            if (!string.IsNullOrEmpty(Cc))
+            {
+                var ccs = Cc.Split(';');
+                testMessage.CCs.AddRange(ccs);
+            }
+
+            if (!string.IsNullOrEmpty(Bcc))
+            {
+                var bccs = Bcc.Split(';');
+                testMessage.BcCs.AddRange(bccs);
+            }
+
+            SendEmail();
         }
 
-        void RefreshSources(bool isInitializing = false)
+        ISmtpSource ToNewSource()
         {
-            IsRefreshing = true;
-            var selectedEmailSource = EmailSource;
-            if(isInitializing)
+            return new EmailServiceSourceDefinition
             {
-                _isInitializing = true;
-            }
-            LoadSources(() =>
+                Host = SourceRegion.SelectedSource.Host,
+                Password = Password,
+                UserName = FromAccount,
+                Port = SourceRegion.SelectedSource.Port,
+                Timeout = SourceRegion.SelectedSource.Timeout,
+                EnableSSL = SourceRegion.SelectedSource.EnableSSL,
+                EmailFrom = FromAccount,
+                EmailTo = To,
+                Id = SourceRegion.SelectedSource.ResourceID
+            };
+        }
+
+        void SendEmail()
+        {
+            _asyncWorker.Start(() =>
             {
-                SetSelectedEmailSource(selectedEmailSource);
-                IsRefreshing = false;
-                if(isInitializing)
+                try
                 {
-                    _isInitializing = false;
+                    var shellViewModel = CustomContainer.Get<IShellViewModel>();
+                    shellViewModel?.ActiveServer?.UpdateRepository?.TestConnection(ToNewSource());
+                }
+                catch (Exception)
+                {
+                    SetStatusMessage("One or more errors occured");
+                }
+                finally
+                {
+                    Testing = false;
                 }
             });
         }
 
-        void SetSelectedEmailSource(Resource source)
+        public void SetStatusMessage(string message)
         {
-            var selectedSource = source == null ? null : EmailSources.FirstOrDefault(d => d.ResourceID == source.ResourceID);
-            if(selectedSource == null)
-            {
-                if(EmailSources.FirstOrDefault(d => d.Equals(SelectEmailSource)) == null)
-                {
-                    EmailSources.Insert(0, SelectEmailSource);
-                }
-                selectedSource = SelectEmailSource;
-            }
-            SelectedEmailSource = selectedSource;
-        }
-
-        void LoadSources(System.Action continueWith = null)
-        {
-            EmailSources.Clear();
-            EmailSources.Add(NewEmailSource);
-
-            _asyncWorker.Start(() => GetEmailSources().OrderBy(r => r.ResourceName), sources =>
-            {
-                foreach(var source in sources)
-                {
-                    EmailSources.Add(source);
-                }
-                continueWith?.Invoke();
-            });
-        }
-
-        IEnumerable<EmailSource> GetEmailSources()
-        {
-            return _server.ResourceRepository.FindSourcesByType<EmailSource>(_server, enSourceType.EmailSource);
+            StatusMessage = message;
         }
 
         void ChooseAttachments()
@@ -395,41 +350,43 @@ namespace Dev2.Activities.Designers2.Email
             Errors = result.Count == 0 ? null : result;
         }
 
+        internal Func<string> GetDatalistString = () => DataListSingleton.ActiveDataList.Resource.DataList;
+
         IEnumerable<IActionableErrorInfo> ValidateThis()
         {
-            foreach(var error in GetRuleSet("EmailSource", GetDatalistString?.Invoke()).ValidateRules("'Email Source'", () => IsEmailSourceFocused = true))
+            foreach (var error in GetRuleSet("EmailSource", GetDatalistString?.Invoke()).ValidateRules("'Email Source'", () => IsEmailSourceFocused = true))
             {
                 yield return error;
             }
-            foreach(var error in GetRuleSet("FromAccount", GetDatalistString?.Invoke()).ValidateRules("'From Account'", () => IsFromAccountFocused = true))
+            foreach (var error in GetRuleSet("FromAccount", GetDatalistString?.Invoke()).ValidateRules("'From Account'", () => IsFromAccountFocused = true))
             {
                 yield return error;
             }
-            foreach(var error in GetRuleSet("Password", GetDatalistString?.Invoke()).ValidateRules("'Password'", () => IsPasswordFocused = true))
+            foreach (var error in GetRuleSet("Password", GetDatalistString?.Invoke()).ValidateRules("'Password'", () => IsPasswordFocused = true))
             {
                 yield return error;
             }
-            foreach(var error in GetRuleSet("Recipients", GetDatalistString?.Invoke()).ValidateRules("'To', 'Cc' or 'Bcc'", () => IsToFocused = true))
+            foreach (var error in GetRuleSet("Recipients", GetDatalistString?.Invoke()).ValidateRules("'To', 'Cc' or 'Bcc'", () => IsToFocused = true))
             {
                 yield return error;
             }
-            foreach(var error in GetRuleSet("To", GetDatalistString?.Invoke()).ValidateRules("'To'", () => IsToFocused = true))
+            foreach (var error in GetRuleSet("To", GetDatalistString?.Invoke()).ValidateRules("'To'", () => IsToFocused = true))
             {
                 yield return error;
             }
-            foreach(var error in GetRuleSet("Cc", GetDatalistString?.Invoke()).ValidateRules("'Cc'", () => IsCcFocused = true))
+            foreach (var error in GetRuleSet("Cc", GetDatalistString?.Invoke()).ValidateRules("'Cc'", () => IsCcFocused = true))
             {
                 yield return error;
             }
-            foreach(var error in GetRuleSet("Bcc", GetDatalistString?.Invoke()).ValidateRules("'Bcc'", () => IsBccFocused = true))
+            foreach (var error in GetRuleSet("Bcc", GetDatalistString?.Invoke()).ValidateRules("'Bcc'", () => IsBccFocused = true))
             {
                 yield return error;
             }
-            foreach(var error in GetRuleSet("SubjectAndBody", GetDatalistString?.Invoke()).ValidateRules("'Subject' or 'Body'", () => IsSubjectFocused = true))
+            foreach (var error in GetRuleSet("SubjectAndBody", GetDatalistString?.Invoke()).ValidateRules("'Subject' or 'Body'", () => IsSubjectFocused = true))
             {
                 yield return error;
             }
-            foreach(var error in GetRuleSet("Attachments", GetDatalistString?.Invoke()).ValidateRules("'Attachments'", () => IsAttachmentsFocused = true))
+            foreach (var error in GetRuleSet("Attachments", GetDatalistString?.Invoke()).ValidateRules("'Attachments'", () => IsAttachmentsFocused = true))
             {
                 yield return error;
             }
@@ -442,7 +399,7 @@ namespace Dev2.Activities.Designers2.Email
             switch (propertyName)
             {
                 case "EmailSource":
-                    ruleSet.Add(new IsNullRule(() => EmailSource));
+                    ruleSet.Add(new IsNullRule(() => SourceRegion.SelectedSource));
                     break;
                 case "FromAccount":
                     var fromExprRule = new IsValidExpressionRule(() => FromAccount, datalist, "user@test.com", new VariableUtils());
@@ -482,23 +439,6 @@ namespace Dev2.Activities.Designers2.Email
                     break;
             }
             return ruleSet;
-        }
-
-        public void Handle(UpdateResourceMessage message)
-        {
-            var selectedSource = new EmailSource(message.ResourceModel.WorkflowXaml.ToXElement());
-            if(EmailSource == null)
-            {
-                EmailSource = selectedSource;
-            }
-            else
-            {
-                if(selectedSource.ResourceID == EmailSource.ResourceID)
-                {
-                    EmailSource = null;
-                    EmailSource = selectedSource;
-                }
-            }
         }
 
         public override void UpdateHelpDescriptor(string helpText)

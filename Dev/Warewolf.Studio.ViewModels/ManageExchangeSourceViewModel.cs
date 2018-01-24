@@ -58,9 +58,9 @@ namespace Warewolf.Studio.ViewModels
                 _emailServiceSource = source;
                 _emailServiceSource.Path = exchangeSource.Path;
                 FromModel(_emailServiceSource);
+                Item = ToModel();
                 SetupHeaderTextFromExisting();
             });
-
         }
 
         public ManageExchangeSourceViewModel(IManageExchangeSourceModel updateManager, IEventAggregator aggregator)
@@ -69,7 +69,7 @@ namespace Warewolf.Studio.ViewModels
             VerifyArgument.IsNotNull("updateManager", updateManager);
             VerifyArgument.IsNotNull("aggregator", aggregator);
             _updateManager = updateManager;
-            SendCommand = new DelegateCommand(p=>TestConnection(), p => CanTest());
+            SendCommand = new DelegateCommand(p => TestConnection(), p => CanTest());
             OkCommand = new DelegateCommand(p => SaveConnection(), p => CanSave());
             Testing = false;
             _testPassed = false;
@@ -79,27 +79,26 @@ namespace Warewolf.Studio.ViewModels
         public ManageExchangeSourceViewModel()
             : base("ExchangeSource")
         {
-
         }
 
         public override string Name
         {
-            get
-            {
-                return ResourceName;
-            }
+            get => ResourceName;
             set
             {
                 ResourceName = value;
             }
         }
 
-        public override void FromModel(IExchangeSource emailServiceSource)
+        public override void FromModel(IExchangeSource service)
         {
-            AutoDiscoverUrl = emailServiceSource.AutoDiscoverUrl;
-            UserName = emailServiceSource.UserName;
-            Password = emailServiceSource.Password;
-            Timeout = emailServiceSource.Timeout;
+            if (service != null)
+            {
+                AutoDiscoverUrl = service.AutoDiscoverUrl;
+                UserName = service.UserName;
+                Password = service.Password;
+                Timeout = service.Timeout;
+            }
         }
 
         void SetupHeaderTextFromExisting()
@@ -143,10 +142,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string ResourceName
         {
-            get
-            {
-                return _resourceName;
-            }
+            get => _resourceName;
             set
             {
                 _resourceName = value;
@@ -202,7 +198,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string AutoDiscoverUrl
         {
-            get { return _autoDiscoverUrl; }
+            get => _autoDiscoverUrl;
             set
             {
                 if (value != _autoDiscoverUrl)
@@ -222,7 +218,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string UserName
         {
-            get { return _userName; }
+            get => _userName;
             set
             {
                 if (value != _userName)
@@ -242,7 +238,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string Password
         {
-            get { return _password; }
+            get => _password;
             set
             {
                 if (value != _password)
@@ -262,7 +258,7 @@ namespace Warewolf.Studio.ViewModels
 
         public int Timeout
         {
-            get { return _timeout; }
+            get => _timeout;
             set
             {
                 if (value != _timeout)
@@ -287,7 +283,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string EmailTo
         {
-            get { return _emailTo; }
+            get => _emailTo;
             set
             {
                 if (value != _emailTo)
@@ -296,10 +292,7 @@ namespace Warewolf.Studio.ViewModels
                     TestMessage = string.Empty;
 
                     EnableSend = true;
-                    if (!_emailTo.IsEmail())
-                    {
-                        EnableSend = false;
-                    }
+                    EnableSend &= _emailTo.IsEmail();
 
                     OnPropertyChanged(() => EmailTo);
                     OnPropertyChanged(() => Header);
@@ -314,7 +307,7 @@ namespace Warewolf.Studio.ViewModels
 
         public bool TestPassed
         {
-            get { return _testPassed; }
+            get => _testPassed;
             set
             {
                 _testPassed = value;
@@ -325,7 +318,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string HeaderText
         {
-            get { return _headerText; }
+            get => _headerText;
             set
             {
                 _headerText = value;
@@ -337,8 +330,6 @@ namespace Warewolf.Studio.ViewModels
         public void TestConnection()
         {
             _token = new CancellationTokenSource();
-
-
             var t = new Task(SetupProgressSpinner, _token.Token);
 
             t.ContinueWith(a => Application.Current?.Dispatcher.Invoke(() =>
@@ -408,7 +399,7 @@ namespace Warewolf.Studio.ViewModels
                 ResourceName = Name,
                 ResourceType = "ExchangeSource",
                 Id = resourceID,
-                ResourceID = resourceID,
+                ResourceID = resourceID
             };
         }
 
@@ -427,9 +418,8 @@ namespace Warewolf.Studio.ViewModels
                     ResourceName = ResourceName,
                     ResourceType = "ExchangeSource",
                     Id = resourceID,
-                    ResourceID = resourceID,
-                }
-                    ;
+                    ResourceID = resourceID
+                };
             }
             _emailServiceSource.AutoDiscoverUrl = AutoDiscoverUrl;
             _emailServiceSource.UserName = UserName;
@@ -456,16 +446,13 @@ namespace Warewolf.Studio.ViewModels
                 ResourceType = "ExchangeSource",
                 ResourceName = ResourceName,
                 Id = resourceID,
-                ResourceID = resourceID,
+                ResourceID = resourceID
             };
         }
 
         public bool TestFailed
         {
-            get
-            {
-                return _testFailed;
-            }
+            get => _testFailed;
             set
             {
                 _testFailed = value;
@@ -474,10 +461,7 @@ namespace Warewolf.Studio.ViewModels
         }
         public bool Testing
         {
-            get
-            {
-                return _testing;
-            }
+            get => _testing;
             set
             {
                 _testing = value;
@@ -488,7 +472,7 @@ namespace Warewolf.Studio.ViewModels
 
         public string TestMessage
         {
-            get { return _testMessage; }
+            get => _testMessage;
             set
             {
                 _testMessage = value;
@@ -502,7 +486,7 @@ namespace Warewolf.Studio.ViewModels
 
         public bool EnableSend
         {
-            get { return _enableSend; }
+            get => _enableSend;
             set
             {
                 _enableSend = value;

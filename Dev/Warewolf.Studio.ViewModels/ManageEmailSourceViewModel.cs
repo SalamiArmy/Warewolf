@@ -9,13 +9,14 @@ using Dev2.Common.ExtMethods;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Core;
 using Dev2.Common.Interfaces.Threading;
+using Dev2.Common.Interfaces.ToolBase.Email;
 using Dev2.Runtime.Configuration.ViewModels.Base;
 using Dev2.Studio.Interfaces;
 using Microsoft.Practices.Prism.PubSubEvents;
 
 namespace Warewolf.Studio.ViewModels
 {
-    public class ManageEmailSourceViewModel : SourceBaseImpl<IEmailServiceSource>, IManageEmailSourceViewModel, IDataErrorInfo
+    public class ManageEmailSourceViewModel : SourceBaseImpl<ISmtpSource>, IManageEmailSourceViewModel, IDataErrorInfo
     {
         string _hostName;
         string _userName;
@@ -30,7 +31,7 @@ namespace Warewolf.Studio.ViewModels
         bool _enableSslYes;
         bool _enableSslNo;
 
-        IEmailServiceSource _emailServiceSource;
+        ISmtpSource _emailServiceSource;
         readonly IManageEmailSourceModel _updateManager;
         CancellationTokenSource _token;
         bool _testPassed;
@@ -57,11 +58,11 @@ namespace Warewolf.Studio.ViewModels
             Timeout = 10000;
         }
 
-        public ManageEmailSourceViewModel(IManageEmailSourceModel updateManager, IEventAggregator aggregator, IEmailServiceSource emailServiceSource,IAsyncWorker asyncWorker)
+        public ManageEmailSourceViewModel(IManageEmailSourceModel updateManager, IEventAggregator aggregator, ISmtpSource emailServiceSource, IAsyncWorker asyncWorker)
             : this(updateManager, aggregator)
         {
             VerifyArgument.IsNotNull("emailServiceSource", emailServiceSource);
-            asyncWorker.Start(() => updateManager.FetchSource(emailServiceSource.Id), source =>
+            asyncWorker.Start(() => updateManager.FetchSource(emailServiceSource.ResourceID), source =>
             {
                 _emailServiceSource = source;
                 _emailServiceSource.Path = emailServiceSource.Path;
@@ -71,14 +72,14 @@ namespace Warewolf.Studio.ViewModels
             });
         }
 
-        ManageEmailSourceViewModel(IManageEmailSourceModel updateManager, IEventAggregator aggregator)
+        public ManageEmailSourceViewModel(IManageEmailSourceModel updateManager, IEventAggregator aggregator)
             : base("EmailSource")
         {
             VerifyArgument.IsNotNull("updateManager", updateManager);
             VerifyArgument.IsNotNull("aggregator", aggregator);
             _updateManager = updateManager;
-            SendCommand = new DelegateCommand(o=>TestConnection(), o=>CanTest());
-            OkCommand = new DelegateCommand(o=>SaveConnection(), o=>CanSave());
+            SendCommand = new DelegateCommand(o => TestConnection(), o => CanTest());
+            OkCommand = new DelegateCommand(o => SaveConnection(), o => CanSave());
             Testing = false;
             _testPassed = false;
             _testFailed = false;
@@ -89,66 +90,6 @@ namespace Warewolf.Studio.ViewModels
         {
         }
 
-        public override void FromModel(IEmailServiceSource emailServiceSource)
-        {
-            if (emailServiceSource != null)
-            {
-                HostName = emailServiceSource.HostName;
-                UserName = emailServiceSource.UserName;
-                Password = emailServiceSource.Password;
-                EnableSsl = emailServiceSource.EnableSsl;
-                if (EnableSsl)
-                {
-                    EnableSslYes = EnableSsl;
-                }
-                else
-                {
-                    EnableSslNo = true;
-                }
-                Port = emailServiceSource.Port;
-                Timeout = emailServiceSource.Timeout;
-                EmailFrom = emailServiceSource.EmailFrom;
-                EmailTo = emailServiceSource.EmailTo;
-                ResourceName = emailServiceSource.ResourceName;
-            }
-        }
-
-        public string Error => string.Empty;
-
-        public string this[string columnName]
-        {
-            get
-            {
-                var errorMessage = string.Empty;
-                switch (columnName)
-                {
-                    case "HostName":
-                        if (string.IsNullOrEmpty(HostName))
-                        {
-                            errorMessage = "HostName cannot be blank.";
-                        }
-                        break;
-                    case "Port":
-                        if (string.IsNullOrEmpty(Port.ToString()) || Port == 0)
-                        {
-                            errorMessage = "Port cannot be blank.";
-                        }
-                        if (Port < 1 || Port > 65535)
-                        {
-                            errorMessage = "Port range must be between 1 and 65535.";
-                        }
-                        break;
-                    case "Timeout":
-                        if (string.IsNullOrEmpty(Timeout.ToString()) || Timeout == 0)
-                        {
-                            errorMessage = "Timeout cannot be blank.";
-                        }
-                        break;
-                }
-                return errorMessage;
-            }
-        }
-
         public override string Name
         {
             get => ResourceName;
@@ -157,6 +98,31 @@ namespace Warewolf.Studio.ViewModels
                 ResourceName = value;
             }
         }
+
+        public override void FromModel(ISmtpSource service)
+        {
+            if (service != null)
+            {
+                HostName = service.Host;
+                UserName = service.UserName;
+                Password = service.Password;
+                EnableSsl = service.EnableSSL;
+                if (EnableSsl)
+                {
+                    EnableSslYes = EnableSsl;
+                }
+                else
+                {
+                    EnableSslNo = true;
+                }
+                Port = service.Port;
+                Timeout = service.Timeout;
+                EmailFrom = service.EmailFrom;
+                EmailTo = service.EmailTo;
+                ResourceName = service.ResourceName;
+            }
+        }
+
         void SetupHeaderTextFromExisting()
         {
             if (_emailServiceSource != null)
@@ -228,7 +194,7 @@ namespace Warewolf.Studio.ViewModels
                         Save(src);
                         if (requestServiceNameViewModel.SingleEnvironmentExplorerViewModel != null)
                         {
-                            AfterSave(requestServiceNameViewModel.SingleEnvironmentExplorerViewModel.Environments[0].ResourceId, src.Id);
+                            AfterSave(requestServiceNameViewModel.SingleEnvironmentExplorerViewModel.Environments[0].ResourceId, src.ResourceID);
                         }
 
                         Item = src;
@@ -251,7 +217,7 @@ namespace Warewolf.Studio.ViewModels
 
         public Task<IRequestServiceNameViewModel> RequestServiceNameViewModel { get; set; }
 
-        void Save(IEmailServiceSource source)
+        void Save(ISmtpSource source)
         {
             _updateManager.Save(source);
         }
@@ -342,10 +308,7 @@ namespace Warewolf.Studio.ViewModels
             set
             {
                 _enableSslYes = value;
-                if (_enableSslYes)
-                {
-                    EnableSsl = true;
-                }
+                EnableSsl |= _enableSslYes;
 
                 OnPropertyChanged(() => EnableSslYes);
                 OnPropertyChanged(() => EnableSsl);
@@ -361,10 +324,7 @@ namespace Warewolf.Studio.ViewModels
             set
             {
                 _enableSslNo = value;
-                if (_enableSslNo)
-                {
-                    EnableSsl = false;
-                }
+                EnableSsl &= !_enableSslNo;
 
                 OnPropertyChanged(() => EnableSslNo);
                 OnPropertyChanged(() => EnableSsl);
@@ -436,14 +396,8 @@ namespace Warewolf.Studio.ViewModels
                     TestMessage = string.Empty;
 
                     EnableSend = true;
-                    if (!_emailFrom.IsEmail())
-                    {
-                        EnableSend = false;
-                    }
-                    if (EmailTo == null || !EmailTo.IsEmail())
-                    {
-                        EnableSend = false;
-                    }
+                    EnableSend &= _emailFrom.IsEmail();
+                    EnableSend &= (EmailTo != null && EmailTo.IsEmail());
 
                     OnPropertyChanged(() => EmailFrom);
                     OnPropertyChanged(() => Header);
@@ -467,14 +421,8 @@ namespace Warewolf.Studio.ViewModels
                     TestMessage = string.Empty;
 
                     EnableSend = true;
-                    if (!_emailTo.IsEmail())
-                    {
-                        EnableSend = false;
-                    }
-                    if (EmailFrom == null || !EmailFrom.IsEmail())
-                    {
-                        EnableSend = false;
-                    }
+                    EnableSend &= _emailTo.IsEmail();
+                    EnableSend &= (EmailFrom != null && EmailFrom.IsEmail());
 
                     OnPropertyChanged(() => EmailTo);
                     OnPropertyChanged(() => Header);
@@ -568,69 +516,81 @@ namespace Warewolf.Studio.ViewModels
             _updateManager.TestConnection(ToNewSource());
         }
 
-        IEmailServiceSource ToNewSource()
+        ISmtpSource ToNewSource()
         {
+            var resourceID = _emailServiceSource == null ? Guid.NewGuid() : _emailServiceSource.ResourceID;
             return new EmailServiceSourceDefinition
             {
-                HostName = HostName,
+                Host = HostName,
                 Password = Password,
                 UserName = UserName,
                 Port = Port,
                 Timeout = Timeout,
-                EnableSsl = EnableSsl,
+                EnableSSL = EnableSsl,
                 EmailFrom = EmailFrom,
                 EmailTo = EmailTo,
-                Id = _emailServiceSource?.Id ?? Guid.NewGuid()
+                ResourceName = Name,
+                ResourceType = "EmailSource",
+                Id = resourceID,
+                ResourceID = resourceID
             };
         }
 
-        IEmailServiceSource ToSource()
+        ISmtpSource ToSource()
         {
             if (_emailServiceSource == null)
             {
+                var resourceID = Guid.NewGuid();
                 return new EmailServiceSourceDefinition
                 {
-                    HostName = HostName,
+                    Host = HostName,
                     Password = Password,
                     UserName = UserName,
                     Port = Port,
                     Timeout = Timeout,
-                    EnableSsl = EnableSsl,
+                    EnableSSL = EnableSsl,
                     EmailFrom = EmailFrom,
                     EmailTo = EmailTo,
-                    Id = _emailServiceSource?.Id ?? Guid.NewGuid()
+                    ResourceName = ResourceName,
+                    ResourceType = "EmailSource",
+                    Id = resourceID,
+                    ResourceID = resourceID
                 };
             }
-            _emailServiceSource.HostName = HostName;
+            _emailServiceSource.Host = HostName;
             _emailServiceSource.UserName = UserName;
             _emailServiceSource.Password = Password;
             _emailServiceSource.Port = Port;
             _emailServiceSource.Timeout = Timeout;
-            _emailServiceSource.EnableSsl = EnableSsl;
+            _emailServiceSource.EnableSSL = EnableSsl;
             _emailServiceSource.EmailFrom = EmailFrom;
             _emailServiceSource.EmailTo = EmailTo;
             return _emailServiceSource;
         }
 
-        public override IEmailServiceSource ToModel()
+        public override ISmtpSource ToModel()
         {
             if (Item == null)
             {
                 Item = ToSource();
                 return Item;
             }
+            var resourceID = _emailServiceSource == null ? Guid.NewGuid() : _emailServiceSource.ResourceID;
             return new EmailServiceSourceDefinition
-                {
-                    HostName = HostName,
-                    Password = Password,
-                    UserName = UserName,
-                    Port = Port,
-                    Timeout = Timeout,
-                    EnableSsl = EnableSsl,
-                    EmailFrom = EmailFrom,
-                    EmailTo = EmailTo,
-                    Id = _emailServiceSource?.Id ?? Guid.NewGuid()
-                };
+            {
+                Host = HostName,
+                Password = Password,
+                UserName = UserName,
+                Port = Port,
+                Timeout = Timeout,
+                EnableSSL = EnableSsl,
+                EmailFrom = EmailFrom,
+                EmailTo = EmailTo,
+                ResourceType = "EmailSource",
+                ResourceName = ResourceName,
+                Id = resourceID,
+                ResourceID = resourceID
+            };
         }
 
         public bool TestFailed
@@ -716,5 +676,42 @@ namespace Warewolf.Studio.ViewModels
                 _isDisposed = true;
             }
         }
+
+        public string Error => string.Empty;
+
+        public string this[string columnName]
+        {
+            get
+            {
+                var errorMessage = string.Empty;
+                switch (columnName)
+                {
+                    case "HostName":
+                        if (string.IsNullOrEmpty(HostName))
+                        {
+                            errorMessage = "HostName cannot be blank.";
+                        }
+                        break;
+                    case "Port":
+                        if (string.IsNullOrEmpty(Port.ToString()) || Port == 0)
+                        {
+                            errorMessage = "Port cannot be blank.";
+                        }
+                        if (Port < 1 || Port > 65535)
+                        {
+                            errorMessage = "Port range must be between 1 and 65535.";
+                        }
+                        break;
+                    case "Timeout":
+                        if (string.IsNullOrEmpty(Timeout.ToString()) || Timeout == 0)
+                        {
+                            errorMessage = "Timeout cannot be blank.";
+                        }
+                        break;
+                }
+                return errorMessage;
+            }
+        }
+
     }
 }
