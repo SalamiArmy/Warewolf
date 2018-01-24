@@ -840,7 +840,7 @@ namespace Dev2.Studio.ViewModels
 
         WorkSurfaceContextViewModel ProcessEmailSource(IContextualResourceModel contextualResourceModel, WorkSurfaceKey workSurfaceKey)
         {
-            var def = new EmailServiceSourceDefinition { Id = contextualResourceModel.ID, Path = contextualResourceModel.GetSavePath() };
+            var def = new EmailServiceSourceDefinition { ResourceID = contextualResourceModel.ID, Path = contextualResourceModel.GetSavePath() };
 
             var emailSourceViewModel = new ManageEmailSourceViewModel(
                 new ManageEmailSourceModel(ActiveServer.UpdateRepository, ActiveServer.QueryProxy, ActiveServer.DisplayName),

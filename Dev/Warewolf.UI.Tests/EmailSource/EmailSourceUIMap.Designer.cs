@@ -223,7 +223,8 @@ namespace Warewolf.UI.Tests.EmailSource.EmailSourceUIMapClasses
                 base(searchLimitContainer)
         {
             #region Search Criteria
-            this.SearchProperties[WpfTabPage.PropertyNames.Name] = "Dev2.ViewModels.SourceViewModel`1[Dev2.Common.Interfaces.IEmailServiceSource]";
+            this.SearchProperties[WpfTabPage.PropertyNames.Name] = "Dev2.ViewModels.SourceViewModel`1[Dev2.Common.Interfaces.ToolBase.Email.ISmtpSour" +
+                "ce]";
             this.WindowTitles.Add("Warewolf");
             #endregion
         }
