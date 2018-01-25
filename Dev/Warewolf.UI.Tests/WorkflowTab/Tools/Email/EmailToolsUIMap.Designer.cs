@@ -66,12 +66,26 @@ namespace Warewolf.UI.Tests.WorkflowTab.Tools.Email.EmailToolsUIMapClasses
                 return this.mMainStudioWindow;
             }
         }
+        
+        public UIWarewolfDEV2PIETERTEWindow UIWarewolfDEV2PIETERTEWindow
+        {
+            get
+            {
+                if ((this.mUIWarewolfDEV2PIETERTEWindow == null))
+                {
+                    this.mUIWarewolfDEV2PIETERTEWindow = new UIWarewolfDEV2PIETERTEWindow();
+                }
+                return this.mUIWarewolfDEV2PIETERTEWindow;
+            }
+        }
         #endregion
         
         #region Fields
         private Open_Tools_UI_Map_Designer_To_FlowchartParams mOpen_Tools_UI_Map_Designer_To_FlowchartParams;
         
         private MainStudioWindow mMainStudioWindow;
+        
+        private UIWarewolfDEV2PIETERTEWindow mUIWarewolfDEV2PIETERTEWindow;
         #endregion
     }
     
@@ -1424,34 +1438,6 @@ namespace Warewolf.UI.Tests.WorkflowTab.Tools.Email.EmailToolsUIMapClasses
         }
         
         #region Properties
-        public SourceComboBox SourceComboBox
-        {
-            get
-            {
-                if ((this.mSourceComboBox == null))
-                {
-                    this.mSourceComboBox = new SourceComboBox(this);
-                }
-                return this.mSourceComboBox;
-            }
-        }
-        
-        public WpfButton ItemButton
-        {
-            get
-            {
-                if ((this.mItemButton == null))
-                {
-                    this.mItemButton = new WpfButton(this);
-                    #region Search Criteria
-                    this.mItemButton.SearchProperties[WpfButton.PropertyNames.Name] = "...";
-                    this.mItemButton.WindowTitles.Add("Warewolf (DEV2\\DYLAN.DELPORT)");
-                    #endregion
-                }
-                return this.mItemButton;
-            }
-        }
-        
         public ToComboBox2 ToComboBox
         {
             get
@@ -1499,13 +1485,57 @@ namespace Warewolf.UI.Tests.WorkflowTab.Tools.Email.EmailToolsUIMapClasses
                 return this.mResultComboBox;
             }
         }
+        
+        public WpfButton NewSourceButton
+        {
+            get
+            {
+                if ((this.mNewSourceButton == null))
+                {
+                    this.mNewSourceButton = new WpfButton(this);
+                    #region Search Criteria
+                    this.mNewSourceButton.SearchProperties[WpfButton.PropertyNames.AutomationId] = "SourceNewButton";
+                    this.mNewSourceButton.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+                    #endregion
+                }
+                return this.mNewSourceButton;
+            }
+        }
+        
+        public WpfComboBox SourcesComboBox
+        {
+            get
+            {
+                if ((this.mSourcesComboBox == null))
+                {
+                    this.mSourcesComboBox = new WpfComboBox(this);
+                    #region Search Criteria
+                    this.mSourcesComboBox.SearchProperties[WpfComboBox.PropertyNames.AutomationId] = "SourcesComboBox";
+                    this.mSourcesComboBox.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+                    #endregion
+                }
+                return this.mSourcesComboBox;
+            }
+        }
+        
+        public WpfButton ItemButton
+        {
+            get
+            {
+                if ((this.mItemButton == null))
+                {
+                    this.mItemButton = new WpfButton(this);
+                    #region Search Criteria
+                    this.mItemButton.SearchProperties[WpfButton.PropertyNames.AutomationId] = "SourceEditButton";
+                    this.mItemButton.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+                    #endregion
+                }
+                return this.mItemButton;
+            }
+        }
         #endregion
         
         #region Fields
-        private SourceComboBox mSourceComboBox;
-        
-        private WpfButton mItemButton;
-        
         private ToComboBox2 mToComboBox;
         
         private SubjectComboBox2 mSubjectComboBox;
@@ -1513,42 +1543,12 @@ namespace Warewolf.UI.Tests.WorkflowTab.Tools.Email.EmailToolsUIMapClasses
         private BodyComboBox2 mBodyComboBox;
         
         private ResultComboBox2 mResultComboBox;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class SourceComboBox : WpfComboBox
-    {
         
-        public SourceComboBox(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[WpfComboBox.PropertyNames.AutomationId] = "InitialFocusElement";
-            this.WindowTitles.Add("Warewolf (DEV2\\DYLAN.DELPORT)");
-            #endregion
-        }
+        private WpfButton mNewSourceButton;
         
-        #region Properties
-        public WpfListItem NewEmailSource
-        {
-            get
-            {
-                if ((this.mNewEmailSource == null))
-                {
-                    this.mNewEmailSource = new WpfListItem(this);
-                    #region Search Criteria
-                    this.mNewEmailSource.SearchProperties[WpfListItem.PropertyNames.Name] = @"{""Host"":null,""UserName"":null,""Password"":null,""Port"":25,""EnableSsl"":false,""Timeout"":100000,""TestFromAddress"":null,""TestToAddress"":null,""DataList"":null,""IsSource"":true,""IsService"":false,""IsFolder"":false,""IsReservedService"":false,""IsServer"":false,""IsResourceVersion"":false,""Version"":null,""ResourceID"":""33804493-8656-4cf8-9e5c-7776cf1dd287"",""ResourceType"":""EmailSource"",""ResourceName"":""New Email Source..."",""IsValid"":false,""Errors"":null,""ReloadActions"":false,""UserPermissions"":0,""VersionInfo"":null}";
-                    this.mNewEmailSource.WindowTitles.Add("Warewolf (DEV2\\DYLAN.DELPORT)");
-                    #endregion
-                }
-                return this.mNewEmailSource;
-            }
-        }
-        #endregion
+        private WpfComboBox mSourcesComboBox;
         
-        #region Fields
-        private WpfListItem mNewEmailSource;
+        private WpfButton mItemButton;
         #endregion
     }
     
@@ -1711,18 +1711,6 @@ namespace Warewolf.UI.Tests.WorkflowTab.Tools.Email.EmailToolsUIMapClasses
         }
         
         #region Properties
-        public SourceComboBox1 SourceComboBox
-        {
-            get
-            {
-                if ((this.mSourceComboBox == null))
-                {
-                    this.mSourceComboBox = new SourceComboBox1(this);
-                }
-                return this.mSourceComboBox;
-            }
-        }
-        
         public FromAddressComboBox FromAddressComboBox
         {
             get
@@ -1899,6 +1887,22 @@ namespace Warewolf.UI.Tests.WorkflowTab.Tools.Email.EmailToolsUIMapClasses
             }
         }
         
+        public WpfComboBox SourcesComboBox
+        {
+            get
+            {
+                if ((this.mSourcesComboBox == null))
+                {
+                    this.mSourcesComboBox = new WpfComboBox(this);
+                    #region Search Criteria
+                    this.mSourcesComboBox.SearchProperties[WpfComboBox.PropertyNames.AutomationId] = "SourcesComboBox";
+                    this.mSourcesComboBox.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+                    #endregion
+                }
+                return this.mSourcesComboBox;
+            }
+        }
+        
         public WpfButton EditSourceButton
         {
             get
@@ -1907,18 +1911,32 @@ namespace Warewolf.UI.Tests.WorkflowTab.Tools.Email.EmailToolsUIMapClasses
                 {
                     this.mEditSourceButton = new WpfButton(this);
                     #region Search Criteria
-                    this.mEditSourceButton.SearchProperties[WpfButton.PropertyNames.AutomationId] = "UI__EditEmailSourceBtn_AutoID";
-                    this.mEditSourceButton.WindowTitles.Add("Warewolf (DEV2\\DYLAN.DELPORT)");
+                    this.mEditSourceButton.SearchProperties[WpfButton.PropertyNames.AutomationId] = "SourceEditButton";
+                    this.mEditSourceButton.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
                     #endregion
                 }
                 return this.mEditSourceButton;
             }
         }
+        
+        public WpfButton NewSourceButton
+        {
+            get
+            {
+                if ((this.mNewSourceButton == null))
+                {
+                    this.mNewSourceButton = new WpfButton(this);
+                    #region Search Criteria
+                    this.mNewSourceButton.SearchProperties[WpfButton.PropertyNames.AutomationId] = "SourceNewButton";
+                    this.mNewSourceButton.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+                    #endregion
+                }
+                return this.mNewSourceButton;
+            }
+        }
         #endregion
         
         #region Fields
-        private SourceComboBox1 mSourceComboBox;
-        
         private FromAddressComboBox mFromAddressComboBox;
         
         private WpfEdit mPasswordTextbox;
@@ -1945,61 +1963,11 @@ namespace Warewolf.UI.Tests.WorkflowTab.Tools.Email.EmailToolsUIMapClasses
         
         private WpfButton mSelectFilesButton;
         
+        private WpfComboBox mSourcesComboBox;
+        
         private WpfButton mEditSourceButton;
-        #endregion
-    }
-    
-    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class SourceComboBox1 : WpfComboBox
-    {
         
-        public SourceComboBox1(UITestControl searchLimitContainer) : 
-                base(searchLimitContainer)
-        {
-            #region Search Criteria
-            this.SearchProperties[WpfComboBox.PropertyNames.AutomationId] = "InitialFocusElement";
-            this.WindowTitles.Add("Warewolf (DEV2\\DYLAN.DELPORT)");
-            #endregion
-        }
-        
-        #region Properties
-        public WpfListItem NewEmailSource
-        {
-            get
-            {
-                if ((this.mNewEmailSource == null))
-                {
-                    this.mNewEmailSource = new WpfListItem(this);
-                    #region Search Criteria
-                    this.mNewEmailSource.SearchProperties[WpfListItem.PropertyNames.Instance] = "2";
-                    this.mNewEmailSource.WindowTitles.Add("Warewolf (DEV2\\DYLAN.DELPORT)");
-                    #endregion
-                }
-                return this.mNewEmailSource;
-            }
-        }
-        
-        public WpfListItem UIHostlocalhostUserNamListItem
-        {
-            get
-            {
-                if ((this.mUIHostlocalhostUserNamListItem == null))
-                {
-                    this.mUIHostlocalhostUserNamListItem = new WpfListItem(this);
-                    #region Search Criteria
-                    this.mUIHostlocalhostUserNamListItem.SearchProperties[WpfListItem.PropertyNames.Instance] = "3";
-                    this.mUIHostlocalhostUserNamListItem.WindowTitles.Add("Warewolf (DEV2\\DYLAN.DELPORT)");
-                    #endregion
-                }
-                return this.mUIHostlocalhostUserNamListItem;
-            }
-        }
-        #endregion
-        
-        #region Fields
-        private WpfListItem mNewEmailSource;
-        
-        private WpfListItem mUIHostlocalhostUserNamListItem;
+        private WpfButton mNewSourceButton;
         #endregion
     }
     
@@ -2288,6 +2256,95 @@ namespace Warewolf.UI.Tests.WorkflowTab.Tools.Email.EmailToolsUIMapClasses
         
         #region Fields
         private WpfEdit mTextEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIWarewolfDEV2PIETERTEWindow : WpfWindow
+    {
+        
+        public UIWarewolfDEV2PIETERTEWindow()
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfWindow.PropertyNames.Name] = "Warewolf (DEV2\\PIETER.TERBLANCHE)";
+            this.SearchProperties.Add(new PropertyExpression(WpfWindow.PropertyNames.ClassName, "HwndWrapper", PropertyExpressionOperator.Contains));
+            this.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+            #endregion
+        }
+        
+        #region Properties
+        public UIDsfSendEmailActivityCustom UIDsfSendEmailActivityCustom
+        {
+            get
+            {
+                if ((this.mUIDsfSendEmailActivityCustom == null))
+                {
+                    this.mUIDsfSendEmailActivityCustom = new UIDsfSendEmailActivityCustom(this);
+                }
+                return this.mUIDsfSendEmailActivityCustom;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIDsfSendEmailActivityCustom mUIDsfSendEmailActivityCustom;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIDsfSendEmailActivityCustom : WpfCustom
+    {
+        
+        public UIDsfSendEmailActivityCustom(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.EmailDesigner";
+            this.SearchProperties[WpfControl.PropertyNames.AutomationId] = "Email(EmailDesigner)";
+            this.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfCustom UISmallViewContentCustom
+        {
+            get
+            {
+                if ((this.mUISmallViewContentCustom == null))
+                {
+                    this.mUISmallViewContentCustom = new WpfCustom(this);
+                    #region Search Criteria
+                    this.mUISmallViewContentCustom.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.Small";
+                    this.mUISmallViewContentCustom.SearchProperties[WpfControl.PropertyNames.AutomationId] = "SmallViewContent";
+                    this.mUISmallViewContentCustom.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+                    #endregion
+                }
+                return this.mUISmallViewContentCustom;
+            }
+        }
+        
+        public WpfCustom UILargeViewContentCustom
+        {
+            get
+            {
+                if ((this.mUILargeViewContentCustom == null))
+                {
+                    this.mUILargeViewContentCustom = new WpfCustom(this);
+                    #region Search Criteria
+                    this.mUILargeViewContentCustom.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.Large";
+                    this.mUILargeViewContentCustom.SearchProperties[WpfControl.PropertyNames.AutomationId] = "LargeViewContent";
+                    this.mUILargeViewContentCustom.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+                    #endregion
+                }
+                return this.mUILargeViewContentCustom;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfCustom mUISmallViewContentCustom;
+        
+        private WpfCustom mUILargeViewContentCustom;
         #endregion
     }
 }
