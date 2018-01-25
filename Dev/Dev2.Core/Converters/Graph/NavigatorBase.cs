@@ -85,8 +85,10 @@ namespace Dev2.Converters.Graph
             //
             // Create the root node
             //
-            var rootIndexedValueTreeNode = new IndexedPathSegmentTreeNode<string>();
-            rootIndexedValueTreeNode.CurrentValue = Data;
+            var rootIndexedValueTreeNode = new IndexedPathSegmentTreeNode<string>
+            {
+                CurrentValue = Data
+            };
 
             //
             // Index the segments of all the paths, this is done so that they don't have to be

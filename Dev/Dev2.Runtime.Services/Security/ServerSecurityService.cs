@@ -1,4 +1,4 @@
- 
+
 /*
 *  Warewolf - Once bitten, there's no going back
 *  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
@@ -9,6 +9,7 @@
 *  @license GNU Affero General Public License <http://www.gnu.org/licenses/agpl-3.0.html>
 */
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -20,7 +21,7 @@ using Dev2.Services.Security;
 
 namespace Dev2.Runtime.Security
 {
-    public class ServerSecurityService : SecurityServiceBase
+    public class ServerSecurityService : SecurityServiceBase, IDisposable
     {
         bool _disposing;
         FileSystemWatcher _configWatcher = new FileSystemWatcher();
@@ -116,17 +117,19 @@ namespace Dev2.Runtime.Security
             _disposing = true;
             if (_configWatcher != null && !_isDisposed)
             {
-                
-              
                 _configWatcher.EnableRaisingEvents = false;
                 _configWatcher.Changed -= OnFileChanged;
                 _configWatcher.Created -= OnFileChanged;
                 _configWatcher.Deleted -= OnFileChanged;
                 _configWatcher.Renamed -= OnFileRenamed;
-                _configWatcher.Dispose();
-
                 _configWatcher = null;
+                Dispose();
             }
+        }
+
+        public void Dispose()
+        {
+            _configWatcher.Dispose();
         }
 
         protected override void LogStart([CallerMemberName]string methodName = null)

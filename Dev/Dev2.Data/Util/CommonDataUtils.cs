@@ -274,21 +274,19 @@ namespace Dev2.Data.Util
                 {
                     env.AssignDataShape("[[" + dev2Definition.Name + "]]");
                 }
-                if (!dev2Definition.IsRecordSet)
+                if (!dev2Definition.IsRecordSet && !string.IsNullOrEmpty(dev2Definition.RawValue))
                 {
-                    if (!string.IsNullOrEmpty(dev2Definition.RawValue))
+                    var warewolfEvalResult = outerEnvironment.Eval(dev2Definition.RawValue, update);
+                    if (warewolfEvalResult.IsWarewolfAtomListresult)
                     {
-                        var warewolfEvalResult = outerEnvironment.Eval(dev2Definition.RawValue, update);
-                        if (warewolfEvalResult.IsWarewolfAtomListresult)
-                        {
-                            ScalarAtomList(warewolfEvalResult, env, dev2Definition);
-                        }
-                        else
-                        {
-                            ScalarAtom(warewolfEvalResult, env, dev2Definition);
-                        }
+                        ScalarAtomList(warewolfEvalResult, env, dev2Definition);
+                    }
+                    else
+                    {
+                        ScalarAtom(warewolfEvalResult, env, dev2Definition);
                     }
                 }
+
             }
         }
 
@@ -307,14 +305,12 @@ namespace Dev2.Data.Util
                             var defn = "[[" + dev2ColumnDefinition.RecordSetName + "()." + dev2ColumnDefinition.Name + "]]";
 
 
-                            if (string.IsNullOrEmpty(dev2ColumnDefinition.RawValue))
+                            if (string.IsNullOrEmpty(dev2ColumnDefinition.RawValue) && !emptyList.Contains(defn))
                             {
-                                if (!emptyList.Contains(defn))
-                                {
-                                    emptyList.Add(defn);
-                                    continue;
-                                }
+                                emptyList.Add(defn);
+                                continue;
                             }
+
                             var warewolfEvalResult = outerEnvironment.Eval(dev2ColumnDefinition.RawValue, update);
 
                             if (warewolfEvalResult.IsWarewolfAtomListresult)
@@ -402,13 +398,11 @@ namespace Dev2.Data.Util
         {
             var isObjectAttribute = tmpNode.Attributes?["IsJson"];
 
-            if (isObjectAttribute != null)
+            if (isObjectAttribute != null && bool.TryParse(isObjectAttribute.Value, out bool isObject))
             {
-                if (bool.TryParse(isObjectAttribute.Value, out bool isObject))
-                {
-                    return isObject;
-                }
+                return isObject;
             }
+
             return false;
         }
 
@@ -416,13 +410,11 @@ namespace Dev2.Data.Util
         {
             var isObjectAttribute = tmpNode.Attributes?["IsArray"];
 
-            if (isObjectAttribute != null)
+            if (isObjectAttribute != null && bool.TryParse(isObjectAttribute.Value, out bool isArray))
             {
-                if (bool.TryParse(isObjectAttribute.Value, out bool isArray))
-                {
-                    return isArray;
-                }
+                return isArray;
             }
+
             return false;
         }
 
@@ -512,15 +504,13 @@ namespace Dev2.Data.Util
         void AtomInputs(CommonFunctions.WarewolfEvalResult warewolfEvalResult, IDev2Definition dev2ColumnDefinition, IExecutionEnvironment env)
         {
             var recsetResult = warewolfEvalResult as CommonFunctions.WarewolfEvalResult.WarewolfAtomResult;
-            if (dev2ColumnDefinition.IsRecordSet)
+            if (dev2ColumnDefinition.IsRecordSet && recsetResult != null)
             {
-                if (recsetResult != null)
-                {
-                    var correctRecSet = "[[" + dev2ColumnDefinition.RecordSetName + "(*)." + dev2ColumnDefinition.Name + "]]";
+                var correctRecSet = "[[" + dev2ColumnDefinition.RecordSetName + "(*)." + dev2ColumnDefinition.Name + "]]";
 
-                    env.AssignWithFrame(new AssignValue(correctRecSet, PublicFunctions.AtomtoString(recsetResult.Item)), 0);
-                }
+                env.AssignWithFrame(new AssignValue(correctRecSet, PublicFunctions.AtomtoString(recsetResult.Item)), 0);
             }
+
         }
     }
 }

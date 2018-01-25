@@ -52,7 +52,7 @@ namespace Dev2.DynamicServices
             Actions.ForEach(c =>
             {
                 c.Compile();
-                c.CompilerErrors.ToList().ForEach(d => CompilerErrors.Add(d));
+                c.CompilerErrors.ToList().ForEach(CompilerErrors.Add);
             });
 
             return IsCompiled;

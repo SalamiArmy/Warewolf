@@ -35,17 +35,15 @@ namespace Dev2.DataList
             var type = typeof(IFindRecsetOptions);
 
             var types = typeof(IFindRecsetOptions).Assembly.GetTypes()
-                   .Where(t => type.IsAssignableFrom(t)).ToList();
+                   .Where(type.IsAssignableFrom).ToList();
 
             foreach (Type t in types)
             {
-                if (!t.IsAbstract && !t.IsInterface)
+                if (!t.IsAbstract && !t.IsInterface && Activator.CreateInstance(t, true) is IFindRecsetOptions item)
                 {
-                    if (Activator.CreateInstance(t, true) is IFindRecsetOptions item)
-                    {
-                        _options.Add(item.HandlesType(), item);
-                    }
+                    _options.Add(item.HandlesType(), item);
                 }
+
             }
             SortRecordsetOptions();
         }

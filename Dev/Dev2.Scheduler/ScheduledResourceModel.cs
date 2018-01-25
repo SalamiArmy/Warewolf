@@ -125,7 +125,7 @@ namespace Dev2.Scheduler
             {
                 throw new SecurityException(String.Format(Warewolf.Studio.Resources.Languages.Core.SchedulerExecutePermissionError, resource.WorkflowName));
             }
-            if (resource.Name.Any(a => "\\/:*?\"<>|".Contains(a)))
+            if (resource.Name.Any("\\/:*?\"<>|".Contains))
             {
                 throw new Exception(Warewolf.Studio.Resources.Languages.Core.SchedulerInvalidCharactersError + " \\/:*?\"<>| .");
             }

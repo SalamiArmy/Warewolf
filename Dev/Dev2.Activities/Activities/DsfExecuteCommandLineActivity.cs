@@ -162,13 +162,11 @@ namespace Dev2.Activities
                         }
                     }
 
-                    if(dataObject.IsDebugMode() && !allErrors.HasErrors())
+                    if (dataObject.IsDebugMode() && !allErrors.HasErrors() && !string.IsNullOrEmpty(CommandResult))
                     {
-                        if(!string.IsNullOrEmpty(CommandResult))
-                        {
-                            AddDebugOutputItem(new DebugEvalResult(CommandResult, "", dataObject.Environment, update));
-                        }
+                        AddDebugOutputItem(new DebugEvalResult(CommandResult, "", dataObject.Environment, update));
                     }
+
                 }
             }
             catch(Exception e)
@@ -239,13 +237,11 @@ namespace Dev2.Activities
                 while (!_process.HasExited && !executionToken.IsUserCanceled)
                 {
                     reader.Append(_process.StandardOutput.ReadToEnd());
-                    if (!_process.HasExited && _process.Threads.Cast<ProcessThread>().Any(a => a.ThreadState == System.Diagnostics.ThreadState.Wait && a.WaitReason == ThreadWaitReason.UserRequest))
+                    if (!_process.HasExited && _process.Threads.Cast<ProcessThread>().Any(a => a.ThreadState == System.Diagnostics.ThreadState.Wait && a.WaitReason == ThreadWaitReason.UserRequest) && !_process.HasExited)
                     {
-                        if (!_process.HasExited)
-                        {
-                            _process.Kill();
-                        }
+                        _process.Kill();
                     }
+
                     if (ModalChecker.IsWaitingForUserInput(_process))
                     {
                         _process.Kill();

@@ -32,10 +32,6 @@ using Warewolf.Storage.Interfaces;
 
 namespace Dev2.Data.Util
 {
-    /// <summary>
-    /// General DataList utility methods
-    /// </summary>
-
     public static class DataListUtil
     {
         #region Class Members
@@ -69,23 +65,12 @@ namespace Dev2.Data.Util
         }
 
         #endregion Constructor
-
-        /// <summary>
-        /// Replaces the index of the star with fixed.
-        /// </summary>
-        /// <param name="exp">The exp.</param>
-        /// <param name="idx">The idx.</param>
-        /// <returns></returns>
+        
         public static string ReplaceStarWithFixedIndex(string exp, int idx)
         {
             return idx > 0 ? exp.Replace("(*)", RecordsetIndexOpeningBracket + idx + RecordsetIndexClosingBracket) : exp;
         }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
+        
         public static bool IsArray(ref string path)
         {
             var isArray = false;
@@ -97,19 +82,9 @@ namespace Dev2.Data.Util
             }
             return isArray;
         }
-
-        /// <summary>
-        /// Replaces the index of a recordset with a blank index.
-        /// </summary>
-        /// <param name="expression">The expession.</param>
-        /// <returns></returns>
+        
         public static string ReplaceRecordsetIndexWithBlank(string expression) => RecSetCommon.ReplaceRecordsetIndexWithBlank(expression);
-
-        /// <summary>
-        /// Replaces the index of a recordset with a blank index.
-        /// </summary>
-        /// <param name="expression">The expession.</param>
-        /// <returns></returns>
+        
         public static string ReplaceRecordsetIndexWithStar(string expression) => RecSetCommon.ReplaceRecordsetIndexWithStar(expression);
 
         public static string GetVariableNameToMapOutputTo(string mappedTo)
@@ -120,48 +95,30 @@ namespace Dev2.Data.Util
             }
             return RemoveLanguageBrackets(mappedTo);
         }
-
-        /// <summary>
-        /// Determines whether [is calc evaluation] [the specified expression].
-        /// </summary>
-        /// <param name="expression">The expression.</param>
-        /// <param name="newExpression">The new expression.</param>
-        /// <returns>
-        ///   <c>true</c> if [is calc evaluation] [the specified expression]; otherwise, <c>false</c>.
-        /// </returns>
+        
         public static bool IsCalcEvaluation(string expression, out string newExpression)
         {
             var result = false;
 
             newExpression = string.Empty;
 
-            if (expression.StartsWith(GlobalConstants.CalculateTextConvertPrefix, StringComparison.Ordinal))
+            if (expression.StartsWith(GlobalConstants.CalculateTextConvertPrefix, StringComparison.Ordinal) && expression.EndsWith(GlobalConstants.CalculateTextConvertSuffix, StringComparison.Ordinal))
             {
-                if (expression.EndsWith(GlobalConstants.CalculateTextConvertSuffix, StringComparison.Ordinal))
-                {
-                    newExpression = expression.Substring(GlobalConstants.CalculateTextConvertPrefix.Length, expression.Length - (GlobalConstants.CalculateTextConvertSuffix.Length + GlobalConstants.CalculateTextConvertPrefix.Length));
-                    result = true;
-                }
+                newExpression = expression.Substring(GlobalConstants.CalculateTextConvertPrefix.Length, expression.Length - (GlobalConstants.CalculateTextConvertSuffix.Length + GlobalConstants.CalculateTextConvertPrefix.Length));
+                result = true;
             }
 
-            if (expression.StartsWith(GlobalConstants.AggregateCalculateTextConvertPrefix, StringComparison.Ordinal))
+
+            if (expression.StartsWith(GlobalConstants.AggregateCalculateTextConvertPrefix, StringComparison.Ordinal) && expression.EndsWith(GlobalConstants.AggregateCalculateTextConvertSuffix, StringComparison.Ordinal))
             {
-                if (expression.EndsWith(GlobalConstants.AggregateCalculateTextConvertSuffix, StringComparison.Ordinal))
-                {
-                    newExpression = expression.Substring(GlobalConstants.AggregateCalculateTextConvertPrefix.Length, expression.Length - (GlobalConstants.AggregateCalculateTextConvertSuffix.Length + GlobalConstants.AggregateCalculateTextConvertPrefix.Length));
-                    result = true;
-                }
+                newExpression = expression.Substring(GlobalConstants.AggregateCalculateTextConvertPrefix.Length, expression.Length - (GlobalConstants.AggregateCalculateTextConvertSuffix.Length + GlobalConstants.AggregateCalculateTextConvertPrefix.Length));
+                result = true;
             }
+
 
             return result;
         }
-
-
-        /// <summary>
-        /// Removes the brackets.
-        /// </summary>
-        /// <param name="val">The value.</param>
-        /// <returns></returns>
+        
         public static string RemoveLanguageBrackets(string val)
         {
             return val.Replace("[", string.Empty).Replace("]", string.Empty);

@@ -39,30 +39,28 @@ namespace Dev2.Data
 
         void SetupForWarewolfRecordSetResult(CommonFunctions.WarewolfEvalResult warewolfEvalResult)
         {
-            if (warewolfEvalResult.IsWarewolfRecordSetResult)
+            if (warewolfEvalResult.IsWarewolfRecordSetResult && warewolfEvalResult is CommonFunctions.WarewolfEvalResult.WarewolfRecordSetResult listResult)
             {
-                if (warewolfEvalResult is CommonFunctions.WarewolfEvalResult.WarewolfRecordSetResult listResult)
+                var stringValue = "";
+                foreach (var item in listResult.Item.Data)
                 {
-                    var stringValue = "";
-                    foreach (var item in listResult.Item.Data)
+                    if (item.Key != EvaluationFunctions.PositionColumn)
                     {
-                        if (item.Key != EvaluationFunctions.PositionColumn)
+                        var data = CommonFunctions.WarewolfEvalResult.NewWarewolfAtomListresult(item.Value) as CommonFunctions.WarewolfEvalResult.WarewolfAtomListresult;
+                        var warewolfEvalResultToString = ExecutionEnvironment.WarewolfEvalResultToString(data);
+                        if (string.IsNullOrEmpty(stringValue))
                         {
-                            var data = CommonFunctions.WarewolfEvalResult.NewWarewolfAtomListresult(item.Value) as CommonFunctions.WarewolfEvalResult.WarewolfAtomListresult;
-                            var warewolfEvalResultToString = ExecutionEnvironment.WarewolfEvalResultToString(data);
-                            if (string.IsNullOrEmpty(stringValue))
-                            {
-                                stringValue = warewolfEvalResultToString;
-                            }
-                            else
-                            {
-                                stringValue += "," + warewolfEvalResultToString;
-                            }
+                            stringValue = warewolfEvalResultToString;
+                        }
+                        else
+                        {
+                            stringValue += "," + warewolfEvalResultToString;
                         }
                     }
-                    _scalarResult = CommonFunctions.WarewolfEvalResult.NewWarewolfAtomResult(DataStorage.WarewolfAtom.NewDataString(stringValue)) as CommonFunctions.WarewolfEvalResult.WarewolfAtomResult;
                 }
+                _scalarResult = CommonFunctions.WarewolfEvalResult.NewWarewolfAtomResult(DataStorage.WarewolfAtom.NewDataString(stringValue)) as CommonFunctions.WarewolfEvalResult.WarewolfAtomResult;
             }
+
         }
 
         void SetupScalarResult(CommonFunctions.WarewolfEvalResult warewolfEvalResult)
@@ -75,14 +73,12 @@ namespace Dev2.Data
 
         void SetupListResult(CommonFunctions.WarewolfEvalResult warewolfEvalResult)
         {
-            if (warewolfEvalResult.IsWarewolfAtomListresult)
+            if (warewolfEvalResult.IsWarewolfAtomListresult && warewolfEvalResult is CommonFunctions.WarewolfEvalResult.WarewolfAtomListresult warewolfAtomListresult)
             {
-                if (warewolfEvalResult is CommonFunctions.WarewolfEvalResult.WarewolfAtomListresult warewolfAtomListresult)
-                {
-                    warewolfAtomListresult.Item.ResetCurrentEnumerator();
-                    _listResult = warewolfAtomListresult;
-                }
+                warewolfAtomListresult.Item.ResetCurrentEnumerator();
+                _listResult = warewolfAtomListresult;
             }
+
         }
 
         #region Implementation of IWarewolfIterator

@@ -19,14 +19,10 @@ using Warewolf.Resource.Errors;
 
 
 
-
 namespace Dev2.Common.DateAndTime
 {
     public abstract class DateTimeParser : IDateTimeParser
     {
-        /// <summary>
-        ///     used to describe the position of the parser relative to escaped regions
-        /// </summary>
         public enum LiteralRegionStates
         {
             OutsideLiteralRegion,
@@ -146,20 +142,14 @@ namespace Dev2.Common.DateAndTime
             }
             return currentPartList;
         }
-
-        /// <summary>
-        ///     Breaks a date time format up into parts
-        /// </summary>
+        
         public bool TryGetDateTimeFormatParts(string format, out List<IDateTimeFormatPartTO> formatParts,
             out string error)
         {
             return TryGetDateTimeFormatParts(format, _dateTimeFormatForwardLookups, _dateTimeFormatPartOptions,
                 out formatParts, out error);
         }
-
-        /// <summary>
-        ///     Breaks a date time format up into parts
-        /// </summary>
+        
         bool TryGetDateTimeFormatParts(string format, Dictionary<char, List<int>> dateTimeFormatForwardLookups, Dictionary<string, List<IDateTimeFormatPartOptionTO>> dateTimeFormatPartOptions, out List<IDateTimeFormatPartTO> formatParts, out string error)
         {
             var nothingDied = true;
@@ -177,25 +167,25 @@ namespace Dev2.Common.DateAndTime
                 var forwardLookupLength = 0;
                 var currentChar = formatArray[count];
 
-                if (literalRegionState == LiteralRegionStates.OutsideLiteralRegion)
+                switch (literalRegionState)
                 {
-                    forwardLookupLength = DateTimeLiteralProcessor.ProcessOutsideLiteral(dateTimeFormatForwardLookups, dateTimeFormatPartOptions, formatParts, ref error, currentChar, formatArray, count, forwardLookupLength, ref literalRegionState, ref currentValue);
-                }
-                else if (literalRegionState == LiteralRegionStates.InsideInferredLiteralRegion)
-                {
-                    forwardLookupLength = DateTimeLiteralProcessor.ProcessInsideInferredLiteral(dateTimeFormatForwardLookups, dateTimeFormatPartOptions, formatParts, ref error, currentChar, formatArray, count, forwardLookupLength, ref currentValue, ref literalRegionState);
-                }
-                else if (literalRegionState == LiteralRegionStates.InsideInferredLiteralRegionWithEscape)
-                {
-                    literalRegionState = DateTimeLiteralProcessor.ProcessInsideInferredEscapedLiteral(ref error, currentChar, literalRegionState, ref currentValue, ref nothingDied);
-                }
-                else if (literalRegionState == LiteralRegionStates.InsideLiteralRegion)
-                {
-                    forwardLookupLength = DateTimeLiteralProcessor.ProcessInsideLiteral(formatParts, ref error, currentChar, formatArray, count, forwardLookupLength, ref currentValue, ref literalRegionState);
-                }
-                else if (literalRegionState == LiteralRegionStates.InsideLiteralRegionWithEscape)
-                {
-                    literalRegionState = DateTimeLiteralProcessor.ProcessInsideEscapedLiteral(ref error, currentChar, literalRegionState, ref currentValue, ref nothingDied);
+                    case LiteralRegionStates.OutsideLiteralRegion:
+                        forwardLookupLength = DateTimeLiteralProcessor.ProcessOutsideLiteral(dateTimeFormatForwardLookups, dateTimeFormatPartOptions, formatParts, ref error, currentChar, formatArray, count, forwardLookupLength, ref literalRegionState, ref currentValue);
+                        break;
+                    case LiteralRegionStates.InsideInferredLiteralRegion:
+                        forwardLookupLength = DateTimeLiteralProcessor.ProcessInsideInferredLiteral(dateTimeFormatForwardLookups, dateTimeFormatPartOptions, formatParts, ref error, currentChar, formatArray, count, forwardLookupLength, ref currentValue, ref literalRegionState);
+                        break;
+                    case LiteralRegionStates.InsideInferredLiteralRegionWithEscape:
+                        literalRegionState = DateTimeLiteralProcessor.ProcessInsideInferredEscapedLiteral(ref error, currentChar, literalRegionState, ref currentValue, ref nothingDied);
+                        break;
+                    case LiteralRegionStates.InsideLiteralRegion:
+                        forwardLookupLength = DateTimeLiteralProcessor.ProcessInsideLiteral(formatParts, ref error, currentChar, formatArray, count, forwardLookupLength, ref currentValue, ref literalRegionState);
+                        break;
+                    case LiteralRegionStates.InsideLiteralRegionWithEscape:
+                        literalRegionState = DateTimeLiteralProcessor.ProcessInsideEscapedLiteral(ref error, currentChar, literalRegionState, ref currentValue, ref nothingDied);
+                        break;
+                    default:
+                        throw new Exception("Unrecognized region state: " + literalRegionState.ToString());
                 }
 
                 count++;

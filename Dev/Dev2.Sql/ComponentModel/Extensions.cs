@@ -14,13 +14,6 @@ namespace Warewolf.ComponentModel
 {
     public static class Extensions
     {
-        #region ToStringSafe
-
-        public static string ToStringSafe(this object obj)
-        {
-            return obj == null || Convert.IsDBNull(obj) ? string.Empty : obj.ToString();
-        }
-
-        #endregion
+        public static string ToStringSafe(this object obj) => obj == null || Convert.IsDBNull(obj) ? string.Empty : obj.ToString();
     }
 }

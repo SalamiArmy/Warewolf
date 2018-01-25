@@ -19,11 +19,13 @@ namespace Dev2.Studio.Core.Factories
     {
         public static IServiceDebugInfoModel CreateServiceDebugInfoModel(IContextualResourceModel resourceModel, string serviceInputData, DebugMode debugSetting)
         {
-            IServiceDebugInfoModel serviceDebugInfoModel = new ServiceDebugInfoModel();
-            serviceDebugInfoModel.ResourceModel = resourceModel;
-            serviceDebugInfoModel.DebugModeSetting = debugSetting;
-            serviceDebugInfoModel.ServiceInputData = serviceInputData;
-            serviceDebugInfoModel.RememberInputs = true;
+            IServiceDebugInfoModel serviceDebugInfoModel = new ServiceDebugInfoModel
+            {
+                ResourceModel = resourceModel,
+                DebugModeSetting = debugSetting,
+                ServiceInputData = serviceInputData,
+                RememberInputs = true
+            };
             return serviceDebugInfoModel;
         }
     }

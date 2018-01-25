@@ -73,13 +73,11 @@ namespace Dev2.Studio.Views.Workflow
 
         void OnFoldingUpdateTimerOnTick(object sender, EventArgs e)
         {
-            if (_foldingStrategy != null && _foldingManager != null)
+            if (_foldingStrategy != null && _foldingManager != null && !string.IsNullOrEmpty(_editor.Document.Text))
             {
-                if (!string.IsNullOrEmpty(_editor.Document.Text))
-                {
-                    _foldingStrategy.UpdateFoldings(_foldingManager, _editor.Document);
-                }
+                _foldingStrategy.UpdateFoldings(_foldingManager, _editor.Document);
             }
+
         }
 
         void ShowDataInOutputWindow(string input)

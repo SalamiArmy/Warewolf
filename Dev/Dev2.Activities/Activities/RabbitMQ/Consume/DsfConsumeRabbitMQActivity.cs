@@ -320,24 +320,20 @@ namespace Dev2.Activities.RabbitMQ.Consume
         {
             base.GetDebugOutputs(dataList, update);
 
-            if (dataList != null && !string.IsNullOrEmpty(Response))
+            if (dataList != null && !string.IsNullOrEmpty(Response) && !IsObject)
             {
-                if (!IsObject)
-                {
-                    var debugItem = new DebugItem();
-                    AddDebugItem(new DebugEvalResult(Response, "", dataList, update), debugItem);
-                    _debugOutputs.Add(debugItem);
-                }
+                var debugItem = new DebugItem();
+                AddDebugItem(new DebugEvalResult(Response, "", dataList, update), debugItem);
+                _debugOutputs.Add(debugItem);
             }
-            if (dataList != null && !string.IsNullOrEmpty(ObjectName))
+
+            if (dataList != null && !string.IsNullOrEmpty(ObjectName) && IsObject)
             {
-                if (IsObject)
-                {
-                    var debugItem = new DebugItem();
-                    AddDebugItem(new DebugEvalResult(ObjectName, "", dataList, update), debugItem);
-                    _debugOutputs.Add(debugItem);
-                }
+                var debugItem = new DebugItem();
+                AddDebugItem(new DebugEvalResult(ObjectName, "", dataList, update), debugItem);
+                _debugOutputs.Add(debugItem);
             }
+
             return _debugOutputs?.Any() ?? false ? _debugOutputs : new List<DebugItem>();
         }
 
@@ -350,19 +346,15 @@ namespace Dev2.Activities.RabbitMQ.Consume
                 ResponseManager.ObjectName = ObjectName;
             }
             base.AssignResult(dataObject, update);
-            if (!string.IsNullOrEmpty(ObjectName))
+            if (!string.IsNullOrEmpty(ObjectName) && IsObject && (_messages?.Any() ?? false))
             {
-                if (IsObject)
+                foreach (var message in _messages)
                 {
-                    if (_messages?.Any() ?? false)
-                    {
-                        foreach (var message in _messages)
-                        {
-                            ResponseManager.PushResponseIntoEnvironment(message, update, dataObject);
-                        }
-                    }
+                    ResponseManager.PushResponseIntoEnvironment(message, update, dataObject);
                 }
             }
+
+
             if (!string.IsNullOrEmpty(Response) && !IsObject)
             {
                 if (DataListUtil.IsValueScalar(Response))

@@ -48,16 +48,20 @@ namespace Dev2.Runtime.ESB.Management.Services
 
             if (string.IsNullOrEmpty(serializedSource))
             {
-                var res = new ExecuteMessage();
-                res.HasError = true;
+                var res = new ExecuteMessage
+                {
+                    HasError = true
+                };
                 res.SetMessage(ErrorResource.NoSharepointServerSet);
                 Dev2Logger.Debug(ErrorResource.NoSharepointServerSet, GlobalConstants.WarewolfDebug);
                 return serializer.SerializeToBuilder(res);
             }
-            if(string.IsNullOrEmpty(listName))
+            if (string.IsNullOrEmpty(listName))
             {
-                var res = new ExecuteMessage();
-                res.HasError = true;
+                var res = new ExecuteMessage
+                {
+                    HasError = true
+                };
                 res.SetMessage(ErrorResource.NoSharepointListNameSet);
                 Dev2Logger.Debug(ErrorResource.NoSharepointListNameSet, GlobalConstants.WarewolfDebug);
                 return serializer.SerializeToBuilder(res);

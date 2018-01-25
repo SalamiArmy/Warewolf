@@ -69,13 +69,11 @@ namespace Dev2.Session
                 DataList = DataList,
                 ServiceName = ServiceName,
                 IsDebugMode = IsDebugMode,
-                RememberInputs = RememberInputs,
                 XmlData = XmlData,
-                WorkflowID = WorkflowID
+                WorkflowID = WorkflowID,
+                RememberInputs = RememberInputs,
+                DataListHash = DataListHash
             };
-
-            that.RememberInputs = RememberInputs;
-            that.DataListHash = DataListHash;
 
             return that;
         }

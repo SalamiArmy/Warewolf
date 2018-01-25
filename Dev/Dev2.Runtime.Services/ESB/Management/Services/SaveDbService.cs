@@ -44,7 +44,7 @@ namespace Dev2.Runtime.ESB.Management.Services
                 Dev2Logger.Info("Save Resource Service", GlobalConstants.WarewolfInfo);
                 values.TryGetValue("DbService", out StringBuilder resourceDefinition);
                 IDatabaseService service = serializer.Deserialize<DatabaseService>(resourceDefinition);                
-                var parameters = service.Inputs?.Select(a => new MethodParameter() { EmptyToNull = a.EmptyIsNull, IsRequired = a.RequiredField, Name = a.Name, Value = a.Value }).ToList() ?? new List<MethodParameter>();                
+                var parameters = service.Inputs?.Select(a => new MethodParameter { EmptyToNull = a.EmptyIsNull, IsRequired = a.RequiredField, Name = a.Name, Value = a.Value }).ToList() ?? new List<MethodParameter>();                
                 var source = ResourceCatalog.Instance.GetResource<DbSource>(GlobalConstants.ServerWorkspaceID, service.Source.Id);
                 var output = new List<MethodOutput>(service.OutputMappings.Select(a => new MethodOutput(a.MappedFrom, a.MappedTo, "", false, a.RecordSetName, false, "", false, "", false)));
                 var recset = new Recordset();

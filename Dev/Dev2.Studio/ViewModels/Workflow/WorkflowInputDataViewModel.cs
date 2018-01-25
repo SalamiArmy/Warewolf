@@ -569,7 +569,7 @@ namespace Dev2.Studio.ViewModels.Workflow
         {
             WorkflowInputs.Clear();
             DataList.PopulateWithData(XmlData);
-            _dataListConversionUtils.CreateListToBindTo(DataList).ToList().ForEach(i => WorkflowInputs.Add(i));
+            _dataListConversionUtils.CreateListToBindTo(DataList).ToList().ForEach(WorkflowInputs.Add);
         }
         
         public bool AddBlankRow(IDataListItem selectedItem, out int indexToSelect)

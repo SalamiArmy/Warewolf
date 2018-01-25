@@ -6,7 +6,7 @@ namespace Dev2.Runtime.Hosting
     {
         public static ResourceCatalogResult CreateSuccessResult(string msg)
         {
-            return new ResourceCatalogResult()
+            return new ResourceCatalogResult
             {
                 Status = ExecStatus.Success,
                 Message = msg
@@ -14,7 +14,7 @@ namespace Dev2.Runtime.Hosting
         }
         public static ResourceCatalogResult CreateFailResult(string msg)
         {
-            return new ResourceCatalogResult()
+            return new ResourceCatalogResult
             {
                 Status = ExecStatus.Fail,
                 Message = msg
@@ -23,7 +23,7 @@ namespace Dev2.Runtime.Hosting
     
         public static ResourceCatalogResult CreateAccessViolationResult(string msg)
         {
-            return new ResourceCatalogResult()
+            return new ResourceCatalogResult
             {
                 Status = ExecStatus.AccessViolation,
                 Message = msg

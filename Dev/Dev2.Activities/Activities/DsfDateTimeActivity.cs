@@ -279,13 +279,11 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             //2012.09.27: massimo.guerrera - Added for the new functionality for the time modification
             //Create a DateTimeTO using the DateTimeConverterFactory and send through the properties of this activity.DONE
             var tmpTimeAmount = 0;
-            if (!string.IsNullOrWhiteSpace(tTimeModifierAmount))
+            if (!string.IsNullOrWhiteSpace(tTimeModifierAmount) && !int.TryParse(tTimeModifierAmount, out tmpTimeAmount))
             {
-                if (!int.TryParse(tTimeModifierAmount, out tmpTimeAmount))
-                {
-                    throw new Exception(ErrorResource.TimeMustBeNumeric);
-                }
+                throw new Exception(ErrorResource.TimeMustBeNumeric);
             }
+
             return DateTimeConverterFactory.CreateDateTimeTO(evaledDateTime, evaledInputFormat, evaledOutputFormat, timeModifierType, tmpTimeAmount, Result);
         }
 

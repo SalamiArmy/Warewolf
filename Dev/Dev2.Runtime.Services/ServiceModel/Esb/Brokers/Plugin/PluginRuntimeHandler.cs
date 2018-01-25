@@ -61,7 +61,7 @@ namespace Dev2.Runtime.ServiceModel.Esb.Brokers.Plugin
             }
 
             var instance = BuildInstance(setupInfo, type, constructorArgs, loadedAssembly);
-            var serializeToJsonString = instance.SerializeToJsonString(new KnownTypesBinder() { KnownTypes = new List<Type>() { type } });
+            var serializeToJsonString = instance.SerializeToJsonString(new KnownTypesBinder { KnownTypes = new List<Type> { type } });
             
             setupInfo.PluginConstructor.ReturnObject = serializeToJsonString;
             return new PluginExecutionDto(serializeToJsonString)
@@ -154,7 +154,7 @@ namespace Dev2.Runtime.ServiceModel.Esb.Brokers.Plugin
             VerifyArgument.IsNotNull("setupInfo", setupInfo);
             var type = loadedAssembly.GetType(setupInfo.Fullname);
             var knownBinder = new KnownTypesBinder();
-            loadedAssembly.ExportedTypes.ForEach(t => knownBinder.KnownTypes.Add(t));
+            loadedAssembly.ExportedTypes.ForEach(knownBinder.KnownTypes.Add);
             if (objectToRun.IsStatic)
             {
                 ExecuteSingleMethod(type, null, InvokeMethodsAction, loadedAssembly, dev2MethodInfo);

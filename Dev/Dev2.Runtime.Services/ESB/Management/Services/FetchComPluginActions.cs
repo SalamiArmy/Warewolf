@@ -55,8 +55,7 @@ namespace Dev2.Runtime.ESB.Management.Services
                 {
                     Dev2Logger.Error(e, GlobalConstants.WarewolfError);
                 }
-
-
+                
                 var methods = serviceMethodList.Select(a => new PluginAction
                 {
                     FullName = ns?.FullName,
@@ -72,9 +71,9 @@ namespace Dev2.Runtime.ESB.Management.Services
                         TypeName = x.TypeName
                     } as IServiceInput).ToList(),
                     Method = a.Name,
-                    Variables = a.Parameters.Select(x => new NameValue() { Name = x.Name + " (" + x.TypeName + ")", Value = "" } as INameValue).ToList(),
+                    Variables = a.Parameters.Select(x => new NameValue { Name = x.Name + " (" + x.TypeName + ")", Value = "" } as INameValue).ToList(),
                 } as IPluginAction).ToList();
-                return serializer.SerializeToBuilder(new ExecuteMessage()
+                return serializer.SerializeToBuilder(new ExecuteMessage
                 {
                     HasError = false,
                     Message = serializer.SerializeToBuilder(methods)
@@ -83,7 +82,7 @@ namespace Dev2.Runtime.ESB.Management.Services
             catch (Exception e)
             {
 
-                return serializer.SerializeToBuilder(new ExecuteMessage()
+                return serializer.SerializeToBuilder(new ExecuteMessage
                 {
                     HasError = true,
                     Message = new StringBuilder(e.Message)

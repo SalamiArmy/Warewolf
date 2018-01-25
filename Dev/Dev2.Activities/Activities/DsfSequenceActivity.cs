@@ -199,13 +199,11 @@ namespace Dev2.Activities
             {
                 DispatchDebugState(dataObject, StateType.After, update);
             }
-            if (dataObject.IsServiceTestExecution)
+            if (dataObject.IsServiceTestExecution && _originalUniqueID == Guid.Empty)
             {
-                if (_originalUniqueID == Guid.Empty)
-                {
-                    _originalUniqueID = Guid.Parse(UniqueID);
-                }
+                _originalUniqueID = Guid.Parse(UniqueID);
             }
+
             var serviceTestStep = dataObject.ServiceTest?.TestSteps?.Flatten(step => step.Children)?.FirstOrDefault(step => step.UniqueId == _originalUniqueID);
             var serviceTestSteps = serviceTestStep?.Children;
             foreach (var dsfActivity in Activities)
@@ -216,26 +214,22 @@ namespace Dev2.Activities
                     if (dataObject.IsServiceTestExecution)
                     {
                         var contentId = Guid.Parse(act.UniqueID);
-                        if (dsfActivity.GetType().Name == "DsfActivity")
+                        if (dsfActivity.GetType().Name == "DsfActivity" && dsfActivity is DsfActivity newAct)
                         {
-                            if (dsfActivity is DsfActivity newAct)
-                            {
-                                contentId = newAct.GetWorkSurfaceMappingId();
-                            }
+                            contentId = newAct.GetWorkSurfaceMappingId();
                         }
+
                         UpdateDebugStateWithAssertions(dataObject, serviceTestSteps?.ToList(), contentId);
                     }
                 }
             }
-            if (dataObject.IsServiceTestExecution)
+            if (dataObject.IsServiceTestExecution && serviceTestStep != null)
             {
-                if (serviceTestStep != null)
-                {
-                    var testRunResult = new TestRunResult();
-                    GetFinalTestRunResult(serviceTestStep, testRunResult);
-                    serviceTestStep.Result = testRunResult;
-                }
+                var testRunResult = new TestRunResult();
+                GetFinalTestRunResult(serviceTestStep, testRunResult);
+                serviceTestStep.Result = testRunResult;
             }
+
             OnCompleted(dataObject);
             if (dataObject.IsDebugMode())
             {

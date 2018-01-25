@@ -117,16 +117,14 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                         }
                         else
                         {
-                            if (DataListUtil.GetRecordsetIndexType(Result) == enRecordsetIndexType.Blank)
+                            if (DataListUtil.GetRecordsetIndexType(Result) == enRecordsetIndexType.Blank && listOfDir != null)
                             {
-                                if (listOfDir != null)
+                                foreach (IActivityIOPath pa in listOfDir)
                                 {
-                                    foreach (IActivityIOPath pa in listOfDir)
-                                    {
-                                        outputs.Add(DataListFactory.CreateOutputTO(Result, pa.Path));
-                                    }
+                                    outputs.Add(DataListFactory.CreateOutputTO(Result, pa.Path));
                                 }
                             }
+
                         }
                     }
                     else

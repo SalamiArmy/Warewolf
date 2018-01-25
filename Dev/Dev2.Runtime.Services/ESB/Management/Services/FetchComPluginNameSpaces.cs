@@ -41,7 +41,7 @@ namespace Dev2.Runtime.ESB.Management.Services
                     Dev2Logger.Error(e, GlobalConstants.WarewolfError);
                 }
              
-                return serializer.SerializeToBuilder(new ExecuteMessage()
+                return serializer.SerializeToBuilder(new ExecuteMessage
                 {
                     HasError = false,
                     Message = serializer.SerializeToBuilder(methods)
@@ -50,7 +50,7 @@ namespace Dev2.Runtime.ESB.Management.Services
             }
             catch (Exception e)
             {
-                return serializer.SerializeToBuilder(new ExecuteMessage()
+                return serializer.SerializeToBuilder(new ExecuteMessage
                 {
                     HasError = true,
                     Message = new StringBuilder(e.Message)

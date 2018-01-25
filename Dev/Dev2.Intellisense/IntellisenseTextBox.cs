@@ -128,14 +128,12 @@ namespace Dev2.UI
         string HandleMultiLine(KeyEventArgs e, bool isOpen, ref bool expand)
         {
             string appendText = null;
-            if (AllowUserInsertLine && !isOpen && e.Key != Key.Tab && e.KeyboardDevice.Modifiers == ModifierKeys.None)
+            if (AllowUserInsertLine && !isOpen && e.Key != Key.Tab && e.KeyboardDevice.Modifiers == ModifierKeys.None && LineCount < TextBox.MaxLines)
             {
-                if (LineCount < TextBox.MaxLines)
-                {
-                    appendText = Environment.NewLine;
-                    expand = true;
-                }
+                appendText = Environment.NewLine;
+                expand = true;
             }
+
             return appendText;
         }
 
@@ -495,13 +493,11 @@ namespace Dev2.UI
                     var provider = IntellisenseProvider;
                     var context = new IntellisenseProviderContext { FilterType = FilterType, DesiredResultSet = desiredResultSet, InputText = text, CaretPosition = CaretIndex };
 
-                    if ((context.IsInCalculateMode = calculateMode) && AllowUserCalculateMode)
+                    if ((context.IsInCalculateMode = calculateMode) && AllowUserCalculateMode && CaretIndex > 0)
                     {
-                        if (CaretIndex > 0)
-                        {
-                            context.CaretPosition = CaretIndex - 1;
-                        }
+                        context.CaretPosition = CaretIndex - 1;
                     }
+
 
                     IList<IntellisenseProviderResult> results = null;
 
@@ -571,14 +567,12 @@ namespace Dev2.UI
                             ttErrorBuilder.AppendLine("Scalar is not allowed");
                         }
                     }
-                    else if (FilterType == enIntellisensePartType.ScalarsOnly)
+                    else if (FilterType == enIntellisensePartType.ScalarsOnly && text.Contains("(") && text.Contains(")"))
                     {
-                        if (text.Contains("(") && text.Contains(")"))
-                        {
-                            HasError = true;
-                            ttErrorBuilder.AppendLine("Recordset is not allowed");
-                        }
+                        HasError = true;
+                        ttErrorBuilder.AppendLine("Recordset is not allowed");
                     }
+
                 }
 
                 var errorText = ttErrorBuilder.ToString();

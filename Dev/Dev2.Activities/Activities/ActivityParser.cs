@@ -159,11 +159,11 @@ namespace Dev2.Activities
             {
                 case DsfDecision a:
                     {
-                        return new List<IDev2Activity>() { a };
+                        return new List<IDev2Activity> { a };
                     }
                 case DsfSwitch b:
                     {
-                        return new List<IDev2Activity>() { b };
+                        return new List<IDev2Activity> { b };
                     }
                 default:
                     {

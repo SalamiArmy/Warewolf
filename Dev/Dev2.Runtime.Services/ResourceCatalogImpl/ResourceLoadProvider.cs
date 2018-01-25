@@ -264,13 +264,11 @@ namespace Dev2.Runtime.ResourceCatalogImpl
             var dependants = new List<Guid>();
             resources.ForEach(resource =>
             {
-                if (resource.Dependencies == null)
+                if (resource.Dependencies == null && (resource.IsSource || resource.IsServer))
                 {
-                    if(resource.IsSource || resource.IsServer)
-                    {
-                        resource = new Resource(resource.ToXml());
-                    }
+                    resource = new Resource(resource.ToXml());
                 }
+
                 if (resource.Dependencies == null)
                 {
                     return;
@@ -401,13 +399,11 @@ namespace Dev2.Runtime.ResourceCatalogImpl
                     foundResource = resources.AsParallel().FirstOrDefault(resource => resource.ResourceID == resourceID);
                 }
 
-                if (foundResource == null && workspaceID != GlobalConstants.ServerWorkspaceID)
+                if (foundResource == null && workspaceID != GlobalConstants.ServerWorkspaceID && _workspaceResources.TryGetValue(GlobalConstants.ServerWorkspaceID, out resources))
                 {
-                    if(_workspaceResources.TryGetValue(GlobalConstants.ServerWorkspaceID, out resources))
-                    {
-                        foundResource = resources.AsParallel().FirstOrDefault(resource => resource.ResourceID == resourceID);
-                    }
+                    foundResource = resources.AsParallel().FirstOrDefault(resource => resource.ResourceID == resourceID);
                 }
+
             }
             catch (Exception e)
             {
@@ -428,13 +424,11 @@ namespace Dev2.Runtime.ResourceCatalogImpl
                 foundResource = resources.AsParallel().FirstOrDefault(resource => resource.ResourceID == resourceID);
             }
 
-            if (foundResource == null && workspaceID != GlobalConstants.ServerWorkspaceID)
+            if (foundResource == null && workspaceID != GlobalConstants.ServerWorkspaceID && _workspaceResources.TryGetValue(GlobalConstants.ServerWorkspaceID, out resources))
             {
-                if(_workspaceResources.TryGetValue(GlobalConstants.ServerWorkspaceID, out resources))
-                {
-                    foundResource = resources.AsParallel().FirstOrDefault(resource => resource.ResourceID == resourceID);
-                }
+                foundResource = resources.AsParallel().FirstOrDefault(resource => resource.ResourceID == resourceID);
             }
+
             return GetResourceContents(foundResource);
         }
 
@@ -575,7 +569,7 @@ namespace Dev2.Runtime.ResourceCatalogImpl
             }
             else
             {
-                var commands = new Dictionary<string, List<IResource>>()
+                var commands = new Dictionary<string, List<IResource>>
                 {
                     {"WorkflowService", workspaceResources.FindAll(r => func.Invoke(r) && r.IsService)},
                     {"Source", workspaceResources.FindAll(r => func.Invoke(r) && r.IsSource)},

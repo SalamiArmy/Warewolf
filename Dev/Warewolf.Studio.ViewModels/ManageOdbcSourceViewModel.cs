@@ -146,7 +146,7 @@ namespace Warewolf.Studio.ViewModels
                 return Item;
             }
 
-            return new DbSourceDefinition()
+            return new DbSourceDefinition
             {
                 AuthenticationType = AuthenticationType,
                 ServerName = EmptyServerName,

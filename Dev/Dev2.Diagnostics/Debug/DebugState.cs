@@ -561,12 +561,9 @@ namespace Dev2.Diagnostics.Debug
         {
             var handler = PropertyChanged;
             handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            if (propertyName?.Equals("ParentID") ?? false)
+            if (propertyName?.Equals("ParentID") ?? false && ParentID == Guid.Empty)
             {
-                if (ParentID == Guid.Empty)
-                {
-                    ParentID = null;
-                }
+                ParentID = null;
             }
         }
     }

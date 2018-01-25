@@ -127,7 +127,7 @@ namespace Dev2.Activities.Designers2.Core.InputRegion
                     var newInputs = InputsFromSameAction(selectedActionInputs);
                     var removedInputs = inputCopy.Except(selectedActionInputs, new ServiceInputNameComparer()).ToList();
                     var union = inputCopy.Union(newInputs, new ServiceInputNameComparer()).ToList();
-                    union.RemoveAll(a => removedInputs.Any(k => a.Equals(k)));
+                    union.RemoveAll(a => removedInputs.Any(a.Equals));
                     Inputs = union;
                 }
                 else

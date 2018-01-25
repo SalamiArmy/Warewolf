@@ -69,7 +69,7 @@ namespace Warewolf.Studio.ViewModels
 
         void ToItem()
         {
-            Item = new RabbitMQServiceSourceDefinition()
+            Item = new RabbitMQServiceSourceDefinition
             {
                 HostName = _rabbitMQServiceSource.HostName,
                 Password = _rabbitMQServiceSource.Password,

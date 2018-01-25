@@ -226,13 +226,11 @@ namespace Dev2.Activities.Specs.Permissions
         {
             var environmentModel = FeatureContext.Current.Get<IServer>("currentEnvironment");
             EnsureEnvironmentConnected(environmentModel);
-            if (environmentModel.IsConnected)
+            if (environmentModel.IsConnected && !environmentModel.HasLoadedResources)
             {
-                if (!environmentModel.HasLoadedResources)
-                {
-                    environmentModel.ForceLoadResources();
-                }
+                environmentModel.ForceLoadResources();
             }
+
             return environmentModel;
         }
 

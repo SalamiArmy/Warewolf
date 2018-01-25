@@ -32,7 +32,7 @@ namespace Dev2.Runtime.ESB.Management.Services
 
                 var src = serializer.Deserialize<ExchangeSourceDefinition>(resourceDefinition);
 
-                var con = new ExchangeSource()
+                var con = new ExchangeSource
                 {
                     AutoDiscoverUrl = src.AutoDiscoverUrl,
                     UserName = src.UserName,
@@ -40,7 +40,7 @@ namespace Dev2.Runtime.ESB.Management.Services
                     Timeout = src.Timeout,
                 };
 
-                var testMessage = new ExchangeTestMessage()
+                var testMessage = new ExchangeTestMessage
                 {
                     Tos = new List<string>{ src.EmailTo, },
                     CCs = new List<string> { string.Empty},

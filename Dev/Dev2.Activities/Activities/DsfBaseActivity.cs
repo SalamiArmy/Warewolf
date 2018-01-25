@@ -108,16 +108,12 @@ namespace Dev2.Activities
                     }
                 }
 
-                if (dataObject.IsDebugMode() && !allErrors.HasErrors() && !string.IsNullOrWhiteSpace(Result))
+                if (dataObject.IsDebugMode() && !allErrors.HasErrors() && !string.IsNullOrWhiteSpace(Result) && dataObject.IsDebugMode() && !allErrors.HasErrors() && !string.IsNullOrEmpty(Result))
                 {
-                    if (dataObject.IsDebugMode() && !allErrors.HasErrors())
-                    {
-                        if (!string.IsNullOrEmpty(Result))
-                        {
-                            AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
-                        }
-                    }
+                    AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
                 }
+
+
 
                 allErrors.MergeErrors(errors);
             }

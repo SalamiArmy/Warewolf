@@ -156,7 +156,7 @@ namespace Dev2.Studio.ViewModels
         public IViewFactory ViewFactoryProvider => _factory ?? new ViewFactory();
         readonly ShellViewModel _shellViewModel;
         readonly bool _createDesigners;
-        readonly Func<IContextualResourceModel, bool, IWorkSurfaceContextViewModel> _getWorkSurfaceContextViewModel = (resourceModel, createDesigner) => WorkSurfaceContextFactory.CreateResourceViewModel(resourceModel, createDesigner);
+        readonly Func<IContextualResourceModel, bool, IWorkSurfaceContextViewModel> _getWorkSurfaceContextViewModel = WorkSurfaceContextFactory.CreateResourceViewModel;
 
         public WorksurfaceContextManager(bool createDesigners, ShellViewModel shellViewModel)
         {
@@ -997,7 +997,7 @@ namespace Dev2.Studio.ViewModels
         public void EditWebSource(IContextualResourceModel resourceModel, IView view)
         {
             var db = new WebSource(resourceModel.WorkflowXaml.ToXElement());
-            var def = new WebServiceSourceDefinition()
+            var def = new WebServiceSourceDefinition
             {
                 AuthenticationType = db.AuthenticationType,
                 DefaultQuery = db.DefaultQuery,
@@ -1062,7 +1062,7 @@ namespace Dev2.Studio.ViewModels
         {
             var db = new ExchangeSource(resourceModel.WorkflowXaml.ToXElement());
 
-            var def = new ExchangeSourceDefinition()
+            var def = new ExchangeSourceDefinition
             {
                 AutoDiscoverUrl = db.AutoDiscoverUrl,
                 Id = db.ResourceID,
@@ -1403,37 +1403,35 @@ namespace Dev2.Studio.ViewModels
         public bool CloseWorkSurfaceContext(WorkSurfaceContextViewModel context, PaneClosingEventArgs e, bool dontPrompt)
         {
             var remove = true;
-            if (context != null)
+            if (context != null && !context.DeleteRequested)
             {
-                if (!context.DeleteRequested)
+                var vm = context.WorkSurfaceViewModel;
+                if (vm != null)
                 {
-                    var vm = context.WorkSurfaceViewModel;
-                    if (vm != null)
+                    if (vm.WorkSurfaceContext == WorkSurfaceContext.Workflow)
                     {
-                        if (vm.WorkSurfaceContext == WorkSurfaceContext.Workflow)
-                        {
-                            return CloseWorkflow(context, e, dontPrompt, vm, ref remove) && remove;
-                        }
-                        if (vm.WorkSurfaceContext == WorkSurfaceContext.Settings)
-                        {
-                            return CloseSettings(vm, true);
-                        }
-                        if (vm.WorkSurfaceContext == WorkSurfaceContext.Scheduler)
-                        {
-                            return RemoveScheduler(vm, true);
-                        }
+                        return CloseWorkflow(context, e, dontPrompt, vm, ref remove) && remove;
                     }
-                    if (vm is IStudioTab tab)
+                    if (vm.WorkSurfaceContext == WorkSurfaceContext.Settings)
                     {
-                        remove = tab.DoDeactivate(true);
-                        if (remove)
-                        {
-                            tab.Dispose();
-                            tab.CloseView();
-                        }
+                        return CloseSettings(vm, true);
+                    }
+                    if (vm.WorkSurfaceContext == WorkSurfaceContext.Scheduler)
+                    {
+                        return RemoveScheduler(vm, true);
+                    }
+                }
+                if (vm is IStudioTab tab)
+                {
+                    remove = tab.DoDeactivate(true);
+                    if (remove)
+                    {
+                        tab.Dispose();
+                        tab.CloseView();
                     }
                 }
             }
+
 
             return remove;
         }

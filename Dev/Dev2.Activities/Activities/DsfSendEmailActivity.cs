@@ -263,13 +263,11 @@ namespace Dev2.Activities
                             indexToUpsertTo = UpsertResult(indexToUpsertTo, dataObject.Environment, result, update);
                         }
                     }
-                    if(IsDebug && !allErrors.HasErrors())
+                    if (IsDebug && !allErrors.HasErrors() && !string.IsNullOrEmpty(Result))
                     {
-                        if (!string.IsNullOrEmpty(Result))
-                        {
-                            AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
-                        }
+                        AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
                     }
+
                 }
                 else
                 {

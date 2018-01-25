@@ -85,7 +85,7 @@ namespace Dev2.Runtime.ESB.Management.Services
                         MessageType = CompileMessageType.MappingChange
                     };
                     msgs.Dependants =new List<string>();
-                    deps.ForEach(s => msgs.Dependants.Add(s));
+                    deps.ForEach(msgs.Dependants.Add);
                     msgs.MessageList = new List<ICompileMessageTO> { compileMessageTo };
                     
                     return serializer.SerializeToBuilder(msgs);

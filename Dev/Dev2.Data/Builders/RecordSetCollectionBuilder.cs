@@ -41,13 +41,11 @@ namespace Dev2.Data.Builders
                 
                 if(IsOutput)
                 {
-                    if(IsDbService)
+                    if (IsDbService && !string.IsNullOrEmpty(rsName))
                     {
-                        if(!string.IsNullOrEmpty(rsName))
-                        {
-                            scanRsName = rsName;
-                        }
+                        scanRsName = rsName;
                     }
+
                 }
                 else
                 {

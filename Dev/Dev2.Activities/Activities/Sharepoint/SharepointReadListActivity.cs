@@ -223,14 +223,12 @@ namespace Dev2.Activities.Sharepoint
             }
             else
             {
-                if (type == typeof(FieldUserValue[]))
+                if (type == typeof(FieldUserValue[]) && sharepointValue is FieldLookupValue[] fieldValue)
                 {
-                    if (sharepointValue is FieldLookupValue[] fieldValue)
-                    {
-                        var returnString = string.Join(",", fieldValue.Select(value => value.LookupValue));
-                        return returnString;
-                    }
+                    var returnString = string.Join(",", fieldValue.Select(value => value.LookupValue));
+                    return returnString;
                 }
+
             }
             return val;
         }

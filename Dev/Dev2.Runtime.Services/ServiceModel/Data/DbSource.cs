@@ -123,13 +123,11 @@ namespace Dev2.Runtime.ServiceModel.Data
                 {
                     case enSourceType.SqlDatabase:
                         var isNamedInstance = Server != null && Server.Contains('\\');
-                        if (isNamedInstance)
+                        if (isNamedInstance && Port == 1433)
                         {
-                            if (Port == 1433)
-                            {
-                                Port = 0;
-                            }
+                            Port = 0;
                         }
+
                         return string.Format("Data Source={0}{2};Initial Catalog={1};{3}", Server, DatabaseName,
                             Port > 0 ? "," + Port : string.Empty,
                             AuthenticationType == AuthenticationType.Windows
@@ -143,9 +141,7 @@ namespace Dev2.Runtime.ServiceModel.Data
 
                     case enSourceType.Oracle:
                         //database refers to owner/schema in oracle
-                        return string.Format("User Id={2};Password={3};Data Source={0};{1}",
-                          Server, (DatabaseName != null ? string.Format("Database={0};", DatabaseName) : string.Empty), UserID, Password,
-                         Port > 0 ? string.Format(":{0}", Port) : string.Empty);
+                        return $"User Id={UserID};Password={Password};Data Source={Server};{(DatabaseName != null ? string.Format("Database={0};", DatabaseName) : string.Empty)}";
 
                     case enSourceType.ODBC:
                         return string.Format("DSN={0};", DatabaseName);
@@ -212,14 +208,11 @@ namespace Dev2.Runtime.ServiceModel.Data
                         case "data source":
                             var arr = prm[1].Split(','); // may include port number after comma
                             Server = arr[0];
-                            if (arr.Length > 1)
+                            if (arr.Length > 1 && Int32.TryParse(arr[1], out port))
                             {
-                                if (Int32.TryParse(arr[1], out port))
-                                {
-                                    Port = port;
-                                }
-
+                                Port = port;
                             }
+
                             break;
                         case "port":
                             if (Int32.TryParse(prm[1], out port))

@@ -404,21 +404,17 @@ namespace Warewolf.Storage
         public string ToStar(string expression)
         {
             var exp = EvaluationFunctions.parseLanguageExpression(expression, 0);
-            if (exp.IsRecordSetExpression)
+            if (exp.IsRecordSetExpression && exp is LanguageAST.LanguageExpression.RecordSetExpression rec)
             {
-                if (exp is LanguageAST.LanguageExpression.RecordSetExpression rec)
-                {
-                    return $"[[{rec.Item.Name}(*).{rec.Item.Column}]]";
-                }
+                return $"[[{rec.Item.Name}(*).{rec.Item.Column}]]";
             }
 
-            if (exp.IsRecordSetNameExpression)
+
+            if (exp.IsRecordSetNameExpression && exp is LanguageAST.LanguageExpression.RecordSetNameExpression record)
             {
-                if (exp is LanguageAST.LanguageExpression.RecordSetNameExpression rec)
-                {
-                    return $"[[{rec.Item.Name}(*)]]";
-                }
+                return $"[[{record.Item.Name}(*)]]";
             }
+
 
             if (exp.IsJsonIdentifierExpression)
             {
@@ -639,17 +635,15 @@ namespace Warewolf.Storage
                 }
                 else
                 {
-                    if (var.IsRecordSetExpression)
+                    if (var.IsRecordSetExpression && var is LanguageAST.LanguageExpression.RecordSetExpression recSetExpression)
                     {
-                        if (var is LanguageAST.LanguageExpression.RecordSetExpression recSetExpression)
+                        var indexes = EvalRecordSetIndexes(@"[[" + recSetExpression.Item.Name + @"(*)]]", 0);
+                        foreach (var index in indexes)
                         {
-                            var indexes = EvalRecordSetIndexes(@"[[" + recSetExpression.Item.Name + @"(*)]]", 0);
-                            foreach (var index in indexes)
-                            {
-                                indexMap.Add(exp.Replace(@"(*).", $"({index})."));
-                            }
+                            indexMap.Add(exp.Replace(@"(*).", $"({index})."));
                         }
                     }
+
                 }
             }
             return indexMap.Where(s => !s.Contains(@"(*)")).ToList();

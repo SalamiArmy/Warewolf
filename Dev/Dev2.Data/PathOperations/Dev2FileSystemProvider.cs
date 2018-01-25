@@ -140,15 +140,13 @@ namespace Dev2.PathOperations
             var result = -1;
             using (src)
             {
-                if (!Path.IsPathRooted(dst.Path))
+                //get just the directory path to put into
+                if (!Path.IsPathRooted(dst.Path) && whereToPut != null)
                 {
-                    //get just the directory path to put into
-                    if (whereToPut != null)
-                    {
-                        //Make the destination directory equal to that directory
-                        dst = ActivityIOFactory.CreatePathFromString(whereToPut + "\\" + dst.Path, dst.Username, dst.Password,dst.PrivateKeyFile);
-                    }
+                    //Make the destination directory equal to that directory
+                    dst = ActivityIOFactory.CreatePathFromString(whereToPut + "\\" + dst.Path, dst.Username, dst.Password, dst.PrivateKeyFile);
                 }
+
                 if (args.Overwrite || !args.Overwrite && !FileExist(dst))
                 {
                     _fileLock.EnterWriteLock();
@@ -493,28 +491,11 @@ namespace Dev2.PathOperations
             return result;
         }
 
-        public string PathSeperator()
-        {
-            return "\\";
-        }
+        public string PathSeperator() => "\\";
 
-        /// <summary>
-        /// Get folder listing for source
-        /// </summary>
-        /// <returns></returns>
-        public IList<IActivityIOPath> ListFoldersInDirectory(IActivityIOPath src)
-        {
-            return ListDirectoriesAccordingToType(src, ReadTypes.Folders);
-        }
+        public IList<IActivityIOPath> ListFoldersInDirectory(IActivityIOPath src) => ListDirectoriesAccordingToType(src, ReadTypes.Folders);
 
-        /// <summary>
-        /// Get folder listing for source
-        /// </summary>
-        /// <returns></returns>
-        public IList<IActivityIOPath> ListFilesInDirectory(IActivityIOPath src)
-        {
-            return ListDirectoriesAccordingToType(src, ReadTypes.Files);
-        }
+        public IList<IActivityIOPath> ListFilesInDirectory(IActivityIOPath src) => ListDirectoriesAccordingToType(src, ReadTypes.Files);
 
         #region Private Methods
 

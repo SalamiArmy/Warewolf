@@ -152,13 +152,11 @@ namespace Dev2.DataList.Contract
                     // only create if mapsTo is not blank!!
                     if(!ignoreBlanks || mapsTo != string.Empty && value != string.Empty || _defaultValueToMapsTo)
                     {
-                        if(!_defaultValueToMapsTo) // Outputs only
+                        if (!_defaultValueToMapsTo && String.IsNullOrEmpty(mapsTo)) // Outputs only
                         {
-                            if(String.IsNullOrEmpty(mapsTo))
-                            {
-                                continue;
-                            }
+                            continue;
                         }
+
                         XmlNode recordSetNode = tmp.Attributes[_recordSetAttribute];
 
                         if(recordSetNode != null)

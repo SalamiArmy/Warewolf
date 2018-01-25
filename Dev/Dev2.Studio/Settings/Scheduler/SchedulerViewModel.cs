@@ -821,28 +821,26 @@ namespace Dev2.Settings.Scheduler
 
         public virtual bool DoDeactivate(bool showMessage)
         {
-            if (showMessage)
+            if (showMessage && SelectedTask != null && SelectedTask.IsDirty)
             {
-                if (SelectedTask != null && SelectedTask.IsDirty)
+                var showSchedulerCloseConfirmation = _popupController.ShowSchedulerCloseConfirmation();
+                switch (showSchedulerCloseConfirmation)
                 {
-                    var showSchedulerCloseConfirmation = _popupController.ShowSchedulerCloseConfirmation();
-                    switch (showSchedulerCloseConfirmation)
-                    {
-                        case MessageBoxResult.Cancel:
-                        case MessageBoxResult.None:
-                            return false;
-                        case MessageBoxResult.No:
-                            return true;
-                        case MessageBoxResult.OK:
-                            break;
-                        case MessageBoxResult.Yes:
-                            break;
-                        default:
-                            break;
-                    }
-                    return SchedulerTaskManager.SaveTasks();
+                    case MessageBoxResult.Cancel:
+                    case MessageBoxResult.None:
+                        return false;
+                    case MessageBoxResult.No:
+                        return true;
+                    case MessageBoxResult.OK:
+                        break;
+                    case MessageBoxResult.Yes:
+                        break;
+                    default:
+                        break;
                 }
+                return SchedulerTaskManager.SaveTasks();
             }
+
             if (SelectedTask != null && !showMessage)
             {
                 return SchedulerTaskManager.SaveTasks();

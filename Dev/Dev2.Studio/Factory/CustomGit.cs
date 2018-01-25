@@ -14,8 +14,8 @@ namespace Dev2.Factory
 
         public static void SetCustomGitTool(IExternalProcessExecutor processExecutor)
         {
-            var secondCommand = "config --global mergetool.DiffMerge.cmd \"'C:/Program Files (x86)/Warewolf/Studio/MergePowershellScript/customMerge.sh' $REMOTE";
-            var secondCommand1 = "config --global difftool.DiffMerge.cmd \"'C:/Program Files (x86)/Warewolf/Studio/MergePowershellScript/customMerge.sh' $REMOTE";
+            const string secondCommand = "config --global mergetool.DiffMerge.cmd \"'C:/Program Files (x86)/Warewolf/Studio/MergePowershellScript/customMerge.sh' $REMOTE";
+            const string secondCommand1 = "config --global difftool.DiffMerge.cmd \"'C:/Program Files (x86)/Warewolf/Studio/MergePowershellScript/customMerge.sh' $REMOTE";
             var orderedList1 = new[]
             {
                 "config --global merge.tool DiffMerge"
@@ -53,10 +53,12 @@ namespace Dev2.Factory
         {
             try
             {
-                var procStartInfo = new ProcessStartInfo(exe, command);
-                procStartInfo.RedirectStandardOutput = true;
-                procStartInfo.UseShellExecute = false;
-                procStartInfo.CreateNoWindow = true;
+                var procStartInfo = new ProcessStartInfo(exe, command)
+                {
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
                 var proc = processExecutor.Start(procStartInfo);
                 var result = proc.StandardOutput.ReadToEnd();
                 return result;
@@ -70,8 +72,8 @@ namespace Dev2.Factory
         {
             try
             {
-                var args = "/c where.exe git.exe";
-                var exe = "cmd.exe ";
+                const string args = "/c where.exe git.exe";
+                const string exe = "cmd.exe ";
                 var procf = new Process
                 {
                     StartInfo = new ProcessStartInfo

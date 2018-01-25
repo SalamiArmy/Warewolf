@@ -77,10 +77,12 @@ namespace Dev2.Data
             var item = scalar;
             if (item != null)
             {
-                IDataListItem singleRes = new DataListItem();
-                singleRes.CanHaveMutipleRows = false;
-                singleRes.Field = item.Name;
-                singleRes.DisplayValue = item.Name;
+                IDataListItem singleRes = new DataListItem
+                {
+                    CanHaveMutipleRows = false,
+                    Field = item.Name,
+                    DisplayValue = item.Name
+                };
                 try
                 {
                     singleRes.Value = item.Value.UnescapeString();
@@ -106,17 +108,18 @@ namespace Dev2.Data
                 var fields = column.Value.Where(c => c.IODirection == enDev2ColumnArgumentDirection.Both || c.IODirection == directionToGet).ToList();
                 foreach (var col in fields)
                 {
-                    IDataListItem singleRes = new DataListItem();
-                    singleRes.CanHaveMutipleRows = true;
-                    singleRes.Recordset = recordSet.Name;
-                    singleRes.Field = col.Name;
-                    singleRes.Index = column.Key.ToString();
-                    singleRes.Value = col.Value.UnescapeString();
-                    singleRes.DisplayValue = DataListUtil.CreateRecordsetDisplayValue(recordSet.Name, col.Name, column.Key.ToString());
-                    singleRes.Description = col.Description;
+                    IDataListItem singleRes = new DataListItem
+                    {
+                        CanHaveMutipleRows = true,
+                        Recordset = recordSet.Name,
+                        Field = col.Name,
+                        Index = column.Key.ToString(),
+                        Value = col.Value.UnescapeString(),
+                        DisplayValue = DataListUtil.CreateRecordsetDisplayValue(recordSet.Name, col.Name, column.Key.ToString()),
+                        Description = col.Description
+                    };
                     result.Add(singleRes);
-
-                }      
+                }
             }
                                  
             return result;
@@ -124,13 +127,13 @@ namespace Dev2.Data
 
         IDataListItem ConvertToIDataListItem(IComplexObject complexObject)
         {
-
-            IDataListItem singleRes = new DataListItem();
-            singleRes.IsObject = true;
-            singleRes.DisplayValue = complexObject.Name;
-            singleRes.Value = complexObject.Value;
-            singleRes.Field = complexObject.Name.TrimStart('@');
-            return singleRes;
+            return new DataListItem
+            {
+                IsObject = true,
+                DisplayValue = complexObject.Name,
+                Value = complexObject.Value,
+                Field = complexObject.Name.TrimStart('@')
+            };
         }
     }
 }

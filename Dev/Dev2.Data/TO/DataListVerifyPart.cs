@@ -51,14 +51,12 @@ namespace Dev2.DataList.Contract
             Recordset = recordset;
             RecordsetIndex = index;
 
-            if(recordset != null)
+            if (recordset != null && recordset.Contains("[") && recordset.Contains("]"))
             {
-                if(recordset.Contains("[") && recordset.Contains("]"))
-                {
-                    var start = recordset.IndexOf("(", StringComparison.Ordinal);
-                    Recordset = start != -1 ? recordset.Substring(0, start) : recordset.Replace("[", "").Replace("]", "");
-                }
+                var start = recordset.IndexOf("(", StringComparison.Ordinal);
+                Recordset = start != -1 ? recordset.Substring(0, start) : recordset.Replace("[", "").Replace("]", "");
             }
+
 
             Field = field;
             Description = description;

@@ -189,7 +189,7 @@ namespace Dev2.Activities.Designers2.Core.Source
 
         public IToolRegion CloneRegion()
         {
-            return new WcfSourceRegion()
+            return new WcfSourceRegion
             {
                 SelectedSource = SelectedSource
             };

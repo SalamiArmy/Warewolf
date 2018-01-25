@@ -112,13 +112,11 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                             dataObject.Environment.Assign(region, "", update);
                         }
                     }
-                    if (dataObject.IsDebugMode())
+                    if (dataObject.IsDebugMode() && !String.IsNullOrEmpty(Result))
                     {
-                        if (!String.IsNullOrEmpty(Result))
-                        {
-                            AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
-                        }
+                        AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
                     }
+
                 }
                 catch (Exception ex)
                 {

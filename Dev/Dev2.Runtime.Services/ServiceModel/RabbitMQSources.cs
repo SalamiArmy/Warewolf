@@ -64,7 +64,7 @@ namespace Dev2.Runtime.ServiceModel
         {
             try
             {
-                IConnectionFactory connectionFactory = new ConnectionFactory()
+                IConnectionFactory connectionFactory = new ConnectionFactory
                 {
                     HostName = rabbitMQSource.HostName,
                     Port = rabbitMQSource.Port,

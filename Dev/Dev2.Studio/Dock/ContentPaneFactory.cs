@@ -126,52 +126,42 @@ namespace Dev2.Studio.Dock
             {
                 var tabGroupPane = contentPane.Parent as TabGroupPane;
                 var splitPane = tabGroupPane?.Parent as SplitPane;
-                if (splitPane?.Parent is PaneToolWindow paneToolWindow)
+                if (splitPane?.Parent is PaneToolWindow paneToolWindow && string.IsNullOrWhiteSpace(paneToolWindow.Title) && Application.Current != null && Application.Current.MainWindow != null)
                 {
-                    if (string.IsNullOrWhiteSpace(paneToolWindow.Title))
+                    if (Application.Current.MainWindow.DataContext != null)
                     {
-                        if (Application.Current != null)
+                        if (Application.Current.MainWindow.DataContext is ShellViewModel mainViewModel)
                         {
-                            if (Application.Current.MainWindow != null)
-                            {
-                                if (Application.Current.MainWindow.DataContext != null)
-                                {
-                                    if (Application.Current.MainWindow.DataContext is ShellViewModel mainViewModel)
-                                    {
-                                        paneToolWindow.Title = mainViewModel.DisplayName;
-                                    }
-                                }
-                            }
+                            paneToolWindow.Title = mainViewModel.DisplayName;
                         }
                     }
                 }
+
+
+
             }
         }
 
         void ViewModelDeactivated(object sender, DeactivationEventArgs e)
         {
-            if (e.WasClosed)
+            if (e.WasClosed && _target is TabGroupPane container && sender is WorkSurfaceContextViewModel model)
             {
-                if (_target is TabGroupPane container)
-                {
-                    if (sender is WorkSurfaceContextViewModel model)
-                    {
-                        var toRemove = container.Items.Cast<ContentPane>().ToList()
-                            .FirstOrDefault(p => p.Content != null && p.Content == model.WorkSurfaceViewModel);
+                var toRemove = container.Items.Cast<ContentPane>().ToList()
+                    .FirstOrDefault(p => p.Content != null && p.Content == model.WorkSurfaceViewModel);
 
-                        if (toRemove != null)
-                        {
-                            RemovePane(toRemove);
-                        }
-                        if (toRemove != null &&
-                            Application.Current != null &&
-                            !Application.Current.Dispatcher.HasShutdownStarted)
-                        {
-                            container.Items.Remove(toRemove);
-                        }
-                    }
+                if (toRemove != null)
+                {
+                    RemovePane(toRemove);
+                }
+                if (toRemove != null &&
+                    Application.Current != null &&
+                    !Application.Current.Dispatcher.HasShutdownStarted)
+                {
+                    container.Items.Remove(toRemove);
                 }
             }
+
+
         }
 
         void SetTabName(ContentPane pane, object item)
@@ -450,13 +440,11 @@ namespace Dev2.Studio.Dock
         {
             var vm = model;
             vm.TryClose();
-            if (vm.Parent is ShellViewModel mainVm)
+            if (vm.Parent is ShellViewModel mainVm && !mainVm.CloseCurrent)
             {
-                if (!mainVm.CloseCurrent)
-                {
-                    e.Cancel = true;
-                }
+                e.Cancel = true;
             }
+
         }
 
 

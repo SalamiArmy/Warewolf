@@ -186,13 +186,11 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                                 }
                                 if (!string.IsNullOrEmpty(findValue))
                                 {
-                                    if (!string.IsNullOrEmpty(Result) && !DataListUtil.IsValueScalar(Result))
+                                    if (!string.IsNullOrEmpty(Result) && !DataListUtil.IsValueScalar(Result) && !dataObject.Environment.HasRecordSet(DataListUtil.ExtractRecordsetNameFromValue(Result)))
                                     {
-                                        if (!dataObject.Environment.HasRecordSet(DataListUtil.ExtractRecordsetNameFromValue(Result)))
-                                        {
-                                            dataObject.Environment.AssignDataShape(Result);
-                                        }
+                                        dataObject.Environment.AssignDataShape(Result);
                                     }
+
                                     try
                                     {
                                         dataObject.Environment.ApplyUpdate(s, a =>
@@ -230,28 +228,22 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                                     dataObject.Environment.Assign(Result, replacementTotal.ToString(CultureInfo.InvariantCulture), update == 0 ? counter : update);
                                 }
 
-                                if (dataObject.IsDebugMode() && !allErrors.HasErrors())
+                                if (dataObject.IsDebugMode() && !allErrors.HasErrors() && !string.IsNullOrEmpty(Result) && replacementTotal > 0)
                                 {
-                                    if (!string.IsNullOrEmpty(Result))
-                                    {
-                                        if (replacementTotal > 0)
-                                        {
-                                            AddDebugOutputItem(new DebugEvalResult(s, "", dataObject.Environment, update));
-                                        }
-                                    }
+                                    AddDebugOutputItem(new DebugEvalResult(s, "", dataObject.Environment, update));
                                 }
+
+
                             }
                         }
                     }
 
                 }
-                if (dataObject.IsDebugMode() && !allErrors.HasErrors())
+                if (dataObject.IsDebugMode() && !allErrors.HasErrors() && !string.IsNullOrEmpty(Result))
                 {
-                    if (!string.IsNullOrEmpty(Result))
-                    {
-                        AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
-                    }
+                    AddDebugOutputItem(new DebugEvalResult(Result, "", dataObject.Environment, update));
                 }
+
                 // now push the result to the server
             }
             

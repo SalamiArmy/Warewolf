@@ -79,15 +79,11 @@ namespace Dev2.PerformanceCounters.Counters
 
         public void Decrement()
         {
-
-            if (IsActive)
+            if (IsActive && _counter.RawValue > 0)
             {
-                if (_counter.RawValue > 0)
-                        {
-                          
-                            _counter.Decrement();
-                        }
+                _counter.Decrement();
             }
+
         }
 
         public void Dispose()

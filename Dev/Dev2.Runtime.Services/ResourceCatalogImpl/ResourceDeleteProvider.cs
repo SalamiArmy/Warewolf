@@ -53,7 +53,7 @@ namespace Dev2.Runtime.ResourceCatalogImpl
 
                 var workspaceResources = _resourceCatalog.GetResources(workspaceID);
                 var resources = _resourceCatalog.GetResourcesBasedOnType(type, workspaceResources, r => string.Equals(r.ResourceName, resourceName, StringComparison.InvariantCultureIgnoreCase));
-                var commands = new Dictionary<int, ResourceCatalogResult>()
+                var commands = new Dictionary<int, ResourceCatalogResult>
                 {
                     {
                      0,ResourceCatalogResultBuilder.CreateNoMatchResult($"<Result>{type} '{resourceName}' was not found.</Result>")
@@ -132,14 +132,12 @@ namespace Dev2.Runtime.ResourceCatalogImpl
 
             var resource = resources.FirstOrDefault();
 
-            if (workspaceID == Guid.Empty && deleteVersions)
+            if (workspaceID == Guid.Empty && deleteVersions && resource != null)
             {
-                if (resource != null)
-                {
-                    var explorerItems = _serverVersionRepository.GetVersions(resource.ResourceID);
-                    explorerItems?.ForEach(a => _serverVersionRepository.DeleteVersion(resource.ResourceID, a.VersionInfo.VersionNumber, resource.GetResourcePath(workspaceID)));
-                }
+                var explorerItems = _serverVersionRepository.GetVersions(resource.ResourceID);
+                explorerItems?.ForEach(a => _serverVersionRepository.DeleteVersion(resource.ResourceID, a.VersionInfo.VersionNumber, resource.GetResourcePath(workspaceID)));
             }
+
 
             workspaceResources.Remove(resource);
             if (resource != null && _dev2FileWrapper.Exists(resource.FilePath))
@@ -161,14 +159,12 @@ namespace Dev2.Runtime.ResourceCatalogImpl
                 };
                 UpdateDependantResourceWithCompileMessages(workspaceID, resource, messages);
             }
-            if (workspaceID == GlobalConstants.ServerWorkspaceID)
+            if (workspaceID == GlobalConstants.ServerWorkspaceID && resource != null)
             {
-                if (resource != null)
-                {
-                    ServiceActionRepo.Instance.RemoveFromCache(resource.ResourceID);
-                    ServerAuthorizationService.Instance.Remove(resource.ResourceID);
-                }
+                ServiceActionRepo.Instance.RemoveFromCache(resource.ResourceID);
+                ServerAuthorizationService.Instance.Remove(resource.ResourceID);
             }
+
 
             ((ResourceCatalog)_resourceCatalog).RemoveFromResourceActivityCache(workspaceID, resource);
             return ResourceCatalogResultBuilder.CreateSuccessResult("Success");
@@ -203,7 +199,7 @@ namespace Dev2.Runtime.ResourceCatalogImpl
 
         Dictionary<int, ResourceCatalogResult> GetDeleteCommands(Guid workspaceID, Guid resourceID, string type, bool deleteVersions, IEnumerable<IResource> resources, List<IResource> workspaceResources)
         {
-            var commands = new Dictionary<int, ResourceCatalogResult>()
+            var commands = new Dictionary<int, ResourceCatalogResult>
             {
                 {
                     0,

@@ -275,13 +275,11 @@ namespace Dev2.Activities.DateAndTime
         IDateTimeOperationTO ConvertToDateTimeTo(string evaledDateTime, string evaledInputFormat, string evaledOutputFormat, string timeModifierType, string tTimeModifierAmount)
         {
             var tmpTimeAmount = 0;
-            if (!string.IsNullOrWhiteSpace(tTimeModifierAmount))
+            if (!string.IsNullOrWhiteSpace(tTimeModifierAmount) && !int.TryParse(tTimeModifierAmount, out tmpTimeAmount))
             {
-                if (!int.TryParse(tTimeModifierAmount, out tmpTimeAmount))
-                {
-                    throw new Exception(ErrorResource.TimeMustBeNumeric);
-                }
+                throw new Exception(ErrorResource.TimeMustBeNumeric);
             }
+
             return DateTimeConverterFactory.CreateDateTimeTO(evaledDateTime, evaledInputFormat, evaledOutputFormat, timeModifierType, tmpTimeAmount, Result);
         }
 

@@ -174,7 +174,7 @@ namespace Dev2.Activities.Designers2.Core.Web.Delete
             {
                 headers2.Add(new NameValue(nameValue.Name, nameValue.Value));
             }
-            return new WebDeleteInputRegion()
+            return new WebDeleteInputRegion
             {
                 Headers = headers2,
                 QueryString = QueryString,

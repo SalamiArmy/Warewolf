@@ -29,8 +29,10 @@ namespace Dev2.CustomControls
             var frameworkElementFactory = new FrameworkElementFactory(typeof(_TemplateGeneratorControl));
             frameworkElementFactory.SetValue(_TemplateGeneratorControl.FactoryProperty, factory);
 
-            var dataTemplate = new DataTemplate(typeof(DependencyObject));
-            dataTemplate.VisualTree = frameworkElementFactory;
+            var dataTemplate = new DataTemplate(typeof(DependencyObject))
+            {
+                VisualTree = frameworkElementFactory
+            };
             return dataTemplate;
         }
 
@@ -48,8 +50,10 @@ namespace Dev2.CustomControls
             var frameworkElementFactory = new FrameworkElementFactory(typeof(_TemplateGeneratorControl));
             frameworkElementFactory.SetValue(_TemplateGeneratorControl.FactoryProperty, factory);
 
-            var controlTemplate = new ControlTemplate(controlType);
-            controlTemplate.VisualTree = frameworkElementFactory;
+            var controlTemplate = new ControlTemplate(controlType)
+            {
+                VisualTree = frameworkElementFactory
+            };
             return controlTemplate;
         }
     }

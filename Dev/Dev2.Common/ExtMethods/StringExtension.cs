@@ -59,19 +59,9 @@ namespace Dev2.Common.ExtMethods
         {
             return IsWholeNumber(payload, out int value);
         }
-        
-        public static bool IsWholeNumber(this string payload, out int value)
-        {
-            if (int.TryParse(payload, out value))
-            {
-                if (value >= 0)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        
+
+        public static bool IsWholeNumber(this string payload, out int value) => int.TryParse(payload, out value) && value >= 0;
+
         public static bool IsRealNumber(this string payload, out int value)
         {
             return int.TryParse(payload, out value);

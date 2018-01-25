@@ -32,11 +32,7 @@ using Warewolf.Storage.Interfaces;
 
 
 namespace Dev2.DynamicServices
-
 {
-    /// <summary>
-    ///     The core TO used in the execution engine ;)
-    /// </summary>
     public class DsfDataObject : PersistenceParticipant, IDSFDataObject
     {
         #region Class Members
@@ -317,75 +313,73 @@ namespace Dev2.DynamicServices
         #endregion Properties
 
         #region Methods
-
-        /// <summary>
-        ///     Clones this instance.
-        /// </summary>
-        /// <returns></returns>
+        
         public IDSFDataObject Clone()
         {
-            IDSFDataObject result = new DsfDataObject();
-            result.BookmarkExecutionCallbackID = BookmarkExecutionCallbackID;
-            result.CurrentBookmarkName = CurrentBookmarkName;
-            result.DebugSessionID = DebugSessionID;
-            result.DataList = DataList;
-            result.DataListID = DataListID;
-            result.DatalistOutMergeDepth = DatalistOutMergeDepth;
-            result.DatalistOutMergeFrequency = DatalistOutMergeFrequency;
-            result.DatalistOutMergeID = DatalistOutMergeID;
-            result.DatalistOutMergeType = DatalistOutMergeType;
-            result.DatalistInMergeDepth = DatalistInMergeDepth;
-            result.DatalistInMergeID = DatalistInMergeID;
-            result.DatalistInMergeType = DatalistInMergeType;
-            result.EnvironmentID = EnvironmentID;
-            result.DebugEnvironmentId = DebugEnvironmentId;
-            result.ExecutionCallbackID = ExecutionCallbackID;
-            result.ExecutionOrigin = ExecutionOrigin;
-            result.ExecutionOriginDescription = ExecutionOriginDescription;
-            result.ForceDeleteAtNextNativeActivityCleanup = ForceDeleteAtNextNativeActivityCleanup;
-            result.IsDataListScoped = IsDataListScoped;
-            result.IsDebug = IsDebug;
-            result.IsOnDemandSimulation = IsOnDemandSimulation;
-            result.IsFromWebServer = IsFromWebServer;
-            result.NumberOfSteps = NumberOfSteps;
-            result.OriginalInstanceID = OriginalInstanceID;
-            result.ParentInstanceID = ParentInstanceID;
-            result.ParentServiceName = ParentServiceName;
-            result.ParentThreadID = ParentThreadID;
-            result.ParentWorkflowInstanceId = ParentWorkflowInstanceId;
-            result.RawPayload = RawPayload;
-            result.RemoteDebugItems = RemoteDebugItems;
-            result.RemoteInvoke = RemoteInvoke;
-            result.RemoteNonDebugInvoke = RemoteNonDebugInvoke;
-            result.IsRemoteInvokeOverridden = IsRemoteInvokeOverridden;
-            result.RemoteInvokeResultShape = RemoteInvokeResultShape;
-            result.RemoteInvokerID = RemoteInvokerID;
-            result.RemoteServiceType = RemoteServiceType;
-            result.ResourceID = ResourceID;
-            result.ReturnType = ReturnType;
-            result.ServerID = ServerID;
-            result.ClientID = ClientID;
-            result.ServiceName = ServiceName;
-            result.WorkflowInstanceId = WorkflowInstanceId;
-            result.WorkflowResumeable = WorkflowResumeable;
-            result.WorkspaceID = WorkspaceID;
-            result.ThreadsToDispose = ThreadsToDispose;
-            result.ParentID = ParentID;
-            result.RunWorkflowAsync = RunWorkflowAsync;
-            result.IsDebugNested = IsDebugNested;
-            result.ForEachNestingLevel = ForEachNestingLevel;
-            result.Environment = Environment;
-            result.EsbChannel = EsbChannel;
-            result.ExecutionToken = ExecutionToken;
-            result.ForEachUpdateValue = ForEachUpdateValue;
-            result.TestName = TestName;
-            result.SourceResourceID = SourceResourceID;
-            result.IsServiceTestExecution = IsServiceTestExecution;
-            result.IsDebugFromWeb = IsDebugFromWeb;
-            result.ExecutionID = ExecutionID;
-            result.WebUrl = WebUrl;
-            result.IsSubExecution = IsSubExecution;
-            result.QueryString = QueryString;
+            IDSFDataObject result = new DsfDataObject
+            {
+                BookmarkExecutionCallbackID = BookmarkExecutionCallbackID,
+                CurrentBookmarkName = CurrentBookmarkName,
+                DebugSessionID = DebugSessionID,
+                DataList = DataList,
+                DataListID = DataListID,
+                DatalistOutMergeDepth = DatalistOutMergeDepth,
+                DatalistOutMergeFrequency = DatalistOutMergeFrequency,
+                DatalistOutMergeID = DatalistOutMergeID,
+                DatalistOutMergeType = DatalistOutMergeType,
+                DatalistInMergeDepth = DatalistInMergeDepth,
+                DatalistInMergeID = DatalistInMergeID,
+                DatalistInMergeType = DatalistInMergeType,
+                EnvironmentID = EnvironmentID,
+                DebugEnvironmentId = DebugEnvironmentId,
+                ExecutionCallbackID = ExecutionCallbackID,
+                ExecutionOrigin = ExecutionOrigin,
+                ExecutionOriginDescription = ExecutionOriginDescription,
+                ForceDeleteAtNextNativeActivityCleanup = ForceDeleteAtNextNativeActivityCleanup,
+                IsDataListScoped = IsDataListScoped,
+                IsDebug = IsDebug,
+                IsOnDemandSimulation = IsOnDemandSimulation,
+                IsFromWebServer = IsFromWebServer,
+                NumberOfSteps = NumberOfSteps,
+                OriginalInstanceID = OriginalInstanceID,
+                ParentInstanceID = ParentInstanceID,
+                ParentServiceName = ParentServiceName,
+                ParentThreadID = ParentThreadID,
+                ParentWorkflowInstanceId = ParentWorkflowInstanceId,
+                RawPayload = RawPayload,
+                RemoteDebugItems = RemoteDebugItems,
+                RemoteInvoke = RemoteInvoke,
+                RemoteNonDebugInvoke = RemoteNonDebugInvoke,
+                IsRemoteInvokeOverridden = IsRemoteInvokeOverridden,
+                RemoteInvokeResultShape = RemoteInvokeResultShape,
+                RemoteInvokerID = RemoteInvokerID,
+                RemoteServiceType = RemoteServiceType,
+                ResourceID = ResourceID,
+                ReturnType = ReturnType,
+                ServerID = ServerID,
+                ClientID = ClientID,
+                ServiceName = ServiceName,
+                WorkflowInstanceId = WorkflowInstanceId,
+                WorkflowResumeable = WorkflowResumeable,
+                WorkspaceID = WorkspaceID,
+                ThreadsToDispose = ThreadsToDispose,
+                ParentID = ParentID,
+                RunWorkflowAsync = RunWorkflowAsync,
+                IsDebugNested = IsDebugNested,
+                ForEachNestingLevel = ForEachNestingLevel,
+                Environment = Environment,
+                EsbChannel = EsbChannel,
+                ExecutionToken = ExecutionToken,
+                ForEachUpdateValue = ForEachUpdateValue,
+                TestName = TestName,
+                SourceResourceID = SourceResourceID,
+                IsServiceTestExecution = IsServiceTestExecution,
+                IsDebugFromWeb = IsDebugFromWeb,
+                ExecutionID = ExecutionID,
+                WebUrl = WebUrl,
+                IsSubExecution = IsSubExecution,
+                QueryString = QueryString
+            };
             if (ServiceTest != null)
             {
                 var serializer = new Dev2JsonSerializer();

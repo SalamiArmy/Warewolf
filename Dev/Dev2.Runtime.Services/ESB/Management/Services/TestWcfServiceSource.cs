@@ -30,7 +30,7 @@ namespace Dev2.Runtime.ESB.Management.Services
 
                 var src = serializer.Deserialize<WcfServiceSourceDefinition>(resourceDefinition);
 
-                var source = new WcfSource()
+                var source = new WcfSource
                 {
                     EndpointUrl = src.EndpointUrl
                 };

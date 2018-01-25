@@ -68,33 +68,30 @@ namespace Dev2.Data.Operations
 
 
         string BuildRoundingExpression(IFormatNumberTO formatNumberTO)
-
         {
             string expression;
 
             var roundingType = formatNumberTO.GetRoundingTypeEnum();
-            if (roundingType == enRoundingType.Normal)
+            switch (roundingType)
             {
-                expression = "round({0}, {1})";
-            }
-            else if (roundingType == enRoundingType.Up)
-            {
-                expression = "roundup({0}, {1})";
-            }
-            else if (roundingType == enRoundingType.Down)
-            {
-                expression = "rounddown({0}, {1})";
-            }
-            else
-            {
-                expression = "{0}";
+                case enRoundingType.Normal:
+                    expression = "round({0}, {1})";
+                    break;
+                case enRoundingType.Up:
+                    expression = "roundup({0}, {1})";
+                    break;
+                case enRoundingType.Down:
+                    expression = "rounddown({0}, {1})";
+                    break;
+                default:
+                    expression = "{0}";
+                    break;
             }
 
             expression = string.Format(expression, formatNumberTO.Number, formatNumberTO.RoundingDecimalPlaces);
 
             return expression;
         }
-
 
         string Round(IFormatNumberTO formatNumberTO)
 

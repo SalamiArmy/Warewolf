@@ -169,7 +169,7 @@ namespace Dev2.DynamicServices.Objects
             foreach (ServiceActionInput sai in ServiceActionInputs)
             {
                 sai.Compile();
-                sai.CompilerErrors.ToList().ForEach(c => CompilerErrors.Add(c));
+                sai.CompilerErrors.ToList().ForEach(CompilerErrors.Add);
             }
 
             if (CompilerErrors.Count > 0)

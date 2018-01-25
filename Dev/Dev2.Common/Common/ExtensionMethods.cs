@@ -434,10 +434,7 @@ namespace Dev2.Common.Common
             return false;
         }
 
-        public static byte[] ToByteArray(this Stream stream)
-        {
-            return GetByteArray(stream);
-        }
+        public static byte[] ToByteArray(this Stream stream) => GetByteArray(stream);
 
         public static byte[] GetByteArray(Stream stream)
         {

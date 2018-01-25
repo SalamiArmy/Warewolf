@@ -36,8 +36,10 @@ namespace Dev2.Runtime.ESB.Management.Services
 
             if(string.IsNullOrEmpty(serializedSource))
             {
-                var message = new ExecuteMessage();
-                message.HasError = true;
+                var message = new ExecuteMessage
+                {
+                    HasError = true
+                };
                 message.SetMessage(ErrorResource.NoSharepointServerSet);
                 Dev2Logger.Debug(ErrorResource.NoSharepointServerSet, GlobalConstants.WarewolfDebug);
                 return serializer.SerializeToBuilder(message);

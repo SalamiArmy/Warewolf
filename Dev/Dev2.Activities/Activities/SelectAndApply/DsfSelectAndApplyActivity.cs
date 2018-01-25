@@ -230,44 +230,40 @@ namespace Dev2.Activities.SelectAndApply
             finally
             {
 
-                if (dataObject.IsDebugMode())
+                if (dataObject.IsDebugMode() && dataObject.IsServiceTestExecution)
                 {
-                    if (dataObject.IsServiceTestExecution)
+                    var serviceTestStep = dataObject.ServiceTest?.TestSteps?.Flatten(step => step.Children)?.FirstOrDefault(step => step.UniqueId == _originalUniqueID);
+                    var serviceTestSteps = serviceTestStep?.Children;
+                    UpdateDebugStateWithAssertions(dataObject, serviceTestSteps?.ToList());
+                    if (serviceTestStep != null)
                     {
-                        var serviceTestStep = dataObject.ServiceTest?.TestSteps?.Flatten(step => step.Children)?.FirstOrDefault(step => step.UniqueId == _originalUniqueID);
-                        var serviceTestSteps = serviceTestStep?.Children;
-                        UpdateDebugStateWithAssertions(dataObject, serviceTestSteps?.ToList());
-                        if (serviceTestStep != null)
-                        {
-                            var testRunResult = new TestRunResult();
-                            GetFinalTestRunResult(serviceTestStep, testRunResult, dataObject);
-                            serviceTestStep.Result = testRunResult;
+                        var testRunResult = new TestRunResult();
+                        GetFinalTestRunResult(serviceTestStep, testRunResult, dataObject);
+                        serviceTestStep.Result = testRunResult;
 
-                            var debugItems = TestDebugMessageRepo.Instance.GetDebugItems(dataObject.ResourceID, dataObject.TestName);
-                            debugItems = debugItems.Where(state => state.WorkSurfaceMappingId == serviceTestStep.UniqueId).ToList();
-                            var debugStates = debugItems.LastOrDefault();
+                        var debugItems = TestDebugMessageRepo.Instance.GetDebugItems(dataObject.ResourceID, dataObject.TestName);
+                        debugItems = debugItems.Where(state => state.WorkSurfaceMappingId == serviceTestStep.UniqueId).ToList();
+                        var debugStates = debugItems.LastOrDefault();
 
-                            var debugItemStaticDataParams = new DebugItemServiceTestStaticDataParams(serviceTestStep.Result.Message, serviceTestStep.Result.RunTestResult == RunResult.TestFailed);
-                            var itemToAdd = new DebugItem();
-                            itemToAdd.AddRange(debugItemStaticDataParams.GetDebugItemResult());
-                            debugStates?.AssertResultList?.Add(itemToAdd);
+                        var debugItemStaticDataParams = new DebugItemServiceTestStaticDataParams(serviceTestStep.Result.Message, serviceTestStep.Result.RunTestResult == RunResult.TestFailed);
+                        var itemToAdd = new DebugItem();
+                        itemToAdd.AddRange(debugItemStaticDataParams.GetDebugItemResult());
+                        debugStates?.AssertResultList?.Add(itemToAdd);
 
-                        }
                     }
                 }
+
                 dataObject.PopEnvironment();
                 dataObject.ForEachNestingLevel--;
-                if (allErrors.HasErrors())
+                if (allErrors.HasErrors() && allErrors.HasErrors())
                 {
-                    if (allErrors.HasErrors())
+                    DisplayAndWriteError("DsfSelectAndApplyActivity", allErrors);
+                    foreach (var fetchError in allErrors.FetchErrors())
                     {
-                        DisplayAndWriteError("DsfSelectAndApplyActivity", allErrors);
-                        foreach (var fetchError in allErrors.FetchErrors())
-                        {
-                            dataObject.Environment.AddError(fetchError);
-                        }
+                        dataObject.Environment.AddError(fetchError);
                     }
                 }
+
                 if (dataObject.IsDebugMode())
                 {
                     foreach (var expression in expressions)
@@ -280,13 +276,11 @@ namespace Dev2.Activities.SelectAndApply
                         }
                         else
                         {
-                            if (data.IsWarewolfAtomResult)
+                            if (data.IsWarewolfAtomResult && data is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult atom)
                             {
-                                if (data is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult atom)
-                                {
-                                    AddDebugOutputItem(new DebugItemWarewolfAtomResult(atom.Item.ToString(), expression, ""));
-                                }
+                                AddDebugOutputItem(new DebugItemWarewolfAtomResult(atom.Item.ToString(), expression, ""));
                             }
+
                         }
                     }
 

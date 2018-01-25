@@ -86,7 +86,7 @@ namespace Dev2.Activities
             foreach (var parameter in ConstructorInputs)
             {
                 var resultToString = GetEvaluatedResult(dataObject, parameter.Value, parameter.EmptyIsNull, update);
-                constructor.Inputs.Add(new ConstructorParameter()
+                constructor.Inputs.Add(new ConstructorParameter
                 {
                     TypeName = parameter.TypeName,
                     Name = parameter.Name,
@@ -570,18 +570,16 @@ namespace Dev2.Activities
         IEnumerable<DebugItem> BuildConstructorInputs(IExecutionEnvironment env, int update, bool isMock)
         {
             var inputs = new List<DebugItem>();
-            if (Constructor != null)
+            if (Constructor != null && ConstructorInputs != null && ConstructorInputs.Any())
             {
-                if (ConstructorInputs != null && ConstructorInputs.Any())
+                foreach (var constructorInput in ConstructorInputs)
                 {
-                    foreach (var constructorInput in ConstructorInputs)
-                    {
-                        var debugItem = new DebugItem();
-                        AddDebugItem(new DebugEvalResult(constructorInput.Value, constructorInput.Name, env, update, false, false, isMock), debugItem);
-                        inputs.Add(debugItem);
-                    }
+                    var debugItem = new DebugItem();
+                    AddDebugItem(new DebugEvalResult(constructorInput.Value, constructorInput.Name, env, update, false, false, isMock), debugItem);
+                    inputs.Add(debugItem);
                 }
             }
+
 
             return inputs;
         }

@@ -382,13 +382,11 @@ namespace Dev2.Activities
             if(timeoutItr != null)
             {
                 var timeoutString = parametersIteratorCollection.FetchNextValue(timeoutItr);
-                if(!string.IsNullOrEmpty(timeoutString))
+                if (!string.IsNullOrEmpty(timeoutString) && int.TryParse(timeoutString, out int parsedValue))
                 {
-                    if (int.TryParse(timeoutString, out int parsedValue))
-                    {
-                        timeout = parsedValue;
-                    }
+                    timeout = parsedValue;
                 }
+
             }
             else
             {
@@ -401,13 +399,11 @@ namespace Dev2.Activities
             if(batchItr != null)
             {
                 var batchSizeString = parametersIteratorCollection.FetchNextValue(batchItr);
-                if(!string.IsNullOrEmpty(batchSizeString))
+                if (!string.IsNullOrEmpty(batchSizeString) && int.TryParse(batchSizeString, out int parsedValue))
                 {
-                    if (int.TryParse(batchSizeString, out int parsedValue))
-                    {
-                        batchSize = parsedValue;
-                    }
+                    batchSize = parsedValue;
                 }
+
             }
             else
             {
@@ -583,14 +579,12 @@ namespace Dev2.Activities
                 }
 
                 // more identity checks - this time it has data ;)
-                if(dataColumnMapping.OutputColumn.IsAutoIncrement)
+                if (dataColumnMapping.OutputColumn.IsAutoIncrement && !KeepIdentity)
                 {
-                    if(!KeepIdentity)
-                    {
-                        // we have data in an identity column and the keep identity option is disabled - oh no!
-                        throw new Exception(string.Format(ErrorResource.ColumnSetAsIdentityKeepIdentityIsFalse, dataColumnMapping.OutputColumn.ColumnName));
-                    }
+                    // we have data in an identity column and the keep identity option is disabled - oh no!
+                    throw new Exception(string.Format(ErrorResource.ColumnSetAsIdentityKeepIdentityIsFalse, dataColumnMapping.OutputColumn.ColumnName));
                 }
+
 
                 var dataColumn = new DataColumn { ColumnName = dataColumnMapping.OutputColumn.ColumnName, DataType = dataColumnMapping.OutputColumn.DataType };
                 if(dataColumn.DataType == typeof(string))
@@ -648,14 +642,12 @@ namespace Dev2.Activities
                 }
 
                 // more identity checks - this time it has data ;)
-                if (dataColumnMapping.OutputColumn.IsAutoIncrement)
+                if (dataColumnMapping.OutputColumn.IsAutoIncrement && !KeepIdentity)
                 {
-                    if (!KeepIdentity)
-                    {
-                        // we have data in an identity column and the keep identity option is disabled - oh no!
-                        throw new Exception(string.Format(ErrorResource.ColumnSetAsIdentityKeepIdentityIsFalse, dataColumnMapping.OutputColumn.ColumnName));
-                    }
+                    // we have data in an identity column and the keep identity option is disabled - oh no!
+                    throw new Exception(string.Format(ErrorResource.ColumnSetAsIdentityKeepIdentityIsFalse, dataColumnMapping.OutputColumn.ColumnName));
                 }
+
 
                 var dataColumn = new DataColumn { ColumnName = dataColumnMapping.OutputColumn.ColumnName, DataType = typeof(string) };
                 if (dataColumn.DataType == typeof(string))

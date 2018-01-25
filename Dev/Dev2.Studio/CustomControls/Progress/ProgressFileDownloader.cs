@@ -32,7 +32,7 @@ namespace Dev2.CustomControls.Progress
 
         #region CTOR
 
-        static Func<Window, Action, IProgressNotifier> getProgressDialogViewModel = (owner, cancelAction) => DialogViewModel(owner, cancelAction);
+        static Func<Window, Action, IProgressNotifier> getProgressDialogViewModel = DialogViewModel;
         
         static IProgressNotifier DialogViewModel(Window owner, Action cancelAction)
         {

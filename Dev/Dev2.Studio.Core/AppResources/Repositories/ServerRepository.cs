@@ -344,7 +344,7 @@ namespace Dev2.Studio.Core
                 {
                     AddEnvironmentIfNotExist(newEnv);
                 }
-                foreach (var newEnv in environments.Where(newEnv => Environments.Contains(newEnv)))
+                foreach (var newEnv in environments.Where(Environments.Contains))
                 {
                     var res = Environments.FirstOrDefault(a => a.EnvironmentID == newEnv.EnvironmentID);
                     if (res != null && !res.Equals(newEnv))

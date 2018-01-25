@@ -30,15 +30,15 @@ namespace Dev2.Runtime.WebServer
             }
             var TestStartDateTime = DateTime.Now.ToString("o", CultureInfo.InvariantCulture);
             var TestEndDateTime = DateTime.Now.ToString("o", CultureInfo.InvariantCulture);
-            var TestDuration = "00:00:00.0000001";
+            const string TestDuration = "00:00:00.0000001";
             var TestListID = Guid.NewGuid().ToString();
-            var WarewolfServerVersion = "0.0.0.0";
+            const string WarewolfServerVersion = "0.0.0.0";
             var WarewolfServerHostname = Environment.MachineName;
             if (string.IsNullOrWhiteSpace(ServiceName) || ServiceName == "*")
             {
                 ServiceName = WarewolfServerHostname;
             }
-            var WarewolfServerUsername = "User";
+            const string WarewolfServerUsername = "User";
             var TotalTests = TestResults.FindAll((result) => { return result != null; }).Count;
             var TotalPassed = TestResults.FindAll((result) => { return result != null && result.TestPassed; }).Count;
             var TotalFailed = TestResults.FindAll((result) => { return result != null && result.TestFailing; }).Count + TestResults.FindAll((result) => { return result != null && result.TestInvalid; }).Count;

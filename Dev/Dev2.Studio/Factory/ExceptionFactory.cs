@@ -104,7 +104,7 @@ namespace Dev2.Studio.Factory
         }
 
         public static Func<string, string> GetUniqueOutputPath { get => getUniqueOutputPath; set => getUniqueOutputPath = value; }
-        static Func<string, string> getUniqueOutputPath = extension => FileHelper.GetUniqueOutputPath(extension);
+        static Func<string, string> getUniqueOutputPath = FileHelper.GetUniqueOutputPath;
 
         public static async Task<IExceptionViewModel> CreateViewModel(Exception e, IServer server) => await CreateViewModel(e, server, ErrorSeverity.Default);
         public static async Task<IExceptionViewModel> CreateViewModel(Exception e, IServer server, ErrorSeverity isCritical)

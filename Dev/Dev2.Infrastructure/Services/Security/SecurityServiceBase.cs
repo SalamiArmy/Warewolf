@@ -138,6 +138,10 @@ namespace Dev2.Services.Security
         protected abstract void LogStart([CallerMemberName] string methodName = null);
         protected abstract void LogEnd([CallerMemberName] string methodName = null);
 
+        public void Dispose()
+        {
+            _permissionsLock.Dispose();
+        }
     }
 
     public class PermissionsModifiedEventArgs

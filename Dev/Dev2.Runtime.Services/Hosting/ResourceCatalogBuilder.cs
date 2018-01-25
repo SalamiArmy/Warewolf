@@ -127,7 +127,7 @@ namespace Dev2.Runtime.Hosting
                     var assemblies = AppDomain.CurrentDomain.GetAssemblies();
                     var types = assemblies
                         .SelectMany(s => s.GetTypes())
-                        .Where(p => resourceBaseType.IsAssignableFrom(p));
+                        .Where(resourceBaseType.IsAssignableFrom);
                     allTypes = types as IList<Type> ?? types.ToList();
                 }
                 catch (Exception e)

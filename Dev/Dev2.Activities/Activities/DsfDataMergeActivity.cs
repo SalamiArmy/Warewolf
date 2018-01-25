@@ -204,40 +204,36 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                             var at = warewolfListIterator.FetchNextValue(iterator.Value[1]);
                             var pad = warewolfListIterator.FetchNextValue(iterator.Value[2]);
 
-                            if (val != null)
+                            if (val != null && at != null && pad != null)
                             {
-                                if (at != null)
+                                if (MergeCollection[pos].MergeType == "Index")
                                 {
-                                    if (pad != null)
+                                    if (string.IsNullOrEmpty(at))
                                     {
-                                        if (MergeCollection[pos].MergeType == "Index")
-                                        {
-                                            if (string.IsNullOrEmpty(at))
-                                            {
-                                                allErrors.AddError(ErrorResource.BlankUSINGValue);
-                                            }
+                                        allErrors.AddError(ErrorResource.BlankUSINGValue);
+                                    }
 
-                                            if (!Int32.TryParse(at, out int atValue) || atValue < 0)
-                                            {
-                                                allErrors.AddError(ErrorResource.USINGMustBeARealNumber);
-                                            }
-                                            if (pad.Length > 1)
-                                            {
-                                                allErrors.AddError(ErrorResource.PADDINGMustBeSingleCharecter);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            if (MergeCollection[pos].MergeType == "Chars" && string.IsNullOrEmpty(at))
-                                            {
-                                                allErrors.AddError(ErrorResource.BlankUSINGValue);
-                                            }
-                                        }
-                                        mergeOperations.Merge(val, MergeCollection[pos].MergeType, at, pad, MergeCollection[pos].Alignment);
-                                        pos++;
+                                    if (!Int32.TryParse(at, out int atValue) || atValue < 0)
+                                    {
+                                        allErrors.AddError(ErrorResource.USINGMustBeARealNumber);
+                                    }
+                                    if (pad.Length > 1)
+                                    {
+                                        allErrors.AddError(ErrorResource.PADDINGMustBeSingleCharecter);
                                     }
                                 }
+                                else
+                                {
+                                    if (MergeCollection[pos].MergeType == "Chars" && string.IsNullOrEmpty(at))
+                                    {
+                                        allErrors.AddError(ErrorResource.BlankUSINGValue);
+                                    }
+                                }
+                                mergeOperations.Merge(val, MergeCollection[pos].MergeType, at, pad, MergeCollection[pos].Alignment);
+                                pos++;
                             }
+
+
                         }
                     }
                     if (!allErrors.HasErrors())

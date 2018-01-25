@@ -221,9 +221,11 @@ namespace Dev2.Runtime.Hosting
                                 var validators = inputItem.Elements("Validator");
                                 foreach(var validator in validators)
                                 {
-                                    var v = new Validator();
+                                    var v = new Validator
+                                    {
 
-                                    v.ValidatorType = !Enum.TryParse(validator.AttributeSafe("Type"), out enValidationType validatorType) ? enValidationType.Required : validatorType;
+                                        ValidatorType = !Enum.TryParse(validator.AttributeSafe("Type"), out enValidationType validatorType) ? enValidationType.Required : validatorType
+                                    };
 
                                     sai.Validators.Add(v);
                                 }

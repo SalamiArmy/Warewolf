@@ -50,7 +50,7 @@ namespace Dev2.Runtime.ESB.Management.Services
                 var output = services.WcfTest(res, GlobalConstants.ServerWorkspaceID, Guid.Empty);
 
                 msg.HasError = false;
-                msg.Message = serializer.SerializeToBuilder(new RecordsetListWrapper() { Description = output.Description, RecordsetList = output });
+                msg.Message = serializer.SerializeToBuilder(new RecordsetListWrapper { Description = output.Description, RecordsetList = output });
             }
             catch (Exception err)
             {

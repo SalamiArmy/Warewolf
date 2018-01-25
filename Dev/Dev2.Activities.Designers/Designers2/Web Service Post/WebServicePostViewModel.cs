@@ -133,7 +133,7 @@ namespace Dev2.Activities.Designers2.Web_Service_Post
             }
             Errors.Clear();
 
-            Errors = Regions.SelectMany(a => a.Errors).Select(a => new ActionableErrorInfo(new ErrorInfo() { Message = a, ErrorType = ErrorType.Critical }, () => { }) as IActionableErrorInfo).ToList();
+            Errors = Regions.SelectMany(a => a.Errors).Select(a => new ActionableErrorInfo(new ErrorInfo { Message = a, ErrorType = ErrorType.Critical }, () => { }) as IActionableErrorInfo).ToList();
             if (SourceRegion.Errors.Count > 0)
             {
                 foreach (var designValidationError in SourceRegion.Errors)
@@ -338,13 +338,11 @@ namespace Dev2.Activities.Designers2.Web_Service_Post
                 InputArea = new WebPostInputRegion(ModelItem, SourceRegion);
                 InputArea.PropertyChanged += (sender, args) =>
                 {
-                    if (args.PropertyName == "PostData")
+                    if (args.PropertyName == "PostData" && InputArea.Headers.All(value => string.IsNullOrEmpty(value.Name)))
                     {
-                        if (InputArea.Headers.All(value => string.IsNullOrEmpty(value.Name)))
-                        {
-                            ((ManageWebServiceInputViewModel)ManageServiceInputViewModel).BuidHeaders(InputArea.PostData);
-                        }
+                        ((ManageWebServiceInputViewModel)ManageServiceInputViewModel).BuidHeaders(InputArea.PostData);
                     }
+
                 };
                 regions.Add(InputArea);
                 OutputsRegion = new OutputsRegion(ModelItem, true);
@@ -412,7 +410,7 @@ namespace Dev2.Activities.Designers2.Web_Service_Post
             Errors = new List<IActionableErrorInfo>();
             if (hasError)
             {
-                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo(new ErrorInfo() { ErrorType = ErrorType.Critical, FixData = "", FixType = FixType.None, Message = exception.Message, StackTrace = exception.StackTrace }, () => { }) };
+                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo(new ErrorInfo { ErrorType = ErrorType.Critical, FixData = "", FixType = FixType.None, Message = exception.Message, StackTrace = exception.StackTrace }, () => { }) };
             }
         }
 

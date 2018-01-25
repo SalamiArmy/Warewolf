@@ -95,15 +95,13 @@ namespace Dev2
                             dataObject.Environment.Assign(variable, value, 0);
                         }
                     }
-                    if (dataObject.IsServiceTestExecution)
+                    if (dataObject.IsServiceTestExecution && dataObject.IsDebugMode())
                     {
-                        if (dataObject.IsDebugMode())
-                        {
-                            var res = new DebugEvalResult(dataObject.Environment.ToStar(variable), "", dataObject.Environment, update, false, false, true);
-                            AddDebugOutputItem(new DebugEvalResult(variable, "", dataObject.Environment, update));
-                            AddDebugAssertResultItem(res);
-                        }
+                        var res = new DebugEvalResult(dataObject.Environment.ToStar(variable), "", dataObject.Environment, update, false, false, true);
+                        AddDebugOutputItem(new DebugEvalResult(variable, "", dataObject.Environment, update));
+                        AddDebugAssertResultItem(res);
                     }
+
                 }
             }
             if (dataObject.IsDebugMode())

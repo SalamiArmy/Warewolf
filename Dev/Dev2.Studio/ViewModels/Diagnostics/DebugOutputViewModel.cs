@@ -138,13 +138,11 @@ namespace Dev2.Studio.ViewModels.Diagnostics
         {
             var canAddNewTest = RootItems != null && RootItems.Count > 0;
 
-            if (canAddNewTest && !IsTestView)
+            if (canAddNewTest && !IsTestView && _contextualResourceModel != null)
             {
-                if (_contextualResourceModel != null)
-                {
-                    canAddNewTest = !_contextualResourceModel.IsNewWorkflow && _contextualResourceModel.IsWorkflowSaved;
-                }
+                canAddNewTest = !_contextualResourceModel.IsNewWorkflow && _contextualResourceModel.IsWorkflowSaved;
             }
+
             AddNewTestTooltip = canAddNewTest ? Warewolf.Studio.Resources.Languages.Tooltips.DebugOutputViewAddNewTestToolTip : Warewolf.Studio.Resources.Languages.Tooltips.DebugOutputViewAddNewTestUnsavedToolTip;
 
             return canAddNewTest;
@@ -740,17 +738,15 @@ namespace Dev2.Studio.ViewModels.Diagnostics
                             remoteEnvironmentModel.Connect();
                         }
                         var parentID = content.ParentID.GetValueOrDefault();
-                        if (parentID != Guid.Empty)
+                        if (parentID != Guid.Empty && remoteEnvironmentModel.AuthorizationService != null)
                         {
-                            if (remoteEnvironmentModel.AuthorizationService != null)
+                            var remoteResourcePermissions = remoteEnvironmentModel.AuthorizationService.GetResourcePermissions(content.OriginatingResourceID);
+                            if (!remoteResourcePermissions.HasFlag(Permissions.View))
                             {
-                                var remoteResourcePermissions = remoteEnvironmentModel.AuthorizationService.GetResourcePermissions(content.OriginatingResourceID);
-                                if (!remoteResourcePermissions.HasFlag(Permissions.View))
-                                {
-                                    return;
-                                }
+                                return;
                             }
                         }
+
                     }
                 }
                 var debugState = _contentItems.FirstOrDefault(state => state.DisconnectedID == content.DisconnectedID);

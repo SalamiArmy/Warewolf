@@ -69,23 +69,21 @@ namespace Dev2.TO
                     {
                         _evalResultAsObject = new object[] { null };
                     }
-                    if (e.IsWarewolfAtomResult)
+                    if (e.IsWarewolfAtomResult && e is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult x && x.Item.IsDataString)
                     {
-                        if (e is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult x && x.Item.IsDataString)
+                        if (((DataStorage.WarewolfAtom.DataString)x.Item).Item == "true")
                         {
-                            if (((DataStorage.WarewolfAtom.DataString)x.Item).Item == "true")
+                            _evalResultAsObject = true;
+                        }
+                        else
+                        {
+                            if (((DataStorage.WarewolfAtom.DataString)x.Item).Item == "false")
                             {
-                                _evalResultAsObject = true;
-                            }
-                            else
-                            {
-                                if (((DataStorage.WarewolfAtom.DataString)x.Item).Item == "false")
-                                {
-                                    _evalResultAsObject = false;
-                                }
+                                _evalResultAsObject = false;
                             }
                         }
                     }
+
                 }
                 return _evalResultAsObject;
             }

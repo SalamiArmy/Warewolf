@@ -230,14 +230,14 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
                 return;
             }
         
-            var testSource = new ExchangeSource()
+            var testSource = new ExchangeSource
             {
                 AutoDiscoverUrl = SourceRegion.SelectedSource.AutoDiscoverUrl,
                 Password = SourceRegion.SelectedSource.Password,
                 UserName = SourceRegion.SelectedSource.UserName,
             };
 
-            var testMessage = new ExchangeTestMessage()
+            var testMessage = new ExchangeTestMessage
             {
                 Body = Body,
                 Subject = Subject,
@@ -297,27 +297,25 @@ namespace Dev2.Activities.Designers2.ExchangeEmail
 
         void ChooseAttachments()
         {
-
-    
             const string Separator = ";";
-            var message = new FileChooserMessage();
-            message.SelectedFiles = Attachments.Split(Separator.ToCharArray());
+            var message = new FileChooserMessage
+            {
+                SelectedFiles = Attachments.Split(Separator.ToCharArray())
+            };
             message.PropertyChanged += (sender, args) =>
             {
-                if (args.PropertyName == "SelectedFiles")
+                if (args.PropertyName == "SelectedFiles" && message.SelectedFiles != null)
                 {
-                    if (message.SelectedFiles != null)
+                    if (string.IsNullOrEmpty(Attachments))
                     {
-                        if (string.IsNullOrEmpty(Attachments))
-                        {
-                            Attachments = string.Join(Separator, message.SelectedFiles);
-                        }
-                        else
-                        {
-                            Attachments += Separator + string.Join(Separator, message.SelectedFiles);
-                        }
+                        Attachments = string.Join(Separator, message.SelectedFiles);
+                    }
+                    else
+                    {
+                        Attachments += Separator + string.Join(Separator, message.SelectedFiles);
                     }
                 }
+
             };
             _eventPublisher.Publish(message);
         }

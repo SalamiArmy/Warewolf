@@ -474,8 +474,10 @@ namespace Dev2.DataList
                 }
 
                 // def.RecordSetName -> recordsetName
-                var viewModel = new InputOutputViewModel(def.Name, injectValue, injectMapsTo, def.DefaultValue, def.IsRequired, def.RecordSetName, def.EmptyToNull);
-                viewModel.IsObject = def.IsObject;
+                var viewModel = new InputOutputViewModel(def.Name, injectValue, injectMapsTo, def.DefaultValue, def.IsRequired, def.RecordSetName, def.EmptyToNull)
+                {
+                    IsObject = def.IsObject
+                };
                 if (def.IsObject)
                 {
                     var complexObjectItemModel = _complexObjects.FirstOrDefault(model => model.Name == def.Name);

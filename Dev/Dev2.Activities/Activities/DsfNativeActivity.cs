@@ -345,13 +345,11 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                     }
                 }
 
-                if (dataObject.RemoteServiceType != "Workflow" && !string.IsNullOrWhiteSpace(dataObject.RemoteServiceType))
+                if (dataObject.RemoteServiceType != "Workflow" && !string.IsNullOrWhiteSpace(dataObject.RemoteServiceType) && _debugState != null)
                 {
-                    if (_debugState != null)
-                    {
-                        _debugState.ActivityType = ActivityType.Service;
-                    }
+                    _debugState.ActivityType = ActivityType.Service;
                 }
+
 
                 DebugCleanUp(dataObject, stateType);
             }

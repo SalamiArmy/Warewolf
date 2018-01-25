@@ -139,7 +139,7 @@ namespace System.Windows.Controls
 
                 throw new ArgumentException(string.Format(CultureInfo.InvariantCulture,
 
-                    Dev2.Runtime.Configuration.Properties.Resources.AutoComplete_OnMinimumPopulateDelayPropertyChanged_InvalidValue, newValue), "value");
+                    Dev2.Runtime.Configuration.Properties.Resources.AutoComplete_OnMinimumPopulateDelayPropertyChanged_InvalidValue, newValue), "d");
             }
 
             if (source?._delayTimer != null)
@@ -315,7 +315,7 @@ namespace System.Windows.Controls
                 }
 
 
-                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Dev2.Runtime.Configuration.Properties.Resources.AutoComplete_OnMaxDropDownHeightPropertyChanged_InvalidValue, e.NewValue), "value");
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Dev2.Runtime.Configuration.Properties.Resources.AutoComplete_OnMaxDropDownHeightPropertyChanged_InvalidValue, e.NewValue), "d");
             }
 
             source?.OnMaxDropDownHeightChanged(newValue);
@@ -564,7 +564,7 @@ namespace System.Windows.Controls
                 mode != AutoCompleteFilterMode.None)
             {
                 source?.SetValue(e.Property, e.OldValue);
-                throw new ArgumentException(Dev2.Runtime.Configuration.Properties.Resources.AutoComplete_OnFilterModePropertyChanged_InvalidValue, "value");
+                throw new ArgumentException(Dev2.Runtime.Configuration.Properties.Resources.AutoComplete_OnFilterModePropertyChanged_InvalidValue, "d");
             }
 
             var newValue = (AutoCompleteFilterMode)e.NewValue;
@@ -1039,13 +1039,11 @@ namespace System.Windows.Controls
                 }
                 
                 var parent = VisualTreeHelper.GetParent(focused);
-                if (parent == null)
+                if (parent == null && focused is FrameworkElement element)
                 {
-                    if (focused is FrameworkElement element)
-                    {
-                        parent = element.Parent;
-                    }
+                    parent = element.Parent;
                 }
+
                 focused = parent;
             }
             return false;
@@ -1563,16 +1561,14 @@ namespace System.Windows.Controls
                     _items[e.NewStartingIndex] = t;
                 }
             }
-            if (e.Action == NotifyCollectionChangedAction.Remove || e.Action == NotifyCollectionChangedAction.Replace)
+            if (e.Action == NotifyCollectionChangedAction.Remove || e.Action == NotifyCollectionChangedAction.Replace && e.OldItems != null)
             {
-                if (e.OldItems != null)
+                foreach (object t in e.OldItems)
                 {
-                    foreach (object t in e.OldItems)
-                    {
-                        _view.Remove(t);
-                    }
+                    _view.Remove(t);
                 }
             }
+
             if (e.Action == NotifyCollectionChangedAction.Reset)
             {
                 ClearView();

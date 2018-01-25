@@ -47,14 +47,11 @@ namespace Dev2.Common.DateAndTime
             if (dateTimeParser.TryParseDateTime(dateTimeTO.DateTime?.Trim(), dateTimeTO.InputFormat, out IDateTimeResultTO dateTimeResultTO, out error))
             {
                 var tmpDateTime = dateTimeResultTO.ToDateTime();
-                if (!string.IsNullOrWhiteSpace(dateTimeTO.TimeModifierType))
+                if (!string.IsNullOrWhiteSpace(dateTimeTO.TimeModifierType) && TimeModifiers.TryGetValue(dateTimeTO.TimeModifierType, out Func<DateTime, int, DateTime> funcToExecute) && funcToExecute != null)
                 {
-                    if (TimeModifiers.TryGetValue(dateTimeTO.TimeModifierType, out Func<DateTime, int, DateTime> funcToExecute) && funcToExecute != null)
-                    {
-                        tmpDateTime = funcToExecute(tmpDateTime, dateTimeTO.TimeModifierAmount);
-                    }
+                    tmpDateTime = funcToExecute(tmpDateTime, dateTimeTO.TimeModifierAmount);
                 }
-
+                
                 if (nothingDied)
                 {
                     var outputFormat = string.IsNullOrWhiteSpace(dateTimeTO.OutputFormat)

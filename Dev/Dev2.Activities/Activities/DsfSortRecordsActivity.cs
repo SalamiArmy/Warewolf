@@ -133,13 +133,11 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                 }
                 else
                 {
-                    if (data.IsWarewolfAtomResult)
+                    if (data.IsWarewolfAtomResult && data is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult atomData && atomData.Item.IsNothing)
                     {
-                        if (data is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult atomData && atomData.Item.IsNothing)
-                        {
-                            AddDebugOutputItem(new DebugItemStaticDataParams("", SortField, "", "="));
-                        }
+                        AddDebugOutputItem(new DebugItemStaticDataParams("", SortField, "", "="));
                     }
+
                 }
             }
         }
@@ -157,14 +155,12 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             }
             else
             {
-                if (data.IsWarewolfAtomResult)
+                if (data.IsWarewolfAtomResult && data is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult atomData && atomData.Item.IsNothing)
                 {
-                    if (data is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult atomData && atomData.Item.IsNothing)
-                    {
-                        AddDebugInputItem(new DebugItemStaticDataParams("", expression, labelText, "="));
-                        AddDebugInputItem(new DebugItemStaticDataParams(SelectedSort, "Sort Order"));
-                    }
+                    AddDebugInputItem(new DebugItemStaticDataParams("", expression, labelText, "="));
+                    AddDebugInputItem(new DebugItemStaticDataParams(SelectedSort, "Sort Order"));
                 }
+
             }
         }
 

@@ -121,8 +121,10 @@ namespace Dev2.Runtime.DynamicProxy
             }
             else
             {
-                var mexDoc = new MetadataSection();
-                mexDoc.Metadata = document;
+                var mexDoc = new MetadataSection
+                {
+                    Metadata = document
+                };
                 results.Add(mexDoc);
             }
         }
@@ -158,8 +160,10 @@ namespace Dev2.Runtime.DynamicProxy
             if (!success)
             {
                 var exception = new DynamicProxyException(
-                    Constants.ErrorMessages.ImportError);
-                exception.MetadataImportErrors = importWarnings;
+       Constants.ErrorMessages.ImportError)
+                {
+                    MetadataImportErrors = importWarnings
+                };
                 throw exception;
             }
         }
@@ -167,10 +171,12 @@ namespace Dev2.Runtime.DynamicProxy
         void AddStateForXmlSerializerImport(WsdlImporter importer)
         {
             var importOptions =
-                new XmlSerializerImportOptions(codeCompileUnit);
-            importOptions.CodeProvider = codeDomProvider;
+       new XmlSerializerImportOptions(codeCompileUnit)
+       {
+           CodeProvider = codeDomProvider,
 
-            importOptions.WebReferenceOptions = new WsdlNS.WebReferenceOptions();
+           WebReferenceOptions = new WsdlNS.WebReferenceOptions()
+       };
             importOptions.WebReferenceOptions.CodeGenerationOptions =
                 CodeGenerationOptions.GenerateProperties |
                 CodeGenerationOptions.GenerateOrder;
@@ -186,8 +192,10 @@ namespace Dev2.Runtime.DynamicProxy
         void AddStateForDataContractSerializerImport(WsdlImporter importer)
         {
             var xsdDataContractImporter =
-                new XsdDataContractImporter(codeCompileUnit);
-            xsdDataContractImporter.Options = new ImportOptions();
+       new XsdDataContractImporter(codeCompileUnit)
+       {
+           Options = new ImportOptions()
+       };
             xsdDataContractImporter.Options.ImportXmlType =
                 (options.FormatMode ==
                     DynamicProxyFactoryOptions.FormatModeOptions.DataContractSerializer);
@@ -234,8 +242,10 @@ namespace Dev2.Runtime.DynamicProxy
             if (!success)
             {
                 var exception = new DynamicProxyException(
-                 Constants.ErrorMessages.CodeGenerationError);
-                exception.CodeGenerationErrors = codegenWarnings;
+    Constants.ErrorMessages.CodeGenerationError)
+                {
+                    CodeGenerationErrors = codegenWarnings
+                };
                 throw exception;
             }
         }
@@ -274,8 +284,10 @@ namespace Dev2.Runtime.DynamicProxy
             if ((results.Errors != null) && (results.Errors.HasErrors))
             {
                 var exception = new DynamicProxyException(
-                    Constants.ErrorMessages.CompilationError);
-                exception.CompilationErrors = ToEnumerable(results.Errors);
+       Constants.ErrorMessages.CompilationError)
+                {
+                    CompilationErrors = ToEnumerable(results.Errors)
+                };
 
                 throw exception;
             }
@@ -288,8 +300,10 @@ namespace Dev2.Runtime.DynamicProxy
         {
             using (var writer = new StringWriter())
             {
-                var codeGenOptions = new CodeGeneratorOptions();
-                codeGenOptions.BracingStyle = "C";
+                var codeGenOptions = new CodeGeneratorOptions
+                {
+                    BracingStyle = "C"
+                };
                 codeDomProvider.GenerateCodeFromCompileUnit(
                         codeCompileUnit, writer, codeGenOptions);
                 writer.Flush();

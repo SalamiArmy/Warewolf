@@ -48,21 +48,21 @@ namespace Dev2.Activities.Designers2.SharePointCopyFile
 
             if (SharepointServerResourceId == Guid.Empty)
             {
-                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo() { Message = ErrorResource.SharepointServerRequired } };
+                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo { Message = ErrorResource.SharepointServerRequired } };
 
                 return Errors;
             }
 
             if (string.IsNullOrEmpty(ServerInputPathFrom))
             {
-                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo() { Message = ErrorResource.SharepointServerPathRequired } };
+                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo { Message = ErrorResource.SharepointServerPathRequired } };
 
                 return Errors;
             }
 
             if (string.IsNullOrEmpty(ServerInputPathTo))
             {
-                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo() { Message = ErrorResource.SharepointServerPathToRequired } };
+                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo { Message = ErrorResource.SharepointServerPathToRequired } };
 
                 return Errors;
             }

@@ -155,7 +155,7 @@ namespace Dev2.Activities.Designers2.GetWebRequest.GetWebRequestWithTimeout
                                                  .ToList();
 
 
-                mustRemove.ForEach(r => PreviewViewModel.Inputs.Remove(r));
+                mustRemove.ForEach(PreviewViewModel.Inputs.Remove);
 
                 mustRemainKeys.ForEach(k => variableList.Remove(k.Key));
 

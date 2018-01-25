@@ -126,13 +126,11 @@ namespace Dev2.Activities
                         {
                             
                             env.Assign(region, value, update);
-                            if (dataObject.IsDebugMode() && !allErrors.HasErrors())
+                            if (dataObject.IsDebugMode() && !allErrors.HasErrors() && !string.IsNullOrEmpty(region))
                             {
-                                if (!string.IsNullOrEmpty(region))
-                                {
-                                    AddDebugOutputItem(new DebugEvalResult(region, "", env, update));
-                                }
+                                AddDebugOutputItem(new DebugEvalResult(region, "", env, update));
                             }
+
                         }
                     }
                 }

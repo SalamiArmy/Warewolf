@@ -194,20 +194,7 @@ namespace Dev2.Data.Util
             return !string.IsNullOrEmpty(value) && value.Contains(").");
         }
 
-        public bool IsValueRecordset(string value)
-        {
-            var result = false;
-
-            if (!string.IsNullOrEmpty(value))
-            {
-                if (value.Contains(DataListUtil.RecordsetIndexOpeningBracket) && value.Contains(DataListUtil.RecordsetIndexClosingBracket))
-                {
-                    result = true;
-                }
-            }
-
-            return result;
-        }
+        public bool IsValueRecordset(string value) => !string.IsNullOrEmpty(value) && value.Contains(DataListUtil.RecordsetIndexOpeningBracket) && value.Contains(DataListUtil.RecordsetIndexClosingBracket);
 
         public string ReplaceRecordsetIndexWithStar(string expression)
         {

@@ -46,14 +46,14 @@ namespace Dev2.Activities.Designers2.SharePointFileUpload
 
             if (SharepointServerResourceId == Guid.Empty)
             {
-                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo() { Message = ErrorResource.SharepointServerRequired } };
+                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo { Message = ErrorResource.SharepointServerRequired } };
 
                 return Errors;
             }
 
             if (string.IsNullOrEmpty(LocalInputPath))
             {
-                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo() { Message = ErrorResource.LocalPathRequired } };
+                Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo { Message = ErrorResource.LocalPathRequired } };
 
                 return Errors;
             }

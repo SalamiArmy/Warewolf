@@ -62,86 +62,84 @@ namespace Dev2.Data
                 xDoc.LoadXml(toLoad);
             }
 
-            if (!string.IsNullOrEmpty(toLoad))
+            if (!string.IsNullOrEmpty(toLoad) && xDoc.DocumentElement != null)
             {
-                if (xDoc.DocumentElement != null)
+                var children = xDoc.DocumentElement.ChildNodes;
+
+                IDictionary<string, int> indexCache = new Dictionary<string, int>();
+
+                // spin through each element in the XML
+                foreach (XmlNode c in children)
                 {
-                    var children = xDoc.DocumentElement.ChildNodes;
-
-                    IDictionary<string, int> indexCache = new Dictionary<string, int>();
-
-                    // spin through each element in the XML
-                    foreach (XmlNode c in children)
+                    var hasCorrectIoDirection = true;
+                    var columnIoDirectionAttribute = c.Attributes?["ColumnIODirection"];
+                    if (columnIoDirectionAttribute != null)
                     {
-                        var hasCorrectIoDirection = true;
-                        var columnIoDirectionAttribute = c.Attributes?["ColumnIODirection"];
-                        if (columnIoDirectionAttribute != null)
-                        {
-                            var columnIoDirectionValue = columnIoDirectionAttribute.Value;
-                            var hasCorrectIoDirectionFromAttribute = columnIoDirectionValue == enDev2ColumnArgumentDirection.Output.ToString() || columnIoDirectionValue == enDev2ColumnArgumentDirection.Both.ToString();
-                            hasCorrectIoDirection = hasCorrectIoDirectionFromAttribute;
-                        }
+                        var columnIoDirectionValue = columnIoDirectionAttribute.Value;
+                        var hasCorrectIoDirectionFromAttribute = columnIoDirectionValue == enDev2ColumnArgumentDirection.Output.ToString() || columnIoDirectionValue == enDev2ColumnArgumentDirection.Both.ToString();
+                        hasCorrectIoDirection = hasCorrectIoDirectionFromAttribute;
+                    }
 
-                        if (DataListUtil.IsSystemTag(c.Name) && !hasCorrectIoDirection)
+                    if (DataListUtil.IsSystemTag(c.Name) && !hasCorrectIoDirection)
+                    {
+                        continue;
+                    }
+                    var recSet = RecordSets.FirstOrDefault(set => set.Name == c.Name);
+                    var shapeRecSet = ShapeRecordSets.FirstOrDefault(set => set.Name == c.Name);
+                    var scalar = Scalars.FirstOrDefault(scalar1 => scalar1.Name == c.Name);
+                    var complexObject = ComplexObjects.FirstOrDefault(o => o.Name == "@" + c.Name);
+                    if (complexObject != null)
+                    {
+                        if (!string.IsNullOrEmpty(c.OuterXml))
                         {
-                            continue;
-                        }
-                        var recSet = RecordSets.FirstOrDefault(set => set.Name == c.Name);
-                        var shapeRecSet = ShapeRecordSets.FirstOrDefault(set => set.Name == c.Name);
-                        var scalar = Scalars.FirstOrDefault(scalar1 => scalar1.Name == c.Name);
-                        var complexObject = ComplexObjects.FirstOrDefault(o => o.Name == "@" + c.Name);
-                        if (complexObject != null)
-                        {
-                            if (!string.IsNullOrEmpty(c.OuterXml))
+                            var jsonData = JsonConvert.SerializeXNode(XDocument.Parse(c.OuterXml), Newtonsoft.Json.Formatting.None, true);
+                            if (JsonConvert.DeserializeObject(jsonData.Replace("@", "")) is JObject obj)
                             {
-                                var jsonData = JsonConvert.SerializeXNode(XDocument.Parse(c.OuterXml),Newtonsoft.Json.Formatting.None,true);
-                                if (JsonConvert.DeserializeObject(jsonData.Replace("@", "")) is JObject obj)
-                                {
-                                    var value = obj.ToString();
-                                    complexObject.Value = value;
-                                }
+                                var value = obj.ToString();
+                                complexObject.Value = value;
                             }
                         }
-                        else
+                    }
+                    else
+                    {
+                        if (recSet != null && shapeRecSet != null)
                         {
-                            if (recSet != null && shapeRecSet != null)
+                            // fetch recordset index
+                            var idx = indexCache.TryGetValue(c.Name, out int fetchIdx) ? fetchIdx : 1; // recset index
+                                                                                                       // process recordset
+                            var scalars = shapeRecSet.Columns[1];
+                            var colToIoDirection = scalars.ToDictionary(scalar1 => scalar1.Name, scalar1 => scalar1.IODirection);
+                            var nl = c.ChildNodes;
+                            if (!recSet.Columns.ContainsKey(idx))
                             {
-                                // fetch recordset index
-                                var idx = indexCache.TryGetValue(c.Name, out int fetchIdx) ? fetchIdx : 1; // recset index
-                                // process recordset
-                                var scalars = shapeRecSet.Columns[1];
-                                var colToIoDirection = scalars.ToDictionary(scalar1 => scalar1.Name, scalar1 => scalar1.IODirection);
-                                var nl = c.ChildNodes;
-                                if (!recSet.Columns.ContainsKey(idx))
-                                {
-                                    recSet.Columns.Add(idx, new List<IScalar>());
-                                }
-                                else
-                                {
-                                    recSet.Columns[idx] = new List<IScalar>();
-                                }
-                                foreach (XmlNode subc in nl)
-                                {
-                                    if (colToIoDirection.ContainsKey(subc.Name))
-                                    {
-                                        var column = new Scalar { Name = subc.Name, Value = subc.InnerText, IODirection = colToIoDirection[subc.Name] };
-                                        recSet.Columns[idx].Add(column);
-                                    }
-                                }
-                                // update this recordset index
-                                indexCache[c.Name] = ++idx;
+                                recSet.Columns.Add(idx, new List<IScalar>());
                             }
                             else
                             {
-                                if (scalar != null)
+                                recSet.Columns[idx] = new List<IScalar>();
+                            }
+                            foreach (XmlNode subc in nl)
+                            {
+                                if (colToIoDirection.ContainsKey(subc.Name))
                                 {
-                                    scalar.Value = c.InnerXml;
+                                    var column = new Scalar { Name = subc.Name, Value = subc.InnerText, IODirection = colToIoDirection[subc.Name] };
+                                    recSet.Columns[idx].Add(column);
                                 }
+                            }
+                            // update this recordset index
+                            indexCache[c.Name] = ++idx;
+                        }
+                        else
+                        {
+                            if (scalar != null)
+                            {
+                                scalar.Value = c.InnerXml;
                             }
                         }
                     }
                 }
             }
+
         }
 
         public void CreateShape(string shape)

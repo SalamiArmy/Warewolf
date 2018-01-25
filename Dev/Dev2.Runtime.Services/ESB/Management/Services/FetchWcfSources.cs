@@ -35,7 +35,7 @@ namespace Dev2.Runtime.ESB.Management.Services
                 var res = Resources.GetResource<WcfSource>(GlobalConstants.ServerWorkspaceID, a.ResourceID);
                 if (res != null)
                 {
-                    return new WcfServiceSourceDefinition()
+                    return new WcfServiceSourceDefinition
                     {
                         Id = res.ResourceID,
                         Name = res.ResourceName,
@@ -49,7 +49,7 @@ namespace Dev2.Runtime.ESB.Management.Services
                 }
                 return null;
             }).ToList();
-            return serializer.SerializeToBuilder(new ExecuteMessage() { HasError = false, Message = serializer.SerializeToBuilder(list) });
+            return serializer.SerializeToBuilder(new ExecuteMessage { HasError = false, Message = serializer.SerializeToBuilder(list) });
             
         }
 

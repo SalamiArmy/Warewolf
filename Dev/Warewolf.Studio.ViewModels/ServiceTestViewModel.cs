@@ -598,8 +598,7 @@ namespace Warewolf.Studio.ViewModels
                 serviceTestOutputs.Add(new ServiceTestOutput("", "", "", "")
                 {
                     AssertOp = "",
-                    AddStepOutputRow = s => { serviceTestStep.AddNewOutput(s); }
-                });
+                    AddStepOutputRow = serviceTestStep.AddNewOutput                });
                 serviceTestStep.StepOutputs = serviceTestOutputs;
                 return;
             }
@@ -626,8 +625,7 @@ namespace Warewolf.Studio.ViewModels
                     var serviceTestOutput = new ServiceTestOutput(variable ?? "", value, "", "")
                     {
                         AssertOp = assertOp,
-                        AddStepOutputRow = s => { serviceTestStep.AddNewOutput(s); }
-                    };
+                        AddStepOutputRow = serviceTestStep.AddNewOutput                    };
                     serviceTestOutputs.Add(serviceTestOutput);
                 }
             }
@@ -1087,8 +1085,7 @@ namespace Warewolf.Studio.ViewModels
                 var serviceTestOutputs = outputs.Select(output => new ServiceTestOutput(output, "", "", "")
                 {
                     HasOptionsForValue = false,
-                    AddStepOutputRow = s => { serviceTestStep.AddNewOutput(s); }
-                }).Cast<IServiceTestOutput>().ToObservableCollection();
+                    AddStepOutputRow = serviceTestStep.AddNewOutput                }).Cast<IServiceTestOutput>().ToObservableCollection();
                 serviceTestStep.StepOutputs = serviceTestOutputs;
                 SetStepIcon(act.GetType(), serviceTestStep);
                 testStep.Children.Add(serviceTestStep);
@@ -1248,7 +1245,7 @@ namespace Warewolf.Studio.ViewModels
                     serviceTestOutputs.Add(new ServiceTestOutput("", "", "", "")
                     {
                         AssertOp = "",
-                        AddStepOutputRow = s => { testStep.AddNewOutput(s); },
+                        AddStepOutputRow = testStep.AddNewOutput,
                         IsSearchCriteriaEnabled = true
                     });
                     testStep.StepOutputs = serviceTestOutputs;
@@ -1306,13 +1303,11 @@ namespace Warewolf.Studio.ViewModels
                     }
                 }
 
-                if (outputs != null && outputs.Count > 0 && ServiceTestStepWithOutputs(activityUniqueId, activityDisplayName, outputs, type, item, out IServiceTestStep serviceTestStep))
+                if (outputs != null && outputs.Count > 0 && ServiceTestStepWithOutputs(activityUniqueId, activityDisplayName, outputs, type, item, out IServiceTestStep serviceTestStep) && ServiceTestStepWithOutputs(activityUniqueId, activityDisplayName, outputs, type, item, out IServiceTestStep testStep))
                 {
-                    if (ServiceTestStepWithOutputs(activityUniqueId, activityDisplayName, outputs, type, item, out IServiceTestStep testStep))
-                    {
-                        return testStep;
-                    }
+                    return testStep;
                 }
+
                 if (ServiceTestStepGetParentType(item, out var serviceTestStep1))
                 {
                     return serviceTestStep1;
@@ -1389,8 +1384,7 @@ namespace Warewolf.Studio.ViewModels
                 outputs.Select(output => new ServiceTestOutput(output ?? "", "", "", "")
                 {
                     HasOptionsForValue = false,
-                    AddStepOutputRow = s => step.AddNewOutput(s)
-                }).Cast<IServiceTestOutput>().ToList();
+                    AddStepOutputRow = step.AddNewOutput                }).Cast<IServiceTestOutput>().ToList();
             return serviceTestOutputs;
         }
 

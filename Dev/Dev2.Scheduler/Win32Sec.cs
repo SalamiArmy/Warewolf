@@ -47,7 +47,7 @@ struct LSA_UNICODE_STRING
 [StructLayout(LayoutKind.Sequential)]
 struct LSA_ENUMERATION_INFORMATION
 {
-    internal LSA_HANDLE PSid;
+    readonly internal LSA_HANDLE PSid;
 }
 
 

@@ -127,7 +127,7 @@ namespace Dev2.Activities.Designers2.GetWebRequest
                                                  .Where(i => !variableList.Contains(i.Key))
                                                  .ToList();
 
-                mustRemove.ForEach(r => PreviewViewModel.Inputs.Remove(r));
+                mustRemove.ForEach(PreviewViewModel.Inputs.Remove);
 
                 mustRemainKeys.ForEach(k => variableList.Remove(k.Key));
 

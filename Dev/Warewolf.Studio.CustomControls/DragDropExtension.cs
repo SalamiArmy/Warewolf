@@ -74,9 +74,9 @@ namespace Warewolf.Studio.CustomControls
                 return;
             }
 
-            double tolerance = 60;
+            const double tolerance = 60;
             var verticalPos = e.GetPosition(container).Y;
-            double offset = 20;
+            const double offset = 20;
 
             if (verticalPos < tolerance) // Top of visible list? 
             {
