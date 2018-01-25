@@ -351,11 +351,11 @@ namespace Dev2.Activities
             return result;
         }
 
-        List<string> GetSplitValues(string stringToSplit, char[] splitOn)
+        static List<string> GetSplitValues(string stringToSplit, char[] splitOn)
         {
             return stringToSplit.Split(splitOn, StringSplitOptions.RemoveEmptyEntries).ToList();
         }
-        void AddAttachmentsValue(string attachmentsValue, MailMessage mailMessage)
+        static void AddAttachmentsValue(string attachmentsValue, MailMessage mailMessage)
         {
             try
             {
@@ -368,7 +368,7 @@ namespace Dev2.Activities
             }
         }
 
-        void AddToAddresses(string toValue, MailMessage mailMessage)
+        static void AddToAddresses(string toValue, MailMessage mailMessage)
         {
             try
             {
@@ -381,7 +381,7 @@ namespace Dev2.Activities
             }
         }
 
-        void AddCcAddresses(string toValue, MailMessage mailMessage)
+        static void AddCcAddresses(string toValue, MailMessage mailMessage)
         {
             try
             {
@@ -394,7 +394,7 @@ namespace Dev2.Activities
             }
         }
 
-        void AddBccAddresses(string toValue, MailMessage mailMessage)
+        static void AddBccAddresses(string toValue, MailMessage mailMessage)
         {
             try
             {

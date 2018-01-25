@@ -11,7 +11,6 @@ using Dev2.Common.Interfaces.ToolBase.ExchangeEmail;
 using Dev2.Runtime.Configuration.ViewModels.Base;
 using Dev2.Studio.Core.Activities.Utils;
 
-
 namespace Dev2.Activities.Designers2.Core.Source
 {
     public class ExchangeSourceRegion : ISourceToolRegion<IExchangeSource>
@@ -26,10 +25,7 @@ namespace Dev2.Activities.Designers2.Core.Source
 
         public Action SourceChangedAction
         {
-            get
-            {
-                return _sourceChangedAction ?? (() => { });
-            }
+            get => _sourceChangedAction ?? (() => { });
             set
             {
                 _sourceChangedAction = value;
@@ -38,10 +34,7 @@ namespace Dev2.Activities.Designers2.Core.Source
 
         public ICollection<IExchangeSource> Sources
         {
-            get
-            {
-                return _sources;
-            }
+            get => _sources;
             set
             {
                 _sources = value;
@@ -60,7 +53,6 @@ namespace Dev2.Activities.Designers2.Core.Source
 
         public ExchangeSourceRegion()
         {
-            
         }
 
         public ExchangeSourceRegion(IExchangeServiceModel model, ModelItem modelItem, string type)
@@ -97,7 +89,6 @@ namespace Dev2.Activities.Designers2.Core.Source
         public string ToolRegionName { get; set; }
         public bool IsEnabled { get; set; }
         public IList<IToolRegion> Dependants { get; set; }
-        
         public IList<string> Errors { get; set; }
 
         public IToolRegion CloneRegion()
@@ -136,10 +127,7 @@ namespace Dev2.Activities.Designers2.Core.Source
 
         public IExchangeSource SelectedSource
         {
-            get
-            {
-                return _selectedSource;
-            }
+            get => _selectedSource;
             set
             {
                 SetSelectedSource(value);
@@ -164,10 +152,7 @@ namespace Dev2.Activities.Designers2.Core.Source
 
         public IExchangeSource SavedSource
         {
-            get
-            {
-                return _modelItem.GetProperty<IExchangeSource>("SavedSource");
-            }
+            get => _modelItem.GetProperty<IExchangeSource>("SavedSource");
             set
             {
                 _modelItem.SetProperty("SavedSource", value);
