@@ -254,7 +254,8 @@ namespace Dev2.Activities.Designers2.Email
             {
                 return;
             }
-
+            TestFailed = false;
+            TestPassed = false;
             Testing = true;
             StatusMessage = string.Empty;
 
