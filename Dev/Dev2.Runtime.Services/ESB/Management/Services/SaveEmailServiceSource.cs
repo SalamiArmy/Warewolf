@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Dev2.Common;
-using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Core.DynamicServices;
 using Dev2.Common.Interfaces.Enums;
 using Dev2.Common.Interfaces.Infrastructure;
@@ -13,7 +12,6 @@ using Dev2.Runtime.Hosting;
 using Dev2.Runtime.Interfaces;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Workspaces;
-
 
 namespace Dev2.Runtime.ESB.Management.Services
 {
@@ -50,7 +48,7 @@ namespace Dev2.Runtime.ESB.Management.Services
                     Type = enSourceType.EmailSource,
                     ResourceType = "EmailSource"
                 };
-                ResourceCatalog.Instance.SaveResource(GlobalConstants.ServerWorkspaceID, con, src.Path);
+                ResourceCatalogue.SaveResource(GlobalConstants.ServerWorkspaceID, con, src.Path);
                 ServerExplorerRepo.UpdateItem(con);
 
                 msg.HasError = false;

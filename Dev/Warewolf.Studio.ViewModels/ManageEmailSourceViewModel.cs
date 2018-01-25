@@ -712,6 +712,5 @@ namespace Warewolf.Studio.ViewModels
                 return errorMessage;
             }
         }
-
     }
 }

@@ -1,7 +1,7 @@
 /*
 *  Warewolf - Once bitten, there's no going back
 *  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
-*  Licensed under GNU Affero General Public License 3.0 or later. 
+*  Licensed under GNU Affero General Public License 3.0 or later.
 *  Some rights reserved.
 *  Visit our website for more information <http://warewolf.io/>
 *  AUTHORS <http://warewolf.io/authors.php> , CONTRIBUTORS <http://warewolf.io/contributors.php>
@@ -15,6 +15,7 @@ using System.Net.Mail;
 using ActivityUnitTests;
 using Dev2.Activities;
 using Dev2.Common.ExtMethods;
+using Dev2.Common.Interfaces.Core;
 using Dev2.Runtime.Hosting;
 using Dev2.Runtime.ServiceModel.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -25,7 +26,6 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 namespace Dev2.Tests.Activities.ActivityTests
 {
     [TestClass]
-    
     public class SendEmailActivityTests : BaseActivityUnitTest
     {
         [TestMethod]
@@ -94,7 +94,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                     mailMessage = message;
                 });
             var activity = GetSendEmailActivity(mock);
-            activity.SelectedEmailSource = emailSourceForTesting;
+            activity.SavedSource = EmailServiceSourceDefinitionForTesting(emailSourceForTesting.ResourceID);
             activity.Body = "BodyValue";
             activity.FromAccount = "from.someone@amail.account";
             activity.To = "to.someone@amail.account";
@@ -135,7 +135,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                     mailMessage = message;
                 });
             var activity = GetSendEmailActivity(mock);
-            activity.SelectedEmailSource = emailSourceForTesting;
+            activity.SavedSource = EmailServiceSourceDefinitionForTesting(emailSourceForTesting.ResourceID);
             activity.Body = "BodyValue";
             activity.FromAccount = "from.someone@amail.account";
             activity.To = "to.someone@amail.account";
@@ -176,7 +176,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                     mailMessage = message;
                 });
             var activity = GetSendEmailActivity(mock);
-            activity.SelectedEmailSource = emailSourceForTesting;
+            activity.SavedSource = EmailServiceSourceDefinitionForTesting(emailSourceForTesting.ResourceID);
             activity.Body = "[[Body]]";
             activity.To = "[[ToAccount]]";
             activity.Subject = "[[Subject]]";
@@ -215,7 +215,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                     mailMessage = message;
                 });
             var activity = GetSendEmailActivity(mock);
-            activity.SelectedEmailSource = emailSourceForTesting;
+            activity.SavedSource = EmailServiceSourceDefinitionForTesting(emailSourceForTesting.ResourceID);
             activity.Body = "[[Body]]";
             activity.To = "[[ToAccount]]";
             activity.Subject = "[[Subject]]";
@@ -229,7 +229,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             ExecuteProcess(channel: esbChannelMock.Object);
             //------------Assert Results-------------------------
             mock.Verify(sender => sender.Send(emailSourceForTesting, It.IsAny<MailMessage>()), Times.Once());
-            
+
             // remove test datalist ;)
             Assert.AreEqual("to.someone@amail.account", mailMessage.To[0].Address);
             Assert.AreEqual("to1.someone@amail.account", mailMessage.To[1].Address);
@@ -254,7 +254,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                     mailMessage = message;
                 });
             var activity = GetSendEmailActivity(mock);
-            activity.SelectedEmailSource = emailSourceForTesting;
+            activity.SavedSource = EmailServiceSourceDefinitionForTesting(emailSourceForTesting.ResourceID);
             activity.Body = "[[Body]]";
             activity.FromAccount = "[[FromAccount]]";
             activity.Bcc = "[[BCC]]";
@@ -293,7 +293,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                     mailMessage = message;
                 });
             var activity = GetSendEmailActivity(mock);
-            activity.SelectedEmailSource = emailSourceForTesting;
+            activity.SavedSource = EmailServiceSourceDefinitionForTesting(emailSourceForTesting.ResourceID);
             activity.Body = "[[Body]]";
             activity.Cc = "[[CC]]";
             activity.Subject = "[[Subject]]";
@@ -327,7 +327,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                 Callback<EmailSource, MailMessage>((client, message) =>
                 { });
             var activity = GetSendEmailActivity(mock);
-            activity.SelectedEmailSource = emailSourceForTesting;
+            activity.SavedSource = EmailServiceSourceDefinitionForTesting(emailSourceForTesting.ResourceID);
             activity.Body = "[[mails(*).to]]" + Environment.NewLine + "[[Body]]";
             activity.To = "[[mails(*).to]]";
             activity.Subject = "This is the subject!";
@@ -361,13 +361,14 @@ namespace Dev2.Tests.Activities.ActivityTests
             const string TestFromAccount = "someonelse@mydomain.com";
             const string TestFromPassword = "yyyy";
 
+            var resourceId = Guid.NewGuid();
             var testSource = new EmailSource
             {
                 Host = "TestHost",
                 UserName = TestSourceAccount,
                 Password = TestSourcePassword,
                 ResourceName = Guid.NewGuid().ToString(),
-                ResourceID = Guid.NewGuid()
+                ResourceID = resourceId
             };
             ResourceCatalog.Instance.SaveResource(Guid.Empty, testSource, "");
             EmailSource sendSource = null;
@@ -381,7 +382,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                 });
 
             var activity = GetSendEmailActivity(emailSender);
-            activity.SelectedEmailSource = testSource;
+            activity.SavedSource = EmailServiceSourceDefinitionForTesting(resourceId);
             activity.Body = "Hello world";
             activity.To = "myrecipient@mydomain.com";
             activity.Subject = "This is the subject!";
@@ -441,7 +442,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                 Callback<EmailSource, MailMessage>((client, message) =>
                 { });
             var activity = GetSendEmailActivity(mock);
-            activity.SelectedEmailSource = emailSourceForTesting;
+            activity.SavedSource = EmailServiceSourceDefinitionForTesting(Guid.NewGuid());
             activity.Body = "[[Body]]";
             activity.FromAccount = "[[FromAccount]]";
             activity.Cc = "[[CC]]";
@@ -559,6 +560,15 @@ namespace Dev2.Tests.Activities.ActivityTests
                 Password = "TestPassword"
             };
             ResourceCatalog.Instance.SaveResource(Guid.Empty, emailSourceForTesting, "");
+            return emailSourceForTesting;
+        }
+
+        static EmailServiceSourceDefinition EmailServiceSourceDefinitionForTesting(Guid resourceId)
+        {
+            var emailSourceForTesting = new EmailServiceSourceDefinition
+            {
+                ResourceID = resourceId
+            };
             return emailSourceForTesting;
         }
     }

@@ -36,6 +36,7 @@ using Warewolf.Security.Encryption;
 using Warewolf.Storage;
 using Warewolf.Storage.Interfaces;
 using Dev2.Comparer;
+using Dev2.Common.Interfaces.ToolBase.Email;
 
 namespace Dev2.Activities
 {
@@ -45,22 +46,8 @@ namespace Dev2.Activities
         IEmailSender _emailSender;
         IDSFDataObject _dataObject;
         string _password;
-        EmailSource _selectedEmailSource;
 
-        public EmailSource SelectedEmailSource
-        {
-            get => _selectedEmailSource;
-            set
-            {
-                _selectedEmailSource = value;
-                if (_selectedEmailSource != null)
-                {
-                    var resourceID = _selectedEmailSource.ResourceID;
-                    _selectedEmailSource = null;
-                    _selectedEmailSource = new EmailSource { ResourceID = resourceID };
-                }
-            }
-        }
+        public ISmtpSource SavedSource { get; set; }
 
         [FindMissing]
         public string FromAccount { get; set; }
@@ -170,7 +157,7 @@ namespace Dev2.Activities
             InitializeDebug(dataObject);
             try
             {
-                var runtimeSource = ResourceCatalog.GetResource<EmailSource>(dataObject.WorkspaceID, SelectedEmailSource.ResourceID);
+                var runtimeSource = ResourceCatalog.GetResource<EmailSource>(dataObject.WorkspaceID, SavedSource.ResourceID);
 
                 if (runtimeSource == null)
                 {
@@ -510,7 +497,7 @@ namespace Dev2.Activities
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
             var emailSourcesComparer = new EmailSourceComparer();
-            var emailSourcesAreEqual = emailSourcesComparer.Equals(SelectedEmailSource, other.SelectedEmailSource);
+            var emailSourcesAreEqual = CommonEqualityOps.AreObjectsEqual(SavedSource, other.SavedSource);
             var paswordsAreEqual = CommonEqualityOps.PassWordsCompare(Password, other.Password);
             return base.Equals(other)
                 && paswordsAreEqual
@@ -540,10 +527,9 @@ namespace Dev2.Activities
             unchecked
             {
                 var hashCode = base.GetHashCode();
-                hashCode = (hashCode * 397) ^ (_emailSender != null ? _emailSender.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (_dataObject != null ? _dataObject.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (_password != null ? _password.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (_selectedEmailSource != null ? _selectedEmailSource.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (EmailSender != null ? EmailSender.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Password != null ? Password.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (SavedSource != null ? SavedSource.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (FromAccount != null ? FromAccount.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (To != null ? To.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Cc != null ? Cc.GetHashCode() : 0);

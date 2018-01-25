@@ -32,6 +32,7 @@ namespace Warewolf.Studio.ViewModels
             var def = new EmailServiceSourceDefinition
             {
                 Id = db.ResourceID,
+                ResourceID = db.ResourceID,
                 Host = db.Host,
                 Password = db.Password,
                 UserName = db.UserName,

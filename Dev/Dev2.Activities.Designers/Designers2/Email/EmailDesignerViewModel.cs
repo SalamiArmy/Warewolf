@@ -45,6 +45,10 @@ namespace Dev2.Activities.Designers2.Email
         readonly IServer _server;
         readonly IAsyncWorker _asyncWorker;
         ISourceToolRegion<ISmtpSource> _sourceRegion;
+        bool _testPassed;
+        bool _testFailed;
+        bool _testing;
+        string _statusMessage;
 
         public RelayCommand TestEmailAccountCommand { get; private set; }
         public ICommand ChooseAttachmentsCommand { get; private set; }
@@ -132,7 +136,6 @@ namespace Dev2.Activities.Designers2.Email
             }
         }
 
-        string _statusMessage;
         public string StatusMessage
         {
             get => _statusMessage;
@@ -142,8 +145,6 @@ namespace Dev2.Activities.Designers2.Email
                 OnPropertyChanged("StatusMessage");
             }
         }
-
-        bool _testing;
 
         public bool Testing
         {
@@ -201,14 +202,30 @@ namespace Dev2.Activities.Designers2.Email
         public bool IsAttachmentsFocused { get => (bool)GetValue(IsAttachmentsFocusedProperty); set => SetValue(IsAttachmentsFocusedProperty, value); }
         public static readonly DependencyProperty IsAttachmentsFocusedProperty = DependencyProperty.Register("IsAttachmentsFocused", typeof(bool), typeof(EmailDesignerViewModel), new PropertyMetadata(default(bool)));
 
-        public string Password { get => GetProperty<string>(); set => SetProperty(value); }
+        public string Password
+        {
+            get => GetProperty<string>();
+            set => SetProperty(value);
+        }
+
         string FromAccount => GetProperty<string>();
+
         string To => GetProperty<string>();
+
         string Cc => GetProperty<string>();
+
         string Bcc => GetProperty<string>();
-        string Attachments { get => GetProperty<string>(); set => SetProperty(value); }
+
+        string Attachments
+        {
+            get => GetProperty<string>();
+            set => SetProperty(value);
+        }
+
         string Subject => GetProperty<string>();
+
         string Body => GetProperty<string>();
+
         public ObservableCollection<enMailPriorityEnum> Priorities { get; private set; }
 
         public bool TestPassed
@@ -220,6 +237,7 @@ namespace Dev2.Activities.Designers2.Email
                 OnPropertyChanged("TestPassed");
             }
         }
+
         public bool TestFailed
         {
             get => _testFailed;
@@ -306,6 +324,7 @@ namespace Dev2.Activities.Designers2.Email
                 EmailFrom = FromAccount,
                 EmailTo = To,
                 Id = SourceRegion.SelectedSource.ResourceID,
+                ResourceID = SourceRegion.SelectedSource.ResourceID
             };
         }
 
@@ -322,7 +341,7 @@ namespace Dev2.Activities.Designers2.Email
                 catch (Exception ex)
                 {
                     TestFailed = true;
-                    Errors = new List<IActionableErrorInfo> { new ActionableErrorInfo(() => IsToFocused = true) { Message = ex.Message } };
+                    SetStatusMessage(ex.Message);
                 }
                 finally
                 {
@@ -368,8 +387,6 @@ namespace Dev2.Activities.Designers2.Email
         }
 
         internal Func<string> GetDatalistString = () => DataListSingleton.ActiveDataList.Resource.DataList;
-        bool _testPassed;
-        bool _testFailed;
 
         IEnumerable<IActionableErrorInfo> ValidateThis()
         {

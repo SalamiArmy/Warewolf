@@ -11,6 +11,7 @@
 using System;
 using System.Activities.Statements;
 using System.Collections.Generic;
+using Dev2.Common.Interfaces.Core;
 using Dev2.Data.Util;
 using Dev2.Interfaces;
 using Dev2.Runtime.Hosting;
@@ -79,7 +80,7 @@ namespace Dev2.Activities.Specs.Toolbox.Utility.Email
                     Subject = string.IsNullOrEmpty(subject) ? "" : subject,
                     FromAccount = string.IsNullOrEmpty(fromAccount) ? "" : fromAccount,
                     To = string.IsNullOrEmpty(to) ? "" : to,
-                    SelectedEmailSource = selectedEmailSource,
+                    SavedSource = new EmailServiceSourceDefinition { ResourceID = selectedEmailSource.ResourceID },
                     IsHtml = isHtml
                 };
 

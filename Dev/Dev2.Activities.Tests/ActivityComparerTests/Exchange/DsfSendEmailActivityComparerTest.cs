@@ -1,7 +1,7 @@
 ﻿using System;
-using Dev2.Common.Interfaces.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Dev2.Activities;
+using Dev2.Common.Interfaces.Core;
 
 namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
 {
@@ -14,8 +14,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -30,8 +30,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = Guid.NewGuid().ToString() };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = Guid.NewGuid().ToString() };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -45,8 +45,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, DisplayName = "a" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, DisplayName = "a" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, DisplayName = "a" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, DisplayName = "a" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -61,8 +61,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, DisplayName = "A" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, DisplayName = "ass" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, DisplayName = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, DisplayName = "ass" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -77,8 +77,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, DisplayName = "AAA" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, DisplayName = "aaa" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, DisplayName = "AAA" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, DisplayName = "aaa" };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -92,8 +92,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Result = "a" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Result = "a" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Result = "a" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Result = "a" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -108,8 +108,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Result = "A" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Result = "ass" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Result = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Result = "ass" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -124,8 +124,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Result = "AAA" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Result = "aaa" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Result = "AAA" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Result = "aaa" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -140,8 +140,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, To = "a" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, To = "a" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, To = "a" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, To = "a" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -156,8 +156,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, To = "A" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, To = "ass" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, To = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, To = "ass" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -172,8 +172,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, To = "AAA" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, To = "aaa" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, To = "AAA" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, To = "aaa" };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -189,8 +189,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Cc = "a" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Cc = "a" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Cc = "a" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Cc = "a" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -205,8 +205,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Cc = "A" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Cc = "ass" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Cc = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Cc = "ass" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -221,8 +221,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Cc = "AAA" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Cc = "aaa" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Cc = "AAA" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Cc = "aaa" };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -238,8 +238,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Bcc = "a" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Bcc = "a" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Bcc = "a" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Bcc = "a" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -254,8 +254,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Bcc = "A" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Bcc = "ass" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Bcc = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Bcc = "ass" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -270,8 +270,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Bcc = "AAA" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Bcc = "aaa" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Bcc = "AAA" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Bcc = "aaa" };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -286,8 +286,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Subject = "a" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Subject = "a" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Subject = "a" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Subject = "a" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -302,8 +302,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Subject = "A" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Subject = "ass" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Subject = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Subject = "ass" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -318,8 +318,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Subject = "AAA" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Subject = "aaa" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Subject = "AAA" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Subject = "aaa" };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -335,8 +335,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Attachments = "a" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Attachments = "a" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Attachments = "a" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Attachments = "a" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -351,8 +351,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Attachments = "A" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Attachments = "ass" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Attachments = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Attachments = "ass" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -367,8 +367,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Attachments = "AAA" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Attachments = "aaa" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Attachments = "AAA" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Attachments = "aaa" };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -383,8 +383,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Body = "a" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Body = "a" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Body = "a" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Body = "a" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -399,8 +399,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Body = "A" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Body = "ass" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Body = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Body = "ass" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -415,8 +415,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Body = "AAA" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Body = "aaa" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Body = "AAA" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Body = "aaa" };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -431,8 +431,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Password = "a" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Password = "a" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Password = "a" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Password = "a" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -447,8 +447,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Password = "A" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Password = "ass" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Password = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Password = "ass" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -463,8 +463,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Password = "AAA" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Password = "aaa" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Password = "AAA" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Password = "aaa" };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -478,8 +478,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, FromAccount = "A" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, FromAccount = "ass" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, FromAccount = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, FromAccount = "ass" };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -494,8 +494,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, FromAccount = "AAA" };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, FromAccount = "aaa" };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, FromAccount = "AAA" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, FromAccount = "aaa" };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -503,15 +503,15 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
             //---------------Test Result -----------------------
             Assert.IsFalse(equals);
         }
-        
+
         [TestMethod]
         [Owner("Sanele Mthembu")]
         public void Priority_Same_Object_Is_Equal()
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Priority = Data.Interfaces.Enums.enMailPriorityEnum.High };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Priority = Data.Interfaces.Enums.enMailPriorityEnum.High };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Priority = Data.Interfaces.Enums.enMailPriorityEnum.High };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Priority = Data.Interfaces.Enums.enMailPriorityEnum.High };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -526,8 +526,8 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, Priority = Data.Interfaces.Enums.enMailPriorityEnum.High };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, Priority = Data.Interfaces.Enums.enMailPriorityEnum.Low };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Priority = Data.Interfaces.Enums.enMailPriorityEnum.High };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Priority = Data.Interfaces.Enums.enMailPriorityEnum.Low };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -535,15 +535,15 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
             //---------------Test Result -----------------------
             Assert.IsFalse(equals);
         }
-        
+
         [TestMethod]
         [Owner("Sanele Mthembu")]
         public void IsHtml_Same_Object_Is_Equal()
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, IsHtml = true };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, IsHtml = true };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, IsHtml = true };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, IsHtml = true };
             //---------------Assert Precondition----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
@@ -558,14 +558,50 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Exchange
         {
             //---------------Set up test pack-------------------
             var uniqueId = Guid.NewGuid().ToString();
-            var emailActivity = new DsfSendEmailActivity() { UniqueID = uniqueId, IsHtml = true };
-            var emailActivity1 = new DsfSendEmailActivity() { UniqueID = uniqueId, IsHtml = false };
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, IsHtml = true };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, IsHtml = false };
             //---------------Assert DsfSendEmailActivity----------------
             Assert.IsNotNull(emailActivity);
             //---------------Execute Test ----------------------
             var @equals = emailActivity.Equals(emailActivity1);
             //---------------Test Result -----------------------
             Assert.IsFalse(equals);
+        }
+
+        [TestMethod]
+        [Owner("Pieter Terblanche")]
+        public void SavedSource_Different_Object_Is_Not_Equal()
+        {
+            //---------------Set up test pack-------------------
+            var uniqueId = Guid.NewGuid().ToString();
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Result = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Result = "A" };
+            //---------------Assert Precondition----------------
+            Assert.IsTrue(emailActivity.Equals(emailActivity1));
+            //---------------Execute Test ----------------------
+            emailActivity.SavedSource = new EmailServiceSourceDefinition { Host = "a" };
+            emailActivity1.SavedSource = new EmailServiceSourceDefinition();
+            var @equals = emailActivity.Equals(emailActivity1);
+            //---------------Test Result -----------------------
+            Assert.IsFalse(equals);
+        }
+
+        [TestMethod]
+        [Owner("Pieter Terblanche")]
+        public void SavedSource_Same_Object_Is_Equal()
+        {
+            //---------------Set up test pack-------------------
+            var uniqueId = Guid.NewGuid().ToString();
+            var emailActivity = new DsfSendEmailActivity { UniqueID = uniqueId, Result = "A" };
+            var emailActivity1 = new DsfSendEmailActivity { UniqueID = uniqueId, Result = "A" };
+            //---------------Assert Precondition----------------
+            Assert.IsTrue(emailActivity.Equals(emailActivity1));
+            //---------------Execute Test ----------------------
+            emailActivity.SavedSource = new EmailServiceSourceDefinition();
+            emailActivity1.SavedSource = new EmailServiceSourceDefinition();
+            var @equals = emailActivity.Equals(emailActivity1);
+            //---------------Test Result -----------------------
+            Assert.IsTrue(equals);
         }
     }
 }
