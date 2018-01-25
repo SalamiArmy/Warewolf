@@ -49,16 +49,9 @@ namespace Dev2.Studio.Core
 
         public void Save(IServerSource source)
         {
-            try
-            {
-                UpdateManagerProxy.SaveServerSource(source, GlobalConstants.ServerWorkspaceID);
-                ConnectControlSingleton.Instance.ReloadServer();
-                FireServerSaved(source.ID);
-            }
-            catch (Exception ex)
-            {
-                Dev2Logger.Error("Save Server Source Error", ex, GlobalConstants.WarewolfError);
-            }
+            UpdateManagerProxy.SaveServerSource(source, GlobalConstants.ServerWorkspaceID);
+            ConnectControlSingleton.Instance.ReloadServer();
+            FireServerSaved(source.ID);
         }
 
         public void Save(IPluginSource source)
