@@ -686,17 +686,17 @@ namespace Dev2.Activities.Designers2.Service
 
         ~ServiceDesignerViewModel()
         {
-            Dispose(false);
+            DisposeThis(false);
         }
 
         protected override void OnDispose()
         {
-            Dispose(true);
+            DisposeThis(true);
             GC.SuppressFinalize(this);
             base.OnDispose();
         }
 
-        public void Dispose(bool disposing)
+        public void DisposeThis(bool disposing)
         {
             if (!_isDisposed)
             {

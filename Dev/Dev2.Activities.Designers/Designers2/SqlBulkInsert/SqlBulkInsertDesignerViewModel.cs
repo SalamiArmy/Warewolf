@@ -97,7 +97,7 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
             RefreshTablesCommand = new RelayCommand(o => RefreshTables(), o => IsTableSelected);
 
             RefreshDatabases(true);
-            if(SelectedDatabase != null)
+            if (SelectedDatabase != null)
             {
                 IsSqlDatabase = SelectedDatabase.ServerType == enSourceType.SqlDatabase;
             }
@@ -202,12 +202,12 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
 
         public static readonly DependencyProperty IsSelectedTableFocusedProperty =
             DependencyProperty.Register("IsSelectedTableFocused", typeof(bool), typeof(SqlBulkInsertDesignerViewModel), new PropertyMetadata(false));
-        
+
         public bool IsMappingFieldFocused { get => (bool)GetValue(IsSelectedTableFocusedProperty); set => SetValue(IsMappingFieldFocusedProperty, value); }
 
         public static readonly DependencyProperty IsMappingFieldFocusedProperty =
             DependencyProperty.Register("IsMappingFieldFocused", typeof(bool), typeof(SqlBulkInsertDesignerViewModel), new PropertyMetadata(false));
-        
+
         public bool IsBatchSizeFocused { get => (bool)GetValue(IsBatchSizeFocusedProperty); set => SetValue(IsBatchSizeFocusedProperty, value); }
 
         public static readonly DependencyProperty IsBatchSizeFocusedProperty =
@@ -235,7 +235,7 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
 
         public static readonly DependencyProperty IsResultFocusedProperty =
             DependencyProperty.Register("IsResultFocused", typeof(bool), typeof(SqlBulkInsertDesignerViewModel), new PropertyMetadata(false));
-        
+
         #endregion
 
         #region DO NOT bind to these properties - these are here for internal view model use only!!!
@@ -248,7 +248,7 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
                 if (!_isInitializing)
                 {
                     SetProperty(value);
-                   
+
                 }
             }
         }
@@ -374,7 +374,7 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
                 continueWith?.Invoke();
                 return;
             }
-            
+
             var selectedDatabase = SelectedDatabase;
             _asyncWorker.Start(() => GetDatabaseTables(selectedDatabase), tableList =>
             {
@@ -406,9 +406,9 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
             ModelItemCollection.Clear();
             var selectedDatabase = SelectedDatabase;
             var selectedTable = SelectedTable;
-            
+
             _asyncWorker.Start(() => GetDatabaseTableColumns(selectedDatabase, selectedTable), columnList =>
-            
+
             {
                 Errors = columnList.HasErrors ? new List<IActionableErrorInfo>
                     {
@@ -440,11 +440,11 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
         void EditDbSource()
         {
             var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            if(shellViewModel != null)
+            if (shellViewModel != null)
             {
-                shellViewModel.OpenResource(SelectedDatabase.ResourceID,_server.EnvironmentID, shellViewModel.ActiveServer);
+                shellViewModel.OpenResource(SelectedDatabase.ResourceID, _server.EnvironmentID, shellViewModel.ActiveServer);
                 RefreshDatabases();
-            }            
+            }
         }
 
         void CreateDbSource()
@@ -456,7 +456,7 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
         IEnumerable<DbSource> GetDatabases()
         {
             var dbSources = _server.ResourceRepository.FindSourcesByType<DbSource>(_server, enSourceType.SqlDatabase);
-            return dbSources.Where(source => source.ResourceType== "SqlDatabase" || source.ServerType==enSourceType.SqlDatabase);
+            return dbSources.Where(source => source.ResourceType == "SqlDatabase" || source.ServerType == enSourceType.SqlDatabase);
         }
 
         DbTableList GetDatabaseTables(DbSource dbSource)
@@ -529,18 +529,22 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
             }
 
             var batchSize = BatchSize;
-            if (!IsVariable(batchSize) && (!int.TryParse(batchSize, out int value) || value < 0))
+            if (!IsVariable(batchSize))
             {
-                yield return new ActionableErrorInfo(() => IsBatchSizeFocused = true) { ErrorType = ErrorType.Critical, Message = ActivityResources.BatchsizeMustBeNumberMsg };
+                if (!int.TryParse(batchSize, out int value) || value < 0)
+                {
+                    yield return new ActionableErrorInfo(() => IsBatchSizeFocused = true) { ErrorType = ErrorType.Critical, Message = ActivityResources.BatchsizeMustBeNumberMsg };
+                }
             }
-
 
             var timeout = Timeout;
-            if (!IsVariable(timeout) && (!int.TryParse(timeout, out int value) || value < 0))
+            if (!IsVariable(timeout))
             {
-                yield return new ActionableErrorInfo(() => IsTimeoutFocused = true) { ErrorType = ErrorType.Critical, Message = ActivityResources.TimeoutMustBeNumberMsg };
+                if (!int.TryParse(timeout, out int value) || value < 0)
+                {
+                    yield return new ActionableErrorInfo(() => IsTimeoutFocused = true) { ErrorType = ErrorType.Critical, Message = ActivityResources.TimeoutMustBeNumberMsg };
+                }
             }
-
 
             var nonEmptyCount = ModelItemCollection.Count(mi => !string.IsNullOrEmpty(((DataColumnMapping)mi.GetCurrentValue()).InputColumn));
             if (nonEmptyCount == 0)
@@ -649,7 +653,7 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
             switch (propertyName)
             {
                 case "InputColumn":
-                    ruleSet.Add(new IsValidExpressionRule(() => datalist, GetDatalistString?.Invoke(), "1",new VariableUtils()));
+                    ruleSet.Add(new IsValidExpressionRule(() => datalist, GetDatalistString?.Invoke(), "1", new VariableUtils()));
                     break;
                 default:
                     break;

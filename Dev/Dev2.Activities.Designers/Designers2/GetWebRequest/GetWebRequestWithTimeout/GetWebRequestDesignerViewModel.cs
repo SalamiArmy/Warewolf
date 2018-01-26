@@ -34,9 +34,9 @@ namespace Dev2.Activities.Designers2.GetWebRequest.GetWebRequestWithTimeout
             AddTitleBarLargeToggle();
 
             PreviewViewModel = new PreviewViewModel
-                {
-                    InputsVisibility = Visibility.Collapsed,
-                };
+            {
+                InputsVisibility = Visibility.Collapsed,
+            };
             PreviewViewModel.PreviewRequested += DoPreview;
 
             if (Url == null)
@@ -155,7 +155,7 @@ namespace Dev2.Activities.Designers2.GetWebRequest.GetWebRequestWithTimeout
                                                  .ToList();
 
 
-                mustRemove.ForEach(PreviewViewModel.Inputs.Remove);
+                mustRemove.ForEach(r => PreviewViewModel.Inputs.Remove(r));
 
                 mustRemainKeys.ForEach(k => variableList.Remove(k.Key));
 
@@ -271,10 +271,10 @@ namespace Dev2.Activities.Designers2.GetWebRequest.GetWebRequestWithTimeout
         }
 
         internal Func<string, string, List<Tuple<string, string>>, string> WebInvoke = (method, url, headers) =>
-            {
-                var webInvoker = new WebRequestInvoker();
-                return webInvoker.ExecuteRequest(method, url, headers);
-            };
+        {
+            var webInvoker = new WebRequestInvoker();
+            return webInvoker.ExecuteRequest(method, url, headers);
+        };
 
         string GetPreviewOutput(string url)
         {

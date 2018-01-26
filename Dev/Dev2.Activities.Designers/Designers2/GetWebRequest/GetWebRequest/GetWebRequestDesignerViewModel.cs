@@ -34,9 +34,9 @@ namespace Dev2.Activities.Designers2.GetWebRequest
             AddTitleBarLargeToggle();
 
             PreviewViewModel = new PreviewViewModel
-                {
-                    InputsVisibility = Visibility.Collapsed,
-                };
+            {
+                InputsVisibility = Visibility.Collapsed,
+            };
             PreviewViewModel.PreviewRequested += DoPreview;
 
             if (Url == null)
@@ -55,12 +55,12 @@ namespace Dev2.Activities.Designers2.GetWebRequest
 
         public bool IsUrlFocused
         {
-            get { return (bool) GetValue(IsUrlFocusedProperty); }
+            get { return (bool)GetValue(IsUrlFocusedProperty); }
             set { SetValue(IsUrlFocusedProperty, value); }
         }
 
         public static readonly DependencyProperty IsUrlFocusedProperty =
-            DependencyProperty.Register("IsUrlFocused", typeof (bool), typeof (GetWebRequestDesignerViewModel),
+            DependencyProperty.Register("IsUrlFocused", typeof(bool), typeof(GetWebRequestDesignerViewModel),
                                         new PropertyMetadata(false));
 
         // DO NOT bind to these properties - these are here for convenience only!!!
@@ -127,7 +127,7 @@ namespace Dev2.Activities.Designers2.GetWebRequest
                                                  .Where(i => !variableList.Contains(i.Key))
                                                  .ToList();
 
-                mustRemove.ForEach(PreviewViewModel.Inputs.Remove);
+                mustRemove.ForEach(r => PreviewViewModel.Inputs.Remove(r));
 
                 mustRemainKeys.ForEach(k => variableList.Remove(k.Key));
 
@@ -243,10 +243,10 @@ namespace Dev2.Activities.Designers2.GetWebRequest
         }
 
         readonly Func<string, string, List<Tuple<string, string>>, string> WebInvoke = (method, url, headers) =>
-            {
-                var webInvoker = new WebRequestInvoker();
-                return webInvoker.ExecuteRequest(method, url, headers);
-            };
+        {
+            var webInvoker = new WebRequestInvoker();
+            return webInvoker.ExecuteRequest(method, url, headers);
+        };
 
         string GetPreviewOutput(string url)
         {
