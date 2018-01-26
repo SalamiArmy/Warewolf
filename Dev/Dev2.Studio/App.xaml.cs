@@ -66,27 +66,19 @@ using Dev2.Studio.Core;
 using Dev2.Factory;            
 
 namespace Dev2.Studio
-
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : System.Windows.Application, IApp
     {
         ShellViewModel _shellViewModel;
-        //This is ignored because when starting the studio twice the second one crashes without this line
-
-
-
         private Mutex _processGuard = null;
-
-
         private AppExceptionHandler _appExceptionHandler;
         private bool _hasShutdownStarted;
+
         public App(IMergeFactory mergeFactory)
         {
             this.mergeFactory = mergeFactory;
         }
+
         public App() : this(new MergeFactory())        
         {
             // PrincipalPolicy must be set to WindowsPrincipal to check roles.
@@ -385,7 +377,6 @@ namespace Dev2.Studio
         public void Dispose()
         {
             _resetSplashCreated.Dispose();
-
         }
     }
 

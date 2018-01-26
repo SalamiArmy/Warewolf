@@ -27,7 +27,6 @@ using Dev2.Data.Decisions.Operations;
 using Dev2.Data.TO;
 using Dev2.Data.Util;
 using Dev2.DataList;
-using Dev2.DataList.Contract;
 using Dev2.Diagnostics;
 using Dev2.Diagnostics.Debug;
 using Dev2.DynamicServices.Objects;

@@ -8,7 +8,6 @@ using Moq;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Data;
 using Dev2.Communication;
-using Castle.Core.Resource;
 using Dev2.Common;
 using Dev2.Runtime.Interfaces;
 using Dev2.Workspaces;

@@ -12,11 +12,9 @@ using System;
 using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Globalization;
-using Dev2.Interfaces;
 using Dev2.Tests.Activities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
-using Dev2.Common;
 
 namespace ActivityUnitTests.ActivityTests
 

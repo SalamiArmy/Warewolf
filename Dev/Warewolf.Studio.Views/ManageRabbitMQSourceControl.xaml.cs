@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Controls;
-using System.Windows.Data;
 using Dev2.Common.Interfaces;
 using Microsoft.Practices.Prism.Mvvm;
 using Warewolf.Studio.ViewModels;
@@ -10,7 +9,7 @@ namespace Warewolf.Studio.Views
     /// <summary>
     /// Interaction logic for ManageRabbitMQSourceControl.xaml
     /// </summary>
-    
+
     public partial class ManageRabbitMQSourceControl : IView, ICheckControlEnabledView
     {
         public ManageRabbitMQSourceControl()

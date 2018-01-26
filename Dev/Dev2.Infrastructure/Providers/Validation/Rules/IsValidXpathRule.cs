@@ -10,7 +10,6 @@
 
 using System;
 using System.Xml;
-using System.Xml.XPath;
 using Dev2.Common.Interfaces.Infrastructure.Providers.Errors;
 using Warewolf.Resource.Errors;
 

@@ -12,7 +12,6 @@ using System;
 using Dev2.Common.Interfaces;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using System.Xml;
 
 namespace Dev2.Runtime.WebServer

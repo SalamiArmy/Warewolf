@@ -19,11 +19,6 @@ using Dev2.Runtime.Interfaces;
 using Dev2.Runtime.ServiceModel.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Dev2.Common;
-using System.IO;
-using System.Threading;
-using System.Collections.Generic;
-using Dev2.Common.Wrappers;
 using Dev2.Common.Interfaces.Versioning;
 
 namespace Dev2.Tests.Runtime.Hosting

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Dev2.Common.Interfaces.Toolbox;
 
 namespace Warewolf.Core

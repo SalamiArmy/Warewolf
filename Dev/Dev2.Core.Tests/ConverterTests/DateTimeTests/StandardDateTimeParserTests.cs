@@ -9,9 +9,7 @@
 */
 
 using System;
-using System.Globalization;
 using System.Reflection;
-using Dev2.Common;
 using Dev2.Common.DateAndTime;
 using Dev2.Common.Interfaces.Core.Convertors.DateAndTime;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

@@ -14,10 +14,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using ActivityUnitTests;
-using Dev2.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
-using System.Globalization;
 
 namespace Dev2.Tests.Activities.ActivityTests
 {

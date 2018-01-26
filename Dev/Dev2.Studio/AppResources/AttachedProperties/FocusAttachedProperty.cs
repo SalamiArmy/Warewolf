@@ -8,11 +8,10 @@
 *  @license GNU Affero General Public License <http://www.gnu.org/licenses/agpl-3.0.html>
 */
 
-using System;
 using System.Windows;
-using System.Windows.Input;
 
-namespace Dev2.Studio.AppResources.AttachedProperties {
+namespace Dev2.Studio.AppResources.AttachedProperties
+{
     public static class FocusAttachedProperty {
 
         public static readonly DependencyProperty IsFocusedProperty =

@@ -9,7 +9,6 @@ using ActivityUnitTests;
 using Dev2.Activities.Scripting;
 using Dev2.Common.Interfaces.Enums;
 using Dev2.Development.Languages.Scripting;
-using Dev2.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 using Warewolf.Core;

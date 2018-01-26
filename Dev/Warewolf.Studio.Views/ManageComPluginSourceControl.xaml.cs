@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using Dev2.Common.Interfaces;
 using Infragistics.Controls.Menus;
 using Microsoft.Practices.Prism.Mvvm;

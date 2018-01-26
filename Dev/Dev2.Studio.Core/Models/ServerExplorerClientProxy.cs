@@ -9,7 +9,6 @@
 */
 
 using System;
-using System.Linq;
 using Dev2.Common.Interfaces.Explorer;
 using Dev2.Common.Interfaces.Infrastructure;
 using Dev2.Communication;

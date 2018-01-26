@@ -14,13 +14,12 @@ using Dev2.Studio.Interfaces.Enums;
 using Dev2.Studio.ViewModels.Help;
 using Dev2.Studio.Views.Help;
 using Dev2.ViewModels.Help;
-using Dev2.Webs.Callbacks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
 namespace Dev2.Core.Tests
 {
-    
+
     [TestClass]
     public class HelpViewModelTests
     {

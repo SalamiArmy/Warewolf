@@ -10,7 +10,6 @@
 
 using System;
 using System.ComponentModel;
-using System.Reflection;
 
 namespace Dev2.Common.ExtMethods
 {

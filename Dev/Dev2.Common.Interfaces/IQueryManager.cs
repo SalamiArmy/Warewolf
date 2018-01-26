@@ -4,7 +4,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Dev2.Common.Interfaces.DB;
 using Dev2.Common.Interfaces.Explorer;
-using Dev2.Common.Interfaces.Infrastructure;
 using Dev2.Common.Interfaces.Infrastructure.Communication;
 using Dev2.Common.Interfaces.ServerProxyLayer;
 using Dev2.Common.Interfaces.Toolbox;

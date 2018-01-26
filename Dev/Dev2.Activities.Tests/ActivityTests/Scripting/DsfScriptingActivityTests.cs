@@ -20,7 +20,6 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using Dev2.Development.Languages.Scripting;
-using Dev2.Interfaces;
 
 
 namespace Dev2.Tests.Activities.ActivityTests.Scripting

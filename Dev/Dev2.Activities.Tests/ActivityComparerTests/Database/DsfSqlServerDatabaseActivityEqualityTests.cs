@@ -1,11 +1,6 @@
 ﻿using System;
 using Dev2.Activities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Dev2.Services.Execution;
-using System.Runtime.InteropServices.ComTypes;
-using Dev2.Runtime.ServiceModel.Data;
-using Moq;
-using Dev2.Runtime.ESB.Execution;
 
 namespace Dev2.Tests.Activities.ActivityComparerTests.Database
 {

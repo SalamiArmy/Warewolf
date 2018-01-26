@@ -9,7 +9,6 @@
 */
 
 using System;
-using Dev2.Util;
 
 #if ! DEBUG
 using Dev2.Studio.Utils;

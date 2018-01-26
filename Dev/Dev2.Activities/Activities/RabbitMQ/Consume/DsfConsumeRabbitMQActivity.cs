@@ -25,7 +25,6 @@ using Dev2.Common.Interfaces.Data;
 using Dev2.Data.Util;
 using Dev2.Interfaces;
 using Dev2.Runtime.Interfaces;
-using RabbitMQ.Client.Events;
 using Unlimited.Applications.BusinessDesignStudio.Activities.Utilities;
 using Warewolf.Core;
 using Warewolf.Resource.Errors;

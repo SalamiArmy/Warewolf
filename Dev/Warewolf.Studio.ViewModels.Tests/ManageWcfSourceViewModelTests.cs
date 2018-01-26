@@ -9,7 +9,6 @@ using Dev2.Common.Interfaces.Core;
 using Dev2.Common.Interfaces.SaveDialog;
 using Dev2.Studio.Interfaces;
 using System.Text;
-using System.Xml.Linq;
 
 namespace Warewolf.Studio.ViewModels.Tests
 {

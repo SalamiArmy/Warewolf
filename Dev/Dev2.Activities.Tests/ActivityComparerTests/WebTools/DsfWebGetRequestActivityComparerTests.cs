@@ -1,10 +1,6 @@
 ﻿using System;
 using Dev2.Activities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Unlimited.Framework.Converters.Graph.Ouput;
-using Dev2.Common.Interfaces.Core.Graph;
-using System.Collections.Generic;
-using Dev2.Common.Interfaces;
 
 namespace Dev2.Tests.Activities.ActivityComparerTests.WebTools
 {

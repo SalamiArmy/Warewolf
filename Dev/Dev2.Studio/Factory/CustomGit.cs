@@ -1,10 +1,7 @@
 ﻿using Dev2.Common;
 using Dev2.Common.Interfaces;
-using Microsoft.Win32;
 using System;
-using System.Configuration;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 
 namespace Dev2.Factory

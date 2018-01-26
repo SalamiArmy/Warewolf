@@ -20,7 +20,6 @@
 #endregion
 
 using System.Collections.Generic;
-using System.Linq;
 using Dev2.Common.Interfaces.Core.DynamicServices;
 using Dev2.DynamicServices.Objects.Base;
 
@@ -34,7 +33,7 @@ namespace Dev2.DynamicServices
     #endregion
 
     #region Service Action Input Class - Represents an for a service action
-    
+
     public class ServiceActionInput : DynamicServiceObjectBase
     {
         #region Public Properties

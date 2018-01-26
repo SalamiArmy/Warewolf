@@ -18,7 +18,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 using System;
-using Dev2.TO;
 
 namespace Dev2.Activities.Designers.Tests.CaseConvert
 {

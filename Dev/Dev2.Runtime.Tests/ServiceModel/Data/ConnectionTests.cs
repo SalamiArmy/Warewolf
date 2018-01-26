@@ -9,8 +9,6 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
 using Dev2.Data.ServiceModel;
 using Dev2.Runtime.ServiceModel.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

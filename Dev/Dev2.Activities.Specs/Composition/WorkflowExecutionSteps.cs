@@ -32,7 +32,7 @@ using Dev2.Activities.Scripting;
 using Dev2.Activities.RabbitMQ.Publish;
 using Dev2.Activities.SelectAndApply;
 using Dev2.Activities.Sharepoint;
-using Dev2.Activities.Specs.BaseTypes;            
+using Dev2.Activities.Specs.BaseTypes;
 using Dev2.Common.Common;
 using Dev2.Common.ExtMethods;
 using Dev2.Common.Interfaces.Core.DynamicServices;
@@ -68,11 +68,6 @@ using Dev2.Common.Interfaces.DB;
 using Dev2.Common.Interfaces.Enums;
 using Dev2.Common.Interfaces.Infrastructure.SharedModels;
 using Dev2.Common.Interfaces.Monitoring;
-using Dev2.Common.Interfaces.ServerProxyLayer;
-using Dev2.Data.TO;
-using Dev2.DynamicServices;
-using Dev2.DynamicServices.Objects;
-using Dev2.Interfaces;
 using Dev2.PerformanceCounters.Counters;
 using Dev2.PerformanceCounters.Management;
 using Dev2.Studio.Core.Factories;
@@ -84,9 +79,8 @@ using Warewolf.Tools.Specs.BaseTypes;
 using Dev2.Data.Interfaces.Enums;
 using TestingDotnetDllCascading;
 using Warewolf.Sharepoint;
-using Dev2.Studio.ViewModels;
 using Caliburn.Micro;
-using Dev2.Studio.Core.Helpers;      
+using Dev2.Studio.Core.Helpers;
 
 namespace Dev2.Activities.Specs.Composition
 {

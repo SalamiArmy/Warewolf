@@ -11,7 +11,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using Dev2.AppResources.Converters;

@@ -11,7 +11,6 @@
 using System.Collections.Generic;
 using Dev2.Activities;
 using Dev2.Factories;
-using Dev2.Interfaces;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.TO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

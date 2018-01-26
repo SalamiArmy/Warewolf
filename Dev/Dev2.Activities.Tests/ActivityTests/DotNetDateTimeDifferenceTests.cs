@@ -11,7 +11,6 @@
 using System;
 using System.Activities.Statements;
 using System.Collections.Generic;
-using Dev2.Interfaces;
 using Dev2.Tests.Activities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Dev2.Common;

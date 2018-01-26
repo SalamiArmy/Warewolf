@@ -24,7 +24,6 @@ using Warewolf.Security.Encryption;
 using System.Runtime.InteropServices;
 using System.Runtime.ConstrainedExecution;
 using System.Security;
-using Dev2.Common.Interfaces;
 
 namespace Dev2.Integration.Tests.Services.Sql
 {

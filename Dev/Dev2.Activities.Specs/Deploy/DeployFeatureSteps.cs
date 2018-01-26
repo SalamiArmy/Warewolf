@@ -10,7 +10,6 @@ using Dev2.Studio.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 using System.Linq;
-using System.IO;
 
 namespace Dev2.Activities.Specs.Deploy
 {

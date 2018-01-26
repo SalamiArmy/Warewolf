@@ -26,8 +26,6 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 using Warewolf.Tools.Specs.BaseTypes;
 using Dev2.Activities.Specs.BaseTypes;
 using Dev2.Data.Interfaces.Enums;
-using Dev2.Interfaces;
-using Dev2.TO;
 
 namespace Dev2.Activities.Specs.Toolbox.ControlFlow.Sequence
 {

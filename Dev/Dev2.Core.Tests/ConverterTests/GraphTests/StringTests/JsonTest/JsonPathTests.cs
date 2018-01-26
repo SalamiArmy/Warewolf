@@ -9,7 +9,6 @@
 */
 
 using System.Linq;
-using Dev2.Common.Interfaces.Core.Graph;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using Unlimited.Framework.Converters.Graph.String.Json;

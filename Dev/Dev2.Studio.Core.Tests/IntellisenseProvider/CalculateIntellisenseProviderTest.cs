@@ -9,7 +9,6 @@
 */
 
 using System;
-using System.Collections.Generic;
 using Dev2.Calculate;
 using Dev2.Studio.InterfaceImplementors;
 using Dev2.Studio.Interfaces;

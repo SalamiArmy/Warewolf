@@ -10,7 +10,6 @@
 
 using System.Collections.Generic;
 using Dev2.Factories;
-using Dev2.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 

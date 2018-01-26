@@ -14,7 +14,6 @@ using System.Net.Http;
 using System.Security.Principal;
 using Dev2.Runtime.WebServer;
 using Dev2.Runtime.WebServer.Controllers;
-using Dev2.Runtime.WebServer.Handlers;
 using Moq;
 
 namespace Dev2.Tests.Runtime.WebServer.Controllers

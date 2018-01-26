@@ -10,12 +10,12 @@
 
 using System;
 using Dev2.Common;
-using Dev2.Common.Interfaces.StringTokenizer.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
 
-namespace Dev2.Tests {
+namespace Dev2.Tests
+{
     /// <summary>
     /// Summary description for TokenizerTest
     /// </summary>

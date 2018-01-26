@@ -4,7 +4,6 @@ using Dev2.Common.Interfaces;
 using Dropbox.Api.Files;
 using System;
 using Dev2.Common.Interfaces.Wrappers;
-using Dropbox.Api.Stone;
 
 namespace Dev2.Activities.DropBox2016.DownloadActivity
 {

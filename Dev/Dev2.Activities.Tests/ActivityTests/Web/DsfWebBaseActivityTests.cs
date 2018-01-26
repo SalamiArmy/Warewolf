@@ -2,7 +2,6 @@
 using System.Activities;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 using Dev2.Activities;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.DB;

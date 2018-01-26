@@ -1,5 +1,4 @@
 ﻿using System;
-using Dev2.Common.Interfaces.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Dev2.Activities;
 

@@ -15,10 +15,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Framework.Converters.Graph;
 using Unlimited.Framework.Converters.Graph.Poco;
 using Unlimited.Framework.Converters.Graph.String;
-using Unlimited.Framework.Converters.Graph.String.Json;
 using Unlimited.Framework.Converters.Graph.String.Xml;
 
-namespace Unlimited.UnitTest.Framework.ConverterTests.GraphTests.StringTests {
+namespace Unlimited.UnitTest.Framework.ConverterTests.GraphTests.StringTests
+{
     [TestClass]
     public class StringInterrogatorTests {
 

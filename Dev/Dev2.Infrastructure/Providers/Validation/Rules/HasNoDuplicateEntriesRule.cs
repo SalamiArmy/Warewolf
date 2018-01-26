@@ -9,7 +9,6 @@
 */
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Dev2.Common.Interfaces.Infrastructure.Providers.Errors;
 using Warewolf.Resource.Errors;

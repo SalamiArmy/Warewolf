@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using Dev2.Common.Interfaces.Data;
-using Dev2.Communication;
 using Dev2.DynamicServices;
 using Dev2.Runtime.ServiceModel.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

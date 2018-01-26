@@ -1,7 +1,6 @@
 ﻿using Dev2.Activities.Designers2.RabbitMQ.Publish;
 using Dev2.Activities.RabbitMQ.Publish;
 using Dev2.Common.Interfaces;
-using Dev2.Common.Interfaces.Infrastructure.Providers.Errors;
 using Dev2.Common.Interfaces.RabbitMQ;
 using Dev2.Studio.Core.Activities.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

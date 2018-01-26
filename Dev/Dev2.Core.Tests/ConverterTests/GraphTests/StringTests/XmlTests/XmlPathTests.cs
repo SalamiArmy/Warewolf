@@ -10,7 +10,6 @@
 
 using System.Linq;
 using System.Xml.Linq;
-using Dev2.Common.Interfaces.Core.Graph;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Framework.Converters.Graph.String.Xml;
 
