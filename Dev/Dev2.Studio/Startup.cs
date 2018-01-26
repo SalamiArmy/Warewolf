@@ -13,7 +13,7 @@ namespace Dev2
         }
     }
 
-    public class SingleInstanceApplicationWrapper : Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase
+    public class SingleInstanceApplicationWrapper : Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase, IDisposable
     {
         App _app;
 
@@ -37,5 +37,29 @@ namespace Dev2
                 _app.OpenBasedOnArguments(new WarwolfStartupEventArgs(eventArgs));
             }
         }
+
+        #region IDisposable Support
+
+        private bool disposedValue;
+
+        protected virtual void Dispose(bool disposing)
+        {            
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    _app.Dispose();
+                }
+
+                disposedValue = true;
+            }
+        }
+        
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        #endregion
     }
 }
