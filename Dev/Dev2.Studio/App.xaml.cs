@@ -67,7 +67,7 @@ using Dev2.Factory;
 
 namespace Dev2.Studio
 {
-    public class App : System.Windows.Application, IApp, IDisposable
+    public partial class App : System.Windows.Application, IApp
     {
         ShellViewModel _shellViewModel;
         private Mutex _processGuard = null;
