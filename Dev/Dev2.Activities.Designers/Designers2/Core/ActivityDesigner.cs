@@ -1,7 +1,7 @@
 /*
 *  Warewolf - Once bitten, there's no going back
 *  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
-*  Licensed under GNU Affero General Public License 3.0 or later. 
+*  Licensed under GNU Affero General Public License 3.0 or later.
 *  Some rights reserved.
 *  Visit our website for more information <http://warewolf.io/>
 *  AUTHORS <http://warewolf.io/authors.php> , CONTRIBUTORS <http://warewolf.io/contributors.php>
@@ -44,7 +44,7 @@ namespace Dev2.Activities.Designers2.Core
         readonly AdornerControl _errorsAdorner;
         bool _isDisposed;
         DependencyPropertyDescriptor _zIndexProperty;
-        
+
         protected TViewModel _dataContext;
 
         bool _isSetFocusActionSet;
@@ -59,7 +59,7 @@ namespace Dev2.Activities.Designers2.Core
             PreviewKeyDown += OnPreviewKeyDown;
         }
 
-        void OnPreviewKeyDown(object sender, KeyEventArgs keyEventArgs)
+        static void OnPreviewKeyDown(object sender, KeyEventArgs keyEventArgs)
         {
             if (keyEventArgs.Key == Key.Z && Keyboard.Modifiers == ModifierKeys.Control)
             {
@@ -139,8 +139,8 @@ namespace Dev2.Activities.Designers2.Core
                         ContentDesignerTemplate.RightButtons.Clear();
                         ContentDesignerTemplate.LeftButtons.Clear();
                     }
-
                 }
+                ViewModel.IsMerge = dataContext.GetType().Name == "MergeWorkflowViewModel";
                 return true;
             }
             return false;
@@ -338,7 +338,7 @@ namespace Dev2.Activities.Designers2.Core
         {
 
         }
-        
+
         public void Dispose()
         {
             Dispose(true);
@@ -386,26 +386,19 @@ namespace Dev2.Activities.Designers2.Core
                 {
                     base.OnContextMenuOpening(e);
 
-                    if (ViewModel != null && ViewModel.HasLargeView)
+                    if (ViewModel != null && ViewModel.HasLargeView && !ViewModel.ShowSmall && ViewModel.ShowSmall)
                     {
-                        var header = "Collapse Large View";
-                        var fontAwesomeIcon = FontAwesomeIcon.Compress;
-                        if (ViewModel.ShowSmall)
+                        var imageSource = ImageAwesome.CreateImageSource(FontAwesomeIcon.Expand, Brushes.Black);
+                        var icon = new Image
                         {
-                            fontAwesomeIcon = FontAwesomeIcon.Expand;
-                            header = "Show Large View";
-                        }
-                        else
-                        {
-                            if (ViewModel.ShowSmall)
-                            {
-                                var imageSource = ImageAwesome.CreateImageSource(FontAwesomeIcon.Expand, Brushes.Black);
-                                var icon = new Image { Source = imageSource, Height = 14, Width = 14 };
-                                _showCollapseLargeView.Header = "Show Large View";
-                                _showCollapseLargeView.Icon = icon;
-                            }
-                        }
+                            Source = imageSource,
+                            Height = 14,
+                            Width = 14
+                        };
+                        _showCollapseLargeView.Header = "Show Large View";
+                        _showCollapseLargeView.Icon = icon;
                     }
+
                 }
             }
         }
