@@ -66,20 +66,12 @@ using Dev2.Studio.Core;
 using Dev2.Factory;            
 
 namespace Dev2.Studio
-
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : System.Windows.Application, IApp
+    public partial class App : System.Windows.Application, IApp, IDisposable
     {
         ShellViewModel _shellViewModel;
-        //This is ignored because when starting the studio twice the second one crashes without this line
-
-
-
+        
         private Mutex _processGuard = null;
-
 
         private AppExceptionHandler _appExceptionHandler;
         private bool _hasShutdownStarted;
@@ -247,7 +239,6 @@ namespace Dev2.Studio
             });
             var activityBuilder = new WorkflowHelper().CreateWorkflow("DummyWF");
             workflowDesigner.Load(activityBuilder);
-            workflowDesigner = null;
         }
 
         async void CheckForDuplicateResources()
@@ -369,6 +360,8 @@ namespace Dev2.Studio
 
         void OnApplicationDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
+            Dev2Logger.Error("Unhandled Exception", e.Exception, GlobalConstants.WarewolfError);
+
             Tracker.TrackException(GetType().Name, "OnApplicationDispatcherUnhandledException", e.Exception);
             if (_appExceptionHandler != null)
             {
@@ -383,7 +376,6 @@ namespace Dev2.Studio
         public void Dispose()
         {
             _resetSplashCreated.Dispose();
-
         }
     }
 
