@@ -41,6 +41,23 @@
   </Configuration>
   <InitializeActions />
   <ExecuteActions>
+    <AssertAction UIObjectName="WorkflowTabUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.WorkflowTab.ContentPane.ContentDockManager.SplitPaneRight.DebugOutput.DebugOutputTree.UISQLServerDatabaseTreeItem.UISQLErrorError15700seText">
+      <ParameterName />
+      <PropertyName>ControlType</PropertyName>
+      <ExpectedValue>Text</ExpectedValue>
+      <MessageOnValidationFailure />
+      <Type>String</Type>
+      <PropertyCondition>AreEqual</PropertyCondition>
+    </AssertAction>
+    <TestStepMarkerAction Comment="" MarkerInformation="Open_Workflow_Tab_UI_Map_Designer_To_Flowchart">
+      <ParameterName />
+      <StepId>-1</StepId>
+      <Direction>Start</Direction>
+      <Outcome />
+      <Disabled>false</Disabled>
+      <WorkItemId>0</WorkItemId>
+      <MarkerRegionType>Assertion</MarkerRegionType>
+    </TestStepMarkerAction>
     <AssertAction UIObjectName="ToolsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.WorkflowTab.WorkSurfaceContext.WorkflowDesignerView.DesignerView.ScrollViewerPane.ActivityTypeDesigner.WorkflowItemPresenter.Flowchart">
       <ParameterName />
       <PropertyName>Exists</PropertyName>
@@ -3969,6 +3986,39 @@
                                                             <PropertyCondition Name="ControlType">Text</PropertyCondition>
                                                             <PropertyCondition Name="AutomationId">UI_DebugOutputValueTextBlock_AutoID</PropertyCondition>
                                                             <PropertyCondition Name="Instance">4</PropertyCondition>
+                                                          </AndCondition>
+                                                          <SupportLevel>0</SupportLevel>
+                                                          <Descendants />
+                                                        </UIObject>
+                                                      </Descendants>
+                                                    </UIObject>
+                                                    <UIObject ControlType="TreeItem" Id="UISQLServerDatabaseTreeItem" FriendlyName="SQL Server Database" SpecialControlType="None">
+                                                      <TechnologyName>UIA</TechnologyName>
+                                                      <WindowTitles>
+                                                        <WindowTitle>Warewolf (DEV2\SANELE.MTHEMBU)</WindowTitle>
+                                                      </WindowTitles>
+                                                      <SearchConfigurations>
+                                                        <SearchConfiguration>Expand</SearchConfiguration>
+                                                      </SearchConfigurations>
+                                                      <AndCondition>
+                                                        <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
+                                                        <PropertyCondition Name="ControlType">TreeItem</PropertyCondition>
+                                                        <PropertyCondition Name="AutomationId">Step</PropertyCondition>
+                                                      </AndCondition>
+                                                      <SupportLevel>0</SupportLevel>
+                                                      <Descendants>
+                                                        <UIObject ControlType="Text" Id="UISQLErrorError15700seText" FriendlyName="SQL Error: Error 15700, severity -1, state 1 was r..." SpecialControlType="None">
+                                                          <TechnologyName>UIA</TechnologyName>
+                                                          <WindowTitles>
+                                                            <WindowTitle>Warewolf (DEV2\SANELE.MTHEMBU)</WindowTitle>
+                                                          </WindowTitles>
+                                                          <AndCondition>
+                                                            <PropertyCondition Name="FrameworkId">WPF</PropertyCondition>
+                                                            <PropertyCondition Name="ControlType">Text</PropertyCondition>
+                                                            <PropertyCondition Name="Name">SQL Error: Error 15700, severity -1, state 1 was raised, but no message with that error number was found in sys.messages. If error is larger than 50000, make sure the user-defined message is added using sp_addmessage.
+An invalid parameter or option was specified for procedure 'some_procedure'.
+This is an error
+An invalid parameter or option was specified for procedure 'some_procedure'.</PropertyCondition>
                                                           </AndCondition>
                                                           <SupportLevel>0</SupportLevel>
                                                           <Descendants />

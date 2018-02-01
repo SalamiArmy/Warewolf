@@ -30,6 +30,19 @@ namespace Warewolf.UI.Tests.WorkflowTab.WorkflowTabUIMapClasses
     {
         
         /// <summary>
+        /// Open_Workflow_Tab_UI_Map_Designer_To_Flowchart - Use 'Open_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void Open_Workflow_Tab_UI_Map_Designer_To_Flowchart()
+        {
+            #region Variable Declarations
+            WpfText uISQLErrorError15700seText = this.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.WorkflowTab.ContentPane.ContentDockManager.SplitPaneRight.DebugOutput.DebugOutputTree.UISQLServerDatabaseTreeItem.UISQLErrorError15700seText;
+            #endregion
+
+            // Verify that the 'ControlType' property of 'SQL Error: Error 15700, severity -1, state 1 was r...' label equals 'Text'
+            Assert.AreEqual(this.Open_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues.UISQLErrorError15700seTextControlType, uISQLErrorError15700seText.ControlType.ToString());
+        }
+        
+        /// <summary>
         /// Open_Tools_UI_Map_Designer_To_Flowchart - Use 'Open_Tools_UI_Map_Designer_To_FlowchartParams' to pass parameters into this method.
         /// </summary>
         public void Open_Tools_UI_Map_Designer_To_Flowchart()
@@ -43,6 +56,18 @@ namespace Warewolf.UI.Tests.WorkflowTab.WorkflowTabUIMapClasses
         }
         
         #region Properties
+        public virtual Open_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues Open_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues
+        {
+            get
+            {
+                if ((this.mOpen_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues == null))
+                {
+                    this.mOpen_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues = new Open_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues();
+                }
+                return this.mOpen_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues;
+            }
+        }
+        
         public virtual Open_Tools_UI_Map_Designer_To_FlowchartParams Open_Tools_UI_Map_Designer_To_FlowchartParams
         {
             get
@@ -93,6 +118,8 @@ namespace Warewolf.UI.Tests.WorkflowTab.WorkflowTabUIMapClasses
         #endregion
         
         #region Fields
+        private Open_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues mOpen_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues;
+        
         private Open_Tools_UI_Map_Designer_To_FlowchartParams mOpen_Tools_UI_Map_Designer_To_FlowchartParams;
         
         private MainStudioWindow mMainStudioWindow;
@@ -100,6 +127,21 @@ namespace Warewolf.UI.Tests.WorkflowTab.WorkflowTabUIMapClasses
         private UICodedUITestBuilderWindow mUICodedUITestBuilderWindow;
         
         private UIWpfWindow mUIWpfWindow;
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'Open_Workflow_Tab_UI_Map_Designer_To_Flowchart'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class Open_Workflow_Tab_UI_Map_Designer_To_FlowchartExpectedValues
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Verify that the 'ControlType' property of 'SQL Error: Error 15700, severity -1, state 1 was r...' label equals 'Text'
+        /// </summary>
+        public string UISQLErrorError15700seTextControlType = "Text";
         #endregion
     }
     
@@ -6806,6 +6848,18 @@ namespace Warewolf.UI.Tests.WorkflowTab.WorkflowTabUIMapClasses
                 return this.mFindRecordIndexTreeItem;
             }
         }
+        
+        public UISQLServerDatabaseTreeItem UISQLServerDatabaseTreeItem
+        {
+            get
+            {
+                if ((this.mUISQLServerDatabaseTreeItem == null))
+                {
+                    this.mUISQLServerDatabaseTreeItem = new UISQLServerDatabaseTreeItem(this);
+                }
+                return this.mUISQLServerDatabaseTreeItem;
+            }
+        }
         #endregion
         
         #region Fields
@@ -6822,6 +6876,8 @@ namespace Warewolf.UI.Tests.WorkflowTab.WorkflowTabUIMapClasses
         private WpfTreeItem mSelectandapplyTreeItem;
         
         private FindRecordIndexTreeItem mFindRecordIndexTreeItem;
+        
+        private UISQLServerDatabaseTreeItem mUISQLServerDatabaseTreeItem;
         #endregion
     }
     
@@ -7233,6 +7289,46 @@ namespace Warewolf.UI.Tests.WorkflowTab.WorkflowTabUIMapClasses
         private WpfText mInputsSearchTypeItemText;
         
         private WpfText mInputsItem2Text;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UISQLServerDatabaseTreeItem : WpfTreeItem
+    {
+        
+        public UISQLServerDatabaseTreeItem(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfTreeItem.PropertyNames.AutomationId] = "Step";
+            this.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfText UISQLErrorError15700seText
+        {
+            get
+            {
+                if ((this.mUISQLErrorError15700seText == null))
+                {
+                    this.mUISQLErrorError15700seText = new WpfText(this);
+                    #region Search Criteria
+                    this.mUISQLErrorError15700seText.SearchProperties[WpfText.PropertyNames.Name] = @"SQL Error: Error 15700, severity -1, state 1 was raised, but no message with that error number was found in sys.messages. If error is larger than 50000, make sure the user-defined message is added using sp_addmessage.
+An invalid parameter or option was specified for procedure 'some_procedure'.
+This is an error
+An invalid parameter or option was specified for procedure 'some_procedure'.";
+                    this.mUISQLErrorError15700seText.SearchConfigurations.Add(SearchConfiguration.ExpandWhileSearching);
+                    this.mUISQLErrorError15700seText.WindowTitles.Add("Warewolf (DEV2\\SANELE.MTHEMBU)");
+                    #endregion
+                }
+                return this.mUISQLErrorError15700seText;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfText mUISQLErrorError15700seText;
         #endregion
     }
     

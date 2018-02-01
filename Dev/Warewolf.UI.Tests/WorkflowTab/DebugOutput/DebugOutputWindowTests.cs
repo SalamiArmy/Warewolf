@@ -48,7 +48,7 @@ namespace Warewolf.UI.Tests.DebugOutputTests
             WorkflowTabUIMap.Click_AssignStep_InDebugOutput();
             var assignFocus = DataToolsUIMap.MainStudioWindow.TabManSplitPane.TabMan.WorkflowTab.WorkSurfaceContext.WorkflowDesignerView.WorkflowDesigner_Custom.DesignerView.ScrollViewerPane.ActivityTypeDesigner.WorkflowItemPresenter.Flowchart.MultiAssign.ItemStatus.Contains("IsPrimarySelection=True IsSelection=True");
             Assert.IsTrue(assignFocus);
-            WorkflowTabUIMap.Click_DesicionStep_InDebugOutput();
+            WorkflowTabUIMap.Click_DecisionStep_InDebugOutput();
             var assignHasNoFocus = DataToolsUIMap.MainStudioWindow.TabManSplitPane.TabMan.WorkflowTab.WorkSurfaceContext.WorkflowDesignerView.WorkflowDesigner_Custom.DesignerView.ScrollViewerPane.ActivityTypeDesigner.WorkflowItemPresenter.Flowchart.MultiAssign.ItemStatus.Contains("IsPrimarySelection=False IsSelection=False");
             Assert.IsTrue(assignHasNoFocus, "Assign tool is not selected on the design surface after it was executed with the F6 keyboard shortcut.");
         }
@@ -63,7 +63,7 @@ namespace Warewolf.UI.Tests.DebugOutputTests
             WorkflowTabUIMap.Click_AssignStep_InDebugOutput();
             var assignFocus = DataToolsUIMap.MainStudioWindow.TabManSplitPane.TabMan.WorkflowTab.WorkSurfaceContext.WorkflowDesignerView.WorkflowDesigner_Custom.DesignerView.ScrollViewerPane.ActivityTypeDesigner.WorkflowItemPresenter.Flowchart.MultiAssign.ItemStatus.Contains("IsPrimarySelection=True IsSelection=True");
             Assert.IsTrue(assignFocus);
-            WorkflowTabUIMap.Click_DesicionStep_InDebugOutput();
+            WorkflowTabUIMap.Click_DecisionStep_InDebugOutput();
             var assignHasNoFocus = DataToolsUIMap.MainStudioWindow.TabManSplitPane.TabMan.WorkflowTab.WorkSurfaceContext.WorkflowDesignerView.WorkflowDesigner_Custom.DesignerView.ScrollViewerPane.ActivityTypeDesigner.WorkflowItemPresenter.Flowchart.MultiAssign.ItemStatus.Contains("IsPrimarySelection=False IsSelection=False");
             Assert.IsTrue(assignHasNoFocus, "Dropbox delete tool is not selected on the design surface after it was executed with the F6 keyboard shortcut.");
         }
@@ -121,6 +121,17 @@ namespace Warewolf.UI.Tests.DebugOutputTests
             UIMap.Press_F6();
             var dropboxListHasFocus = DropboxToolsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.WorkflowTab.WorkSurfaceContext.WorkflowDesignerView.DesignerView.ScrollViewerPane.ActivityTypeDesigner.WorkflowItemPresenter.Flowchart.DropboxFileList.ItemStatus.Contains("IsPrimarySelection=True IsSelection=True");
             Assert.IsTrue(dropboxListHasFocus, "Dropbox list tool is not selected on the design surface after it was executed with the F6 keyboard shortcut.");
+        }
+
+        [TestMethod]
+        [TestCategory("Database Tools")]
+        public void Executing_Sql_Procedure_With_Errors()
+        {
+            ExplorerUIMap.Filter_Explorer("Raise_Hell_Procedure");
+            Assert.IsTrue(ExplorerUIMap.MainStudioWindow.DockManager.SplitPaneLeft.Explorer.ExplorerTree.localhost.FirstItem.Exists, "Source did not save in the explorer UI.");
+            ExplorerUIMap.DoubleClick_Explorer_Localhost_First_Item();
+            UIMap.Press_F6();
+            Assert.IsTrue(WorkflowTabUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.WorkflowTab.ContentPane.ContentDockManager.SplitPaneRight.DebugOutput.DebugOutputTree.UISQLServerDatabaseTreeItem.UISQLErrorError15700seText.Exists);
         }
 
         #region Additional test attributes

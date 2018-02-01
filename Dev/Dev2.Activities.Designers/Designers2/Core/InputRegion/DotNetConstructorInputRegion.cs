@@ -144,7 +144,7 @@ namespace Dev2.Activities.Designers2.Core.InputRegion
                     EmptyIsNull = parameter.EmptyToNull,
                     RequiredField = parameter.IsRequired,
                     TypeName = parameter.TypeName,
-                    IntellisenseFilter = parameter.IsObject ? enIntellisensePartType.JsonObject : enIntellisensePartType.All,
+                    IntellisenseFilter = parameter.IsObject ? enIntellisensePartType.JsonObject : enIntellisensePartType.None,
                     IsObject = parameter.IsObject,
                     Dev2ReturnType = parameter.Dev2ReturnType,
                     ShortTypeName = parameter.ShortTypeName,
@@ -211,7 +211,7 @@ namespace Dev2.Activities.Designers2.Core.InputRegion
             {
                 Inputs = inputs2,
                 IsEnabled = IsEnabled
-            };
+            } as IToolRegion;
         }
 
         public void RestoreRegion(IToolRegion toRestore)
