@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Dev2.Studio.Interfaces;
-using System.Text;                      
+using System.Text;
 using System.Windows;
 using Dev2.Common.Interfaces.Studio.Controller;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 using System.Collections.Generic;
-using System;                  
+using System;
 using Warewolf.MergeParser;
 using Dev2.Activities;
 using Dev2.Communication;
@@ -481,7 +481,7 @@ namespace Dev2.Core.Tests
             var activity = new Mock<IDev2Activity>();
             var arms = new List<(string Description, string Key, string SourceUniqueId, string DestinationUniqueId)>();
             var iniqueId = Guid.NewGuid().ToString();
-            arms.Add(("a", "a", iniqueId, Guid.NewGuid().ToString()));
+            arms.Add(("a -> b", "a", iniqueId, Guid.NewGuid().ToString()));
             activity.Setup(p => p.ArmConnectors()).Returns(arms);
             activity.Setup(p => p.UniqueID).Returns(iniqueId);
             var conflictTreeNode = new ConflictTreeNode(activity.Object, new Point());
@@ -538,7 +538,7 @@ namespace Dev2.Core.Tests
             var activity = new Mock<IDev2Activity>();
             var arms = new List<(string Description, string Key, string SourceUniqueId, string DestinationUniqueId)>();
             var iniqueId = Guid.NewGuid().ToString();
-            arms.Add(("a", iniqueId, iniqueId, Guid.NewGuid().ToString()));
+            arms.Add(("a -> b", iniqueId, iniqueId, Guid.NewGuid().ToString()));
             activity.Setup(p => p.ArmConnectors()).Returns(arms);
             activity.Setup(p => p.UniqueID).Returns(iniqueId);
             b.Key = iniqueId;
@@ -603,7 +603,7 @@ namespace Dev2.Core.Tests
             var activity = new Mock<IDev2Activity>();
             var arms = new List<(string Description, string Key, string SourceUniqueId, string DestinationUniqueId)>();
             var iniqueId = Guid.NewGuid().ToString();
-            arms.Add(("a", iniqueId, iniqueId, Guid.NewGuid().ToString()));
+            arms.Add(("a -> b", iniqueId, iniqueId, Guid.NewGuid().ToString()));
             activity.Setup(p => p.ArmConnectors()).Returns(arms);
             activity.Setup(p => p.UniqueID).Returns(iniqueId);
             b.Key = iniqueId;
@@ -1072,7 +1072,7 @@ namespace Dev2.Core.Tests
             activity.Setup(p => p.UniqueID).Returns(iniqueId);
             b.Key = iniqueId;
             b.UniqueId = iniqueId.ToGuid();
-            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) return false; return true; };
+            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) { return false; } return true; };
             using (var mergeWorkflowViewModel = new MergeWorkflowViewModel(currentResourceModel.Object, differenceResourceModel.Object, false))
             {
                 var methodToRun = typeof(MergeWorkflowViewModel).GetMethod("All", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
@@ -1123,14 +1123,14 @@ namespace Dev2.Core.Tests
             activity.Setup(p => p.UniqueID).Returns(iniqueId);
             b.Key = iniqueId;
             b.UniqueId = iniqueId.ToGuid();
-            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) return false; return true; };
+            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) { return false; } return true; };
             using (var mergeWorkflowViewModel = new MergeWorkflowViewModel(currentResourceModel.Object, differenceResourceModel.Object, false))
             {
                 //---------------Assert Precondition----------------
                 //---------------Execute Test ----------------------
                 mergeWorkflowViewModel.Save();
                 //---------------Test Result -----------------------
-                currentResourceModel.Verify(p => p.Environment.ResourceRepository.SaveToServer(currentResourceModel.Object));
+                currentResourceModel.Verify(p => p.Environment.ResourceRepository.SaveToServer(currentResourceModel.Object, It.IsAny<string>()));
             }
         }
 
@@ -1172,7 +1172,7 @@ namespace Dev2.Core.Tests
             activity.Setup(p => p.UniqueID).Returns(iniqueId);
             b.Key = iniqueId;
             b.UniqueId = iniqueId.ToGuid();
-            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) return false; return true; };
+            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) { return false; } return true; };
             currentResourceModel.Setup(p => p.Environment.ExplorerRepository.UpdateManagerProxy.Rename(It.IsAny<Guid>(), It.IsAny<string>()));
             using (var mergeWorkflowViewModel = new MergeWorkflowViewModel(currentResourceModel.Object, differenceResourceModel.Object, false))
             {
@@ -1182,7 +1182,7 @@ namespace Dev2.Core.Tests
                 mergeWorkflowViewModel.Save();
                 //---------------Test Result -----------------------
                 currentResourceModel.Verify(p => p.Environment.ExplorerRepository.UpdateManagerProxy.Rename(currentResourceModel.Object.ID, currentResourceModel.Object.ResourceName));
-                currentResourceModel.Verify(p => p.Environment.ResourceRepository.SaveToServer(currentResourceModel.Object));
+                currentResourceModel.Verify(p => p.Environment.ResourceRepository.SaveToServer(currentResourceModel.Object, It.IsAny<string>()));
             }
         }
 
@@ -1224,7 +1224,7 @@ namespace Dev2.Core.Tests
             activity.Setup(p => p.UniqueID).Returns(iniqueId);
             b.Key = iniqueId;
             b.UniqueId = iniqueId.ToGuid();
-            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) return false; return true; };
+            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) { return false; } return true; };
             currentResourceModel.Setup(p => p.Environment.ExplorerRepository.UpdateManagerProxy.Rename(It.IsAny<Guid>(), It.IsAny<string>()));
             var currentFactory = new Mock<IConflictModelFactory>();
             currentFactory.Setup(p => p.DataListViewModel.WriteToResourceModel()).Verifiable();
@@ -1243,7 +1243,7 @@ namespace Dev2.Core.Tests
                 currentFactory.Verify(p => p.DataListViewModel.WriteToResourceModel());
                 currentFactory.Verify(p => p.IsVariablesChecked);
                 currentResourceModel.VerifySet(q => q.DataList = It.IsAny<string>());
-                currentResourceModel.Verify(p => p.Environment.ResourceRepository.SaveToServer(currentResourceModel.Object));
+                currentResourceModel.Verify(p => p.Environment.ResourceRepository.SaveToServer(currentResourceModel.Object, It.IsAny<string>()));
             }
         }
 
@@ -1285,7 +1285,7 @@ namespace Dev2.Core.Tests
             activity.Setup(p => p.UniqueID).Returns(iniqueId);
             b.Key = iniqueId;
             b.UniqueId = iniqueId.ToGuid();
-            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) return false; return true; };
+            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) { return false; } return true; };
             currentResourceModel.Setup(p => p.Environment.ExplorerRepository.UpdateManagerProxy.Rename(It.IsAny<Guid>(), It.IsAny<string>()));
             var currentFactory = new Mock<IConflictModelFactory>();
             var diffFactory = new Mock<IConflictModelFactory>();
@@ -1303,7 +1303,7 @@ namespace Dev2.Core.Tests
                 diffFactory.Verify(p => p.DataListViewModel.WriteToResourceModel());
                 currentFactory.Verify(p => p.IsVariablesChecked);
                 currentResourceModel.VerifySet(q => q.DataList = It.IsAny<string>());
-                currentResourceModel.Verify(p => p.Environment.ResourceRepository.SaveToServer(currentResourceModel.Object));
+                currentResourceModel.Verify(p => p.Environment.ResourceRepository.SaveToServer(currentResourceModel.Object, It.IsAny<string>()));
             }
         }
 
@@ -1345,7 +1345,7 @@ namespace Dev2.Core.Tests
             activity.Setup(p => p.UniqueID).Returns(iniqueId);
             b.Key = iniqueId;
             b.UniqueId = iniqueId.ToGuid();
-            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) return false; return true; };
+            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) { return false; } return true; };
             currentResourceModel.Setup(p => p.Environment.ExplorerRepository.UpdateManagerProxy.Rename(It.IsAny<Guid>(), It.IsAny<string>())).Throws(new Exception());
             using (var mergeWorkflowViewModel = new MergeWorkflowViewModel(currentResourceModel.Object, differenceResourceModel.Object, false))
             {
@@ -1398,7 +1398,7 @@ namespace Dev2.Core.Tests
             activity.Setup(p => p.UniqueID).Returns(iniqueId);
             b.Key = iniqueId;
             b.UniqueId = iniqueId.ToGuid();
-            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) return false; return true; };
+            Func<IConflict, bool> check = (c) => { if (c.UniqueId == Guid.Empty) { return false; } return true; };
             using (var mergeWorkflowViewModel = new MergeWorkflowViewModel(currentResourceModel.Object, differenceResourceModel.Object, false))
             {
                 mergeWorkflowViewModel.UpdateHelpDescriptor("aaa");
@@ -1582,7 +1582,7 @@ namespace Dev2.Core.Tests
                 Assert.IsTrue(wasCalled);
             }
         }
-        
+
         [TestMethod]
         public void DataListViewModel_Test_propertyChanges()
         {

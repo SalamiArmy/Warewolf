@@ -395,6 +395,8 @@ where pn.nspname = 'public';
         public static readonly string WarewolfError = "Warewolf Error";
         public static readonly string WarewolfDebug = "Warewolf Debug";
         public static readonly string WarewolfWarn = "Warewolf Warn";
+        public static readonly string HTTPSAddress = "https://";
+        public static readonly string HTTPAddress = "http://";
 
         public static readonly string ResourcePickerWorkflowString = "DsfWorkflowActivity";
 
@@ -519,25 +521,9 @@ where pn.nspname = 'public';
             }
         }
 
-        public static int MinCompressVersionMinor
-        {
-            get
-            {
-#pragma warning disable 162
-                return 7;
-#pragma warning restore 162
-            }
-        }
+        public static int MinCompressVersionMinor => 7;
 
-        public static int MinCompressVersionMajor
-        {
-            get
-            {
-#pragma warning disable 162
-                return 0;
-#pragma warning restore 162
-            }
-        }
+        public static int MinCompressVersionMajor => 0;
 
         public static string ApplicationJsonHeader { get; } = "application/json";
         public static string ApplicationXmlHeader { get; } = "application/xml";

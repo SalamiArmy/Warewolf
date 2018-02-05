@@ -149,12 +149,8 @@ namespace Dev2
             }
         }
 
-        public static string GetJsonOutputFromEnvironment(IDSFDataObject dataObject, string dataList, int update)
-        {
-            return GetJsonForEnvironmentWithColumnIoDirection(dataObject, dataList, enDev2ColumnArgumentDirection.Output, update);
-        }
+        public static string GetJsonOutputFromEnvironment(IDSFDataObject dataObject, string dataList, int update) => GetJsonForEnvironmentWithColumnIoDirection(dataObject, dataList, enDev2ColumnArgumentDirection.Output, update);
 
-    
         public static void UpdateEnvironmentFromXmlPayload(IDSFDataObject dataObject, StringBuilder rawPayload, string dataList, int update)
         {
 
@@ -184,13 +180,14 @@ namespace Dev2
         static void UpdateEnviromentWithMappings(IDSFDataObject dataObject, StringBuilder rawPayload, List<string> mappings)
         {
             JObject inputObject;
-            var toLoad = rawPayload.ToString().ToCleanXml();
+            var toLoad = rawPayload.ToString();
             if (string.IsNullOrEmpty(toLoad))
             {
                 return;
             }
             if (!toLoad.IsJSON())
-            {
+            {           
+                toLoad = toLoad.ToCleanXml();
                 var sXNode = JsonConvert.SerializeXNode(XDocument.Parse(toLoad), Newtonsoft.Json.Formatting.Indented, true);
                 inputObject = JsonConvert.DeserializeObject(sXNode) as JObject;
             }
@@ -532,11 +529,8 @@ namespace Dev2
             return recSetItems;
         }
 
-        
-        static Dictionary<string, Schema> BuildPropertyDefinition(IGrouping<string, string> groupedRecSet)
-        {
-            return groupedRecSet.ToDictionary(DataListUtil.ExtractFieldNameOnlyFromValue, name => new Schema { Type = "string" });
-        }
+
+        static Dictionary<string, Schema> BuildPropertyDefinition(IGrouping<string, string> groupedRecSet) => groupedRecSet.ToDictionary(DataListUtil.ExtractFieldNameOnlyFromValue, name => new Schema { Type = "string" });
     }
 
     public class Schema

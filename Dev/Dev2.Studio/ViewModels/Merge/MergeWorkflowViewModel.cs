@@ -108,7 +108,7 @@ namespace Dev2.ViewModels.Merge
             var currentCount = currentTree.Count;
             var diffCount = diffTree.Count;
             var maxItems = currentCount >= diffCount ? currentCount : diffCount;
-            for(int i = 0; i < maxItems; i++)
+            for (int i = 0; i < maxItems; i++)
             {
                 if (i < currentCount)
                 {
@@ -117,6 +117,10 @@ namespace Dev2.ViewModels.Merge
                 if (i < diffCount)
                 {
                     ProcessDiffItem(differenceResourceModel, conflicts, armConnectorConflicts, diffTree[i]);
+                }
+                else
+                {
+                    ShowArmConnectors(conflicts, armConnectorConflicts);
                 }
             }
             return conflicts;
@@ -466,7 +470,7 @@ namespace Dev2.ViewModels.Merge
             var hasValues = foundCurrentDestination && foundDiffDestination && foundCurrentSource && foundDiffSource;
             if (!hasValues)
             {
-                if ((s.CurrentArmConnector.DestinationUniqueId == Guid.Empty.ToString() || s.CurrentArmConnector.SourceUniqueId == Guid.Empty.ToString()) && foundDiffDestination && foundDiffSource )
+                if ((s.CurrentArmConnector.DestinationUniqueId == Guid.Empty.ToString() || s.CurrentArmConnector.SourceUniqueId == Guid.Empty.ToString()) && foundDiffDestination && foundDiffSource)
                 {
                     return true;
                 }
@@ -557,28 +561,22 @@ namespace Dev2.ViewModels.Merge
             }
         }
 
-        static MergeArmConnectorConflict EmptyMergeArmConnectorConflict(Guid uniqueId, IArmConnectorConflict container)
+        static MergeArmConnectorConflict EmptyMergeArmConnectorConflict(Guid uniqueId, IArmConnectorConflict container) => new MergeArmConnectorConflict(container)
         {
-            return new MergeArmConnectorConflict(container)
-            {
-                SourceUniqueId = uniqueId.ToString(),
-                DestinationUniqueId = Guid.Empty.ToString(),
-                Key = container.Key
-            };
-        }
+            SourceUniqueId = uniqueId.ToString(),
+            DestinationUniqueId = Guid.Empty.ToString(),
+            Key = container.Key
+        };
 
-        static MergeToolModel EmptyConflictViewModel(Guid uniqueId, IWorkflowDesignerViewModel workflowDesignerViewModel)
+        static MergeToolModel EmptyConflictViewModel(Guid uniqueId, IWorkflowDesignerViewModel workflowDesignerViewModel) => new MergeToolModel
         {
-            return new MergeToolModel
-            {
-                ModelItem = null,
-                WorkflowDesignerViewModel = workflowDesignerViewModel,
-                NodeLocation = new Point(),
-                IsMergeEnabled = false,
-                IsMergeVisible = false,
-                UniqueId = uniqueId
-            };
-        }
+            ModelItem = null,
+            WorkflowDesignerViewModel = workflowDesignerViewModel,
+            NodeLocation = new Point(),
+            IsMergeEnabled = false,
+            IsMergeVisible = false,
+            UniqueId = uniqueId
+        };
 
         bool All(Func<IConflict, bool> check)
         {
@@ -646,7 +644,7 @@ namespace Dev2.ViewModels.Merge
                     _resourceModel.DataList = CurrentConflictModel.IsVariablesChecked ? CurrentConflictModel.DataListViewModel.WriteToResourceModel() : DifferenceConflictModel.DataListViewModel.WriteToResourceModel();
                 }
                 _resourceModel.WorkflowXaml = WorkflowDesignerViewModel.ServiceDefinition;
-                _resourceModel.Environment.ResourceRepository.SaveToServer(_resourceModel);
+                _resourceModel.Environment.ResourceRepository.SaveToServer(_resourceModel, "Merge");
 
                 HasMergeStarted = false;
 
@@ -670,7 +668,7 @@ namespace Dev2.ViewModels.Merge
         {
             if (isDirty)
             {
-                if (!DisplayName.EndsWith(" *",StringComparison.InvariantCultureIgnoreCase))
+                if (!DisplayName.EndsWith(" *", StringComparison.InvariantCultureIgnoreCase))
                 {
                     DisplayName += " *";
                 }
@@ -700,7 +698,7 @@ namespace Dev2.ViewModels.Merge
                             return true;
                         }
                         return isValid;
-                        });
+                    });
                 }
                 return canSave;
             }

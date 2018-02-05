@@ -44,10 +44,9 @@ namespace Dev2.Runtime.ResourceCatalogImpl
             {
                 _perfCounter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter("Count of requests for workflows which don't exist");
             }
-
             catch (Exception e)
             {
-                Dev2Logger.Warn(e.Message, "Warewolf Warn");
+                Dev2Logger.Warn("Error getting perf counters. " + e.Message, "Warewolf Warn");
             }
                 if (managementServices != null)
             {
@@ -114,9 +113,9 @@ namespace Dev2.Runtime.ResourceCatalogImpl
             return null;
         }
 
-        public string GetResourcePath(Guid workspaceID,Guid resourceId)
+        public string GetResourcePath(Guid workspaceID, Guid id)
         {
-            var resource = GetResource(workspaceID, resourceId);
+            var resource = GetResource(workspaceID, id);
             return resource.GetResourcePath(workspaceID);
         }
 
@@ -345,11 +344,7 @@ namespace Dev2.Runtime.ResourceCatalogImpl
             }
         }
 
-        public int GetResourceCount(Guid workspaceID)
-        {
-            return GetResources(workspaceID).Count;
-        }
-
+        public int GetResourceCount(Guid workspaceID) => GetResources(workspaceID).Count;
         public IResource GetResource(Guid workspaceID, string resourceName) => GetResource(workspaceID, resourceName, "Unknown", null);
 
 
@@ -624,16 +619,13 @@ namespace Dev2.Runtime.ResourceCatalogImpl
                 return WorkspaceLocks.GetOrAdd(workspaceID, guid => new object());
             }
         }
-        static ResourceForTree CreateResourceForTree(IResource resource, IResourceForTree tree)
+        static ResourceForTree CreateResourceForTree(IResource resource, IResourceForTree tree) => new ResourceForTree
         {
-            return new ResourceForTree
-            {
-                UniqueID = tree.UniqueID,
-                ResourceID = resource.ResourceID,
-                ResourceName = resource.ResourceName,
-                ResourceType = resource.ResourceType
-            };
-        }
+            UniqueID = tree.UniqueID,
+            ResourceID = resource.ResourceID,
+            ResourceName = resource.ResourceName,
+            ResourceType = resource.ResourceType
+        };
 
         List<DynamicServiceObjectBase> GenerateObjectGraph(IResource resource)
         {

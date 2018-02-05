@@ -1,7 +1,7 @@
 /*
 *  Warewolf - Once bitten, there's no going back
 *  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
-*  Licensed under GNU Affero General Public License 3.0 or later. 
+*  Licensed under GNU Affero General Public License 3.0 or later.
 *  Some rights reserved.
 *  Visit our website for more information <http://warewolf.io/>
 *  AUTHORS <http://warewolf.io/authors.php> , CONTRIBUTORS <http://warewolf.io/contributors.php>
@@ -41,7 +41,6 @@ namespace Dev2.Activities.Designers2.Core
         protected ActivityCollectionDesignerViewModel(ModelItem modelItem)
             : base(modelItem)
         {
-           
         }
 
         public int ItemCount => ModelItemCollection.Count;
@@ -55,7 +54,7 @@ namespace Dev2.Activities.Designers2.Core
         }
 
         protected void InitializeItems(ModelItemCollection modelItemCollection)
-        {            
+        {
             ModelItemCollection = modelItemCollection;
             BindingOperations.EnableCollectionSynchronization(ModelItemCollection, _syncLock);
             // Do this before, because AddDTO() also attaches events
@@ -147,15 +146,9 @@ namespace Dev2.Activities.Designers2.Core
 
         protected abstract IEnumerable<IActionableErrorInfo> ValidateCollectionItem(ModelItem mi);
 
-        public override bool CanRemoveAt(int indexNumber)
-        {
-            return ModelItemCollection != null && (ModelItemCollection.Count > 2 && indexNumber < ModelItemCollection.Count);
-        }
+        public override bool CanRemoveAt(int indexNumber) => ModelItemCollection != null && (ModelItemCollection.Count > 2 && indexNumber < ModelItemCollection.Count);
 
-        public override bool CanInsertAt(int indexNumber)
-        {
-            return ModelItemCollection != null && (ModelItemCollection.Count > 2 && indexNumber < ModelItemCollection.Count);
-        }
+        public override bool CanInsertAt(int indexNumber) => ModelItemCollection != null && (ModelItemCollection.Count > 2 && indexNumber < ModelItemCollection.Count);
 
         public override void RemoveAt(int indexNumber)
         {
@@ -213,33 +206,33 @@ namespace Dev2.Activities.Designers2.Core
 
             UpdateDisplayName();
 
-            // Restore 
+            // Restore
             _initialDto = new TDev2TOFn();
         }
 
         /// <summary>
-        /// Gets the insert index for <see cref="AddToCollection"/>. 
+        /// Gets the insert index for <see cref="AddToCollection"/>.
         /// Returns the index of the last blank row.
         /// </summary>
         int GetIndexForAdd(bool overwrite)
         {
             var indexNumber = 1;
-            if(overwrite)
+            if (overwrite)
             {
                 ModelItemCollection?.Clear();
             }
             else
             {
                 var lastDto = GetLastDto();
-                if(ModelItemCollection != null)
+                if (ModelItemCollection != null)
                 {
                     indexNumber = ModelItemCollection.IndexOf(GetModelItem(ItemCount)) + 1;
 
-                    if(ModelItemCollection.Count == 2)
+                    if (ModelItemCollection.Count == 2)
                     {
                         // Check whether we have 2 blank rows
                         var firstDto = GetDto(1);
-                        if(firstDto.CanRemove() && lastDto.CanRemove())
+                        if (firstDto.CanRemove() && lastDto.CanRemove())
                         {
                             RemoveAt(indexNumber, lastDto);
                             indexNumber = indexNumber - 1;
@@ -254,8 +247,8 @@ namespace Dev2.Activities.Designers2.Core
         {
             var index = indexNumber - 1;
             if (ItemCount < index)
-            { 
-                index = ItemCount==0 ? 0 : ItemCount - 1;
+            {
+                index = ItemCount == 0 ? 0 : ItemCount - 1;
             }
             if (index < 0)
             {
@@ -270,10 +263,7 @@ namespace Dev2.Activities.Designers2.Core
             return item.GetCurrentValue() as TDev2TOFn;
         }
 
-        TDev2TOFn GetLastDto()
-        {
-            return GetDto(ItemCount);
-        }
+        TDev2TOFn GetLastDto() => GetDto(ItemCount);
 
         void AddBlankRow(bool overwrite = false)
         {
@@ -296,7 +286,7 @@ namespace Dev2.Activities.Designers2.Core
             }
             UpdateDisplayName();
         }
-        
+
         protected virtual void RunValidation(int index)
         {
         }
@@ -304,7 +294,7 @@ namespace Dev2.Activities.Designers2.Core
         {
             //
             // DO NOT invoke Renumber() from here - this method is called MANY times when invoking AddToCollection()!!
-            //                    
+            //
             var dto = CreateDto(indexNumber, initializeWith);
             AttachEvents(dto);
 
@@ -322,10 +312,7 @@ namespace Dev2.Activities.Designers2.Core
             RunValidation(idx);
         }
 
-        protected virtual IDev2TOFn CreateDto(int indexNumber, string initializeWith)
-        {
-            return DTOFactory.CreateNewDTO(_initialDto, indexNumber, false, initializeWith);
-        }
+        protected virtual IDev2TOFn CreateDto(int indexNumber, string initializeWith) => DTOFactory.CreateNewDTO(_initialDto, indexNumber, false, initializeWith);
 
         protected virtual void RemoveDto(IDev2TOFn dto, int indexNumber)
         {
@@ -346,39 +333,44 @@ namespace Dev2.Activities.Designers2.Core
 
         void OnDtoPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
-            DoCustomAction(args.PropertyName);
-            if (args.PropertyName != "CanRemove")
+            if (!IsMerge)
             {
-                return;
-            }
-
-            var canAdd = true;
-            var parent = ModelItemCollection.Parent;
-            if (parent != null)
-            {
-                var parentContentPane = FindDependencyParent.FindParent<DesignerView>(parent.View);
-                var dataContext = parentContentPane?.DataContext;
-                if (dataContext != null && (dataContext.GetType().Name == "ServiceTestViewModel"))
-                    canAdd = false;
-            }
-
-            if (canAdd)
-            {
-                var dto = (TDev2TOFn) sender;
-                if (dto.CanAdd())
+                DoCustomAction(args.PropertyName);
+                if (args.PropertyName != "CanRemove")
                 {
-                    if (ModelItemCollection.Count == 2)
+                    return;
+                }
+
+                var canAdd = true;
+                var parent = ModelItemCollection.Parent;
+                if (parent != null)
+                {
+                    var parentContentPane = FindDependencyParent.FindParent<DesignerView>(parent.View);
+                    var dataContext = parentContentPane?.DataContext;
+                    if (dataContext != null && (dataContext.GetType().Name == "ServiceTestViewModel"))
                     {
-                        var firstDto = GetDto(1);
-                        if (!firstDto.CanRemove())
+                        canAdd = false;
+                    }
+                }
+
+                if (canAdd)
+                {
+                    var dto = (TDev2TOFn)sender;
+                    if (dto.CanAdd())
+                    {
+                        if (ModelItemCollection.Count == 2)
                         {
-                            // first row is not blank
+                            var firstDto = GetDto(1);
+                            if (!firstDto.CanRemove())
+                            {
+                                // first row is not blank
+                                AddBlankRow();
+                            }
+                        }
+                        else
+                        {
                             AddBlankRow();
                         }
-                    }
-                    else
-                    {
-                        AddBlankRow();
                     }
                 }
             }
@@ -413,7 +405,7 @@ namespace Dev2.Activities.Designers2.Core
         /// </summary>
         void ProcessModelItemCollection(int startIndex, Action<ModelItem> processModelItem)
         {
-            if (ModelItemCollection != null)
+            if (ModelItemCollection != null && !IsMerge)
             {
                 startIndex = Math.Max(startIndex, 0);
                 for (var i = startIndex; i < ModelItemCollection.Count; i++)

@@ -1,7 +1,7 @@
 /*
 *  Warewolf - Once bitten, there's no going back
 *  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
-*  Licensed under GNU Affero General Public License 3.0 or later. 
+*  Licensed under GNU Affero General Public License 3.0 or later.
 *  Some rights reserved.
 *  Visit our website for more information <http://warewolf.io/>
 *  AUTHORS <http://warewolf.io/authors.php> , CONTRIBUTORS <http://warewolf.io/contributors.php>
@@ -33,7 +33,6 @@ using Warewolf.Studio.Core.Popup;
 using Warewolf.Studio.Resources.Languages;
 using Warewolf.Studio.ViewModels;
 
-
 namespace Dev2.Settings.Security
 {
     public class SecurityViewModel : SettingsItemViewModel, IHelpSource, IUpdatesHelp
@@ -45,10 +44,8 @@ namespace Dev2.Settings.Security
         bool _isUpdatingHelpText;
         static IDomain _domain = new DomainWrapper();
 
-
         public SecurityViewModel()
         {
-            
         }
 
         internal SecurityViewModel(SecuritySettingsTO securitySettings, IWin32Window parentWindow, IServer environment)
@@ -94,7 +91,7 @@ namespace Dev2.Settings.Security
             _directoryObjectPicker.TargetComputer = string.Empty;
             _directoryObjectPicker.ShowAdvancedView = false;
 
-            PickWindowsGroupCommand = new DelegateCommand(PickWindowsGroup);
+            PickWindowsGroupCommand = new DelegateCommand(PickWindowsGroup, o => CanPickWindowsGroup(securitySettings?.WindowsGroupPermissions));
             PickResourceCommand = new DelegateCommand(PickResource);
 
             InitializeHelp();
@@ -102,9 +99,11 @@ namespace Dev2.Settings.Security
             InitializePermissions(securitySettings?.WindowsGroupPermissions);
         }
 
+        static bool CanPickWindowsGroup(IEnumerable<WindowsGroupPermission> permissions) => permissions != null;
+
         public ObservableCollection<WindowsGroupPermission> ServerPermissions
         {
-            get { return _serverPermissions; }
+            get => _serverPermissions;
             private set
             {
                 _serverPermissions = value;
@@ -114,7 +113,7 @@ namespace Dev2.Settings.Security
 
         public ObservableCollection<WindowsGroupPermission> ResourcePermissions
         {
-            get { return _resourcePermissions; }
+            get => _resourcePermissions;
             private set
             {
                 _resourcePermissions = value;
@@ -323,15 +322,12 @@ namespace Dev2.Settings.Security
                     };
                     popupController.Show(popupMessage);
                 }
-                Dev2Logger.Error(@"Error opening group picker: ", e, "Warewolf Error");
+                Dev2Logger.Error(@"Error opening group picker: ", e, GlobalConstants.WarewolfError);
             }
             return DialogResult.Cancel;
         }
 
-        public virtual DirectoryObject[] GetSelectedObjectsFromDirectoryObjectPickerDialog()
-        {
-            return _directoryObjectPicker.SelectedObjects;
-        }
+        public virtual DirectoryObject[] GetSelectedObjectsFromDirectoryObjectPickerDialog() => _directoryObjectPicker.SelectedObjects;
 
         void RegisterPropertyChanged(WindowsGroupPermission permission)
         {
@@ -381,7 +377,7 @@ namespace Dev2.Settings.Security
             }
         }
 
-        void UpdateOverridingPermission(WindowsGroupPermission windowsGroupPermission, string propertyName)
+        static void UpdateOverridingPermission(WindowsGroupPermission windowsGroupPermission, string propertyName)
         {
             if (windowsGroupPermission == null)
             {
@@ -441,9 +437,7 @@ namespace Dev2.Settings.Security
 
         ActivityDesignerToggle CreateHelpToggle(DependencyProperty targetProperty)
         {
-            var toggle = ActivityDesignerToggle.Create(@"ServiceHelp", @"Close Help", @"ServiceHelp", @"Open Help", @"HelpToggle", this, targetProperty
-                );
-
+            var toggle = ActivityDesignerToggle.Create(@"ServiceHelp", @"Close Help", @"ServiceHelp", @"Open Help", @"HelpToggle", this, targetProperty);
             return toggle;
         }
 
@@ -525,7 +519,6 @@ namespace Dev2.Settings.Security
         {
             try
             {
-
                 var computerDomain = _domain.GetComputerDomain();
                 return Visibility.Visible;
             }
@@ -533,8 +526,6 @@ namespace Dev2.Settings.Security
             {
                 return Visibility.Collapsed;
             }
-
-
         }
 
         #region CloneItems
@@ -565,7 +556,7 @@ namespace Dev2.Settings.Security
             }
         }
 
-        ObservableCollection<WindowsGroupPermission> CloneResourcePermissions(ObservableCollection<WindowsGroupPermission> resourcePermissions)
+        static ObservableCollection<WindowsGroupPermission> CloneResourcePermissions(ObservableCollection<WindowsGroupPermission> resourcePermissions)
         {
             var resolver = new ShouldSerializeContractResolver();
             var ser = JsonConvert.SerializeObject(resourcePermissions, new JsonSerializerSettings { ContractResolver = resolver });
@@ -573,7 +564,7 @@ namespace Dev2.Settings.Security
             return clone;
         }
 
-        ObservableCollection<WindowsGroupPermission> CloneServerPermissions(ObservableCollection<WindowsGroupPermission> serverPermissions)
+        static ObservableCollection<WindowsGroupPermission> CloneServerPermissions(ObservableCollection<WindowsGroupPermission> serverPermissions)
         {
             var resolver = new ShouldSerializeContractResolver();
             var ser = JsonConvert.SerializeObject(serverPermissions, new JsonSerializerSettings { ContractResolver = resolver });

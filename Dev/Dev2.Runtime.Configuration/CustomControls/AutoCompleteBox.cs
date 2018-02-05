@@ -849,9 +849,9 @@ namespace System.Windows.Controls
             }
         }
         
-        protected override Size ArrangeOverride(Size finalSize)
+        protected override Size ArrangeOverride(Size arrangeBounds)
         {
-            var r = base.ArrangeOverride(finalSize);
+            var r = base.ArrangeOverride(arrangeBounds);
             DropDownPopup?.Arrange();
             return r;
         }
@@ -1002,10 +1002,7 @@ namespace System.Windows.Controls
             }
         }
 
-        protected override AutomationPeer OnCreateAutomationPeer()
-        {
-            return new AutoCompleteBoxAutomationPeer(this);
-        }
+        protected override AutomationPeer OnCreateAutomationPeer() => new AutoCompleteBoxAutomationPeer(this);
 
         #region Focus
 
@@ -1327,7 +1324,6 @@ namespace System.Windows.Controls
             var populateReady = newText.Length >= MinimumPrefixLength && MinimumPrefixLength >= 0;
             _userCalledPopulate = populateReady && userInitiated;
 
-            newText = newText.Replace("\r\n", "\n");
             UpdateTextValue(newText, userInitiated);
 
             if (populateReady)
@@ -1370,7 +1366,7 @@ namespace System.Windows.Controls
             OnPopulated(populated);
 
             
-            if(SelectionAdapter != null && SelectionAdapter.ItemsSource != _view)
+            if(SelectionAdapter != null && !SelectionAdapter.ItemsSource.Equals(_view))
             {
                 SelectionAdapter.ItemsSource = _view;
             }
@@ -1530,7 +1526,7 @@ namespace System.Windows.Controls
         {
             _items = newValue == null ? null : new List<object>(newValue.Cast<object>().ToList());
             ClearView();
-            if (SelectionAdapter != null && SelectionAdapter.ItemsSource != _view)
+            if (SelectionAdapter != null && !SelectionAdapter.ItemsSource.Equals(_view))
             {
                 SelectionAdapter.ItemsSource = _view;
             }
@@ -1677,7 +1673,6 @@ namespace System.Windows.Controls
         {
             if(e == null)
             {
-                
                 throw new ArgumentNullException("e");
             }
 
@@ -1698,12 +1693,6 @@ namespace System.Windows.Controls
                     }
                 }
 
-                if(e.Key == Key.Escape)
-                {
-                    OnAdapterSelectionCanceled(this, new RoutedEventArgs());
-                    e.Handled = true;
-                }
-
                 switch (e.Key)
                 {
                     case Key.F4:
@@ -1711,6 +1700,7 @@ namespace System.Windows.Controls
                         e.Handled = true;
                         break;
                     case Key.Enter:
+                    case Key.Escape:
                         OnAdapterSelectionComplete(this, new RoutedEventArgs());
                         e.Handled = true;
                         break;
@@ -1719,14 +1709,13 @@ namespace System.Windows.Controls
                         break;
                 }
             }
-
         }
 
         void IUpdateVisualState.UpdateVisualState(bool useTransitions)
         {
             UpdateVisualState(useTransitions);
         }
-        
+
         internal virtual void UpdateVisualState(bool useTransitions)
         {
             VisualStateManager.GoToState(this, IsDropDownOpen ? VisualStates.StatePopupOpened : VisualStates.StatePopupClosed, useTransitions);

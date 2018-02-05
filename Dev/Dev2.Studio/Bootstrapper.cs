@@ -31,7 +31,7 @@ using Warewolf.Studio.ViewModels;
 
 namespace Dev2
 {
-    public class Bootstrapper : Bootstrapper<IShellViewModel>
+    public class Bootstrapper : Bootstrapper<IShellViewModel>, IDisposable
     {
         protected override void PrepareApplication()
         {
@@ -108,10 +108,7 @@ namespace Dev2
 
         #region Overrides of BootstrapperBase
 
-        protected override object GetInstance(Type service, string key)
-        {
-            return CustomContainer.Get(service);
-        }
+        protected override object GetInstance(Type service, string key) => CustomContainer.Get(service);
 
         #endregion
 
@@ -119,35 +116,7 @@ namespace Dev2
 
         #region Private Methods
 
-        bool CheckWindowsService()
-        {
-#if DEBUG
-            return true;
-#else
-            IWindowsServiceManager windowsServiceManager = CustomContainer.Get<IWindowsServiceManager>();
-            IPopupController popup = CustomContainer.Get<IPopupController>();
-            ServerServiceConfiguration ssc = new ServerServiceConfiguration(windowsServiceManager, popup);
-
-            if (ssc.DoesServiceExist())
-            {
-                if (ssc.IsServiceRunning())
-                {
-                    return true;
-                }
-
-                if (ssc.PromptUserToStartService())
-                {
-                    if (ssc.StartService())
-                    {
-                        _serverServiceStartedFromStudio = true;
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-#endif
-        }
+        bool CheckWindowsService() => true;
 
         void CheckPath()
         {
@@ -197,9 +166,11 @@ namespace Dev2
             return true;
         }
 
-        static bool IsUnc(Uri sysUri)
+        static bool IsUnc(Uri sysUri) => sysUri.IsUnc;
+
+        public void Dispose()
         {
-            return sysUri.IsUnc;
+            ((IDisposable)_mainViewModel).Dispose();
         }
 
         #endregion Private Methods
