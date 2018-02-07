@@ -571,14 +571,7 @@ namespace Dev2.PathOperations
 
                     if (!Dev2ActivityIOPathUtils.IsStarWildCard(path))
                     {
-                        if (Directory.Exists(path))
-                        {
-                            dirs = GetDirectoriesForType(path, string.Empty, type);
-                        }
-                        else
-                        {
-                            throw new Exception(string.Format(ErrorResource.DirectoryDoesNotExist, path));
-                        }
+                        dirs = TryGetDirectoriesForType(type, path);
                     }
                     else
                     {
@@ -608,61 +601,7 @@ namespace Dev2.PathOperations
                 try
                 {
                     // handle UNC path
-                    var loginOk = LogonUser(ExtractUserName(src), ExtractDomain(src), src.Password, LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, out SafeTokenHandle safeTokenHandle);
-
-                    if (loginOk)
-                    {
-                        using (safeTokenHandle)
-                        {
-
-                            var newID = new WindowsIdentity(safeTokenHandle.DangerousGetHandle());
-                            using (WindowsImpersonationContext impersonatedUser = newID.Impersonate())
-                            {
-                                // Do the operation here
-
-                                try
-                                {
-
-                                    IEnumerable<string> dirs;
-
-                                    if (!Dev2ActivityIOPathUtils.IsStarWildCard(path))
-                                    {
-                                        dirs = GetDirectoriesForType(path, string.Empty, type);
-                                    }
-                                    else
-                                    {
-                                        // we have a wild-char path ;)
-                                        var baseDir = Dev2ActivityIOPathUtils.ExtractFullDirectoryPath(path);
-                                        var pattern = Dev2ActivityIOPathUtils.ExtractFileName(path);
-
-                                        dirs = GetDirectoriesForType(baseDir, pattern, type);
-                                    }
-
-                                    if (dirs != null)
-                                    {
-                                        foreach (string d in dirs)
-                                        {
-                                            result.Add(ActivityIOFactory.CreatePathFromString(d, src.Username, src.Password, src.PrivateKeyFile));
-                                        }
-                                    }
-
-                                }
-                                catch (Exception)
-                                {
-                                    throw new Exception(string.Format(ErrorResource.DirectoryNotFound, src.Path));
-                                }
-
-                                // remove impersonation now
-                                impersonatedUser.Undo();
-                                newID.Dispose();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        // login failed
-                        throw new Exception(string.Format(ErrorResource.FailedToAuthenticateUser, src.Username, src.Path));
-                    }
+                    HandleUncPath(src, type, result, path);
                 }
                 catch (Exception ex)
                 {
@@ -673,6 +612,83 @@ namespace Dev2.PathOperations
             }
 
             return result;
+        }
+
+        private void HandleUncPath(IActivityIOPath src, ReadTypes type, IList<IActivityIOPath> result, string path)
+        {
+            var loginOk = LogonUser(ExtractUserName(src), ExtractDomain(src), src.Password, LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, out SafeTokenHandle safeTokenHandle);
+
+            if (loginOk)
+            {
+                using (safeTokenHandle)
+                {
+
+                    var newID = new WindowsIdentity(safeTokenHandle.DangerousGetHandle());
+                    using (WindowsImpersonationContext impersonatedUser = newID.Impersonate())
+                    {
+                        HandleUncPathInImpersonatedContext(src, type, result, path, newID, impersonatedUser);
+                    }
+                }
+            }
+            else
+            {
+                // login failed
+                throw new Exception(string.Format(ErrorResource.FailedToAuthenticateUser, src.Username, src.Path));
+            }
+        }
+
+        private static void HandleUncPathInImpersonatedContext(IActivityIOPath src, ReadTypes type, IList<IActivityIOPath> result, string path, WindowsIdentity newID, WindowsImpersonationContext impersonatedUser)
+        {
+            try
+            {
+
+                IEnumerable<string> dirs;
+
+                if (!Dev2ActivityIOPathUtils.IsStarWildCard(path))
+                {
+                    dirs = GetDirectoriesForType(path, string.Empty, type);
+                }
+                else
+                {
+                    // we have a wild-char path ;)
+                    var baseDir = Dev2ActivityIOPathUtils.ExtractFullDirectoryPath(path);
+                    var pattern = Dev2ActivityIOPathUtils.ExtractFileName(path);
+
+                    dirs = GetDirectoriesForType(baseDir, pattern, type);
+                }
+
+                if (dirs != null)
+                {
+                    foreach (string d in dirs)
+                    {
+                        result.Add(ActivityIOFactory.CreatePathFromString(d, src.Username, src.Password, src.PrivateKeyFile));
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw new Exception(string.Format(ErrorResource.DirectoryNotFound, src.Path));
+            }
+
+            // remove impersonation now
+            impersonatedUser.Undo();
+            newID.Dispose();
+        }
+
+        private static IEnumerable<string> TryGetDirectoriesForType(ReadTypes type, string path)
+        {
+            IEnumerable<string> dirs;
+            if (Directory.Exists(path))
+            {
+                dirs = GetDirectoriesForType(path, string.Empty, type);
+            }
+            else
+            {
+                throw new Exception(string.Format(ErrorResource.DirectoryDoesNotExist, path));
+            }
+
+            return dirs;
         }
 
         static IEnumerable<string> GetDirectoriesForType(string path, string pattern, ReadTypes type)
