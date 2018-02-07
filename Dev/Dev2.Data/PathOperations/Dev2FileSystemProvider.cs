@@ -126,15 +126,13 @@ namespace Dev2.PathOperations
             var result = -1;
             using (src)
             {
-                if (!Path.IsPathRooted(dst.Path))
+                //get just the directory path to put into
+                if (!Path.IsPathRooted(dst.Path) && whereToPut != null)
                 {
-                    //get just the directory path to put into
-                    if (whereToPut != null)
-                    {
-                        //Make the destination directory equal to that directory
-                        dst = ActivityIOFactory.CreatePathFromString(whereToPut + "\\" + dst.Path, dst.Username, dst.Password,dst.PrivateKeyFile);
-                    }
+                    //Make the destination directory equal to that directory
+                    dst = ActivityIOFactory.CreatePathFromString(whereToPut + "\\" + dst.Path, dst.Username, dst.Password, dst.PrivateKeyFile);
                 }
+
                 if (args.Overwrite || !args.Overwrite && !FileExist(dst))
                 {
                     _fileLock.EnterWriteLock();
@@ -150,35 +148,7 @@ namespace Dev2.PathOperations
                         }
                         else
                         {
-                            // handle UNC path
-                            var loginOk = LogonUser(ExtractUserName(dst), ExtractDomain(dst), dst.Password, LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, out SafeTokenHandle safeTokenHandle);
-
-
-                            if (loginOk)
-                            {
-                                using (safeTokenHandle)
-                                {
-
-                                    var newID = new WindowsIdentity(safeTokenHandle.DangerousGetHandle());
-                                    using (WindowsImpersonationContext impersonatedUser = newID.Impersonate())
-                                    {
-                                        // Do the operation here
-                                        using (src)
-                                        {
-                                            File.WriteAllBytes(dst.Path, src.ToByteArray());
-                                            result = (int)src.Length;
-                                        }
-
-                                        // remove impersonation now
-                                        impersonatedUser.Undo();
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                // login failed
-                                throw new Exception(string.Format(ErrorResource.FailedToAuthenticateUser, dst.Username, dst.Path));
-                            }
+                            result = HandleUNCPath(src, dst);
                         }
                     }
                     finally
@@ -187,6 +157,41 @@ namespace Dev2.PathOperations
                     }
                 }
             }
+            return result;
+        }
+
+        private int HandleUNCPath(Stream src, IActivityIOPath dst)
+        {
+            int result;
+            var loginOk = LogonUser(ExtractUserName(dst), ExtractDomain(dst), dst.Password, LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, out SafeTokenHandle safeTokenHandle);
+
+
+            if (loginOk)
+            {
+                using (safeTokenHandle)
+                {
+
+                    var newID = new WindowsIdentity(safeTokenHandle.DangerousGetHandle());
+                    using (WindowsImpersonationContext impersonatedUser = newID.Impersonate())
+                    {
+                        // Do the operation here
+                        using (src)
+                        {
+                            File.WriteAllBytes(dst.Path, src.ToByteArray());
+                            result = (int)src.Length;
+                        }
+
+                        // remove impersonation now
+                        impersonatedUser.Undo();
+                    }
+                }
+            }
+            else
+            {
+                // login failed
+                throw new Exception(string.Format(ErrorResource.FailedToAuthenticateUser, dst.Username, dst.Path));
+            }
+
             return result;
         }
 
@@ -443,25 +448,31 @@ namespace Dev2.PathOperations
             }
             else
             {
-                //  && FileExist(path)
-                if (FileExist(path) || DirectoryExist(path))
-                {
-                    if (!Dev2ActivityIOPathUtils.IsStarWildCard(path.Path))
-                    {
-                        var fa = File.GetAttributes(path.Path);
+                result = CheckFileExists(path, result);
+            }
 
-                        if ((fa & FileAttributes.Directory) == FileAttributes.Directory)
-                        {
-                            result = enPathType.Directory;
-                        }
-                    }
-                }
-                else
+            return result;
+        }
+
+        private enPathType CheckFileExists(IActivityIOPath path, enPathType result)
+        {
+            if (FileExist(path) || DirectoryExist(path))
+            {
+                if (!Dev2ActivityIOPathUtils.IsStarWildCard(path.Path))
                 {
-                    if (Dev2ActivityIOPathUtils.IsDirectory(path.Path))
+                    var fa = File.GetAttributes(path.Path);
+
+                    if ((fa & FileAttributes.Directory) == FileAttributes.Directory)
                     {
                         result = enPathType.Directory;
                     }
+                }
+            }
+            else
+            {
+                if (Dev2ActivityIOPathUtils.IsDirectory(path.Path))
+                {
+                    result = enPathType.Directory;
                 }
             }
 
