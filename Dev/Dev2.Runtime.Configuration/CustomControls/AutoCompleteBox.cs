@@ -1387,24 +1387,7 @@ namespace System.Windows.Controls
                 {
                     var currentLength = TextBox.Text.Length;
                     var selectionStart = TextBox.SelectionStart;
-                    if (selectionStart == text.Length && selectionStart > _textSelectionStart)
-                    {
-                        var top = FilterMode == AutoCompleteFilterMode.StartsWith || FilterMode == AutoCompleteFilterMode.StartsWithCaseSensitive
-                            ? _view[0]
-                            : TryGetMatch(text, _view, AutoCompleteSearch.GetFilter(AutoCompleteFilterMode.StartsWith));
-                        if (top != null)
-                        {
-                            newSelectedItem = top;
-                            var topString = FormatValue(top, true);
-                            var minLength = Math.Min(topString.Length, Text.Length);
-                            if (AutoCompleteSearch.Equals(Text.Substring(0, minLength), topString.Substring(0, minLength)))
-                            {
-                                UpdateTextValue(topString);
-                                TextBox.SelectionStart = currentLength;
-                                TextBox.SelectionLength = topString.Length - currentLength;
-                            }
-                        }
-                    }
+                    newSelectedItem = UpdateSelection(newSelectedItem, text, currentLength, selectionStart);
                 }
                 else
                 {
@@ -1424,6 +1407,30 @@ namespace System.Windows.Controls
                     _textSelectionStart = TextBox.SelectionStart;
                 }
             }
+        }
+
+        private object UpdateSelection(object newSelectedItem, string text, int currentLength, int selectionStart)
+        {
+            if (selectionStart == text.Length && selectionStart > _textSelectionStart)
+            {
+                var top = FilterMode == AutoCompleteFilterMode.StartsWith || FilterMode == AutoCompleteFilterMode.StartsWithCaseSensitive
+                    ? _view[0]
+                    : TryGetMatch(text, _view, AutoCompleteSearch.GetFilter(AutoCompleteFilterMode.StartsWith));
+                if (top != null)
+                {
+                    newSelectedItem = top;
+                    var topString = FormatValue(top, true);
+                    var minLength = Math.Min(topString.Length, Text.Length);
+                    if (AutoCompleteSearch.Equals(Text.Substring(0, minLength), topString.Substring(0, minLength)))
+                    {
+                        UpdateTextValue(topString);
+                        TextBox.SelectionStart = currentLength;
+                        TextBox.SelectionLength = topString.Length - currentLength;
+                    }
+                }
+            }
+
+            return newSelectedItem;
         }
 
         object TryGetMatch(string searchText, ObservableCollection<object> view, AutoCompleteFilterPredicate<string> predicate)
@@ -1486,14 +1493,7 @@ namespace System.Windows.Controls
                     }
                     else
                     {
-                        if (viewIndex == viewCount)
-                        {
-                            _view.Add(item);
-                        }
-                        else
-                        {
-                            _view.Insert(viewIndex, item);
-                        }
+                        AddOrInsertItem(viewIndex, viewCount, item);
                         viewIndex++;
                         viewCount++;
                     }
@@ -1508,6 +1508,18 @@ namespace System.Windows.Controls
                 }
             }
             _valueBindingEvaluator?.ClearDataContext();
+        }
+
+        private void AddOrInsertItem(int viewIndex, int viewCount, object item)
+        {
+            if (viewIndex == viewCount)
+            {
+                _view.Add(item);
+            }
+            else
+            {
+                _view.Insert(viewIndex, item);
+            }
         }
 
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "oldValue", Justification = "This makes it easy to add validation or other changes in the future.")]
