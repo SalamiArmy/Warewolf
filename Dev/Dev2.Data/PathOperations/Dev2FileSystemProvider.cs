@@ -564,40 +564,10 @@ namespace Dev2.PathOperations
 
             if (!RequiresAuth(src))
             {
-                try
-                {
-
-                    IEnumerable<string> dirs;
-
-                    if (!Dev2ActivityIOPathUtils.IsStarWildCard(path))
-                    {
-                        dirs = TryGetDirectoriesForType(type, path);
-                    }
-                    else
-                    {
-                        // we have a wild-char path ;)
-                        var baseDir = Dev2ActivityIOPathUtils.ExtractFullDirectoryPath(path);
-                        var pattern = Dev2ActivityIOPathUtils.ExtractFileName(path);
-
-                        dirs = GetDirectoriesForType(baseDir, pattern, type);
-                    }
-
-                    if (dirs != null)
-                    {
-                        foreach (string d in dirs)
-                        {
-                            result.Add(ActivityIOFactory.CreatePathFromString(d, src.Username, src.Password, true, src.PrivateKeyFile));
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    throw new Exception(string.Format(ErrorResource.DirectoryNotFound, src.Path));
-                }
+                TryListWithoutAuth(src, type, result, path);
             }
             else
             {
-
                 try
                 {
                     // handle UNC path
@@ -612,6 +582,39 @@ namespace Dev2.PathOperations
             }
 
             return result;
+        }
+
+        private static void TryListWithoutAuth(IActivityIOPath src, ReadTypes type, IList<IActivityIOPath> result, string path)
+        {
+            try
+            {
+                IEnumerable<string> dirs;
+
+                if (!Dev2ActivityIOPathUtils.IsStarWildCard(path))
+                {
+                    dirs = TryGetDirectoriesForType(type, path);
+                }
+                else
+                {
+                    // we have a wild-char path ;)
+                    var baseDir = Dev2ActivityIOPathUtils.ExtractFullDirectoryPath(path);
+                    var pattern = Dev2ActivityIOPathUtils.ExtractFileName(path);
+
+                    dirs = GetDirectoriesForType(baseDir, pattern, type);
+                }
+
+                if (dirs != null)
+                {
+                    foreach (string d in dirs)
+                    {
+                        result.Add(ActivityIOFactory.CreatePathFromString(d, src.Username, src.Password, true, src.PrivateKeyFile));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception(string.Format(ErrorResource.DirectoryNotFound, src.Path));
+            }
         }
 
         private void HandleUncPath(IActivityIOPath src, ReadTypes type, IList<IActivityIOPath> result, string path)
