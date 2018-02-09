@@ -252,7 +252,7 @@ namespace Dev2.Services.Sql
             }
         }
 
-        public bool Connect(string connectionString)
+        public void Connect(string connectionString)
         {
             if (connectionString.Contains("Database"))
             {
@@ -263,10 +263,7 @@ namespace Dev2.Services.Sql
             {
                 _connection.Open();
             }
-
-            return true;
         }
-
         public bool Connect(string connectionString, CommandType commandType, string commandText)
         {
             if (connectionString != null)
