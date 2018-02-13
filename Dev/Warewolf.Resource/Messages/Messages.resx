@@ -130,52 +130,52 @@
     <value>Failed: Assert Is Not Error. Expected '{0}' for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsNull" xml:space="preserve">
-    <value>Failed: Assert Is Null. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Null. Expected NULL for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsNotNull" xml:space="preserve">
-    <value>Failed: Assert Is Not Null. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Not Null. Expected a value for '{1}' but got NULL</value>
   </data>
   <data name="Test_FailureMessage_IsNumeric" xml:space="preserve">
-    <value>Failed: Assert Is Numeric. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Numeric. Expected Numeric value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsNotNumeric" xml:space="preserve">
-    <value>Failed: Assert Is Not Numeric. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Not Numeric. Expected non-Numeric value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsText" xml:space="preserve">
-    <value>Failed: Assert Is Text. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Text. Expected Text format value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsNotText" xml:space="preserve">
-    <value>Failed: Assert Is Not Text. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Not Text. Expected non-Text value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsAlphanumeric" xml:space="preserve">
-    <value>Failed: Assert Is Alphanumeric. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Alphanumeric. Expected Alphanumeric value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsNotAlphanumeric" xml:space="preserve">
-    <value>Failed: Assert Is Not Alphanumeric. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Not Alphanumeric. Expected non-Alphanumeric value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsXML" xml:space="preserve">
-    <value>Failed: Assert Is XML. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is XML. Expected Xml format value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsNotXML" xml:space="preserve">
-    <value>Failed: Assert Is Not XML. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Not XML. Expected non-XML format value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsDate" xml:space="preserve">
-    <value>Failed: Assert Is Date. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Date. Expected Date value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsNotDate" xml:space="preserve">
-    <value>Failed: Assert Is Not Date. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Not Date. Expected non-Date value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsEmail" xml:space="preserve">
-    <value>Failed: Assert Is Email. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Email. Expected Email address for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsNotEmail" xml:space="preserve">
-    <value>Failed: Assert Is Not Email. Expected '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Not Email. Expected non-Email address value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsRegEx" xml:space="preserve">
     <value>Failed: Assert Is Reg Ex. Expected to match RegEx '{0}' for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_NotRegEx" xml:space="preserve">
-    <value>Failed: Assert Not Reg Ex. Expected Not to match RegEx '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Not Reg Ex. Expected {1} Not to match RegEx but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_Equals" xml:space="preserve">
     <value>Failed: Assert Equal. Expected Equal To '{0}' for '{1}' but got '{2}'</value>
@@ -202,19 +202,16 @@
     <value>Failed: Assert Is Contains. Expected Contains '{0}' for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_NotContain" xml:space="preserve">
-    <value>Failed: Assert Not Contain. Expected Not Contain '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Not Contain. Expected '{1}' Not to Contain '{0}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsEndsWith" xml:space="preserve">
     <value>Failed: Assert Is Ends With. Expected End With '{0}' for '{1}' but got '{2}'</value>
-  </data>
-  <data name="Test_FailureMessage_NotEndsWith" xml:space="preserve">
-    <value>Failed: Assert Not Ends With. Expected Not End With '{0}' for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsStartsWith" xml:space="preserve">
     <value>Failed: Assert Is Starts With. Expected Start With '{0}' for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_NotStartsWith" xml:space="preserve">
-    <value>Failed: Assert Not Starts With. Expected Not Start With '{0}' for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Not Starts With. Expected '{1}' Not to Start With '{0}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsBetween" xml:space="preserve">
     <value>Failed: Assert Is Between. Expected '{1}' to be Between '{0}' and '{3}' but got {2}</value>
@@ -226,7 +223,7 @@
     <value>Failed: Assert Is Binary. Expected Binary value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsNotBinary" xml:space="preserve">
-    <value>Failed: Assert Is Not Binary. Expected Not Binary value for '{1}' but got '{2}'</value>
+    <value>Failed: Assert Is Not Binary. Expected non-Binary value for '{1}' but got '{2}'</value>
   </data>
   <data name="Test_FailureMessage_IsHex" xml:space="preserve">
     <value>Failed: Assert Is Hex. Expected Hex value for '{1}' but got '{2}'</value>
@@ -269,5 +266,8 @@
   </data>
   <data name="Test_EmailServerSource_Header" xml:space="preserve">
     <value>Test Email Service Source</value>
+  </data>
+  <data name="Test_FailureMessage_NotEndsWith" xml:space="preserve">
+    <value>Failed: Assert Not Ends With. Expected '{1}' Not to End With {0} but got '{2}'</value>
   </data>
 </root>

@@ -106,7 +106,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Alphanumeric. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Alphanumeric. Expected Alphanumeric value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsAlphanumeric {
             get {
@@ -151,7 +151,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Date. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Date. Expected Date value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsDate {
             get {
@@ -160,7 +160,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Email. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Email. Expected Email address for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsEmail {
             get {
@@ -232,7 +232,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Not Alphanumeric. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Not Alphanumeric. Expected non-Alphanumeric value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsNotAlphanumeric {
             get {
@@ -250,7 +250,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Not Binary. Expected Not Binary value for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Not Binary. Expected non-Binary value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsNotBinary {
             get {
@@ -259,7 +259,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Not Date. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Not Date. Expected non-Date value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsNotDate {
             get {
@@ -268,7 +268,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Not Email. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Not Email. Expected non-Email address value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsNotEmail {
             get {
@@ -304,7 +304,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Not Null. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Not Null. Expected a value for &apos;{1}&apos; but got NULL.
         /// </summary>
         public static string Test_FailureMessage_IsNotNull {
             get {
@@ -313,7 +313,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Not Numeric. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Not Numeric. Expected non-Numeric value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsNotNumeric {
             get {
@@ -322,7 +322,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Not Text. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Not Text. Expected non-Text value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsNotText {
             get {
@@ -331,7 +331,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Not XML. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Not XML. Expected non-XML format value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsNotXML {
             get {
@@ -340,7 +340,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Null. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Null. Expected NULL for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsNull {
             get {
@@ -349,7 +349,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Numeric. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Numeric. Expected Numeric value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsNumeric {
             get {
@@ -376,7 +376,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is Text. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is Text. Expected Text format value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsText {
             get {
@@ -385,7 +385,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Is XML. Expected &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Is XML. Expected Xml format value for &apos;{1}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_IsXML {
             get {
@@ -412,7 +412,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Not Contain. Expected Not Contain &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Not Contain. Expected &apos;{1}&apos; Not to Contain &apos;{0}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_NotContain {
             get {
@@ -421,7 +421,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Not Ends With. Expected Not End With &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Not Ends With. Expected &apos;{1}&apos; Not to End With {0} but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_NotEndsWith {
             get {
@@ -430,7 +430,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Not Reg Ex. Expected Not to match RegEx &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Not Reg Ex. Expected {1} Not to match RegEx but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_NotRegEx {
             get {
@@ -439,7 +439,7 @@ namespace Warewolf.Resource.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed: Assert Not Starts With. Expected Not Start With &apos;{0}&apos; for &apos;{1}&apos; but got &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Failed: Assert Not Starts With. Expected &apos;{1}&apos; Not to Start With &apos;{0}&apos; but got &apos;{2}&apos;.
         /// </summary>
         public static string Test_FailureMessage_NotStartsWith {
             get {
