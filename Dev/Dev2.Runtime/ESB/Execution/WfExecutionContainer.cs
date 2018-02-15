@@ -29,7 +29,7 @@ namespace Dev2.Runtime.ESB.Execution
 {
     public class WfExecutionContainer : EsbExecutionContainer
     {
-        
+
 
         public WfExecutionContainer(ServiceAction sa, IDSFDataObject dataObj, IWorkspace theWorkspace, IEsbChannel esbChannel)
             : base(sa, dataObj, theWorkspace, esbChannel)
@@ -142,7 +142,7 @@ namespace Dev2.Runtime.ESB.Execution
 
         public override bool CanExecute(Guid resourceId, IDSFDataObject dataObject, AuthorizationContext authorizationContext)
         {
-            var isAuthorized = ServerAuthorizationService.Instance.IsAuthorized(authorizationContext, resourceId.ToString());
+            var isAuthorized = ServerAuthorizationService.Instance.IsAuthorized(dataObject.ExecutingUser, authorizationContext, resourceId.ToString());
             if (!isAuthorized)
             {
                 dataObject.Environment.AddError(Warewolf.Resource.Errors.ErrorResource.NotAuthorizedToExecuteException);
@@ -150,7 +150,7 @@ namespace Dev2.Runtime.ESB.Execution
             return isAuthorized;
         }
 
-    
+
         public void Eval(DynamicActivity flowchartProcess, IDSFDataObject dsfDataObject, int update)
         {
             var resource = new ActivityParser().Parse(flowchartProcess);
@@ -203,14 +203,14 @@ namespace Dev2.Runtime.ESB.Execution
                     if (!dsfDataObject.StopExecution)
                     {
                         next = next.Execute(dsfDataObject, update);
-                        dsfDataObject.Environment.AllErrors.UnionWith(dsfDataObject.Environment?.Errors);                                                
+                        dsfDataObject.Environment.AllErrors.UnionWith(dsfDataObject.Environment?.Errors);
                     }
                     else
                     {
                         next = null;
                     }
                 }
-                
+
             }
             finally
             {
