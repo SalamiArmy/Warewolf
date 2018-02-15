@@ -291,7 +291,7 @@ namespace Dev2.Activities.SelectAndApply
             var nonPassingSteps = serviceTestStep.Children?.Where(step => step.Result?.RunTestResult != RunResult.TestPassed).ToList();
             if (nonPassingSteps != null && nonPassingSteps.Count == 0)
             {
-                testRunResult.Message = Warewolf.Resource.Messages.Messages.Test_PassedResult;
+                testRunResult.Message = Warewolf.Studio.Resources.TestFrameworkMessages.Messages.Test_PassedResult;
                 testRunResult.RunTestResult = RunResult.TestPassed;
             }
             else

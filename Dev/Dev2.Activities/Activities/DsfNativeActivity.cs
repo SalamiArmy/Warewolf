@@ -40,7 +40,7 @@ using Dev2.Util;
 using Newtonsoft.Json;
 using Unlimited.Applications.BusinessDesignStudio.Activities.Hosting;
 using Unlimited.Applications.BusinessDesignStudio.Activities.Utilities;
-using Warewolf.Resource.Messages;
+using Warewolf.Studio.Resources.TestFrameworkMessages;
 using Warewolf.Storage;
 using Warewolf.Storage.Interfaces;
 using System.Activities.Statements;

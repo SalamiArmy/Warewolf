@@ -11,7 +11,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Warewolf.Resource.Messages;
+using Warewolf.Studio.Resources.TestFrameworkMessages;
 
 
 namespace Dev2.Data.Decisions.Operations

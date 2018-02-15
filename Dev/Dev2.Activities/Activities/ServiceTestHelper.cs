@@ -14,7 +14,7 @@ using Dev2.Diagnostics;
 using Dev2.Diagnostics.Debug;
 using Dev2.Interfaces;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
-using Warewolf.Resource.Messages;
+using Warewolf.Studio.Resources.TestFrameworkMessages;
 using Warewolf.Storage;
 
 namespace Dev2.Activities

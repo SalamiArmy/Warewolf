@@ -21,7 +21,7 @@ using Dev2.Runtime.ServiceModel.Esb.Brokers.Plugin;
 using Newtonsoft.Json.Linq;
 using Warewolf.Core;
 using Warewolf.Resource.Errors;
-using Warewolf.Resource.Messages;
+using Warewolf.Studio.Resources.TestFrameworkMessages;
 using Warewolf.Storage;
 using Warewolf.Storage.Interfaces;
 

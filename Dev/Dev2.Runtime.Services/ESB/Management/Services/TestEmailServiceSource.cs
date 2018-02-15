@@ -41,7 +41,7 @@ namespace Dev2.Runtime.ESB.Management.Services
                 };
                 try
                 {
-                    var mailMessage = new MailMessage(src.EmailFrom, src.EmailTo, Warewolf.Resource.Messages.Messages.Test_EmailServerSource_Header, Warewolf.Resource.Messages.Messages.Test_EmailServerSource_EmailBody);
+                    var mailMessage = new MailMessage(src.EmailFrom, src.EmailTo, Warewolf.Studio.Resources.TestFrameworkMessages.Messages.Test_EmailServerSource_Header, Warewolf.Studio.Resources.TestFrameworkMessages.Messages.Test_EmailServerSource_EmailBody);
                     con.Send(mailMessage);
                 }
                 catch (SmtpException e)

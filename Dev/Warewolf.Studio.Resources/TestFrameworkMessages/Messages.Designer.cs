@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Warewolf.Resource.Messages {
+namespace Warewolf.Studio.Resources.TestFrameworkMessages {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Warewolf.Resource.Messages {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Warewolf.Resource.Messages.Messages", typeof(Messages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Warewolf.Studio.Resources.TestFrameworkMessages.Messages", typeof(Messages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

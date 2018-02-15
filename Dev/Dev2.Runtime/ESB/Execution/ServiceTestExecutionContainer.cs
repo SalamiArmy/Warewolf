@@ -132,7 +132,7 @@ namespace Dev2.Runtime.ESB.Execution
             if (serviceTestModelTo.AuthenticationType == AuthenticationType.User)
             {
                 var resource = ResourceCat.GetResource(GlobalConstants.ServerWorkspaceID, DataObject.ResourceID);
-                var testNotauthorizedmsg = string.Format(Warewolf.Resource.Messages.Messages.Test_NotAuthorizedMsg, resource?.ResourceName);
+                var testNotauthorizedmsg = string.Format(Warewolf.Studio.Resources.TestFrameworkMessages.Messages.Test_NotAuthorizedMsg, resource?.ResourceName);
                 DataObject.Environment.AllErrors.Add(testNotauthorizedmsg);
                 DataObject.StopExecution = true;
             }
@@ -269,7 +269,7 @@ namespace Dev2.Runtime.ESB.Execution
                             var msg = test.FailureMessage;
                             if (test.TestPassed)
                             {
-                                msg = Warewolf.Resource.Messages.Messages.Test_PassedResult;
+                                msg = Warewolf.Studio.Resources.TestFrameworkMessages.Messages.Test_PassedResult;
                             }
                             outputDebugItem.AddRange(new DebugItemServiceTestStaticDataParams(msg, test.TestFailing).GetDebugItemResult());
                         }
@@ -299,7 +299,7 @@ namespace Dev2.Runtime.ESB.Execution
                         var msg = test.FailureMessage;
                         if (test.TestPassed)
                         {
-                            msg = Warewolf.Resource.Messages.Messages.Test_PassedResult;
+                            msg = Warewolf.Studio.Resources.TestFrameworkMessages.Messages.Test_PassedResult;
                         }
                         itemToAdd.AddRange(new DebugItemServiceTestStaticDataParams(msg, test.TestFailing).GetDebugItemResult());
                     }
@@ -419,7 +419,7 @@ namespace Dev2.Runtime.ESB.Execution
                         test.TestFailing = true;
                         test.TestPassed = false;
                         test.Result.RunTestResult = RunResult.TestFailed;
-                        var assertError = string.Format(Warewolf.Resource.Messages.Messages.Test_FailureMessage_Error,
+                        var assertError = string.Format(Warewolf.Studio.Resources.TestFrameworkMessages.Messages.Test_FailureMessage_Error,
                             test.ErrorContainsText, test.FailureMessage);
                         test.FailureMessage = assertError;
                     }
@@ -715,7 +715,7 @@ namespace Dev2.Runtime.ESB.Execution
                 testPassed = hasErrors && testPassed && fetchErrors.ToLower().Contains(testErrorContainsText.ToLower());
                 if (!testPassed)
                 {
-                    failureMessage.Append(string.Format(Warewolf.Resource.Messages.Messages.Test_FailureMessage_Error, testErrorContainsText, fetchErrors));
+                    failureMessage.Append(string.Format(Warewolf.Studio.Resources.TestFrameworkMessages.Messages.Test_FailureMessage_Error, testErrorContainsText, fetchErrors));
                 }
             }
             else

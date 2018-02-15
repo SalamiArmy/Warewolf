@@ -1,7 +1,7 @@
 using Dev2.Data.Decisions.Operations;
 using Dev2.DataList;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Warewolf.Resource.Messages;
+using Warewolf.Studio.Resources.TestFrameworkMessages;
 
 namespace Dev2.Data.Tests.DecisionsTests
 {

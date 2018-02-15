@@ -22,7 +22,7 @@ using Dev2.Diagnostics;
 using Dev2.Interfaces;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 using Warewolf.Core;
-using Warewolf.Resource.Messages;
+using Warewolf.Studio.Resources.TestFrameworkMessages;
 using Warewolf.Storage.Interfaces;
 using Dev2.Comparer;
 

@@ -32,7 +32,7 @@ using Unlimited.Applications.BusinessDesignStudio.Activities.Utilities;
 using Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects;
 using Warewolf.Core;
 using Warewolf.Resource.Errors;
-using Warewolf.Resource.Messages;
+using Warewolf.Studio.Resources.TestFrameworkMessages;
 using Warewolf.Storage;
 using Warewolf.Storage.Interfaces;
 
