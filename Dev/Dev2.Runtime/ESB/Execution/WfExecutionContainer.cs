@@ -203,8 +203,12 @@ namespace Dev2.Runtime.ESB.Execution
             {
                 if (!dsfDataObject.StopExecution)
                 {
-                    next = next.Execute(dsfDataObject, update);
-                    if (dsfDataObject.Environment.Errors.Count > 0)
+                    if (!dsfDataObject.StopExecution)
+                    {
+                        next = next.Execute(dsfDataObject, update);
+                        dsfDataObject.Environment.AllErrors.UnionWith(dsfDataObject.Environment?.Errors);
+                    }
+                    else
                     {
                         foreach (var e in dsfDataObject.Environment.Errors)
                         {
@@ -213,10 +217,12 @@ namespace Dev2.Runtime.ESB.Execution
 
                     }
                 }
-                else
-                {
-                    break;
-                }
+
+            }
+            finally
+            {
+                var exe = CustomContainer.Get<IExecutionManager>();
+                exe?.CompleteExecution();
             }
             exe?.CompleteExecution();
         }
