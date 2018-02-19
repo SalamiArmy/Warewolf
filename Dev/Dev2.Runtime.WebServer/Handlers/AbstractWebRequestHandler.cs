@@ -81,6 +81,7 @@ namespace Dev2.Runtime.WebServer.Handlers
 
         protected AbstractWebRequestHandler(IResourceCatalog catalog, ITestCatalog testCatalog)
         {
+            _dataObject = null;
             _resourceCatalog = catalog;
             _testCatalog = testCatalog;
         }
@@ -144,11 +145,13 @@ namespace Dev2.Runtime.WebServer.Handlers
                 }
 
                 Common.Utilities.PerformActionInsideImpersonatedContext(userPrinciple, () => { executionDlid = esbEndpoint.ExecuteRequest(dataObject, esbExecuteRequest, workspaceGuid, out errors); });
-                allErrors.MergeErrors(errors);
             }
-            else if (!canExecute)
+            else
             {
-                allErrors.AddError("Executing a service externally requires View and Execute permissions");
+                if (!canExecute)
+                {
+                    dataObject.Environment.AddError(string.Format(Warewolf.Resource.Errors.ErrorResource.UserNotAuthorizedToExecuteOuterWorkflowException, dataObject.ExecutingUser.Identity.Name, dataObject.ServiceName));
+                }
             }
 
             formatter = DataListFormat.CreateFormat("JSON", EmitionTypes.JSON, "application/json");
@@ -190,7 +193,18 @@ namespace Dev2.Runtime.WebServer.Handlers
 
         }
 
-        private static string SetupForWebExecution(IDSFDataObject dataObject, Dev2JsonSerializer serializer)
+        static IDSFDataObject CreateNewDsfDataObject(WebRequestTO webRequest, string serviceName, IPrincipal user, Guid workspaceGuid) =>
+            _dataObject ??
+            new DsfDataObject(webRequest.RawRequestPayload, GlobalConstants.NullDataListID, webRequest.RawRequestPayload)
+            {
+                IsFromWebServer = true,
+                ExecutingUser = user,
+                ServiceName = serviceName,
+                WorkspaceID = workspaceGuid,
+                ExecutionID = Guid.NewGuid()
+            };
+
+        static string SetupForWebExecution(IDSFDataObject dataObject, Dev2JsonSerializer serializer)
         {
             var fetchDebugItems = WebDebugMessageRepo.Instance.FetchDebugItems(dataObject.ClientID, dataObject.DebugSessionID);
             var remoteDebugItems = fetchDebugItems?.Where(state => state.StateType != StateType.Duration).ToArray() ??

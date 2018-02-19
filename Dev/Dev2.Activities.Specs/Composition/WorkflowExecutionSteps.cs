@@ -87,6 +87,11 @@ using Warewolf.Studio.ViewModels;
 using Warewolf.Tools.Specs.BaseTypes;
 using Dev2.Data.Interfaces.Enums;
 using TestingDotnetDllCascading;
+using Warewolf.Sharepoint;
+using Dev2.Studio.ViewModels;
+using Caliburn.Micro;
+using Dev2.Studio.Core.Helpers;
+using SecPermissions = Dev2.Common.Interfaces.Security.Permissions;
 
 namespace Dev2.Activities.Specs.Composition
 {
@@ -238,12 +243,9 @@ namespace Dev2.Activities.Specs.Composition
         [Then(@"the workflow execution has ""(.*)"" error")]
         public void ThenTheWorkflowExecutionHasError(string hasError)
         {
-            Dictionary<string, Activity> activityList;
-            string parentWorkflowName;
-            TryGetValue("activityList", out activityList);
-            TryGetValue("parentWorkflowName", out parentWorkflowName);
+            TryGetValue("activityList", out Dictionary<string, Activity> activityList);
+            TryGetValue("parentWorkflowName", out string parentWorkflowName);
             var debugStates = Get<List<IDebugState>>("debugStates").ToList();
-
             if (hasError == "AN")
             {
                 var hasErrorState = debugStates.FirstOrDefault(state => state.HasError);
@@ -345,8 +347,8 @@ namespace Dev2.Activities.Specs.Composition
             Add("debugStates", new List<IDebugState>());
         }
 
-        [Given(@"I have reset local perfromance Counters")]
-        public void GivenIHaveResetLocalPerfromanceCounters()
+        [Given(@"I have reset local performance Counters")]
+        public void GivenIHaveResetLocalPerformanceCounters()
         {
             try
             {
@@ -354,8 +356,11 @@ namespace Dev2.Activities.Specs.Composition
                 {
                     PerformanceCounterCategory.Delete("Warewolf");
                 }
-                
-                catch { }
+
+                catch (Exception e)
+                {
+                    Assert.IsNotNull(e);
+                }
                 var register = new WarewolfPerformanceCounterRegister(new List<IPerformanceCounter>
                                                             {   new WarewolfCurrentExecutionsPerformanceCounter(),
                                                                 new WarewolfNumberOfErrors(),
@@ -1325,7 +1330,7 @@ namespace Dev2.Activities.Specs.Composition
             return stringBuilder.ToString();
         }
 
-        
+
         public double GetServerCPUUsage()
         {
             var processorTimeCounter = new PerformanceCounter(
@@ -1472,7 +1477,7 @@ namespace Dev2.Activities.Specs.Composition
                 {
                     throw new InvalidOperationException("SpecFlow broke.");
                 }
-           }
+            }
 
             var toolSpecificDebug =
                 debugStates.Where(ds => ds.ParentID.GetValueOrDefault() == workflowId && ds.DisplayName.Equals(toolName)).ToList();
@@ -1495,7 +1500,7 @@ namespace Dev2.Activities.Specs.Composition
             Assert.IsNotNull(debugItemResults);
             Assert.IsTrue(debugItemResults.Any(result => result.Value.Contains("{\r\n  \"Name\": \"Bob\"\r\n}")));
         }
-    
+
         [Given(@"""(.*)"" contains an SQL Bulk Insert ""(.*)"" using database ""(.*)"" and table ""(.*)"" and KeepIdentity set ""(.*)"" and Result set ""(.*)"" for testing as")]
         public void GivenContainsAnSQLBulkInsertUsingDatabaseAndTableAndKeepIdentitySetAndResultSetForTestingAs(string workflowName, string activityName, string dbSrcName, string tableName, string keepIdentity, string result, Table table)
         {
@@ -1535,9 +1540,9 @@ namespace Dev2.Activities.Specs.Composition
             var mappings = new List<DataColumnMapping>();
 
             var pos = 1;
-            
+
             foreach (var row in table.Rows)
-            
+
             {
                 var outputColumn = row["Column"];
                 var inputColumn = row["Mapping"];
@@ -2403,7 +2408,7 @@ namespace Dev2.Activities.Specs.Composition
 
 
         [Given(@"""(.*)"" contains an Delete ""(.*)"" as")]
-        
+
         public void GivenContainsAnDeleteAs(string parentName, string activityName, Table table)
 
         {
@@ -2441,7 +2446,7 @@ namespace Dev2.Activities.Specs.Composition
 
 
         [Given(@"""(.*)"" contains workflow ""(.*)"" with mapping as")]
-        
+
         public void GivenContainsWorkflowWithMappingAs(string forEachName, string nestedWF, Table mappings)
 
         {
@@ -2457,9 +2462,9 @@ namespace Dev2.Activities.Specs.Composition
             }
             if (resource == null)
             {
-                
+
                 throw new ArgumentNullException("resource");
-                
+
             }
             var dataMappingViewModel = GetDataMappingViewModel(resource, mappings);
 
@@ -3068,13 +3073,13 @@ namespace Dev2.Activities.Specs.Composition
                     throw new Exception(errorMessage);
                 }
                 dsfEnhancedDotNetDllActivity.OutputDescription = responseService.Description;
-                
+
                 var outputMapping = _recordsetList.SelectMany(recordset => recordset.Fields, (recordset, recordsetField) =>
                 {
                     var serviceOutputMapping = new ServiceOutputMapping(recordsetField.Name, recordsetField.Alias, recordset.Name) { Path = recordsetField.Path };
                     return serviceOutputMapping;
                 }).Cast<IServiceOutputMapping>().ToList();
-                
+
                 dsfEnhancedDotNetDllActivity.Outputs = outputMapping;
             }
 
@@ -3773,6 +3778,7 @@ namespace Dev2.Activities.Specs.Composition
         {
             using (var sw = File.Create(fileName))
             {
+                Assert.IsNotNull(sw);
             }
         }
 
@@ -3822,8 +3828,9 @@ namespace Dev2.Activities.Specs.Composition
             var dsfConsumeRabbitMqActivity = new DsfConsumeRabbitMQActivity
             {
                 RabbitMQSourceResourceId = ConfigurationManager.AppSettings["testRabbitMQSource"].ToGuid()
-                
-                ,Response = variable
+
+                ,
+                Response = variable
                 ,
                 DisplayName = activityName
             };
@@ -4020,7 +4027,7 @@ namespace Dev2.Activities.Specs.Composition
             var testResults = dbServiceModel.TestService(databaseService);
 
             var mappings = new List<IServiceOutputMapping>();
-            
+
             if (testResults?.Columns.Count > 1)
             {
                 var recordsetName = string.IsNullOrEmpty(testResults.TableName) ? serviceName.Replace(".", "_") : testResults.TableName;
@@ -4132,7 +4139,7 @@ namespace Dev2.Activities.Specs.Composition
             };
 
             var mappings = new List<IServiceOutputMapping>();
-            
+
             if (testResults?.Columns.Count > 1)
             {
                 var recordsetName = string.IsNullOrEmpty(testResults.TableName) ? serviceName.Replace(".", "_") : testResults.TableName;
@@ -4231,7 +4238,7 @@ namespace Dev2.Activities.Specs.Composition
             };
 
             var mappings = new List<IServiceOutputMapping>();
-            
+
             if (testResults?.Columns.Count > 1)
             {
                 var recordsetName = string.IsNullOrEmpty(testResults.TableName) ? serviceName.Replace(".", "_") : testResults.TableName;
@@ -4309,7 +4316,7 @@ namespace Dev2.Activities.Specs.Composition
             };
 
             var mappings = new List<IServiceOutputMapping>();
-            
+
             if (testResults?.Columns.Count > 1)
             {
                 var recordsetName = string.IsNullOrEmpty(testResults.TableName) ? serviceName.Replace(".", "_") : testResults.TableName;
@@ -4417,6 +4424,116 @@ namespace Dev2.Activities.Specs.Composition
                 Add("environment", environmentModel);
                 Add("resourceRepo", environmentModel.ResourceRepository);
                 Add("debugStates", new List<IDebugState>());
+            }
+        }
+        [When(@"workflow ""(.*)"" merge is opened")]
+        public void WhenWorkflowMergeIsOpened(string mergeWfName)
+        {
+            var environmentModel = ServerRepository.Instance.Source;
+            var serverRepository = new Mock<IServerRepository>();
+            serverRepository.Setup(p => p.ActiveServer).Returns(new Mock<IServer>().Object);
+            serverRepository.Setup(p => p.Source).Returns(new Mock<IServer>().Object);
+            var evntArg = new Mock<IEventAggregator>().Object;
+            var versionChecker = new Mock<IVersionChecker>().Object;
+            var explorer = new Mock<IExplorerViewModel>().Object;
+            var viewFact = new Mock<IViewFactory>().Object;
+            var versions = _scenarioContext["Versions"] as IList<IExplorerItem>;
+            var repo = _scenarioContext.Get<IResourceRepository>("resourceRepo") as ResourceRepository;
+            var localResource = repo.LoadContextualResourceModel(versions.First().ResourceId);
+            var remoteResource = repo.LoadContextualResourceModel(versions.Last().ResourceId);
+            var vm = new Mock<IMergeWorkflowViewModel>();
+            var wdvm = new Mock<IWorkflowDesignerViewModel>();
+            vm.Setup(p => p.WorkflowDesignerViewModel).Returns(wdvm.Object);
+        }
+
+        [Given(@"I select and deploy resource from remote server")]
+        [When(@"I select and deploy resource from remote server")]
+        [Then(@"I select and deploy resource from remote server")]
+        public void ThenISelectAndDeployResourceFromRemoteServer()
+        {
+            TryGetValue("resourceId", out Guid resourceId);
+            var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
+            var remoteServer = ScenarioContext.Current.Get<IServer>("destinationServer");
+            var destConnection = new Connection
+            {
+                Address = localhost.Connection.AppServerUri.ToString(),
+                AuthenticationType = localhost.Connection.AuthenticationType,
+                UserName = localhost.Connection.UserName,
+                Password = localhost.Connection.Password
+            };
+            remoteServer.UpdateRepository.Deploy(new List<Guid> { resourceId }, false, destConnection);
+        }
+
+        [When(@"I rename ""(.*)"" from Remote to ""(.*)"" and re deploy to localhost")]
+        public void WhenIRenameFromRemoteToAndReDeployToLocalhost(string parentName, string newName)
+        {
+            TryGetValue("resourceId", out Guid resourceId);
+            var someothername = newName.Replace(parentName, newName);
+            Add("newName", newName);
+            TryGetValue("parentWorkflowName", out string parentWorkflowName);
+
+            var workflowName = string.IsNullOrEmpty(parentWorkflowName) ? parentName : parentWorkflowName;
+            TryGetValue(workflowName, out IContextualResourceModel resourceModel);
+
+            var destinationServer = ScenarioContext.Current.Get<IServer>("destinationServer");
+            destinationServer.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, someothername);
+
+            var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
+            resourceModel.Environment.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, newName);
+        }
+
+        [When(@"I rename ""(.*)"" to ""(.*)"" and re deploy")]
+        public void WhenIRenameToAndReDeploy(string parentName, string newName)
+        {
+            TryGetValue("resourceId", out Guid resourceId);
+            Add("newName", newName);
+            TryGetValue("parentWorkflowName", out string parentWorkflowName);
+            var workflowName = string.IsNullOrEmpty(parentWorkflowName) ? parentName : parentWorkflowName;
+            TryGetValue(workflowName, out IContextualResourceModel resourceModel);
+            var localhost = ScenarioContext.Current.Get<IServer>("sourceServer");
+            resourceModel.Environment.ExplorerRepository.UpdateManagerProxy.Rename(resourceModel.ID, newName);
+        }
+
+        [Given(@"Public ""(.*)"" Permissions to Execute ""(.*)""")]
+        [When(@"Public ""(.*)"" Permissions to Execute ""(.*)""")]
+        [Then(@"Public ""(.*)"" Permissions to Execute ""(.*)""")]
+        public void GivenPublicPermissionsToExecuteButNotNested(string permited, string resourceName)
+        {
+            var hasPermissions = !string.IsNullOrEmpty(permited);
+            TryGetValue("environment", out IServer environmentModel);
+            EnsureEnvironmentConnected(environmentModel);
+            var resourceRepository = environmentModel.ResourceRepository;
+            var settings = resourceRepository.ReadSettings(environmentModel);
+            environmentModel.ForceLoadResources();
+            if (hasPermissions)
+            {
+                AddPermissionsForResource(resourceName, environmentModel, resourceRepository, settings);
+            }
+        }
+
+        private static void AddPermissionsForResource(string resourceName, IServer environmentModel, IResourceRepository resourceRepository, Data.Settings.Settings settings)
+        {
+            var resourceModel = resourceRepository.FindSingle(model => model.Category.Equals(resourceName, StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsNotNull(resourceModel, "Did not find: " + resourceName);
+            settings.Security.WindowsGroupPermissions.RemoveAll(permission => permission.ResourceID == resourceModel.ID);
+            var resourcePerm = new WindowsGroupPermission
+            {
+                WindowsGroup = "Public",
+                ResourceID = resourceModel.ID,
+                ResourceName = resourceName,
+                IsServer = false,
+                Permissions = SecPermissions.Execute
+            };
+            settings.Security.WindowsGroupPermissions.Add(resourcePerm);
+            var SettingsWriteResult = resourceRepository.WriteSettings(environmentModel, settings);
+            Assert.IsFalse(SettingsWriteResult.HasError, "Cannot setup for security spec.\n Error writing initial resource permissions settings to localhost server.\n" + SettingsWriteResult.Message);
+        }
+
+        static void EnsureEnvironmentConnected(IServer server)
+        {
+            if (!server.IsConnected)
+            {
+                server.Connect();
             }
         }
     }
