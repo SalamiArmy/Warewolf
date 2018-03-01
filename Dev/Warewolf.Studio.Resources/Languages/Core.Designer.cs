@@ -19,7 +19,7 @@ namespace Warewolf.Studio.Resources.Languages {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Core {
@@ -57,15 +57,6 @@ namespace Warewolf.Studio.Resources.Languages {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Authentication Type:.
-        /// </summary>
-        public static string AuthenticationTypeLabel {
-            get {
-                return ResourceManager.GetString("AuthenticationTypeLabel", resourceCulture);
             }
         }
         
@@ -1309,7 +1300,7 @@ namespace Warewolf.Studio.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright © 2017 Warewolf, All rights reserved..
+        ///   Looks up a localized string similar to Copyright © 2018 Warewolf, All rights reserved..
         /// </summary>
         public static string WarewolfCopyright {
             get {
