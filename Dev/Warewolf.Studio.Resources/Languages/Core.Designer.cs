@@ -61,6 +61,15 @@ namespace Warewolf.Studio.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Authentication Type:.
+        /// </summary>
+        public static string AuthenticationTypeLabel {
+            get {
+                return ResourceManager.GetString("AuthenticationTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AutoDiscover URL.
         /// </summary>
         public static string AutoDiscoverLabel {
@@ -237,6 +246,42 @@ namespace Warewolf.Studio.Resources.Languages {
         public static string DeployDestinationNotConnected {
             get {
                 return ResourceManager.GetString("DeployDestinationNotConnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no items to deploy in this folder..
+        /// </summary>
+        public static string DeployEmptyFolderDescription {
+            get {
+                return ResourceManager.GetString("DeployEmptyFolderDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deploy Empty Folder.
+        /// </summary>
+        public static string DeployEmptyFolderHeader {
+            get {
+                return ResourceManager.GetString("DeployEmptyFolderHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no items to deploy on this server..
+        /// </summary>
+        public static string DeployEmptyServerDescription {
+            get {
+                return ResourceManager.GetString("DeployEmptyServerDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deploy Empty Server.
+        /// </summary>
+        public static string DeployEmptyServerHeader {
+            get {
+                return ResourceManager.GetString("DeployEmptyServerHeader", resourceCulture);
             }
         }
         
@@ -485,6 +530,15 @@ namespace Warewolf.Studio.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hide Version History.
+        /// </summary>
+        public static string HideVersionHistoryLabel {
+            get {
+                return ResourceManager.GetString("HideVersionHistoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Host.
         /// </summary>
         public static string HostNameLabel {
@@ -654,6 +708,24 @@ namespace Warewolf.Studio.Resources.Languages {
         public static string MenuDialogUnLockLabel {
             get {
                 return ResourceManager.GetString("MenuDialogUnLockLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To start the Merge process, select a radio button below..
+        /// </summary>
+        public static string MergeConflictsStartProcessText {
+            get {
+                return ResourceManager.GetString("MergeConflictsStartProcessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Below is a list of the selected workflow versions to merge with. Select from the radio button and press Enter or click Merge to continue with the merge process. If you are nor sure which version to merge with, press Escape or click Cancel, then find the Workflow in the Explorer, right-click and select &apos;Show Version History&apos; to view the previous versions..
+        /// </summary>
+        public static string MergeSelectionViewInformationLabel {
+            get {
+                return ResourceManager.GetString("MergeSelectionViewInformationLabel", resourceCulture);
             }
         }
         
@@ -1156,6 +1228,15 @@ namespace Warewolf.Studio.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Version History.
+        /// </summary>
+        public static string ShowVersionHistoryLabel {
+            get {
+                return ResourceManager.GetString("ShowVersionHistoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Microsoft SQL Server Source.
         /// </summary>
         public static string SqlServerSourceNewHeaderLabel {
@@ -1300,7 +1381,7 @@ namespace Warewolf.Studio.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright © 2018 Warewolf, All rights reserved..
+        ///   Looks up a localized string similar to Copyright © {0} Warewolf, All rights reserved..
         /// </summary>
         public static string WarewolfCopyright {
             get {
