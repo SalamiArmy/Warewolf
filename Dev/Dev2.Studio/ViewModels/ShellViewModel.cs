@@ -110,9 +110,9 @@ namespace Dev2.Studio.ViewModels
         private ICommand _searchCommand;
         private ICommand _showCommunityPageCommand;
         readonly IAsyncWorker _asyncWorker;
-        private readonly IViewFactory _factory;
-        private IFile _file;
-        private Common.Interfaces.Wrappers.IFilePath _filePath;
+        readonly IViewFactory _factory;
+        readonly IFile _file;
+        readonly Common.Interfaces.Wrappers.IFilePath _filePath;
         private ICommand _showStartPageCommand;
         IContextualResourceModel _contextualResourceModel;
         bool _canDebug = true;
@@ -177,7 +177,10 @@ namespace Dev2.Studio.ViewModels
         internal async Task<bool> LoadWorkflowAsync(string e)
         {
             _contextualResourceModel = null;
-            if (!File.Exists(e)) { return false; }
+            if (!File.Exists(e))
+            {
+                return false;
+            }
             ActiveServer.ResourceRepository.Load();
             var fileName = string.Empty;
             fileName = Path.GetFileNameWithoutExtension(e);
@@ -470,7 +473,10 @@ namespace Dev2.Studio.ViewModels
         public void ShowDependencies(Guid resourceId, IServer server, bool isSource)
         {
             var environmentModel = ServerRepository.Get(server.EnvironmentID);
-            if (environmentModel == null) { return; }
+            if (environmentModel == null)
+            {
+                return;
+            }
             if (!isSource)
             {
                 environmentModel.ResourceRepository.LoadResourceFromWorkspace(resourceId, Guid.Empty);
@@ -1508,7 +1514,7 @@ namespace Dev2.Studio.ViewModels
             }
         }
 
-        public bool _continueShutDown;
+        bool _continueShutDown;
 
         public void ResetMainView()
         {
@@ -1532,10 +1538,8 @@ namespace Dev2.Studio.ViewModels
             }
             SetActiveServer(item.Environment);
         }
-
-#pragma warning disable IDE1006 // Naming Styles
-        public Action<WorkSurfaceContextViewModel> ActiveItemChanged;
-#pragma warning restore IDE1006 // Naming Styles
+        
+        internal Action<WorkSurfaceContextViewModel> ActiveItemChanged;
 
         bool ConfirmDeleteAfterDependencies(ICollection<IContextualResourceModel> models)
         {
