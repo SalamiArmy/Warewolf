@@ -102,7 +102,7 @@ namespace Dev2.Data.Util
 
                 if (veryNaughtyTags != null)
                 {
-                    result = CleanupNaughtyTags(veryNaughtyTags, result);
+                    result = TryCleanupNaughtyTags(veryNaughtyTags, result);
                 }
                 var start = result.IndexOf("<", StringComparison.Ordinal);
                 if (start >= 0)
@@ -128,7 +128,7 @@ namespace Dev2.Data.Util
             return result;
         }
 
-        static string CleanupNaughtyTags(string[] toRemove, string payload)
+        static string TryCleanupNaughtyTags(string[] toRemove, string payload)
         {
             var foundOpen = false;
             var result = payload;
@@ -144,25 +144,7 @@ namespace Dev2.Data.Util
                 {
                     if (myTag.IndexOf("</", StringComparison.Ordinal) >= 0)
                     {
-                        if (foundOpen)
-                        {
-                            var loc = i - 1;
-                            if (loc >= 0)
-                            {
-                                var start = result.IndexOf(toRemove[loc], StringComparison.Ordinal);
-                                var end = result.IndexOf(myTag, StringComparison.Ordinal);
-                                if (start < end && start >= 0)
-                                {
-                                    var canidate = result.Substring(start, end - start + myTag.Length);
-                                    var tmpResult = canidate.Replace(myTag, "").Replace(toRemove[loc], "");
-                                    result = tmpResult.IndexOf("</", StringComparison.Ordinal) >= 0 || tmpResult.IndexOf("/>", StringComparison.Ordinal) >= 0 ? result.Replace(myTag, "").Replace(toRemove[loc], "") : result.Replace(canidate, "");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            result = result.Replace(myTag, "");
-                        }
+                        result = CloseOpenTag(toRemove, foundOpen, result, i, myTag);
 
                         foundOpen = false;
                     }
@@ -171,6 +153,31 @@ namespace Dev2.Data.Util
 
             return result.Trim();
 
+        }
+
+        private static string CloseOpenTag(string[] toRemove, bool foundOpen, string result, int i, string myTag)
+        {
+            if (foundOpen)
+            {
+                var loc = i - 1;
+                if (loc >= 0)
+                {
+                    var start = result.IndexOf(toRemove[loc], StringComparison.Ordinal);
+                    var end = result.IndexOf(myTag, StringComparison.Ordinal);
+                    if (start < end && start >= 0)
+                    {
+                        var canidate = result.Substring(start, end - start + myTag.Length);
+                        var tmpResult = canidate.Replace(myTag, "").Replace(toRemove[loc], "");
+                        result = tmpResult.IndexOf("</", StringComparison.Ordinal) >= 0 || tmpResult.IndexOf("/>", StringComparison.Ordinal) >= 0 ? result.Replace(myTag, "").Replace(toRemove[loc], "") : result.Replace(canidate, "");
+                    }
+                }
+            }
+            else
+            {
+                result = result.Replace(myTag, "");
+            }
+
+            return result;
         }
     }
 }
