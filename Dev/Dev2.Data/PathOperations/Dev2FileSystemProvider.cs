@@ -116,15 +116,7 @@ namespace Dev2.PathOperations
             {
                 if (FileExist(path) || DirectoryExist(path))
                 {
-                    if (!Dev2ActivityIOPathUtils.IsStarWildCard(path.Path))
-                    {
-                        var fa = File.GetAttributes(path.Path);
-
-                        if ((fa & FileAttributes.Directory) == FileAttributes.Directory)
-                        {
-                            result = enPathType.Directory;
-                        }
-                    }
+                    result = IsDirectory(path, result);
                 }
                 else
                 {
@@ -135,6 +127,20 @@ namespace Dev2.PathOperations
                 }
             }
 
+            return result;
+        }
+
+        private static enPathType IsDirectory(IActivityIOPath path, enPathType result)
+        {
+            if (!Dev2ActivityIOPathUtils.IsStarWildCard(path.Path))
+            {
+                var fa = File.GetAttributes(path.Path);
+
+                if ((fa & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    result = enPathType.Directory;
+                }
+            }
             return result;
         }
 

@@ -38,7 +38,7 @@ namespace Dev2.Runtime.WebServer
             var serviceName = dto.ServiceName;
             var resource = dto.Resource;
             var formatter = dto.DataListFormat;
-            var executePayload = dto.PayLoad;
+            var executePayload = "";
             var webRequest = dto.WebRequestTO;
             var serializer = dto.Serializer;
             var allErrors = dto.ErrorResultTO;
@@ -49,37 +49,7 @@ namespace Dev2.Runtime.WebServer
                     dataObject.DataListID = executionDlid;
                     dataObject.WorkspaceID = workspaceGuid;
                     dataObject.ServiceName = serviceName;
-
-                    if (!dataObject.IsDebug || dataObject.RemoteInvoke || dataObject.RemoteNonDebugInvoke)
-                    {
-                        if (resource?.DataList != null)
-                        {
-                            if (dataObject.ReturnType == EmitionTypes.JSON)
-                            {
-                                formatter = DataListFormat.CreateFormat("JSON", EmitionTypes.JSON, "application/json");
-                                executePayload = ExecutionEnvironmentUtils.GetJsonOutputFromEnvironment(dataObject,
-                                    resource.DataList.ToString(), 0);
-                            }
-                            else if (dataObject.ReturnType == EmitionTypes.XML)
-                            {
-                                executePayload = ExecutionEnvironmentUtils.GetXmlOutputFromEnvironment(dataObject,
-                                    resource.DataList.ToString(), 0);
-                            }
-                            else
-                            {
-                                if (dataObject.ReturnType == EmitionTypes.SWAGGER)
-                                {
-                                    formatter = DataListFormat.CreateFormat("SWAGGER", EmitionTypes.SWAGGER, "application/json");
-                                    executePayload = ExecutionEnvironmentUtils.GetSwaggerOutputForService(resource,
-                                        resource.DataList.ToString(), webRequest.WebServerUrl);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        executePayload = string.Empty;
-                    }
+                    executePayload = GetExecutePayload(dataObject, resource, webRequest, ref formatter);
                 }
                 else
                 {
@@ -131,6 +101,39 @@ namespace Dev2.Runtime.WebServer
             dataObject.Environment = null;
             dto.ErrorResultTO.ClearErrors();
             return new StringResponseWriter(executePayload, formatter.ContentType);
+        }
+
+        static string GetExecutePayload(IDSFDataObject dataObject, IResource resource, WebRequestTO webRequest, ref DataListFormat formatter)
+        {
+            var executePayload = "";
+            if (!dataObject.IsDebug || dataObject.RemoteInvoke || dataObject.RemoteNonDebugInvoke)
+            {
+                if (resource?.DataList != null)
+                {
+                    if (dataObject.ReturnType == EmitionTypes.JSON)
+                    {
+                        formatter = DataListFormat.CreateFormat("JSON", EmitionTypes.JSON, "application/json");
+                        executePayload = ExecutionEnvironmentUtils.GetJsonOutputFromEnvironment(dataObject,
+                            resource.DataList.ToString(), 0);
+                    }
+                    if (dataObject.ReturnType == EmitionTypes.XML)
+                    {
+                        executePayload = ExecutionEnvironmentUtils.GetXmlOutputFromEnvironment(dataObject,
+                            resource.DataList.ToString(), 0);
+                    }
+                    if (dataObject.ReturnType == EmitionTypes.SWAGGER)
+                    {
+                        formatter = DataListFormat.CreateFormat("SWAGGER", EmitionTypes.SWAGGER, "application/json");
+                        executePayload = ExecutionEnvironmentUtils.GetSwaggerOutputForService(resource,
+                            resource.DataList.ToString(), webRequest.WebServerUrl);
+                    }
+                }
+            }
+            else
+            {
+                executePayload = string.Empty;
+            }
+            return executePayload;
         }
 
         static string SetupErrors(IDSFDataObject dataObject, ErrorResultTO allErrors)
