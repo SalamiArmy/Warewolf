@@ -150,6 +150,8 @@
     <Compile Include="Decisions\Operations\NotStartsWith.cs" />
     <Compile Include="Dev2Column.cs" />
     <Compile Include="Dev2DecisionComparer.cs" />
+    <Compile Include="PathOperations\ValidateAuthorization.cs" />
+    <Compile Include="Util\OperationsHelper.cs" />
     <Compile Include="IComplexObject.cs" />
     <Compile Include="IDataListModel.cs" />
     <Compile Include="IIndexIterator.cs" />
@@ -160,6 +162,19 @@
     <Compile Include="OptomizedObservableCollection.cs" />
     <Compile Include="Parsers\XPathParser.cs" />
     <Compile Include="PathOperations\Extension\PathExtensions.cs" />
+    <Compile Include="PathOperations\Interfaces\IDev2LogonProvider.cs" />
+    <Compile Include="PathOperations\Interfaces\IPutOperationArguments.cs" />
+    <Compile Include="PathOperations\LogonProvider.cs" />
+    <Compile Include="PathOperations\Operations\DoCreateDirectory.cs" />
+    <Compile Include="PathOperations\Operations\DoDeleteOperation.cs" />
+    <Compile Include="PathOperations\Operations\DoGetAction.cs" />
+    <Compile Include="PathOperations\Operations\DoGetFilesAsPerTypeOperation.cs" />
+    <Compile Include="PathOperations\Operations\DoPathExistOperation.cs" />
+    <Compile Include="PathOperations\Operations\DoPutAction.cs" />
+    <Compile Include="PathOperations\PerformBoolIOOperation.cs" />
+    <Compile Include="PathOperations\PerformIntegerIOOperation.cs" />
+    <Compile Include="PathOperations\PerformListOfIOPathOperation.cs" />
+    <Compile Include="PathOperations\PerformStreamIOOperation.cs" />
     <Compile Include="PathOperations\TO\Dev2PutOperationTOFactory.cs" />
     <Compile Include="PulseLogger.cs" />
     <Compile Include="RecordSet.cs" />
@@ -352,10 +367,7 @@
     <None Include="Dev2.Data.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="PathOperations\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Analyzer Include="..\packages\codecracker.CSharp.1.0.1\analyzers\dotnet\cs\CodeCracker.Common.dll" />
     <Analyzer Include="..\packages\codecracker.CSharp.1.0.1\analyzers\dotnet\cs\CodeCracker.CSharp.dll" />

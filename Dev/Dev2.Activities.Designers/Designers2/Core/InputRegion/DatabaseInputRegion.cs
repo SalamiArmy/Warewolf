@@ -34,7 +34,7 @@ namespace Dev2.Activities.Designers2.Core.InputRegion
             _modelItem = modelItem;
             _action = action;
             _action.SomethingChanged += SourceOnSomethingChanged;
-            var inputsFromModel = _modelItem.GetProperty<ICollection<IServiceInput>>("Inputs");
+            var inputsFromModel = _modelItem.GetProperty<ICollection<IServiceInput>>(nameof(Inputs));
             var serviceInputs = inputsFromModel ?? new List<IServiceInput>();
             var inputs = new ObservableCollection<IServiceInput>();
             inputs.CollectionChanged += InputsCollectionChanged;
@@ -54,6 +54,14 @@ namespace Dev2.Activities.Designers2.Core.InputRegion
             RemoveItemPropertyChangeEvent(e);
         }
 
+        public void ResetInputs(ICollection<IServiceInput> inputs)
+        {
+            var newInputs = new ObservableCollection<IServiceInput>();
+            newInputs.CollectionChanged += InputsCollectionChanged;
+            newInputs.AddRange(inputs);
+            Inputs = newInputs;
+        }
+
         void AddItemPropertyChangeEvent(NotifyCollectionChangedEventArgs args)
         {
             if (args.NewItems == null)
@@ -69,8 +77,8 @@ namespace Dev2.Activities.Designers2.Core.InputRegion
                 }
             }
         }
-
-        void ItemPropertyChanged(object sender, PropertyChangedEventArgs e) => _modelItem.SetProperty("Inputs", Inputs);
+        
+        void ItemPropertyChanged(object sender, PropertyChangedEventArgs e) => _modelItem.SetProperty(nameof(Inputs), _inputs.ToList());
 
         void RemoveItemPropertyChangeEvent(NotifyCollectionChangedEventArgs args)
         {
@@ -96,8 +104,8 @@ namespace Dev2.Activities.Designers2.Core.InputRegion
             {
                 Errors.Clear();
                 UpdateOnActionSelection();
-                OnPropertyChanged(@"Inputs");
-                OnPropertyChanged(@"IsEnabled");
+                OnPropertyChanged(nameof(Inputs));
+                OnPropertyChanged(nameof(IsEnabled));
             }
             catch (Exception e)
             {
@@ -128,17 +136,17 @@ namespace Dev2.Activities.Designers2.Core.InputRegion
                     var removedInputs = inputCopy.Except(selectedActionInputs, new ServiceInputNameComparer()).ToList();
                     var union = inputCopy.Union(newInputs, new ServiceInputNameComparer()).ToList();
                     union.RemoveAll(a => removedInputs.Any(k => a.Equals(k)));
-                    Inputs = union;
+                    ResetInputs(union);
                 }
                 else
                 {
-                    Inputs = selectedActionInputs;
+                    ResetInputs(selectedActionInputs);
                     _datatalistMapper.MapInputsToDatalist(Inputs);
                     IsInputsEmptyRows = Inputs.Count < 1;
                     IsEnabled = true;
                 }
             }
-            OnPropertyChanged("Inputs");
+            OnPropertyChanged(nameof(Inputs));
         }
 
         ICollection<IServiceInput> InputsFromSameAction(IList<IServiceInput> selectedActionInputs)
@@ -193,7 +201,7 @@ namespace Dev2.Activities.Designers2.Core.InputRegion
                 {
                     Inputs = region.Inputs.ToList();
                 }
-                OnPropertyChanged("Inputs");
+                OnPropertyChanged(nameof(Inputs));
                 IsInputsEmptyRows = Inputs == null || Inputs.Count == 0;
             }
         }
@@ -234,13 +242,13 @@ namespace Dev2.Activities.Designers2.Core.InputRegion
                 if (value != null)
                 {
                     _inputs = value;
-                    _modelItem.SetProperty("Inputs", value.ToList());
+                    _modelItem.SetProperty(nameof(Inputs), value.ToList());
                     OnPropertyChanged();
                 }
                 else
                 {
                     _inputs.Clear();
-                    _modelItem.SetProperty("Inputs", _inputs.ToList());
+                    _modelItem.SetProperty(nameof(Inputs), _inputs.ToList());
                     OnPropertyChanged();
                 }
 

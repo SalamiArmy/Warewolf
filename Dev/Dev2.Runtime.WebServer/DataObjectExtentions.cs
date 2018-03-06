@@ -234,10 +234,10 @@ namespace Dev2.Runtime.WebServer
         public static bool CanExecuteCurrentResource(this IDSFDataObject dataObject, IResource resource, IAuthorizationService service)
         {
             var canExecute = true;
-            if (service != null && dataObject.ReturnType != EmitionTypes.TEST && dataObject.ReturnType != EmitionTypes.TRX)
+            if (service != null && dataObject.ReturnType != EmitionTypes.TRX)
             {
-                var hasView = service.IsAuthorized(AuthorizationContext.View, dataObject.ResourceID.ToString());
-                var hasExecute = service.IsAuthorized(AuthorizationContext.Execute, dataObject.ResourceID.ToString());
+                var hasView = service.IsAuthorized(dataObject.ExecutingUser,AuthorizationContext.View, dataObject.ResourceID.ToString());
+                var hasExecute = service.IsAuthorized(dataObject.ExecutingUser, AuthorizationContext.Execute, dataObject.ResourceID.ToString());
                 canExecute = (hasExecute && hasView) || ((dataObject.RemoteInvoke || dataObject.RemoteNonDebugInvoke) && hasExecute) || (resource != null && resource.ResourceType == "ReservedService");
             }
             return canExecute;

@@ -13,11 +13,25 @@ using System.IO;
 using System.Text;
 using Dev2.Data.Interfaces.Enums;
 
+using static System.IO.Path;
+
 
 namespace Dev2.PathOperations
 {
+
+    /// <summary>
+    /// PBI : 1172
+    /// Status : New
+    /// Purpose : To provide common utilty function to the IOPath classes
+    /// </summary>
     public static class Dev2ActivityIOPathUtils
     {
+
+        /// <summary>
+        /// Extract the full directory portion of a URI
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static string ExtractFullDirectoryPath(string path)
         {
             var result = path;
@@ -36,7 +50,7 @@ namespace Dev2.PathOperations
                     tmp = path.Split(spliter);
                 }
 
-                for(int i = 0; i < tmp.Length - 1; i++)
+                for (int i = 0; i < tmp.Length - 1; i++)
                 {
                     tmpBuilder.Append(tmp[i] + spliter);
                 }
@@ -46,31 +60,38 @@ namespace Dev2.PathOperations
 
             return result;
         }
-        
+
+        /// <summary>
+        /// Extract the file name from the URI
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static string ExtractFileName(string path)
         {
             string result;
             try
             {
                 var uri = new Uri(path);
-                result = Path.GetFileName(uri.LocalPath);
+                result = GetFileName(uri.LocalPath);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 result = path;
             }
 
             return result;
         }
-        
+
+        /// <summary>
+        /// Is the request a wild-char request
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static bool IsStarWildCard(string path)
         {
             var result = false;
-
             var uri = new Uri(path);
-
             var fileName = Path.GetFileName(uri.LocalPath);
-
             if (fileName.Contains(@"*") || fileName.Contains(@"?"))
             {
                 result = true;
@@ -78,7 +99,12 @@ namespace Dev2.PathOperations
 
             return result;
         }
-        
+
+        /// <summary>
+        /// Is the path a directory or file?
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static bool IsDirectory(string path)
         {
             var result = false;
@@ -90,7 +116,7 @@ namespace Dev2.PathOperations
                 return !isFile;
             }
 
-            if(path.EndsWith(@"\\") || path.EndsWith(@"/"))
+            if (path.EndsWith(@"\\", StringComparison.Ordinal) || path.EndsWith(@"/", StringComparison.Ordinal))
             {
                 result = true;
             }
@@ -100,36 +126,28 @@ namespace Dev2.PathOperations
 
                 if (idx > 0)
                 {
-                    if(!path.Substring(idx).Contains(@"."))
+                    if (!path.Substring(idx).Contains(@"."))
                     {
                         result = true;
                     }
                 }
                 else
                 {
-                    result = IfFileNameContainsADot(path);
-                }
-            }
-
-            return result;
-        }
-
-        private static bool IfFileNameContainsADot(string path)
-        {
-            bool result = false;
-            int idx = path.LastIndexOf(@"/", StringComparison.Ordinal);
-            if (idx > 0)
-            {
-                if (!path.Substring(idx).Contains(@"."))
-                {
-                    result = true;
-                }
-            }
-            else
-            {
-                if (!path.Contains(@"."))
-                {
-                    result = true;
+                    idx = path.LastIndexOf(@"/", StringComparison.Ordinal);
+                    if (idx > 0)
+                    {
+                        if (!path.Substring(idx).Contains(@"."))
+                        {
+                            result = true;
+                        }
+                    }
+                    else
+                    {
+                        if (!HasExtension(path))
+                        {
+                            result = true;
+                        }
+                    }
                 }
             }
 
