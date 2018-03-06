@@ -286,7 +286,7 @@
     <Compile Include="IManageWcfSourceViewModel.cs" />
     <Compile Include="IManageWebserviceSourceViewModel.cs" />
     <Compile Include="IMenuView.cs" />
-    <Compile Include="IMergeToolModel.cs" />
+    <Compile Include="IToolConflictItem.cs" />
     <Compile Include="IMergeView.cs" />
     <Compile Include="IMethodParameter.cs" />
     <Compile Include="INamespaceItem.cs" />
@@ -343,7 +343,7 @@
     <Compile Include="IServiceTestModel.cs" />
     <Compile Include="ITestCatalog.cs" />
     <Compile Include="IToolboxView.cs" />
-    <Compile Include="IToolConflict.cs" />
+    <Compile Include="IToolConflictRow.cs" />
     <Compile Include="IUpdatesHelp.cs" />
     <Compile Include="ISharepointListTo.cs" />
     <Compile Include="ISharepointReadListTo.cs" />
