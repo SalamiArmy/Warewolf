@@ -27,9 +27,10 @@ let AddRecsetToEnv (name : string) (env : WarewolfEnvironment) =
         let b = CreateDataSet ""
         let a = { env with RecordSets = (Map.add name b env.RecordSets) }
         a
-///Evalutae an expression
+///Evaluate an expression
 let EvalEnvExpression (exp : string) (update : int) (shouldEscape:bool) (env : WarewolfEnvironment) = 
     EvaluationFunctions.eval env update shouldEscape exp
+
 ///eval and return positions
 let EvalWithPositions (exp : string) (update : int) (env : WarewolfEnvironment) = 
     EvaluationFunctions.evalWithPositions env update exp
@@ -123,3 +124,10 @@ let RecordsetExpressionExists (exp : string) (env : WarewolfEnvironment) =
         if env.RecordSets.ContainsKey recset.Name then env.RecordSets.[recset.Name].Data.ContainsKey recset.Column
         else false
     | _ -> false
+
+///Evaluate an expression to a Table
+let EvalEnvExpressionToTable (name : string) (update : int) (env : WarewolfEnvironment) = 
+    let buffer = EvaluationFunctions.parseLanguageExpression name update
+    match buffer with
+    | RecordSetNameExpression a when env.RecordSets.ContainsKey a.Name -> EvaluationFunctions.evalDataSetExpression env update a
+    | _ -> raise (new Dev2.Common.Common.NullValueInVariableException("recordset not found",EvaluationFunctions.languageExpressionToString buffer))
