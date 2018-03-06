@@ -44,10 +44,10 @@ namespace Warewolf.Storage.Interfaces
         void SortRecordSet(string sortField, bool descOrder, int update);
 
         string ToStar(string expression);
-
-        IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update);
-
-        IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update, bool throwsifnotexists);
+		CommonFunctions.WarewolfEvalResult.WarewolfRecordSetResult EvalAsTable(string recordsetExpression, int update);
+		IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update);
+		CommonFunctions.WarewolfEvalResult.WarewolfRecordSetResult EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists);
+		IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update, bool throwsifnotexists);
 
         IEnumerable<int> EvalWhere(string expression, Func<DataStorage.WarewolfAtom, bool> clause, int update);
 
