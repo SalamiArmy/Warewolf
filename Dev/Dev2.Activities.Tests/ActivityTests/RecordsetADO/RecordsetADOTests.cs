@@ -106,7 +106,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			var e = internalResult.GetEnumerator();
 			if (e.MoveNext())
 			{
-				Assert.Equals(e.Current, "bob");
+				Assert.AreEqual(e.Current, "bob");
 			}
 			else
 			{
@@ -131,7 +131,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			string query = "select * from person";
 			var Worker = CreatePersonAddressWorkers();
 			var Results = Worker.ExecuteQuery(query);
-			Assert.AreEqual(4, Results.Rows.Count);
+			Assert.AreEqual(4, Results.Tables[0].Rows.Count);
 		}
 
 		[TestMethod]
@@ -143,11 +143,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 			string query = "select * from person p join address a on p.address_id=a.id";
 			var results = worker.ExecuteQuery(query);
 
-
-
-			Assert.IsInstanceOfType(results, typeof(IEnumerable<DataStorage.WarewolfAtom>));
-			Assert.Equals(results.Rows.Count, 3);
-
+			Assert.IsInstanceOfType(results, typeof(DataSet));
+			Assert.AreEqual(results.Tables[0].Rows.Count, 3);
 		}
 
 		[TestMethod]
@@ -158,17 +155,17 @@ namespace Dev2.Tests.Activities.ActivityTests
 			string query = "select * from person p join address a on p.address_id=a.id where a.addr=\"11 test lane\" order by Name";
 			var Worker = CreatePersonAddressWorkers();
 			var results = Worker.ExecuteQuery(query);
+			
+			Assert.AreEqual(results.Tables[0].Rows[0]["Name"], "bob");
+			Assert.AreEqual(results.Tables[0].Rows[0]["Age"],(Int64)21);
+			Assert.AreEqual(results.Tables[0].Rows[0]["address_id"], (Int64)1);
+			Assert.AreEqual(results.Tables[0].Rows[0]["Addr"], "11 test lane");
+			Assert.AreEqual(results.Tables[0].Rows[0]["Postcode"], (Int64)3421);
 
-			Assert.Equals(results.Rows[0]["Name"], "bob");
-			Assert.Equals(results.Rows[0]["Age"], "21");
-			Assert.Equals(results.Rows[0]["address_id"], "1");
-			Assert.Equals(results.Rows[0]["Addr"], "11 test lane");
-			Assert.Equals(results.Rows[0]["Postcode"], "3421");
-
-			Assert.Equals(results.Rows[1]["Name"], "jef");
-			Assert.Equals(results.Rows[1]["Age"], "24");
-			Assert.IsTrue(results.Rows[0]["Addr"] == results.Rows[1]["addr"]); // Case insensitive should work
-			Assert.IsTrue(results.Rows[1]["Postcode"] == results.Rows[0]["Postcode"]);
+			Assert.AreEqual(results.Tables[0].Rows[1]["Name"], "jef");
+			Assert.AreEqual(results.Tables[0].Rows[1]["Age"], (Int64)24);
+			Assert.IsTrue(results.Tables[0].Rows[0]["Addr"].ToString() == results.Tables[0].Rows[1]["addr"].ToString()); // Case insensitive should work
+			Assert.IsTrue(results.Tables[0].Rows[1]["Postcode"].ToString() == results.Tables[0].Rows[0]["Postcode"].ToString());
 		}
 
 		[TestMethod]
@@ -179,7 +176,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			string query = "select * from person p join address a on p.address_id=a.id where p.Name=\"zak\"";
 			var Worker = CreatePersonAddressWorkers();
 			var results = Worker.ExecuteQuery(query);
-			Assert.Equals(results.Rows.Count, 0);
+			Assert.AreEqual(results.Tables[0].Rows.Count, 0);
 		}
 
 		[TestMethod]
@@ -193,16 +190,16 @@ namespace Dev2.Tests.Activities.ActivityTests
 			var Worker = CreatePersonAddressWorkers();
 			var results = Worker.ExecuteQuery(query);
 
-			Assert.Equals(results.Rows[0]["Name"], "bob");
-			Assert.Equals(results.Rows[0]["Age"], "21");
-			Assert.Equals(results.Rows[0]["address_id"], "1");
-			Assert.Equals(results.Rows[0]["Addr"], "11 test lane");
-			Assert.Equals(results.Rows[0]["Postcode"], "3421");
-
-			Assert.Equals(results.Rows[1]["Name"], "jef");
-			Assert.Equals(results.Rows[1]["Age"], "24");
-			Assert.IsTrue(results.Rows[0]["Addr"] == results.Rows[1]["addr"]); // Case insensitive should work
-			Assert.IsTrue(results.Rows[1]["Postcode"] == results.Rows[0]["Postcode"]);
+			Assert.AreEqual(results.Tables[2].Rows[0]["Name"], "bob");
+			Assert.AreEqual(results.Tables[2].Rows[0]["Age"], (Int64)21);
+			Assert.AreEqual(results.Tables[2].Rows[0]["address_id"], (Int64)1);
+			Assert.AreEqual(results.Tables[1].Rows[0]["Addr"], "11 test lane");
+			Assert.AreEqual(results.Tables[1].Rows[0]["Postcode"], (Int64)3421);
+	
+			Assert.AreEqual(results.Tables[2].Rows[1]["Name"], "jef");
+			Assert.AreEqual(results.Tables[2].Rows[1]["Age"], (Int64)24);
+			Assert.IsTrue(results.Tables[2].Rows[0]["Addr"].ToString() == results.Tables[2].Rows[1]["addr"].ToString()); // Case insensitive should work
+			Assert.IsTrue(results.Tables[2].Rows[1]["Postcode"].ToString() == results.Tables[2].Rows[0]["Postcode"].ToString());
 		}
 
 
@@ -211,17 +208,17 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestCategory("AdvancedRecordset_Operations")]
 		public void AdvancedRecordset_Converter_ExpectUpdateAffectedRows()
 		{
-			string query = "update person set Age=65 where Name=\"zak\";";
 			var Worker = CreatePersonAddressWorkers();
-			var results = Worker.ExecuteQuery(query);
+			string query = "update person set Age=65 where Name=\"zak\";";
+			var results = Worker.ExecuteCommand(query);
 
-			Assert.Equals(results.Rows[0]["AffectedRows"], 1);
+			Assert.AreEqual(results, 1);
 
 			query = "select * from person where Name=\"zak\";";
-			results = Worker.ExecuteQuery(query);
+			var result = Worker.ExecuteQuery(query);
 
-			Assert.Equals(results.Rows[0]["Name"], "zak");
-			Assert.Equals(results.Rows[0]["Age"], "65");
+			Assert.AreEqual(result.Tables[0].Rows[0]["Name"], "zak");
+			Assert.AreEqual(result.Tables[0].Rows[0]["Age"], (Int64)65);
 		}
 
 		[TestMethod]
@@ -285,14 +282,33 @@ namespace Dev2.Tests.Activities.ActivityTests
 			{
 				Environment = env;
 			}
-			public DataTable ExecuteQuery(string sql)
+			public DataSet ExecuteQuery(string sql)
 			{
-				DataSet ds = new DataSet();
-				var da = new SQLiteDataAdapter(sql, database.myConnection);
-				da.Fill(ds);
-				return ds.Tables[0];
+				try
+				{
+					DataSet ds = new DataSet();
+					var da = new SQLiteDataAdapter(sql, database.myConnection);
+					da.Fill(ds);
+					return ds;
+				}
+				catch (Exception e)
+				{
+					throw new Exception(e.Message);
+				}
 			}
-
+			public int ExecuteCommand(string sql)
+			{
+				try
+				{
+					var command = new SQLiteCommand(sql, database.myConnection);
+					return command.ExecuteNonQuery();
+					
+				}
+				catch (Exception e)
+				{
+					throw new Exception(e.Message);
+				}
+			}
 			public void LoadRecordset(string recordsetName)
 			{
 				var table = LoadRecordsetFromEnvironment(recordsetName);
@@ -377,10 +393,10 @@ namespace Dev2.Tests.Activities.ActivityTests
 			public SQLiteDatabase()
 			{
 				myConnection = new SQLiteConnection("Data Source=:memory:");//database.sqlite3
-				//if (!File.Exists("./database.sqlite3"))
-				//{
-				//	SQLiteConnection.CreateFile("database.sqlite3");
-				//}
+																			//if (!File.Exists("./database.sqlite3"))
+																			//{
+																			//	SQLiteConnection.CreateFile("database.sqlite3");
+																			//}
 				myConnection.Open();
 			}
 		}
