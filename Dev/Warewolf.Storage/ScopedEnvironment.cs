@@ -192,12 +192,12 @@ namespace Warewolf.Storage
             _datasource = ds;
         }
 
-		public CommonFunctions.WarewolfEvalResult.WarewolfRecordSetResult EvalAsTable(string recordsetExpression, int update)
+		public List<Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update)
 		{
 			throw new NotImplementedException();
 		}
 
-		public CommonFunctions.WarewolfEvalResult.WarewolfRecordSetResult EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists)
+		public List<Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists)
 		{
 			throw new NotImplementedException();
 		}

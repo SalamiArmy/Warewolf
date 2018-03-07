@@ -414,17 +414,13 @@ namespace Warewolf.Storage
 			}
 			return expression;
 		}
-		public CommonFunctions.WarewolfEvalResult.WarewolfRecordSetResult EvalAsTable(string recordsetExpression, int update) => EvalAsTable(recordsetExpression, update, false);
+		public List<System.Collections.Generic.Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update) => EvalAsTable(recordsetExpression, update, false);
 		public IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update) => EvalAsList(expression, update, false);
-		public CommonFunctions.WarewolfEvalResult.WarewolfRecordSetResult EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists)
+		public List<System.Collections.Generic.Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists)
 		{			
 			var result = PublicFunctions.EvalEnvExpressionToTable(recordsetExpression, update, _env);
-			var recordsetResult = result as CommonFunctions.WarewolfEvalResult.WarewolfRecordSetResult;
-			if (recordsetResult != null)
-			{
-				return recordsetResult;
-			}
-			throw new Exception(@"Expected Recordset");
+			return result;
+
 		}
 		public IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update, bool throwsifnotexists)
 		{
