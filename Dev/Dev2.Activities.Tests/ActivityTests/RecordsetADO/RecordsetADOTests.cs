@@ -10,16 +10,17 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Dev2.Activities;
 using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using Warewolf.Storage;
 using Warewolf.Storage.Interfaces;
 using WarewolfParserInterop;
+using System.Data.SQLite;
+using System.IO;
+using System.Data;
 
 namespace Dev2.Tests.Activities.ActivityTests
 {
@@ -130,8 +131,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			string query = "select * from person";
 			var Worker = CreatePersonAddressWorkers();
 			var Results = Worker.ExecuteQuery(query);
-
-			Assert.Equals(Results.Count, 4);
+			Assert.AreEqual(4, Results.Rows.Count);
 		}
 
 		[TestMethod]
@@ -143,11 +143,11 @@ namespace Dev2.Tests.Activities.ActivityTests
 			string query = "select * from person p join address a on p.address_id=a.id";
 			var results = worker.ExecuteQuery(query);
 
-			
+
 
 			Assert.IsInstanceOfType(results, typeof(IEnumerable<DataStorage.WarewolfAtom>));
-			Assert.Equals(results.Count, 3);
-			
+			Assert.Equals(results.Rows.Count, 3);
+
 		}
 
 		[TestMethod]
@@ -159,16 +159,16 @@ namespace Dev2.Tests.Activities.ActivityTests
 			var Worker = CreatePersonAddressWorkers();
 			var results = Worker.ExecuteQuery(query);
 
-			Assert.Equals(results[0]["Name"], "bob");
-			Assert.Equals(results[0]["Age"], "21");
-			Assert.Equals(results[0]["address_id"], "1");
-			Assert.Equals(results[0]["Addr"], "11 test lane");
-			Assert.Equals(results[0]["Postcode"], "3421");
+			Assert.Equals(results.Rows[0]["Name"], "bob");
+			Assert.Equals(results.Rows[0]["Age"], "21");
+			Assert.Equals(results.Rows[0]["address_id"], "1");
+			Assert.Equals(results.Rows[0]["Addr"], "11 test lane");
+			Assert.Equals(results.Rows[0]["Postcode"], "3421");
 
-			Assert.Equals(results[1]["Name"], "jef");
-			Assert.Equals(results[1]["Age"], "24");
-			Assert.IsTrue(results[0]["Addr"] == results[1]["addr"]); // Case insensitive should work
-			Assert.IsTrue(results[1]["Postcode"] == results[0]["Postcode"]);
+			Assert.Equals(results.Rows[1]["Name"], "jef");
+			Assert.Equals(results.Rows[1]["Age"], "24");
+			Assert.IsTrue(results.Rows[0]["Addr"] == results.Rows[1]["addr"]); // Case insensitive should work
+			Assert.IsTrue(results.Rows[1]["Postcode"] == results.Rows[0]["Postcode"]);
 		}
 
 		[TestMethod]
@@ -179,7 +179,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			string query = "select * from person p join address a on p.address_id=a.id where p.Name=\"zak\"";
 			var Worker = CreatePersonAddressWorkers();
 			var results = Worker.ExecuteQuery(query);
-			Assert.Equals(results.Count, 0);
+			Assert.Equals(results.Rows.Count, 0);
 		}
 
 		[TestMethod]
@@ -193,16 +193,16 @@ namespace Dev2.Tests.Activities.ActivityTests
 			var Worker = CreatePersonAddressWorkers();
 			var results = Worker.ExecuteQuery(query);
 
-			Assert.Equals(results[0]["Name"], "bob");
-			Assert.Equals(results[0]["Age"], "21");
-			Assert.Equals(results[0]["address_id"], "1");
-			Assert.Equals(results[0]["Addr"], "11 test lane");
-			Assert.Equals(results[0]["Postcode"], "3421");
+			Assert.Equals(results.Rows[0]["Name"], "bob");
+			Assert.Equals(results.Rows[0]["Age"], "21");
+			Assert.Equals(results.Rows[0]["address_id"], "1");
+			Assert.Equals(results.Rows[0]["Addr"], "11 test lane");
+			Assert.Equals(results.Rows[0]["Postcode"], "3421");
 
-			Assert.Equals(results[1]["Name"], "jef");
-			Assert.Equals(results[1]["Age"], "24");
-			Assert.IsTrue(results[0]["Addr"] == results[1]["addr"]); // Case insensitive should work
-			Assert.IsTrue(results[1]["Postcode"] == results[0]["Postcode"]);
+			Assert.Equals(results.Rows[1]["Name"], "jef");
+			Assert.Equals(results.Rows[1]["Age"], "24");
+			Assert.IsTrue(results.Rows[0]["Addr"] == results.Rows[1]["addr"]); // Case insensitive should work
+			Assert.IsTrue(results.Rows[1]["Postcode"] == results.Rows[0]["Postcode"]);
 		}
 
 
@@ -215,13 +215,13 @@ namespace Dev2.Tests.Activities.ActivityTests
 			var Worker = CreatePersonAddressWorkers();
 			var results = Worker.ExecuteQuery(query);
 
-			Assert.Equals(results[0]["AffectedRows"], 1);
+			Assert.Equals(results.Rows[0]["AffectedRows"], 1);
 
 			query = "select * from person where Name=\"zak\";";
 			results = Worker.ExecuteQuery(query);
 
-			Assert.Equals(results[0]["Name"], "zak");
-			Assert.Equals(results[0]["Age"], "65");
+			Assert.Equals(results.Rows[0]["Name"], "zak");
+			Assert.Equals(results.Rows[0]["Age"], "65");
 		}
 
 		[TestMethod]
@@ -279,51 +279,80 @@ namespace Dev2.Tests.Activities.ActivityTests
 
 		public class AdvancedRecordsetWorker
 		{
-			public Dictionary<string,int> Person;
+			SQLiteDatabase database = new SQLiteDatabase();
 			public IExecutionEnvironment Environment { get; set; }
 			public AdvancedRecordsetWorker(IExecutionEnvironment env)
 			{
 				Environment = env;
 			}
-			public Rows ExecuteQuery(string q)
+			public DataTable ExecuteQuery(string sql)
 			{
-				return new Rows();
+				DataSet ds = new DataSet();
+				var da = new SQLiteDataAdapter(sql, database.myConnection);
+				da.Fill(ds);
+				return ds.Tables[0];
 			}
 
 			public void LoadRecordset(string recordsetName)
 			{
 				var table = LoadRecordsetFromEnvironment(recordsetName);
-				LoadIntoSQL(table);
+				LoadIntoSQL(recordsetName, table);
 			}
 
-			void LoadIntoSQL(List<Dictionary<string, DataStorage.WarewolfAtom>> tableData)
+			void LoadIntoSQL(string recordsetName, List<Dictionary<string, DataStorage.WarewolfAtom>> tableData)
 			{
-
-			}
-
-			private List<Dictionary<string,DataStorage.WarewolfAtom>> LoadRecordsetFromEnvironment(string recordsetName) {
-				
-				var table = new List<Dictionary<string, DataStorage.WarewolfAtom>>();
-				var e = Environment.EvalAsTable("[[" + recordsetName + "(*)]]",0);
-				foreach(var item in e.Item.Data)
+				if (tableData.Count > 0)
 				{
-					if (item.Key == "WarewolfPositionColumn") { continue; }
-					var FieldName = item.Key;
+					string sql = "DROP TABLE IF EXISTS " + recordsetName;
+					SQLiteCommand command = new SQLiteCommand(sql, database.myConnection);
+					command.ExecuteNonQuery();
 
-					var enumerator = item.Value.GetEnumerator();
-					int rowIndex = 0;
-					while (enumerator.MoveNext())
+					sql = "CREATE TABLE IF NOT EXISTS " + recordsetName + "([Primary_Id] INTEGER NOT NULL, CONSTRAINT[PK_" + recordsetName + "] PRIMARY KEY([Primary_Id]))";
+					command = new SQLiteCommand(sql, database.myConnection);
+					command.ExecuteNonQuery();
+					int i = 0;
+
+					foreach (Dictionary<string, DataStorage.WarewolfAtom> cells in tableData)
 					{
-						if (table.Count <= rowIndex)
+						string insertSql = "INSERT INTO " + recordsetName + " select " + i + ",";
+						foreach (KeyValuePair<string, DataStorage.WarewolfAtom> cell in cells)
 						{
-							table.Add(new Dictionary<string, DataStorage.WarewolfAtom>());
+							string colType = cell.Value.GetType().Name;
+							string colName = cell.Key;
+							if (colType == "Int")
+							{
+								colType = "INTEGER";
+								insertSql += cell.Value + ",";
+							}
+							else if (colType == "DataString")
+							{
+								colType = "TEXT";
+								insertSql += "'" + cell.Value + "',";
+							}
+							else
+							{
+								insertSql += cell.Value + ",";
+							}
+							if (i == 0)
+							{
+								sql = "ALTER TABLE  " + recordsetName + " ADD COLUMN " + cell.Key + " " + colType + ";";
+								command = new SQLiteCommand(sql, database.myConnection);
+								command.ExecuteNonQuery();
+							}
 						}
-						table[rowIndex][FieldName] = enumerator.Current;
-
-						rowIndex++;
+						insertSql = insertSql.Remove(insertSql.Length - 1);
+						command = new SQLiteCommand(insertSql, database.myConnection);
+						command.ExecuteNonQuery();
+						i++;
 					}
 				}
-				return table;
+			}
+
+			private List<Dictionary<string, DataStorage.WarewolfAtom>> LoadRecordsetFromEnvironment(string recordsetName)
+			{
+
+				var table = new List<Dictionary<string, DataStorage.WarewolfAtom>>();
+				return Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
 			}
 
 			public void ApplyResultToEnvironment(string returnRecordsetName)
@@ -340,6 +369,20 @@ namespace Dev2.Tests.Activities.ActivityTests
 		public class Row
 		{
 			public string this[string fieldName] { get => ""; }
+		}
+
+		public class SQLiteDatabase
+		{
+			public SQLiteConnection myConnection;
+			public SQLiteDatabase()
+			{
+				myConnection = new SQLiteConnection("Data Source=:memory:");//database.sqlite3
+				//if (!File.Exists("./database.sqlite3"))
+				//{
+				//	SQLiteConnection.CreateFile("database.sqlite3");
+				//}
+				myConnection.Open();
+			}
 		}
 
 	}
