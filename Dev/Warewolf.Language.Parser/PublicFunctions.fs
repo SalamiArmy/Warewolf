@@ -125,9 +125,34 @@ let RecordsetExpressionExists (exp : string) (env : WarewolfEnvironment) =
         else false
     | _ -> false
 
-///Evaluate an expression to a Table
-let EvalEnvExpressionToTable (name : string) (update : int) (env : WarewolfEnvironment) = 
+
+let EvalEnvExpressionToRecordSet (name : string) (update : int) (env : WarewolfEnvironment) =
     let buffer = EvaluationFunctions.parseLanguageExpression name update
     match buffer with
     | RecordSetNameExpression a when env.RecordSets.ContainsKey a.Name -> EvaluationFunctions.evalDataSetExpression env update a
     | _ -> raise (new Dev2.Common.Common.NullValueInVariableException("recordset not found",EvaluationFunctions.languageExpressionToString buffer))
+
+///Evaluate an expression to a Table
+let EvalEnvExpressionToTable (name : string) (update : int) (env : WarewolfEnvironment) =
+    let list = new System.Collections.Generic.List<System.Collections.Generic.Dictionary<string, DataStorage.WarewolfAtom>>();
+    let PositionColumn = "WarewolfPositionColumn"
+    let recordset = EvalEnvExpressionToRecordSet name update env;
+
+    match recordset with
+    | WarewolfRecordSetResult recordsetResult ->
+        let mutable  indx = 0;
+        for item in recordsetResult.Data do
+            if item.Key <> PositionColumn then
+                let cells = recordsetResult.Data.[item.Key]
+                let mutable idx = 0
+                for cell in cells do
+                    let mutable dict : System.Collections.Generic.Dictionary<string,DataStorage.WarewolfAtom> = null
+                    if list.Count <= idx then
+                        dict <- new System.Collections.Generic.Dictionary<string,DataStorage.WarewolfAtom>();
+                        list.Add(dict);
+                    else
+                        dict <- list.[idx]
+                    dict.Add(item.Key, cell);
+                    idx <- idx + 1
+        list
+    | _ -> raise (new Dev2.Common.Common.NullValueInVariableException("recordset not found","recordset"))
