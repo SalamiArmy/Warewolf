@@ -195,25 +195,89 @@ namespace WarewolfParsingTest
                 DataStorage.WarewolfAtom.NewDataString("A")
             };
             //------------Execute Test---------------------------
-            var res = PublicFunctions.EvalEnvExpressionToTable("[[Rec(*)]]", 0, env);
+            var res = PublicFunctions.EvalEnvExpressionToTable("[[Rec(*)]]", 0, env, true);
 
             Assert.IsNotNull(res);
 
-            Assert.AreEqual(res.Count, 4);
+            var allTestData = new string[][][] {
+                new string[][] {
+                    new string [] {"a", "1" },
+                    new string [] {"b", "a" },
+                },
+                new string[][]
+                {
+                    new string [] {"a", "2" },
+                    new string [] {"b", "b" },
+                },
+                new string[][]
+                {
+                    new string [] {"a", "3" },
+                    new string [] {"b", "c" },
+                },
+                new string[][]
+                {
+                    new string [] {"a", "2" },
+                    new string [] {"b", "c" },
+                },
 
-            Assert.AreEqual(res[0].Count, 2);
-            Assert.AreEqual(res[1].Count, 2);
-            Assert.AreEqual(res[2].Count, 2);
-            Assert.AreEqual(res[3].Count, 2);
+            };
 
-            Assert.AreEqual(res[0]["a"], "1");
-            Assert.AreEqual(res[0]["b"], "a");
-            Assert.AreEqual(res[1]["a"], "2");
-            Assert.AreEqual(res[1]["b"], "b");
-            Assert.AreEqual(res[2]["a"], "3");
-            Assert.AreEqual(res[2]["b"], "c");
-            Assert.AreEqual(res[3]["a"], "2");
-            Assert.AreEqual(res[3]["b"], "c");
+            Assert.AreEqual(4, res.Count());
+
+            var combined = allTestData.Zip(res, (test, result) => (test, result));
+
+            foreach (var (testdata, rowTuple) in combined)
+            {
+                var index=0;
+                foreach (var (field, value) in rowTuple)
+                {
+                    Assert.IsTrue(field == testdata[index][0]);
+                    Assert.IsTrue(value.Equals(testdata[index][1]));
+                    index++;
+                }
+            }
+        }
+
+
+        [TestMethod]
+        [Owner("Rory McGuire")]
+        [TestCategory("PublicFunctions_Eval")]
+        public void PublicFunctionsEvalEnvExpressionToArrayTable()
+        {
+            //------------Setup for test--------------------------
+            var env = CreateEnvironmentWithData();
+            var lst = new List<DataStorage.WarewolfAtom>
+            {
+                DataStorage.WarewolfAtom.Nothing,
+                DataStorage.WarewolfAtom.NewPositionedValue(new Tuple<int, DataStorage.WarewolfAtom>(2, DataStorage.WarewolfAtom.NewDataString("a"))),
+                DataStorage.WarewolfAtom.NewDataString("A")
+            };
+            //------------Execute Test---------------------------
+            var enumerator = PublicFunctions.EvalEnvExpressionToArrayTable("[[Rec(*)]]", 0, env, true);
+            var res = enumerator.ToArray();
+
+            Assert.IsNotNull(res);
+
+            Assert.AreEqual(5, res.Length);
+
+            Assert.AreEqual(2, res[0].Length);
+            Assert.AreEqual(2, res[1].Length);
+            Assert.AreEqual(2, res[2].Length);
+            Assert.AreEqual(2, res[3].Length);
+
+            // column names in first row
+            Assert.IsTrue(res[0][0].Equals("a"));
+            Assert.IsTrue(res[0][1].Equals("b"));
+
+            // data
+            Assert.IsTrue(res[1][0].Equals("1"));
+            Assert.IsTrue(res[1][1].Equals("a"));
+            Assert.IsTrue(res[2][0].Equals("2"));
+            Assert.IsTrue(res[2][1].Equals("b"));
+            Assert.IsTrue(res[3][0].Equals("3"));
+            Assert.IsTrue(res[3][1].Equals("c"));
+            Assert.IsTrue(res[4][0].Equals("2"));
+            Assert.IsTrue(res[4][1].Equals("c"));
         }
     }
 }

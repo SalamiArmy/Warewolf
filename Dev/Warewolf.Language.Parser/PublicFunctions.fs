@@ -5,7 +5,6 @@ open LanguageAST
 open DataStorage
 open Dev2.Common.Interfaces
 open CommonFunctions
-open Delete
 
 let PositionColumn = "WarewolfPositionColumn"
 ///Create a RecordSet
@@ -132,27 +131,55 @@ let EvalEnvExpressionToRecordSet (name : string) (update : int) (env : WarewolfE
     | RecordSetNameExpression a when env.RecordSets.ContainsKey a.Name -> EvaluationFunctions.evalDataSetExpression env update a
     | _ -> raise (new Dev2.Common.Common.NullValueInVariableException("recordset not found",EvaluationFunctions.languageExpressionToString buffer))
 
-///Evaluate an expression to a Table
-let EvalEnvExpressionToTable (name : string) (update : int) (env : WarewolfEnvironment) =
-    let list = new System.Collections.Generic.List<System.Collections.Generic.Dictionary<string, DataStorage.WarewolfAtom>>();
-    let PositionColumn = "WarewolfPositionColumn"
-    let recordset = EvalEnvExpressionToRecordSet name update env;
+let EvalEnvExpressionToArrayTable (name : string) (update : int) (env : WarewolfEnvironment) (throwsifnotexists : bool) =
+    let buildRow (list : list<WarewolfAtom list>) =
+        match list with
+        | [] -> [| |]
+        | _ :: tail -> list |> List.map (fun x -> x.[0])
+                            |> List.toArray
 
-    match recordset with
-    | WarewolfRecordSetResult recordsetResult ->
-        let mutable  indx = 0;
-        for item in recordsetResult.Data do
-            if item.Key <> PositionColumn then
-                let cells = recordsetResult.Data.[item.Key]
-                let mutable idx = 0
-                for cell in cells do
-                    let mutable dict : System.Collections.Generic.Dictionary<string,DataStorage.WarewolfAtom> = null
-                    if list.Count <= idx then
-                        dict <- new System.Collections.Generic.Dictionary<string,DataStorage.WarewolfAtom>();
-                        list.Add(dict);
-                    else
-                        dict <- list.[idx]
-                    dict.Add(item.Key, cell);
-                    idx <- idx + 1
-        list
-    | _ -> raise (new Dev2.Common.Common.NullValueInVariableException("recordset not found","recordset"))
+    let rec buildRows (fieldNamesRow : WarewolfAtom[]) (data : list<WarewolfAtom list>) =
+        seq {
+            if data.[0].Length > 0 then
+                let newRow = buildRow data
+                yield newRow
+                yield! (buildRows fieldNamesRow (data |> List.map (fun x -> x |> List.tail)))
+        }
+
+    let buildRows (data : Map<WarewolfColumnHeader, WarewolfColumnData>) =
+        let dataWithoutHeader = data
+                                  |> Map.filter (fun columnHeader _ -> columnHeader.ToString() <> "WarewolfPositionColumn")
+                                  |> Map.fold (fun state key value -> List.append state [value]) []
+                                  |> List.map<WarewolfColumnData, WarewolfAtom list> (fun x -> [for y in x do yield y;])
+        let fieldNamesRow = data
+                                |> Map.filter (fun name _ -> name <> "WarewolfPositionColumn")
+                                |> Map.fold (fun state key value -> List.append state [key]) []
+                                |> List.map (fun header -> WarewolfAtom.DataString(string header))
+                                |> List.toArray
+
+        seq {
+            yield fieldNamesRow
+            yield! (buildRows fieldNamesRow dataWithoutHeader)
+        }
+
+    let recordset = EvalEnvExpressionToRecordSet name update env;
+    try
+        match recordset with
+        | WarewolfRecordSetResult recordsetResult ->
+            buildRows recordsetResult.Data
+        | _ -> raise (new Dev2.Common.Common.NullValueInVariableException("recordset not found","recordset"))
+    with
+    | ex when throwsifnotexists -> raise ex
+    | _ when not throwsifnotexists -> null
+
+///Evaluate an expression to a Table
+let EvalEnvExpressionToTable (name : string) (update : int) (env : WarewolfEnvironment) (throwsifnotexists : bool) =
+    seq {
+        let table = EvalEnvExpressionToArrayTable name update env throwsifnotexists;
+
+        let fieldNames = Seq.take 1 table |> Seq.exactlyOne |> Array.map (fun x -> string x)
+
+        for row in (table |> Seq.skip 1) do
+            let assocRow = Array.zip fieldNames row
+            yield assocRow
+    }
