@@ -414,15 +414,16 @@ namespace Warewolf.Storage
 			}
 			return expression;
 		}
-		public List<Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update) => EvalAsTable(recordsetExpression, update, false);
-		public IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update) => EvalAsList(expression, update, false);
-		public List<Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists)
-		{			
-			var result = PublicFunctions.EvalEnvExpressionToTable(recordsetExpression, update, _env);
-			return result;
+        public IEnumerable<Tuple<string, DataStorage.WarewolfAtom>[]> EvalAsTable(string recordsetExpression, int update) => EvalAsTable(recordsetExpression, update, false);
+		public IEnumerable<Tuple<string, DataStorage.WarewolfAtom>[]> EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists)
 
+		{			
+			var result = PublicFunctions.EvalEnvExpressionToTable(recordsetExpression, update, _env, throwsifnotexists);
+			return result;
 		}
-		public IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update, bool throwsifnotexists)
+
+		public IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update) => EvalAsList(expression, update, false);
+        public IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update, bool throwsifnotexists)
 		{
 			var result = Eval(expression, update, throwsifnotexists);
 			if (result.IsWarewolfAtomResult)
