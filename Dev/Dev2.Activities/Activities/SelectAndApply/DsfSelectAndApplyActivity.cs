@@ -21,7 +21,7 @@ using Warewolf.Storage.Interfaces;
 
 namespace Dev2.Activities.SelectAndApply
 {
-   
+
     [ToolDescriptorInfo("SelectApply", "Select and apply", ToolType.Native, "8999E59A-38A3-43BB-A98F-6090D8C8FA3E", "Dev2.Acitivities", "1.0.0.0", "Legacy", "Loop Constructs", "/Warewolf.Studio.Themes.Luna;component/Images.xaml", "Tool_LoopConstruct_Select_and_Apply")]
     public class DsfSelectAndApplyActivity : DsfActivityAbstract<bool>, IEquatable<DsfSelectAndApplyActivity>
     {
@@ -42,7 +42,7 @@ namespace Dev2.Activities.SelectAndApply
         public override IEnumerable<IDev2Activity> GetChildrenNodes()
         {
             var act = ApplyActivityFunc.Handler as IDev2ActivityIOMapping;
-            if(act==null)
+            if (act == null)
             {
                 return new List<IDev2Activity>();
             }
@@ -59,7 +59,6 @@ namespace Dev2.Activities.SelectAndApply
             base.CacheMetadata(metadata);
         }
 
-        #region Overrides of DsfNativeActivity<bool>
         [FindMissing]
         public string DataSource { get; set; }
         [FindMissing]
@@ -110,8 +109,6 @@ namespace Dev2.Activities.SelectAndApply
 
         public override IList<DsfForEachItem> GetForEachOutputs() => GetForEachItems(Alias.Replace("*", ""));
 
-        #region Get Debug Inputs/Outputs
-
         public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             foreach (IDebugItem debugInput in _debugInputs)
@@ -122,8 +119,6 @@ namespace Dev2.Activities.SelectAndApply
         }
 
         public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => _debugOutputs;
-
-        #endregion Get Debug Inputs/Outputs
 
         protected override void ExecuteTool(IDSFDataObject dataObject, int update)
         {
@@ -145,7 +140,6 @@ namespace Dev2.Activities.SelectAndApply
                 {
                     dataObject.Environment.AddError(fetchError);
                 }
-
             }
             var startTime = DateTime.Now;
             _previousParentId = dataObject.ParentInstanceID;
@@ -218,70 +212,88 @@ namespace Dev2.Activities.SelectAndApply
             }
             finally
             {
-
-                if (dataObject.IsDebugMode())
+                if (dataObject.IsServiceTestExecution)
                 {
-                    if (dataObject.IsServiceTestExecution)
+                    if (dataObject.IsDebugMode())
                     {
-                        var serviceTestStep = dataObject.ServiceTest?.TestSteps?.Flatten(step => step.Children)?.FirstOrDefault(step => step.UniqueId == _originalUniqueID);
-                        var serviceTestSteps = serviceTestStep?.Children;
-                        UpdateDebugStateWithAssertions(dataObject, serviceTestSteps?.ToList());
-                        if (serviceTestStep != null)
-                        {
-                            var testRunResult = new TestRunResult();
-                            GetFinalTestRunResult(serviceTestStep, testRunResult, dataObject);
-                            serviceTestStep.Result = testRunResult;
-
-                            var debugItems = TestDebugMessageRepo.Instance.GetDebugItems(dataObject.ResourceID, dataObject.TestName);
-                            debugItems = debugItems.Where(state => state.WorkSurfaceMappingId == serviceTestStep.UniqueId).ToList();
-                            var debugStates = debugItems.LastOrDefault();
-
-                            var debugItemStaticDataParams = new DebugItemServiceTestStaticDataParams(serviceTestStep.Result.Message, serviceTestStep.Result.RunTestResult == RunResult.TestFailed);
-                            var itemToAdd = new DebugItem();
-                            itemToAdd.AddRange(debugItemStaticDataParams.GetDebugItemResult());
-                            debugStates?.AssertResultList?.Add(itemToAdd);
-
-                        }
+                        GetTestOurputResultForDebug(dataObject);
+                    }
+                    else
+                    {
+                        GetTestOutputForBrowserExecution(dataObject);
                     }
                 }
+
                 dataObject.PopEnvironment();
                 dataObject.ForEachNestingLevel--;
                 if (allErrors.HasErrors())
                 {
-                    if (allErrors.HasErrors())
+                    DisplayAndWriteError("DsfSelectAndApplyActivity", allErrors);
+                    foreach (var fetchError in allErrors.FetchErrors())
                     {
-                        DisplayAndWriteError("DsfSelectAndApplyActivity", allErrors);
-                        foreach (var fetchError in allErrors.FetchErrors())
-                        {
-                            dataObject.Environment.AddError(fetchError);
-                        }
+                        dataObject.Environment.AddError(fetchError);
                     }
                 }
                 if (dataObject.IsDebugMode())
                 {
                     foreach (var expression in expressions)
                     {
-                        var data = dataObject.Environment.Eval(expression, update);
-                        if (data.IsWarewolfAtomListresult)
-                        {
-                            var lst = data as CommonFunctions.WarewolfEvalResult.WarewolfAtomListresult;
-                            AddDebugOutputItem(new DebugItemWarewolfAtomListResult(lst, "", "", expression, "", "", "="));
-                        }
-                        else
-                        {
-                            if (data.IsWarewolfAtomResult)
-                            {
-                                if (data is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult atom)
-                                {
-                                    AddDebugOutputItem(new DebugItemWarewolfAtomResult(atom.Item.ToString(), expression, ""));
-                                }
-                            }
-                        }
+                        AddExpresionEvalOutputItem(dataObject, update, expression);
                     }
 
                     DispatchDebugState(dataObject, StateType.End, update, startTime, DateTime.Now);
                 }
                 OnCompleted(dataObject);
+            }
+        }
+
+        void AddExpresionEvalOutputItem(IDSFDataObject dataObject, int update, string expression)
+        {
+            var data = dataObject.Environment.Eval(expression, update);
+            if (data.IsWarewolfAtomListresult)
+            {
+                var lst = data as CommonFunctions.WarewolfEvalResult.WarewolfAtomListresult;
+                AddDebugOutputItem(new DebugItemWarewolfAtomListResult(lst, "", "", expression, "", "", "="));
+            }
+            else
+            {
+                if (data.IsWarewolfAtomResult && (data is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult atom))
+                {
+                    AddDebugOutputItem(new DebugItemWarewolfAtomResult(atom.Item.ToString(), expression, ""));
+                }
+            }
+        }
+
+        void GetTestOutputForBrowserExecution(IDSFDataObject dataObject)
+        {
+            var serviceTestStep = dataObject.ServiceTest?.TestSteps?.FirstOrDefault(step => step.UniqueId == Guid.Parse(UniqueID));
+            if (serviceTestStep != null)
+            {
+                var testRunResult = new TestRunResult();
+                GetFinalTestRunResult(serviceTestStep, testRunResult, dataObject);
+                serviceTestStep.Result = testRunResult;
+            }
+        }
+
+        void GetTestOurputResultForDebug(IDSFDataObject dataObject)
+        {
+            var serviceTestStep = dataObject.ServiceTest?.TestSteps?.Flatten(step => step.Children)?.FirstOrDefault(step => step.UniqueId == _originalUniqueID);
+            var serviceTestSteps = serviceTestStep?.Children;
+            UpdateDebugStateWithAssertions(dataObject, serviceTestSteps?.ToList());
+            if (serviceTestStep != null)
+            {
+                var testRunResult = new TestRunResult();
+                GetFinalTestRunResult(serviceTestStep, testRunResult, dataObject);
+                serviceTestStep.Result = testRunResult;
+
+                var debugItems = TestDebugMessageRepo.Instance.GetDebugItems(dataObject.ResourceID, dataObject.TestName);
+                debugItems = debugItems.Where(state => state.WorkSurfaceMappingId == serviceTestStep.UniqueId).ToList();
+                var debugStates = debugItems.LastOrDefault();
+
+                var debugItemStaticDataParams = new DebugItemServiceTestStaticDataParams(serviceTestStep.Result.Message, serviceTestStep.Result.RunTestResult == RunResult.TestFailed);
+                var itemToAdd = new DebugItem();
+                itemToAdd.AddRange(debugItemStaticDataParams.GetDebugItemResult());
+                debugStates?.AssertResultList?.Add(itemToAdd);
             }
         }
 
@@ -314,7 +326,6 @@ namespace Dev2.Activities.SelectAndApply
         }
 
         public override enFindMissingType GetFindMissingType() => enFindMissingType.ForEach;
-        #endregion Overrides of DsfNativeActivity<bool>
 
         void UpdateDebugStateWithAssertions(IDSFDataObject dataObject, List<IServiceTestStep> serviceTestTestSteps)
         {
@@ -335,12 +346,12 @@ namespace Dev2.Activities.SelectAndApply
             }
 
             var activityFuncComparer = new ActivityFuncComparer();
-            return base.Equals(other) 
+            return base.Equals(other)
                 && string.Equals(_previousParentId, other._previousParentId)
-                && Equals(_originalUniqueID,other._originalUniqueID)
+                && Equals(_originalUniqueID, other._originalUniqueID)
                 && string.Equals(_childUniqueID, other._childUniqueID)
-                && string.Equals(DataSource, other.DataSource) 
-                && string.Equals(Alias, other.Alias) 
+                && string.Equals(DataSource, other.DataSource)
+                && string.Equals(Alias, other.Alias)
                 && activityFuncComparer.Equals(ApplyActivityFunc, other.ApplyActivityFunc);
         }
 
@@ -361,7 +372,7 @@ namespace Dev2.Activities.SelectAndApply
                 return false;
             }
 
-            return Equals((DsfSelectAndApplyActivity) obj);
+            return Equals((DsfSelectAndApplyActivity)obj);
         }
 
         public override int GetHashCode()
@@ -380,5 +391,5 @@ namespace Dev2.Activities.SelectAndApply
         }
     }
 
-    
+
 }
