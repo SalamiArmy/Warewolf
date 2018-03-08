@@ -141,8 +141,7 @@ let EvalEnvExpressionToArrayTable (name : string) (update : int) (env : Warewolf
     let rec buildRows (fieldNamesRow : WarewolfAtom[]) (data : list<WarewolfAtom list>) =
         seq {
             if data.[0].Length > 0 then
-                let newRow = buildRow data
-                yield newRow
+                yield buildRow data
                 yield! (buildRows fieldNamesRow (data |> List.map (fun x -> x |> List.tail)))
         }
 

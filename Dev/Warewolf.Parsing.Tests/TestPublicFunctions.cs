@@ -228,7 +228,7 @@ namespace WarewolfParsingTest
 
             foreach (var (testdata, rowTuple) in combined)
             {
-                var index=0;
+                var index = 0;
                 foreach (var (field, value) in rowTuple)
                 {
                     Assert.IsTrue(field == testdata[index][0]);
@@ -278,6 +278,27 @@ namespace WarewolfParsingTest
             Assert.IsTrue(res[3][1].Equals("c"));
             Assert.IsTrue(res[4][0].Equals("2"));
             Assert.IsTrue(res[4][1].Equals("c"));
+        }
+
+        [TestMethod]
+        [Owner("Rory McGuire")]
+        [TestCategory("PublicFunctions_Eval")]
+        public void PublicFunctionsEvalEnvExpressionToArrayTable_Throws()
+        {
+            //------------Setup for test--------------------------
+            var env = CreateEnvironmentWithData();
+            var lst = new List<DataStorage.WarewolfAtom>
+            {
+                DataStorage.WarewolfAtom.Nothing,
+                DataStorage.WarewolfAtom.NewPositionedValue(new Tuple<int, DataStorage.WarewolfAtom>(2, DataStorage.WarewolfAtom.NewDataString("a"))),
+                DataStorage.WarewolfAtom.NewDataString("A")
+            };
+            //------------Execute Test---------------------------
+            Assert.ThrowsException<Dev2.Common.Common.NullValueInVariableException>(() =>
+            {
+                var enumerator = PublicFunctions.EvalEnvExpressionToArrayTable("[[NotExistingRec(*)]]", 0, env, true);
+                var res = enumerator.ToArray();
+            });
         }
     }
 }
