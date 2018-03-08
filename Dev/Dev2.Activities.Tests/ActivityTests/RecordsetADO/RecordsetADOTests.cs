@@ -84,7 +84,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_ConvertDataTableToRecordset_ExpectDataInIEnvironment()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_ConvertDataTableToRecordset_ExpectDataInIEnvironment()
 		{
 			var worker = new AdvancedRecordsetWorker(new ExecutionEnvironment());
 			string returnRecordsetName = "person";
@@ -109,11 +110,14 @@ namespace Dev2.Tests.Activities.ActivityTests
 				Assert.Fail();
 			}
 		}
+
 		#region Tests
+
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Converter")]
-		public void AdvancedRecordset_Converter_FromRecordset()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_FromRecordset()
 		{
 			var Worker = CreatePersonAddressWorkers();
 			Assert.IsNotNull(Worker);
@@ -122,7 +126,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_CanRunSimpleQuery()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_CanRunSimpleQuery()
 		{
 			string query = "select * from person";
 			var Worker = CreatePersonAddressWorkers();
@@ -133,6 +138,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
 		public void AdvancedRecordset_Converter_CanRunJoinQuery_ExpectAllResults()
 		{
 			var worker = CreatePersonAddressWorkers();
@@ -146,7 +152,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_CanRunWhereQuery_ExpectFilteredResults()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_CanRunWhereQuery_ExpectFilteredResults()
 		{
 			string query = "select * from person p join address a on p.address_id=a.id where a.addr=\"11 test lane\" order by Name";
 			var Worker = CreatePersonAddressWorkers();
@@ -167,7 +174,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_CanRunWhereQuery_ExpectNoResults()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_CanRunWhereQuery_ExpectNoResults()
 		{
 			string query = "select * from person p join address a on p.address_id=a.id where p.Name=\"zak\"";
 			var Worker = CreatePersonAddressWorkers();
@@ -178,7 +186,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_ExpectCanRunMultipleQueries()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_ExpectCanRunMultipleQueries()
 		{
 			string query = "select CURRENT_TIMESTAMP;" +
 				"select * from address;update person set Age=20 where Name=\"zak\";" +
@@ -201,7 +210,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_ExpectUpdateAffectedRows()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_ExpectUpdateAffectedRows()
 		{
 			var Worker = CreatePersonAddressWorkers();
 			string query = "update person set Age=65 where Name=\"zak\";";
@@ -219,7 +229,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_ExpectBadSQLToError()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_ExpectBadSQLToError()
 		{
 			string query = "select from person";
 			var Worker = CreatePersonAddressWorkers();
