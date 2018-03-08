@@ -227,13 +227,10 @@ namespace Dev2.Studio.Core.AppResources.Repositories
             }
             var result = _resourceModels.Find(func.Invoke);
 
-            if (result != null && (result.ResourceType == ResourceType.Service && result.WorkflowXaml != null && result.WorkflowXaml.Length > 0 || fetchDefinition))
+            if (result != null && fetchDefinition)
             {
-                var msg = FetchResourceDefinition(_server, GlobalConstants.ServerWorkspaceID, result.ID, prepairForDeployment);
-                if (msg != null && !msg.HasError)
-                {
-                    result.WorkflowXaml = msg.Message;
-                }
+                var contextualResourceModel = result as IContextualResourceModel;
+                result.WorkflowXaml = contextualResourceModel.GetWorkflowXaml();
             }
             return result;
         }

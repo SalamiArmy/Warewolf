@@ -608,19 +608,20 @@ namespace Dev2.Studio.ViewModels
             {
                 var selectedMergeItem = mergeServiceViewModel.SelectedMergeItem;
                 var server = selectedMergeItem?.Server;
-                if (selectedMergeItem is VersionViewModel differentResource)
-                {
-                    var resourceVersion = differentResource.VersionInfo.ToContextualResourceModel(server, differentResource.ResourceId);
-                    var resourceModel = ActiveServer?.ResourceRepository.LoadContextualResourceModel(differentResource.ResourceId);
 
-                    var workSurfaceKey = WorkSurfaceKeyFactory.CreateKey(WorkSurfaceContext.MergeConflicts);
-                    if (resourceModel != null && resourceVersion != null)
-                    {
-                        workSurfaceKey.EnvironmentID = resourceModel.Environment.EnvironmentID;
-                        workSurfaceKey.ResourceID = resourceModel.ID;
-                        workSurfaceKey.ServerID = resourceModel.ServerID;
-                        _worksurfaceContextManager.ViewMergeConflictsService(resourceModel, resourceVersion, false, workSurfaceKey);
-                    }
+                if (selectedMergeItem is VersionViewModel differenceVersion)
+                {
+                    var differenceResourceModel = differenceVersion.VersionInfo.ToContextualResourceModel(server, differenceVersion.ResourceId);
+                    var currentResourceModel = ActiveServer?.ResourceRepository.LoadContextualResourceModel(differenceVersion.ResourceId);
+
+                    BuildAndViewCurrentVersion(currentResourceModel, differenceResourceModel, differenceVersion);
+                }
+                else if (currentResource is VersionViewModel currentVersion)
+                {
+                    var currentResourceModel = currentVersion.VersionInfo.ToContextualResourceModel(currentResource.Server, currentVersion.ResourceId);
+                    var differenceResourceModel = ActiveServer?.ResourceRepository.LoadContextualResourceModel(currentResource.Parent.ResourceId);
+
+                    BuildAndViewCurrentVersion(currentResourceModel, differenceResourceModel, currentVersion);
                 }
                 else
                 {
@@ -629,6 +630,21 @@ namespace Dev2.Studio.ViewModels
                         OpenMergeConflictsView(currentResource, selectedMergeItem.ResourceId, server);
                     }
                 }
+            }
+        }
+
+        private void BuildAndViewCurrentVersion(IContextualResourceModel resourceModel, IContextualResourceModel otherResourceModel, VersionViewModel version)
+        {
+            if (otherResourceModel != null && resourceModel != null)
+            {
+                resourceModel.ResourceName = otherResourceModel.ResourceName;
+                resourceModel.VersionInfo = version.VersionInfo;
+
+                var workSurfaceKey = WorkSurfaceKeyFactory.CreateKey(WorkSurfaceContext.MergeConflicts);
+                workSurfaceKey.EnvironmentID = otherResourceModel.Environment.EnvironmentID;
+                workSurfaceKey.ResourceID = otherResourceModel.ID;
+                workSurfaceKey.ServerID = otherResourceModel.ServerID;
+                _worksurfaceContextManager.ViewMergeConflictsService(resourceModel, otherResourceModel, true, workSurfaceKey);
             }
         }
 
