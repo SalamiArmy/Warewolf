@@ -8,7 +8,6 @@
 *  @license GNU Affero General Public License <http://www.gnu.org/licenses/agpl-3.0.html>
 */
 
-
 using System;
 using System.Collections.Generic;
 using Dev2.Activities;
@@ -19,8 +18,8 @@ using Warewolf.Storage;
 using Warewolf.Storage.Interfaces;
 using WarewolfParserInterop;
 using System.Data.SQLite;
-using System.IO;
 using System.Data;
+using System.Linq;
 
 namespace Dev2.Tests.Activities.ActivityTests
 {
@@ -65,8 +64,6 @@ namespace Dev2.Tests.Activities.ActivityTests
 			l.Add(new AssignValue("[[person().age]]", "19"));
 			l.Add(new AssignValue("[[person().address_id]]", "9"));
 
-
-
 			l.Add(new AssignValue("[[address().id]]", "1"));
 			l.Add(new AssignValue("[[address().addr]]", "11 test lane"));
 			l.Add(new AssignValue("[[address().postcode]]", "3421"));
@@ -75,14 +72,12 @@ namespace Dev2.Tests.Activities.ActivityTests
 			l.Add(new AssignValue("[[address().addr]]", "16 test lane"));
 			l.Add(new AssignValue("[[address().postcode]]", "3422"));
 
-
-
 			env.AssignWithFrame(l, 0);
 			env.CommitAssign();
 
 			var Worker = new AdvancedRecordsetWorker(env);
-			Worker.LoadRecordset(personRecordsetName);
-			Worker.LoadRecordset(addressRecordsetName);
+			Worker.LoadRecordsetAsTable(personRecordsetName);
+			Worker.LoadRecordsetAsTable(addressRecordsetName);
 			return Worker;
 		}
 
@@ -91,16 +86,17 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestCategory("AdvancedRecordset_Operations")]
 		public void AdvancedRecordset_Converter_ConvertDataTableToRecordset_ExpectDataInIEnvironment()
 		{
-			string returnRecordsetName = "[[AdvancedRecordsetTestResults()]]";
+			var worker = new AdvancedRecordsetWorker(new ExecutionEnvironment());
+			string returnRecordsetName = "person";
 			string query = "select * from person";
-			var worker = CreatePersonAddressWorkers();
+			worker = CreatePersonAddressWorkers();
 			var results = worker.ExecuteQuery(query);
 
 			// apply sql results to environment
-			worker.ApplyResultToEnvironment(returnRecordsetName);
+			worker.ApplyResultToEnvironment(returnRecordsetName, results.Tables[0].Rows.Cast<DataRow>().ToList());
 
 			// fetch newly inserted data from environment
-			var internalResult = env.EvalAsList("[[AdvancedRecordsetTestResults().Name]]", 0);
+			var internalResult = worker.Environment.EvalAsList("[[person(*).name]]", 0);
 
 			// assert that data fetched is what we expect from sql
 			var e = internalResult.GetEnumerator();
@@ -113,7 +109,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 				Assert.Fail();
 			}
 		}
-
+		#region Tests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Converter")]
@@ -155,9 +151,9 @@ namespace Dev2.Tests.Activities.ActivityTests
 			string query = "select * from person p join address a on p.address_id=a.id where a.addr=\"11 test lane\" order by Name";
 			var Worker = CreatePersonAddressWorkers();
 			var results = Worker.ExecuteQuery(query);
-			
+
 			Assert.AreEqual(results.Tables[0].Rows[0]["Name"], "bob");
-			Assert.AreEqual(results.Tables[0].Rows[0]["Age"],(Int64)21);
+			Assert.AreEqual(results.Tables[0].Rows[0]["Age"], (Int64)21);
 			Assert.AreEqual(results.Tables[0].Rows[0]["address_id"], (Int64)1);
 			Assert.AreEqual(results.Tables[0].Rows[0]["Addr"], "11 test lane");
 			Assert.AreEqual(results.Tables[0].Rows[0]["Postcode"], (Int64)3421);
@@ -195,13 +191,12 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Assert.AreEqual(results.Tables[2].Rows[0]["address_id"], (Int64)1);
 			Assert.AreEqual(results.Tables[1].Rows[0]["Addr"], "11 test lane");
 			Assert.AreEqual(results.Tables[1].Rows[0]["Postcode"], (Int64)3421);
-	
+
 			Assert.AreEqual(results.Tables[2].Rows[1]["Name"], "jef");
 			Assert.AreEqual(results.Tables[2].Rows[1]["Age"], (Int64)24);
 			Assert.IsTrue(results.Tables[2].Rows[0]["Addr"].ToString() == results.Tables[2].Rows[1]["addr"].ToString()); // Case insensitive should work
 			Assert.IsTrue(results.Tables[2].Rows[1]["Postcode"].ToString() == results.Tables[2].Rows[0]["Postcode"].ToString());
 		}
-
 
 		[TestMethod]
 		[Owner("Candice Daniel")]
@@ -210,7 +205,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 		{
 			var Worker = CreatePersonAddressWorkers();
 			string query = "update person set Age=65 where Name=\"zak\";";
-			var results = Worker.ExecuteCommand(query);
+			var results = Worker.ExecuteNonQuery(query);
 
 			Assert.AreEqual(results, 1);
 
@@ -231,13 +226,6 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Assert.ThrowsException<Exception>(() => Worker.ExecuteQuery(query));
 		}
 
-		[TestMethod]
-		[Owner("Candice Daniel")]
-		[TestCategory("AdvancedRecordset_Activity")]
-		public void AdvancedRecordset_Activity_Constructor()
-		{
-			var ar = new AdvancedRecordsetActivity();
-		}
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Activity")]
@@ -273,7 +261,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Assert.AreEqual("SomeText", debugOutput[0].Value);
 			Assert.AreEqual(DebugItemResultType.Value, debugOutput[0].Type);
 		}
-
+		#endregion
 		public class AdvancedRecordsetWorker
 		{
 			SQLiteDatabase database = new SQLiteDatabase();
@@ -296,25 +284,23 @@ namespace Dev2.Tests.Activities.ActivityTests
 					throw new Exception(e.Message);
 				}
 			}
-			public int ExecuteCommand(string sql)
+			public int ExecuteNonQuery(string sql)
 			{
 				try
 				{
 					var command = new SQLiteCommand(sql, database.myConnection);
 					return command.ExecuteNonQuery();
-					
 				}
 				catch (Exception e)
 				{
 					throw new Exception(e.Message);
 				}
 			}
-			public void LoadRecordset(string recordsetName)
+			public void LoadRecordsetAsTable(string recordsetName)
 			{
-				var table = LoadRecordsetFromEnvironment(recordsetName);
+				var table = LoadRecordsetAsTableFromEnvironment(recordsetName);
 				LoadIntoSQL(recordsetName, table);
 			}
-
 			void LoadIntoSQL(string recordsetName, List<Dictionary<string, DataStorage.WarewolfAtom>> tableData)
 			{
 				if (tableData.Count > 0)
@@ -363,17 +349,23 @@ namespace Dev2.Tests.Activities.ActivityTests
 					}
 				}
 			}
-
-			private List<Dictionary<string, DataStorage.WarewolfAtom>> LoadRecordsetFromEnvironment(string recordsetName)
+			private List<Dictionary<string, DataStorage.WarewolfAtom>> LoadRecordsetAsTableFromEnvironment(string recordsetName)
 			{
-
 				var table = new List<Dictionary<string, DataStorage.WarewolfAtom>>();
 				return Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
 			}
-
-			public void ApplyResultToEnvironment(string returnRecordsetName)
+			public void ApplyResultToEnvironment(string returnRecordsetName, List<DataRow> recordset)
 			{
-				throw new NotImplementedException();
+				var l = new List<AssignValue>();
+				foreach (DataRow dr in recordset)
+				{
+					foreach (DataColumn dc in dr.Table.Columns)
+					{
+						l.Add(new AssignValue("[[" + returnRecordsetName + "()." + dc.ColumnName.ToString() + "]]", dr[dc].ToString()));
+					}
+				}
+				Environment.AssignWithFrame(l, 0);
+				Environment.CommitAssign();
 			}
 		}
 
@@ -400,6 +392,5 @@ namespace Dev2.Tests.Activities.ActivityTests
 				myConnection.Open();
 			}
 		}
-
 	}
 }

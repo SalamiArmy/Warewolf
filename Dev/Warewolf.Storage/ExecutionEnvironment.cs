@@ -414,9 +414,9 @@ namespace Warewolf.Storage
 			}
 			return expression;
 		}
-		public List<System.Collections.Generic.Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update) => EvalAsTable(recordsetExpression, update, false);
+		public List<Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update) => EvalAsTable(recordsetExpression, update, false);
 		public IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update) => EvalAsList(expression, update, false);
-		public List<System.Collections.Generic.Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists)
+		public List<Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists)
 		{			
 			var result = PublicFunctions.EvalEnvExpressionToTable(recordsetExpression, update, _env);
 			return result;

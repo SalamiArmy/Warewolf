@@ -18,8 +18,9 @@ namespace Warewolf.Storage.Interfaces
         void Assign(string exp, string value, int update);
 
         void AssignStrict(string exp, string value, int update);
+		void AssignWithFrame(IEnumerable<IAssignValue> values, int update);
 
-        void AssignWithFrame(IAssignValue values, int update);
+		void AssignWithFrame(IAssignValue values, int update);
 
         int GetLength(string recordSetName);
 
@@ -44,8 +45,8 @@ namespace Warewolf.Storage.Interfaces
         void SortRecordSet(string sortField, bool descOrder, int update);
 
         string ToStar(string expression);
-		List<System.Collections.Generic.Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update);
-		List<System.Collections.Generic.Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists);
+		List<Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update);
+		List<Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists);
 		IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update);
 		IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update, bool throwsifnotexists);
 
