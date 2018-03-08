@@ -88,7 +88,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         public void AdvancedRecordset_Converter_ConvertDataTableToRecordset_ExpectDataInIEnvironment()
 		{
 			var worker = new AdvancedRecordsetWorker(new ExecutionEnvironment());
-			string returnRecordsetName = "person";
+			string returnRecordsetName = "person2";
 			string query = "select * from person";
 			worker = CreatePersonAddressWorkers();
 			var results = worker.ExecuteQuery(query);
@@ -309,62 +309,61 @@ namespace Dev2.Tests.Activities.ActivityTests
 			}
 			public void LoadRecordsetAsTable(string recordsetName)
 			{
-				var table = LoadRecordsetAsTableFromEnvironment(recordsetName);
+				var table = Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
 				LoadIntoSQL(recordsetName, table);
 			}
-			void LoadIntoSQL(string recordsetName, List<Dictionary<string, DataStorage.WarewolfAtom>> tableData)
+			void LoadIntoSQL(string recordsetName, IEnumerable<Tuple<string, DataStorage.WarewolfAtom>[]> tableData)
 			{
-				if (tableData.Count > 0)
+                var enumerator = tableData.GetEnumerator();
+				if (enumerator.MoveNext())
 				{
-					string sql = "DROP TABLE IF EXISTS " + recordsetName;
-					SQLiteCommand command = new SQLiteCommand(sql, database.myConnection);
-					command.ExecuteNonQuery();
+					var sql = "DROP TABLE IF EXISTS " + recordsetName;
+                    using (var command = new SQLiteCommand(sql, database.myConnection))
+                    {
+                        command.ExecuteNonQuery();
 
-					sql = "CREATE TABLE IF NOT EXISTS " + recordsetName + "([Primary_Id] INTEGER NOT NULL, CONSTRAINT[PK_" + recordsetName + "] PRIMARY KEY([Primary_Id]))";
-					command = new SQLiteCommand(sql, database.myConnection);
-					command.ExecuteNonQuery();
-					int i = 0;
+                        sql = "CREATE TABLE IF NOT EXISTS " + recordsetName + "([Primary_Id] INTEGER NOT NULL, CONSTRAINT[PK_" + recordsetName + "] PRIMARY KEY([Primary_Id]))";
+                        command.CommandText = sql;
+                        command.ExecuteNonQuery();
+                        var i = 0;
 
-					foreach (Dictionary<string, DataStorage.WarewolfAtom> cells in tableData)
-					{
-						string insertSql = "INSERT INTO " + recordsetName + " select " + i + ",";
-						foreach (KeyValuePair<string, DataStorage.WarewolfAtom> cell in cells)
-						{
-							string colType = cell.Value.GetType().Name;
-							string colName = cell.Key;
-							if (colType == "Int")
-							{
-								colType = "INTEGER";
-								insertSql += cell.Value + ",";
-							}
-							else if (colType == "DataString")
-							{
-								colType = "TEXT";
-								insertSql += "'" + cell.Value + "',";
-							}
-							else
-							{
-								insertSql += cell.Value + ",";
-							}
-							if (i == 0)
-							{
-								sql = "ALTER TABLE  " + recordsetName + " ADD COLUMN " + cell.Key + " " + colType + ";";
-								command = new SQLiteCommand(sql, database.myConnection);
-								command.ExecuteNonQuery();
-							}
-						}
-						insertSql = insertSql.Remove(insertSql.Length - 1);
-						command = new SQLiteCommand(insertSql, database.myConnection);
-						command.ExecuteNonQuery();
-						i++;
-					}
+                        do
+                        {
+                            var row = enumerator.Current;
+                            var insertSql = "INSERT INTO " + recordsetName + " select " + i + ",";
+                            foreach (var (key, value) in row)
+                            {
+                                var colType = value.GetType().Name;
+                                if (colType == "Int")
+                                {
+                                    colType = "INTEGER";
+                                    insertSql += value + ",";
+                                }
+                                else if (colType == "DataString")
+                                {
+                                    colType = "TEXT";
+                                    insertSql += "'" + value + "',";
+                                }
+                                else
+                                {
+                                    insertSql += value + ",";
+                                }
+                                if (i == 0)
+                                {
+                                    sql = "ALTER TABLE  " + recordsetName + " ADD COLUMN " + key + " " + colType + ";";
+                                    command.CommandText = sql;
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+                            insertSql = insertSql.Remove(insertSql.Length - 1);
+                            command.CommandText = insertSql;
+                            command.ExecuteNonQuery();
+                            i++;
+                        } while (enumerator.MoveNext());
+                    }
 				}
 			}
-			private List<Dictionary<string, DataStorage.WarewolfAtom>> LoadRecordsetAsTableFromEnvironment(string recordsetName)
-			{
-				var table = new List<Dictionary<string, DataStorage.WarewolfAtom>>();
-				return Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
-			}
+
 			public void ApplyResultToEnvironment(string returnRecordsetName, List<DataRow> recordset)
 			{
 				var l = new List<AssignValue>();
