@@ -26,7 +26,6 @@ namespace Dev2.Tests.Activities.ActivityTests
 	[TestClass]
 	public class RecordsetADOTests : BaseActivityTests
 	{
-		IExecutionEnvironment env;
 		public AdvancedRecordsetWorker CreatePersonAddressWorkers()
 		{
 			var personRecordsetName = "person";
@@ -80,7 +79,14 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Worker.LoadRecordsetAsTable(addressRecordsetName);
 			return Worker;
 		}
-
+		[TestMethod]
+		[Owner("Candice Daniel")]
+		[TestCategory("AdvancedRecordset_Converter")]
+		public void AdvancedRecordset_Converter_FromRecordset()
+		{
+			var Worker = CreatePersonAddressWorkers();
+			Assert.IsNotNull(Worker);
+		}
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
@@ -108,15 +114,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			{
 				Assert.Fail();
 			}
-		}
-		#region Tests
-		[TestMethod]
-		[Owner("Candice Daniel")]
-		[TestCategory("AdvancedRecordset_Converter")]
-		public void AdvancedRecordset_Converter_FromRecordset()
-		{
-			var Worker = CreatePersonAddressWorkers();
-			Assert.IsNotNull(Worker);
+			worker.CloseConnection();
 		}
 
 		[TestMethod]
@@ -128,6 +126,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			var Worker = CreatePersonAddressWorkers();
 			var Results = Worker.ExecuteQuery(query);
 			Assert.AreEqual(4, Results.Tables[0].Rows.Count);
+			Worker.CloseConnection();
 		}
 
 		[TestMethod]
@@ -141,6 +140,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
 			Assert.IsInstanceOfType(results, typeof(DataSet));
 			Assert.AreEqual(results.Tables[0].Rows.Count, 3);
+			worker.CloseConnection();
 		}
 
 		[TestMethod]
@@ -162,6 +162,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Assert.AreEqual(results.Tables[0].Rows[1]["Age"], (Int64)24);
 			Assert.IsTrue(results.Tables[0].Rows[0]["Addr"].ToString() == results.Tables[0].Rows[1]["addr"].ToString()); // Case insensitive should work
 			Assert.IsTrue(results.Tables[0].Rows[1]["Postcode"].ToString() == results.Tables[0].Rows[0]["Postcode"].ToString());
+
+			Worker.CloseConnection();
 		}
 
 		[TestMethod]
@@ -173,6 +175,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 			var Worker = CreatePersonAddressWorkers();
 			var results = Worker.ExecuteQuery(query);
 			Assert.AreEqual(results.Tables[0].Rows.Count, 0);
+
+			Worker.CloseConnection();
 		}
 
 		[TestMethod]
@@ -196,6 +200,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Assert.AreEqual(results.Tables[2].Rows[1]["Age"], (Int64)24);
 			Assert.IsTrue(results.Tables[2].Rows[0]["Addr"].ToString() == results.Tables[2].Rows[1]["addr"].ToString()); // Case insensitive should work
 			Assert.IsTrue(results.Tables[2].Rows[1]["Postcode"].ToString() == results.Tables[2].Rows[0]["Postcode"].ToString());
+
+			Worker.CloseConnection();
 		}
 
 		[TestMethod]
@@ -214,6 +220,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
 			Assert.AreEqual(result.Tables[0].Rows[0]["Name"], "zak");
 			Assert.AreEqual(result.Tables[0].Rows[0]["Age"], (Int64)65);
+
+			Worker.CloseConnection();
 		}
 
 		[TestMethod]
@@ -224,6 +232,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 			string query = "select from person";
 			var Worker = CreatePersonAddressWorkers();
 			Assert.ThrowsException<Exception>(() => Worker.ExecuteQuery(query));
+
+			Worker.CloseConnection();
 		}
 
 		[TestMethod]
@@ -261,7 +271,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Assert.AreEqual("SomeText", debugOutput[0].Value);
 			Assert.AreEqual(DebugItemResultType.Value, debugOutput[0].Type);
 		}
-		#endregion
+		
 		public class AdvancedRecordsetWorker
 		{
 			SQLiteDatabase database = new SQLiteDatabase();
@@ -367,20 +377,15 @@ namespace Dev2.Tests.Activities.ActivityTests
 				Environment.AssignWithFrame(l, 0);
 				Environment.CommitAssign();
 			}
-		}
-
-		public class Rows
-		{
-			public Row this[int idx] { get => new Row(); }
-			public int Count;
-		}
-		public class Row
-		{
-			public string this[string fieldName] { get => ""; }
+			public void CloseConnection()
+			{
+				database.CloseConnection();
+			}
 		}
 
 		public class SQLiteDatabase
 		{
+			public void CloseConnection() { myConnection.Close(); }
 			public SQLiteConnection myConnection;
 			public SQLiteDatabase()
 			{
