@@ -37,7 +37,7 @@ namespace Dev2.Studio.Interfaces
         bool HasErrors { get; }
         string HelpLink { get; set; }
         bool IsDebugMode { get; set; }
-        bool IsVersionResource { get; set; }
+        bool IsVersionResource { get; }
         string ResourceName { get; set; }
         ResourceType ResourceType { get; set; }
         StringBuilder WorkflowXaml { get; set; }

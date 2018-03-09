@@ -52,7 +52,6 @@ namespace Warewolf.Studio.ViewModels
                     WorkflowXaml = new StringBuilder(xamlString),
                     UserPermissions = Permissions.Contribute,
                     DataList = dataListString,
-                    IsVersionResource = true,
                     ID = Id ?? Guid.NewGuid()
                 };
 

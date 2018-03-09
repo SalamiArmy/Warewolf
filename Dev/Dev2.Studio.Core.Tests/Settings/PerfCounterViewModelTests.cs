@@ -89,10 +89,20 @@ namespace Dev2.Core.Tests.Settings
         [TestCategory("PerfcounterViewModel_Constructor")]
         public void PerfcounterViewModel_Equals_Given_Null_Resource_Counters_Returns_False()
         {
+            var servers = new Mock<ICollection<IServer>>();
+            servers.Object.Add(_mockEnvironment.Object);
+            var serverRepository = new Mock<IServerRepository>();
+            serverRepository.Setup(serverRep => serverRep.All()).Returns(servers.Object);
+            serverRepository.Setup(serverRep => serverRep.ActiveServer).Returns(_mockEnvironment.Object);
+            CustomContainer.Register(serverRepository.Object);
+
+            var explorerTooltips = new Mock<IExplorerTooltips>();
+            CustomContainer.Register(explorerTooltips.Object);
+
             var perfCounterTo = new Mock<IPerformanceCounterTo>();
             perfCounterTo.Setup(to => to.ResourceCounters).Returns(new List<IResourcePerformanceCounter>());
             perfCounterTo.Setup(to => to.NativeCounters).Returns(new List<IPerformanceCounter>());
-            var perfcounterViewModel = new PerfcounterViewModel(perfCounterTo.Object, new Mock<IServer>().Object);
+            var perfcounterViewModel = new PerfcounterViewModel(perfCounterTo.Object, _mockEnvironment.Object);
             var counters = new PrivateObject(perfcounterViewModel);
 
             var ItemServerCounters = new List<IPerformanceCountersByMachine>();

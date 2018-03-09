@@ -319,7 +319,7 @@ namespace Dev2.Studio.Core.Models
             }
         }
 
-        public bool IsVersionResource { get; set; }
+        public bool IsVersionResource => VersionInfo != null;
 
         public bool HasErrors => ValidationErrors.Count > 0;
 

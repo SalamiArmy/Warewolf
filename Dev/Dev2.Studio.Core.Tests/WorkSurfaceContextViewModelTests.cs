@@ -793,6 +793,9 @@ namespace Dev2.Core.Tests
 
         static WorkSurfaceContextViewModel CreateWorkSurfaceContextViewModel(IServer server, bool isConnected, Mock<IContextualResourceModel> ResourceModel = null)
         {
+            var serverRepository = new Mock<IServerRepository>();
+            CustomContainer.Register(serverRepository.Object);
+
             var workSurfaceKey = new WorkSurfaceKey();
             var mockResourceModel = ResourceModel ?? new Mock<IContextualResourceModel>();
             mockResourceModel.Setup(model => model.Environment).Returns(server);
@@ -871,6 +874,8 @@ namespace Dev2.Core.Tests
 
         static WorkSurfaceContextViewModel CreateWorkSurfaceContextViewModel(Permissions userPermissions)
         {
+            var serverRepository = new Mock<IServerRepository>();
+            CustomContainer.Register(serverRepository.Object);
 
             var mockedConn = new Mock<IEnvironmentConnection>();
             mockedConn.Setup(conn => conn.ServerEvents).Returns(new Mock<IEventPublisher>().Object);

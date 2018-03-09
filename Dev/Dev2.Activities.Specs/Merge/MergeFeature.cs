@@ -169,8 +169,7 @@ namespace Dev2.Activities.Specs.Merge
                 IsResourceService = localResource.IsResourceService,
                 UserPermissions = localResource.UserPermissions,
                 ResourceName = localResource.ResourceName,
-                ResourceType = localResource.ResourceType,
-                IsVersionResource = true
+                ResourceType = localResource.ResourceType
             };
         }
 

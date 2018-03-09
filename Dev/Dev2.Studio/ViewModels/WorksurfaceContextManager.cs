@@ -679,7 +679,6 @@ namespace Dev2.Studio.ViewModels
                     WorkflowXaml = new StringBuilder(xamlString),
                     UserPermissions = Permissions.View,
                     DataList = dataListString,
-                    IsVersionResource = true,
                     ID = Guid.NewGuid(),
                     OriginalId = resourceId
                 };
