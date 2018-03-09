@@ -92,6 +92,8 @@ namespace Dev2.Studio.Core.Models
 
         public string Outputs { get; set; }
 
+        public Guid OriginalId { get; set; }
+
         public bool IsValid
         {
             get => _isValid;
@@ -669,6 +671,22 @@ namespace Dev2.Studio.Core.Models
         {
             _validationService?.Dispose();
             base.OnDispose();
+        }
+
+        public StringBuilder GetWorkflowXaml()
+        {
+            if (WorkflowXaml != null)
+            {
+                return WorkflowXaml;
+            }
+
+            var msg = Environment?.ResourceRepository.FetchResourceDefinition(Environment, GlobalConstants.ServerWorkspaceID, ID, true);
+            if (msg != null && msg.Message.Length != 0)
+            {
+                WorkflowXaml = msg.Message;
+            }
+
+            return WorkflowXaml;
         }
     }
 }
