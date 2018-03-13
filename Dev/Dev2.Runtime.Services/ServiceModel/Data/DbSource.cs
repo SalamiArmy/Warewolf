@@ -149,8 +149,10 @@ namespace Dev2.Runtime.ServiceModel.Data
 
                     case enSourceType.ODBC:
                         return string.Format("DSN={0};", DatabaseName);
+					case enSourceType.SQLiteDatabase:
+						return ":memory:";
 
-                    case enSourceType.PostgreSQL:
+					case enSourceType.PostgreSQL:
 
                         if (string.IsNullOrEmpty(DatabaseName))
                         {

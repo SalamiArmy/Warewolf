@@ -132,7 +132,27 @@ namespace Dev2.Runtime.ServiceModel
                             return dbService.Recordset;
 
                         }
-                    case enSourceType.PostgreSQL:
+					case enSourceType.SQLiteDatabase:
+						{
+
+							var broker = new SqliteDatabaseBroker();
+							var outputDescription = broker.TestService(dbService);
+
+							if (outputDescription?.DataSourceShapes == null || outputDescription.DataSourceShapes.Count == 0)
+							{
+								throw new Exception(ErrorResource.ErrorRetrievingShapeFromServiceOutput);
+							}
+
+							dbService.Recordset.Fields.Clear();
+
+							var smh = new ServiceMappingHelper();
+
+							smh.MySqlMapDbOutputs(outputDescription, ref dbService, addFields);
+
+							return dbService.Recordset;
+
+						}
+					case enSourceType.PostgreSQL:
                         {
                             var broker = new PostgreSqlDataBaseBroker();
                             var outputDescription = broker.TestService(dbService);
@@ -369,7 +389,12 @@ namespace Dev2.Runtime.ServiceModel
                         var broker = new OracleDatabaseBroker();
                         return broker.GetServiceMethods(dbSource);
                     }
-                default:
+				case enSourceType.SQLiteDatabase:
+					{
+						var broker = new SqliteDatabaseBroker();
+						return broker.GetServiceMethods(dbSource);
+					}
+				default:
                     {
                         var broker = CreateDatabaseBroker();
                         return broker.GetServiceMethods(dbSource);
