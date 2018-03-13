@@ -94,7 +94,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_ConvertDataTableToRecordset_ExpectDataInIEnvironment()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_ConvertDataTableToRecordset_ExpectDataInIEnvironment()
 		{
 			var worker = new AdvancedRecordsetWorker(new ExecutionEnvironment());
 			string returnRecordsetName = "person";
@@ -118,13 +119,25 @@ namespace Dev2.Tests.Activities.ActivityTests
 			{
 				Assert.Fail();
 			}
-		
+		}
+
+		#region Tests
+
+		[TestMethod]
+		[Owner("Candice Daniel")]
+		[TestCategory("AdvancedRecordset_Converter")]
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_FromRecordset()
+		{
+			var Worker = CreatePersonAddressWorkers();
+			Assert.IsNotNull(Worker);
 		}
 
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_CanRunSimpleQuery()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_CanRunSimpleQuery()
 		{
 			string query = "select * from person";
 			var Worker = CreatePersonAddressWorkers();
@@ -135,6 +148,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
 		public void AdvancedRecordset_Converter_CanRunJoinQuery_ExpectAllResults()
 		{
 			var worker = CreatePersonAddressWorkers();
@@ -148,7 +162,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_CanRunWhereQuery_ExpectFilteredResults()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_CanRunWhereQuery_ExpectFilteredResults()
 		{
 			string query = "select * from person p join address a on p.address_id=a.id where a.addr=\"11 test lane\" order by Name";
 			var Worker = CreatePersonAddressWorkers();
@@ -169,7 +184,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_CanRunWhereQuery_ExpectNoResults()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_CanRunWhereQuery_ExpectNoResults()
 		{
 			string query = "select * from person p join address a on p.address_id=a.id where p.Name=\"zak\"";
 			var Worker = CreatePersonAddressWorkers();
@@ -180,7 +196,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_ExpectCanRunMultipleQueries()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_ExpectCanRunMultipleQueries()
 		{
 			string query = "select CURRENT_TIMESTAMP;" +
 				"select * from address;update person set Age=20 where Name=\"zak\";" +
@@ -198,13 +215,13 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Assert.AreEqual(results.Tables[2].Rows[1]["Age"], (Int64)24);
 			Assert.IsTrue(results.Tables[2].Rows[0]["Addr"].ToString() == results.Tables[2].Rows[1]["addr"].ToString()); // Case insensitive should work
 			Assert.IsTrue(results.Tables[2].Rows[1]["Postcode"].ToString() == results.Tables[2].Rows[0]["Postcode"].ToString());
-
 		}
 
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_ExpectUpdateAffectedRows()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_ExpectUpdateAffectedRows()
 		{
 			var Worker = CreatePersonAddressWorkers();
 			string query = "update person set Age=65 where Name=\"zak\";";
@@ -222,7 +239,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
-		public void AdvancedRecordset_Converter_ExpectBadSQLToError()
+        [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        public void AdvancedRecordset_Converter_ExpectBadSQLToError()
 		{
 			string query = "select from person";
 			var Worker = CreatePersonAddressWorkers();
@@ -264,7 +282,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Assert.AreEqual("SomeText", debugOutput[0].Value);
 			Assert.AreEqual(DebugItemResultType.Value, debugOutput[0].Type);
 		}
-
+		#endregion
 		public class AdvancedRecordsetWorker
 		{
 			SqliteServer dbManager = new SqliteServer("Data Source=:memory:");
@@ -350,15 +368,18 @@ namespace Dev2.Tests.Activities.ActivityTests
 			}
 			void LoadIntoSQLite(string recordsetName, List<Dictionary<string, DataStorage.WarewolfAtom>> tableData)
 			{
-				try
+				var table = Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
+				LoadIntoSQL(recordsetName, table);
+			}
+			void LoadIntoSQL(string recordsetName, IEnumerable<Tuple<string, DataStorage.WarewolfAtom>[]> tableData)
+			{
+                var enumerator = tableData.GetEnumerator();
+				if (enumerator.MoveNext())
 				{
-					if (tableData.Count > 0)
-					{
-						string sql = "DROP TABLE IF EXISTS " + recordsetName;
-						IDbCommand command = dbManager.CreateCommand();
-						command.CommandText = sql;
-						command.CommandType = CommandType.Text;
-						dbManager.ExecuteNonQuery(command);
+					var sql = "DROP TABLE IF EXISTS " + recordsetName;
+                    using (var command = new SQLiteCommand(sql, database.myConnection))
+                    {
+                        command.ExecuteNonQuery();
 
 						sql = "CREATE TABLE IF NOT EXISTS " + recordsetName + "([Primary_Id] INTEGER NOT NULL, CONSTRAINT[PK_" + recordsetName + "] PRIMARY KEY([Primary_Id]))";
 						command = dbManager.CreateCommand();
@@ -368,63 +389,41 @@ namespace Dev2.Tests.Activities.ActivityTests
 
 						int i = 0;
 
-						foreach (Dictionary<string, DataStorage.WarewolfAtom> cells in tableData)
-						{
-							string insertSql = "INSERT INTO " + recordsetName + " select " + i + ",";
-							foreach (KeyValuePair<string, DataStorage.WarewolfAtom> cell in cells)
-							{
-								string colType = cell.Value.GetType().Name;
-								string colName = cell.Key;
-								if (colType == "Int")
-								{
-									colType = "INTEGER";
-									insertSql += cell.Value + ",";
-								}
-								else if (colType == "DataString")
-								{
-									colType = "TEXT";
-									insertSql += "'" + cell.Value + "',";
-								}
-								else
-								{
-									insertSql += cell.Value + ",";
-								}
-								if (i == 0)
-								{
-									sql = "ALTER TABLE  " + recordsetName + " ADD COLUMN " + cell.Key + " " + colType + ";";
-									command = dbManager.CreateCommand();
-									command.CommandText = sql;
-									command.CommandType = CommandType.Text;
-									dbManager.ExecuteNonQuery(command);
-								}
-							}
-							insertSql = insertSql.Remove(insertSql.Length - 1);
-							command = dbManager.CreateCommand();
-							command.CommandText = insertSql;
-							command.CommandType = CommandType.Text;
-							dbManager.ExecuteNonQuery(command);
-							i++;
-						}
-					}
+                        do
+                        {
+                            var row = enumerator.Current;
+                            var insertSql = "INSERT INTO " + recordsetName + " select " + i + ",";
+                            foreach (var (key, value) in row)
+                            {
+                                var colType = value.GetType().Name;
+                                if (colType == "Int")
+                                {
+                                    colType = "INTEGER";
+                                    insertSql += value + ",";
+                                }
+                                else if (colType == "DataString")
+                                {
+                                    colType = "TEXT";
+                                    insertSql += "'" + value + "',";
+                                }
+                                else
+                                {
+                                    insertSql += value + ",";
+                                }
+                                if (i == 0)
+                                {
+                                    sql = "ALTER TABLE  " + recordsetName + " ADD COLUMN " + key + " " + colType + ";";
+                                    command.CommandText = sql;
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+                            insertSql = insertSql.Remove(insertSql.Length - 1);
+                            command.CommandText = insertSql;
+                            command.ExecuteNonQuery();
+                            i++;
+                        } while (enumerator.MoveNext());
+                    }
 				}
-				catch (Exception ex )
-				{
-
-				}
-				finally
-				{
-
-				}
-			}
-			public void LoadRecordsetAsTable(string recordsetName)
-			{
-				var table = LoadRecordsetAsTableFromEnvironment(recordsetName);
-				LoadIntoSQLite(recordsetName, table);
-			}
-			private List<Dictionary<string, DataStorage.WarewolfAtom>> LoadRecordsetAsTableFromEnvironment(string recordsetName)
-			{
-				var table = new List<Dictionary<string, DataStorage.WarewolfAtom>>();
-				return Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
 			}
 			public void ApplyResultToEnvironment(string returnRecordsetName, List<DataRow> recordset)
 			{
@@ -438,6 +437,30 @@ namespace Dev2.Tests.Activities.ActivityTests
 				}
 				Environment.AssignWithFrame(l, 0);
 				Environment.CommitAssign();
+			}
+		}
+
+		public class Rows
+		{
+			public Row this[int idx] { get => new Row(); }
+			public int Count;
+		}
+		public class Row
+		{
+			public string this[string fieldName] { get => ""; }
+		}
+
+		public class SQLiteDatabase
+		{
+			public SQLiteConnection myConnection;
+			public SQLiteDatabase()
+			{
+				myConnection = new SQLiteConnection("Data Source=:memory:");//database.sqlite3
+																			//if (!File.Exists("./database.sqlite3"))
+																			//{
+																			//	SQLiteConnection.CreateFile("database.sqlite3");
+																			//}
+				myConnection.Open();
 			}
 		}
 	}

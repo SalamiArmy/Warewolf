@@ -45,8 +45,9 @@ namespace Warewolf.Storage.Interfaces
         void SortRecordSet(string sortField, bool descOrder, int update);
 
         string ToStar(string expression);
-		List<Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update);
-		List<Dictionary<string, DataStorage.WarewolfAtom>> EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists);
+        IEnumerable<Tuple<string, DataStorage.WarewolfAtom>[]> EvalAsTable(string recordsetExpression, int update);
+        IEnumerable<Tuple<string, DataStorage.WarewolfAtom>[]> EvalAsTable(string recordsetExpression, int update, bool throwsifnotexists);
+
 		IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update);
 		IEnumerable<DataStorage.WarewolfAtom> EvalAsList(string expression, int update, bool throwsifnotexists);
 
