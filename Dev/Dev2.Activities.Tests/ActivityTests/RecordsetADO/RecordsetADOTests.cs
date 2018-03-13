@@ -125,16 +125,6 @@ namespace Dev2.Tests.Activities.ActivityTests
 
 		[TestMethod]
 		[Owner("Candice Daniel")]
-		[TestCategory("AdvancedRecordset_Converter")]
-        [DeploymentItem(@"x86\SQLite.Interop.dll")]
-        public void AdvancedRecordset_Converter_FromRecordset()
-		{
-			var Worker = CreatePersonAddressWorkers();
-			Assert.IsNotNull(Worker);
-		}
-
-		[TestMethod]
-		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
         public void AdvancedRecordset_Converter_CanRunSimpleQuery()
@@ -250,6 +240,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 		[TestMethod]
 		[Owner("Candice Daniel")]
 		[TestCategory("AdvancedRecordset_Activity")]
+		[DeploymentItem(@"x86\SQLite.Interop.dll")]
 		public void AdvancedRecordset_Activity_ExecuteTool()
 		{
 			var act = new AdvancedRecordsetActivity { };
@@ -366,6 +357,12 @@ namespace Dev2.Tests.Activities.ActivityTests
 					throw new Exception(e.Message);
 				}
 			}
+			public void LoadRecordsetAsTable(string recordsetName)
+			{
+				var table = Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
+				LoadIntoSQL(recordsetName, table);
+			}
+
 			void LoadIntoSQLite(string recordsetName, List<Dictionary<string, DataStorage.WarewolfAtom>> tableData)
 			{
 				var table = Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
@@ -377,16 +374,17 @@ namespace Dev2.Tests.Activities.ActivityTests
 				if (enumerator.MoveNext())
 				{
 					var sql = "DROP TABLE IF EXISTS " + recordsetName;
-                    using (var command = new SQLiteCommand(sql, database.myConnection))
+					IDbCommand com = dbManager.CreateCommand();
+					com.CommandText = sql;
+					com.CommandType = CommandType.Text;
+					using (var command = com)
                     {
                         command.ExecuteNonQuery();
 
 						sql = "CREATE TABLE IF NOT EXISTS " + recordsetName + "([Primary_Id] INTEGER NOT NULL, CONSTRAINT[PK_" + recordsetName + "] PRIMARY KEY([Primary_Id]))";
-						command = dbManager.CreateCommand();
 						command.CommandText = sql;
 						command.CommandType = CommandType.Text;
 						dbManager.ExecuteNonQuery(command);
-
 						int i = 0;
 
                         do
@@ -425,6 +423,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                     }
 				}
 			}
+
 			public void ApplyResultToEnvironment(string returnRecordsetName, List<DataRow> recordset)
 			{
 				var l = new List<AssignValue>();
@@ -437,30 +436,6 @@ namespace Dev2.Tests.Activities.ActivityTests
 				}
 				Environment.AssignWithFrame(l, 0);
 				Environment.CommitAssign();
-			}
-		}
-
-		public class Rows
-		{
-			public Row this[int idx] { get => new Row(); }
-			public int Count;
-		}
-		public class Row
-		{
-			public string this[string fieldName] { get => ""; }
-		}
-
-		public class SQLiteDatabase
-		{
-			public SQLiteConnection myConnection;
-			public SQLiteDatabase()
-			{
-				myConnection = new SQLiteConnection("Data Source=:memory:");//database.sqlite3
-																			//if (!File.Exists("./database.sqlite3"))
-																			//{
-																			//	SQLiteConnection.CreateFile("database.sqlite3");
-																			//}
-				myConnection.Open();
 			}
 		}
 	}
