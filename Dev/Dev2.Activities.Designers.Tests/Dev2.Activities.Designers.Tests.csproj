@@ -110,6 +110,7 @@
     <None Include="..\Dev2.Core.Tests\TestUtils.cs">
       <Link>TestUtils.cs</Link>
     </None>
+    <Compile Include="AdvancedRecordsetTests\AdvancedRecordsetViewModelTests.cs" />
     <Compile Include="AggregateCalculate\AggregateCalculateDesignerViewModelTests.cs" />
     <Compile Include="Calculate\CalculateDesignerViewModelTest.cs" />
     <Compile Include="CaseConvert\CaseConvertDesignerViewModelTests.cs" />

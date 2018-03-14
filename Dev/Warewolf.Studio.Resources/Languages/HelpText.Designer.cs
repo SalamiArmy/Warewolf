@@ -4041,11 +4041,20 @@ namespace Warewolf.Studio.Resources.Languages {
                 return ResourceManager.GetString("Tool_Database_SQL_Server", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use the Dropbox Delete tool to remove files or folders from your Dropbox online account..
-        /// </summary>
-        public static string Tool_Dropbox_Delete {
+		/// <summary>
+		///   Creates an in memory SQLite Database in warewolf. This tool will allow one or many recordsets to be imported and TSQL to be written and executed against the database. It allows you to map Warewolf data into, execute then map Warewolf data out of them..
+		/// </summary>
+		public static string Tool_AdvancedRecordset
+		{
+			get
+			{
+				return ResourceManager.GetString("Tool_AdvancedRecordset", resourceCulture);
+			}
+		}
+		/// <summary>
+		///   Looks up a localized string similar to Use the Dropbox Delete tool to remove files or folders from your Dropbox online account..
+		/// </summary>
+		public static string Tool_Dropbox_Delete {
             get {
                 return ResourceManager.GetString("Tool_Dropbox_Delete", resourceCulture);
             }

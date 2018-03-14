@@ -183,6 +183,8 @@
       <Link>Properties\AssemblyCommonInfo.cs</Link>
     </Compile>
     <Compile Include="Activities\AdvancedRecordsetActivity.cs" />
+    <Compile Include="Activities\AdvancedRecordset\AdvancedRecordset.cs" />
+    <Compile Include="Activities\AdvancedRecordset\IAdvancedRecordset.cs" />
     <Compile Include="Activities\Exchange\DsfExchangeEmailNewActivity.cs" />
     <Compile Include="Activities\IAdapterActivity.cs" />
     <Compile Include="Activities\PathOperations\DsfFolderReadActivity.cs" />
@@ -519,6 +521,10 @@
     <ProjectReference Include="..\Dev2.Services.Execution\Dev2.Services.Execution.csproj">
       <Project>{019A92B9-9209-4930-BC96-381CB8B1C0EA}</Project>
       <Name>Dev2.Services.Execution</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dev2.Services.Sql\Dev2.Services.Sql.csproj">
+      <Project>{FF3115B2-370E-4E40-99C5-7D239BC28679}</Project>
+      <Name>Dev2.Services.Sql</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dev2.Util\Dev2.Util.csproj">
       <Project>{1990550D-EA6F-4DAC-9B5E-8571E86923ED}</Project>

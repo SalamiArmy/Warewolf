@@ -23,13 +23,14 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Dev2.Common.Interfaces.Services.Sql;
 using Dev2.Services.Sql;
+using Dev2.Activities.AdvancedRecordset;
 
 namespace Dev2.Tests.Activities.ActivityTests
 {
 	[TestClass]
 	public class RecordsetADOTests : BaseActivityTests
 	{
-		public AdvancedRecordsetWorker CreatePersonAddressWorkers()
+		public AdvancedRecordset CreatePersonAddressWorkers()
 		{
 			var personRecordsetName = "person";
 			var addressRecordsetName = "address";
@@ -77,7 +78,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 			env.AssignWithFrame(l, 0);
 			env.CommitAssign();
 
-			var Worker = new AdvancedRecordsetWorker(env);
+			var Worker = new AdvancedRecordset(env);
 			Worker.LoadRecordsetAsTable(personRecordsetName);
 			Worker.LoadRecordsetAsTable(addressRecordsetName);
 			return Worker;
@@ -97,7 +98,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
         public void AdvancedRecordset_Converter_ConvertDataTableToRecordset_ExpectDataInIEnvironment()
 		{
-			var worker = new AdvancedRecordsetWorker(new ExecutionEnvironment());
+			var worker = new AdvancedRecordset(new ExecutionEnvironment());
 			string returnRecordsetName = "person";
 			string query = "select * from person";
 			worker = CreatePersonAddressWorkers();
@@ -274,169 +275,6 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Assert.AreEqual(DebugItemResultType.Value, debugOutput[0].Type);
 		}
 		#endregion
-		public class AdvancedRecordsetWorker
-		{
-			SqliteServer dbManager = new SqliteServer("Data Source=:memory:");
-			public IExecutionEnvironment Environment { get; set; }
-			public AdvancedRecordsetWorker(IExecutionEnvironment env)
-			{
-				Environment = env;
-			}
-			public DataSet ReturnDataSet(string sql)
-			{
-				try
-				{
-					IDbCommand command = dbManager.CreateCommand();
-					command.CommandText = sql;
-					command.CommandType = CommandType.Text;
-					var ds = dbManager.FetchDataSet(command);
-					return ds;
-				}
-				catch (Exception e)
-				{
-					throw new Exception(e.Message);
-				}
-			}
-			public DataTable DataTable(string sql)
-			{
-				try
-				{
-					IDbCommand command = dbManager.CreateCommand();
-					command.CommandText = sql;
-					command.CommandType = CommandType.Text;
-					var dt = dbManager.FetchDataTable(command);
-					return dt;
-				}
-				catch (Exception e)
-				{
-					throw new Exception(e.Message);
-				}
-			}
-			public DataSet ExecuteQuery(string sql)
-			{
-				try
-				{
-					IDbCommand command = dbManager.CreateCommand();
-					command.CommandText = sql;
-					command.CommandType = CommandType.Text;
-					var ds = dbManager.FetchDataSet(command);
-					return ds;
-				}
-				catch (Exception e)
-				{
-					throw new Exception(e.Message);
-				}
-			}
-			public string ExecuteScalar(string sql)
-			{
-				try
-				{
-					IDbCommand command = dbManager.CreateCommand();
-					command.CommandText = sql;
-					command.CommandType = CommandType.Text;
-					var dt = dbManager.ExecuteScalar(command);
-					return dt.ToString();
-				}
-				catch (Exception e)
-				{
-					throw new Exception(e.Message);
-				}
-			}
-			public int ExecuteNonQuery(string sql)
-			{
-				try
-				{
-					IDbCommand command = dbManager.CreateCommand();
-					command.CommandText = sql;
-					command.CommandType = CommandType.Text;
-					var recordsAffected = dbManager.ExecuteNonQuery(command);
-					return recordsAffected;
-				}
-				catch (Exception e)
-				{
-					throw new Exception(e.Message);
-				}
-			}
-			public void LoadRecordsetAsTable(string recordsetName)
-			{
-				var table = Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
-				LoadIntoSQL(recordsetName, table);
-			}
-
-			void LoadIntoSQLite(string recordsetName, List<Dictionary<string, DataStorage.WarewolfAtom>> tableData)
-			{
-				var table = Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
-				LoadIntoSQL(recordsetName, table);
-			}
-			void LoadIntoSQL(string recordsetName, IEnumerable<Tuple<string, DataStorage.WarewolfAtom>[]> tableData)
-			{
-                var enumerator = tableData.GetEnumerator();
-				if (enumerator.MoveNext())
-				{
-					var sql = "DROP TABLE IF EXISTS " + recordsetName;
-					IDbCommand com = dbManager.CreateCommand();
-					com.CommandText = sql;
-					com.CommandType = CommandType.Text;
-					using (var command = com)
-                    {
-                        command.ExecuteNonQuery();
-
-						sql = "CREATE TABLE IF NOT EXISTS " + recordsetName + "([Primary_Id] INTEGER NOT NULL, CONSTRAINT[PK_" + recordsetName + "] PRIMARY KEY([Primary_Id]))";
-						command.CommandText = sql;
-						command.CommandType = CommandType.Text;
-						dbManager.ExecuteNonQuery(command);
-						int i = 0;
-
-                        do
-                        {
-                            var row = enumerator.Current;
-                            var insertSql = "INSERT INTO " + recordsetName + " select " + i + ",";
-                            foreach (var (key, value) in row)
-                            {
-                                var colType = value.GetType().Name;
-                                if (colType == "Int")
-                                {
-                                    colType = "INTEGER";
-                                    insertSql += value + ",";
-                                }
-                                else if (colType == "DataString")
-                                {
-                                    colType = "TEXT";
-                                    insertSql += "'" + value + "',";
-                                }
-                                else
-                                {
-                                    insertSql += value + ",";
-                                }
-                                if (i == 0)
-                                {
-                                    sql = "ALTER TABLE  " + recordsetName + " ADD COLUMN " + key + " " + colType + ";";
-                                    command.CommandText = sql;
-                                    command.ExecuteNonQuery();
-                                }
-                            }
-                            insertSql = insertSql.Remove(insertSql.Length - 1);
-                            command.CommandText = insertSql;
-                            command.ExecuteNonQuery();
-                            i++;
-                        } while (enumerator.MoveNext());
-                    }
-				}
-			}
-
-			public void ApplyResultToEnvironment(string returnRecordsetName, List<DataRow> recordset)
-			{
-				var l = new List<AssignValue>();
-				foreach (DataRow dr in recordset)
-				{
-					foreach (DataColumn dc in dr.Table.Columns)
-					{
-						l.Add(new AssignValue("[[" + returnRecordsetName + "()." + dc.ColumnName.ToString() + "]]", dr[dc].ToString()));
-					}
-				}
-				Environment.AssignWithFrame(l, 0);
-				Environment.CommitAssign();
-			}
-		}
+		
 	}
 }
