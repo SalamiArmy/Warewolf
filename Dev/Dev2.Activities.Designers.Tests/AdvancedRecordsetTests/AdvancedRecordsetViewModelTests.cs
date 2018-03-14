@@ -34,7 +34,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new  AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
@@ -53,7 +53,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
 			//------------Execute Test---------------------------
@@ -71,7 +71,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
@@ -91,7 +91,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
@@ -113,7 +113,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
@@ -133,7 +133,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
 			sqlServer.ManageServiceInputViewModel = new InputViewForTest(sqlServer, mod);
 			sqlServer.SourceRegion.SelectedSource = sqlServer.SourceRegion.Sources.First();
@@ -153,7 +153,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
@@ -189,7 +189,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
 			mod.HasRecError = true;
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
@@ -222,7 +222,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 
 			var mod = new SqliteModel();
 			mod.HasRecError = true;
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 			var viewModel = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
 			//------------Execute Test---------------------------
 			viewModel.UpdateHelpDescriptor("help");
@@ -238,7 +238,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
@@ -271,7 +271,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
@@ -306,7 +306,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
-			var act = new DsfSqlServerDatabaseActivity();
+			var act = new AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
 			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());

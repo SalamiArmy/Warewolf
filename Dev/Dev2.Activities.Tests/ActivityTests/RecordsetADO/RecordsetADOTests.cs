@@ -238,42 +238,6 @@ namespace Dev2.Tests.Activities.ActivityTests
 			Assert.ThrowsException<Exception>(() => Worker.ExecuteQuery(query));
 		}
 
-		[TestMethod]
-		[Owner("Candice Daniel")]
-		[TestCategory("AdvancedRecordset_Activity")]
-		[DeploymentItem(@"x86\SQLite.Interop.dll")]
-		public void AdvancedRecordset_Activity_ExecuteTool()
-		{
-			var act = new AdvancedRecordsetActivity { };
-
-			const string dataList = "<ADL><recset1><field1/><field2/><field3/></recset1><recset2><id/><value/></recset2><OutVar1/></ADL>";
-			const string dataListWithData = "<ADL>" +
-											"<recset1>" +
-											"<field1>1</field1><field2>a</field2><field3>Test1</field3>" +
-											"</recset1>" +
-											"<recset1>" +
-											"<field1>2</field1><field2>b</field2><field3>Test2</field3>" +
-											"</recset1>" +
-											"<recset1>" +
-											"<field1>3</field1><field2>a</field2><field3>Test3</field3>" +
-											"</recset1>" +
-											"<recset1>" +
-											"<field1>4</field1><field2>a</field2><field3>Test4</field3>" +
-											"</recset1>" +
-											"<recset1>" +
-											"<field1>5</field1><field2>c</field2><field3>Test5</field3>" +
-											"</recset1>" +
-											"<OutVar1/></ADL>";
-
-			var result = CheckActivityDebugInputOutput(act, dataList, dataListWithData, out List<DebugItem> inRes, out List<DebugItem> outRes);
-			Assert.AreEqual(0, inRes.Count);
-			Assert.AreEqual(1, outRes.Count);
-
-			var debugOutput = outRes[0].FetchResultsList();
-			Assert.AreEqual(1, debugOutput.Count);
-			Assert.AreEqual("SomeText", debugOutput[0].Value);
-			Assert.AreEqual(DebugItemResultType.Value, debugOutput[0].Type);
-		}
 		#endregion
 		
 	}

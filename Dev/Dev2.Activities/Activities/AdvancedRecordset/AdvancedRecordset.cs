@@ -108,7 +108,6 @@ namespace Dev2.Activities.AdvancedRecordset
 			var table = Environment.EvalAsTable("[[" + recordsetName + "(*)]]", 0);
 			LoadIntoSqlite(recordsetName, table);
 		}
-
 		void LoadIntoSqlite(string recordsetName, IEnumerable<Tuple<string, DataStorage.WarewolfAtom>[]> tableData)
 		{
 			var enumerator = tableData.GetEnumerator();
@@ -163,7 +162,6 @@ namespace Dev2.Activities.AdvancedRecordset
 				}
 			}
 		}
-
 		public void ApplyResultToEnvironment(string returnRecordsetName, List<DataRow> recordset)
 		{
 			var l = new List<AssignValue>();
