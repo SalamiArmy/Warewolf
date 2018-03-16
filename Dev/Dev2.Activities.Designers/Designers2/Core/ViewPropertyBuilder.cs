@@ -8,34 +8,46 @@ using Dev2.Common.Interfaces.ToolBase;
 
 namespace Dev2.Activities.Designers2.Core
 {
-    public class ViewPropertyBuilder : IViewPropertyBuilder
-    {
+	public class ViewPropertyBuilder : IViewPropertyBuilder
+	{
 
-        public List<KeyValuePair<string, string>> BuildProperties(IDbActionToolRegion<IDbAction> actionToolRegion, ISourceToolRegion<IDbSource> sourceToolRegion, string type)
-        {
-            var properties = new List<KeyValuePair<string, string>>();
-            var sourceName = sourceToolRegion?.SelectedSource == null ? "" : sourceToolRegion.SelectedSource.Name;
-            var procedureName = actionToolRegion?.SelectedAction == null ? "" : actionToolRegion.SelectedAction.Name;
+		public List<KeyValuePair<string, string>> BuildProperties(IDbActionToolRegion<IDbAction> actionToolRegion, ISourceToolRegion<IDbSource> sourceToolRegion, string type)
+		{
+			var properties = new List<KeyValuePair<string, string>>();
+			var sourceName = sourceToolRegion?.SelectedSource == null ? "" : sourceToolRegion.SelectedSource.Name;
+			var procedureName = actionToolRegion?.SelectedAction == null ? "" : actionToolRegion.SelectedAction.Name;
 			var sqlQuery = actionToolRegion?.SelectedAction == null ? "" : actionToolRegion.SelectedAction.Name;
 			if (!string.IsNullOrEmpty(sourceName))
-            {
-                properties.Add(new KeyValuePair<string, string>("Source :", sourceName));
-            }
-            
-            if (!string.IsNullOrEmpty(type))
-            {
-                properties.Add(new KeyValuePair<string, string>("Type :", type));
-            }
-			
+			{
+				properties.Add(new KeyValuePair<string, string>("Source :", sourceName));
+			}
+
+			if (!string.IsNullOrEmpty(type))
+			{
+				properties.Add(new KeyValuePair<string, string>("Type :", type));
+			}
+
 			if (string.IsNullOrEmpty(sqlQuery))
+			{
+
+
+				properties.Add(new KeyValuePair<string, string>("SqlQuery :", sqlQuery));
+
+
+			}
+			else
+			{
+				properties.Add(new KeyValuePair<string, string>("SqlQuery :", sqlQuery));
+			}
+			if (string.IsNullOrEmpty(procedureName))
 			{
 				var dbActionRegion = (DbActionRegion)actionToolRegion;
 				if (dbActionRegion != null)
 				{
 					try
 					{
-						sqlQuery = dbActionRegion.SqlQuery;
-						properties.Add(new KeyValuePair<string, string>("SqlQuery :", sqlQuery));
+						procedureName = dbActionRegion.ProcedureName;
+						properties.Add(new KeyValuePair<string, string>("Procedure :", procedureName));
 					}
 					catch (Exception)
 					{
@@ -47,34 +59,12 @@ namespace Dev2.Activities.Designers2.Core
 			}
 			else
 			{
-				properties.Add(new KeyValuePair<string, string>("SqlQuery :", sqlQuery));
+				properties.Add(new KeyValuePair<string, string>("Procedure :", procedureName));
 			}
-			if (string.IsNullOrEmpty(procedureName))
-            {
-                var dbActionRegion = (DbActionRegion) actionToolRegion;
-                if (dbActionRegion != null)
-                {
-                    try
-                    {
-                        procedureName = dbActionRegion.ProcedureName;
-                        properties.Add(new KeyValuePair<string, string>("Procedure :", procedureName));
-                    }
-                    catch (Exception)
-                    {
-                       //
-                    }
-                   
-                }
-               
-            }
-            else
-            {
-                properties.Add(new KeyValuePair<string, string>("Procedure :", procedureName));
-            }
 
-            return properties;
+			return properties;
 
-        }
+		}
 
 		public List<string> BuildProperties(string commandText, string type)
 		{
