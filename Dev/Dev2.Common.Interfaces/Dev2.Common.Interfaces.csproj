@@ -200,6 +200,7 @@
     <Compile Include="DB\IServiceInput.cs" />
     <Compile Include="DB\IServiceOutputMapping.cs" />
     <Compile Include="DB\ISourceBase.cs" />
+    <Compile Include="DB\ISqliteService.cs" />
     <Compile Include="Deploy\IDeployResult.cs" />
     <Compile Include="Diagnostics\Debug\Enums.cs" />
     <Compile Include="Diagnostics\Debug\IDebugDispatcher.cs" />
@@ -394,6 +395,7 @@
     <Compile Include="Security\Permissions.cs" />
     <Compile Include="ServerProxyLayer\IDbSource.cs" />
     <Compile Include="ServerProxyLayer\IPluginProxy.cs" />
+    <Compile Include="ServerProxyLayer\ISqliteSource.cs" />
     <Compile Include="ServerProxyLayer\IUpdateManager.cs" />
     <Compile Include="ServerProxyLayer\IVersionManager.cs" />
     <Compile Include="ServerProxyLayer\IWebServiceSource.cs" />

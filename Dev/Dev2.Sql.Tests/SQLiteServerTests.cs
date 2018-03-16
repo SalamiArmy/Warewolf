@@ -11,13 +11,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using Dev2.Services.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using TSQL;
-using TSQL.Clauses;
-using TSQL.Clauses.Parsers;
 using TSQL.Tokens;
 using TSQL.Statements;
 

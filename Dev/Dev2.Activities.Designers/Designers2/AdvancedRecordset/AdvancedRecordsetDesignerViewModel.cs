@@ -14,10 +14,8 @@ using System.Collections.Generic;
 using Dev2.Activities.Designers2.Core;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.DB;
-using Dev2.Common.Interfaces.ServerProxyLayer;
 using Dev2.Common.Interfaces.Threading;
 using Dev2.Common.Interfaces.ToolBase;
-using Dev2.Common.Interfaces.ToolBase.Database;
 using Dev2.Studio.Interfaces;
 using Dev2.Threading;
 using Dev2.Activities.Designers2.Core.Extensions;
@@ -28,96 +26,49 @@ using Dev2.Communication;
 using System.Windows;
 using System.Windows.Input;
 using Dev2.Runtime.Configuration.ViewModels.Base;
-using Dev2.Activities.Designers2.Core.ActionRegion;
-using Dev2.Activities.Designers2.Core.Source;
-using Dev2.Common.Interfaces.Core.DynamicServices;
-using Dev2.Activities.Designers2.Core.InputRegion;
 using System.Linq;
-using Warewolf.Core;
 
 namespace Dev2.Activities.Designers2.AdvancedRecordset
 {
-	public class AdvancedRecordsetDesignerViewModel : CustomToolWithRegionBase, IDatabaseServiceViewModel
+	public class AdvancedRecordsetDesignerViewModel : CustomToolWithRegionBase
 	{
-		IOutputsToolRegion _outputsRegion;
-		IDatabaseInputRegion _inputArea;
-		ISourceToolRegion<IDbSource> _sourceRegion;
-		IDbActionToolRegion<IDbAction> _actionRegion;
-
-		bool _generateOutputsVisible;
-		readonly IAsyncWorker _worker;
-		readonly IViewPropertyBuilder _propertyBuilder;
-		public IDbServiceModel Model { get; set; }
-		IErrorInfo _worstDesignError;
-
 		const string DoneText = "Done";
 		const string FixText = "Fix";
-		const string OutputDisplayName = " - Outputs";
-
 		private Guid GetUniqueId() => GetProperty<Guid>();
+		readonly IAsyncWorker _worker;
+		readonly IViewPropertyBuilder _propertyBuilder;
+		IOutputsToolRegion _outputsRegion;
+		IErrorInfo _worstDesignError;
 
-		IErrorInfo NoError { get; set; }
-		public ObservableCollection<IErrorInfo> DesignValidationErrors { get; set; }
-		public int LabelWidth { get; set; }
-		public string ButtonDisplayValue { get; set; }
-		public List<KeyValuePair<string, string>> Properties { get; private set; }
-		public IManageDatabaseInputViewModel ManageServiceInputViewModel { get; set; }
-		public ICommand TestInputCommand { get; set; }
-		public DelegateCommand FixErrorsCommand { get; set; }
-		public static readonly DependencyProperty WorstErrorProperty =
-	   DependencyProperty.Register("WorstError", typeof(ErrorType), typeof(AdvancedRecordsetDesignerViewModel), new PropertyMetadata(ErrorType.None));
-		public static readonly DependencyProperty IsWorstErrorReadOnlyProperty =
-		   DependencyProperty.Register("IsWorstErrorReadOnly", typeof(bool), typeof(AdvancedRecordsetDesignerViewModel), new PropertyMetadata(false));
-		string Type => GetProperty<string>();
-		public ErrorRegion ErrorRegion { get; private set; }
-		public ErrorType WorstError
-		{
-			get { return (ErrorType)GetValue(WorstErrorProperty); }
-			private set { SetValue(WorstErrorProperty, value); }
-		}
 		public AdvancedRecordsetDesignerViewModel(ModelItem modelItem) : this(modelItem, new AsyncWorker(), new ViewPropertyBuilder()) { }
 		public AdvancedRecordsetDesignerViewModel(ModelItem modelItem, IAsyncWorker worker, IViewPropertyBuilder propertyBuilder)
 		   : base(modelItem)
 		{
 			_worker = worker;
 			_propertyBuilder = propertyBuilder;
-			var shellViewModel = CustomContainer.Get<IShellViewModel>();
-			var server = shellViewModel.ActiveServer;
-			var model = CustomContainer.CreateInstance<IDbServiceModel>(server.UpdateRepository, server.QueryProxy, shellViewModel, server);
-			Model = model;
 
 			SetupCommonProperties();
 			this.RunViewSetup();
 			HelpText = Warewolf.Studio.Resources.Languages.HelpText.Tool_AdvancedRecordset;
 		}
-		public AdvancedRecordsetDesignerViewModel(ModelItem modelItem, IDbServiceModel model, IAsyncWorker worker, IViewPropertyBuilder propertyBuilder)
-			: base(modelItem)
-		{
-			Model = model;
-			_propertyBuilder = propertyBuilder;
-			_worker = worker;
-			SetupCommonProperties();
-		}
 		void SetupCommonProperties()
 		{
 			AddTitleBarMappingToggle();
-			InitialiseViewModel(new ManageDatabaseServiceInputViewModel(this, Model));
+			InitialiseViewModel();
 			NoError = new ErrorInfo
 			{
 				ErrorType = ErrorType.None,
 				Message = "Service Working Normally"
 			};
-
+			
 			UpdateWorstError();
 		}
 		void AddTitleBarMappingToggle()
 		{
 			HasLargeView = true;
 		}
-		void InitialiseViewModel(IManageDatabaseInputViewModel manageServiceInputViewModel)
+		void InitialiseViewModel()
 		{
-			ManageServiceInputViewModel = manageServiceInputViewModel;
-
 			BuildRegions();
 
 			LabelWidth = 46;
@@ -128,16 +79,20 @@ namespace Dev2.Activities.Designers2.AdvancedRecordset
 			ShowExampleWorkflowLink = Visibility.Collapsed;
 
 			DesignValidationErrors = new ObservableCollection<IErrorInfo>();
-			FixErrorsCommand = new Runtime.Configuration.ViewModels.Base.DelegateCommand(o =>
+			FixErrorsCommand = new DelegateCommand(o =>
 			{
 				IsWorstErrorReadOnly = true;
 			});
 
+			ExecuteSqlQueryCommand = new DelegateCommand(command =>
+			{
+				ExecuteSqlQuery(SqlQuery);
+			});
+
 			SetDisplayName("");
 			OutputsRegion.OutputMappingEnabled = true;
-			
 
-			Properties = _propertyBuilder.BuildProperties(ActionRegion, SourceRegion, Type);
+			Properties = _propertyBuilder.BuildProperties(SqlQuery, Type);
 			if (OutputsRegion != null && OutputsRegion.IsEnabled)
 			{
 				var recordsetItem = OutputsRegion.Outputs.FirstOrDefault(mapping => !string.IsNullOrEmpty(mapping.RecordSetName));
@@ -147,124 +102,65 @@ namespace Dev2.Activities.Designers2.AdvancedRecordset
 				}
 			}
 		}
-		public void TestProcedure()
-		{
-			if (ActionRegion.SelectedAction != null)
-			{
-				var service = ToModel();
-				ManageServiceInputViewModel.InputArea.Inputs = service.Inputs;
-				ManageServiceInputViewModel.Model = service;
 
-				ManageServiceInputViewModel.IsGenerateInputsEmptyRows = service.Inputs.Count < 1;
-				ManageServiceInputViewModel.InputCountExpandAllowed = service.Inputs.Count > 5;
-				ManageServiceInputViewModel.OutputCountExpandAllowed = true;
+		private void ExecuteSqlQuery(string SqlQuery)
+		{
+			if (string.IsNullOrWhiteSpace(SqlQuery))
+			{
+				return;
+			}
+			var advancedRecordset = new AdvancedRecordsetActivity
+			{
+				ExecuteActionString = SqlQuery
+			};
+			
+			// Execute the Sql Query
+		}
 
-				GenerateOutputsVisible = true;
-				SetDisplayName(OutputDisplayName);
-			}
-		}
-		public IDatabaseInputRegion InputArea
+		string SqlQuery => GetProperty<string>();
+		string Type => GetProperty<string>();
+		IErrorInfo NoError { get; set; }
+		public ObservableCollection<IErrorInfo> DesignValidationErrors { get; set; }
+		public int LabelWidth { get; set; }
+		public string ButtonDisplayValue { get; set; }
+		public List<string> Properties { get; private set; }
+		public ICommand ExecuteSqlQueryCommand { get; set; }
+		public DelegateCommand FixErrorsCommand { get; set; }
+
+		public static readonly DependencyProperty WorstErrorProperty = DependencyProperty.Register("WorstError", typeof(ErrorType), 
+																	typeof(AdvancedRecordsetDesignerViewModel), new PropertyMetadata(ErrorType.None));
+		public static readonly DependencyProperty IsWorstErrorReadOnlyProperty = DependencyProperty.Register("IsWorstErrorReadOnly", typeof(bool), 
+																	typeof(AdvancedRecordsetDesignerViewModel), new PropertyMetadata(false));
+		public ErrorType WorstError
 		{
-			get
-			{
-				return _inputArea;
-			}
-			set
-			{
-				_inputArea = value;
-				OnPropertyChanged();
-			}
+			get { return (ErrorType)GetValue(WorstErrorProperty); }
+			private set { SetValue(WorstErrorProperty, value); }
 		}
-		public IDbActionToolRegion<IDbAction> ActionRegion
-		{
-			get
-			{
-				return _actionRegion;
-			}
-			set
-			{
-				_actionRegion = value;
-				OnPropertyChanged();
-			}
-		}
-		public ISourceToolRegion<IDbSource> SourceRegion
-		{
-			get
-			{
-				return _sourceRegion;
-			}
-			set
-			{
-				_sourceRegion = value;
-				OnPropertyChanged();
-			}
-		}
+		public ErrorRegion ErrorRegion { get; private set; }
 		public IOutputsToolRegion OutputsRegion
 		{
-			get
-			{
-				return _outputsRegion;
-			}
+			get =>  _outputsRegion;
 			set
 			{
 				_outputsRegion = value;
 				OnPropertyChanged();
 			}
 		}
-		public bool GenerateOutputsVisible
-		{
-			get
-			{
-				return _generateOutputsVisible;
-			}
-			set
-			{
-				_generateOutputsVisible = value;
-				OutputVisibilitySetter.SetGenerateOutputsVisible(ManageServiceInputViewModel.InputArea, ManageServiceInputViewModel.OutputArea, SetRegionVisibility, value);
-				OnPropertyChanged();
-			}
-		}
-
 		public override IList<IToolRegion> BuildRegions()
 		{
 			IList<IToolRegion> regions = new List<IToolRegion>();
-			if (SourceRegion == null)
-			{
-				SourceRegion = new DatabaseSourceRegion(Model, ModelItem, enSourceType.SqlDatabase) { SourceChangedAction = () => { OutputsRegion.IsEnabled = false; } };
-				regions.Add(SourceRegion);
-				ActionRegion = new DbActionRegion(Model, ModelItem, SourceRegion, _worker);
-				ActionRegion.ErrorsHandler += (sender, list) =>
-				{
-					var errorInfos = list.Select(error => new ActionableErrorInfo(new ErrorInfo { ErrorType = ErrorType.Critical, Message = error }, () => { })).ToList();
-					UpdateDesignValidationErrors(errorInfos);
-					Errors = new List<IActionableErrorInfo>(errorInfos);
-				};
-				regions.Add(ActionRegion);
-				InputArea = new DatabaseInputRegion(ModelItem, ActionRegion);
-				regions.Add(InputArea);
-				OutputsRegion = new OutputsRegion(ModelItem);
-				regions.Add(OutputsRegion);
-				if (OutputsRegion.Outputs.Count > 0)
-				{
-					OutputsRegion.IsEnabled = true;
 
-				}
-				ErrorRegion = new ErrorRegion();
-				regions.Add(ErrorRegion);
-				SourceRegion.Dependants.Add(ActionRegion);
-				ActionRegion.Dependants.Add(InputArea);
-				ActionRegion.Dependants.Add(OutputsRegion);
+			OutputsRegion = new OutputsRegion(ModelItem);
+			regions.Add(OutputsRegion);
+			if (OutputsRegion.Outputs.Count > 0)
+			{
+				OutputsRegion.IsEnabled = true;
 			}
-			regions.Add(ManageServiceInputViewModel);
+			ErrorRegion = new ErrorRegion();
+			regions.Add(ErrorRegion);
+
 			Regions = regions;
 			return regions;
-		}
-		void SetRegionVisibility(bool value)
-		{
-			InputArea.IsEnabled = value;
-			OutputsRegion.IsEnabled = value && OutputsRegion.Outputs.Count > 0;
-			ErrorRegion.IsEnabled = value;
-			SourceRegion.IsEnabled = value;
 		}
 		public void SetDisplayName(string displayName)
 		{
@@ -277,7 +173,7 @@ namespace Dev2.Activities.Designers2.AdvancedRecordset
 
 			var displayName2 = DisplayName;
 
-			if (!string.IsNullOrEmpty(displayName2) && displayName2.Contains("Dsf"))
+			if (!string.IsNullOrEmpty(displayName2))
 			{
 				DisplayName = displayName2;
 			}
@@ -285,20 +181,6 @@ namespace Dev2.Activities.Designers2.AdvancedRecordset
 			{
 				DisplayName = displayName2 + displayName;
 			}
-		}
-		public IDatabaseService ToModel()
-		{
-			var databaseService = new DatabaseService
-			{
-				Source = SourceRegion.SelectedSource,
-				Action = ActionRegion.SelectedAction,
-				Inputs = new List<IServiceInput>()
-			};
-			foreach (var serviceInput in InputArea.Inputs)
-			{
-				databaseService.Inputs.Add(new ServiceInput(serviceInput.Name, ""));
-			}
-			return databaseService;
 		}
 		public override void UpdateHelpDescriptor(string helpText)
 		{
@@ -314,20 +196,11 @@ namespace Dev2.Activities.Designers2.AdvancedRecordset
 			Errors.Clear();
 
 			Errors = Regions.SelectMany(a => a.Errors).Select(a => new ActionableErrorInfo(new ErrorInfo() { Message = a, ErrorType = ErrorType.Critical }, () => { }) as IActionableErrorInfo).ToList();
-			if (SourceRegion.Errors.Count > 0)
-			{
-				foreach (var designValidationError in SourceRegion.Errors)
-				{
-					DesignValidationErrors.Add(new ErrorInfo() { ErrorType = ErrorType.Critical, Message = designValidationError });
-				}
-
-			}
 			if (Errors.Count <= 0)
 			{
 				ClearValidationMemoWithNoFoundError();
 			}
 			UpdateWorstError();
-			Properties = _propertyBuilder.BuildProperties(ActionRegion, SourceRegion, Type);
 		}
 		public void ErrorMessage(Exception exception, bool hasError)
 		{

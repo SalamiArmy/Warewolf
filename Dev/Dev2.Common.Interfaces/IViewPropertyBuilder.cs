@@ -8,5 +8,6 @@ namespace Dev2.Common.Interfaces
     public interface IViewPropertyBuilder
     {
         List<KeyValuePair<string, string>> BuildProperties(IDbActionToolRegion<IDbAction> actionToolRegion, ISourceToolRegion<IDbSource> sourceToolRegion, string type);
-    }
+		List<string> BuildProperties(string commandText, string type);
+	}
 }

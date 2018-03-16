@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using Dev2.Activities.Designers2.AdvancedRecordset;
 using Dev2.Activities.Designers2.Core;
-using Dev2.Activities.Designers2.SqlServerDatabase;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Core;
 using Dev2.Common.Interfaces.Core.DynamicServices;
@@ -26,47 +26,29 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 	[TestClass]
 	public class AdvancedRecordsetViewModelTests
 	{
-		[TestMethod]
-		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_MethodName")]
-		public void Sqlite_MethodName_ValidateExpectErrors()
-		{
-			//------------Setup for test--------------------------
-			var id = Guid.NewGuid();
-			var mod = new SqliteModel();
-			var act = new  AdvancedRecordsetActivity();
-
-			//------------Execute Test---------------------------
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
-			sqlServer.Validate();
-
-			//------------Assert Results-------------------------
-			Assert.AreEqual(1, sqlServer.Errors.Count);
-			Assert.AreEqual(2, sqlServer.DesignValidationErrors.Count);
-		}
 
 		[TestMethod]
 		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_MethodName")]
-		public void Sqlite_MethodName_ClearErrors()
+		[TestCategory("AdvancedRecordset_MethodName")]
+		public void AdvancedRecordset_MethodName_ClearErrors()
 		{
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
 			var act = new AdvancedRecordsetActivity();
 
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
+			var advancedRecordset = new AdvancedRecordsetDesignerViewModel(ModelItemUtils.CreateModelItem(act), new SynchronousAsyncWorker(), new ViewPropertyBuilder());
 			//------------Execute Test---------------------------
-			sqlServer.ClearValidationMemoWithNoFoundError();
+			advancedRecordset.ClearValidationMemoWithNoFoundError();
 			//------------Assert Results-------------------------
-			Assert.IsNull(sqlServer.Errors);
-			Assert.AreEqual(sqlServer.DesignValidationErrors.Count, 1);
+			Assert.IsNull(advancedRecordset.Errors);
+			Assert.AreEqual(advancedRecordset.DesignValidationErrors.Count, 1);
 		}
 
 		[TestMethod]
 		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_MethodName")]
-		public void Sqlite_Ctor_EmptyModelItem()
+		[TestCategory("AdvancedRecordset_MethodName")]
+		public void AdvancedRecordset_Ctor_EmptyModelItem()
 		{
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
@@ -74,116 +56,17 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			var act = new AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
+			var advancedRecordset = new AdvancedRecordsetDesignerViewModel(ModelItemUtils.CreateModelItem(act), new SynchronousAsyncWorker(), new ViewPropertyBuilder());
 
 			//------------Assert Results-------------------------
-			Assert.IsTrue(sqlServer.SourceRegion.IsEnabled);
-			Assert.IsFalse(sqlServer.OutputsRegion.IsEnabled);
-			Assert.IsFalse(sqlServer.InputArea.IsEnabled);
-			Assert.IsTrue(sqlServer.ErrorRegion.IsEnabled);
+			Assert.IsFalse(advancedRecordset.OutputsRegion.IsEnabled);
+			Assert.IsTrue(advancedRecordset.ErrorRegion.IsEnabled);
 		}
 
 		[TestMethod]
 		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_MethodName")]
-		public void Sqlite_TestActionSetSource()
-		{
-			//------------Setup for test--------------------------
-			var id = Guid.NewGuid();
-			var mod = new SqliteModel();
-			var act = new AdvancedRecordsetActivity();
-
-			//------------Execute Test---------------------------
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
-			sqlServer.ManageServiceInputViewModel = new InputViewForTest(sqlServer, mod);
-			sqlServer.SourceRegion.SelectedSource = sqlServer.SourceRegion.Sources.First();
-
-			//------------Assert Results-------------------------
-			Assert.IsTrue(sqlServer.SourceRegion.IsEnabled);
-			Assert.IsFalse(sqlServer.OutputsRegion.IsEnabled);
-			Assert.IsFalse(sqlServer.InputArea.IsEnabled);
-			Assert.IsTrue(sqlServer.ErrorRegion.IsEnabled);
-		}
-
-		[TestMethod]
-		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_MethodName")]
-		public void Sqlite_TestActionSetSource_ShouldLoadActions()
-		{
-			//------------Setup for test--------------------------
-			var id = Guid.NewGuid();
-			var mod = new SqliteModel();
-			var act = new AdvancedRecordsetActivity();
-
-			//------------Execute Test---------------------------
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
-			sqlServer.ManageServiceInputViewModel = new InputViewForTest(sqlServer, mod);
-			sqlServer.SourceRegion.SelectedSource = sqlServer.SourceRegion.Sources.First();
-
-			//------------Assert Results-------------------------
-			Assert.IsTrue(sqlServer.SourceRegion.IsEnabled);
-			Assert.AreEqual(1, sqlServer.ActionRegion.Actions.Count);
-		}
-
-		[TestMethod]
-		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_Refresh")]
-		public void Sqlite_Refresh_ShouldLoadRefreshActions()
-		{
-			//------------Setup for test--------------------------
-			var id = Guid.NewGuid();
-			var mod = new SqliteModel();
-			var act = new AdvancedRecordsetActivity();
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
-			sqlServer.ManageServiceInputViewModel = new InputViewForTest(sqlServer, mod);
-			sqlServer.SourceRegion.SelectedSource = sqlServer.SourceRegion.Sources.First();
-			//------------Execute Test---------------------------
-			sqlServer.ActionRegion.RefreshActionsCommand.Execute(null);
-
-			//------------Assert Results-------------------------
-			Assert.IsTrue(sqlServer.SourceRegion.IsEnabled);
-			Assert.AreEqual(1, sqlServer.ActionRegion.Actions.Count);
-		}
-
-		[TestMethod]
-		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_MethodName")]
-		public void Sqlite_TestActionSetSourceAndTestClickOkHasMappings()
-		{
-			//------------Setup for test--------------------------
-			var id = Guid.NewGuid();
-			var mod = new SqliteModel();
-			var act = new AdvancedRecordsetActivity();
-
-			//------------Execute Test---------------------------
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
-			sqlServer.ManageServiceInputViewModel = new InputViewForTest(sqlServer, mod);
-			sqlServer.SourceRegion.SelectedSource = sqlServer.SourceRegion.Sources.First();
-#pragma warning disable 4014
-			sqlServer.TestInputCommand.Execute(null);
-			sqlServer.ManageServiceInputViewModel.TestCommand.Execute(null);
-			sqlServer.ManageServiceInputViewModel.IsEnabled = true;
-			sqlServer.ManageServiceInputViewModel.OutputArea.Outputs = new List<IServiceOutputMapping> { new ServiceOutputMapping("a", "b", "c"), new ServiceOutputMapping("a", "b", "c"), new ServiceOutputMapping("a", "b", "c") };
-			sqlServer.ManageServiceInputViewModel.Model = new DatabaseService() { Action = new DbAction() { Inputs = new List<IServiceInput>(), Name = "bob" } };
-
-			sqlServer.ManageServiceInputViewModel.OkCommand.Execute(null);
-#pragma warning restore 4014
-			var hashCode = sqlServer.SourceRegion.SelectedSource.GetHashCode();
-			//------------Assert Results-------------------------
-			Assert.IsTrue(sqlServer.SourceRegion.IsEnabled);
-			Assert.IsTrue(sqlServer.OutputsRegion.IsEnabled);
-			Assert.IsTrue(sqlServer.InputArea.IsEnabled);
-			Assert.IsTrue(sqlServer.ErrorRegion.IsEnabled);
-			Assert.IsFalse(sqlServer.ManageServiceInputViewModel.InputArea.IsEnabled);
-			Assert.AreEqual(0, sqlServer.ManageServiceInputViewModel.Errors.Count);
-			Assert.AreEqual("j_bravo", sqlServer.SourceRegion.SelectedSource.ToString());
-			Assert.AreEqual(hashCode, sqlServer.SourceRegion.SelectedSource.GetHashCode());
-		}
-
-		[TestMethod]
-		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_MethodName")]
-		public void Sqlite_TestActionSetSourceAndTestClickOkHasMappingsErrorFromServer()
+		[TestCategory("AdvancedRecordset_MethodName")]
+		public void AdvancedRecordset_TestActionSetSourceAndTestClickOkHasMappingsErrorFromServer()
 		{
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
@@ -192,26 +75,19 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			var act = new AdvancedRecordsetActivity();
 
 			//------------Execute Test---------------------------
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
-			sqlServer.ManageServiceInputViewModel = new InputViewForTest(sqlServer, mod);
-			sqlServer.SourceRegion.SelectedSource = sqlServer.SourceRegion.Sources.First();
+			var advancedRecordset = new AdvancedRecordsetDesignerViewModel(ModelItemUtils.CreateModelItem(act), new SynchronousAsyncWorker(), new ViewPropertyBuilder());
 #pragma warning disable 4014
-			sqlServer.TestInputCommand.Execute(null);
-			sqlServer.ManageServiceInputViewModel.TestCommand.Execute(null);
-			sqlServer.ManageServiceInputViewModel.IsEnabled = true;
-			sqlServer.ManageServiceInputViewModel.OutputArea.Outputs = new List<IServiceOutputMapping> { new ServiceOutputMapping("a", "b", "c"), new ServiceOutputMapping("a", "b", "c"), new ServiceOutputMapping("a", "b", "c") };
-			sqlServer.ManageServiceInputViewModel.OkCommand.Execute(null);
+			advancedRecordset.ExecuteSqlQueryCommand.Execute(null);
 #pragma warning restore 4014
 
 			//------------Assert Results-------------------------
-			Assert.IsTrue(sqlServer.ErrorRegion.IsEnabled);
-			Assert.AreNotEqual(0, sqlServer.ManageServiceInputViewModel.Errors.Count);
+			Assert.IsTrue(advancedRecordset.ErrorRegion.IsEnabled);
 		}
 
 		[TestMethod]
 		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_Handle")]
-		public void Sqlite_UpdateHelp_ShouldCallToHelpViewMode()
+		[TestCategory("AdvancedRecordset_Handle")]
+		public void AdvancedRecordset_UpdateHelp_ShouldCallToHelpViewMode()
 		{
 			//------------Setup for test--------------------------      
 			var mockMainViewModel = new Mock<IShellViewModel>();
@@ -223,7 +99,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			var mod = new SqliteModel();
 			mod.HasRecError = true;
 			var act = new AdvancedRecordsetActivity();
-			var viewModel = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
+			var viewModel = new AdvancedRecordsetDesignerViewModel(ModelItemUtils.CreateModelItem(act), new SynchronousAsyncWorker(), new ViewPropertyBuilder());
 			//------------Execute Test---------------------------
 			viewModel.UpdateHelpDescriptor("help");
 			//------------Assert Results-------------------------
@@ -232,104 +108,24 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 
 		[TestMethod]
 		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_MethodName")]
-		public void Sqlite_TestActionSetSourceAndTestClickOkHasHeaders()
+		[TestCategory("AdvancedRecordset_TestAction")]
+		public void AdvancedRecordset_TestActionSetSourceHasRecSet()
 		{
 			//------------Setup for test--------------------------
 			var id = Guid.NewGuid();
 			var mod = new SqliteModel();
 			var act = new AdvancedRecordsetActivity();
-
+			string query = "select * from person p join address a on p.address_id=a.id";
 			//------------Execute Test---------------------------
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
-			sqlServer.ManageServiceInputViewModel = new InputViewForTest(sqlServer, mod);
-			sqlServer.SourceRegion.SelectedSource = sqlServer.SourceRegion.Sources.First();
-			sqlServer.ActionRegion.SelectedAction = sqlServer.ActionRegion.Actions.First();
-			sqlServer.InputArea.Inputs.Add(new ServiceInput("[[a]]", "asa"));
+			var advancedRecordset = new AdvancedRecordsetDesignerViewModel(ModelItemUtils.CreateModelItem(act), new SynchronousAsyncWorker(), new ViewPropertyBuilder());
 #pragma warning disable 4014
-			sqlServer.TestInputCommand.Execute(null);
-			sqlServer.ManageServiceInputViewModel.TestCommand.Execute(null);
-			sqlServer.ManageServiceInputViewModel.IsEnabled = true;
-			sqlServer.ManageServiceInputViewModel.OutputArea.Outputs = new List<IServiceOutputMapping> { new ServiceOutputMapping("a", "b", "c"), new ServiceOutputMapping("a", "b", "c"), new ServiceOutputMapping("a", "b", "c") };
-			sqlServer.ManageServiceInputViewModel.OkCommand.Execute(null);
+
+			advancedRecordset.ExecuteSqlQueryCommand.Execute(query);
 #pragma warning restore 4014
 
 			//------------Assert Results-------------------------
-			Assert.IsTrue(sqlServer.SourceRegion.IsEnabled);
-			Assert.IsTrue(sqlServer.OutputsRegion.IsEnabled);
-			Assert.IsTrue(sqlServer.InputArea.IsEnabled);
-			Assert.IsTrue(sqlServer.ErrorRegion.IsEnabled);
-			Assert.AreEqual(1, sqlServer.ManageServiceInputViewModel.InputArea.Inputs.Count);
-			Assert.IsTrue(sqlServer.ManageServiceInputViewModel.InputArea.Inputs.First().Name == "[[a]]");
-			Assert.AreEqual(0, sqlServer.ManageServiceInputViewModel.Errors.Count);
-		}
-		[TestMethod]
-		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_MethodName")]
-		public void Sqlite_TestActionSetSourceAndTestClickOkHasQueryStringAndHeaders()
-		{
-			//------------Setup for test--------------------------
-			var id = Guid.NewGuid();
-			var mod = new SqliteModel();
-			var act = new AdvancedRecordsetActivity();
-
-			//------------Execute Test---------------------------
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
-			sqlServer.ManageServiceInputViewModel = new InputViewForTest(sqlServer, mod);
-			sqlServer.SourceRegion.SelectedSource = sqlServer.SourceRegion.Sources.First();
-			sqlServer.ActionRegion.SelectedAction = sqlServer.ActionRegion.Actions.First();
-			sqlServer.InputArea.Inputs.Add(new ServiceInput("[[a]]", "asa"));
-#pragma warning disable 4014
-			sqlServer.TestInputCommand.Execute(null);
-			sqlServer.ManageServiceInputViewModel.TestCommand.Execute(null);
-			sqlServer.ManageServiceInputViewModel.IsEnabled = true;
-			sqlServer.ManageServiceInputViewModel.OutputArea.Outputs = new List<IServiceOutputMapping> { new ServiceOutputMapping("a", "b", "c"), new ServiceOutputMapping("a", "b", "c"), new ServiceOutputMapping("a", "b", "c") };
-			sqlServer.ManageServiceInputViewModel.OkCommand.Execute(null);
-#pragma warning restore 4014
-
-			//------------Assert Results-------------------------
-			Assert.IsTrue(sqlServer.SourceRegion.IsEnabled);
-			Assert.IsTrue(sqlServer.OutputsRegion.IsEnabled);
-			Assert.IsTrue(sqlServer.InputArea.IsEnabled);
-			Assert.IsTrue(sqlServer.ErrorRegion.IsEnabled);
-			Assert.IsTrue(sqlServer.ManageServiceInputViewModel.InputArea.Inputs.Count == 1);
-			Assert.IsTrue(sqlServer.ManageServiceInputViewModel.InputArea.Inputs.First().Name == "[[a]]");
-			Assert.IsTrue(sqlServer.ManageServiceInputViewModel.InputArea.Inputs.Last().Name == "[[a]]");
-			Assert.AreEqual(0, sqlServer.ManageServiceInputViewModel.Errors.Count);
-		}
-
-		[TestMethod]
-		[Owner("Candice Daniel")]
-		[TestCategory("Sqlite_TestAction")]
-		public void Sqlite_TestActionSetSourceHasRecSet()
-		{
-			//------------Setup for test--------------------------
-			var id = Guid.NewGuid();
-			var mod = new SqliteModel();
-			var act = new AdvancedRecordsetActivity();
-
-			//------------Execute Test---------------------------
-			var sqlServer = new SqlServerDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), mod, new SynchronousAsyncWorker(), new ViewPropertyBuilder());
-			sqlServer.ManageServiceInputViewModel = new InputViewForTest(sqlServer, mod);
-			sqlServer.SourceRegion.SelectedSource = sqlServer.SourceRegion.Sources.First();
-			sqlServer.ActionRegion.SelectedAction = sqlServer.ActionRegion.Actions.First();
-			sqlServer.InputArea.Inputs.Add(new ServiceInput("[[a]]", "asa"));
-#pragma warning disable 4014
-			sqlServer.TestInputCommand.Execute(null);
-			sqlServer.ManageServiceInputViewModel.TestCommand.Execute(null);
-			sqlServer.ManageServiceInputViewModel.IsEnabled = true;
-			sqlServer.ManageServiceInputViewModel.OutputArea.Outputs = new List<IServiceOutputMapping> { new ServiceOutputMapping("a", "b", "c"), new ServiceOutputMapping("a", "b", "c"), new ServiceOutputMapping("a", "b", "c") };
-			sqlServer.ManageServiceInputViewModel.OkCommand.Execute(null);
-#pragma warning restore 4014
-
-			//------------Assert Results-------------------------
-			Assert.IsTrue(sqlServer.SourceRegion.IsEnabled);
-			Assert.IsTrue(sqlServer.OutputsRegion.IsEnabled);
-			Assert.IsTrue(sqlServer.InputArea.IsEnabled);
-			Assert.IsTrue(sqlServer.ErrorRegion.IsEnabled);
-			Assert.IsTrue(sqlServer.ManageServiceInputViewModel.InputArea.Inputs.Count == 1);
-			Assert.IsTrue(sqlServer.ManageServiceInputViewModel.InputArea.Inputs.First().Name == "[[a]]");
-			Assert.IsTrue(sqlServer.ManageServiceInputViewModel.InputArea.Inputs.Last().Name == "[[a]]");
+			Assert.IsTrue(advancedRecordset.OutputsRegion.IsEnabled);
+			Assert.IsTrue(advancedRecordset.ErrorRegion.IsEnabled);
 		}
 	}
 	public class SqliteModel : IDbServiceModel
@@ -346,7 +142,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			new DbSourceDefinition()
 			{
 				ServerName = "localServer",
-				Type = enSourceType.SqlDatabase,
+				Type = enSourceType.SQLiteDatabase,
 				UserName = "johnny",
 				Password = "bravo",
 				AuthenticationType = AuthenticationType.Public,
@@ -450,7 +246,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 			new DbSourceDefinition()
 			{
 				ServerName = "localServer",
-				Type = enSourceType.SqlDatabase,
+				Type = enSourceType.SQLiteDatabase,
 				UserName = "johnny",
 				Password = "bravo",
 				AuthenticationType = AuthenticationType.Public,

@@ -1,0 +1,114 @@
+﻿<core:ActivityDesignerTemplate x:Class="Dev2.Activities.Designers2.AdvancedRecordset.Large"
+                               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                               xmlns:core="clr-namespace:Dev2.Activities.Designers2.Core"
+                               xmlns:errors="clr-namespace:Dev2.Activities.Designers2.Core.Errors"
+                               xmlns:AdvancedRecordset="clr-namespace:Dev2.Activities.Designers2.AdvancedRecordset"
+                               xmlns:luna="clr-namespace:Warewolf.Studio.Themes.Luna;assembly=Warewolf.Studio.Themes.Luna"
+							   xmlns:ui="clr-namespace:Dev2.UI;assembly=Dev2.Intellisense"
+							   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+							   xmlns:core1="clr-namespace:Warewolf.Studio.Core;assembly=Warewolf.Studio.Core"
+							   MinWidth="350"
+                               Width="350"
+                               MinHeight="410"
+                               Height="410"
+                               MaxWidth="Infinity"
+                               mc:Ignorable="d"
+                               d:DesignHeight="300"
+                               d:DesignWidth="350"
+                               d:DataContext="{d:DesignInstance AdvancedRecordset:AdvancedRecordsetDesignerViewModel}">
+
+    <core:ActivityDesignerTemplate.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <luna:SharedResourceDictionary Source="/Warewolf.Studio.Themes.Luna;component/Theme.xaml"/>
+                <ResourceDictionary Source="../Core/CustomToolDesignerRegions.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </core:ActivityDesignerTemplate.Resources>
+
+    <core:ActivityDesignerTemplate.RightButtons>
+        <core:ActivityDesignerButton x:Name="DoneButton"
+                                     Visibility="{Binding GenerateOutputsVisible, Converter={StaticResource BoolToVisibilityConverterNegative}}"
+                                     Content="{Binding ButtonDisplayValue}"
+                                     Margin="0,0,7,12"
+                                     IsValidatedBefore="True"
+                                     IsClosedAfter="True"
+                                     Style="{StaticResource ActivityDesignerButtonStyle}" />
+    </core:ActivityDesignerTemplate.RightButtons>
+
+    <Grid x:Name="MainGrid" Margin="{StaticResource ElementBorder}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Visibility="{Binding GenerateOutputsVisible, Converter={StaticResource BoolToVisibilityConverterNegative}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition>
+					<RowDefinition.Style>
+						<Style>
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding Path=OutputsRegion.IsEnabled}" Value="True">
+									<Setter Property="RowDefinition.Height" Value="*"/>
+								</DataTrigger>
+								<DataTrigger Binding="{Binding Path=OutputsRegion.IsEnabled}" Value="False">
+									<Setter Property="RowDefinition.Height" Value="Auto"/>
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</RowDefinition.Style>
+				</RowDefinition>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<ui:IntellisenseTextBox VerticalAlignment="Stretch"
+									AllowMultilinePaste="True"
+									AcceptsReturn="True"
+									AllowUserInsertLine="True"
+									TextWrapping="Wrap"
+									Height="Auto"
+									AcceptsTab="True"
+									Padding="2,5,2,2"
+									VerticalContentAlignment="Top"
+									VerticalScrollBarVisibility="Auto"
+									HorizontalScrollBarVisibility="Auto"
+									Text="{Binding ModelItem.SqlQuery,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+									Style="{StaticResource ActivityIntellisenseTextBoxStyle}"
+									AutomationProperties.AutomationId="{Binding ModelItem.AutomationID, StringFormat=UI_{0}_sqlquerytxt_AutoID}">
+				<ui:IntellisenseTextBox.DefaultText>
+					<TextBlock Text="SQL Query" VerticalAlignment="Top" Margin="0,-3,0,0"></TextBlock>
+				</ui:IntellisenseTextBox.DefaultText>
+				<i:Interaction.Behaviors>
+					<errors:ErrorsSetter Source="{Binding}"
+                                     SourcePropertyName="ModelItem.SqlQuery"
+                                     SourcePropertyValue="{Binding ModelItem.SqlQuery, UpdateSourceTrigger=PropertyChanged}"
+                                     Target="{Binding}" />
+				</i:Interaction.Behaviors>
+			</ui:IntellisenseTextBox>
+
+			<Button x:Name="SqlQueryExecuteButton" 
+					Margin="{StaticResource ControlBorderTop}"
+					Grid.Row="1" 
+					HorizontalAlignment="Right" 
+					Width="Auto" 
+					Content="Execute" 
+					Command="{Binding ExecuteSqlQueryCommand}" />
+
+			<Control x:Name="OutputsControl" Grid.Row="2" DataContext="{Binding OutputsRegion}" Template="{StaticResource NewOutputsGrid}"/>
+
+            <Grid x:Name="ErrorGrid"
+                      Grid.Row="3"
+                      Margin="{StaticResource ControlBorderTop}"
+                      Visibility="{Binding OnErrorVisible}">
+                <errors:OnError />
+            </Grid>
+        </Grid>
+    </Grid>
+</core:ActivityDesignerTemplate>

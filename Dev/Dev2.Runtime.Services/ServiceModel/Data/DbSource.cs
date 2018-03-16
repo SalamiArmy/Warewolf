@@ -60,8 +60,10 @@ namespace Dev2.Runtime.ServiceModel.Data
                     break;
                 case "postgresql":
                     ServerType = enSourceType.PostgreSQL;
-                    
-                    break;
+					break;
+				case "sqlite":
+					ServerType = enSourceType.SQLiteDatabase;
+					break;
                 default:
                     ResourceType = "DbSource";
                     ServerType = enSourceType.Unknown;

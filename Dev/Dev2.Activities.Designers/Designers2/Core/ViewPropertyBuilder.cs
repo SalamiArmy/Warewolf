@@ -16,7 +16,8 @@ namespace Dev2.Activities.Designers2.Core
             var properties = new List<KeyValuePair<string, string>>();
             var sourceName = sourceToolRegion?.SelectedSource == null ? "" : sourceToolRegion.SelectedSource.Name;
             var procedureName = actionToolRegion?.SelectedAction == null ? "" : actionToolRegion.SelectedAction.Name;
-            if (!string.IsNullOrEmpty(sourceName))
+			var sqlQuery = actionToolRegion?.SelectedAction == null ? "" : actionToolRegion.SelectedAction.Name;
+			if (!string.IsNullOrEmpty(sourceName))
             {
                 properties.Add(new KeyValuePair<string, string>("Source :", sourceName));
             }
@@ -25,7 +26,30 @@ namespace Dev2.Activities.Designers2.Core
             {
                 properties.Add(new KeyValuePair<string, string>("Type :", type));
             }
-            if (string.IsNullOrEmpty(procedureName))
+			
+			if (string.IsNullOrEmpty(sqlQuery))
+			{
+				var dbActionRegion = (DbActionRegion)actionToolRegion;
+				if (dbActionRegion != null)
+				{
+					try
+					{
+						sqlQuery = dbActionRegion.SqlQuery;
+						properties.Add(new KeyValuePair<string, string>("SqlQuery :", sqlQuery));
+					}
+					catch (Exception)
+					{
+						//
+					}
+
+				}
+
+			}
+			else
+			{
+				properties.Add(new KeyValuePair<string, string>("SqlQuery :", sqlQuery));
+			}
+			if (string.IsNullOrEmpty(procedureName))
             {
                 var dbActionRegion = (DbActionRegion) actionToolRegion;
                 if (dbActionRegion != null)
@@ -51,5 +75,21 @@ namespace Dev2.Activities.Designers2.Core
             return properties;
 
         }
-    }
+
+		public List<string> BuildProperties(string commandText, string type)
+		{
+			var properties = new List<string>();
+
+			if (!string.IsNullOrEmpty(commandText))
+			{
+				properties.Add("CommandText :" + commandText);
+			}
+			if (!string.IsNullOrEmpty(type))
+			{
+				properties.Add("Type :" + type);
+			}
+
+			return properties;
+		}
+	}
 }

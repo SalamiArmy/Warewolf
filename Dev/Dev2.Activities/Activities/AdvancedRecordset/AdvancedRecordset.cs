@@ -18,22 +18,23 @@ using Warewolf.Storage.Interfaces;
 using System.Data;
 using WarewolfParserInterop;
 
-namespace Dev2.Activities.AdvancedRecordset
+namespace Dev2.Activities
 {
 	public class AdvancedRecordset : IAdvancedRecordset
 	{
 		readonly SqliteServer dbManager = new SqliteServer("Data Source=:memory:");
 		public IExecutionEnvironment Environment { get; set; }
+		public string SqlQuery { get; set; }
 		public AdvancedRecordset(IExecutionEnvironment env)
 		{
 			Environment = env;
 		}
-		public DataSet ReturnDataSet(string sql)
+		public DataSet ExecuteQuery()
 		{
 			try
 			{
 				var command = dbManager.CreateCommand();
-				command.CommandText = sql;
+				command.CommandText = SqlQuery;
 				command.CommandType = CommandType.Text;
 				var ds = dbManager.FetchDataSet(command);
 				return ds;
@@ -43,42 +44,12 @@ namespace Dev2.Activities.AdvancedRecordset
 				throw new Exception(e.Message);
 			}
 		}
-		public DataTable DataTable(string sql)
+		public string ExecuteScalar()
 		{
 			try
 			{
 				var command = dbManager.CreateCommand();
-				command.CommandText = sql;
-				command.CommandType = CommandType.Text;
-				var dt = dbManager.FetchDataTable(command);
-				return dt;
-			}
-			catch (Exception e)
-			{
-				throw new Exception(e.Message);
-			}
-		}
-		public DataSet ExecuteQuery(string sql)
-		{
-			try
-			{
-				var command = dbManager.CreateCommand();
-				command.CommandText = sql;
-				command.CommandType = CommandType.Text;
-				var ds = dbManager.FetchDataSet(command);
-				return ds;
-			}
-			catch (Exception e)
-			{
-				throw new Exception(e.Message);
-			}
-		}
-		public string ExecuteScalar(string sql)
-		{
-			try
-			{
-				var command = dbManager.CreateCommand();
-				command.CommandText = sql;
+				command.CommandText = SqlQuery;
 				command.CommandType = CommandType.Text;
 				var dt = dbManager.ExecuteScalar(command);
 				return dt.ToString();
@@ -88,12 +59,12 @@ namespace Dev2.Activities.AdvancedRecordset
 				throw new Exception(e.Message);
 			}
 		}
-		public int ExecuteNonQuery(string sql)
+		public int ExecuteNonQuery()
 		{
 			try
 			{
 				var command = dbManager.CreateCommand();
-				command.CommandText = sql;
+				command.CommandText = SqlQuery;
 				command.CommandType = CommandType.Text;
 				var recordsAffected = dbManager.ExecuteNonQuery(command);
 				return recordsAffected;

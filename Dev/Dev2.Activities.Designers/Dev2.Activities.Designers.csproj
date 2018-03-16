@@ -168,6 +168,15 @@
       <Link>Properties\AssemblyCommonInfo.cs</Link>
     </Compile>
     <Compile Include="Designers2\AdvancedRecordset\AdvancedRecordsetDesignerViewModel.cs" />
+    <Compile Include="Designers2\AdvancedRecordset\Large.xaml.cs">
+      <DependentUpon>Large.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Designers2\AdvancedRecordset\Small.xaml.cs">
+      <DependentUpon>Small.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Designers2\AdvancedRecordset\AdvancedRecordsetDesigner.xaml.cs">
+      <DependentUpon>AdvancedRecordsetDesigner.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Designers2\Core\ActionRegion\WcfActionMemento.cs" />
     <Compile Include="Designers2\Core\InputRegion\ServiceInputNameComparer.cs" />
     <Compile Include="Designers2\Core\ViewPropertyBuilder.cs" />
@@ -1297,6 +1306,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Designers2\.Net Dll Enhanced\Small.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Designers2\AdvancedRecordset\Large.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Designers2\AdvancedRecordset\Small.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Designers2\AdvancedRecordset\AdvancedRecordsetDesigner.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

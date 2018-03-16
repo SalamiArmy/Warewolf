@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Data;
 
-namespace Dev2.Activities.AdvancedRecordset
+namespace Dev2.Activities
 {
 	public interface IAdvancedRecordset : IDisposable
 	{
-		DataSet ExecuteQuery(string sql);
+		DataSet ExecuteQuery();
 		
-		string ExecuteScalar(string sql);
+		string ExecuteScalar();
 
-		int ExecuteNonQuery(string sql);
+		int ExecuteNonQuery();
 		
 	}
 }

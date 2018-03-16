@@ -10,25 +10,17 @@
 
 using System;
 using System.Collections.Generic;
-using Dev2.Activities;
-using Dev2.Common.Interfaces.Diagnostics.Debug;
-using Dev2.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Warewolf.Storage;
-using Warewolf.Storage.Interfaces;
 using WarewolfParserInterop;
 using System.Data;
 using System.Linq;
-using System.Data.SqlClient;
-using System.Configuration;
-using Dev2.Common.Interfaces.Services.Sql;
-using Dev2.Services.Sql;
-using Dev2.Activities.AdvancedRecordset;
+using Dev2.Activities;
 
 namespace Dev2.Tests.Activities.ActivityTests
 {
 	[TestClass]
-	public class RecordsetADOTests : BaseActivityTests
+	public class AdvancedRecordsetTests : BaseActivityTests
 	{
 		public AdvancedRecordset CreatePersonAddressWorkers()
 		{
@@ -102,7 +94,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 			string returnRecordsetName = "person";
 			string query = "select * from person";
 			worker = CreatePersonAddressWorkers();
-			var results = worker.ExecuteQuery(query);
+			worker.SqlQuery = query;
+			var results = worker.ExecuteQuery();
 
 			// apply sql results to environment
 			worker.ApplyResultToEnvironment(returnRecordsetName, results.Tables[0].Rows.Cast<DataRow>().ToList());
@@ -132,7 +125,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		{
 			string query = "select * from person";
 			var Worker = CreatePersonAddressWorkers();
-			var Results = Worker.ExecuteQuery(query);
+			Worker.SqlQuery = query;
+			var Results = Worker.ExecuteQuery();
 			Assert.AreEqual(4, Results.Tables[0].Rows.Count);
 		}
 
@@ -144,7 +138,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		{
 			var worker = CreatePersonAddressWorkers();
 			string query = "select * from person p join address a on p.address_id=a.id";
-			var results = worker.ExecuteQuery(query);
+			worker.SqlQuery = query;
+			var results = worker.ExecuteQuery();
 
 			Assert.IsInstanceOfType(results, typeof(DataSet));
 			Assert.AreEqual(results.Tables[0].Rows.Count, 3);
@@ -158,7 +153,9 @@ namespace Dev2.Tests.Activities.ActivityTests
 		{
 			string query = "select * from person p join address a on p.address_id=a.id where a.addr=\"11 test lane\" order by Name";
 			var Worker = CreatePersonAddressWorkers();
-			var results = Worker.ExecuteQuery(query);
+			Worker.SqlQuery = query;
+			var results = Worker.ExecuteQuery();
+
 
 			Assert.AreEqual(results.Tables[0].Rows[0]["Name"], "bob");
 			Assert.AreEqual(results.Tables[0].Rows[0]["Age"], (Int64)21);
@@ -180,7 +177,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		{
 			string query = "select * from person p join address a on p.address_id=a.id where p.Name=\"zak\"";
 			var Worker = CreatePersonAddressWorkers();
-			var results = Worker.ExecuteQuery(query);
+			Worker.SqlQuery = query;
+			var results = Worker.ExecuteQuery();
 			Assert.AreEqual(results.Tables[0].Rows.Count, 0);
 		}
 
@@ -194,8 +192,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 				"select * from address;update person set Age=20 where Name=\"zak\";" +
 				"select * from person p join address a on p.address_id=a.id where a.addr=\"11 test lane\" order by Name";
 			var Worker = CreatePersonAddressWorkers();
-			var results = Worker.ExecuteQuery(query);
-
+			Worker.SqlQuery = query;
+			var results = Worker.ExecuteQuery();
 			Assert.AreEqual(results.Tables[2].Rows[0]["Name"], "bob");
 			Assert.AreEqual(results.Tables[2].Rows[0]["Age"], (Int64)21);
 			Assert.AreEqual(results.Tables[2].Rows[0]["address_id"], (Int64)1);
@@ -216,12 +214,14 @@ namespace Dev2.Tests.Activities.ActivityTests
 		{
 			var Worker = CreatePersonAddressWorkers();
 			string query = "update person set Age=65 where Name=\"zak\";";
-			var results = Worker.ExecuteNonQuery(query);
+			Worker.SqlQuery = query;
+			var results = Worker.ExecuteNonQuery();
 
 			Assert.AreEqual(1, results);
 
 			query = "select * from person where Name=\"zak\";";
-			var result = Worker.ExecuteQuery(query);
+			Worker.SqlQuery = query;
+			var result = Worker.ExecuteQuery();
 
 			Assert.AreEqual(result.Tables[0].Rows[0]["Name"], "zak");
 			Assert.AreEqual(result.Tables[0].Rows[0]["Age"], (Int64)65);
@@ -235,7 +235,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 		{
 			string query = "select from person";
 			var Worker = CreatePersonAddressWorkers();
-			Assert.ThrowsException<Exception>(() => Worker.ExecuteQuery(query));
+			Worker.SqlQuery = query;
+			Assert.ThrowsException<Exception>(() => Worker.ExecuteQuery());
 		}
 
 		#endregion

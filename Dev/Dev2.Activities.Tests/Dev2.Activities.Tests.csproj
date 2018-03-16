@@ -304,7 +304,7 @@
     <Compile Include="ActivityTests\DotNetMultiAssignActivityTest.cs" />
     <Compile Include="ActivityTests\MultiAssignObjectActivityTest.cs" />
     <Compile Include="ActivityTests\ReadFolderNewTests.cs" />
-    <Compile Include="ActivityTests\RecordsetADO\RecordsetADOTests.cs" />
+    <Compile Include="ActivityTests\AdvancedRecordsetTests.cs" />
     <Compile Include="ActivityTests\RecordsLengthTest.cs" />
     <Compile Include="ActivityTests\Scripting\DsfJavascriptActivityTests.cs" />
     <Compile Include="ActivityTests\Scripting\DsfPythonActivityTests.cs" />
