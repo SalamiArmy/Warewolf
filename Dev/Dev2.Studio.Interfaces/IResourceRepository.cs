@@ -21,6 +21,7 @@ using Dev2.Data.Settings;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Common;
 using Dev2.Studio.Interfaces.Enums;
+using Dev2.Common.Interfaces.Search;
 
 namespace Dev2.Studio.Interfaces
 {
@@ -65,10 +66,12 @@ namespace Dev2.Studio.Interfaces
         Task<IContextualResourceModel> LoadContextualResourceModelAsync(Guid resourceId);
         TestSaveResult SaveTests(IResourceModel resourceId, List<IServiceTestModelTO> tests);
         List<IServiceTestModelTO> LoadResourceTests(Guid resourceId);
+        List<IServiceTestModelTO> LoadAllTests();
         void DeleteResourceTest(Guid resourceId, string testName);
         List<IServiceTestModelTO> LoadResourceTestsForDeploy(Guid resourceId);
         IServiceTestModelTO ExecuteTest(IContextualResourceModel resourceModel, string testName);
 
         Task<ExecuteMessage> DeleteResourceFromWorkspaceAsync(IContextualResourceModel resourceModel);
+        List<ISearchResult> Filter(ISearch searchValue);
     }
 }
