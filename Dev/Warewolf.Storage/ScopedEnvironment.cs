@@ -192,6 +192,9 @@ namespace Warewolf.Storage
             _datasource = ds;
         }
 
-       
+        public string ToJson()
+        {
+            return "";
+        }
     }
 }

@@ -25,6 +25,11 @@ using Dev2.Runtime.Hosting;
 using Dev2.Runtime.Security;
 using Dev2.Workspaces;
 
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Text;
+
 namespace Dev2.Runtime.ESB.Execution
 {
     public class WfExecutionContainer : EsbExecutionContainer
@@ -195,22 +200,42 @@ namespace Dev2.Runtime.ESB.Execution
                     throw new InvalidOperationException(GlobalConstants.NoStartNodeError);
                 }
                 WorkflowExecutionWatcher.HasAWorkflowBeenExecuted = true;
+
                 Dev2Logger.Debug("Starting Execute", GlobalConstants.WarewolfDebug);
-                var next = resource.Execute(dsfDataObject, update);
+                Dev2StateLogger.LogPreExecuteState(dsfDataObject, resource);
+
+                IDev2Activity next;
+                try
+                {
+                    next = resource.Execute(dsfDataObject, update);
+                    Dev2StateLogger.LogPostExecuteState(dsfDataObject, resource, next);
+                } catch (Exception e)
+                {
+                    Dev2StateLogger.LogExecuteException(dsfDataObject, e, resource);
+                    throw;
+                }
+
                 Dev2Logger.Debug("Executed first node", GlobalConstants.WarewolfDebug);
                 while (next != null)
                 {
-                    if (!dsfDataObject.StopExecution)
+                    if (dsfDataObject.StopExecution)
                     {
-                        next = next.Execute(dsfDataObject, update);
-                        dsfDataObject.Environment.AllErrors.UnionWith(dsfDataObject.Environment?.Errors);                                                
+                        break;
                     }
-                    else
+
+                    Dev2StateLogger.LogPreExecuteState(dsfDataObject, next);
+                    var current = next;
+                    try
                     {
-                        next = null;
+                        next = current.Execute(dsfDataObject, update);
+                        Dev2StateLogger.LogPostExecuteState(dsfDataObject, current, next);
+                    } catch (Exception e)
+                    {
+                        Dev2StateLogger.LogExecuteException(dsfDataObject, e, current);
+                        throw;
                     }
+                    dsfDataObject.Environment.AllErrors.UnionWith(dsfDataObject.Environment?.Errors);
                 }
-                
             }
             finally
             {
@@ -218,5 +243,66 @@ namespace Dev2.Runtime.ESB.Execution
                 exe?.CompleteExecution();
             }
         }
+    }
+
+
+
+    public class Dev2StateLogger
+    {
+        private static Dev2StateLogger _instance = new Dev2StateLogger();
+
+        readonly StringBuilder sb = new StringBuilder();
+
+        private void LogPreExecuteState_private(IDSFDataObject dsfDataObject, IDev2Activity nextActivity)
+        {
+            sb.Append("header:LogPreExecuteState");
+            sb.Append(nextActivity.UniqueID);
+            dsfDataObject.LogPreExecuteState(sb);
+        }
+        public static void LogPreExecuteState(IDSFDataObject dsfDataObject, IDev2Activity nextActivity)
+        {
+            _instance.LogPreExecuteState_private(dsfDataObject, nextActivity);
+        }
+
+        public static void LogPostExecuteState(IDSFDataObject dsfDataObject, IDev2Activity previousActivity, IDev2Activity nextActivity)
+        {
+            _instance.LogPostExecuteState_private(dsfDataObject, previousActivity, nextActivity);
+        }
+        private void LogPostExecuteState_private(IDSFDataObject dsfDataObject, IDev2Activity previousActivity, IDev2Activity nextActivity)
+        {
+            sb.Append("header:LogPostExecuteState");
+            sb.Append(previousActivity.UniqueID);
+            sb.Append(nextActivity.UniqueID);
+            dsfDataObject.LogPreExecuteState(sb);
+        }
+
+        public static void LogExecuteException(IDSFDataObject dsfDataObject, Exception e, IDev2Activity activity)
+        {
+            _instance.LogExecuteException_private(dsfDataObject, e, activity);
+        }
+        private void LogExecuteException_private(IDSFDataObject dsfDataObject, Exception e, IDev2Activity activity)
+        {
+            sb.Append("header:LogExecuteException");
+            sb.Append(activity.UniqueID);
+            sb.Append(e);
+            dsfDataObject.LogPreExecuteState(sb);
+        }
+    }
+}
+
+static class DsfDataObjectMethods
+{
+    public static void LogPreExecuteState(this IDSFDataObject dsfDataObject, StringBuilder sb)
+    {
+        sb.Append(dsfDataObject.ClientID);
+        sb.Append(dsfDataObject.ExecutingUser);
+        sb.Append(dsfDataObject.ExecutionID);
+        sb.Append(dsfDataObject.ExecutionOrigin);
+        sb.Append(dsfDataObject.ExecutionOriginDescription);
+        sb.Append(dsfDataObject.ExecutionToken);
+        sb.Append(dsfDataObject.IsSubExecution);
+        sb.Append(dsfDataObject.IsRemoteWorkflow());
+
+        sb.Append(dsfDataObject.Environment.ToJson());
     }
 }
