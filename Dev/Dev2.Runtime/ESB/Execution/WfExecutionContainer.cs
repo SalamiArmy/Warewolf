@@ -239,6 +239,7 @@ namespace Dev2.Runtime.ESB.Execution
             }
             finally
             {
+                Dev2StateLogger.LogExecuteCompleteState(dsfDataObject);
                 var exe = CustomContainer.Get<IExecutionManager>();
                 exe?.CompleteExecution();
             }
@@ -272,7 +273,10 @@ namespace Dev2.Runtime.ESB.Execution
         {
             sb.Append("header:LogPostExecuteState");
             sb.Append(previousActivity.UniqueID);
-            sb.Append(nextActivity.UniqueID);
+            if (!(nextActivity is null))
+            {
+                sb.Append(nextActivity.UniqueID);
+            }
             dsfDataObject.LogPreExecuteState(sb);
         }
 
@@ -285,6 +289,16 @@ namespace Dev2.Runtime.ESB.Execution
             sb.Append("header:LogExecuteException");
             sb.Append(activity.UniqueID);
             sb.Append(e);
+            dsfDataObject.LogPreExecuteState(sb);
+        }
+
+        public static void LogExecuteCompleteState(IDSFDataObject dsfDataObject)
+        {
+            _instance.LogExecuteCompleteState_private(dsfDataObject);
+        }
+        private void LogExecuteCompleteState_private(IDSFDataObject dsfDataObject)
+        {
+            sb.Append("header:LogExecuteCompleteState");
             dsfDataObject.LogPreExecuteState(sb);
         }
     }
