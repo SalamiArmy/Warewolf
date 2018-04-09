@@ -126,6 +126,9 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.8.2.4717\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.8.2.4717\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="State\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
