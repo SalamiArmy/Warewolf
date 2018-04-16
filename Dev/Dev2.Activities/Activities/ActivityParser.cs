@@ -44,49 +44,9 @@ namespace Dev2.Activities
         {
             if (topLevelActivity is DsfDecision roodDecision)
             {
-                IEnumerable<IDev2Activity> vb;
-                if (roodDecision.TrueArm == null)
-                {
-                    vb = roodDecision.FalseArm;
-                }
-                else if (roodDecision.FalseArm == null)
-                {
-                    vb = roodDecision.TrueArm;
-                }
-                else
-                {
-                    vb = roodDecision.FalseArm.Union(roodDecision.TrueArm);
-                }
-
-                var bbb = vb.Flatten(activity =>
-                {
-                    if (activity.NextNodes != null)
-                    {
-                        return activity.NextNodes;
-                    }
-
-                    if (activity is DsfDecision a)
-                    {
-                        if (a.TrueArm == null)
-                        {
-                            return a.FalseArm;
-                        }
-
-                        if (a.FalseArm == null)
-                        {
-                            return a.TrueArm;
-                        }
-
-                        var activities = a.FalseArm.Union(a.TrueArm);
-                        return activities;
-                    }
-                    return new List<IDev2Activity>();
-                }).ToList();
-                var hasDecision = bbb.Contains(topLevelActivity);
-                if (!hasDecision)
-                {
-                    bbb.Add(topLevelActivity);
-                }
+                var vb = NewRootedDecision(roodDecision);
+                var bbb = ParseDecisionToFlatList(vb);
+                AddTopLevelActivity(topLevelActivity, bbb);
                 return bbb.ToList();
             }
             if (topLevelActivity is DsfSwitch @switch)
@@ -145,12 +105,63 @@ namespace Dev2.Activities
                 }
                 return new List<IDev2Activity>();
             }).ToList() ?? new List<IDev2Activity>();
-            var contains = dev2Activities.Contains(topLevelActivity);
-            if (!contains)
-            {
-                dev2Activities.Add(topLevelActivity);
-            }
+            AddTopLevelActivity(topLevelActivity, dev2Activities);
             return dev2Activities;
+        }
+
+        private static List<IDev2Activity> ParseDecisionToFlatList(IEnumerable<IDev2Activity> vb)
+        {
+            return vb.Flatten(activity =>
+            {
+                if (activity.NextNodes != null)
+                {
+                    return activity.NextNodes;
+                }
+
+                if (activity is DsfDecision a)
+                {
+                    if (a.TrueArm == null)
+                    {
+                        return a.FalseArm;
+                    }
+
+                    if (a.FalseArm == null)
+                    {
+                        return a.TrueArm;
+                    }
+
+                    return a.FalseArm.Union(a.TrueArm);
+                }
+                return new List<IDev2Activity>();
+            }).ToList();
+        }
+
+        static void AddTopLevelActivity(IDev2Activity topLevelActivity, List<IDev2Activity> bbb)
+        {
+            var hasDecision = bbb.Contains(topLevelActivity);
+            if (!hasDecision)
+            {
+                bbb.Add(topLevelActivity);
+            }
+        }
+
+        static IEnumerable<IDev2Activity> NewRootedDecision(DsfDecision roodDecision)
+        {
+            IEnumerable<IDev2Activity> vb;
+            if (roodDecision.TrueArm == null)
+            {
+                vb = roodDecision.FalseArm;
+            }
+            else if (roodDecision.FalseArm == null)
+            {
+                vb = roodDecision.TrueArm;
+            }
+            else
+            {
+                vb = roodDecision.FalseArm.Union(roodDecision.TrueArm);
+            }
+
+            return vb;
         }
 
         public IEnumerable<IDev2Activity> FlattenNextNodesInclusive(IDev2Activity firstOrDefault)
