@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ActivityUnitTests;
 using Dev2.Activities;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities.Utilities;
@@ -39,7 +40,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
             //---------------Execute Test ----------------------
             var result = CheckActivityDebugInputOutput(act, dataList,
-                dataListWithData, out List<DebugItem> inRes, out List<DebugItem> outRes);
+                dataListWithData, out List<IDebugItem> inRes, out List<IDebugItem> outRes);
 
             // remove test datalist ;)
             //---------------Test Result -----------------------

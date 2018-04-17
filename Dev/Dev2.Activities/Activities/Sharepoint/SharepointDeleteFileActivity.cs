@@ -66,7 +66,7 @@ namespace Dev2.Activities.Sharepoint
 
         protected override IList<OutputTO> TryExecuteConcreteAction(IDSFDataObject context, out ErrorResultTO error, int update)
         {            
-            _debugInputs = new List<DebugItem>();
+            _debugInputs = new List<IDebugItem>();
             error = new ErrorResultTO();
             IList<OutputTO> outputs = new List<OutputTO>();
             var colItr = new WarewolfListIterator();
@@ -179,7 +179,7 @@ namespace Dev2.Activities.Sharepoint
             return new List<string> { result };
         }
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             foreach (IDebugItem debugInput in _debugInputs)
             {
@@ -188,7 +188,7 @@ namespace Dev2.Activities.Sharepoint
             return _debugInputs;
         }
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update)
         {
             foreach (IDebugItem debugOutput in _debugOutputs)
             {

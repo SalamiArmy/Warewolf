@@ -20,8 +20,7 @@ using Unlimited.Applications.BusinessDesignStudio.Activities.Utilities;
 using Warewolf.Core;
 using Warewolf.Resource.Errors;
 using Warewolf.Storage.Interfaces;
-
-
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 
 namespace Dev2.Activities.DropBox2016.DownloadActivity
 {
@@ -152,11 +151,11 @@ namespace Dev2.Activities.DropBox2016.DownloadActivity
             }
             throw new Exception(executionError);
         }
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             if (env == null)
             {
-                return new List<DebugItem>();
+                return new List<IDebugItem>();
             }
             base.GetDebugInputs(env, update);
 

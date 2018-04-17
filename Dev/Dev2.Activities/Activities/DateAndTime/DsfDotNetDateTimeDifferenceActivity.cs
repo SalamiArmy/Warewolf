@@ -236,18 +236,10 @@ namespace Dev2.Activities.DateAndTime
         {
             AddDebugInputItem(new DebugEvalResult(expression, labelText, environment, update));
         }
-
-        /// <summary>
-        /// Used for converting the properties of this activity to a DateTimeTO object
-        /// </summary>
-        /// <param name="input1">The input1.</param>
-        /// <param name="input2">The input2.</param>
-        /// <param name="evaledInputFormat">The evaled input format.</param>
-        /// <param name="outputType">Type of the output.</param>
-        /// <returns></returns>
+        
         static IDateTimeDiffTO ConvertToDateTimeDiffTo(string input1, string input2, string evaledInputFormat, string outputType) => DateTimeConverterFactory.CreateDateTimeDiffTO(input1, input2, evaledInputFormat, outputType);
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             foreach (IDebugItem debugInput in _debugInputs)
             {
@@ -256,7 +248,7 @@ namespace Dev2.Activities.DateAndTime
             return _debugInputs;
         }
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update)
         {
             foreach (IDebugItem debugOutput in _debugOutputs)
             {

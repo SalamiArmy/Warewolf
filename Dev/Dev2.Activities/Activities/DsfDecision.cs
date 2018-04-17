@@ -241,14 +241,14 @@ namespace Dev2.Activities
                 if (dataObject.IsDebugMode())
                 {
                     DispatchDebugState(dataObject, StateType.After, update);
-                    _debugOutputs = new List<DebugItem>();
+                    _debugOutputs = new List<IDebugItem>();
                 }
             }
         }
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update) => _debugInputs;
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update) => _debugInputs;
 
-        List<DebugItem> CreateDebugInputs(IExecutionEnvironment env)
+        List<IDebugItem> CreateDebugInputs(IExecutionEnvironment env)
         {
             var result = new List<IDebugItem>();
 
@@ -301,20 +301,19 @@ namespace Dev2.Activities
                     DisplayAndWriteError(serviceName, allErrors);
                 }
             }
-
-            var val = result.Select(a => a as DebugItem).ToList();
-            _inner?.SetDebugInputs(val);
-            return val;
+            
+            _inner?.SetDebugInputs(result);
+            return result;
         }
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => _debugOutputs;
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => _debugOutputs;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new string Result { get; set; }
 
-        List<DebugItem> GetDebugOutputs(string theResult)
+        List<IDebugItem> GetDebugOutputs(string theResult)
         {
-            var result = new List<DebugItem>();
+            var result = new List<IDebugItem>();
             var resultString = theResult;
             var itemToAdd = new DebugItem();
             var dds = Conditions;

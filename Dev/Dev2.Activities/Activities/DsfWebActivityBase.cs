@@ -15,6 +15,7 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 using Warewolf.Storage;
 using Warewolf.Storage.Interfaces;
 using Dev2.Comparer;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 
 namespace Dev2.Activities
 {
@@ -34,11 +35,11 @@ namespace Dev2.Activities
         public string QueryString { get; set; }
         public IOutputDescription OutputDescription { get; set; }
         public IResponseManager ResponseManager { get; set; }
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             if (env == null)
             {
-                return new List<DebugItem>();
+                return new List<IDebugItem>();
             }
             base.GetDebugInputs(env, update);
 

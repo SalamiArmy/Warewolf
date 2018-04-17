@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using ActivityUnitTests;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
@@ -44,7 +45,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
             //------------Execute Test---------------------------
             var result = CheckPathOperationActivityDebugInputOutput(dsfPathDelete, "<ADL><FileNames><Name></Name></FileNames><res></res></ADL>",
-                                                                "<ADL><FileNames><Name></Name></FileNames><res></res></ADL>", out List<DebugItem> inRes, out List<DebugItem> outRes);
+                                                                "<ADL><FileNames><Name></Name></FileNames><res></res></ADL>", out List<IDebugItem> inRes, out List<IDebugItem> outRes);
             GetScalarValueFromEnvironment(result.Environment, "Dev2System.Dev2Error", out string actual, out string error);
 
             // Assert Debug Output Error Message Relevant

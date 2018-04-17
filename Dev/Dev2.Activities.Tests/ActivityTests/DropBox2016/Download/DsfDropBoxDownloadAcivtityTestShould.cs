@@ -8,6 +8,7 @@ using Dev2.Activities.DropBox2016.Result;
 using Dev2.Activities.DropBox2016.UploadActivity;
 using Dev2.Common;
 using Dev2.Common.Interfaces;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Common.Interfaces.Wrappers;
 using Dev2.Data.ServiceModel;
 using Dev2.Data.TO;
@@ -187,7 +188,7 @@ namespace Dev2.Tests.Activities.ActivityTests.DropBox2016.Download
             var dropBoxDownloadActivity = new Mock<DsfDropBoxUploadActivity>();
             dropBoxDownloadActivity.SetupAllProperties();
             dropBoxDownloadActivity.Setup(acivtity => acivtity.GetDebugOutputs(It.IsAny<IExecutionEnvironment>(), It.IsAny<int>()))
-                .Returns(new List<DebugItem>()
+                .Returns(new List<IDebugItem>()
                 {
                     new DebugItem()
                 });

@@ -47,29 +47,17 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
 
         #endregion
 
-        public override void UpdateForEachInputs(IList<Tuple<string, string>> updates)
-        {
-            throw new NotImplementedException();
-        }
+        public override void UpdateForEachInputs(IList<Tuple<string, string>> updates) => throw new NotImplementedException();
 
-        public override void UpdateForEachOutputs(IList<Tuple<string, string>> updates)
-        {
-            throw new NotImplementedException();
-        }
+        public override void UpdateForEachOutputs(IList<Tuple<string, string>> updates) => throw new NotImplementedException();
 
         protected override void ExecuteTool(IDSFDataObject dataObject, int update)
         {
         }
 
-        public void SetDebugInputs(List<DebugItem> debugInputs)
-        {
-            _debugInputs = debugInputs;
-        }
+        public void SetDebugInputs(List<IDebugItem> debugInputs) => _debugInputs = debugInputs;
 
-        public void SetDebugOutputs(List<DebugItem> debugOutputs)
-        {
-            _debugOutputs = debugOutputs;
-        }
+        public void SetDebugOutputs(List<IDebugItem> debugOutputs) => _debugOutputs = debugOutputs;
 
         public override List<string> GetOutputs() => new List<string>();
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Dev2.Common.Interfaces.DB;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Common.Interfaces.Toolbox;
 using Dev2.Data.TO;
 using Dev2.Diagnostics;
@@ -53,11 +54,11 @@ namespace Dev2.Activities
             tmpErrors.MergeErrors(execErrors);
         }
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             if (env == null)
             {
-                return new List<DebugItem>();
+                return new List<IDebugItem>();
             }
             base.GetDebugInputs(env, update);
 

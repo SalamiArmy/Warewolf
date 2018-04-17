@@ -145,7 +145,7 @@ namespace Dev2.Activities
                 if (dataObject.IsDebugMode())
                 {
                     DispatchDebugState(dataObject, StateType.After, update);
-                    _debugOutputs = new List<DebugItem>();
+                    _debugOutputs = new List<IDebugItem>();
                 }
             }
         }
@@ -188,7 +188,7 @@ namespace Dev2.Activities
             {
                 if (dataObject.IsDebugMode())
                 {
-                    var result = new List<DebugItem>();
+                    var result = new List<IDebugItem>();
                     var itemToAdd = new DebugItem();
                     var debugResult = new DebugItemWarewolfAtomResult(firstOrDefault, "", ds.SwitchVariable, "", "Switch on", "", "=");
                     itemToAdd.AddRange(debugResult.GetDebugItemResult());
@@ -213,7 +213,7 @@ namespace Dev2.Activities
             {
                 if (dataObject.IsDebugMode())
                 {
-                    var result = new List<DebugItem>();
+                    var result = new List<IDebugItem>();
                     var debugOutputBase = new DebugItemStaticDataParams(Result, "");
                     var itemToAdd = new DebugItem();
                     itemToAdd.AddRange(debugOutputBase.GetDebugItemResult());
@@ -233,9 +233,9 @@ namespace Dev2.Activities
             }
         }
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update) => _debugInputs;
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update) => _debugInputs;
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => _debugOutputs;
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => _debugOutputs;
 
         public bool Equals(DsfSwitch other)
         {

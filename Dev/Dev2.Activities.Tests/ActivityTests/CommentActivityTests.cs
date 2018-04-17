@@ -57,7 +57,7 @@ namespace Dev2.Tests.Activities.ActivityTests
                                             "<OutVar1/></ADL>";
 
             var result = CheckActivityDebugInputOutput(act, dataList,
-                dataListWithData, out List<DebugItem> inRes, out List<DebugItem> outRes);
+                dataListWithData, out List<IDebugItem> inRes, out List<IDebugItem> outRes);
 
             // remove test datalist ;)
 

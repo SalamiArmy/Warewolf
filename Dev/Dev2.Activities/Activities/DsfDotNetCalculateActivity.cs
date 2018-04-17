@@ -133,14 +133,11 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             AddDebugInputItem(new DebugEvalResult(Expression, "fx =", environment, update, false, true));
         }
 
-        void AddDebugOutputItem(string expression, IExecutionEnvironment environment, int update)
-        {
-            AddDebugOutputItem(new DebugEvalResult(expression, "", environment, update));
-        }
+        void AddDebugOutputItem(string expression, IExecutionEnvironment environment, int update) => AddDebugOutputItem(new DebugEvalResult(expression, "", environment, update));
 
         public override List<string> GetOutputs() => new List<string> { Result };
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             foreach(IDebugItem debugInput in _debugInputs)
             {
@@ -149,7 +146,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             return _debugInputs;
         }
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update)
         {
             foreach(IDebugItem debugOutput in _debugOutputs)
             {

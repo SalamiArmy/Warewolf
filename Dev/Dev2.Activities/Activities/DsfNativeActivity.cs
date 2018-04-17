@@ -84,8 +84,8 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
 #pragma warning disable IDE1006 // Naming Styles
         protected Variable<Guid> DataListExecutionID = new Variable<Guid>();
 #pragma warning restore IDE1006 // Naming Styles
-        protected List<DebugItem> _debugInputs = new List<DebugItem>(10000);
-        protected List<DebugItem> _debugOutputs = new List<DebugItem>(10000);
+        protected List<IDebugItem> _debugInputs = new List<IDebugItem>(10000);
+        protected List<IDebugItem> _debugOutputs = new List<IDebugItem>(10000);
 
         readonly IDebugDispatcher _debugDispatcher;
         readonly bool _isExecuteAsync;
@@ -309,9 +309,9 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         public abstract void UpdateForEachInputs(IList<Tuple<string, string>> updates);
         public abstract void UpdateForEachOutputs(IList<Tuple<string, string>> updates);
 
-        public virtual List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update) => DebugItem.EmptyList;
+        public virtual List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update) => DebugItem.EmptyList;
 
-        public virtual List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => DebugItem.EmptyList;
+        public virtual List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => DebugItem.EmptyList;
         public void DispatchDebugState(IDSFDataObject dataObject, StateType stateType, int update) => DispatchDebugState(dataObject, stateType, update, null, null, false);
 
         public void DispatchDebugState(IDSFDataObject dataObject, StateType stateType, int update, DateTime? startTime) => DispatchDebugState(dataObject, stateType, update, startTime, null, false);
@@ -1027,8 +1027,8 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             {
                 var className = GetType().Name;
                 Tracker.TrackEvent(TrackerEventGroup.ActivityExecution, className);
-                _debugInputs = new List<DebugItem>();
-                _debugOutputs = new List<DebugItem>();
+                _debugInputs = new List<IDebugItem>();
+                _debugOutputs = new List<IDebugItem>();
                 ExecuteTool(data, update);
                 if (!data.IsDebugMode())
                 {

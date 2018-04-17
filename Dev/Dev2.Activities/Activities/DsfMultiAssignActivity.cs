@@ -459,9 +459,9 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         }
 
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update) => _debugInputs;
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update) => _debugInputs;
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => _debugOutputs;
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => _debugOutputs;
 
         public override IList<DsfForEachItem> GetForEachInputs() => (from item in FieldsCollection
                                                                      where !string.IsNullOrEmpty(item.FieldValue) && item.FieldValue.Contains("[[")

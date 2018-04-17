@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using ActivityUnitTests;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Diagnostics;
 using Dev2.Tests.Activities.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -53,7 +54,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             };
             //-------------------------Execute-----------------------------------------------
             CheckPathOperationActivityDebugInputOutput(act, ActivityStrings.DebugDataListShape,
-                ActivityStrings.DebugDataListWithData, out List<DebugItem> inRes, out List<DebugItem> outRes);
+                ActivityStrings.DebugDataListWithData, out List<IDebugItem> inRes, out List<IDebugItem> outRes);
             //-------------------------Assertions---------------------------------------------
             Assert.AreEqual(1, outRes.Count);
             var outputResultList = outRes[0].FetchResultsList();
@@ -91,7 +92,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             };
             //-------------------------Execute-----------------------------------------------
             CheckPathOperationActivityDebugInputOutput(act, ActivityStrings.DebugDataListShape,
-                ActivityStrings.DebugDataListWithData, out List<DebugItem> inRes, out List<DebugItem> outRes);
+                ActivityStrings.DebugDataListWithData, out List<IDebugItem> inRes, out List<IDebugItem> outRes);
             //-------------------------Assertions---------------------------------------------
             Assert.AreEqual(1, outRes.Count);
             var outputResultList = outRes[0].FetchResultsList();

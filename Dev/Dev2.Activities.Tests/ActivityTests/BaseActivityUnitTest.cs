@@ -18,6 +18,7 @@ using System.Text;
 using Dev2;
 using Dev2.Activities;
 using Dev2.Common;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Data.Decision;
 using Dev2.Data.TO;
 using Dev2.Data.Util;
@@ -274,7 +275,7 @@ namespace ActivityUnitTests
 
         #region Activity Debug Input/Output Test Methods
 
-        protected dynamic CheckActivityDebugInputOutput<T>(DsfNativeActivity<T> activity, string dataListShape, string dataListWithData, out List<DebugItem> inputResults, out List<DebugItem> outputResults, bool isRemoteInvoke = false)
+        protected dynamic CheckActivityDebugInputOutput<T>(DsfNativeActivity<T> activity, string dataListShape, string dataListWithData, out List<IDebugItem> inputResults, out List<IDebugItem> outputResults, bool isRemoteInvoke = false)
         {
 
             TestStartNode = new FlowStep
@@ -303,7 +304,7 @@ namespace ActivityUnitTests
         }
 
         protected dynamic CheckPathOperationActivityDebugInputOutput<T>(DsfNativeActivity<T> activity, string dataListShape,
-                                                  string dataListWithData, out List<DebugItem> inputResults, out List<DebugItem> outputResults, IPrincipal user = null)
+                                                  string dataListWithData, out List<IDebugItem> inputResults, out List<IDebugItem> outputResults, IPrincipal user = null)
         {
             TestStartNode = new FlowStep
             {

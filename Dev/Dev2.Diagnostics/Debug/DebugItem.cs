@@ -46,8 +46,8 @@ namespace Dev2.Diagnostics
         public static readonly int ActCharDispatchCount = 100;
 
         public List<IDebugItemResult> ResultsList { get; set; }
-        public static List<DebugItem> EmptyList { get => emptyList; set => emptyList = value; }
-        static List<DebugItem> emptyList = new List<DebugItem>();
+        public static List<IDebugItem> EmptyList { get => emptyList; set => emptyList = value; }
+        static List<IDebugItem> emptyList = new List<IDebugItem>();
 
         #endregion properties
 

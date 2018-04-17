@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Data.Interfaces;
 using Dev2.Diagnostics;
 using Dev2.PathOperations;
@@ -148,7 +149,7 @@ namespace ActivityUnitTests.ActivityTests
             };
 
             CheckPathOperationActivityDebugInputOutput(preact, ActivityStrings.DebugDataListShape,
-                                                                ActivityStrings.DebugDataListWithData, out List<DebugItem> inRes, out List<DebugItem> outRes);
+                                                                ActivityStrings.DebugDataListWithData, out List<IDebugItem> inRes, out List<IDebugItem> outRes);
 
             Assert.AreEqual(activityOperationBrokerMock.Destination.IOPath.Password, "destPWord");
             Assert.AreEqual(activityOperationBrokerMock.Destination.IOPath.Username, "destUName");

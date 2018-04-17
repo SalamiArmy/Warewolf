@@ -70,7 +70,7 @@ namespace Dev2.Activities
 
         #region Get Debug Inputs/Outputs
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => DebugItem.EmptyList;
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => DebugItem.EmptyList;
 
         #endregion Get Inputs/Outputs
 
@@ -214,7 +214,7 @@ namespace Dev2.Activities
             OnCompleted(dataObject);
             if (dataObject.IsDebugMode())
             {
-                _debugOutputs = new List<DebugItem>();
+                _debugOutputs = new List<IDebugItem>();
                 DispatchDebugState(dataObject, StateType.Duration, update);
             }
         }

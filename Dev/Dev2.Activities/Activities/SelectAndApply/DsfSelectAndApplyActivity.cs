@@ -109,7 +109,7 @@ namespace Dev2.Activities.SelectAndApply
 
         public override IList<DsfForEachItem> GetForEachOutputs() => GetForEachItems(Alias.Replace("*", ""));
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             foreach (IDebugItem debugInput in _debugInputs)
             {
@@ -118,7 +118,7 @@ namespace Dev2.Activities.SelectAndApply
             return _debugInputs;
         }
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => _debugOutputs;
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => _debugOutputs;
 
         protected override void ExecuteTool(IDSFDataObject dataObject, int update)
         {
@@ -143,8 +143,8 @@ namespace Dev2.Activities.SelectAndApply
             }
             var startTime = DateTime.Now;
             _previousParentId = dataObject.ParentInstanceID;
-            _debugInputs = new List<DebugItem>();
-            _debugOutputs = new List<DebugItem>();
+            _debugInputs = new List<IDebugItem>();
+            _debugOutputs = new List<IDebugItem>();
 
             dataObject.ForEachNestingLevel++;
 

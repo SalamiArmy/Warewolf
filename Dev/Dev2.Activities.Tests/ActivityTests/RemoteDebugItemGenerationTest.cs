@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Text;
 using ActivityUnitTests;
 using Dev2.Common.Interfaces.Data;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Communication;
 using Dev2.Diagnostics;
 using Dev2.Diagnostics.Debug;
@@ -70,7 +71,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             act.ResourceCatalog = cat.Object;
 
             var obj = CheckActivityDebugInputOutput(act, ActivityStrings.DebugDataListShape,
-                                                                ActivityStrings.DebugDataListWithData, out List<DebugItem> inRes, out List<DebugItem> outRes, true);
+                                                                ActivityStrings.DebugDataListWithData, out List<IDebugItem> inRes, out List<IDebugItem> outRes, true);
 
             var dObj = obj as IDSFDataObject;
             Assert.IsNotNull(dObj);
@@ -91,7 +92,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             act.ResourceCatalog = cat.Object;
 
             var obj = CheckActivityDebugInputOutput(act, ActivityStrings.DebugDataListShape,
-                                                                ActivityStrings.DebugDataListWithData, out List<DebugItem> inRes, out List<DebugItem> outRes, true);
+                                                                ActivityStrings.DebugDataListWithData, out List<IDebugItem> inRes, out List<IDebugItem> outRes, true);
 
             var dObj = obj as IDSFDataObject;
             Assert.IsNotNull(dObj);
@@ -119,7 +120,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             act.ResourceCatalog = cat.Object;
 
             var obj = CheckActivityDebugInputOutput(act, ActivityStrings.DebugDataListShape,
-                                                                ActivityStrings.DebugDataListWithData, out List<DebugItem> inRes, out List<DebugItem> outRes, true);
+                                                                ActivityStrings.DebugDataListWithData, out List<IDebugItem> inRes, out List<IDebugItem> outRes, true);
 
             var dObj = obj as IDSFDataObject;
             Assert.IsNotNull(dObj);

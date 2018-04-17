@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using Dev2.Activities;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Common.Interfaces.Toolbox;
 using Dev2.Diagnostics;
 using Dev2.Interfaces;
@@ -49,24 +50,15 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             throw new NotImplementedException();
         }
 
-        public override IList<DsfForEachItem> GetForEachOutputs()
-        {
-            throw new NotImplementedException();
-        }
+        public override IList<DsfForEachItem> GetForEachOutputs() => throw new NotImplementedException();
 
         protected override void ExecuteTool(IDSFDataObject dataObject, int update)
         {
         }
 
-        public void SetDebugOutputs(List<DebugItem> result)
-        {
-            _debugOutputs = result;
-        }
+        public void SetDebugOutputs(List<IDebugItem> result) => _debugOutputs = result;
 
-        public void SetDebugInputs(List<DebugItem> val)
-        {
-            _debugInputs = val;
-        }
+        public void SetDebugInputs(List<IDebugItem> val) => _debugInputs = val;
 
         public override List<string> GetOutputs() => new List<string>();
     }

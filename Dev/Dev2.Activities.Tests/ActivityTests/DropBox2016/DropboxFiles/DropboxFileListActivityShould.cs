@@ -14,8 +14,7 @@ using Dev2.Common.Interfaces.Wrappers;
 using Dev2.Interfaces;
 using Warewolf.Storage;
 using Warewolf.Storage.Interfaces;
-
-
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 
 namespace Dev2.Tests.Activities.ActivityTests.DropBox2016.DropboxFiles
 {
@@ -128,7 +127,7 @@ namespace Dev2.Tests.Activities.ActivityTests.DropBox2016.DropboxFiles
             dropBoxDownloadActivity.SetupAllProperties();
             dropBoxDownloadActivity.Setup(
                 acivtity => acivtity.GetDebugOutputs(It.IsAny<IExecutionEnvironment>(), It.IsAny<int>()))
-                .Returns(new List<DebugItem>
+                .Returns(new List<IDebugItem>
                 {
                     new DebugItem()
                 });

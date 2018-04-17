@@ -397,7 +397,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                 var dt = DateTime.Now;
                 DispatchDebugState(dataObject, StateType.After, update, dt);
                 ChildDebugStateDispatch(dataObject);
-                _debugOutputs = new List<DebugItem>();
+                _debugOutputs = new List<IDebugItem>();
                 DispatchDebugState(dataObject, StateType.Duration, update, dt);
             }
 
@@ -430,59 +430,22 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             return Outputs.Select(mapping => mapping.MappedTo).ToList();
         }
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             var parser = DataListFactory.CreateInputParser();
-            return GetDebugInputs(env, parser, update).Select(a => (DebugItem)a).ToList();
-
+            return GetDebugInputs(env, parser, update);
         }
+
         public List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, IDev2LanguageParser parser, int update)
         {
             var results = new List<IDebugItem>();
             if (Inputs != null && Inputs.Count > 0)
             {
-                foreach (var serviceInput in Inputs)
-                {
-                    if (string.IsNullOrEmpty(serviceInput.Value))
-                    {
-                        continue;
-                    }
-                    var tmpEntry = env.Eval(serviceInput.Value, update);
-                    var itemToAdd = new DebugItem();
-                    if (tmpEntry.IsWarewolfAtomResult)
-                    {
-                        AddWarewolfAtomResults(results, serviceInput, tmpEntry, itemToAdd);
-                    }
-                    else
-                    {
-                        AddWarewolfAtomListResults(results, serviceInput, tmpEntry, itemToAdd);
-                    }
-                }
+                results.AddRange(AddDebugInputs(results, env, update));
             }
             else
             {
-                var inputs = parser.Parse(InputMapping);
-
-
-                foreach (IDev2Definition dev2Definition in inputs)
-                {
-                    if (string.IsNullOrEmpty(dev2Definition.RawValue))
-                    {
-                        continue;
-                    }
-                    var tmpEntry = env.Eval(dev2Definition.RawValue, update);
-
-                    var itemToAdd = new DebugItem();
-                    if (tmpEntry.IsWarewolfAtomResult)
-                    {
-                        AddWarewolfAtomResults(results, dev2Definition, tmpEntry, itemToAdd);
-                    }
-                    else
-                    {
-                        AddWarewolfAtomList(results, dev2Definition, tmpEntry, itemToAdd);
-                    }
-
-                }
+                results.AddRange(AddDebugInputs(results, env, parser, update));
             }
             foreach (IDebugItem debugInput in results)
             {
@@ -492,7 +455,46 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             return results;
         }
 
-        private void AddWarewolfAtomListResults(List<IDebugItem> results, IServiceInput serviceInput, CommonFunctions.WarewolfEvalResult tmpEntry, DebugItem itemToAdd)
+        List<IDebugItem> AddDebugInputs(List<IDebugItem> results, IExecutionEnvironment env, IDev2LanguageParser parser, int update)
+        {
+            var inputs = parser.Parse(InputMapping);
+            foreach (IDev2Definition dev2Definition in inputs)
+            {
+                if (string.IsNullOrEmpty(dev2Definition.RawValue))
+                {
+                    continue;
+                }
+                var tmpEntry = env.Eval(dev2Definition.RawValue, update);
+
+                var itemToAdd = new DebugItem();
+                results.Add(tmpEntry.IsWarewolfAtomResult ? AddWarewolfAtomResults(dev2Definition, tmpEntry, itemToAdd) : AddWarewolfAtomList(dev2Definition, tmpEntry, itemToAdd));
+            }
+            return results;
+        }
+
+        List<IDebugItem> AddDebugInputs(List<IDebugItem> results, IExecutionEnvironment env, int update)
+        {
+            foreach (var serviceInput in Inputs)
+            {
+                if (string.IsNullOrEmpty(serviceInput.Value))
+                {
+                    continue;
+                }
+                var tmpEntry = env.Eval(serviceInput.Value, update);
+                var itemToAdd = new DebugItem();
+                if (tmpEntry.IsWarewolfAtomResult)
+                {
+                    results.Add(AddWarewolfAtomResults(serviceInput, tmpEntry, itemToAdd));
+                }
+                else
+                {
+                    results.Add(AddWarewolfAtomListResults(serviceInput, tmpEntry, itemToAdd));
+                }
+            }
+            return results;
+        }
+
+        IDebugItem AddWarewolfAtomListResults(IServiceInput serviceInput, CommonFunctions.WarewolfEvalResult tmpEntry, DebugItem itemToAdd)
         {
             if (tmpEntry is CommonFunctions.WarewolfEvalResult.WarewolfAtomListresult warewolfAtomListResult)
             {
@@ -507,10 +509,10 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                     AddDebugItem(new DebugItemWarewolfAtomResult(warewolfAtom.ToString(), DataListUtil.AddBracketsToValueIfNotExist(variableName), ""), itemToAdd);
                 }
             }
-            results.Add(itemToAdd);
+            return itemToAdd;
         }
 
-        private void AddWarewolfAtomResults(List<IDebugItem> results, IServiceInput serviceInput, CommonFunctions.WarewolfEvalResult tmpEntry, DebugItem itemToAdd)
+        IDebugItem AddWarewolfAtomResults(IServiceInput serviceInput, CommonFunctions.WarewolfEvalResult tmpEntry, DebugItem itemToAdd)
         {
             if (tmpEntry is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult warewolfAtomResult)
             {
@@ -524,10 +526,10 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                     AddDebugItem(new DebugItemStaticDataParams(warewolfAtomResult.Item.ToString(), ""), itemToAdd);
                 }
             }
-            results.Add(itemToAdd);
+            return itemToAdd;
         }
 
-        private void AddWarewolfAtomList(List<IDebugItem> results, IDev2Definition dev2Definition, CommonFunctions.WarewolfEvalResult tmpEntry, DebugItem itemToAdd)
+        IDebugItem AddWarewolfAtomList(IDev2Definition dev2Definition, CommonFunctions.WarewolfEvalResult tmpEntry, DebugItem itemToAdd)
         {
             if (tmpEntry is CommonFunctions.WarewolfEvalResult.WarewolfAtomListresult warewolfAtomListResult)
             {
@@ -543,10 +545,10 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                     AddDebugItem(new DebugItemWarewolfAtomResult(warewolfAtom.ToString(), DataListUtil.AddBracketsToValueIfNotExist(variableName), ""), itemToAdd);
                 }
             }
-            results.Add(itemToAdd);
+            return itemToAdd;
         }
 
-        private void AddWarewolfAtomResults(List<IDebugItem> results, IDev2Definition dev2Definition, CommonFunctions.WarewolfEvalResult tmpEntry, DebugItem itemToAdd)
+        IDebugItem AddWarewolfAtomResults(IDev2Definition dev2Definition, CommonFunctions.WarewolfEvalResult tmpEntry, DebugItem itemToAdd)
         {
             if (tmpEntry is CommonFunctions.WarewolfEvalResult.WarewolfAtomResult warewolfAtomResult)
             {
@@ -557,17 +559,17 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                 }
                 AddDebugItem(new DebugItemWarewolfAtomResult(warewolfAtomResult.Item.ToString(), DataListUtil.AddBracketsToValueIfNotExist(variableName), ""), itemToAdd);
             }
-            results.Add(itemToAdd);
+            return itemToAdd;
         }
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update)
         {
             GetDebugOutputsFromEnv(env, update);
             return _debugOutputs;
         }
         public void GetDebugOutputsFromEnv(IExecutionEnvironment environment, int update)
         {
-            var results = new List<DebugItem>();
+            var results = new List<IDebugItem>();
             if (IsObject)
             {
                 if (!string.IsNullOrEmpty(ObjectName) && !(this is DsfEnhancedDotNetDllActivity))
@@ -596,7 +598,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             _debugOutputs = results;
         }
 
-        void AddRawOutputsToResults(IExecutionEnvironment environment, int update, List<DebugItem> results)
+        void AddRawOutputsToResults(IExecutionEnvironment environment, int update, List<IDebugItem> results)
         {
             var parser = DataListFactory.CreateOutputParser();
             var outputs = parser.Parse(OutputMapping);
@@ -615,7 +617,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             }
         }
 
-        void AddServiceOutputMappingsToResults(IExecutionEnvironment environment, int update, List<DebugItem> results)
+        void AddServiceOutputMappingsToResults(IExecutionEnvironment environment, int update, List<IDebugItem> results)
         {
             foreach (var serviceOutputMapping in Outputs)
             {

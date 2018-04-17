@@ -296,7 +296,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
 
         #region Get Debug Inputs/Outputs
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             foreach (IDebugItem debugInput in _debugInputs)
             {
@@ -305,7 +305,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             return _debugInputs;
         }
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => DebugItem.EmptyList;
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update) => DebugItem.EmptyList;
 
         #endregion Get Inputs/Outputs
 
@@ -327,8 +327,8 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         protected override void ExecuteTool(IDSFDataObject dataObject, int update)
         {
             _previousParentId = dataObject.ParentInstanceID;
-            _debugInputs = new List<DebugItem>();
-            _debugOutputs = new List<DebugItem>();
+            _debugInputs = new List<IDebugItem>();
+            _debugOutputs = new List<IDebugItem>();
 
             var allErrors = new ErrorResultTO();
             IIndexIterator itr = null;

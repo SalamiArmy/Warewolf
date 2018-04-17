@@ -29,6 +29,7 @@ using Unlimited.Applications.BusinessDesignStudio.Activities.Utilities;
 using Warewolf.Core;
 using Warewolf.Resource.Errors;
 using Warewolf.Storage.Interfaces;
+using Dev2.Common.Interfaces.Diagnostics.Debug;
 
 namespace Dev2.Activities.RabbitMQ.Consume
 {
@@ -290,11 +291,11 @@ namespace Dev2.Activities.RabbitMQ.Consume
 
         #endregion
 
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             if (env == null)
             {
-                return new List<DebugItem>();
+                return new List<IDebugItem>();
             }
             var debugItem = new DebugItem();
             AddDebugItem(new DebugItemStaticDataParams("", "Requeue"), debugItem);
@@ -305,7 +306,7 @@ namespace Dev2.Activities.RabbitMQ.Consume
         }
 
 
-        public override List<DebugItem> GetDebugOutputs(IExecutionEnvironment env, int update)
+        public override List<IDebugItem> GetDebugOutputs(IExecutionEnvironment env, int update)
         {
             base.GetDebugOutputs(env, update);
 
@@ -323,7 +324,7 @@ namespace Dev2.Activities.RabbitMQ.Consume
                 _debugOutputs.Add(debugItem);
             }
 
-            return _debugOutputs?.Any() ?? false ? _debugOutputs : new List<DebugItem>();
+            return _debugOutputs?.Any() ?? false ? _debugOutputs : new List<IDebugItem>();
         }
 
 
