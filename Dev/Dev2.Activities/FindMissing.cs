@@ -10,23 +10,24 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Xml.Linq;
 using Dev2.Activities;
+using Dev2.Activities.SelectAndApply;
+using Dev2.Activities.Sharepoint;
 using Dev2.Activities.WcfEndPoint;
-using Dev2.Interfaces;
 using Dev2.Util;
 using Dev2.Utilities;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 
 namespace Dev2.FindMissingStrategies
 {
-    public class DataGridActivityFindMissingStrategy : IFindMissingStrategy
+    public static class FindMissing
     {
-        public Enum HandlesType() => enFindMissingType.DataGridActivity;
+        public static List<string> GetActivityFields(object activity) => new List<string>();
 
-        public List<string> GetActivityFields(object activity) => new List<string>();
-
-        public List<string> GetActivityFields(DsfWcfEndPointActivity activity)
+        public static List<string> GetActivityFields(DsfWcfEndPointActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfWcfEndPointActivity maAct)
@@ -63,7 +64,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfComDllActivity activity)
+        public static List<string> GetActivityFields(DsfComDllActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfComDllActivity maAct)
@@ -98,7 +99,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfEnhancedDotNetDllActivity activity)
+        public static List<string> GetActivityFields(DsfEnhancedDotNetDllActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfEnhancedDotNetDllActivity maAct)
@@ -142,7 +143,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public void AddMethodsToRun(List<string> results, Common.Interfaces.IPluginAction pluginAction)
+        static void AddMethodsToRun(List<string> results, Common.Interfaces.IPluginAction pluginAction)
         {
             if (pluginAction?.Inputs != null)
             {
@@ -154,7 +155,7 @@ namespace Dev2.FindMissingStrategies
             }
         }
 
-        public List<string> GetActivityFields(DsfDotNetDllActivity activity)
+        public static List<string> GetActivityFields(DsfDotNetDllActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfDotNetDllActivity maAct)
@@ -190,7 +191,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfWebGetActivity activity)
+        public static List<string> GetActivityFields(DsfWebGetActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfWebGetActivity maAct)
@@ -242,7 +243,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfWebPutActivity activity)
+        public static List<string> GetActivityFields(DsfWebPutActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfWebPutActivity maAct)
@@ -294,7 +295,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfWebDeleteActivity activity)
+        public static List<string> GetActivityFields(DsfWebDeleteActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfWebDeleteActivity maAct)
@@ -342,7 +343,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfWebPostActivity activity)
+        public static List<string> GetActivityFields(DsfWebPostActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfWebPostActivity maAct)
@@ -390,7 +391,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfODBCDatabaseActivity activity)
+        public static List<string> GetActivityFields(DsfODBCDatabaseActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfODBCDatabaseActivity maAct)
@@ -420,7 +421,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfOracleDatabaseActivity activity)
+        public static List<string> GetActivityFields(DsfOracleDatabaseActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfOracleDatabaseActivity maAct)
@@ -446,7 +447,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfPostgreSqlActivity activity)
+        public static List<string> GetActivityFields(DsfPostgreSqlActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfPostgreSqlActivity maAct)
@@ -472,7 +473,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfMySqlDatabaseActivity activity)
+        public static List<string> GetActivityFields(DsfMySqlDatabaseActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfMySqlDatabaseActivity maAct)
@@ -498,7 +499,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfSqlServerDatabaseActivity activity)
+        public static List<string> GetActivityFields(DsfSqlServerDatabaseActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfSqlServerDatabaseActivity maAct)
@@ -524,14 +525,52 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        public List<string> GetActivityFields(DsfDotNetGatherSystemInformationActivity activity) => (List<string>)InternalFindMissing(activity.SystemInformationCollection);
-        public List<string> GetActivityFields(DsfGatherSystemInformationActivity activity) => (List<string>)InternalFindMissing(activity.SystemInformationCollection);
-        public List<string> GetActivityFields(DsfDotNetMultiAssignObjectActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
-        public List<string> GetActivityFields(DsfDotNetMultiAssignActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
-        public List<string> GetActivityFields(DsfMultiAssignObjectActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
-        public List<string> GetActivityFields(DsfMultiAssignActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
-        public List<string> GetActivityFields(DsfCaseConvertActivity activity) => (List<string>)InternalFindMissing(activity.ConvertCollection);
-        public List<string> GetActivityFields(DsfBaseConvertActivity activity) => (List<string>)InternalFindMissing(activity.ConvertCollection);
+        public static List<string> GetActivityFields(DsfDotNetGatherSystemInformationActivity activity) => (List<string>)InternalFindMissing(activity.SystemInformationCollection);
+        public static List<string> GetActivityFields(DsfGatherSystemInformationActivity activity) => (List<string>)InternalFindMissing(activity.SystemInformationCollection);
+        public static List<string> GetActivityFields(DsfDotNetMultiAssignObjectActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
+        public static List<string> GetActivityFields(DsfDotNetMultiAssignActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
+        public static List<string> GetActivityFields(DsfMultiAssignObjectActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
+        public static List<string> GetActivityFields(DsfMultiAssignActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
+        public static List<string> GetActivityFields(DsfCaseConvertActivity activity) => (List<string>)InternalFindMissing(activity.ConvertCollection);
+        public static List<string> GetActivityFields(DsfBaseConvertActivity activity) => (List<string>)InternalFindMissing(activity.ConvertCollection);
+
+        public static List<string> GetActivityFields(DsfActivity act)
+        {
+            var results = new List<string>();
+            if (!string.IsNullOrEmpty(act.ServiceName))
+            {
+                results.Add(act.ServiceName);
+            }
+
+            if (!string.IsNullOrEmpty(act.InputMapping))
+            {
+                var inputMappingElement = XElement.Parse(act.InputMapping);
+                const string InputElement = "Input";
+                var inputs = inputMappingElement.DescendantsAndSelf().Where(c => c.Name.ToString().Equals(InputElement, StringComparison.InvariantCultureIgnoreCase));
+
+                results.AddRange(inputs.Select(element => element.Attribute("Source").Value).Where(val => !string.IsNullOrEmpty(val)));
+            }
+
+            if (!string.IsNullOrEmpty(act.OutputMapping))
+            {
+                var outputMappingElement = XElement.Parse(act.OutputMapping);
+                const string OutputElement = "Output";
+                var inputs = outputMappingElement.DescendantsAndSelf().Where(c => c.Name.ToString().Equals(OutputElement, StringComparison.InvariantCultureIgnoreCase));
+
+                results.AddRange(inputs.Select(element => element.Attribute("Value").Value).Where(val => !string.IsNullOrEmpty(val)));
+            }
+
+            if (!string.IsNullOrEmpty(act.OnErrorVariable))
+            {
+                results.Add(act.OnErrorVariable);
+            }
+
+            if (!string.IsNullOrEmpty(act.OnErrorWorkflow))
+            {
+                results.Add(act.OnErrorWorkflow);
+            }
+            return results;
+        }
 
         static List<string> AddAllHeaders(DsfWebPostActivity maAct)
         {
@@ -544,7 +583,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        IList<string> InternalFindMissing<T>(IEnumerable<T> data)
+        static IList<string> InternalFindMissing<T>(IEnumerable<T> data)
         {
             IList<string> results = new List<string>();
             foreach (T row in data)
@@ -558,6 +597,182 @@ namespace Dev2.FindMissingStrategies
                         results.Add(property.ToString());
                     }
                 }
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(DsfForEachActivity forEachActivity)
+        {
+            var results = new List<string>();
+            enFindMissingType findMissingType;
+            var boolAct = forEachActivity.DataFunc.Handler as DsfNativeActivity<bool>;
+            if (boolAct == null)
+            {
+                if (forEachActivity.DataFunc.Handler is DsfNativeActivity<string> stringAct)
+                {
+                    findMissingType = stringAct.GetFindMissingType();
+                    results.AddRange(GetActivityFields(stringAct));
+                }
+            }
+            else
+            {
+                findMissingType = boolAct.GetFindMissingType();
+                results.AddRange(GetActivityFields(boolAct));
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(DsfSelectAndApplyActivity selectAndApply)
+        {
+            var results = new List<string>();
+            enFindMissingType findMissingType;
+            var boolAct = selectAndApply.ApplyActivityFunc.Handler as DsfNativeActivity<bool>;
+            if (boolAct == null)
+            {
+                if (selectAndApply.ApplyActivityFunc.Handler is DsfNativeActivity<string> stringAct)
+                {
+                    findMissingType = stringAct.GetFindMissingType();
+                    results.AddRange(GetActivityFields(stringAct));
+                }
+            }
+            else
+            {
+                findMissingType = boolAct.GetFindMissingType();
+                results.AddRange(GetActivityFields(boolAct));
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(DsfSequenceActivity sequenceActivity)
+        {
+            var results = new List<string>();
+            foreach (var innerActivity in sequenceActivity.Activities)
+            {
+                if (innerActivity is IDev2Activity dsfActivityAbstractString)
+                {
+                    results.AddRange(GetActivityFields(dsfActivityAbstractString));
+                }
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(DsfNativeActivity<string> act)
+        {
+            var results = new List<string>();
+            if (!string.IsNullOrEmpty(act.OnErrorVariable))
+            {
+                results.Add(act.OnErrorVariable);
+            }
+
+            if (!string.IsNullOrEmpty(act.OnErrorWorkflow))
+            {
+                results.Add(act.OnErrorWorkflow);
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(DsfFindRecordsMultipleCriteriaActivity frmAct)
+        {
+            var results = new List<string>();
+            results.AddRange(InternalFindMissing(frmAct.ResultsCollection));
+            if (!string.IsNullOrEmpty(frmAct.FieldsToSearch))
+            {
+                results.Add(frmAct.FieldsToSearch);
+            }
+            if (!string.IsNullOrEmpty(frmAct.Result))
+            {
+                results.Add(frmAct.Result);
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(DsfSqlBulkInsertActivity sbiAct)
+        {
+            var results = new List<string>();
+            results.AddRange(InternalFindMissing(sbiAct.InputMappings));
+            if (!string.IsNullOrEmpty(sbiAct.Result))
+            {
+                results.Add(sbiAct.Result);
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(DsfXPathActivity xpAct)
+        {
+            var results = new List<string>();
+            results.AddRange(InternalFindMissing(xpAct.ResultsCollection));
+            if (!string.IsNullOrEmpty(xpAct.SourceString))
+            {
+                results.Add(xpAct.SourceString);
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(DsfDataMergeActivity dmAct)
+        {
+            var results = new List<string>();
+            results.AddRange(InternalFindMissing(dmAct.MergeCollection));
+            if (!string.IsNullOrEmpty(dmAct.Result))
+            {
+                results.Add(dmAct.Result);
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(SharepointUpdateListItemActivity dsAct)
+        {
+            var results = new List<string>();
+            results.AddRange(InternalFindMissing(dsAct.ReadListItems));
+            results.AddRange(InternalFindMissing(dsAct.FilterCriteria));
+            results.Add(dsAct.Result);
+            return results;
+        }
+
+        public static List<string> GetActivityFields(SharepointDeleteListItemActivity sharepointDeleteListItemActivity)
+        {
+            var results = new List<string>();
+            results.AddRange(InternalFindMissing(sharepointDeleteListItemActivity.FilterCriteria));
+            results.Add(sharepointDeleteListItemActivity.DeleteCount);
+            return results;
+        }
+
+        public static List<string> GetActivityFields(SharepointCreateListItemActivity sharepointCreateListItemActivity)
+        {
+            var results = new List<string>();
+            results.AddRange(InternalFindMissing(sharepointCreateListItemActivity.ReadListItems));
+            results.Add(sharepointCreateListItemActivity.Result);
+            return results;
+        }
+
+        public static List<string> GetActivityFields(SharepointReadListActivity sharepointReadListActivity)
+        {
+            var results = new List<string>();
+            results.AddRange(InternalFindMissing(sharepointReadListActivity.ReadListItems));
+            if (sharepointReadListActivity.FilterCriteria != null)
+            {
+                results.AddRange(InternalFindMissing(sharepointReadListActivity.FilterCriteria));
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(DsfCreateJsonActivity createJsonActivity)
+        {
+            var results = new List<string>();
+            results.AddRange(InternalFindMissing(createJsonActivity.JsonMappings));
+            if (!string.IsNullOrEmpty(createJsonActivity.JsonString))
+            {
+                results.Add(createJsonActivity.JsonString);
+            }
+            return results;
+        }
+
+        public static List<string> GetActivityFields(DsfDataSplitActivity dataSplitActivity)
+        {
+            var results = new List<string>();
+            results.AddRange(InternalFindMissing(dataSplitActivity.ResultsCollection));
+            if (!string.IsNullOrEmpty(dataSplitActivity.SourceString))
+            {
+                results.Add(dataSplitActivity.SourceString);
             }
             return results;
         }

@@ -11,58 +11,16 @@
 using System.Collections.Generic;
 using Dev2.Activities;
 using Dev2.Factories;
+using Dev2.FindMissingStrategies;
 using Dev2.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 
 namespace Dev2.Tests.Activities.FindMissingStrategyTest
 {
-    /// <summary>
-    /// Summary description for StaticActivityFindMissingStrategyTests
-    /// </summary>
     [TestClass]
     public class StaticActivityFindMissingStrategyTests
     {
-        TestContext _testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return _testContextInstance;
-            }
-            set
-            {
-                _testContextInstance = value;
-            }
-        }
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
         #region Calculate Activity Tests
 
         [TestMethod]
@@ -71,9 +29,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             var activity = new DsfCalculateActivity();
             activity.Expression = "[[Expression]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[Expression]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -88,9 +44,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             var nullHandlerActivity = new DsfCountRecordsetNullHandlerActivity();
             nullHandlerActivity.RecordsetName = "[[RecordsetName]]";
             nullHandlerActivity.CountNumber = "[[CountNumber]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(nullHandlerActivity);
+            var actual = FindMissing.GetActivityFields(nullHandlerActivity);
             var expected = new List<string> { "[[RecordsetName]]", "[[CountNumber]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -101,9 +55,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             var activity = new DsfRecordsetNullhandlerLengthActivity();
             activity.RecordsetName = "[[RecordsetName]]";
             activity.RecordsLength = "[[CountNumber]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[RecordsetName]]", "[[CountNumber]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -122,9 +74,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.OutputFormat = "[[OutputFormat]]";
             activity.TimeModifierAmountDisplay = "[[TimeModifierAmountDisplay]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[DateTime]]", "[[InputFormat]]", "[[OutputFormat]]", "[[TimeModifierAmountDisplay]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -141,9 +91,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.Input2 = "[[Input2]]";
             activity.InputFormat = "[[InputFormat]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[Input1]]", "[[Input2]]", "[[InputFormat]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -158,9 +106,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             var nullHandlerActivity = new DsfDeleteRecordNullHandlerActivity();
             nullHandlerActivity.RecordsetName = "[[RecordsetName]]";
             nullHandlerActivity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(nullHandlerActivity);
+            var actual = FindMissing.GetActivityFields(nullHandlerActivity);
             var expected = new List<string> { "[[RecordsetName]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -175,16 +121,13 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             var activity = new DsfExecuteCommandLineActivity();
             activity.CommandFileName = "[[CommandFileName]]";
             activity.CommandResult = "[[CommandResult]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[CommandFileName]]", "[[CommandResult]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
 
         #endregion
         
-
         #region ForEach Activity Tests
 
         [TestMethod]
@@ -192,9 +135,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
         {
             var activity = new DsfForEachActivity();
             activity.ForEachElementName = "[[ForEachElementName]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[ForEachElementName]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -211,9 +152,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.Characters = "[[Characters]]";
             activity.Result = "[[Result]]";
             activity.StartIndex = "[[StartIndex]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[InField]]", "[[Characters]]", "[[Result]]", "[[StartIndex]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -230,9 +169,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.RoundingDecimalPlaces = "[[RoundingDecimalPlaces]]";
             activity.DecimalPlacesToShow = "[[DecimalPlacesToShow]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[Expression]]", "[[RoundingDecimalPlaces]]", "[[DecimalPlacesToShow]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -249,9 +186,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.Find = "[[Find]]";
             activity.ReplaceWith = "[[ReplaceWith]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[FieldsToSearch]]", "[[Find]]", "[[ReplaceWith]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -265,9 +200,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
         {
             var activity = new DsfSortRecordsActivity();
             activity.SortField = "[[SortField]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[SortField]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -287,9 +220,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.PrivateKeyFile = "[[KeyFile]]";
             activity.Username = "[[Username]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[InputPath]]", "[[Password]]", "[[Username]]", "[[KeyFile]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -308,9 +239,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.PrivateKeyFile = "[[KeyFile]]";
             activity.Username = "[[Username]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[FileContents]]", "[[OutputPath]]", "[[Password]]", "[[Username]]","[[KeyFile]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -328,9 +257,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.PrivateKeyFile = "[[PrivateKey]]";
             activity.Username = "[[Username]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "False", "False", "False", "[[InputPath]]", "[[Password]]", "[[Username]]","[[PrivateKey]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -352,9 +279,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.DestinationUsername = "[[DestUsername]]";
             activity.DestinationPrivateKeyFile = "[[DestKeyFile]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[InputPath]]", "[[OutputPath]]", "[[DestUsername]]", "[[DestKeyFile]]", "[[DestPassword]]", "[[Password]]", "[[Username]]", "[[KeyFile]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -372,9 +297,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.Username = "[[Username]]";
             activity.PrivateKeyFile = "[[KeyFile]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[OutputPath]]", "[[Password]]", "[[Username]]","[[KeyFile]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -392,9 +315,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.Username = "[[Username]]";
             activity.PrivateKeyFile = "[[KeyFile]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[InputPath]]", "[[Password]]", "[[Username]]","[[KeyFile]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -416,9 +337,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.DestinationUsername = "[[DestUsername]]";
             activity.DestinationPrivateKeyFile = "[[DestKeyFile]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[InputPath]]", "[[OutputPath]]", "[[DestUsername]]","[[DestKeyFile]]", "[[DestPassword]]", "[[Password]]", "[[Username]]","[[KeyFile]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -440,9 +359,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.DestinationUsername = "[[DestUsername]]";
             activity.DestinationPrivateKeyFile = "[[DestKeyFile]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[InputPath]]", "[[OutputPath]]", "[[DestUsername]]","[[DestKeyFile]]", "[[DestPassword]]", "[[Password]]", "[[Username]]","[[KeyFile]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -465,9 +382,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.DestinationUsername = "[[DestUsername]]";
             activity.DestinationPrivateKeyFile = "[[DestKeyFile]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> { "[[ArchivePassword]]", "[[InputPath]]", "[[OutputPath]]", "[[DestUsername]]","[[DestKeyFile]]", "[[DestPassword]]", "[[Password]]", "[[Username]]","[[KeyFile]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -492,9 +407,7 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.DestinationUsername = "[[DestUsername]]";
             activity.DestinationPrivateKeyFile = "[[DestKeyFile]]";
             activity.Result = "[[Result]]";
-            var fac = new Dev2FindMissingStrategyFactory();
-            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
-            var actual = strategy.GetActivityFields(activity);
+            var actual = FindMissing.GetActivityFields(activity);
             var expected = new List<string> {"[[ArchivePassword]]", "[[ArchiveName]]", "[[CompressionRatio]]", "[[InputPath]]", "[[OutputPath]]", "[[DestUsername]]","[[DestKeyFile]]", "[[DestPassword]]", "[[Password]]", "[[Username]]","[[KeyFile]]", "[[Result]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
