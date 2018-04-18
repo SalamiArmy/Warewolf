@@ -140,33 +140,11 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             }
         }
 
-        private void TryExecute(IDSFDataObject dataObject, int update, ErrorResultTO allErrors, ErrorResultTO errors)
+        void TryExecute(IDSFDataObject dataObject, int update, ErrorResultTO allErrors, ErrorResultTO errors)
         {
             if (dataObject.IsDebugMode())
             {
-                if (string.IsNullOrEmpty(Input1))
-                {
-                    AddDebugInputItem(new DebugItemStaticDataParams(DateTime.Now.ToString(GlobalConstants.PreviousDev2DotNetDefaultDateTimeFormat), "now()", "Input 1", "="));
-                }
-                else
-                {
-                    AddDebugInputItem(Input1, "Input 1", dataObject.Environment, update);
-                }
-
-                if (string.IsNullOrEmpty(Input2))
-                {
-                    AddDebugInputItem(new DebugItemStaticDataParams(DateTime.Now.ToString(GlobalConstants.PreviousDev2DotNetDefaultDateTimeFormat), "now()", "Input 2", "="));
-                }
-                else
-                {
-                    AddDebugInputItem(Input2, "Input 2", dataObject.Environment, update);
-                }
-
-                AddDebugInputItem(InputFormat, "Input Format", dataObject.Environment, update);
-                if (!String.IsNullOrEmpty(OutputType))
-                {
-                    AddDebugInputItem(new DebugItemStaticDataParams(OutputType, "Output In"));
-                }
+                AddDebugItems(dataObject, update);
             }
             var colItr = new WarewolfListIterator();
 
@@ -218,6 +196,33 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             if (dataObject.IsDebugMode() && !allErrors.HasErrors())
             {
                 AddDebugOutputItem(new DebugEvalResult(Result, null, dataObject.Environment, update));
+            }
+        }
+
+        void AddDebugItems(IDSFDataObject dataObject, int update)
+        {
+            if (string.IsNullOrEmpty(Input1))
+            {
+                AddDebugInputItem(new DebugItemStaticDataParams(DateTime.Now.ToString(GlobalConstants.PreviousDev2DotNetDefaultDateTimeFormat), "now()", "Input 1", "="));
+            }
+            else
+            {
+                AddDebugInputItem(Input1, "Input 1", dataObject.Environment, update);
+            }
+
+            if (string.IsNullOrEmpty(Input2))
+            {
+                AddDebugInputItem(new DebugItemStaticDataParams(DateTime.Now.ToString(GlobalConstants.PreviousDev2DotNetDefaultDateTimeFormat), "now()", "Input 2", "="));
+            }
+            else
+            {
+                AddDebugInputItem(Input2, "Input 2", dataObject.Environment, update);
+            }
+
+            AddDebugInputItem(InputFormat, "Input Format", dataObject.Environment, update);
+            if (!String.IsNullOrEmpty(OutputType))
+            {
+                AddDebugInputItem(new DebugItemStaticDataParams(OutputType, "Output In"));
             }
         }
 
