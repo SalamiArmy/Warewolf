@@ -161,7 +161,8 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             var dictionaryKey = 0;
             foreach (DataMergeDTO row in MergeCollection)
             {
-                dictionaryKey = ExecuteDataMergeRow(dataObject, update, allErrors, errorResultTo, warewolfListIterator, listOfIterators, dictionaryKey, row);
+                allErrors.MergeErrors(errorResultTo);
+                dictionaryKey = ExecuteDataMergeRow(dataObject, update, warewolfListIterator, dictionaryKey, row, ref listOfIterators);
             }
 
             #endregion
@@ -197,10 +198,8 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             #endregion Iterate and Merge Data
         }
 
-        private int ExecuteDataMergeRow(IDSFDataObject dataObject, int update, ErrorResultTO allErrors, ErrorResultTO errorResultTo, IWarewolfListIterator warewolfListIterator, Dictionary<int, List<IWarewolfIterator>> listOfIterators, int dictionaryKey, DataMergeDTO row)
+        int ExecuteDataMergeRow(IDSFDataObject dataObject, int update, IWarewolfListIterator warewolfListIterator, int dictionaryKey, DataMergeDTO row, ref Dictionary<int, List<IWarewolfIterator>> listOfIterators)
         {
-            allErrors.MergeErrors(errorResultTo);
-
             if (dataObject.IsDebugMode())
             {
                 var debugItem = new DebugItem();
