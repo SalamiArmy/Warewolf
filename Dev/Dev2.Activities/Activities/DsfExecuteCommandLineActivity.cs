@@ -97,11 +97,7 @@ namespace Dev2.Activities
             : base("Execute Command Line")
         {
         }
-
-        /// <summary>
-        /// When overridden runs the activity's execution logic
-        /// </summary>
-        /// <param name="context">The context to be used.</param>
+        
         protected override void OnExecute(NativeActivityContext context)
         {
             _nativeActivityContext = context;
@@ -118,7 +114,6 @@ namespace Dev2.Activities
         protected override void ExecuteTool(IDSFDataObject dataObject, int update)
         {
             var exeToken = dataObject.ExecutionToken;
-
 
             var allErrors = new ErrorResultTO();
 
@@ -173,7 +168,6 @@ namespace Dev2.Activities
             }
             finally
             {
-
                 if (!string.IsNullOrEmpty(_fullPath))
                 {
                     File.Delete(_fullPath);
@@ -182,28 +176,32 @@ namespace Dev2.Activities
                     {
                         File.Delete(tmpFile);
                     }
-                }
-                // Handle Errors    
-                var hasErrors = allErrors.HasErrors();
-                if(hasErrors)
+                } 
+                HandleErrors(dataObject, update, allErrors);
+            }
+        }
+
+        private void HandleErrors(IDSFDataObject dataObject, int update, ErrorResultTO allErrors)
+        {
+            var hasErrors = allErrors.HasErrors();
+            if (hasErrors)
+            {
+                DisplayAndWriteError("DsfExecuteCommandLineActivity", allErrors);
+                if (dataObject.Environment != null)
                 {
-                    DisplayAndWriteError("DsfExecuteCommandLineActivity", allErrors);
-                    if(dataObject.Environment != null)
-                    {
-                        var errorString = allErrors.MakeDisplayReady();
-                        dataObject.Environment.AddError(errorString);
-                        dataObject.Environment.Assign(CommandResult, null, update);
-                    }
+                    var errorString = allErrors.MakeDisplayReady();
+                    dataObject.Environment.AddError(errorString);
+                    dataObject.Environment.Assign(CommandResult, null, update);
                 }
-                if(dataObject.IsDebugMode())
+            }
+            if (dataObject.IsDebugMode())
+            {
+                if (hasErrors)
                 {
-                    if(hasErrors)
-                    {
-                        AddDebugOutputItem(new DebugItemStaticDataParams("", CommandResult, ""));
-                    }
-                    DispatchDebugState(dataObject, StateType.Before, update);
-                    DispatchDebugState(dataObject, StateType.After, update);
+                    AddDebugOutputItem(new DebugItemStaticDataParams("", CommandResult, ""));
                 }
+                DispatchDebugState(dataObject, StateType.Before, update);
+                DispatchDebugState(dataObject, StateType.After, update);
             }
         }
 
