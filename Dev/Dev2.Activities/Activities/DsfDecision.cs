@@ -91,10 +91,7 @@ namespace Dev2.Activities
 
         public DsfDecision()
         : base("Decision") { }
-        /// <summary>
-        /// When overridden runs the activity's execution logic
-        /// </summary>
-        /// <param name="context">The context to be used.</param>
+
         protected override void OnExecute(NativeActivityContext context)
         {
         }
@@ -132,60 +129,13 @@ namespace Dev2.Activities
             var errorIfNull = !Conditions.TheStack.Any(decision => decision.EvaluationFn == enDecisionType.IsNull || decision.EvaluationFn == enDecisionType.IsNotNull);
 
             var stack = Conditions.TheStack.Select(a => ParseDecision(dataObject.Environment, a, errorIfNull));
-
-            var factory = Dev2DecisionFactory.Instance();
-            var res = stack.SelectMany(a =>
+            
+            var res = stack.SelectMany(decision =>
             {
-                if (a.EvaluationFn == enDecisionType.IsError)
-                {
-                    return new[] { dataObject.Environment.AllErrors.Count > 0 };
-                }
-                if (a.EvaluationFn == enDecisionType.IsNotError)
-                {
-                    return new[] { dataObject.Environment.AllErrors.Count == 0 };
-                }
-                IList<bool> ret = new List<bool>();
-                var iter = new WarewolfListIterator();
-                var c1 = new WarewolfAtomIterator(a.Cols1);
-                var c2 = new WarewolfAtomIterator(a.Cols2);
-                var c3 = new WarewolfAtomIterator(a.Cols3);
-                iter.AddVariableToIterateOn(c1);
-                iter.AddVariableToIterateOn(c2);
-                iter.AddVariableToIterateOn(c3);
-                while (iter.HasMoreData())
-                {
-                    try
-                    {
-                        ret.Add(factory.FetchDecisionFunction(a.EvaluationFn).Invoke(new[] { iter.FetchNextValue(c1), iter.FetchNextValue(c2), iter.FetchNextValue(c3) }));
-                    }
-                    catch (Exception)
-                    {
-                        if (errorIfNull)
-                        {
-                            throw;
-                        }
-                        ret.Add(false);
-                    }
-                }
-                return ret;
+                return ExecuteAllDecisions(dataObject, decision, errorIfNull);
             });
-
-            var results = res as IList<bool> ?? res.ToList();
-            var resultval = true;
-            if (results.Any())
-            {
-                if (And)
-                {
-                    if (results.Any(b => !b))
-                    {
-                        resultval = false;
-                    }
-                }
-                else
-                {
-                    resultval = results.Any(b => b);
-                }
-            }
+            
+            var resultval = AndOrResultList(res.ToList());
 
             Result = GetResultString(resultval.ToString(), Conditions);
             if (dataObject.IsDebugMode())
@@ -210,6 +160,69 @@ namespace Dev2.Activities
             }
 
             return null;
+        }
+
+        static IEnumerable<bool> ExecuteAllDecisions(IDSFDataObject dataObject, Dev2Decision decision, bool errorIfNull)
+        {
+            var factory = Dev2DecisionFactory.Instance();
+            if (decision.EvaluationFn == enDecisionType.IsError)
+            {
+                return new[] { dataObject.Environment.AllErrors.Count > 0 };
+            }
+            if (decision.EvaluationFn == enDecisionType.IsNotError)
+            {
+                return new[] { dataObject.Environment.AllErrors.Count == 0 };
+            }
+            IList<bool> results = new List<bool>();
+            var iter = new WarewolfListIterator();
+            var c1 = new WarewolfAtomIterator(decision.Cols1);
+            var c2 = new WarewolfAtomIterator(decision.Cols2);
+            var c3 = new WarewolfAtomIterator(decision.Cols3);
+            iter.AddVariableToIterateOn(c1);
+            iter.AddVariableToIterateOn(c2);
+            iter.AddVariableToIterateOn(c3);
+            while (iter.HasMoreData())
+            {
+                try
+                {
+                    results.Add(factory.FetchDecisionFunction(decision.EvaluationFn).Invoke(new[] 
+                    {
+                        iter.FetchNextValue(c1),
+                        iter.FetchNextValue(c2),
+                        iter.FetchNextValue(c3)
+                    }));
+                }
+                catch (Exception)
+                {
+                    if (errorIfNull)
+                    {
+                        throw;
+                    }
+                    results.Add(false);
+                }
+            }
+            return results;
+        }
+
+        bool AndOrResultList(IList<bool> results)
+        {
+            bool resultval = true;
+            if (results.Any())
+            {
+                if (And)
+                {
+                    if (results.Any(b => !b))
+                    {
+                        resultval = false;
+                    }
+                }
+                else
+                {
+                    resultval = results.Any(b => b);
+                }
+            }
+
+            return resultval;
         }
 
         public override FlowNode GetFlowNode() => new FlowDecision(_inner);
