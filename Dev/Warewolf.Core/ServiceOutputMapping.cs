@@ -98,6 +98,7 @@ namespace Warewolf.Core
             }
         }
 
+        [FindMissing]
         public string MappedTo
         {
             get

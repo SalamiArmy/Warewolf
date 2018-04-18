@@ -59,7 +59,9 @@ namespace Dev2.Activities.SelectAndApply
             base.CacheMetadata(metadata);
         }
 
+        [FindMissing]
         public string DataSource { get; set; }
+        [FindMissing]
         public string Alias { get; set; }
         public ActivityFunc<string, bool> ApplyActivityFunc { get; set; }
 

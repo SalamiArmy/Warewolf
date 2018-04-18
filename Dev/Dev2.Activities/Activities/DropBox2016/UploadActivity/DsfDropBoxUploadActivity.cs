@@ -49,9 +49,11 @@ namespace Dev2.Activities.DropBox2016.UploadActivity
         public OauthSource SelectedSource { get; set; }
                 
         [Inputs("Local File Path")]
+        [FindMissing]
         public string FromPath { get; set; }
                 
         [Inputs("Path in the user's Dropbox")]
+        [FindMissing]
         public string ToPath { get; set; }
 
         public bool OverWriteMode

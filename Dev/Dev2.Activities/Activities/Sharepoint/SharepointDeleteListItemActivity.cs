@@ -40,6 +40,7 @@ namespace Dev2.Activities.Sharepoint
         }
         
         [Outputs("DeleteCount")]
+        [FindMissing]
         public string DeleteCount { get; set; }
         public IList<SharepointReadListTo> ReadListItems { get; set; }
         public Guid SharepointServerResourceId { get; set; }

@@ -38,13 +38,16 @@ namespace Dev2.Activities
         /// The property that holds all the convertions
         /// </summary>
 
+        [FindMissing]
         public string InFields { get; set; }
 
+        [FindMissing]
         public string ResultFields { get; set; }
 
         /// <summary>
         /// The property that holds the result string the user enters into the "Result" box
         /// </summary>
+        [FindMissing]
         public new string Result { get; set; }
 
 

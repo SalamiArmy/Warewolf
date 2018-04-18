@@ -39,15 +39,20 @@ namespace Dev2.Activities.RabbitMQ.Publish
         public Guid RabbitMQSourceResourceId { get; set; }
 
         [Inputs("Queue Name")]
+        [FindMissing]
         public string QueueName { get; set; }
 
+        [FindMissing]
         public bool IsDurable { get; set; }
 
+        [FindMissing]
         public bool IsExclusive { get; set; }
 
+        [FindMissing]
         public bool IsAutoDelete { get; set; }
 
         [Inputs("Message")]
+        [FindMissing]
         public string Message { get; set; }
 
         [NonSerialized]

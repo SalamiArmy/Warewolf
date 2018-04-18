@@ -102,6 +102,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Gets or sets the input path.
         /// </summary>
         [Inputs("Input Path")]
+        [FindMissing]
         public string InputPath
         {
             get;

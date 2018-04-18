@@ -100,6 +100,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Gets or sets the output path.
         /// </summary>
         [Inputs("Output Path")]
+        [FindMissing]
         public string OutputPath
         {
             get;

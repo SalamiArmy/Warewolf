@@ -44,18 +44,21 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// The property that holds the date time string the user enters into the "Input" box
         /// </summary>
         [Inputs("DateTime")]
+        [FindMissing]
         public string DateTime { get; set; }
 
         /// <summary>
         /// The property that holds the input format string the user enters into the "Input Format" box
         /// </summary>
         [Inputs("InputFormat")]
+        [FindMissing]
         public string InputFormat { get; set; }
 
         /// <summary>
         /// The property that holds the output format string the user enters into the "Output Format" box
         /// </summary>
         [Inputs("OutputFormat")]
+        [FindMissing]
         public string OutputFormat { get; set; }
 
         /// <summary>
@@ -68,6 +71,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// The property that holds the time modifier string the user enters into the "Amount" box
         /// </summary>
         [Inputs("TimeModifierAmountDisplay")]
+        [FindMissing]
         public string TimeModifierAmountDisplay { get; set; }
 
         /// <summary>
@@ -79,6 +83,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// The property that holds the result string the user enters into the "Result" box
         /// </summary>
         [Outputs("Result")]
+        [FindMissing]
         public new string Result { get; set; }
 
         #endregion Properties

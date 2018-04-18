@@ -25,6 +25,7 @@ namespace Dev2.TO
         string _inputColumn;
         IDbColumn _outputColumn;
 
+        [FindMissing]
         public string InputColumn { get => _inputColumn; set => OnPropertyChanged(ref _inputColumn, value); }
 
         public IDbColumn OutputColumn { get => _outputColumn; set => OnPropertyChanged(ref _outputColumn, value); }

@@ -37,19 +37,26 @@ namespace Dev2.Activities.DropBox2016.DropboxFileActivity
         IDropboxClientWrapper _dropboxClientWrapper;
         public Exception Exception { get; set; }
 
+        [FindMissing]
         public bool IncludeMediaInfo { get; set; }
 
+        [FindMissing]
         public bool IsRecursive { get; set; }
 
+        [FindMissing]
         public bool IncludeDeleted { get; set; }
 
         [Inputs("Path in the user's Dropbox")]
+        [FindMissing]
         public string ToPath { get; set; }
 
+        [FindMissing]
         public bool IsFilesSelected { get; set; }
 
+        [FindMissing]
         public bool IsFoldersSelected { get; set; }
 
+        [FindMissing]
         public bool IsFilesAndFoldersSelected { get; set; }
 
 

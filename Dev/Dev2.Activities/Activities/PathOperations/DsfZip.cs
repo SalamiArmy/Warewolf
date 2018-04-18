@@ -61,6 +61,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Gets or sets the archive password.
         /// </summary>      
         [Inputs("Archive Password")]
+        [FindMissing]
         public string ArchivePassword
         {
             get => _archivePassword;
@@ -95,6 +96,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Gets or sets the name of the archive.
         /// </summary>
         [Inputs("Archive Name")]
+        [FindMissing]
         public string ArchiveName { get; set; }
 
         /// <summary>

@@ -40,6 +40,7 @@ namespace Dev2.Activities.DropBox2016.DeleteActivity
         public OauthSource SelectedSource { get; set; }
 
         [Inputs("Path in the user's Dropbox")]
+        [FindMissing]
         public string DeletePath { get; set; }
 
         protected virtual DropboxClient GetClient()

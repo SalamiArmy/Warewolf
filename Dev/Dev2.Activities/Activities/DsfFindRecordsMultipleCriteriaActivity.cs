@@ -49,6 +49,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Property for holding a string the user enters into the "In Fields" box
         /// </summary>
         [Inputs("FieldsToSearch")]
+        [FindMissing]
         public string FieldsToSearch { get; set; }
 
 
@@ -56,12 +57,14 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Property for holding a string the user enters into the "Result" box
         /// </summary>
         [Outputs("Result")]
+        [FindMissing]
         public new string Result { get; set; }
 
         /// <summary>
         /// Property for holding a string the user enters into the "Start Index" box
         /// </summary>
         [Inputs("StartIndex")]
+        [FindMissing]
         public string StartIndex { get; set; }
 
         /// <summary>

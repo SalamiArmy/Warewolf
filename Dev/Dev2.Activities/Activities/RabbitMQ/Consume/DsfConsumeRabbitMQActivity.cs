@@ -41,6 +41,7 @@ namespace Dev2.Activities.RabbitMQ.Consume
         ushort _prefetch;
         int _timeOut;
         public bool IsObject { get; set; }
+        [FindMissing]
         public string ObjectName { get; set; }
         public DsfConsumeRabbitMQActivity()
             : this(new ResponseManager())
@@ -67,15 +68,19 @@ namespace Dev2.Activities.RabbitMQ.Consume
         public Guid RabbitMQSourceResourceId { get; set; }
 
         [Inputs("Queue Name")]
+        [FindMissing]
         public string QueueName { get; set; }
 
+        [FindMissing]
         public string Response { get; set; }
 
+        [FindMissing]
         [Inputs("Prefetch")]
         public string Prefetch { get; set; }
 
         public bool Acknowledge { get; set; }
 
+        [FindMissing]
         public string TimeOut { get; set; }
 
         public bool ReQueue { get; set; }

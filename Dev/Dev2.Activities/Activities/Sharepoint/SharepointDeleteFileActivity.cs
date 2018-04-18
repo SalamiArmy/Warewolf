@@ -35,6 +35,7 @@ namespace Dev2.Activities.Sharepoint
         protected override bool AssignEmptyOutputsToRecordSet => true;
         
         [Inputs("Server Input Path")]
+        [FindMissing]
         public string ServerInputPath
         {
             get;

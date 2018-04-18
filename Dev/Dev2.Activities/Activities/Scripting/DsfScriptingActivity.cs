@@ -43,12 +43,15 @@ namespace Dev2.Activities
         [Inputs("EscapeScript")]
         public bool EscapeScript { get; set; }
 
+        [FindMissing]
         [Inputs("IncludeFile")]
         public string IncludeFile { get; set; }
 
+        [FindMissing]
         [Inputs("Script")]
         public string Script { get; set; }
 
+        [FindMissing]
         [Outputs("Result")]
         public new string Result { get; set; }
 

@@ -65,18 +65,22 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         #region Properties
 
         [Inputs("Expression")]
+        [FindMissing]
         public string Expression { get; set; }
 
         [Inputs("RoundingType")]
         public string RoundingType { get; set; }
 
         [Inputs("RoundingDecimalPlaces")]
+        [FindMissing]
         public string RoundingDecimalPlaces { get; set; }
 
         [Inputs("DecimalPlacesToShow")]
+        [FindMissing]
         public string DecimalPlacesToShow { get; set; }
 
         [Outputs("Result")]
+        [FindMissing]
         public new string Result { get; set; }
 
         protected override bool CanInduceIdle => true;

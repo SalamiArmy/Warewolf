@@ -38,6 +38,7 @@ namespace Dev2.Activities.Sharepoint
         /// Gets or sets the input path.
         /// </summary>
         [Inputs("Server Input Path")]
+        [FindMissing]
         public string ServerInputPath
         {
             get;
@@ -47,6 +48,7 @@ namespace Dev2.Activities.Sharepoint
         /// Gets or sets the input path.
         /// </summary>
         [Inputs("Local Input Path")]
+        [FindMissing]
         public string LocalInputPath
         {
             get;

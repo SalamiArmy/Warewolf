@@ -54,11 +54,17 @@ namespace Dev2.Activities.Exchange
 
         public IExchangeSource SavedSource { get; set; }
 
+        [FindMissing]
         public string To { get; set; }
+        [FindMissing]
         public string Cc { get; set; }
+        [FindMissing]
         public string Bcc { get; set; }
+        [FindMissing]
         public string Subject { get; set; }
+        [FindMissing]
         public string Attachments { get; set; }
+        [FindMissing]
         public string Body { get; set; }
 
         public bool IsHtml { get; set; }
@@ -66,6 +72,7 @@ namespace Dev2.Activities.Exchange
         /// <summary>
         /// The property that holds the result string the user enters into the "Result" box
         /// </summary>
+        [FindMissing]
         public new string Result { get; set; }
 
         public override List<string> GetOutputs() => new List<string> { Result };

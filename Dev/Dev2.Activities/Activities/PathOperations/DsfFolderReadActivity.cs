@@ -161,6 +161,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Gets or sets the files option.
         /// </summary>
         [Inputs("Files")]
+        [FindMissing]
 
         public bool IsFilesSelected
         {
@@ -172,6 +173,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Gets or sets the folders otion.
         /// </summary>
         [Inputs("Folders")]
+        [FindMissing]
         public bool IsFoldersSelected
         {
             get;
@@ -182,6 +184,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// </summary>
 
         [Inputs("Files & Folders")]
+        [FindMissing]
         public bool IsFilesAndFoldersSelected
         {
             get;
@@ -189,6 +192,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         }
         
         [Inputs("Input Path")]
+        [FindMissing]
         public string InputPath
         {
             get;

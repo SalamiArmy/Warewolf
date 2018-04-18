@@ -40,6 +40,7 @@ namespace Dev2.Activities.Sharepoint
             _sharepointUtils = new SharepointUtils();
         }
 
+        [FindMissing]
 
         public new string Result { get; set; }
         /// <summary>

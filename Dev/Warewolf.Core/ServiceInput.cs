@@ -108,6 +108,7 @@ namespace Warewolf.Core
             }
         }
 
+        [FindMissing]
         public string Value
         {
             get

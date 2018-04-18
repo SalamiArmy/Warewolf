@@ -40,12 +40,14 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// The property that holds the Expression string the user enters into the "fx" box
         /// </summary>
         [Inputs("Expression")]
+        [FindMissing]
         public string Expression { get; set; }
 
         /// <summary>
         /// The property that holds the Result string the user enters into the "Result" box
         /// </summary>
         [Outputs("Result")]
+        [FindMissing]
         public new string Result { get; set; }
 
         #endregion Properties

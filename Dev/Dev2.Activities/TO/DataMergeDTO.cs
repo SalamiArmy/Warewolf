@@ -89,6 +89,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             
         }
 
+        [FindMissing]
         public string Padding { get; set; }
 
         public string Alignment
@@ -109,6 +110,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
 
         public int IndexNumber { get => _indexNum; set => OnPropertyChanged(ref _indexNum, value); }
 
+        [FindMissing]
         public string InputVariable
         {
             get { return _inputVariable; }
@@ -134,6 +136,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             }
         }
 
+        [FindMissing]
         public string At
         {
             get { return _at; }

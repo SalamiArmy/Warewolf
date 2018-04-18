@@ -42,6 +42,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Gets or sets the archive password.
         /// </summary>      
         [Inputs("Archive Password")]
+        [FindMissing]
         public string ArchivePassword { get; set; }
         #endregion Properties
 

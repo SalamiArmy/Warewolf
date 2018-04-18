@@ -69,17 +69,23 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         public enForEachType ForEachType { get; set; }
 
 
+        [FindMissing]
         public string From { get; set; }
 
+        [FindMissing]
         public string To { get; set; }
 
+        [FindMissing]
         public string Recordset { get; set; }
 
+        [FindMissing]
         public string CsvIndexes { get; set; }
 
+        [FindMissing]
         public string NumOfExections { get; set; }
 
         [Inputs("FromDisplayName")]
+        [FindMissing]
         
         public string FromDisplayName
         
@@ -96,6 +102,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         }
 
         [Inputs("ForEachElementName")]
+        [FindMissing]
         
         public string ForEachElementName
         

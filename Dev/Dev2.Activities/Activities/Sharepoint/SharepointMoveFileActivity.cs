@@ -39,6 +39,7 @@ namespace Dev2.Activities.Sharepoint
         /// Gets or sets the input path.
         /// </summary>
         [Inputs("Server Input Path From")]
+        [FindMissing]
         public string ServerInputPathFrom
         {
             get;
@@ -48,6 +49,7 @@ namespace Dev2.Activities.Sharepoint
         /// Gets or sets the input path.
         /// </summary>
         [Inputs("Server Input Path To")]
+        [FindMissing]
         public string ServerInputPathTo
         {
             get;
@@ -55,6 +57,7 @@ namespace Dev2.Activities.Sharepoint
         }
 
         [Inputs("Overwrite")]
+        [FindMissing]
         public bool Overwrite { get; set; }
 
         public SharepointSource SharepointSource { get; set; }

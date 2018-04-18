@@ -25,6 +25,7 @@ namespace Dev2.TO
         public string InternalName { get; set; }
 
         public string FieldName { get; set; }
+        [FindMissing]
         public string VariableName { get; set; }
         public string Type { get; set; }
         public bool IsRequired { get; set; }
