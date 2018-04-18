@@ -87,11 +87,7 @@ namespace Dev2.Activities
 
 
         #region Overrides of DsfNativeActivity<string>
-
-        /// <summary>
-        ///     When overridden runs the activity's execution logic
-        /// </summary>
-        /// <param name="context">The context to be used.</param>
+        
         protected override void OnExecute(NativeActivityContext context)
         {
             var dataObject = context.GetExtension<IDSFDataObject>();
