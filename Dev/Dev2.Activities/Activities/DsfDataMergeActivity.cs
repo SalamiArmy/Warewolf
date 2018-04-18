@@ -161,63 +161,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             var dictionaryKey = 0;
             foreach (DataMergeDTO row in MergeCollection)
             {
-                allErrors.MergeErrors(errorResultTo);
-
-                if (dataObject.IsDebugMode())
-                {
-                    var debugItem = new DebugItem();
-                    AddDebugItem(new DebugItemStaticDataParams("", (MergeCollection.IndexOf(row) + 1).ToString(CultureInfo.InvariantCulture)), debugItem);
-                    AddDebugItem(new DebugEvalResult(row.InputVariable, "", dataObject.Environment, update, true), debugItem);
-                    AddDebugItem(new DebugItemStaticDataParams(row.MergeType, "With"), debugItem);
-                    AddDebugItem(new DebugEvalResult(row.At, "Using", dataObject.Environment, update), debugItem);
-                    AddDebugItem(new DebugEvalResult(row.Padding, "Pad", dataObject.Environment, update), debugItem);
-
-                    //Old workflows don't have this set. 
-                    if (row.Alignment == null)
-                    {
-                        row.Alignment = string.Empty;
-                    }
-
-                    AddDebugItem(DataListUtil.IsEvaluated(row.Alignment) ? new DebugItemStaticDataParams("", row.Alignment, "Align") : new DebugItemStaticDataParams(row.Alignment, "Align"), debugItem);
-
-                    _debugInputs.Add(debugItem);
-                }
-                var listOfEvalResultsForInput = dataObject.Environment.EvalForDataMerge(row.InputVariable, update);
-                var innerIterator = new WarewolfListIterator();
-                var innerListOfIters = new List<WarewolfIterator>();
-
-                foreach (var listOfIterator in listOfEvalResultsForInput)
-                {
-                    var inIterator = new WarewolfIterator(listOfIterator);
-                    innerIterator.AddVariableToIterateOn(inIterator);
-                    innerListOfIters.Add(inIterator);
-                }
-                var atomList = new List<DataStorage.WarewolfAtom>();
-                while (innerIterator.HasMoreData())
-                {
-                    var stringToUse = "";
-                    foreach (var warewolfIterator in innerListOfIters)
-                    {
-                        stringToUse += warewolfIterator.GetNextValue();
-                    }
-                    atomList.Add(DataStorage.WarewolfAtom.NewDataString(stringToUse));
-                }
-                var finalString = string.Join("", atomList);
-                var inputListResult = CommonFunctions.WarewolfEvalResult.NewWarewolfAtomListresult(new WarewolfAtomList<DataStorage.WarewolfAtom>(DataStorage.WarewolfAtom.Nothing, atomList));
-                if (DataListUtil.IsFullyEvaluated(finalString))
-                {
-                    inputListResult = dataObject.Environment.Eval(finalString, update);
-                }
-
-                var inputIterator = new WarewolfIterator(inputListResult);
-                var atIterator = new WarewolfIterator(dataObject.Environment.Eval(row.At, update));
-                var paddingIterator = new WarewolfIterator(dataObject.Environment.Eval(row.Padding, update));
-                warewolfListIterator.AddVariableToIterateOn(inputIterator);
-                warewolfListIterator.AddVariableToIterateOn(atIterator);
-                warewolfListIterator.AddVariableToIterateOn(paddingIterator);
-
-                listOfIterators.Add(dictionaryKey, new List<IWarewolfIterator> { inputIterator, atIterator, paddingIterator });
-                dictionaryKey++;
+                dictionaryKey = ExecuteDataMergeRow(dataObject, update, allErrors, errorResultTo, warewolfListIterator, listOfIterators, dictionaryKey, row);
             }
 
             #endregion
@@ -251,6 +195,68 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             }
 
             #endregion Iterate and Merge Data
+        }
+
+        private int ExecuteDataMergeRow(IDSFDataObject dataObject, int update, ErrorResultTO allErrors, ErrorResultTO errorResultTo, IWarewolfListIterator warewolfListIterator, Dictionary<int, List<IWarewolfIterator>> listOfIterators, int dictionaryKey, DataMergeDTO row)
+        {
+            allErrors.MergeErrors(errorResultTo);
+
+            if (dataObject.IsDebugMode())
+            {
+                var debugItem = new DebugItem();
+                AddDebugItem(new DebugItemStaticDataParams("", (MergeCollection.IndexOf(row) + 1).ToString(CultureInfo.InvariantCulture)), debugItem);
+                AddDebugItem(new DebugEvalResult(row.InputVariable, "", dataObject.Environment, update, true), debugItem);
+                AddDebugItem(new DebugItemStaticDataParams(row.MergeType, "With"), debugItem);
+                AddDebugItem(new DebugEvalResult(row.At, "Using", dataObject.Environment, update), debugItem);
+                AddDebugItem(new DebugEvalResult(row.Padding, "Pad", dataObject.Environment, update), debugItem);
+
+                //Old workflows don't have this set. 
+                if (row.Alignment == null)
+                {
+                    row.Alignment = string.Empty;
+                }
+
+                AddDebugItem(DataListUtil.IsEvaluated(row.Alignment) ? new DebugItemStaticDataParams("", row.Alignment, "Align") : new DebugItemStaticDataParams(row.Alignment, "Align"), debugItem);
+
+                _debugInputs.Add(debugItem);
+            }
+            var listOfEvalResultsForInput = dataObject.Environment.EvalForDataMerge(row.InputVariable, update);
+            var innerIterator = new WarewolfListIterator();
+            var innerListOfIters = new List<WarewolfIterator>();
+
+            foreach (var listOfIterator in listOfEvalResultsForInput)
+            {
+                var inIterator = new WarewolfIterator(listOfIterator);
+                innerIterator.AddVariableToIterateOn(inIterator);
+                innerListOfIters.Add(inIterator);
+            }
+            var atomList = new List<DataStorage.WarewolfAtom>();
+            while (innerIterator.HasMoreData())
+            {
+                var stringToUse = "";
+                foreach (var warewolfIterator in innerListOfIters)
+                {
+                    stringToUse += warewolfIterator.GetNextValue();
+                }
+                atomList.Add(DataStorage.WarewolfAtom.NewDataString(stringToUse));
+            }
+            var finalString = string.Join("", atomList);
+            var inputListResult = CommonFunctions.WarewolfEvalResult.NewWarewolfAtomListresult(new WarewolfAtomList<DataStorage.WarewolfAtom>(DataStorage.WarewolfAtom.Nothing, atomList));
+            if (DataListUtil.IsFullyEvaluated(finalString))
+            {
+                inputListResult = dataObject.Environment.Eval(finalString, update);
+            }
+
+            var inputIterator = new WarewolfIterator(inputListResult);
+            var atIterator = new WarewolfIterator(dataObject.Environment.Eval(row.At, update));
+            var paddingIterator = new WarewolfIterator(dataObject.Environment.Eval(row.Padding, update));
+            warewolfListIterator.AddVariableToIterateOn(inputIterator);
+            warewolfListIterator.AddVariableToIterateOn(atIterator);
+            warewolfListIterator.AddVariableToIterateOn(paddingIterator);
+
+            listOfIterators.Add(dictionaryKey, new List<IWarewolfIterator> { inputIterator, atIterator, paddingIterator });
+            dictionaryKey++;
+            return dictionaryKey;
         }
 
         private void AddToErrorsToDebugOutput(IDSFDataObject dataObject, int update, IDev2MergeOperations mergeOperations, ErrorResultTO allErrors, ErrorResultTO errorResultTo)
