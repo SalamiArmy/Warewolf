@@ -54,23 +54,18 @@ namespace Dev2.Activities
 
         public int TimeoutSeconds { get; set; }
 
-        [FindMissing]
         public string Method { get; set; }
 
         [Inputs("Time Out Seconds")]
-        [FindMissing]
         public string TimeOutText { get; set; }
 
         [Inputs("Url")]
-        [FindMissing]
         public string Url { get; set; }
-        [FindMissing]
         public string Headers { get; set; }
         /// <summary>
         /// The property that holds the result string the user enters into the "Result" box
         /// </summary>
         [Outputs("Result")]
-        [FindMissing]
         public new string Result { get; set; }
 
         public DsfWebGetRequestWithTimeoutActivity()

@@ -35,7 +35,6 @@ namespace Dev2.Activities.Sharepoint
         protected override bool AssignEmptyOutputsToRecordSet => true;
         
         [Inputs("Files")]
-        [FindMissing]
 
         public bool IsFilesSelected
         {
@@ -44,7 +43,6 @@ namespace Dev2.Activities.Sharepoint
         }
         
         [Inputs("Folders")]
-        [FindMissing]
         public bool IsFoldersSelected
         {
             get;
@@ -56,7 +54,6 @@ namespace Dev2.Activities.Sharepoint
         /// </summary>
     
         [Inputs("Files & Folders")]
-        [FindMissing]
         public bool IsFilesAndFoldersSelected
         {
             get;
@@ -67,7 +64,6 @@ namespace Dev2.Activities.Sharepoint
         /// Gets or sets the input path.
         /// </summary>
         [Inputs("Server Input Path")]
-        [FindMissing]
         public string ServerInputPath
         {
             get;

@@ -68,7 +68,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             OnPropertyChanged("CanAdd");
         }
 
-        [FindMissing]
         public string FieldName
         {
             get => _fieldName;
@@ -84,7 +83,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             }
         }
 
-        [FindMissing]
         public string FieldValue
         {
             get => _fieldValue;

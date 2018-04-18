@@ -49,7 +49,6 @@ namespace Dev2
 
         public bool Inserted { get; set; }
 
-        [FindMissing]
         public string StringToConvert
         {
             get => _stringToConvert;
@@ -78,7 +77,6 @@ namespace Dev2
 
         public IList<string> Expressions { get; set; }
 
-        [FindMissing]
         public string Result
         {
             get
@@ -98,7 +96,6 @@ namespace Dev2
 
         public int IndexNumber { get; set; }
 
-        [FindMissing]
         public string ExpressionToConvert { get; set; }
 
         public string WatermarkTextVariable { get; set; }

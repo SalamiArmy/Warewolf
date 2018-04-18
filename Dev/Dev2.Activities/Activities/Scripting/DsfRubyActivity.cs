@@ -40,7 +40,6 @@ namespace Dev2.Activities.Scripting
             IncludeFile = "";
         }
 
-        [FindMissing]
         [Inputs("Script")]
         public string Script { get; set; }
 
@@ -49,11 +48,9 @@ namespace Dev2.Activities.Scripting
         [Inputs("EscapeScript")]
         public bool EscapeScript { get; set; }
 
-        [FindMissing]
         [Outputs("Result")]
         public new string Result { get; set; }
 
-        [FindMissing]
         [Inputs("IncludeFile")]
         public string IncludeFile { get; set; }
 

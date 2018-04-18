@@ -46,7 +46,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// The property that holds the date time string the user enters into the "InField" box
         /// </summary>
         [Inputs("InField")]
-        [FindMissing]
         public string InField { get; set; }
 
         /// <summary>
@@ -59,7 +58,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// The property that holds the output format string the user enters into the "Characters" box
         /// </summary>
         [Inputs("Characters")]
-        [FindMissing]
         public string Characters { get; set; }
 
         /// <summary>
@@ -72,7 +70,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// The property that holds the result string the user enters into the "Result" box
         /// </summary>
         [Outputs("Result")]
-        [FindMissing]
         public new string Result { get; set; }
 
         /// <summary>
@@ -85,7 +82,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// The property that holds the start index that the user enters into the "StartIndex" textbox
         /// </summary>
         [Inputs("StartIndex")]
-        [FindMissing]
         public string StartIndex { get; set; }
 
 

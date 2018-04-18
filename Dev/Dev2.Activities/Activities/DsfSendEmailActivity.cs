@@ -69,9 +69,7 @@ namespace Dev2.Activities
             }
         }
         
-        [FindMissing]
         public string FromAccount { get; set; }
-        [FindMissing]
         public string Password
         {
             get { return _password; }
@@ -99,27 +97,20 @@ namespace Dev2.Activities
         
         protected string DecryptedPassword => DataListUtil.NotEncrypted(Password) ? Password : DpapiWrapper.Decrypt(Password);
 
-        [FindMissing]
         public string To { get; set; }
-        [FindMissing]
         public string Cc { get; set; }
-        [FindMissing]
         public string Bcc { get; set; }
 
         
         public enMailPriorityEnum Priority { get; set; }
         
-        [FindMissing]
         public string Subject { get; set; }
-        [FindMissing]
         public string Attachments { get; set; }
-        [FindMissing]
         public string Body { get; set; }
 
         
         public bool IsHtml { get; set; }
         
-        [FindMissing]
         public new string Result { get; set; }
 
         public IEmailSender EmailSender

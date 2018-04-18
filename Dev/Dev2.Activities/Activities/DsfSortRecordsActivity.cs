@@ -36,7 +36,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Gets or sets the sort field.
         /// </summary>
         [Inputs("SortField")]
-        [FindMissing]
         public string SortField { get; set; }
 
         /// <summary>

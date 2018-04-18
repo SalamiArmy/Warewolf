@@ -83,7 +83,6 @@ namespace Dev2
         /// <summary>
         ///     The Input to use for the from
         /// </summary>
-        [FindMissing]
         public string FromExpression
         {
             get => _fromExpression;
@@ -98,7 +97,6 @@ namespace Dev2
         /// <summary>
         ///     Where to place the result, will be the same as From until wizards are created
         /// </summary>
-        [FindMissing]
         public string ToExpression
         {
             get => _toExpression;

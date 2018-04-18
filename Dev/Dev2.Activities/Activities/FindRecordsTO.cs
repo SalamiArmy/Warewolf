@@ -64,7 +64,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             IsSearchTypeFocused = false;
         }
 
-        [FindMissing]
         public string From
         {
             get => _from;
@@ -78,7 +77,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
 
         public bool IsFromFocused { get => _isFromFocused; set => OnPropertyChanged(ref _isFromFocused, value); }
 
-        [FindMissing]
         public string To
         {
             get => _to;
@@ -92,7 +90,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
 
         public bool IsToFocused { get => _isToFocused; set => OnPropertyChanged(ref _isToFocused, value); }
 
-        [FindMissing]
         public string SearchCriteria
         {
             get => _searchCriteria;

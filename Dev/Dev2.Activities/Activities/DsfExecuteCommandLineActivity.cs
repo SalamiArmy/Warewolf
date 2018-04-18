@@ -52,8 +52,7 @@ namespace Dev2.Activities
 
         #endregion
         
-        [Inputs("CommandFileName")]
-        [FindMissing]        
+        [Inputs("CommandFileName")]        
         public string CommandFileName        
         {
             get
@@ -74,7 +73,6 @@ namespace Dev2.Activities
         }
 
         [Outputs("CommandResult")]
-        [FindMissing]
         
         public string CommandResult
         

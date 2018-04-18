@@ -129,7 +129,6 @@ namespace Dev2.TO
             }
         }
 
-        [FindMissing]
         public string From
         {
             get => _from;
@@ -148,7 +147,6 @@ namespace Dev2.TO
 
         public bool IsFromFocused { get => _isFromFocused; set => OnPropertyChanged(ref _isFromFocused, value); }
 
-        [FindMissing]
         public string To
         {
             get => _to;
@@ -167,7 +165,6 @@ namespace Dev2.TO
 
         public bool IsToFocused { get => _isToFocused; set => OnPropertyChanged(ref _isToFocused, value); }
 
-        [FindMissing]
         public string SearchCriteria
         {
             get => _searchCriteria;
@@ -192,7 +189,6 @@ namespace Dev2.TO
             }
         }
 
-        [FindMissing]
         public string MatchValue
         {
             get => _matchValue;

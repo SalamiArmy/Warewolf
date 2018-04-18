@@ -142,7 +142,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Gets or sets the file contents.
         /// </summary>
         [Inputs("File Contents")]
-        [FindMissing]
         public string FileContents
         {
             get;
@@ -153,7 +152,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         /// Gets or sets the output path.
         /// </summary>
         [Inputs("Output Path")]
-        [FindMissing]
         public string OutputPath
         {
             get;

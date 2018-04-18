@@ -44,7 +44,6 @@ namespace Dev2.Activities.Sharepoint
 
         public List<SharepointSearchTo> FilterCriteria { get; set; }
         public bool RequireAllCriteriaToMatch { get; set; }
-        [FindMissing]
         public new string Result { get; set; }
         /// <summary>
         /// When overridden runs the activity's execution logic 

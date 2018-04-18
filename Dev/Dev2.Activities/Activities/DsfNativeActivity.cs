@@ -76,9 +76,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         public string ScenarioID { get; set; }
         protected Guid WorkSurfaceMappingId { get; set; }
         public string UniqueID { get; set; }
-        [FindMissing]
         public string OnErrorVariable { get; set; }
-        [FindMissing]
         public string OnErrorWorkflow { get; set; }
         public bool IsEndedOnError { get; set; }
 #pragma warning disable IDE1006 // Naming Styles

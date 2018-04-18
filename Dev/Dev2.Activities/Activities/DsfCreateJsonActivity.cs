@@ -42,14 +42,12 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         ///     serealisation.
         /// </summary>
         [Inputs("JsonMappings")]
-        [FindMissing]
         public List<JsonMappingTo> JsonMappings { get; set; }
 
         /// <summary>
         ///     Gets or sets the JSON string.
         /// </summary>
         [Outputs("JsonString")]
-        [FindMissing]
         public string JsonString { get; set; }
 
 

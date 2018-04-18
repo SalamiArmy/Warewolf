@@ -36,11 +36,9 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
     public class DsfDotNetAggregateCalculateActivity : DsfActivityAbstract<string>
     {
         [Inputs("Expression")]
-        [FindMissing]
         public string Expression { get; set; }
 
         [Outputs("Result")]
-        [FindMissing]
         public new string Result { get; set; }
 
         public DsfDotNetAggregateCalculateActivity()

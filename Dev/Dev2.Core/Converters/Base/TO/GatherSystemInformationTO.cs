@@ -55,7 +55,6 @@ namespace Dev2
             }
         }
         
-        [FindMissing]
         public string Result
         {
             get => _result;

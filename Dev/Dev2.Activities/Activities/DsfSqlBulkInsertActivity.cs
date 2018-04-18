@@ -68,7 +68,6 @@ namespace Dev2.Activities
         public string TableName { get; set; }
 
         [Outputs("Result")]
-        [FindMissing]
         public new string Result { get; set; }
 
         public bool CheckConstraints { get; set; }

@@ -46,7 +46,6 @@ namespace Dev2.TO
             OutList = new List<string>();
         }
 
-        [FindMissing]
         public string FieldName
         {
             get
@@ -65,7 +64,6 @@ namespace Dev2.TO
             }
         }
 
-        [FindMissing]
         public string FieldValue
         {
             get

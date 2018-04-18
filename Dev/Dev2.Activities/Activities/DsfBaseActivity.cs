@@ -36,7 +36,6 @@ namespace Dev2.Activities
         public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update) => _debugInputs;
 
         [Outputs("Result")]
-        [FindMissing]
         public new string Result { get; set; }
 
         protected override void OnExecute(NativeActivityContext context)

@@ -82,14 +82,12 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
 
         public bool Include { get => _include; set => OnPropertyChanged(ref _include, value); }
 
-        [FindMissing]
         public string EscapeChar { get => _escapeChar; set => OnPropertyChanged(ref _escapeChar, value); }
 
         public bool IsEscapeCharFocused { get => _isEscapeCharFocused; set => OnPropertyChanged(ref _isEscapeCharFocused, value); }
 
         public bool IsEscapeCharEnabled { get => _isEscapeCharEnabled; set => OnPropertyChanged(ref _isEscapeCharEnabled, value); }
 
-        [FindMissing]
         public string OutputVariable
         {
             get => _outputVariable;
@@ -115,7 +113,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             }
         }
 
-        [FindMissing]
         public string At
         {
             get => _at;

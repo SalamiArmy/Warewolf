@@ -63,7 +63,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             }
         }
 
-        [FindMissing]
         public string OutputVariable
         {
             get => _outputVariable;
@@ -78,7 +77,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             }
         }
 
-        [FindMissing]
         public string XPath
         {
             get => _xPath;

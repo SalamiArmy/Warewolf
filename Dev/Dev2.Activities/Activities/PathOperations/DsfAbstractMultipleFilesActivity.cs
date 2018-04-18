@@ -181,14 +181,12 @@ namespace Dev2.Activities.PathOperations
         /// Gets or sets the input path.
         /// </summary>
         [Inputs("Input Path")]
-        [FindMissing]
         public string InputPath { get; set; }
 
         /// <summary>
         /// Gets or sets the output path.
         /// </summary>
         [Inputs("Output Path")]
-        [FindMissing]
         public string OutputPath { get; set; }
 
         /// <summary>
