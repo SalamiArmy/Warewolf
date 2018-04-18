@@ -488,33 +488,38 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                         _debugState.StartTime = startTime.Value;
                     }
                 }
-                _debugState.Name = IsWorkflow ? ActivityType.Workflow.GetDescription() : IsService ? ActivityType.Service.GetDescription() : ActivityType.Step.GetDescription();
-                try
-                {
-                    var debugInputs = GetDebugInputs(dataObject.Environment, update);
-                    Copy(debugInputs, _debugState.Inputs);
-                }
-                catch (Exception err)
-                {
-                    Dev2Logger.Error("DispatchDebugState", err, GlobalConstants.WarewolfError);
-                    AddErrorToDataList(err, dataObject);
-                    var errorMessage = dataObject.Environment.FetchErrors();
-                    _debugState.ErrorMessage = errorMessage;
-                    _debugState.HasError = true;
-                    var debugError = err as DebugCopyException;
-                    if (debugError != null)
-                    {
-                        _debugState.Inputs.Add(debugError.Item);
-                    }
-                }
+                TryDispatchForBeforeState(dataObject, update);
+            }
+        }
 
-                if (dataObject.RemoteServiceType == "Workflow" && !_debugState.HasError)
+        private void TryDispatchForBeforeState(IDSFDataObject dataObject, int update)
+        {
+            _debugState.Name = IsWorkflow ? ActivityType.Workflow.GetDescription() : IsService ? ActivityType.Service.GetDescription() : ActivityType.Step.GetDescription();
+            try
+            {
+                var debugInputs = GetDebugInputs(dataObject.Environment, update);
+                Copy(debugInputs, _debugState.Inputs);
+            }
+            catch (Exception err)
+            {
+                Dev2Logger.Error("DispatchDebugState", err, GlobalConstants.WarewolfError);
+                AddErrorToDataList(err, dataObject);
+                var errorMessage = dataObject.Environment.FetchErrors();
+                _debugState.ErrorMessage = errorMessage;
+                _debugState.HasError = true;
+                var debugError = err as DebugCopyException;
+                if (debugError != null)
                 {
-                    var debugItem = new DebugItem();
-                    var debugItemResult = new DebugItemResult { Type = DebugItemResultType.Value, Label = "Execute workflow asynchronously: ", Value = dataObject.RunWorkflowAsync ? "True" : "False" };
-                    debugItem.Add(debugItemResult);
-                    _debugState.Inputs.Add(debugItem);
+                    _debugState.Inputs.Add(debugError.Item);
                 }
+            }
+
+            if (dataObject.RemoteServiceType == "Workflow" && !_debugState.HasError)
+            {
+                var debugItem = new DebugItem();
+                var debugItemResult = new DebugItemResult { Type = DebugItemResultType.Value, Label = "Execute workflow asynchronously: ", Value = dataObject.RunWorkflowAsync ? "True" : "False" };
+                debugItem.Add(debugItemResult);
+                _debugState.Inputs.Add(debugItem);
             }
         }
 
@@ -848,41 +853,46 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             iter.AddVariableToIterateOn(c3);
             while (iter.HasMoreData())
             {
-                var variableValue = iter.FetchNextValue(c1);
-                var val2 = iter.FetchNextValue(c2);
-                var val3 = iter.FetchNextValue(c3);
-                var assertResult = factory.FetchDecisionFunction(decisionType).Invoke(new[] { variableValue, val2, val3 });
-                var testResult = new TestRunResult();
-                if (assertResult)
-                {
-                    testResult.RunTestResult = RunResult.TestPassed;
-                }
-                else
-                {
-                    testResult.RunTestResult = RunResult.TestFailed;
-                    var msg = DecisionDisplayHelper.GetFailureMessage(decisionType);
-                    var actMsg = string.Format(msg, val2, variable, variableValue, val3);
-                    testResult.Message = new StringBuilder(testResult.Message).AppendLine(actMsg).ToString();
-                    if (testResult.Message.EndsWith(Environment.NewLine, StringComparison.CurrentCulture))
-                    {
-                        testResult.Message = testResult.Message.Replace(Environment.NewLine, "").Replace("\r", "");
-                    }
-                }
-                if (dataObject.IsDebugMode())
-                {
-                    var msg = testResult.Message;
-                    if (testResult.RunTestResult == RunResult.TestPassed)
-                    {
-                        msg = Messages.Test_PassedResult;
-                        msg += opt.ArgumentCount > 2 ? ": " + output.Variable + " " + output.AssertOp + " " + output.From + " and " + output.To : ": " + output.Variable + " " + output.AssertOp + " " + output.Value;
-                    }
-                    var hasError = testResult.RunTestResult == RunResult.TestFailed;
-                    AddDebugAssertResultItem(new DebugItemServiceTestStaticDataParams(msg, hasError));
-                }
-                output.Result = testResult;
-                ret.Add(testResult);
+                ret.Add(GetTestRunResult(dataObject, output, factory, opt, decisionType, iter, variable, c1, c2, c3));
             }
             return ret;
+        }
+
+        TestRunResult GetTestRunResult(IDSFDataObject dataObject, IServiceTestOutput output, Dev2DecisionFactory factory, IFindRecsetOptions opt, enDecisionType decisionType, WarewolfListIterator iter, string variable, WarewolfAtomIterator c1, WarewolfAtomIterator c2, WarewolfAtomIterator c3)
+        {
+            var variableValue = iter.FetchNextValue(c1);
+            var val2 = iter.FetchNextValue(c2);
+            var val3 = iter.FetchNextValue(c3);
+            var assertResult = factory.FetchDecisionFunction(decisionType).Invoke(new[] { variableValue, val2, val3 });
+            var testResult = new TestRunResult();
+            if (assertResult)
+            {
+                testResult.RunTestResult = RunResult.TestPassed;
+            }
+            else
+            {
+                testResult.RunTestResult = RunResult.TestFailed;
+                var msg = DecisionDisplayHelper.GetFailureMessage(decisionType);
+                var actMsg = string.Format(msg, val2, variable, variableValue, val3);
+                testResult.Message = new StringBuilder(testResult.Message).AppendLine(actMsg).ToString();
+                if (testResult.Message.EndsWith(Environment.NewLine, StringComparison.CurrentCulture))
+                {
+                    testResult.Message = testResult.Message.Replace(Environment.NewLine, "").Replace("\r", "");
+                }
+            }
+            if (dataObject.IsDebugMode())
+            {
+                var msg = testResult.Message;
+                if (testResult.RunTestResult == RunResult.TestPassed)
+                {
+                    msg = Messages.Test_PassedResult;
+                    msg += opt.ArgumentCount > 2 ? ": " + output.Variable + " " + output.AssertOp + " " + output.From + " and " + output.To : ": " + output.Variable + " " + output.AssertOp + " " + output.Value;
+                }
+                var hasError = testResult.RunTestResult == RunResult.TestFailed;
+                AddDebugAssertResultItem(new DebugItemServiceTestStaticDataParams(msg, hasError));
+            }
+            output.Result = testResult;
+            return testResult;
         }
 
         void AddErrorToDataList(Exception err, IDSFDataObject dataObject)
@@ -1093,7 +1103,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
         {
             IDebugItem itemToAdd = new DebugItem();
             itemToAdd.AddRange(parameters.GetDebugItemResult());
-            _debugInputs.Add((DebugItem)itemToAdd);
+            _debugInputs.Add(itemToAdd);
         }
 
         protected void AddDebugOutputItem(DebugOutputBase parameters)
