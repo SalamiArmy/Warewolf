@@ -98,7 +98,7 @@ namespace Dev2.FindMissingStrategies
             var results = new List<string>();
             if (activity.ConstructorInputs != null)
             {
-                results.AddRange(InternalFindMissing(maAct.ConstructorInputs));
+                results.AddRange(InternalFindMissing(activity.ConstructorInputs));
             }
             if (!string.IsNullOrEmpty(activity.OnErrorVariable))
             {
