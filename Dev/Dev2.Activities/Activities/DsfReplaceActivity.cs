@@ -209,13 +209,13 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                 var replaceWithValue = iteratorCollection.FetchNextValue(itrReplace);
                 foreach (string s in toSearch)
                 {
-                    ExecuteEachField(dataObject, update, replaceOperation, ref errors, allErrors, ref replacementCount, ref replacementTotal, ref counter, findValue, replaceWithValue, s);
+                    TryExecuteEachField(dataObject, update, replaceOperation, ref errors, allErrors, ref replacementCount, ref replacementTotal, ref counter, findValue, replaceWithValue, s);
                 }
             }
             return allErrors;
         }
 
-        private void ExecuteEachField(IDSFDataObject dataObject, int update, IDev2ReplaceOperation replaceOperation, ref IErrorResultTO errors, IErrorResultTO allErrors, ref int replacementCount, ref int replacementTotal, ref int counter, string findValue, string replaceWithValue, string s)
+        void TryExecuteEachField(IDSFDataObject dataObject, int update, IDev2ReplaceOperation replaceOperation, ref IErrorResultTO errors, IErrorResultTO allErrors, ref int replacementCount, ref int replacementTotal, ref int counter, string findValue, string replaceWithValue, string s)
         {
             if (!string.IsNullOrEmpty(findValue))
             {
@@ -231,15 +231,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                     var counterInner = counter;
                     dataObject.Environment.ApplyUpdate(s, a =>
                     {
-                        var replacementCountInner = 0;
-                        var replace = replaceOperation.Replace(a.ToString(), findValue, replaceWithValue, CaseMatch, out errorsInner, ref replacementCountInner);
-                        if (!string.IsNullOrEmpty(Result) && !DataListUtil.IsValueScalar(Result))
-                        {
-                            dataObject.Environment.Assign(Result, replacementCountInner.ToString(CultureInfo.InvariantCulture), update == 0 ? counterInner : update);
-                        }
-                        replacementTotalInner += replacementCountInner;
-                        counterInner++;
-                        return DataStorage.WarewolfAtom.NewDataString(replace);
+                        return ExecuteEachField(dataObject, update, replaceOperation, findValue, replaceWithValue, a, ref replacementTotalInner, ref counterInner, out errorsInner);
                     }, update);
                     replacementTotal = replacementTotalInner;
                     errors = errorsInner;
@@ -270,6 +262,19 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             {
                 AddDebugOutputItem(new DebugEvalResult(s, "", dataObject.Environment, update));
             }
+        }
+
+        DataStorage.WarewolfAtom ExecuteEachField(IDSFDataObject dataObject, int update, IDev2ReplaceOperation replaceOperation, string findValue, string replaceWithValue, DataStorage.WarewolfAtom a, ref int replacementTotalInner, ref int counterInner, out IErrorResultTO errorsInner)
+        {
+            var replacementCountInner = 0;
+            var replace = replaceOperation.Replace(a.ToString(), findValue, replaceWithValue, CaseMatch, out errorsInner, ref replacementCountInner);
+            if (!string.IsNullOrEmpty(Result) && !DataListUtil.IsValueScalar(Result))
+            {
+                dataObject.Environment.Assign(Result, replacementCountInner.ToString(CultureInfo.InvariantCulture), update == 0 ? counterInner : update);
+            }
+            replacementTotalInner += replacementCountInner;
+            counterInner++;
+            return DataStorage.WarewolfAtom.NewDataString(replace);
         }
 
         private void AddTypeDebugItem(IDSFDataObject dataObject, int update, IList<string> toSearch)

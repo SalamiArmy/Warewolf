@@ -151,55 +151,7 @@ namespace Dev2.Activities.SelectAndApply
             var expressions = new List<string>();
             try
             {
-                string ds;
-                try
-                {
-                    ds = dataObject.Environment.ToStar(DataSource);
-                    expressions = dataObject.Environment.GetIndexes(ds);
-                    if (expressions.Count == 0)
-                    {
-                        expressions.Add(ds);
-                    }
-                }
-                catch (NullReferenceException)
-                {
-                    //Do nothing exception aleady added to errors
-                    throw new NullDataSource();
-                }
-
-
-                if (dataObject.IsDebugMode())
-                {
-                    AddDebugInputItem(new DebugItemStaticDataParams(Alias, "As", DataSource));
-                }
-
-                var scopedEnvironment = new ScopedEnvironment(dataObject.Environment, ds, Alias);
-
-                //Push the new environment
-                dataObject.PushEnvironment(scopedEnvironment);
-                dataObject.ForEachNestingLevel++;
-                if (dataObject.IsDebugMode())
-                {
-                    DispatchDebugState(dataObject, StateType.Before, update);
-                }
-                dataObject.ParentInstanceID = UniqueID;
-                dataObject.IsDebugNested = true;
-                if (dataObject.IsDebugMode())
-                {
-                    DispatchDebugState(dataObject, StateType.After, update);
-                }
-
-                foreach (var exp in expressions)
-                {
-                    //Assign the warewolfAtom to Alias using new environment
-                    scopedEnvironment.SetDataSource(exp);
-
-                    if (ApplyActivityFunc.Handler is IDev2Activity exeAct)
-                    {
-                        _childUniqueID = exeAct.UniqueID;
-                        exeAct.Execute(dataObject, 0);
-                    }
-                }
+                expressions = TryExecute(dataObject, update);
             }
             catch (NullDataSource e)
             {
@@ -245,6 +197,62 @@ namespace Dev2.Activities.SelectAndApply
                 }
                 OnCompleted(dataObject);
             }
+        }
+
+        List<string> TryExecute(IDSFDataObject dataObject, int update)
+        {
+            List<string> expressions;
+            string ds;
+            try
+            {
+                ds = dataObject.Environment.ToStar(DataSource);
+                expressions = dataObject.Environment.GetIndexes(ds);
+                if (expressions.Count == 0)
+                {
+                    expressions.Add(ds);
+                }
+            }
+            catch (NullReferenceException)
+            {
+                //Do nothing exception aleady added to errors
+                throw new NullDataSource();
+            }
+
+
+            if (dataObject.IsDebugMode())
+            {
+                AddDebugInputItem(new DebugItemStaticDataParams(Alias, "As", DataSource));
+            }
+
+            var scopedEnvironment = new ScopedEnvironment(dataObject.Environment, ds, Alias);
+
+            //Push the new environment
+            dataObject.PushEnvironment(scopedEnvironment);
+            dataObject.ForEachNestingLevel++;
+            if (dataObject.IsDebugMode())
+            {
+                DispatchDebugState(dataObject, StateType.Before, update);
+            }
+            dataObject.ParentInstanceID = UniqueID;
+            dataObject.IsDebugNested = true;
+            if (dataObject.IsDebugMode())
+            {
+                DispatchDebugState(dataObject, StateType.After, update);
+            }
+
+            foreach (var exp in expressions)
+            {
+                //Assign the warewolfAtom to Alias using new environment
+                scopedEnvironment.SetDataSource(exp);
+
+                if (ApplyActivityFunc.Handler is IDev2Activity exeAct)
+                {
+                    _childUniqueID = exeAct.UniqueID;
+                    exeAct.Execute(dataObject, 0);
+                }
+            }
+
+            return expressions;
         }
 
         void AddExpresionEvalOutputItem(IDSFDataObject dataObject, int update, string expression)
