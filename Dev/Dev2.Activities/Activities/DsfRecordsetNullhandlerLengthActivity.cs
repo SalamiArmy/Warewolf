@@ -80,7 +80,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
 
         protected override void ExecuteTool(IDSFDataObject dataObject, int update)
         {
-
             var allErrors = new ErrorResultTO();
             var errors = new ErrorResultTO();
             allErrors.MergeErrors(errors);
@@ -122,13 +121,54 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             }
         }
 
-        private void TryExecuteTool(IDSFDataObject dataObject, int update, ErrorResultTO allErrors)
+        void TryExecuteTool(IDSFDataObject dataObject, int update, ErrorResultTO allErrors)
         {
             var rs = DataListUtil.ExtractRecordsetNameFromValue(RecordsetName);
             if (RecordsLength == string.Empty)
             {
                 allErrors.AddError(ErrorResource.BlankResultVariable);
             }
+            AddDebugInputItems(dataObject, update);
+            var rule = new IsSingleValueRule(() => RecordsLength);
+            var single = rule.Check();
+            if (single != null)
+            {
+                allErrors.AddError(single.Message);
+            }
+            else
+            {
+                AddDebugOutputItems(dataObject, update, rs, ref allErrors);
+            }
+        }
+
+        void AddDebugOutputItems(IDSFDataObject dataObject, int update, string rs, ref ErrorResultTO allErrors)
+        {
+            if (dataObject.Environment.HasRecordSet(RecordsetName))
+            {
+                var count = dataObject.Environment.GetLength(rs);
+                var value = count.ToString();
+                dataObject.Environment.Assign(RecordsLength, value, update);
+                if (dataObject.Environment.Errors != null && !dataObject.Environment.Errors.Any())
+                {
+                    AddDebugOutputItem(new DebugItemWarewolfAtomResult(value, RecordsLength, ""));
+                }
+            }
+            else
+            {
+                if (TreatNullAsZero)
+                {
+                    dataObject.Environment.Assign(RecordsLength, 0.ToString(), update);
+                    AddDebugOutputItem(new DebugItemWarewolfAtomResult(0.ToString(), RecordsLength, ""));
+                }
+                else
+                {
+                    allErrors.AddError(string.Format(ErrorResource.NullRecordSet, RecordsetName));
+                }
+            }
+        }
+
+        void AddDebugInputItems(IDSFDataObject dataObject, int update)
+        {
             if (dataObject.IsDebugMode())
             {
                 var warewolfEvalResult = dataObject.Environment.Eval(RecordsetName.Replace("()", "(*)"), update);
@@ -141,42 +181,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                 {
                     AddDebugInputItem(new DebugEvalResult(RecordsetName, "Recordset", dataObject.Environment, update));
                 }
-
-            }
-            var rule = new IsSingleValueRule(() => RecordsLength);
-            var single = rule.Check();
-            if (single != null)
-            {
-                allErrors.AddError(single.Message);
-            }
-            else
-            {
-
-                if (dataObject.Environment.HasRecordSet(RecordsetName))
-                {
-                    var count = dataObject.Environment.GetLength(rs);
-                    var value = count.ToString();
-                    dataObject.Environment.Assign(RecordsLength, value, update);
-                    if (dataObject.Environment.Errors != null && !dataObject.Environment.Errors.Any())
-                    {
-                        AddDebugOutputItem(new DebugItemWarewolfAtomResult(value, RecordsLength, ""));
-                    }
-
-                }
-                else
-                {
-                    if (TreatNullAsZero)
-                    {
-                        dataObject.Environment.Assign(RecordsLength, 0.ToString(), update);
-                        AddDebugOutputItem(new DebugItemWarewolfAtomResult(0.ToString(), RecordsLength, ""));
-                    }
-                    else
-                    {
-                        allErrors.AddError(string.Format(ErrorResource.NullRecordSet, RecordsetName));
-                    }
-
-                }
-
             }
         }
 
