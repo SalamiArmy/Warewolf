@@ -175,7 +175,78 @@ namespace Dev2.Activities.RabbitMQ.Consume
             var msgCount = 0;
             if (ReQueue)
             {
-                BasicGetResult response;
+                PerformExecutionOnChannelWithRequeue(queueName, msgCount);
+            }
+            else
+            {
+                PerformExecutionOnChannel(queueName, msgCount);
+            }
+        }
+
+        void PerformExecutionOnChannel(string queueName, int msgCount)
+        {
+            if (!string.IsNullOrEmpty(TimeOut))
+            {
+                ExecuteWithTimeout(queueName, msgCount);
+            }
+            else
+            {
+                uint messageCount;
+                try
+                {
+                    messageCount = Channel.MessageCount(queueName);
+                }
+                catch (Exception)
+                {
+                    messageCount = 0;
+                }
+                Consumer = new QueueingBasicConsumer(Channel);
+                try
+                {
+                    Channel.BasicConsume(queueName, false, Consumer);
+                }
+                catch (Exception)
+                {
+                    throw new Exception(string.Format(ErrorResource.RabbitQueueNotFound, queueName));
+                }
+
+                ulong? tag = null;
+                for (int i = 0; i < messageCount && _prefetch > msgCount; i++)
+                {
+                    var ea = Consumer.Queue.Dequeue();
+                    var body = ea.Body;
+
+                    _messages.Add(Encoding.Default.GetString(body));
+                    tag = ea.DeliveryTag;
+                    msgCount++;
+                }
+                if (tag.HasValue)
+                {
+                    Channel.BasicAck(tag.Value, _prefetch != 1);
+                }
+                else
+                {
+                    _result = "Empty";
+                }
+            }
+        }
+
+        void PerformExecutionOnChannelWithRequeue(string queueName, int msgCount)
+        {
+            BasicGetResult response;
+            try
+            {
+                response = Channel.BasicGet(queueName, false);
+            }
+            catch (Exception)
+            {
+                throw new Exception(string.Format(ErrorResource.RabbitQueueNotFound, queueName));
+            }
+
+            while (response != null && _prefetch > msgCount)
+            {
+                _messages.Add(Encoding.Default.GetString(response.Body));
+                msgCount++;
                 try
                 {
                     response = Channel.BasicGet(queueName, false);
@@ -183,68 +254,6 @@ namespace Dev2.Activities.RabbitMQ.Consume
                 catch (Exception)
                 {
                     throw new Exception(string.Format(ErrorResource.RabbitQueueNotFound, queueName));
-                }
-
-                while (response != null && _prefetch > msgCount)
-                {
-                    _messages.Add(Encoding.Default.GetString(response.Body));
-                    msgCount++;
-                    try
-                    {
-                        response = Channel.BasicGet(queueName, false);
-                    }
-                    catch (Exception)
-                    {
-                        throw new Exception(string.Format(ErrorResource.RabbitQueueNotFound, queueName));
-                    }
-
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(TimeOut))
-                {
-                    ExecuteWithTimeout(queueName, msgCount);
-                }
-                else
-                {
-                    uint messageCount;
-                    try
-                    {
-                        messageCount = Channel.MessageCount(queueName);
-                    }
-                    catch (Exception)
-                    {
-                        messageCount = 0;
-                    }
-                    Consumer = new QueueingBasicConsumer(Channel);
-                    try
-                    {
-                        Channel.BasicConsume(queueName, false, Consumer);
-                    }
-                    catch (Exception)
-                    {
-                        throw new Exception(string.Format(ErrorResource.RabbitQueueNotFound, queueName));
-                    }
-
-                    ulong? tag = null;
-                    for (int i = 0; i < messageCount && _prefetch > msgCount; i++)
-                    {
-                        var ea = Consumer.Queue.Dequeue();
-                        var body = ea.Body;
-
-                        _messages.Add(Encoding.Default.GetString(body));
-                        tag = ea.DeliveryTag;
-                        msgCount++;
-                    }
-                    if (tag.HasValue)
-                    {
-                        Channel.BasicAck(tag.Value, _prefetch != 1);
-                    }
-                    else
-                    {
-                        _result = "Empty";
-                    }
                 }
             }
         }
