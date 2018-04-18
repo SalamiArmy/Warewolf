@@ -236,31 +236,36 @@ namespace Dev2.Activities.Exchange
             {
                 foreach (Tuple<string, string> t in updates)
                 {
-                    if (t.Item1 == To)
-                    {
-                        To = t.Item2;
-                    }
-                    if (t.Item1 == Cc)
-                    {
-                        Cc = t.Item2;
-                    }
-                    if (t.Item1 == Bcc)
-                    {
-                        Bcc = t.Item2;
-                    }
-                    if (t.Item1 == Subject)
-                    {
-                        Subject = t.Item2;
-                    }
-                    if (t.Item1 == Attachments)
-                    {
-                        Attachments = t.Item2;
-                    }
-                    if (t.Item1 == Body)
-                    {
-                        Body = t.Item2;
-                    }
+                    UpdateForEachInput(t);
                 }
+            }
+        }
+
+        void UpdateForEachInput(Tuple<string, string> t)
+        {
+            if (t.Item1 == To)
+            {
+                To = t.Item2;
+            }
+            if (t.Item1 == Cc)
+            {
+                Cc = t.Item2;
+            }
+            if (t.Item1 == Bcc)
+            {
+                Bcc = t.Item2;
+            }
+            if (t.Item1 == Subject)
+            {
+                Subject = t.Item2;
+            }
+            if (t.Item1 == Attachments)
+            {
+                Attachments = t.Item2;
+            }
+            if (t.Item1 == Body)
+            {
+                Body = t.Item2;
             }
         }
 
