@@ -149,45 +149,52 @@ namespace Dev2.Activities
             var counter = 1;
             while (colItr.HasMoreData())
             {
-                var c = colItr.FetchNextValue(urlitr);
-                var headerValue = colItr.FetchNextValue(headerItr);
-                var headers = string.IsNullOrEmpty(headerValue)
-                    ? new string[0]
-                    : headerValue.Split(new[] { '\n', '\r', ';' }, StringSplitOptions.RemoveEmptyEntries);
-
-                var headersEntries = new List<Tuple<string, string>>();
-
-                AddHeaderDebug(dataObject, update, headers, headersEntries);
-                var timeoutSecondsError = false;
-                if (!string.IsNullOrEmpty(TimeOutText))
-                {
-                    timeoutSecondsError = SetTimeoutSecondsError(dataObject, update, allErrors, timeoutSecondsError);
-
-                    if (dataObject.IsDebugMode())
-                    {
-                        var debugItem = new DebugItem();
-                        AddDebugItem(new DebugEvalResult(String.IsNullOrEmpty(TimeOutText) ? "100" : TimeOutText, "Time Out Seconds", dataObject.Environment, update), debugItem);
-                        _debugInputs.Add(debugItem);
-                    }
-                }
-
-                if (!timeoutSecondsError)
-                {
-                    var result = WebRequestInvoker.ExecuteRequest(Method,
-                        c,
-                        headersEntries, TimeoutSeconds == 0 ? Timeout.Infinite : TimeoutSeconds * 1000  // important to list the parameter name here to see the conversion from seconds to milliseconds
-                        );
-
-                    allErrors.MergeErrors(_errorsTo);
-                    PushResultsToDataList(Result, result, dataObject, update == 0 ? counter : update);
-                    counter++;
-                }
-                else
-                {
-                    throw new ApplicationException("Execution aborted - see error messages.");
-                }
+                counter = Execute(dataObject, update, allErrors, colItr, urlitr, headerItr, counter);
             }
             return allErrors;
+        }
+
+        private int Execute(IDSFDataObject dataObject, int update, ErrorResultTO allErrors, WarewolfListIterator colItr, WarewolfIterator urlitr, WarewolfIterator headerItr, int counter)
+        {
+            var c = colItr.FetchNextValue(urlitr);
+            var headerValue = colItr.FetchNextValue(headerItr);
+            var headers = string.IsNullOrEmpty(headerValue)
+                ? new string[0]
+                : headerValue.Split(new[] { '\n', '\r', ';' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var headersEntries = new List<Tuple<string, string>>();
+
+            AddHeaderDebug(dataObject, update, headers, headersEntries);
+            var timeoutSecondsError = false;
+            if (!string.IsNullOrEmpty(TimeOutText))
+            {
+                timeoutSecondsError = SetTimeoutSecondsError(dataObject, update, allErrors, timeoutSecondsError);
+
+                if (dataObject.IsDebugMode())
+                {
+                    var debugItem = new DebugItem();
+                    AddDebugItem(new DebugEvalResult(String.IsNullOrEmpty(TimeOutText) ? "100" : TimeOutText, "Time Out Seconds", dataObject.Environment, update), debugItem);
+                    _debugInputs.Add(debugItem);
+                }
+            }
+
+            if (!timeoutSecondsError)
+            {
+                var result = WebRequestInvoker.ExecuteRequest(Method,
+                    c,
+                    headersEntries, TimeoutSeconds == 0 ? Timeout.Infinite : TimeoutSeconds * 1000  // important to list the parameter name here to see the conversion from seconds to milliseconds
+                    );
+
+                allErrors.MergeErrors(_errorsTo);
+                PushResultsToDataList(Result, result, dataObject, update == 0 ? counter : update);
+                counter++;
+            }
+            else
+            {
+                throw new ApplicationException("Execution aborted - see error messages.");
+            }
+
+            return counter;
         }
 
         private bool SetTimeoutSecondsError(IDSFDataObject dataObject, int update, ErrorResultTO allErrors, bool timeoutSecondsError)
