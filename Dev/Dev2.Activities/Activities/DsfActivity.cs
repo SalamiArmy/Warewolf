@@ -441,11 +441,11 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             var results = new List<IDebugItem>();
             if (Inputs != null && Inputs.Count > 0)
             {
-                results.AddRange(AddDebugInputs(results, env, update));
+                AddDebugInputs(results, env, update);
             }
             else
             {
-                results.AddRange(AddDebugInputs(results, env, parser, update));
+                AddDebugInputs(results, env, parser, update);
             }
             foreach (IDebugItem debugInput in results)
             {
@@ -455,7 +455,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
             return results;
         }
 
-        List<IDebugItem> AddDebugInputs(List<IDebugItem> results, IExecutionEnvironment env, IDev2LanguageParser parser, int update)
+        void AddDebugInputs(List<IDebugItem> results, IExecutionEnvironment env, IDev2LanguageParser parser, int update)
         {
             var inputs = parser.Parse(InputMapping);
             foreach (IDev2Definition dev2Definition in inputs)
@@ -469,7 +469,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                 var itemToAdd = new DebugItem();
                 results.Add(tmpEntry.IsWarewolfAtomResult ? AddWarewolfAtomResults(dev2Definition, tmpEntry, itemToAdd) : AddWarewolfAtomList(dev2Definition, tmpEntry, itemToAdd));
             }
-            return results;
         }
 
         List<IDebugItem> AddDebugInputs(List<IDebugItem> results, IExecutionEnvironment env, int update)
