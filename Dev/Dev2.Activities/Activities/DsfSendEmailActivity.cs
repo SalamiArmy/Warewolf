@@ -447,41 +447,44 @@ namespace Dev2.Activities
             {
                 foreach(Tuple<string, string> t in updates)
                 {
-
-                    if(t.Item1 == FromAccount)
-                    {
-                        FromAccount = t.Item2;
-                    }
-                    if(t.Item1 == Password)
-                    {
-                        Password = t.Item2;
-                    }
-                    if(t.Item1 == To)
-                    {
-                        To = t.Item2;
-                    }
-                    if(t.Item1 == Cc)
-                    {
-                        Cc = t.Item2;
-                    }
-                    if(t.Item1 == Bcc)
-                    {
-                        Bcc = t.Item2;
-                    }
-                    if(t.Item1 == Subject)
-                    {
-                        Subject = t.Item2;
-                    }
-                    if(t.Item1 == Attachments)
-                    {
-                        Attachments = t.Item2;
-                    }
-                    if(t.Item1 == Body)
-                    {
-                        Body = t.Item2;
-                    }
-
+                    UpdateForEachInput(t);
                 }
+            }
+        }
+
+        private void UpdateForEachInput(Tuple<string, string> t)
+        {
+            if (t.Item1 == FromAccount)
+            {
+                FromAccount = t.Item2;
+            }
+            if (t.Item1 == Password)
+            {
+                Password = t.Item2;
+            }
+            if (t.Item1 == To)
+            {
+                To = t.Item2;
+            }
+            if (t.Item1 == Cc)
+            {
+                Cc = t.Item2;
+            }
+            if (t.Item1 == Bcc)
+            {
+                Bcc = t.Item2;
+            }
+            if (t.Item1 == Subject)
+            {
+                Subject = t.Item2;
+            }
+            if (t.Item1 == Attachments)
+            {
+                Attachments = t.Item2;
+            }
+            if (t.Item1 == Body)
+            {
+                Body = t.Item2;
             }
         }
 
