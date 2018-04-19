@@ -253,6 +253,11 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
                 }
 
             }
+            UpdateEnvironmentAndDebug(dataObject, update, allErrors, replacementTotal, counter, s);
+        }
+
+        void UpdateEnvironmentAndDebug(IDSFDataObject dataObject, int update, IErrorResultTO allErrors, int replacementTotal, int counter, string s)
+        {
             if (DataListUtil.IsValueScalar(Result))
             {
                 dataObject.Environment.Assign(Result, replacementTotal.ToString(CultureInfo.InvariantCulture), update == 0 ? counter : update);
