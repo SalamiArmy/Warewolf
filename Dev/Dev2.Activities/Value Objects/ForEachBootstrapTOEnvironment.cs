@@ -11,10 +11,6 @@ using Warewolf.Storage.Interfaces;
 
 namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
 {
-    /// <summary>
-    /// Used with the ForEach Activity
-    /// </summary>
-
     public class ForEachBootstrapTO : DynamicObject
     {
         public enForEachExecutionType ExeType { get; set; }
@@ -23,70 +19,45 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
         public ForEachInnerActivityTO InnerActivity { get; set; }
         public IIndexIterator IndexIterator { get; set; }
         public enForEachType ForEachType { get; private set; }
-
-
-        //MO - Changed : new ctor that accepts the new arguments
+        
         public ForEachBootstrapTO(enForEachType forEachType, string from, string to, string csvNumbers, string numberOfExecutes, string recordsetName, IExecutionEnvironment compiler, out ErrorResultTO errors, int update)
         {
-            errors = new ErrorResultTO();
             ForEachType = forEachType;
             IIndexIterator localIndexIterator;
+            errors = AddErrors(forEachType, from, to, csvNumbers, numberOfExecutes, recordsetName);
+            if (errors.HasErrors())
+            {
+                return;
+            }
 
             switch (forEachType)
             {
                 case enForEachType.InRecordset:
-
-                    if (string.IsNullOrEmpty(recordsetName))
-                    {
-                        errors.AddError(string.Format(ErrorResource.IsRequired, "The Recordset Field"));
-                        break;
-                    }
                     var records = compiler.EvalRecordSetIndexes(recordsetName, update);
                     if (!compiler.HasRecordSet(recordsetName))
                     {
                         errors.AddError("When selecting a recordset only valid recordsets can be used");
-                        break;
+                        return;
                     }
 
                     localIndexIterator = new IndexListIndexIterator(records);
 
-
                     IndexIterator = localIndexIterator;
-                    break;
+                    return;
 
                 case enForEachType.InRange:
-                    if (string.IsNullOrWhiteSpace(@from))
-                    {
-                        errors.AddError(string.Format(ErrorResource.IsRequired, "The FROM field"));
-                        break;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(to))
-                    {
-                        errors.AddError(string.Format(ErrorResource.IsRequired, "The TO field"));
-                        break;
-                    }
-
-                    if (@from.Contains("(*)"))
-                    {
-                        errors.AddError(string.Format(ErrorResource.StarNotationNotAllowed, "From field"));
-                        break;
-                    }
-
-
-
                     var evalledFrom = ExecutionEnvironment.WarewolfEvalResultToString(compiler.Eval(@from, update));
                     int intFrom;
                     if (!int.TryParse(evalledFrom, out intFrom) || intFrom < 1)
                     {
                         errors.AddError(string.Format(ErrorResource.RangeFromOne, "FROM range"));
-                        break;
+                        return;
                     }
 
                     if (to.Contains("(*)"))
                     {
                         errors.AddError(string.Format(ErrorResource.StarNotationNotAllowed, "TO field."));
-                        break;
+                        return;
                     }
 
                     var evalledTo = ExecutionEnvironment.WarewolfEvalResultToString(compiler.Eval(@to, update));
@@ -95,7 +66,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
                     if (!int.TryParse(evalledTo, out intTo) || intTo < 1)
                     {
                         errors.AddError(string.Format(ErrorResource.RangeFromOne, "TO range"));
-                        break;
+                        return;
                     }
                     IndexList indexList;
                     if (intFrom > intTo)
@@ -110,47 +81,61 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
                         localIndexIterator = new IndexIterator(new HashSet<int>(), 0) { IndexList = indexList };
                         IndexIterator = localIndexIterator;
                     }
-
-                    break;
+                    return;
                 case enForEachType.InCSV:
-                    if (string.IsNullOrEmpty(csvNumbers))
-                    {
-                        errors.AddError(string.Format(ErrorResource.IsRequired, "The CSV Field"));
-                        break;
-                    }
                     var csvIndexedsItr = ExecutionEnvironment.WarewolfEvalResultToString(compiler.Eval(csvNumbers, update));
-
                     ErrorResultTO allErrors;
                     var listOfIndexes = SplitOutCsvIndexes(csvIndexedsItr, out allErrors);
                     if (allErrors.HasErrors())
                     {
                         errors.MergeErrors(allErrors);
-                        break;
+                        return;
                     }
                     var listLocalIndexIterator = new ListIndexIterator(listOfIndexes);
                     var listOfIndex = new ListOfIndex(listOfIndexes);
                     listLocalIndexIterator.IndexList = listOfIndex;
                     IndexIterator = listLocalIndexIterator;
-                    break;
+                    return;
                 default:
-
-                    if (numberOfExecutes != null && numberOfExecutes.Contains("(*)"))
-                    {
-                        errors.AddError(string.Format(ErrorResource.StarNotationNotAllowed, "Numbers field."));
-                        break;
-                    }
-
-                    int intExNum;
                     var numOfExItr = ExecutionEnvironment.WarewolfEvalResultToString(compiler.Eval(numberOfExecutes, update));
 
-                    if (!int.TryParse(numOfExItr, out intExNum) || intExNum < 1)
+                    if (!int.TryParse(numOfExItr, out int intExNum) || intExNum < 1)
                     {
                         errors.AddError(string.Format(ErrorResource.RangeFromOne, "Number of executes"));
                     }
                     IndexIterator = new IndexIterator(new HashSet<int>(), intExNum);
-                    break;
+                    return;
             }
+        }
 
+        static ErrorResultTO AddErrors(enForEachType forEachType, string from, string to, string csvNumbers, string numberOfExecutes, string recordsetName)
+        {
+            var errors = new ErrorResultTO();
+            if (forEachType == enForEachType.InRecordset && string.IsNullOrEmpty(recordsetName))
+            {
+                errors.AddError(string.Format(ErrorResource.IsRequired, "The Recordset Field"));
+            }
+            if (string.IsNullOrWhiteSpace(@from))
+            {
+                errors.AddError(string.Format(ErrorResource.IsRequired, "The FROM field"));
+            }
+            if (string.IsNullOrWhiteSpace(to))
+            {
+                errors.AddError(string.Format(ErrorResource.IsRequired, "The TO field"));
+            }
+            if (@from.Contains("(*)"))
+            {
+                errors.AddError(string.Format(ErrorResource.StarNotationNotAllowed, "From field"));
+            }
+            if (string.IsNullOrEmpty(csvNumbers))
+            {
+                errors.AddError(string.Format(ErrorResource.IsRequired, "The CSV Field"));
+            }
+            if (numberOfExecutes != null && numberOfExecutes.Contains("(*)"))
+            {
+                errors.AddError(string.Format(ErrorResource.StarNotationNotAllowed, "Numbers field."));
+            }
+            return errors;
         }
 
         List<int> SplitOutCsvIndexes(string csvNumbers, out ErrorResultTO errors)
