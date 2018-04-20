@@ -35,19 +35,13 @@ namespace Dev2.BussinessLogic
             {
                 var fromval = iterator.FetchNextValue(@from);
                 var toVal = iterator.FetchNextValue(to);
+                ThrowInvalidDataException(fromval, toVal, out DateTime fromDt, out DateTime toDt);
 
-                if (DateTime.TryParse(fromval, out DateTime fromDt))
+                if (DateTime.TryParse(fromval, out fromDt) && DateTime.TryParse(a.ToString(), out DateTime recDateTime) && recDateTime > fromDt && recDateTime < toDt)
                 {
-                    if (!DateTime.TryParse(toVal, out DateTime toDt))
-                    {
-                        throw new InvalidDataException(ErrorResource.IsBetweenDataTypeMismatch);
-                    }
-                    if (DateTime.TryParse(a.ToString(), out DateTime recDateTime) && recDateTime > fromDt && recDateTime < toDt)
-                    {
-                        return true;
-                    }
-
+                    return true;
                 }
+
                 if (double.TryParse(fromval, out double fromNum))
                 {
                     if (!double.TryParse(toVal, out double toNum))
@@ -65,6 +59,14 @@ namespace Dev2.BussinessLogic
                 }
             }
             return false;
+        }
+
+        private static void ThrowInvalidDataException(string fromval, string toVal, out DateTime fromDt, out DateTime toDt)
+        {
+            if (DateTime.TryParse(fromval, out fromDt) && !DateTime.TryParse(toVal, out toDt))
+            {
+                throw new InvalidDataException(ErrorResource.IsBetweenDataTypeMismatch);
+            }
         }
 
         #endregion
