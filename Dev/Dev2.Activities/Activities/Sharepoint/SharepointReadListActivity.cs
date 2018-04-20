@@ -28,7 +28,6 @@ namespace Dev2.Activities.Sharepoint
     [ToolDescriptorInfo("SharepointLogo", "Read List Item(s)", ToolType.Native, "8999E59A-38A3-43BB-A98F-6090C5C9EA1E", "Dev2.Activities", "1.0.0.0", "Legacy", "Sharepoint", "/Warewolf.Studio.Themes.Luna;component/Images.xaml", "Tool_SharePoint_Read_List_Item")]
     public class SharepointReadListActivity : DsfActivityAbstract<string>, IEquatable<SharepointReadListActivity>
     {
-
         public SharepointReadListActivity()
         {
             DisplayName = "Sharepoint Read List Item";
@@ -44,11 +43,7 @@ namespace Dev2.Activities.Sharepoint
         public List<SharepointSearchTo> FilterCriteria { get; set; }
         public bool RequireAllCriteriaToMatch { get; set; }
         public SharepointUtils SharepointUtils { get; set; }
-
-        /// <summary>
-        /// When overridden runs the activity's execution logic 
-        /// </summary>
-        /// <param name="context">The context to be used.</param>
+        
         protected override void OnExecute(NativeActivityContext context)
         {
             var dataObject = context.GetExtension<IDSFDataObject>();
@@ -106,7 +101,7 @@ namespace Dev2.Activities.Sharepoint
             }
         }
 
-        private void ExecuteConcreteAction(IDSFDataObject dataObject, int update)
+        void ExecuteConcreteAction(IDSFDataObject dataObject, int update)
         {
             var sharepointReadListTos = SharepointUtils.GetValidReadListItems(ReadListItems).ToList();
             if (sharepointReadListTos.Any())
@@ -138,7 +133,7 @@ namespace Dev2.Activities.Sharepoint
             }
         }
 
-        private void AddItemList(int update, List<SharepointReadListTo> sharepointReadListTos, IExecutionEnvironment env, List<Common.Interfaces.Infrastructure.SharedModels.ISharepointFieldTo> fields, ListItemCollection listItems)
+        void AddItemList(int update, List<SharepointReadListTo> sharepointReadListTos, IExecutionEnvironment env, List<Common.Interfaces.Infrastructure.SharedModels.ISharepointFieldTo> fields, ListItemCollection listItems)
         {
             var index = 1;
             foreach (var listItem in listItems)
@@ -157,7 +152,7 @@ namespace Dev2.Activities.Sharepoint
             }
         }
 
-        private void TryAddField(int update, IExecutionEnvironment env, int index, ListItem listItem, string variableName, Common.Interfaces.Infrastructure.SharedModels.ISharepointFieldTo fieldName)
+        void TryAddField(int update, IExecutionEnvironment env, int index, ListItem listItem, string variableName, Common.Interfaces.Infrastructure.SharedModels.ISharepointFieldTo fieldName)
         {
             var listItemValue = "";
             try
@@ -258,16 +253,7 @@ namespace Dev2.Activities.Sharepoint
             var validItems = SharepointUtils.GetValidReadListItems(ReadListItems).ToList();
             foreach (var varDebug in validItems)
             {
-                var debugItem = new DebugItem();
-                AddDebugItem(new DebugItemStaticDataParams("", _indexCounter.ToString(CultureInfo.InvariantCulture)), debugItem);
-                var variableName = varDebug.VariableName;
-                if (!string.IsNullOrEmpty(variableName))
-                {
-                    AddDebugItem(new DebugEvalResult(variableName, "Variable", env, update), debugItem);
-                    AddDebugItem(new DebugItemStaticDataParams(varDebug.FieldName, "Field Name"), debugItem);
-                }
-                _indexCounter++;
-                _debugInputs.Add(debugItem);
+                AddInputDebug(env, update, varDebug);
             }
             if (FilterCriteria != null && FilterCriteria.Any())
             {
@@ -280,31 +266,50 @@ namespace Dev2.Activities.Sharepoint
                         return;
                     }
 
-                    var debugItem = new DebugItem();
-                    AddDebugItem(new DebugItemStaticDataParams("", _indexCounter.ToString(CultureInfo.InvariantCulture)), debugItem);
-                    var fieldName = varDebug.FieldName;
-                    if (!string.IsNullOrEmpty(fieldName))
-                    {
-                        AddDebugItem(new DebugEvalResult(fieldName, "Field Name", env, update), debugItem);
-
-                    }
-                    var searchType = varDebug.SearchType;
-                    if (!string.IsNullOrEmpty(searchType))
-                    {
-                        AddDebugItem(new DebugEvalResult(searchType, "Search Type", env, update), debugItem);
-                    }
-                    var valueToMatch = varDebug.ValueToMatch;
-                    if (!string.IsNullOrEmpty(valueToMatch))
-                    {
-                        AddDebugItem(new DebugEvalResult(valueToMatch, "Value", env, update), debugItem);
-                    }
-
-                    AddDebugItem(new DebugEvalResult(requireAllCriteriaToMatch, "Require All Criteria To Match", env, update), debugItem);
-
-                    _indexCounter++;
-                    _debugInputs.Add(debugItem);
+                    AddInputDebug(env, update, varDebug, requireAllCriteriaToMatch);
                 }
             }
+        }
+
+        void AddInputDebug(IExecutionEnvironment env, int update, SharepointSearchTo varDebug, string requireAllCriteriaToMatch)
+        {
+            var debugItem = new DebugItem();
+            AddDebugItem(new DebugItemStaticDataParams("", _indexCounter.ToString(CultureInfo.InvariantCulture)), debugItem);
+            var fieldName = varDebug.FieldName;
+            if (!string.IsNullOrEmpty(fieldName))
+            {
+                AddDebugItem(new DebugEvalResult(fieldName, "Field Name", env, update), debugItem);
+
+            }
+            var searchType = varDebug.SearchType;
+            if (!string.IsNullOrEmpty(searchType))
+            {
+                AddDebugItem(new DebugEvalResult(searchType, "Search Type", env, update), debugItem);
+            }
+            var valueToMatch = varDebug.ValueToMatch;
+            if (!string.IsNullOrEmpty(valueToMatch))
+            {
+                AddDebugItem(new DebugEvalResult(valueToMatch, "Value", env, update), debugItem);
+            }
+
+            AddDebugItem(new DebugEvalResult(requireAllCriteriaToMatch, "Require All Criteria To Match", env, update), debugItem);
+
+            _indexCounter++;
+            _debugInputs.Add(debugItem);
+        }
+
+        void AddInputDebug(IExecutionEnvironment env, int update, SharepointReadListTo varDebug)
+        {
+            var debugItem = new DebugItem();
+            AddDebugItem(new DebugItemStaticDataParams("", _indexCounter.ToString(CultureInfo.InvariantCulture)), debugItem);
+            var variableName = varDebug.VariableName;
+            if (!string.IsNullOrEmpty(variableName))
+            {
+                AddDebugItem(new DebugEvalResult(variableName, "Variable", env, update), debugItem);
+                AddDebugItem(new DebugItemStaticDataParams(varDebug.FieldName, "Field Name"), debugItem);
+            }
+            _indexCounter++;
+            _debugInputs.Add(debugItem);
         }
 
         public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
