@@ -33,7 +33,7 @@ namespace Dev2.BussinessLogic
             {
                 var fromval = iterator.FetchNextValue(@from);
                 var toVal = iterator.FetchNextValue(to);
-                ThrowInvalidDataException(fromval, toVal, out DateTime fromDt, out DateTime toDt);
+                var toDt = TryParse(fromval, toVal, out DateTime fromDt);
 
                 if (DateTime.TryParse(fromval, out fromDt) && DateTime.TryParse(a.ToString(), out DateTime recDateTime) && recDateTime > fromDt && recDateTime < toDt)
                 {
@@ -59,12 +59,14 @@ namespace Dev2.BussinessLogic
             return false;
         }
 
-        private static void ThrowInvalidDataException(string fromval, string toVal, out DateTime fromDt, out DateTime toDt)
+        static DateTime TryParse(string fromval, string toVal, out DateTime fromDt)
         {
+            var toDt = new DateTime();
             if (DateTime.TryParse(fromval, out fromDt) && !DateTime.TryParse(toVal, out toDt))
             {
                 throw new InvalidDataException(ErrorResource.IsBetweenDataTypeMismatch);
             }
+            return toDt;
         }
 
         public override string HandlesType() => "Not Between";

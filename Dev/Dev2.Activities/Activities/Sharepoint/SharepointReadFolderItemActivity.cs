@@ -142,7 +142,7 @@ namespace Dev2.Activities.Sharepoint
             return outputs;
         }
 
-        private void ExecuteConcreteAction(IList<OutputTO> outputs, WarewolfListIterator colItr, SharepointSource sharepointSource, WarewolfIterator inputItr)
+        void ExecuteConcreteAction(IList<OutputTO> outputs, WarewolfListIterator colItr, SharepointSource sharepointSource, WarewolfIterator inputItr)
         {
             var path = colItr.FetchNextValue(inputItr);
 
@@ -150,22 +150,7 @@ namespace Dev2.Activities.Sharepoint
             {
                 if (DataListUtil.GetRecordsetIndexType(Result) == enRecordsetIndexType.Star)
                 {
-                    var recsetName = DataListUtil.ExtractRecordsetNameFromValue(Result);
-                    var fieldName = DataListUtil.ExtractFieldNameFromValue(Result);
-
-                    if (IsFoldersSelected)
-                    {
-                        AddAllFolders(outputs, sharepointSource, path, recsetName, fieldName);
-                    }
-                    if (IsFilesSelected)
-                    {
-                        AddAllFiles(outputs, sharepointSource, path, recsetName, fieldName);
-                    }
-
-                    if (IsFilesAndFoldersSelected)
-                    {
-                        AddAllFilesAndFolders(outputs, sharepointSource, path, recsetName, fieldName);
-                    }
+                    AddAll(outputs, sharepointSource, path);
                 }
                 else
                 {
@@ -201,6 +186,25 @@ namespace Dev2.Activities.Sharepoint
                     outputs.Add(DataListFactory.CreateOutputTO(Result));
                     outputs.Last().OutputStrings.Add(xmlList);
                 }
+            }
+        }
+
+        private void AddAll(IList<OutputTO> outputs, SharepointSource sharepointSource, string path)
+        {
+            var recsetName = DataListUtil.ExtractRecordsetNameFromValue(Result);
+            var fieldName = DataListUtil.ExtractFieldNameFromValue(Result);
+
+            if (IsFoldersSelected)
+            {
+                AddAllFolders(outputs, sharepointSource, path, recsetName, fieldName);
+            }
+            if (IsFilesSelected)
+            {
+                AddAllFiles(outputs, sharepointSource, path, recsetName, fieldName);
+            }
+            if (IsFilesAndFoldersSelected)
+            {
+                AddAllFilesAndFolders(outputs, sharepointSource, path, recsetName, fieldName);
             }
         }
 

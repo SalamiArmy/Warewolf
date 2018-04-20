@@ -15,10 +15,6 @@ using System.Linq;
 
 namespace Dev2.DataList
 {
-    /// <summary>
-    /// Class for the "not contains" recordset search option 
-    /// </summary>
-
     public class RsOpNotContains : AbstractRecsetSearchValidation
     {
         public override Func<DataStorage.WarewolfAtom, bool> CreateFunc(IEnumerable<DataStorage.WarewolfAtom> values, IEnumerable<DataStorage.WarewolfAtom> from, IEnumerable<DataStorage.WarewolfAtom> to, bool all)
