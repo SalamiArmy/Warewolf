@@ -724,6 +724,8 @@ namespace Dev2.FindMissingStrategies
 
         public static List<string> GetActivityFields(DsfFileRead activity) => ExtractAdornedFields(activity);
 
+        public static List<string> GetActivityFields(DsfDateTimeDifferenceActivity activity) => ExtractAdornedFields(activity);
+
         #region Private Methods
 
         static IList<string> InternalFindMissing<T>(IEnumerable<T> data)
