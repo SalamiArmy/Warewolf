@@ -11,7 +11,6 @@ using Dev2.Data.ServiceModel;
 using Dev2.Data.TO;
 using Dev2.Data.Util;
 using Dev2.DataList.Contract;
-using Dev2.Diagnostics;
 using Dev2.Interfaces;
 using Dev2.Util;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
@@ -30,8 +29,7 @@ namespace Dev2.Activities.Sharepoint
         {
             ServerInputPath = string.Empty;
         }
-
-
+        
         protected override bool AssignEmptyOutputsToRecordSet => true;
         
         [Inputs("Files")]
@@ -50,11 +48,7 @@ namespace Dev2.Activities.Sharepoint
             get;
             set;
         }
-
-        /// <summary>
-        /// Gets or sets the files and folders option.
-        /// </summary>
-    
+            
         [Inputs("Files & Folders")]
         [FindMissing]
         public bool IsFilesAndFoldersSelected
@@ -62,10 +56,7 @@ namespace Dev2.Activities.Sharepoint
             get;
             set;
         }
-
-        /// <summary>
-        /// Gets or sets the input path.
-        /// </summary>
+        
         [Inputs("Server Input Path")]
         [FindMissing]
         public string ServerInputPath
@@ -77,11 +68,7 @@ namespace Dev2.Activities.Sharepoint
         public SharepointSource SharepointSource { get; set; }
 
         public Guid SharepointServerResourceId { get; set; }
-
-        /// <summary>
-        /// When overridden runs the activity's execution logic 
-        /// </summary>
-        /// <param name="context">The context to be used.</param>
+        
         protected override void OnExecute(NativeActivityContext context)
         {
             var dataObject = context.GetExtension<IDSFDataObject>();
@@ -150,7 +137,7 @@ namespace Dev2.Activities.Sharepoint
             {
                 if (DataListUtil.GetRecordsetIndexType(Result) == enRecordsetIndexType.Star)
                 {
-                    AddAll(outputs, sharepointSource, path);
+                    AddDebugOutputs(outputs, sharepointSource, path);
                 }
                 else
                 {
@@ -159,37 +146,42 @@ namespace Dev2.Activities.Sharepoint
             }
             else
             {
-                if (IsFoldersSelected)
-                {
-                    var folders = GetSharePointFolders(sharepointSource, path);
-
-                    var xmlList = string.Join(",", folders.Select(c => c));
-                    outputs.Add(DataListFactory.CreateOutputTO(Result));
-                    outputs.Last().OutputStrings.Add(xmlList);
-                }
-                if (IsFilesSelected)
-                {
-                    var files = GetSharePointFiles(sharepointSource, path);
-
-                    var xmlList = string.Join(",", files.Select(c => c));
-                    outputs.Add(DataListFactory.CreateOutputTO(Result));
-                    outputs.Last().OutputStrings.Add(xmlList);
-                }
-
-                if (IsFilesAndFoldersSelected)
-                {
-                    var folderAndPathList = new List<string>();
-                    folderAndPathList.AddRange(GetSharePointFiles(sharepointSource, path));
-                    folderAndPathList.AddRange(GetSharePointFolders(sharepointSource, path));
-
-                    var xmlList = string.Join(",", folderAndPathList.Select(c => c));
-                    outputs.Add(DataListFactory.CreateOutputTO(Result));
-                    outputs.Last().OutputStrings.Add(xmlList);
-                }
+                AddDebugOutputStrings(outputs, sharepointSource, path);
             }
         }
 
-        private void AddAll(IList<OutputTO> outputs, SharepointSource sharepointSource, string path)
+        void AddDebugOutputStrings(IList<OutputTO> outputs, SharepointSource sharepointSource, string path)
+        {
+            if (IsFoldersSelected)
+            {
+                var folders = GetSharePointFolders(sharepointSource, path);
+
+                var xmlList = string.Join(",", folders.Select(c => c));
+                outputs.Add(DataListFactory.CreateOutputTO(Result));
+                outputs.Last().OutputStrings.Add(xmlList);
+            }
+            if (IsFilesSelected)
+            {
+                var files = GetSharePointFiles(sharepointSource, path);
+
+                var xmlList = string.Join(",", files.Select(c => c));
+                outputs.Add(DataListFactory.CreateOutputTO(Result));
+                outputs.Last().OutputStrings.Add(xmlList);
+            }
+
+            if (IsFilesAndFoldersSelected)
+            {
+                var folderAndPathList = new List<string>();
+                folderAndPathList.AddRange(GetSharePointFiles(sharepointSource, path));
+                folderAndPathList.AddRange(GetSharePointFolders(sharepointSource, path));
+
+                var xmlList = string.Join(",", folderAndPathList.Select(c => c));
+                outputs.Add(DataListFactory.CreateOutputTO(Result));
+                outputs.Last().OutputStrings.Add(xmlList);
+            }
+        }
+
+        void AddDebugOutputs(IList<OutputTO> outputs, SharepointSource sharepointSource, string path)
         {
             var recsetName = DataListUtil.ExtractRecordsetNameFromValue(Result);
             var fieldName = DataListUtil.ExtractFieldNameFromValue(Result);
@@ -245,7 +237,7 @@ namespace Dev2.Activities.Sharepoint
             }
         }
 
-        private void AddAllFilesAndFolders(IList<OutputTO> outputs, SharepointSource sharepointSource, string path, string recsetName, string fieldName)
+        void AddAllFilesAndFolders(IList<OutputTO> outputs, SharepointSource sharepointSource, string path, string recsetName, string fieldName)
         {
             var folderAndPathList = new List<string>();
             folderAndPathList.AddRange(GetSharePointFiles(sharepointSource, path));
@@ -262,7 +254,7 @@ namespace Dev2.Activities.Sharepoint
             }
         }
 
-        private void AddAllFiles(IList<OutputTO> outputs, SharepointSource sharepointSource, string path, string recsetName, string fieldName)
+        void AddAllFiles(IList<OutputTO> outputs, SharepointSource sharepointSource, string path, string recsetName, string fieldName)
         {
             var files = GetSharePointFiles(sharepointSource, path);
             var indexToUpsertTo = 1;
@@ -276,7 +268,7 @@ namespace Dev2.Activities.Sharepoint
             }
         }
 
-        private void AddAllFolders(IList<OutputTO> outputs, SharepointSource sharepointSource, string path, string recsetName, string fieldName)
+        void AddAllFolders(IList<OutputTO> outputs, SharepointSource sharepointSource, string path, string recsetName, string fieldName)
         {
             var folders = GetSharePointFolders(sharepointSource, path);
             var indexToUpsertTo = 1;
