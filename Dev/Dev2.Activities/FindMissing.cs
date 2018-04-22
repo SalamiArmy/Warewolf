@@ -546,6 +546,24 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
+        static IList<string> InternalFindMissing<T>(IEnumerable<T> data)
+        {
+            IList<string> results = new List<string>();
+            foreach (T row in data)
+            {
+                var properties = StringAttributeRefectionUtils.ExtractAdornedProperties<FindMissingAttribute>(row);
+                foreach (PropertyInfo propertyInfo in properties)
+                {
+                    var property = propertyInfo.GetValue(row, null);
+                    if (property != null)
+                    {
+                        results.Add(property.ToString());
+                    }
+                }
+            }
+            return results;
+        }
+
         public static List<string> GetActivityFields(DsfForEachActivity forEachActivity)
         {
             var results = new List<string>();
@@ -721,36 +739,5 @@ namespace Dev2.FindMissingStrategies
             }
             return results;
         }
-
-        public static List<string> GetActivityFields(DsfFileRead activity) => ExtractAdornedFields(activity);
-
-        #region Private Methods
-
-        static IList<string> InternalFindMissing<T>(IEnumerable<T> data)
-        {
-            var results = new List<string>();
-            foreach (T row in data)
-            {
-                results.AddRange(ExtractAdornedFields(row));
-            }
-            return results;
-        }
-
-        static List<string> ExtractAdornedFields<T>(T activity)
-        {
-            var results = new List<string>();
-            var properties = StringAttributeRefectionUtils.ExtractAdornedProperties<FindMissingAttribute>(activity);
-            foreach (PropertyInfo propertyInfo in properties)
-            {
-                var property = propertyInfo.GetValue(activity, null);
-                if (property != null)
-                {
-                    results.Add(property.ToString());
-                }
-            }
-            return results;
-        }
-
-        #endregion
     }
 }
