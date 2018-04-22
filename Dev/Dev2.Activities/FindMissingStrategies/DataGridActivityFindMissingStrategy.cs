@@ -142,7 +142,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        static void AddMethodsToRun(List<string> results, Common.Interfaces.IPluginAction pluginAction)
+        public void AddMethodsToRun(List<string> results, Common.Interfaces.IPluginAction pluginAction)
         {
             if (pluginAction?.Inputs != null)
             {

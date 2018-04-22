@@ -17,6 +17,10 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 
 namespace Dev2.FindMissingStrategies
 {
+    /// <summary>
+    /// Responsible for the find missing logic that applys to the DsfActivity
+    /// </summary>
+ //This is loaded based on SpookyAction implementing IFindMissingStrategy
     class DsfActivityFindMissingStrategy : IFindMissingStrategy
     {
         #region Implementation of ISpookyLoadable<Enum>

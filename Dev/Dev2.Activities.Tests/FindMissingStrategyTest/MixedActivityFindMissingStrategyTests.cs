@@ -19,6 +19,9 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 
 namespace Dev2.Tests.Activities.FindMissingStrategyTest
 {
+    /// <summary>
+    /// Summary description for MixedActivityFindMissingStrategyTests
+    /// </summary>
     [TestClass]
     
     public class MixedActivityFindMissingStrategyTests
