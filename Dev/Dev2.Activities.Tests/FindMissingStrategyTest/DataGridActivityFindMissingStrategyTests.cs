@@ -22,9 +22,16 @@ using Warewolf.Core;
 
 namespace Dev2.Tests.Activities.FindMissingStrategyTest
 {
+    /// <summary>
+    /// Summary description for DataGridActivityFindMissingStrategyTests
+    /// </summary>
     [TestClass]
     public class DataGridActivityFindMissingStrategyTests
     {
+        /// <summary>
+        ///Gets or sets the test context which provides
+        ///information about and functionality for the current test run.
+        ///</summary>
         public TestContext TestContext { get; set; }
 
         #region BaseConvert Activity Tests

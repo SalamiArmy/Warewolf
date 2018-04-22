@@ -37,7 +37,11 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities
     public class DsfBaseConvertActivity : DsfActivityAbstract<string>, ICollectionActivity,IEquatable<DsfBaseConvertActivity>
     {
         readonly Dev2BaseConversionFactory _fac = new Dev2BaseConversionFactory();
-        
+
+
+        /// <summary>
+        /// The property that holds all the convertions
+        /// </summary>
         public IList<BaseConvertTO> ConvertCollection { get; set; }
 
         public DsfBaseConvertActivity()
