@@ -10,6 +10,8 @@
 
 using System.Collections.Generic;
 using Dev2.Activities;
+using Dev2.Factories;
+using Dev2.Interfaces;
 using Dev2.FindMissingStrategies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
@@ -17,6 +19,9 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 
 namespace Dev2.Tests.Activities.FindMissingStrategyTest
 {
+    /// <summary>
+    /// Summary description for SequenceActivityFindMissingStrategyTests
+    /// </summary>
     [TestClass]
     public class SequenceActivityFindMissingStrategyTests
     {
@@ -38,8 +43,11 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             activity.Activities.Add(multiAssignActivity);
             activity.Activities.Add(dataMergeActivity);
             activity.Activities.Add(forEachActivity);
+
+            var fac = new Dev2FindMissingStrategyFactory();
+            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.Sequence);
             //------------Execute Test---------------------------
-            var actual = FindMissing.GetActivityFields(activity);
+            var actual = strategy.GetActivityFields(activity);
             //------------Assert Results-------------------------
             var expected = new List<string> { "[[AssignRight1]]", "[[AssignLeft1]]", "[[AssignRight2]]", "[[AssignLeft2]]", "[[b]]", "[[rec().a]]", "6", "[[Result]]", "NUD2347", "registration223", "[[number]]", "Fines.Date", "5" };
             CollectionAssert.AreEqual(expected, actual);
@@ -58,8 +66,11 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             var activity = new DsfSequenceActivity();
             activity.Activities.Add(multiAssignActivity);
             activity.Activities.Add(decisionActivity);
+
+            var fac = new Dev2FindMissingStrategyFactory();
+            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.Sequence);
             //------------Execute Test---------------------------
-            var actual = FindMissing.GetActivityFields(activity);
+            var actual = strategy.GetActivityFields(activity);
             //------------Assert Results-------------------------
             var expected = new List<string> { "[[AssignRight1]]", "[[AssignLeft1]]", "[[AssignRight2]]", "[[AssignLeft2]]", "[[error]]" };
             CollectionAssert.AreEqual(expected, actual);

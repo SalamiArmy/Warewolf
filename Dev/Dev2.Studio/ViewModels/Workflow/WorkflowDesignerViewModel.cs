@@ -89,7 +89,6 @@ using Dev2.Common.Interfaces.Versioning;
 using Dev2.Communication;
 using System.IO;
 using System.Xml;
-using Dev2.FindMissingStrategies;
 
 namespace Dev2.Studio.ViewModels.Workflow
 {
@@ -1392,15 +1391,26 @@ namespace Dev2.Studio.ViewModels.Workflow
         {
             var assign = activity as DsfActivityAbstract<string>;
             var other = activity as DsfActivityAbstract<bool>;
+            enFindMissingType findMissingType;
 
-            if (assign == null && other == null)
+            if (assign != null)
+            {
+                findMissingType = assign.GetFindMissingType();
+            }
+            else if (other != null)
+            {
+                findMissingType = other.GetFindMissingType();
+            }
+            else
             {
                 return new List<String>();
             }
 
             var activityFields = new List<string>();
+            var stratFac = new Dev2FindMissingStrategyFactory();
+            var strategy = stratFac.CreateFindMissingStrategy(findMissingType);
 
-            foreach (var activityField in FindMissing.GetActivityFields(activity))
+            foreach (var activityField in strategy.GetActivityFields(activity))
             {
                 if (!string.IsNullOrEmpty(activityField))
                 {
@@ -2760,7 +2770,8 @@ namespace Dev2.Studio.ViewModels.Workflow
             if (environmentViewModel != null)
             {
                 var item = environmentViewModel.FindByPath(resourceModel.GetSavePath());
-                var savedItem = environmentViewModel?.CreateExplorerItemFromResource(environmentViewModel.Server, item, false, false, resourceModel);
+                var viewModel = environmentViewModel as EnvironmentViewModel;
+                var savedItem = viewModel?.CreateExplorerItemFromResource(environmentViewModel.Server, item, false, false, resourceModel);
                 item.AddChild(savedItem);
             }
             resourceModel.IsWorkflowSaved = true;

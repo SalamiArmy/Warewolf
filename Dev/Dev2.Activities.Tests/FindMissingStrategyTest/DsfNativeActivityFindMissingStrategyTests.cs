@@ -14,7 +14,6 @@ using System.Collections.Generic;
 using Dev2.Activities;
 using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Factories;
-using Dev2.FindMissingStrategies;
 using Dev2.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -38,8 +37,12 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
                 OnErrorVariable = expected[0],
                 OnErrorWorkflow = expected[1]
             };
+
+            var fac = new Dev2FindMissingStrategyFactory();
+            var strategy = fac.CreateFindMissingStrategy(enFindMissingType.StaticActivity);
+
             //------------Execute Test---------------------------
-            var actual = FindMissing.GetActivityFields(dsfNativeActivity);
+            var actual = strategy.GetActivityFields(dsfNativeActivity);
 
             //------------Assert Results-------------------------
             CollectionAssert.AreEqual(expected, actual);
@@ -59,7 +62,11 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
         }
 
         #region Overrides of DsfNativeActivity<string>
-        
+
+        /// <summary>
+        /// When overridden runs the activity's execution logic 
+        /// </summary>
+        /// <param name="context">The context to be used.</param>
         protected override void OnExecute(NativeActivityContext context)
         {
         }
