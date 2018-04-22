@@ -19,17 +19,10 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 
 namespace Dev2.Tests.Activities.FindMissingStrategyTest
 {
-    /// <summary>
-    /// Summary description for MixedActivityFindMissingStrategyTests
-    /// </summary>
     [TestClass]
     
     public class MixedActivityFindMissingStrategyTests
     {
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
         public TestContext TestContext { get; set; }
 
         #region DataSplit Activity Tests
