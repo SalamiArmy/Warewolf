@@ -29,33 +29,36 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfWcfEndPointActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfWcfEndPointActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
-            if (activity.IsObject)
-            {
-                if (!string.IsNullOrEmpty(activity.ObjectName))
+                if (maAct.Inputs != null)
                 {
-                    results.Add(activity.ObjectName);
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
                 }
-            }
-            else
-            {
 
-                if (activity.Outputs != null)
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
                 {
-                    results.AddRange(InternalFindMissing(activity.Outputs));
+                    results.Add(maAct.OnErrorVariable);
                 }
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (maAct.IsObject)
+                {
+                    if (!string.IsNullOrEmpty(maAct.ObjectName))
+                    {
+                        results.Add(maAct.ObjectName);
+                    }
+                }
+                else
+                {
+
+                    if (maAct.Outputs != null)
+                    {
+                        results.AddRange(InternalFindMissing(maAct.Outputs));
+                    }
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
@@ -63,31 +66,34 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfComDllActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfComDllActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
-            if (activity.IsObject)
-            {
-                if (!string.IsNullOrEmpty(activity.ObjectName))
+                if (maAct.Inputs != null)
                 {
-                    results.Add(activity.ObjectName);
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
                 }
-            }
-            else
-            {
-                if (activity.Outputs != null)
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
                 {
-                    results.AddRange(InternalFindMissing(activity.Outputs));
+                    results.Add(maAct.OnErrorVariable);
                 }
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (maAct.IsObject)
+                {
+                    if (!string.IsNullOrEmpty(maAct.ObjectName))
+                    {
+                        results.Add(maAct.ObjectName);
+                    }
+                }
+                else
+                {
+                    if (maAct.Outputs != null)
+                    {
+                        results.AddRange(InternalFindMissing(maAct.Outputs));
+                    }
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
@@ -95,47 +101,49 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfEnhancedDotNetDllActivity activity)
         {
             var results = new List<string>();
-            if (activity.ConstructorInputs != null)
+            if (activity is DsfEnhancedDotNetDllActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.ConstructorInputs));
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
+                if (maAct.ConstructorInputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.ConstructorInputs));
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
 
-            if (activity.MethodsToRun != null)
-            {
-                foreach (var pluginAction in activity.MethodsToRun)
+                if (maAct.MethodsToRun != null)
                 {
-                    results.AddRange(AddMethodsToRun(pluginAction));
+                    foreach (var pluginAction in maAct.MethodsToRun)
+                    {
+                        AddMethodsToRun(results, pluginAction);
+                    }
                 }
-            }
-            if (activity.IsObject)
-            {
-                if (!string.IsNullOrEmpty(activity.ObjectName))
+                if (maAct.IsObject)
                 {
-                    results.Add(activity.ObjectName);
+                    if (!string.IsNullOrEmpty(maAct.ObjectName))
+                    {
+                        results.Add(maAct.ObjectName);
+                    }
                 }
-            }
-            else
-            {
+                else
+                {
 
-                if (activity.Outputs != null)
-                {
-                    results.AddRange(InternalFindMissing(activity.Outputs));
+                    if (maAct.Outputs != null)
+                    {
+                        results.AddRange(InternalFindMissing(maAct.Outputs));
+                    }
                 }
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
 
-        static List<string> AddMethodsToRun(Common.Interfaces.IPluginAction pluginAction)
+        static void AddMethodsToRun(List<string> results, Common.Interfaces.IPluginAction pluginAction)
         {
-            var results = new List<string>();
             if (pluginAction?.Inputs != null)
             {
                 results.AddRange(InternalFindMissing(pluginAction.Inputs));
@@ -144,38 +152,40 @@ namespace Dev2.FindMissingStrategies
             {
                 results.Add(pluginAction.OutputVariable);
             }
-            return results;
         }
 
         public List<string> GetActivityFields(DsfDotNetDllActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfDotNetDllActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
-            if (activity.IsObject)
-            {
-                if (!string.IsNullOrEmpty(activity.ObjectName))
+                if (maAct.Inputs != null)
                 {
-                    results.Add(activity.ObjectName);
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
                 }
-            }
-            else
-            {
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
+                if (maAct.IsObject)
+                {
+                    if (!string.IsNullOrEmpty(maAct.ObjectName))
+                    {
+                        results.Add(maAct.ObjectName);
+                    }
+                }
+                else
+                {
 
-                if (activity.Outputs != null)
-                {
-                    results.AddRange(InternalFindMissing(activity.Outputs));
+                    if (maAct.Outputs != null)
+                    {
+                        results.AddRange(InternalFindMissing(maAct.Outputs));
+                    }
                 }
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
@@ -183,48 +193,51 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfWebGetActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfWebGetActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-            if (activity.QueryString != null)
-            {
-                results.Add(activity.QueryString);
-            }
-            if (activity.Headers != null)
-            {
-                foreach (var nameValue in activity.Headers)
+                if (maAct.Inputs != null)
                 {
-                    results.Add(nameValue.Name);
-                    results.Add(nameValue.Value);
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
                 }
-            }
-            if (!string.IsNullOrEmpty(activity.ObjectName))
-            {
-                results.Add(activity.ObjectName);
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
-            if (activity.IsObject)
-            {
-                if (!string.IsNullOrEmpty(activity.ObjectName))
+                if (maAct.QueryString != null)
                 {
-                    results.Add(activity.ObjectName);
+                    results.Add(maAct.QueryString);
                 }
-            }
-            else
-            {
+                if (maAct.Headers != null)
+                {
+                    foreach (var nameValue in maAct.Headers)
+                    {
+                        results.Add(nameValue.Name);
+                        results.Add(nameValue.Value);
+                    }
+                }
+                if (!string.IsNullOrEmpty(maAct.ObjectName))
+                {
+                    results.Add(maAct.ObjectName);
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
+                if (maAct.IsObject)
+                {
+                    if (!string.IsNullOrEmpty(maAct.ObjectName))
+                    {
+                        results.Add(maAct.ObjectName);
+                    }
+                }
+                else
+                {
 
-                if (activity.Outputs != null)
-                {
-                    results.AddRange(InternalFindMissing(activity.Outputs));
+                    if (maAct.Outputs != null)
+                    {
+                        results.AddRange(InternalFindMissing(maAct.Outputs));
+                    }
                 }
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
@@ -232,48 +245,51 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfWebPutActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfWebPutActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-            if (activity.QueryString != null)
-            {
-                results.Add(activity.QueryString);
-            }
-            if (activity.PutData != null)
-            {
-                results.Add(activity.PutData);
-            }
-            if (activity.Headers != null)
-            {
-                foreach (var nameValue in activity.Headers)
+                if (maAct.Inputs != null)
                 {
-                    results.Add(nameValue.Name);
-                    results.Add(nameValue.Value);
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
                 }
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
-            if (activity.IsObject)
-            {
-                if (!string.IsNullOrEmpty(activity.ObjectName))
+                if (maAct.QueryString != null)
                 {
-                    results.Add(activity.ObjectName);
+                    results.Add(maAct.QueryString);
                 }
-            }
-            else
-            {
+                if (maAct.PutData != null)
+                {
+                    results.Add(maAct.PutData);
+                }
+                if (maAct.Headers != null)
+                {
+                    foreach (var nameValue in maAct.Headers)
+                    {
+                        results.Add(nameValue.Name);
+                        results.Add(nameValue.Value);
+                    }
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
+                if (maAct.IsObject)
+                {
+                    if (!string.IsNullOrEmpty(maAct.ObjectName))
+                    {
+                        results.Add(maAct.ObjectName);
+                    }
+                }
+                else
+                {
 
-                if (activity.Outputs != null)
-                {
-                    results.AddRange(InternalFindMissing(activity.Outputs));
+                    if (maAct.Outputs != null)
+                    {
+                        results.AddRange(InternalFindMissing(maAct.Outputs));
+                    }
                 }
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
@@ -281,44 +297,47 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfWebDeleteActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfWebDeleteActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-            if (activity.QueryString != null)
-            {
-                results.Add(activity.QueryString);
-            }
-            if (activity.Headers != null)
-            {
-                foreach (var nameValue in activity.Headers)
+                if (maAct.Inputs != null)
                 {
-                    results.Add(nameValue.Name);
-                    results.Add(nameValue.Value);
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
                 }
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
-            if (activity.IsObject)
-            {
-                if (!string.IsNullOrEmpty(activity.ObjectName))
+                if (maAct.QueryString != null)
                 {
-                    results.Add(activity.ObjectName);
+                    results.Add(maAct.QueryString);
                 }
-            }
-            else
-            {
+                if (maAct.Headers != null)
+                {
+                    foreach (var nameValue in maAct.Headers)
+                    {
+                        results.Add(nameValue.Name);
+                        results.Add(nameValue.Value);
+                    }
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
+                if (maAct.IsObject)
+                {
+                    if (!string.IsNullOrEmpty(maAct.ObjectName))
+                    {
+                        results.Add(maAct.ObjectName);
+                    }
+                }
+                else
+                {
 
-                if (activity.Outputs != null)
-                {
-                    results.AddRange(InternalFindMissing(activity.Outputs));
+                    if (maAct.Outputs != null)
+                    {
+                        results.AddRange(InternalFindMissing(maAct.Outputs));
+                    }
                 }
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
@@ -326,43 +345,46 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfWebPostActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfWebPostActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-
-            if (activity.QueryString != null)
-            {
-                results.Add(activity.QueryString);
-            }
-            if (activity.PostData != null)
-            {
-                results.Add(activity.PostData);
-            }
-            if (activity.Headers != null)
-            {
-                results.AddRange(AddAllHeaders(activity));
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
-            }
-            if (activity.IsObject)
-            {
-                if (!string.IsNullOrEmpty(activity.ObjectName))
+                if (maAct.Inputs != null)
                 {
-                    results.Add(activity.ObjectName);
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
                 }
-            }
-            else
-            {
-                if (activity.Outputs != null)
+
+                if (maAct.QueryString != null)
                 {
-                    results.AddRange(InternalFindMissing(activity.Outputs));
+                    results.Add(maAct.QueryString);
+                }
+                if (maAct.PostData != null)
+                {
+                    results.Add(maAct.PostData);
+                }
+                if (maAct.Headers != null)
+                {
+                    results.AddRange(AddAllHeaders(maAct));
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
+                if (maAct.IsObject)
+                {
+                    if (!string.IsNullOrEmpty(maAct.ObjectName))
+                    {
+                        results.Add(maAct.ObjectName);
+                    }
+                }
+                else
+                {
+                    if (maAct.Outputs != null)
+                    {
+                        results.AddRange(InternalFindMissing(maAct.Outputs));
+                    }
                 }
             }
             return results;
@@ -371,26 +393,29 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfODBCDatabaseActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfODBCDatabaseActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-            if (activity.CommandText != null)
-            {
-                results.Add(activity.CommandText);
-            }
-            if (activity.Outputs != null)
-            {
-                results.AddRange(InternalFindMissing(activity.Outputs));
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
+                if (maAct.Inputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
+                }
+                if (maAct.CommandText != null)
+                {
+                    results.Add(maAct.CommandText);
+                }
+                if (maAct.Outputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.Outputs));
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
 
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
@@ -398,22 +423,25 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfOracleDatabaseActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfOracleDatabaseActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-            if (activity.Outputs != null)
-            {
-                results.AddRange(InternalFindMissing(activity.Outputs));
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
+                if (maAct.Inputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
+                }
+                if (maAct.Outputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.Outputs));
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
 
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
@@ -421,22 +449,25 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfPostgreSqlActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfPostgreSqlActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-            if (activity.Outputs != null)
-            {
-                results.AddRange(InternalFindMissing(activity.Outputs));
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
+                if (maAct.Inputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
+                }
+                if (maAct.Outputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.Outputs));
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
 
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
@@ -444,22 +475,25 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfMySqlDatabaseActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfMySqlDatabaseActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-            if (activity.Outputs != null)
-            {
-                results.AddRange(InternalFindMissing(activity.Outputs));
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
+                if (maAct.Inputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
+                }
+                if (maAct.Outputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.Outputs));
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
 
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
@@ -467,22 +501,25 @@ namespace Dev2.FindMissingStrategies
         public List<string> GetActivityFields(DsfSqlServerDatabaseActivity activity)
         {
             var results = new List<string>();
-            if (activity.Inputs != null)
+            if (activity is DsfSqlServerDatabaseActivity maAct)
             {
-                results.AddRange(InternalFindMissing(activity.Inputs));
-            }
-            if (activity.Outputs != null)
-            {
-                results.AddRange(InternalFindMissing(activity.Outputs));
-            }
-            if (!string.IsNullOrEmpty(activity.OnErrorVariable))
-            {
-                results.Add(activity.OnErrorVariable);
-            }
+                if (maAct.Inputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.Inputs));
+                }
+                if (maAct.Outputs != null)
+                {
+                    results.AddRange(InternalFindMissing(maAct.Outputs));
+                }
+                if (!string.IsNullOrEmpty(maAct.OnErrorVariable))
+                {
+                    results.Add(maAct.OnErrorVariable);
+                }
 
-            if (!string.IsNullOrEmpty(activity.OnErrorWorkflow))
-            {
-                results.Add(activity.OnErrorWorkflow);
+                if (!string.IsNullOrEmpty(maAct.OnErrorWorkflow))
+                {
+                    results.Add(maAct.OnErrorWorkflow);
+                }
             }
             return results;
         }
