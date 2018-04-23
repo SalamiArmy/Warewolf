@@ -169,18 +169,18 @@ namespace Dev2.Activities
                 var fromValue = colItr.FetchNextValue(fromItr);
                 var toValue = colItr.FetchNextValue(toItr);
                 var lengthValue = colItr.FetchNextValue(lengthItr);
-                fromNum = GetFrom(allErrors, fromValue, ref errors);
+                fromNum = GetFrom(allErrors, fromValue);
                 if (RandomType == enRandomType.Numbers && errors.HasErrors())
                 {
                     continue;
                 }
-                toNum = GetTo(allErrors, toValue, ref errors);
+                toNum = GetTo(allErrors, toValue);
                 if (RandomType == enRandomType.Numbers && errors.HasErrors())
                 {
                     continue;
                 }
-                lengthNum = GetLength(allErrors, lengthValue, ref errors);
-                if (RandomType != enRandomType.Numbers && RandomType != enRandomType.Guid && errors.HasErrors())
+                lengthNum = GetLength(allErrors, lengthValue);
+                if (RandomType != enRandomType.Numbers && RandomType != enRandomType.Guid && allErrors.HasErrors())
                 {
                     continue;
                 }
@@ -203,12 +203,12 @@ namespace Dev2.Activities
             return errors;
         }
 
-        int GetLength(ErrorResultTO allErrors, string lengthValue, ref ErrorResultTO errors)
+        int GetLength(ErrorResultTO allErrors, string lengthValue)
         {
             var lengthNum = -1;
             if (RandomType != enRandomType.Numbers && RandomType != enRandomType.Guid)
             {
-                lengthNum = GetLengthValue(lengthValue, out errors);
+                lengthNum = GetLengthValue(lengthValue, out ErrorResultTO errors);
                 if (errors.HasErrors())
                 {
                     allErrors.MergeErrors(errors);
@@ -217,12 +217,12 @@ namespace Dev2.Activities
             return lengthNum;
         }
 
-        double GetTo(ErrorResultTO allErrors, string toValue, ref ErrorResultTO errors)
+        double GetTo(ErrorResultTO allErrors, string toValue)
         {
             var result = -1.0;
             if (RandomType == enRandomType.Numbers)
             {
-                result = GetToValue(toValue, out errors);
+                result = GetToValue(toValue, out ErrorResultTO errors);
                 if (errors.HasErrors())
                 {
                     allErrors.MergeErrors(errors);
@@ -231,12 +231,12 @@ namespace Dev2.Activities
             return result;
         }
 
-        double GetFrom(ErrorResultTO allErrors, string fromValue, ref ErrorResultTO errors)
+        double GetFrom(ErrorResultTO allErrors, string fromValue)
         {
             var result = -1.0;
             if (RandomType == enRandomType.Numbers)
             {
-                result = GetFromValue(fromValue, out errors);
+                result = GetFromValue(fromValue, out ErrorResultTO errors);
                 if (errors.HasErrors())
                 {
                     allErrors.MergeErrors(errors);
