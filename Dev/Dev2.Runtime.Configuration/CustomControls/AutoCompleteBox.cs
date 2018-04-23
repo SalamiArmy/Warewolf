@@ -1471,41 +1471,46 @@ namespace System.Windows.Controls
             var items = _items;
             foreach (object item in items)
             {
-                var inResults = !(stringFiltering || objectFiltering);
-                if (!inResults)
-                {
-                    inResults = stringFiltering ? TextFilter?.Invoke(text, FormatValue(item)) ?? default(bool) : ItemFilter?.Invoke(text, item) ?? default(bool);
-                }
+                RefreshItem(text, stringFiltering, objectFiltering, item, ref viewIndex, ref viewCount);
+            }
+            _valueBindingEvaluator?.ClearDataContext();
+        }
 
-                if (viewCount > viewIndex && inResults && _view[viewIndex] == item)
+        void RefreshItem(string text, bool stringFiltering, bool objectFiltering, object item, ref int viewIndex, ref int viewCount)
+        {
+            var inResults = !(stringFiltering || objectFiltering);
+            if (!inResults)
+            {
+                inResults = stringFiltering ? TextFilter?.Invoke(text, FormatValue(item)) ?? default(bool) : ItemFilter?.Invoke(text, item) ?? default(bool);
+            }
+
+            if (viewCount > viewIndex && inResults && _view[viewIndex] == item)
+            {
+                viewIndex++;
+            }
+            else if (inResults)
+            {
+                if (viewCount > viewIndex && _view[viewIndex] != item)
                 {
+                    _view.RemoveAt(viewIndex);
+                    _view.Insert(viewIndex, item);
                     viewIndex++;
-                }
-                else if (inResults)
-                {
-                    if (viewCount > viewIndex && _view[viewIndex] != item)
-                    {
-                        _view.RemoveAt(viewIndex);
-                        _view.Insert(viewIndex, item);
-                        viewIndex++;
-                    }
-                    else
-                    {
-                        AddOrInsertItem(viewIndex, viewCount, item);
-                        viewIndex++;
-                        viewCount++;
-                    }
                 }
                 else
                 {
-                    if (viewCount > viewIndex && _view[viewIndex] == item)
-                    {
-                        _view.RemoveAt(viewIndex);
-                        viewCount--;
-                    }
+                    AddOrInsertItem(viewIndex, viewCount, item);
+                    viewIndex++;
+                    viewCount++;
                 }
             }
-            _valueBindingEvaluator?.ClearDataContext();
+            else
+            {
+                if (viewCount > viewIndex && _view[viewIndex] == item)
+                {
+                    _view.RemoveAt(viewIndex);
+                    viewCount--;
+                }
+            }
         }
 
         private void AddOrInsertItem(int viewIndex, int viewCount, object item)
