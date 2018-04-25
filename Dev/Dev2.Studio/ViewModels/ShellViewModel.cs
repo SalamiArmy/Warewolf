@@ -1148,7 +1148,7 @@ namespace Dev2.Studio.ViewModels
             _worksurfaceContextManager.DisplayResourceWizard(contextualResourceModel);
         }
 
-        public void DeployResources(Guid sourceEnvironmentId, Guid destinationEnvironmentId, IList<Guid> resources, bool deployTests)
+        public void DeployResources(Guid sourceEnvironmentId, Guid destinationEnvironmentId, IEnumerable<Guid> resources, bool deployTests)
         {
             var environmentModel = ServerRepository.Get(destinationEnvironmentId);
             var sourceEnvironmentModel = ServerRepository.Get(sourceEnvironmentId);

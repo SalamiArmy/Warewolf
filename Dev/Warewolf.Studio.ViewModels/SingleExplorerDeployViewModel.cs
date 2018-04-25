@@ -104,18 +104,17 @@ namespace Warewolf.Studio.ViewModels
         void DestinationServerStateChanged(object sender, IServer server)
         {
             RaiseCanExecuteDependencies();
-            var items = !DestinationConnectControlViewModel.IsConnected ? _source?.SourceLoadedItems?.ToList() : GetItemsToUpdateStats();
+            var items = !DestinationConnectControlViewModel.IsConnected ? _source?.SourceLoadedItems : GetItemsToUpdateStats();
             _stats.TryCalculate(items);
         }
 
-        List<IExplorerTreeItem> GetItemsToUpdateStats()
+        IEnumerable<IExplorerTreeItem> GetItemsToUpdateStats()
         {
-            var items = Source?.SourceLoadedItems?.ToList();
+            var items = Source?.SourceLoadedItems;
             if (Source?.SelectedItems?.Count > 0)
             {
-                items = Source?.SelectedItems?.ToList();
+                items = Source?.SelectedItems;
             }
-
             return items;
         }
 
@@ -167,7 +166,7 @@ namespace Warewolf.Studio.ViewModels
                 _destination.SelectedEnvironment = environmentViewModel;
             }
             ViewModelUtils.RaiseCanExecuteChanged(DeployCommand);
-            _stats.TryCalculate(Source?.SourceLoadedItems?.ToList());
+            _stats.TryCalculate(Source?.SourceLoadedItems);
             OnPropertyChanged(() => CanDeploy);
         }
 
@@ -287,10 +286,11 @@ namespace Warewolf.Studio.ViewModels
             return false;
         }
 
-        void UpdateDeploySuccess(List<Guid> notfolders)
+        void UpdateDeploySuccess(IEnumerable<Guid> notfolders)
         {
             DeploySuccessfull = true;
-            DeploySuccessMessage = $"{notfolders.Count} Resource{(notfolders.Count == 1 ? "" : "s")} Deployed Successfully.";
+            var countOfNotFolders = notfolders.Count();
+            DeploySuccessMessage = $"{countOfNotFolders} Resource{(countOfNotFolders == 1 ? "" : "s")} Deployed Successfully.";
             var showDeploySuccessful = PopupController.ShowDeploySuccessful(DeploySuccessMessage);
             if (showDeploySuccessful == MessageBoxResult.OK)
             {
@@ -300,7 +300,7 @@ namespace Warewolf.Studio.ViewModels
             _stats.ReCalculate();
         }
 
-        void ValidateDirectDeploy(List<Guid> notfolders)
+        void ValidateDirectDeploy(IEnumerable<Guid> notfolders)
         {
             var destEnv = Destination.ConnectControlViewModel.SelectedConnection;
             var sourceEnv = Source.Environments.First();
@@ -343,11 +343,11 @@ namespace Warewolf.Studio.ViewModels
             Password = destEnv.Connection.Password
         };
 
-        List<Guid> GetNotFoldersList()
+        IEnumerable<Guid> GetNotFoldersList()
         {
             var selectedItems = Source.SelectedItems.Where(a => a.ResourceType != "Folder");
             var explorerTreeItems = selectedItems as IExplorerTreeItem[] ?? selectedItems.ToArray();
-            var notfolders = explorerTreeItems.Select(a => a.ResourceId).ToList();
+            var notfolders = explorerTreeItems.Select(a => a.ResourceId);
             return notfolders;
         }
 

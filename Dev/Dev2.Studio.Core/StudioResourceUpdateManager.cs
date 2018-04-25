@@ -126,7 +126,7 @@ namespace Dev2.Studio.Core
 
         #region Implementation of IStudioUpdateManager
 
-        public List<IDeployResult> Deploy(List<Guid> resourceIDsToDeploy, bool deployTests, IConnection destinationEnvironment) => UpdateManagerProxy.Deploy(resourceIDsToDeploy, deployTests, destinationEnvironment);
+        public List<IDeployResult> Deploy(IEnumerable<Guid> resourceIDsToDeploy, bool deployTests, IConnection destinationEnvironment) => UpdateManagerProxy.Deploy(resourceIDsToDeploy, deployTests, destinationEnvironment);
 
         #endregion
     }

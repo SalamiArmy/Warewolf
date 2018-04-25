@@ -137,7 +137,7 @@ namespace Warewolf.Studio.ViewModels
                     var serverVersion = SelectedServer.GetServerVersion();
                     _serverVersion = serverVersion != Resources.Languages.Core.ServerVersionUnavailable ? Version.Parse(serverVersion) : null;
                 }
-                environmentViewModel.SelectAll = () => _statsArea.TryCalculate(environmentViewModel.AsList().Where(o => o.IsResourceChecked == true).Select(x => x as IExplorerTreeItem).ToList());
+                environmentViewModel.SelectAll = () => _statsArea.TryCalculate(environmentViewModel.AsList().Where(o => o.IsResourceChecked == true).Select(x => x as IExplorerTreeItem));
             }
             CheckPreselectedItems(environmentID);
             if (ConnectControlViewModel != null)
@@ -221,7 +221,7 @@ namespace Warewolf.Studio.ViewModels
                 ax.Parent.IsFolderChecked = ax.Parent.UnfilteredChildren?.Flatten(a => a.UnfilteredChildren ?? new ObservableCollection<IExplorerItemViewModel>()).All(a => a.IsResourceChecked == true);
             }
 
-            _statsArea.TryCalculate(SelectedItems.ToList());
+            _statsArea.TryCalculate(SelectedItems);
         }
 
         public virtual ICollection<IExplorerTreeItem> SelectedItems
@@ -342,7 +342,7 @@ namespace Warewolf.Studio.ViewModels
             }
             isLoaded = await environmentModel.LoadAsync(IsDeploy, false).ConfigureAwait(true);
             OnPropertyChanged(() => Environments);
-            _statsArea.TryCalculate(environmentModel.AsList().Select(model => model as IExplorerTreeItem).ToList());
+            _statsArea.TryCalculate(environmentModel.AsList().Select(model => model as IExplorerTreeItem));
             AfterLoad(server.EnvironmentID);
             return isLoaded;
         }

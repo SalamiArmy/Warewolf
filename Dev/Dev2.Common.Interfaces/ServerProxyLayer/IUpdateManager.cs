@@ -51,6 +51,6 @@ namespace Dev2.Common.Interfaces.ServerProxyLayer
     /// </summary>
     public interface IUpdateManager : IUpdateManagerSave, IUpdateManagerTest
     {
-        List<IDeployResult> Deploy(List<Guid> resourceIDsToDeploy, bool deployTests, IConnection destinationEnvironmentId);
+        List<IDeployResult> Deploy(IEnumerable<Guid> resourceIDsToDeploy, bool deployTests, IConnection destinationEnvironmentId);
     }
 }

@@ -48,7 +48,7 @@ namespace Dev2.Common.Interfaces
         void FireServerSaved(Guid savedServerID);
         void FireServerSaved(Guid savedServerID, bool isDeleted);
 
-        List<IDeployResult> Deploy(List<Guid> resourceIDsToDeploy, bool deployTests, IConnection destinationEnvironment);
+        List<IDeployResult> Deploy(IEnumerable<Guid> resourceIDsToDeploy, bool deployTests, IConnection destinationEnvironment);
     }
 
     public delegate void ItemSaved(bool refresh);

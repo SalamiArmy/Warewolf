@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 using Dev2.Common;
 using Dev2.Common.Interfaces;
@@ -494,12 +495,13 @@ namespace Dev2.Studio.Core
 
         #region Implementation of IUpdateManager
 
-        public List<IDeployResult> Deploy(List<Guid> resourceIDsToDeploy, bool deployTests, IConnection destinationEnvironmentId)
+        public List<IDeployResult> Deploy(IEnumerable<Guid> resourceIDsToDeploy, bool deployTests, IConnection destinationEnvironmentId)
         {
             var con = Connection;
             var comsController = CommunicationControllerFactory.CreateController("DirectDeploy");
             var serialiser = new Dev2JsonSerializer();
-            comsController.AddPayloadArgument("resourceIDsToDeploy", serialiser.SerializeToBuilder(resourceIDsToDeploy));
+            var ids = resourceIDsToDeploy.ToList();
+            comsController.AddPayloadArgument("resourceIDsToDeploy", serialiser.SerializeToBuilder(ids));
             comsController.AddPayloadArgument("deployTests", new StringBuilder(deployTests.ToString()));
             comsController.AddPayloadArgument("destinationEnvironmentId", serialiser.SerializeToBuilder(destinationEnvironmentId));
             var output = comsController.ExecuteCommand<List<IDeployResult>>(con, GlobalConstants.ServerWorkspaceID);

@@ -23,7 +23,7 @@ namespace Warewolf.Studio.ViewModels
         public string RenameErrors { get; private set; }
         List<Conflict> _conflicts;
         IEnumerable<IExplorerTreeItem> _new;
-        IList<IExplorerTreeItem> _items;
+        IEnumerable<IExplorerTreeItem> _items;
         ICollection<IExplorerItemViewModel> _destinationItems;
 
         public DeployStatsViewerViewModel(IDeployDestinationExplorerViewModel destination)
@@ -160,7 +160,7 @@ namespace Warewolf.Studio.ViewModels
             }
             else
             {
-                if (_items?.Count > 0)
+                if (_items?.Count() > 0)
                 {
                     foreach (var currentItem in _items)
                     {
@@ -190,7 +190,7 @@ namespace Warewolf.Studio.ViewModels
 
         static bool IsSourceAndDestinationSameServer(IExplorerTreeItem currentItem, IExplorerItemViewModel explorerItemViewModel) => Equals(currentItem.Server, explorerItemViewModel.Server);
 
-        public void TryCalculate(IList<IExplorerTreeItem> items)
+        public void TryCalculate(IEnumerable<IExplorerTreeItem> items)
         {
             _items = items;
             if (items != null)
@@ -213,7 +213,7 @@ namespace Warewolf.Studio.ViewModels
             CheckDestinationPermissions();
         }
 
-        void Calculate(IList<IExplorerTreeItem> items)
+        void Calculate(IEnumerable<IExplorerTreeItem> items)
         {
             Connectors = items.Count(a => !string.IsNullOrEmpty(a.ResourceType)
                                                     && a.ResourceType.Contains(@"Service")
