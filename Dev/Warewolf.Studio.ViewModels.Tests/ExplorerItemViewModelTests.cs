@@ -52,7 +52,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _windowsGroupPermissionsMock = new Mock<IWindowsGroupPermission>();
             _serverMock.SetupGet(it => it.ExplorerRepository).Returns(_explorerRepositoryMock.Object);
             _serverMock.SetupGet(it => it.Permissions)
-                .Returns(new List<IWindowsGroupPermission> { _windowsGroupPermissionsMock.Object });
+                .Returns(new IWindowsGroupPermission[] { _windowsGroupPermissionsMock.Object });
             _popupControllerMock = new Mock<IPopupController>();
             _explorerTooltips = new Mock<IExplorerTooltips>();
             CustomContainer.Register(_explorerTooltips.Object);
@@ -1278,7 +1278,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             windowsGroupPermissionMock.SetupGet(it => it.IsServer).Returns(true);
             windowsGroupPermissionMock.SetupGet(it => it.View).Returns(false);
             windowsGroupPermissionMock.SetupGet(it => it.DeployFrom).Returns(true);
-            _serverMock.SetupGet(it => it.Permissions).Returns(new List<IWindowsGroupPermission>()
+            _serverMock.SetupGet(it => it.Permissions).Returns(new IWindowsGroupPermission[]
             {
                 windowsGroupPermissionMock.Object
             });
@@ -1299,7 +1299,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             windowsGroupPermissionMock.SetupGet(it => it.IsServer).Returns(true);
             windowsGroupPermissionMock.SetupGet(it => it.View).Returns(true);
             windowsGroupPermissionMock.SetupGet(it => it.Administrator).Returns(true);
-            _serverMock.SetupGet(it => it.Permissions).Returns(new List<IWindowsGroupPermission>()
+            _serverMock.SetupGet(it => it.Permissions).Returns(new IWindowsGroupPermission[]
             {
                 windowsGroupPermissionMock.Object
             });
@@ -1321,7 +1321,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             windowsGroupPermissionMock.SetupGet(it => it.IsServer).Returns(true);
             windowsGroupPermissionMock.SetupGet(it => it.Administrator).Returns(true);
             windowsGroupPermissionMock.SetupGet(it => it.View).Returns(true);
-            _serverMock.SetupGet(it => it.Permissions).Returns(new List<IWindowsGroupPermission>()
+            _serverMock.SetupGet(it => it.Permissions).Returns(new IWindowsGroupPermission[]
             {
                 windowsGroupPermissionMock.Object
             });

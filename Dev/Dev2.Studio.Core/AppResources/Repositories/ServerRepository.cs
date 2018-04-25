@@ -30,7 +30,7 @@ namespace Dev2.Studio.Core
 {
     public class ServerRepository : IServerRepository
     {
-        static readonly List<IServer> EmptyList = new List<IServer>();
+        static readonly IEnumerable<IServer> EmptyList = new List<IServer>();
         static readonly object FileLock = new Object();
         static readonly object RestoreLock = new Object();
         protected List<IServer> Environments;
@@ -114,7 +114,7 @@ namespace Dev2.Studio.Core
 
         #region All/Find/FindSingle/Load
 
-        public virtual ICollection<IServer> All()
+        public virtual IEnumerable<IServer> All()
         {
             LoadInternal();
             return Environments;
@@ -131,10 +131,10 @@ namespace Dev2.Studio.Core
             LoadComplete();
             return Environments;
         }
-        public ICollection<IServer> Find(Expression<Func<IServer, bool>> expression)
+        public IEnumerable<IServer> Find(Expression<Func<IServer, bool>> expression)
         {
             LoadInternal();
-            return expression == null ? EmptyList : Environments.AsQueryable().Where(expression).ToList();
+            return expression == null ? EmptyList : Environments.AsQueryable().Where(expression);
         }
 
         public IServer FindSingle(Expression<Func<IServer, bool>> expression)
@@ -163,9 +163,9 @@ namespace Dev2.Studio.Core
 
         #region Save
 
-        public void Save(ICollection<IServer> instanceObjs)
+        public void Save(IEnumerable<IServer> instanceObjs)
         {
-            if (instanceObjs == null || instanceObjs.Count == 0)
+            if (instanceObjs == null || !instanceObjs.Any())
             {
                 return;
             }
@@ -189,9 +189,9 @@ namespace Dev2.Studio.Core
 
         #region Remove
 
-        public void Remove(ICollection<IServer> instanceObjs)
+        public void Remove(IEnumerable<IServer> instanceObjs)
         {
-            if (instanceObjs == null || instanceObjs.Count == 0)
+            if (instanceObjs == null || !instanceObjs.Any())
             {
                 return;
             }
@@ -249,7 +249,7 @@ namespace Dev2.Studio.Core
         {
             var xml = new XElement("Environments");
             xml = XElement.Parse(tryReadFile);
-            var guids = xml.Descendants("Environment").Select(id => id.Value).ToList();
+            var guids = xml.Descendants("Environment").Select(id => id.Value);
             foreach (var guidStr in guids)
             {
                 if (Guid.TryParse(guidStr, out Guid guid))
@@ -360,7 +360,7 @@ namespace Dev2.Studio.Core
                     }
                 }
 
-                var toBeRemoved = Environments.Where(e => !e.Equals(Source) && !environments.Contains(e)).ToList();
+                var toBeRemoved = Environments.Where(e => !e.Equals(Source) && !environments.Contains(e));
                 foreach (var environment in toBeRemoved)
                 {
                     environment.Disconnect();
@@ -390,7 +390,7 @@ namespace Dev2.Studio.Core
             {
                 var environments = LookupEnvironments(Source);
                 Environments = new List<IServer> { Source };
-                Environments.AddRange(environments.ToList());
+                Environments.AddRange(environments);
             }
         }
 

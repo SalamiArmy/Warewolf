@@ -16,17 +16,17 @@ namespace Dev2.Common.Interfaces
 {
     public interface IFrameworkRepository<T> : IDisposable
     {
-        ICollection<T> All();
+        IEnumerable<T> All();
 
     
-        ICollection<T> Find(Expression<Func<T, bool>> expression);
+        IEnumerable<T> Find(Expression<Func<T, bool>> expression);
 
         T FindSingle(Expression<Func<T, bool>> expression);
 
         string Save(T instanceObj);
 
     
-        void Save(ICollection<T> instanceObjs);
+        void Save(IEnumerable<T> instanceObjs);
 
         event EventHandler ItemAdded;
 
@@ -36,6 +36,6 @@ namespace Dev2.Common.Interfaces
         void Remove(T instanceObj);
 
     
-        void Remove(ICollection<T> instanceObjs);
+        void Remove(IEnumerable<T> instanceObjs);
     }
 }

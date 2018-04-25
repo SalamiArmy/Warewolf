@@ -49,8 +49,7 @@ namespace Dev2.Webs
 
                 if (server.Permissions == null)
                 {
-                    server.Permissions = new List<IWindowsGroupPermission>();
-                    server.Permissions.AddRange(server.AuthorizationService.SecurityService.Permissions);
+                    server.Permissions = server.AuthorizationService.SecurityService.Permissions.ToArray();
                 }
                 if (resourceModel.Category == null)
                 {

@@ -13,7 +13,7 @@ namespace Dev2.Studio.Interfaces
         void SortScalars(bool @ascending);
         void FixNamingForScalar(IDataListItemModel scalar);
         void AddRowToScalars();
-        void RemoveBlankScalars();
+        void RemoveBlankScalar();
         void RemoveUnusedScalars();
         void AddMissingScalarParts(IDataListVerifyPart part);
     }

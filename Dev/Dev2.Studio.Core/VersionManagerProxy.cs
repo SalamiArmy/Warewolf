@@ -38,18 +38,18 @@ namespace Dev2.Studio.Core
         /// </summary>
         /// <param name="resourceId">the resource</param>
         /// <returns>the resource versions. N configured versions are stored on a server</returns>
-        public IList<IExplorerItem> GetVersions(Guid resourceId)
+        public IExplorerItem[] GetVersions(Guid resourceId)
         {
             if (!_connection.IsConnected)
             {
                 ShowServerDisconnectedPopup();
-                return new List<IExplorerItem>();
+                return new IExplorerItem[] { };
             }
 
             var workSpaceId = Guid.NewGuid();
             var controller = CommunicationControllerFactory.CreateController("GetVersions");
             controller.AddPayloadArgument("resourceId", resourceId.ToString());
-            var items = controller.ExecuteCommand<IList<IExplorerItem>>(_connection, workSpaceId);
+            var items = controller.ExecuteCommand<IExplorerItem[]>(_connection, workSpaceId);
             return items;
         }
 
@@ -102,7 +102,7 @@ namespace Dev2.Studio.Core
         /// <param name="versionNumber">the version to delete</param>
         /// <param name="resourcePath"></param>
         /// <returns></returns>
-        public IList<IExplorerItem> DeleteVersion(Guid resourceId, string versionNumber, string resourcePath)
+        public IExplorerItem[] DeleteVersion(Guid resourceId, string versionNumber, string resourcePath)
         {
             var workSpaceId = Guid.NewGuid();
             var controller = CommunicationControllerFactory.CreateController("DeleteVersion");
@@ -117,7 +117,7 @@ namespace Dev2.Studio.Core
             }
 
             var serializer = new Dev2JsonSerializer();
-            return serializer.Deserialize<IList<IExplorerItem>>(result.Message);
+            return serializer.Deserialize<IExplorerItem[]>(result.Message);
         }
 
         #endregion

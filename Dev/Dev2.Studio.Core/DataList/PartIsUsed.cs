@@ -23,17 +23,17 @@ namespace Dev2.Studio.Core.DataList
 
         public void SetScalarPartIsUsed(IDataListVerifyPart part, bool isUsed)
         {
-            var scalarsToRemove = _scalarCollection.Where(c => c.DisplayName == part.Field);
-            scalarsToRemove.ToList().ForEach(scalarToRemove =>
+            var matchingScalars = _scalarCollection.Where(c => c.DisplayName == part.Field);
+            matchingScalars.ForEach(scalar =>
             {
-                scalarToRemove.IsUsed = isUsed;
+                scalar.IsUsed = isUsed;
             });
         }
 
         public void SetRecordSetPartIsUsed(IDataListVerifyPart part, bool isUsed)
         {
-            var recsetsToRemove = _recsetCollection.Where(c => c.DisplayName == part.Recordset);
-            recsetsToRemove.ToList().ForEach(recsetToRemove => ProcessFoundRecordSets(part, recsetToRemove, isUsed));
+            var matchingRecordSets = _recsetCollection.Where(c => c.DisplayName == part.Recordset);
+            matchingRecordSets.ForEach(recordSet => ProcessFoundRecordSets(part, recordSet, isUsed));
         }
 
         public void SetComplexObjectSetPartIsUsed(IDataListVerifyPart part, bool isUsed)
@@ -58,10 +58,10 @@ namespace Dev2.Studio.Core.DataList
             }
             else
             {
-                var childrenToRemove = recsetToRemove.Children.Where(c => c.DisplayName == part.Field);
-                childrenToRemove.ToList().ForEach(childToRemove =>
+                var children = recsetToRemove.Children.Where(c => c.DisplayName == part.Field);
+                children.ForEach(child =>
                 {
-                    childToRemove.IsUsed = isUsed;
+                    child.IsUsed = isUsed;
                 });
             }
         }

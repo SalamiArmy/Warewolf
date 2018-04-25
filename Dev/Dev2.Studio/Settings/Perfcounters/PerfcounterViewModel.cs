@@ -55,13 +55,9 @@ namespace Dev2.Settings.Perfcounters
                 var shellViewModel = CustomContainer.Get<IShellViewModel>();
                 server = shellViewModel?.ActiveServer;
             }
-            if (server != null && server.Permissions == null)
+            if (server != null && server.Permissions == null && server.AuthorizationService?.SecurityService != null)
             {
-                server.Permissions = new List<IWindowsGroupPermission>();
-                if(server.AuthorizationService?.SecurityService != null)
-                {
-                    server.Permissions.AddRange(server.AuthorizationService.SecurityService.Permissions);
-                }
+                server.Permissions = server.AuthorizationService.SecurityService.Permissions.ToArray();
             }
             var env = new EnvironmentViewModel(server, CustomContainer.Get<IShellViewModel>(), true);
             return env;

@@ -87,7 +87,7 @@ namespace Dev2.Core.Tests.Environments
         {
             var source = new Mock<IServer>();
             var repo = new TestServerRespository(source.Object);
-            Assert.AreEqual(1, repo.All().Count);
+            Assert.AreEqual(1, repo.All().Count());
         }
 
         [TestMethod]
@@ -122,11 +122,11 @@ namespace Dev2.Core.Tests.Environments
             e2.Setup(e => e.Disconnect()).Verifiable();
 
             var repo = new TestServerRespository(source.Object, e1.Object, e2.Object);
-            Assert.AreEqual(3, repo.All().Count);
+            Assert.AreEqual(3, repo.All().Count());
 
             repo.Clear();
 
-            Assert.AreEqual(0, repo.All().Count);
+            Assert.AreEqual(0, repo.All().Count());
             source.Verify(e => e.Disconnect());
             e1.Verify(e => e.Disconnect());
             e2.Verify(e => e.Disconnect());
@@ -144,7 +144,7 @@ namespace Dev2.Core.Tests.Environments
             var e2 = new Mock<IServer>();
 
             var repo = new TestServerRespository(source.Object, e1.Object, e2.Object);
-            Assert.AreEqual(3, repo.All().Count);
+            Assert.AreEqual(3, repo.All().Count());
         }
 
         #endregion
@@ -161,7 +161,7 @@ namespace Dev2.Core.Tests.Environments
             var repo = new TestServerRespository(source.Object, e1.Object, e2.Object);
             var actual = repo.Find(null);
 
-            Assert.AreEqual(0, actual.Count);
+            Assert.AreEqual(0, actual.Count());
         }
 
         [TestMethod]
@@ -274,10 +274,10 @@ namespace Dev2.Core.Tests.Environments
             var source = new Mock<IServer>();
 
             var repo = new TestServerRespository(source.Object);
-            var startCount = repo.All().Count;
+            var startCount = repo.All().Count();
 
             repo.Save((ICollection<IServer>)null);
-            Assert.AreEqual(startCount, repo.All().Count);
+            Assert.AreEqual(startCount, repo.All().Count());
             Assert.AreEqual(0, repo.AddInternalHitCount);
             Assert.AreEqual(0, repo.WriteSessionHitCount);
         }
@@ -290,10 +290,10 @@ namespace Dev2.Core.Tests.Environments
             var e2 = new Mock<IServer>();
 
             var repo = new TestServerRespository(source.Object);
-            var startCount = repo.All().Count;
+            var startCount = repo.All().Count();
 
             repo.Save(new List<IServer> { e1.Object, e2.Object });
-            Assert.AreEqual(startCount + 2, repo.All().Count);
+            Assert.AreEqual(startCount + 2, repo.All().Count());
             Assert.AreEqual(2, repo.AddInternalHitCount);
         }
 
@@ -316,10 +316,10 @@ namespace Dev2.Core.Tests.Environments
             var source = new Mock<IServer>();
 
             var repo = new TestServerRespository(source.Object);
-            var startCount = repo.All().Count;
+            var startCount = repo.All().Count();
 
             repo.Save((ICollection<IServer>)null);
-            Assert.AreEqual(startCount, repo.All().Count);
+            Assert.AreEqual(startCount, repo.All().Count());
             Assert.AreEqual(0, repo.AddInternalHitCount);
             Assert.AreEqual(0, repo.WriteSessionHitCount);
         }
@@ -331,10 +331,10 @@ namespace Dev2.Core.Tests.Environments
             var e1 = new Mock<IServer>();
 
             var repo = new TestServerRespository(source.Object);
-            var startCount = repo.All().Count;
+            var startCount = repo.All().Count();
 
             repo.Save(e1.Object);
-            Assert.AreEqual(startCount + 1, repo.All().Count);
+            Assert.AreEqual(startCount + 1, repo.All().Count());
             Assert.AreEqual(1, repo.AddInternalHitCount);
         }
 
@@ -385,11 +385,11 @@ namespace Dev2.Core.Tests.Environments
             c1.Setup(connection => connection.Equals(e1.Connection)).Returns(true);
             var source = new Mock<IServer>();
             var repo = new TestServerRespository(source.Object, e1);
-            var startCount = repo.All().Count;
+            var startCount = repo.All().Count();
 
             repo.Save(e1);
 
-            Assert.AreEqual(startCount, repo.All().Count);
+            Assert.AreEqual(startCount, repo.All().Count());
         }
 
         [TestMethod]
@@ -539,10 +539,10 @@ namespace Dev2.Core.Tests.Environments
             var source = new Mock<IServer>();
 
             var repo = new TestServerRespository(source.Object);
-            var startCount = repo.All().Count;
+            var startCount = repo.All().Count();
 
             repo.Remove((ICollection<IServer>)null);
-            Assert.AreEqual(startCount, repo.All().Count);
+            Assert.AreEqual(startCount, repo.All().Count());
             Assert.AreEqual(0, repo.RemoveInternalHitCount);
         }
 
@@ -601,10 +601,10 @@ namespace Dev2.Core.Tests.Environments
             var source = new Mock<IServer>();
 
             var repo = new TestServerRespository(source.Object);
-            var startCount = repo.All().Count;
+            var startCount = repo.All().Count();
 
             repo.Remove((ICollection<IServer>)null);
-            Assert.AreEqual(startCount, repo.All().Count);
+            Assert.AreEqual(startCount, repo.All().Count());
             Assert.AreEqual(0, repo.RemoveInternalHitCount);
             Assert.AreEqual(0, repo.WriteSessionHitCount);
         }
@@ -675,11 +675,11 @@ namespace Dev2.Core.Tests.Environments
             var e3 = new Server(Guid.NewGuid(), c3.Object, new Mock<IResourceRepository>().Object);
 
             var repo = new TestServerRespository(source.Object, e1, e2);
-            var startCount = repo.All().Count;
+            var startCount = repo.All().Count();
 
             repo.Remove(e3);
 
-            Assert.AreEqual(startCount, repo.All().Count);
+            Assert.AreEqual(startCount, repo.All().Count());
             Assert.AreEqual(1, repo.RemoveInternalHitCount);
             Assert.AreEqual(0, repo.WriteSessionHitCount);
         }

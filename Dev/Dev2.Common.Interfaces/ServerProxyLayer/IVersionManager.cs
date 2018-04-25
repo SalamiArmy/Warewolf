@@ -16,7 +16,7 @@ namespace Dev2.Common.Interfaces.ServerProxyLayer
         /// </summary>
         /// <param name="resourceId">the resource</param>
         /// <returns>the resource versions. N configured versions are stored on a server</returns>
-        IList<IExplorerItem> GetVersions(Guid resourceId);
+        IExplorerItem[] GetVersions(Guid resourceId);
         /// <summary>
         /// rollback to a specific version 
         /// </summary>
@@ -31,7 +31,7 @@ namespace Dev2.Common.Interfaces.ServerProxyLayer
         /// <param name="versionNumber">the version to delete</param>
         /// <param name="resourcePath"></param>
         /// <returns></returns>
-        IList<IExplorerItem> DeleteVersion(Guid resourceId, string versionNumber, string resourcePath);
+        IExplorerItem[] DeleteVersion(Guid resourceId, string versionNumber, string resourcePath);
 
         StringBuilder GetVersion(IVersionInfo versionInfo, Guid resourceId);
     }

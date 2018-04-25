@@ -672,7 +672,7 @@ namespace Dev2.Core.Tests.Settings
 
             var activeServer = new Server(Guid.NewGuid(), mockEnvConnection.Object)
             {
-                Permissions = new List<IWindowsGroupPermission> {WindowsGroupPermission.CreateAdministrators()}
+                Permissions = new IWindowsGroupPermission[] { WindowsGroupPermission.CreateAdministrators() }
             };
             ServerRepository.Instance.ActiveServer = activeServer;
 

@@ -65,7 +65,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             Assert.IsFalse(singleExplorerDeployViewModel.CanSelectDependencies);
             Assert.IsFalse(singleExplorerDeployViewModel.CanDeployTests);
             //---------------Execute Test ----------------------
-            _sourceView.Setup(model => model.SelectedItems).Returns(new List<IExplorerTreeItem>()
+            _sourceView.Setup(model => model.SelectedItems).Returns(new List<IExplorerTreeItem>
             {
                 new Mock<IExplorerTreeItem>().Object
             });
@@ -94,7 +94,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             Assert.IsFalse(singleExplorerDeployViewModel.CanSelectDependencies);
             Assert.IsFalse(singleExplorerDeployViewModel.CanDeployTests);
             //---------------Execute Test ----------------------
-            _sourceView.Setup(model => model.SelectedItems).Returns(new List<IExplorerTreeItem>()
+            _sourceView.Setup(model => model.SelectedItems).Returns(new List<IExplorerTreeItem>
             {
                 new Mock<IExplorerTreeItem>().Object
 
@@ -133,7 +133,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             Assert.IsFalse(singleExplorerDeployViewModel.CanSelectDependencies);
             Assert.IsFalse(singleExplorerDeployViewModel.CanDeployTests);
             //---------------Execute Test ----------------------
-            _sourceView.Setup(model => model.SelectedItems).Returns(new List<IExplorerTreeItem>()
+            _sourceView.Setup(model => model.SelectedItems).Returns(new List<IExplorerTreeItem>
             {
                 new Mock<IExplorerTreeItem>().Object
 
@@ -158,7 +158,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _shellVm.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);
             _shellVm.Setup(model => model.LocalhostServer).Returns(_serverMock.Object);
             var envMock = new Mock<IEnvironmentViewModel>();
-            _shellVm.SetupGet(model => model.ExplorerViewModel.Environments).Returns(new Caliburn.Micro.BindableCollection<IEnvironmentViewModel>()
+            _shellVm.SetupGet(model => model.ExplorerViewModel.Environments).Returns(new Caliburn.Micro.BindableCollection<IEnvironmentViewModel>
             {
                 envMock.Object
             });
@@ -295,7 +295,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _updateRepositoryMock.SetupProperty(manager => manager.ServerSaved);
             _serverMock.SetupGet(it => it.UpdateRepository).Returns(_updateRepositoryMock.Object);
             _serverMock.SetupGet(it => it.IsConnected).Returns(true);
-            _serverMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _serverMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _serverMock.Setup(server => server.CanDeployFrom).Returns(false);
             _differentServerMock.SetupGet(it => it.IsConnected).Returns(true);
             _serverMock.SetupGet(it => it.DisplayName).Returns("some text");
@@ -344,10 +344,10 @@ namespace Warewolf.Studio.ViewModels.Tests
             _updateRepositoryMock.SetupProperty(manager => manager.ServerSaved);
             _serverMock.SetupGet(it => it.UpdateRepository).Returns(_updateRepositoryMock.Object);
             _serverMock.SetupGet(it => it.IsConnected).Returns(true);
-            _serverMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _serverMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _serverMock.Setup(server => server.CanDeployFrom).Returns(true);
             _differentServerMock.SetupGet(it => it.IsConnected).Returns(true);
-            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _differentServerMock.Setup(server => server.CanDeployTo).Returns(false);
             _serverMock.SetupGet(it => it.DisplayName).Returns("some text");
             _serverEnvironmentId = Guid.NewGuid();
@@ -395,10 +395,10 @@ namespace Warewolf.Studio.ViewModels.Tests
             _updateRepositoryMock.SetupProperty(manager => manager.ServerSaved);
             _serverMock.SetupGet(it => it.UpdateRepository).Returns(_updateRepositoryMock.Object);
             _serverMock.SetupGet(it => it.IsConnected).Returns(true);
-            _serverMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _serverMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _serverMock.Setup(server => server.CanDeployFrom).Returns(true);
             _differentServerMock.SetupGet(it => it.IsConnected).Returns(true);
-            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _differentServerMock.Setup(server => server.CanDeployTo).Returns(false);
             _serverMock.SetupGet(it => it.DisplayName).Returns("some text");
             _serverEnvironmentId = Guid.NewGuid();
@@ -447,10 +447,10 @@ namespace Warewolf.Studio.ViewModels.Tests
             _updateRepositoryMock.SetupProperty(manager => manager.ServerSaved);
             _serverMock.SetupGet(it => it.UpdateRepository).Returns(_updateRepositoryMock.Object);
             _serverMock.SetupGet(it => it.IsConnected).Returns(true);
-            _serverMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _serverMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _serverMock.Setup(server => server.CanDeployFrom).Returns(true);
             _differentServerMock.SetupGet(it => it.IsConnected).Returns(true);
-            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _differentServerMock.Setup(server => server.CanDeployTo).Returns(true);
             _serverMock.SetupGet(it => it.DisplayName).Returns("some text");
             _serverEnvironmentId = Guid.NewGuid();
@@ -541,7 +541,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _shellVm.Setup(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
             _shellVm.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);
             var envMock = new Mock<IEnvironmentViewModel>();
-            _shellVm.SetupGet(model => model.ExplorerViewModel.Environments).Returns(new Caliburn.Micro.BindableCollection<IEnvironmentViewModel>()
+            _shellVm.SetupGet(model => model.ExplorerViewModel.Environments).Returns(new Caliburn.Micro.BindableCollection<IEnvironmentViewModel>
             {
                 envMock.Object
             });
@@ -581,7 +581,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _shellVm.Setup(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
             _shellVm.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);
             var envMock = new Mock<IEnvironmentViewModel>();
-            _shellVm.SetupGet(model => model.ExplorerViewModel.Environments).Returns(new Caliburn.Micro.BindableCollection<IEnvironmentViewModel>()
+            _shellVm.SetupGet(model => model.ExplorerViewModel.Environments).Returns(new Caliburn.Micro.BindableCollection<IEnvironmentViewModel>
             {
                 envMock.Object
             });
@@ -1356,10 +1356,10 @@ namespace Warewolf.Studio.ViewModels.Tests
             _updateRepositoryMock.SetupProperty(manager => manager.ServerSaved);
             _serverMock.SetupGet(it => it.UpdateRepository).Returns(_updateRepositoryMock.Object);
             _serverMock.SetupGet(it => it.IsConnected).Returns(true);
-            _serverMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _serverMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _serverMock.Setup(server => server.CanDeployFrom).Returns(true);
             _differentServerMock.SetupGet(it => it.IsConnected).Returns(true);
-            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _differentServerMock.Setup(server => server.CanDeployTo).Returns(true);
             _serverMock.SetupGet(it => it.DisplayName).Returns("some text");
             _serverEnvironmentId = Guid.NewGuid();
@@ -1420,10 +1420,10 @@ namespace Warewolf.Studio.ViewModels.Tests
             _updateRepositoryMock.SetupProperty(manager => manager.ServerSaved);
             _serverMock.SetupGet(it => it.UpdateRepository).Returns(_updateRepositoryMock.Object);
             _serverMock.SetupGet(it => it.IsConnected).Returns(true);
-            _serverMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _serverMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _serverMock.Setup(server => server.CanDeployFrom).Returns(true);
             _differentServerMock.SetupGet(it => it.IsConnected).Returns(true);
-            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _differentServerMock.Setup(server => server.CanDeployTo).Returns(true);
             _serverMock.SetupGet(it => it.DisplayName).Returns("some text");
             _serverEnvironmentId = Guid.NewGuid();
@@ -1487,10 +1487,10 @@ namespace Warewolf.Studio.ViewModels.Tests
             _updateRepositoryMock.SetupProperty(manager => manager.ServerSaved);
             _serverMock.SetupGet(it => it.UpdateRepository).Returns(_updateRepositoryMock.Object);
             _serverMock.SetupGet(it => it.IsConnected).Returns(true);
-            _serverMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _serverMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _serverMock.Setup(server => server.CanDeployFrom).Returns(true);
             _differentServerMock.SetupGet(it => it.IsConnected).Returns(true);
-            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<List<IWindowsGroupPermission>>().Object);
+            _differentServerMock.Setup(server => server.Permissions).Returns(new Mock<IWindowsGroupPermission[]>().Object);
             _differentServerMock.Setup(server => server.CanDeployTo).Returns(true);
             _serverMock.SetupGet(it => it.DisplayName).Returns("some text");
             _serverEnvironmentId = Guid.NewGuid();

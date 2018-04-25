@@ -22,23 +22,21 @@ namespace Dev2.Studio.Core.AppResources.ExtensionMethods
     {
         public static IEnumerable<DependencyObject> GetDescendents(this DependencyObject dependencyObject)
         {
-            var descendents = new List<DependencyObject>();
-
             if (dependencyObject == null)
             {
-                return descendents;
+                yield break;
             }
-            for(int i = 0; i < VisualTreeHelper.GetChildrenCount(dependencyObject); i++)
+            var childCount = VisualTreeHelper.GetChildrenCount(dependencyObject);
+            for(int i = 0; i < childCount; i++)
             {
-                descendents.Add(VisualTreeHelper.GetChild(dependencyObject, i));
-            }
+                var descendent = VisualTreeHelper.GetChild(dependencyObject, i);
+                yield return descendent;
 
-            foreach(DependencyObject descendent in descendents.ToList())
-            {
-                descendents.AddRange(GetDescendents(descendent));
+                foreach (var child in GetDescendents(descendent))
+                {
+                    yield return child;
+                }
             }
-
-            return descendents;
         }
 
         public static DependencyObject GetChildByType(DependencyObject source, Type type)
@@ -51,11 +49,7 @@ namespace Dev2.Studio.Core.AppResources.ExtensionMethods
                 {
                     return child;
                 }
-            }
 
-            for(int i = 0; i < VisualTreeHelper.GetChildrenCount(source); i++)
-            {
-                var child = VisualTreeHelper.GetChild(source, i);
                 var nestedchild = GetChildByType(child, type);
                 if (nestedchild != null)
                 {
@@ -70,7 +64,7 @@ namespace Dev2.Studio.Core.AppResources.ExtensionMethods
         {
             var parent = VisualTreeHelper.GetParent(source);
 
-            if (parent == null)
+            if (parent is null)
             {
                 return null;
             }
@@ -119,23 +113,7 @@ namespace Dev2.Studio.Core.AppResources.ExtensionMethods
         public static IEnumerable<T> FindChildren<T>(this DependencyObject parent, Func<T, bool> predicate)
             where T : DependencyObject
         {
-            var children = new List<DependencyObject>();
-
-            if(parent is Visual || parent is Visual3D)
-            {
-                var visualChildrenCount = VisualTreeHelper.GetChildrenCount(parent);
-                for(int childIndex = 0; childIndex < visualChildrenCount; childIndex++)
-                {
-                    children.Add(VisualTreeHelper.GetChild(parent, childIndex));
-                }
-            }
-            foreach(var logicalChild in LogicalTreeHelper.GetChildren(parent).OfType<DependencyObject>())
-            {
-                if (!children.Contains(logicalChild))
-                {
-                    children.Add(logicalChild);
-                }
-            }
+            var children = GetChildren(parent);
 
             foreach (var child in children)
             {
@@ -149,6 +127,29 @@ namespace Dev2.Studio.Core.AppResources.ExtensionMethods
                     yield return foundDescendant;
                 }
             }
+        }
+
+        private static List<DependencyObject> GetChildren(DependencyObject parent)
+        {
+            var children = new List<DependencyObject>();
+
+            if (parent is Visual || parent is Visual3D)
+            {
+                var visualChildrenCount = VisualTreeHelper.GetChildrenCount(parent);
+                for (int childIndex = 0; childIndex < visualChildrenCount; childIndex++)
+                {
+                    children.Add(VisualTreeHelper.GetChild(parent, childIndex));
+                }
+            }
+            foreach (var logicalChild in LogicalTreeHelper.GetChildren(parent).OfType<DependencyObject>())
+            {
+                if (!children.Contains(logicalChild))
+                {
+                    children.Add(logicalChild);
+                }
+            }
+
+            return children;
         }
     }
 }

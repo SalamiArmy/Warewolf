@@ -323,7 +323,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var mockQueryManager = new Mock<IQueryManager>();
             var mockVersionManager = new Mock<IVersionManager>();
             mockVersionManager.Setup(manager => manager.GetVersions(It.IsAny<Guid>()))
-                                .Returns(new List<IExplorerItem>())
+                                .Returns(new IExplorerItem[] { })
                                 .Verifiable();
             studioServerProxy.QueryManagerProxy = mockQueryManager.Object;
             studioServerProxy.VersionManager = mockVersionManager.Object;

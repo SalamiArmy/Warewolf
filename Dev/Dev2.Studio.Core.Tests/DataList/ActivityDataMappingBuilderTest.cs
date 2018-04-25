@@ -113,8 +113,8 @@ namespace Dev2.Core.Tests.DataList
             //------------Assert Results-------------------------
 
             // check counts first
-            Assert.AreEqual(0, result.Inputs.Count);
-            Assert.AreEqual(1, result.Outputs.Count);
+            Assert.AreEqual(0, result.Inputs.Length);
+            Assert.AreEqual(1, result.Outputs.Length);
 
             // now check data
             Assert.AreEqual("[[result]]", result.Outputs[0].Value);
@@ -204,8 +204,8 @@ namespace Dev2.Core.Tests.DataList
             //------------Assert Results-------------------------
 
             // check counts first
-            Assert.AreEqual(0, result.Inputs.Count);
-            Assert.AreEqual(2, result.Outputs.Count);
+            Assert.AreEqual(0, result.Inputs.Length);
+            Assert.AreEqual(2, result.Outputs.Length);
 
             // now check data
             Assert.AreEqual("[[result]]", result.Outputs[0].Value);
@@ -296,8 +296,8 @@ namespace Dev2.Core.Tests.DataList
             //------------Assert Results-------------------------
 
             // check counts first
-            Assert.AreEqual(1, result.Inputs.Count);
-            Assert.AreEqual(0, result.Outputs.Count);
+            Assert.AreEqual(1, result.Inputs.Length);
+            Assert.AreEqual(0, result.Outputs.Length);
 
             // now check data
             Assert.AreEqual("[[result]]", result.Inputs[0].Value);
@@ -379,8 +379,8 @@ namespace Dev2.Core.Tests.DataList
             //------------Assert Results-------------------------
 
             // check counts first
-            Assert.AreEqual(2, result.Inputs.Count);
-            Assert.AreEqual(1, result.Outputs.Count);
+            Assert.AreEqual(2, result.Inputs.Length);
+            Assert.AreEqual(1, result.Outputs.Length);
 
             // now check data
             Assert.AreEqual("[[recset1(*).f1]]", result.Inputs[0].MapsTo);
@@ -465,14 +465,14 @@ namespace Dev2.Core.Tests.DataList
             //------------Assert Results-------------------------
 
             // check counts first
-            Assert.AreEqual(2, result.Inputs.Count);
+            Assert.AreEqual(2, result.Inputs.Length);
 
             // now check data
             Assert.AreEqual("[[recset1(*).f1a]]", result.Inputs[0].MapsTo);
             Assert.AreEqual("[[recset2(*).f2a]]", result.Inputs[1].MapsTo);
 
             // check counts first
-            Assert.AreEqual(2, result.Outputs.Count);
+            Assert.AreEqual(2, result.Outputs.Length);
 
             // now check data
             Assert.AreEqual("[[resultValue]]", result.Outputs[0].Value);
@@ -554,14 +554,14 @@ namespace Dev2.Core.Tests.DataList
             //------------Assert Results-------------------------
 
             // check counts first
-            Assert.AreEqual(2, result.Inputs.Count);
+            Assert.AreEqual(2, result.Inputs.Length);
 
             // now check data
             Assert.AreEqual("[[recset1(*).vale]]", result.Inputs[0].MapsTo);
             Assert.AreEqual("[[recset1(*).valeSecond]]", result.Inputs[1].MapsTo);
 
             // check counts first
-            Assert.AreEqual(0, result.Outputs.Count);
+            Assert.AreEqual(0, result.Outputs.Length);
 
         }
 
@@ -639,14 +639,14 @@ namespace Dev2.Core.Tests.DataList
             //------------Assert Results-------------------------
 
             // check counts first
-            Assert.AreEqual(4, result.Inputs.Count);
+            Assert.AreEqual(4, result.Inputs.Length);
 
             // now check data
             Assert.AreEqual("[[recset1(*).vale]]", result.Inputs[0].MapsTo);
             Assert.AreEqual("[[recset1(*).valeSecond]]", result.Inputs[1].MapsTo);
 
             // check counts first
-            Assert.AreEqual(0, result.Outputs.Count);
+            Assert.AreEqual(0, result.Outputs.Length);
 
         }
 
@@ -723,14 +723,14 @@ namespace Dev2.Core.Tests.DataList
             //------------Assert Results-------------------------
 
             // check counts first
-            Assert.AreEqual(2, result.Outputs.Count);
+            Assert.AreEqual(2, result.Outputs.Length);
 
             // now check data
             Assert.AreEqual("[[recset1().vale]]", result.Outputs[0].Value);
             Assert.AreEqual("[[recset1().valeSecond]]", result.Outputs[1].Value);
 
             // check counts first
-            Assert.AreEqual(0, result.Inputs.Count);
+            Assert.AreEqual(0, result.Inputs.Length);
 
         }
 

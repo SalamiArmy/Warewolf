@@ -2315,8 +2315,8 @@ namespace Dev2.Core.Tests
             //------------Execute Test---------------------------
             var missingDataListParts = dataListViewModel.MissingDataListParts(parts);
             //------------Assert Results-------------------------
-            Assert.AreEqual(1, missingDataListParts.Count);
-            Assert.AreEqual(scalarName, missingDataListParts[0].Field);
+            Assert.AreEqual(1, missingDataListParts.Count());
+            Assert.AreEqual(scalarName, missingDataListParts.First().Field);
         }
 
         [TestMethod]
@@ -2335,7 +2335,7 @@ namespace Dev2.Core.Tests
             //------------Execute Test---------------------------
             var missingDataListParts = dataListViewModel.MissingDataListParts(parts);
             //------------Assert Results-------------------------
-            Assert.AreEqual(0, missingDataListParts.Count);
+            Assert.AreEqual(0, missingDataListParts.Count());
         }
 
 
@@ -2355,7 +2355,7 @@ namespace Dev2.Core.Tests
             //------------Execute Test---------------------------
             var missingDataListParts = dataListViewModel.MissingDataListParts(dataListParts);
             //------------Assert Results-------------------------
-            Assert.AreEqual(1, missingDataListParts.Count);
+            Assert.AreEqual(1, missingDataListParts.Count());
         }
 
         [TestMethod]
@@ -2379,7 +2379,7 @@ namespace Dev2.Core.Tests
             //------------Execute Test---------------------------
             var missingDataListParts = dataListViewModel.MissingDataListParts(dataListParts);
             //------------Assert Results-------------------------
-            Assert.AreEqual(1, missingDataListParts.Count);
+            Assert.AreEqual(1, missingDataListParts.Count());
         }
 
         [TestMethod]
@@ -2404,7 +2404,7 @@ namespace Dev2.Core.Tests
             //------------Execute Test---------------------------
             var missingDataListParts = dataListViewModel.MissingDataListParts(dataListParts);
             //------------Assert Results-------------------------
-            Assert.AreEqual(0, missingDataListParts.Count);
+            Assert.AreEqual(0, missingDataListParts.Count());
         }
 
         [TestMethod]
@@ -2429,7 +2429,7 @@ namespace Dev2.Core.Tests
             //------------Execute Test---------------------------
             var missingDataListParts = dataListViewModel.MissingDataListParts(dataListParts);
             //------------Assert Results-------------------------
-            Assert.AreEqual(0, missingDataListParts.Count);
+            Assert.AreEqual(0, missingDataListParts.Count());
         }
         
         [TestMethod]

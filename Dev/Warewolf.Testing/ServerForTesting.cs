@@ -47,7 +47,7 @@ namespace Warewolf.Testing
             DisplayName = "localhost";
             ServerID = Guid.Empty;
             _updateManager = new Mock<IStudioUpdateManager>().Object;
-            Permissions = new List<IWindowsGroupPermission> { permission };
+            Permissions = new IWindowsGroupPermission[] { permission };
         }
 
         readonly IExplorerRepository _explorerProxy;
@@ -55,7 +55,7 @@ namespace Warewolf.Testing
         bool _hasLoaded;
 #pragma warning restore 0649
         IStudioUpdateManager _updateManager;
-        List<IWindowsGroupPermission> _permissions;
+        IWindowsGroupPermission[] _permissions;
 
         public ServerForTesting(IResource copy) : base(copy)
         {
@@ -242,16 +242,18 @@ namespace Warewolf.Testing
             throw new NotImplementedException();
         }
 
-        public List<IWindowsGroupPermission> Permissions
+        public IWindowsGroupPermission[] Permissions
         {
             get
             {
-                return _permissions ?? new List<IWindowsGroupPermission>{new WindowsGroupPermission
-                {
-                    Administrator = true,
-                    IsServer = true,
-                    ResourceID = Guid.Empty
-                }};
+                return _permissions ?? new IWindowsGroupPermission[] {
+                    new WindowsGroupPermission
+                    {
+                        Administrator = true,
+                        IsServer = true,
+                        ResourceID = Guid.Empty
+                    }
+                };
             }
             set
             {

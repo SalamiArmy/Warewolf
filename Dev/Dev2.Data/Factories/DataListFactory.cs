@@ -37,7 +37,7 @@ namespace Dev2.DataList.Contract
         /// <returns></returns>
         public static IDev2StudioDataLanguageParser CreateStudioLanguageParser() => new Dev2DataLanguageParser();
 
-        public static string GenerateMapping(IList<IDev2Definition> defs, enDev2ArgumentType typeOf)
+        public static string GenerateMapping(IEnumerable<IDev2Definition> defs, enDev2ArgumentType typeOf)
         {
             var b = new DefinitionBuilder { ArgumentType = typeOf, Definitions = defs };
 

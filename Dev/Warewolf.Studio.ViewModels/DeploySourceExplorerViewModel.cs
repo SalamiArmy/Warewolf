@@ -156,7 +156,7 @@ namespace Warewolf.Studio.ViewModels
                     ConnectControlViewModel.SelectedConnection = ConnectControlViewModel.Servers.FirstOrDefault(a => a.EnvironmentID == envId);
                     if (ConnectControlViewModel.SelectedConnection?.Permissions == null)
                     {
-                        ConnectControlViewModel.SelectedConnection.Permissions = new List<IWindowsGroupPermission>();
+                        ConnectControlViewModel.SelectedConnection.Permissions = new IWindowsGroupPermission[] { };
                     }
                     ConnectControlViewModel.TryConnectAsync(ConnectControlViewModel.SelectedConnection);
                 }

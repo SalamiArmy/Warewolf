@@ -201,8 +201,8 @@ namespace Dev2.Core.Tests.Workflows
             var actual = WorkflowDesignerViewModel.TryGetDecisionElements("Dev2.Data.Decision.Dev2DataListDecisionHandler.Instance.ExecuteDecisionStack(\"{!TheStack!:[{!Col1!:!]]!,!Col2!:![[scalar]]!,!Col3!:!!,!PopulatedColumnCount!:2,!EvaluationFn!:!IsEqual!}],!TotalDecisions!:1,!ModelName!:!Dev2DecisionStack!,!Mode!:!AND!,!TrueArmText!:!True!,!FalseArmText!:!False!,!DisplayText!:!If ]] Is Equal [[scalar]]!}\",AmbientDataList)", dataListViewModel);
             model.Dispose();
             //Assert
-            Assert.AreEqual(1, actual.Count, "Find missing returned an unexpected number of results when finding variables in a decision");
-            Assert.AreEqual("[[scalar]]", actual[0], "Find missing found an invalid variable in a decision");
+            Assert.AreEqual(1, actual.Count(), "Find missing returned an unexpected number of results when finding variables in a decision");
+            Assert.AreEqual("[[scalar]]", actual.First(), "Find missing found an invalid variable in a decision");
 
         }
 
@@ -228,8 +228,8 @@ namespace Dev2.Core.Tests.Workflows
             var actual = WorkflowDesignerViewModel.TryGetDecisionElements(expression, dataListViewModel);
             model.Dispose();
             //Assert
-            Assert.AreEqual(1, actual.Count, "Find missing returned an unexpected number of results when finding variables in a decision");
-            Assert.AreEqual("[[RecSet().f1]]", actual[0], "Find missing found an invalid variable in a decision");
+            Assert.AreEqual(1, actual.Count(), "Find missing returned an unexpected number of results when finding variables in a decision");
+            Assert.AreEqual("[[RecSet().f1]]", actual.First(), "Find missing found an invalid variable in a decision");
         }
 
         [TestMethod]
@@ -254,9 +254,9 @@ namespace Dev2.Core.Tests.Workflows
             var actual = WorkflowDesignerViewModel.TryGetDecisionElements(expression, dataListViewModel);
             model.Dispose();
             //Assert
-            Assert.AreEqual(1, actual.Count, "Find missing returned an unexpected number of results when finding variables in a decision");
+            Assert.AreEqual(1, actual.Count(), "Find missing returned an unexpected number of results when finding variables in a decision");
             var expected = "[[a]]";
-            var actualResult = actual[0];
+            var actualResult = actual.First();
             FixBreaks(ref expected, ref actualResult);
             Assert.AreEqual(expected, actualResult, "Find missing found an invalid variable in a decision");
         }
@@ -287,8 +287,8 @@ namespace Dev2.Core.Tests.Workflows
             var actual = WorkflowDesignerViewModel.TryGetDecisionElements(expression, dataListViewModel);
             model.Dispose();
             //Assert
-            Assert.AreEqual(1, actual.Count, "Find missing returned an unexpected number of results when finding variables in a decision");
-            Assert.AreEqual("[[a]]", actual[0], "Find missing found an invalid variable in a decision");
+            Assert.AreEqual(1, actual.Count(), "Find missing returned an unexpected number of results when finding variables in a decision");
+            Assert.AreEqual("[[a]]", actual.First(), "Find missing found an invalid variable in a decision");
         }
 
 

@@ -15,6 +15,7 @@ using Dev2.Studio.Interfaces;
 using Dev2.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System.Linq;
 
 namespace Dev2.Core.Tests.Environments
 {
@@ -95,11 +96,12 @@ namespace Dev2.Core.Tests.Environments
             var provider = new TestServerProvider();
             var servers = useParameterless ? provider.Load() : provider.Load(repository.Object);
 
-            Assert.AreEqual(1, servers.Count);
+            Assert.AreEqual(1, servers.Count());
 
-            Assert.AreSame(servers[0], targetEnv.Object);
-            Assert.AreEqual(servers[0].EnvironmentID, targetEnv.Object.EnvironmentID);
-            Assert.AreEqual(servers[0].Name, targetEnv.Object.Name);
+            var server = servers.First();
+            Assert.AreSame(server, targetEnv.Object);
+            Assert.AreEqual(server.EnvironmentID, targetEnv.Object.EnvironmentID);
+            Assert.AreEqual(server.Name, targetEnv.Object.Name);
             // remove the last two properties from mock ;)
         }
 

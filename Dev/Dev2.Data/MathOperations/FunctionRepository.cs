@@ -27,26 +27,17 @@ namespace Dev2.MathOperations
     // to perform evaluations on
     public class FunctionRepository : IFrameworkRepository<IFunction>
     {
-        readonly List<IFunction> _functions;
+        readonly List<IFunction> _functions = new List<IFunction>();
         static readonly IDev2CalculationManager CalcManager = new Dev2CalculationManager();
         bool _isDisposed;
-
-        internal FunctionRepository()
-        {
-            _functions = new List<IFunction>();
-        }
 
         /// <summary>
         /// Returns the entire collection of functions.
         /// </summary>
         /// <returns></returns>
-        public ICollection<IFunction> All()
+        public IEnumerable<IFunction> All()
         {
-            if (_functions != null)
-            {
-                return _functions;
-            }
-            return new List<IFunction>();
+            return _functions;
         }
 
         /// <summary>
@@ -54,11 +45,11 @@ namespace Dev2.MathOperations
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
-        public ICollection<IFunction> Find(Expression<Func<IFunction, bool>> expression)
+        public IEnumerable<IFunction> Find(Expression<Func<IFunction, bool>> expression)
         {
             if (expression != null)
             {
-                return _functions.AsQueryable().Where(expression).ToList();
+                return _functions.AsQueryable().Where(expression);
             }
             
             throw new ArgumentNullException(ErrorResource.ExpressionCannotBeNull);
@@ -72,21 +63,21 @@ namespace Dev2.MathOperations
         /// <returns></returns>
         public IFunction FindSingle(Expression<Func<IFunction, bool>> expression)
         {
-            if (expression != null)
+            if (expression is null)
             {
-
-                try
-                {
-                    return _functions.AsQueryable().First(expression);
-                }
-                catch (InvalidOperationException ioex)
-                {
-                    Dev2Logger.Error(ioex, GlobalConstants.WarewolfError);
-                    var func = MathOpsFactory.CreateFunction();
-                    return func;
-                }
+                return null;
             }
-            return null;
+
+            try
+            {
+                return _functions.AsQueryable().First(expression);
+            }
+            catch (InvalidOperationException ioex)
+            {
+                Dev2Logger.Error(ioex, GlobalConstants.WarewolfError);
+                var func = MathOpsFactory.CreateFunction();
+                return func;
+            }
         }
 
 
@@ -108,20 +99,13 @@ namespace Dev2.MathOperations
         /// Removes a collection of functions from the function repository
         /// </summary>
         /// <param name="instanceObjs"></param>
-        public void Remove(ICollection<IFunction> instanceObjs)
+        public void Remove(IEnumerable<IFunction> instanceObjs)
         {
-            if (instanceObjs != null)
+            var instanceObjects = instanceObjs ?? throw new ArgumentNullException(ErrorResource.CannotRemoveNullListOfFunctions);
+            
+            foreach (var func in instanceObjects)
             {
-                foreach (IFunction func in instanceObjs)
-                {
-                    _functions.Remove(func);
-                }
-            }
-            else
-            {
-                
-                throw new ArgumentNullException(ErrorResource.CannotRemoveNullListOfFunctions);
-                
+                _functions.Remove(func);
             }
         }
 
@@ -131,34 +115,24 @@ namespace Dev2.MathOperations
         /// <param name="instanceObj"></param>
         public void Remove(IFunction instanceObj)
         {
-            if (instanceObj != null)
+            if (instanceObj is null)
             {
-                _functions.Remove(instanceObj);
-            }
-            else
-            {
-                
                 throw new ArgumentNullException(ErrorResource.FunctionCannotBeNull);
-                
             }
+            _functions.Remove(instanceObj);
         }
 
         /// <summary>
         /// Save A collection of new functions to the function library
         /// </summary>
         /// <param name="instanceObjs"></param>
-        public void Save(ICollection<IFunction> instanceObjs)
+        public void Save(IEnumerable<IFunction> instanceObjs)
         {
-            if (instanceObjs != null)
+            if (instanceObjs is null)
             {
-                _functions.AddRange(instanceObjs);
-            }
-            else
-            {
-                
                 throw new ArgumentNullException(ErrorResource.CannotSaveNullListOfFunctions);
-                
             }
+            _functions.AddRange(instanceObjs);
         }
         /// <summary>
         /// Save a collection of new user-defined functions to the function library
@@ -166,16 +140,12 @@ namespace Dev2.MathOperations
         /// <param name="instanceObj"></param>
         public string Save(IFunction instanceObj)
         {
-            if (instanceObj != null)
+            if (instanceObj is null)
             {
-                _functions.Add(instanceObj);
-            }
-            else
-            {
-                
                 throw new ArgumentNullException(ErrorResource.FunctionCannotBeNull);
-                
             }
+            _functions.Add(instanceObj);
+
             return "Saved";
         }
 

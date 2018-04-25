@@ -62,7 +62,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var child = new Mock<IExplorerItemViewModel>();
             child.SetupGet(it => it.AllowResourceCheck).Returns(true);
             child.SetupGet(it => it.IsVisible).Returns(true);
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>() { child.Object };
+            _target.Children = new ObservableCollection<IExplorerItemViewModel> { child.Object };
 
             //act
             _target.RefreshCommand.Execute(null);
@@ -77,7 +77,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         {
             //arrange
             _target.ShowContextMenu = true;
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>() { };
+            _target.Children = new ObservableCollection<IExplorerItemViewModel>();
 
             //act
             _target.RefreshCommand.Execute(null);
@@ -180,7 +180,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //act
             var value = _target.ShellViewModel;
 
-            //assert    
+            //assert
             Assert.AreSame(_shellViewModelMock.Object, value);
         }
 
@@ -204,7 +204,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             childDbService.SetupGet(it => it.ResourceName).Returns("DbSource");
             childDbService.SetupGet(it => it.ResourcePath).Returns("DbSourcePath");
             childDbService.SetupGet(it => it.IsSource).Returns(true);
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>()
+            _target.Children = new ObservableCollection<IExplorerItemViewModel>
             {
                 childVersion.Object,
                 childMessage.Object,
@@ -225,7 +225,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _target.UpdateChildrenCount();
             var value = _target.ChildrenCount;
 
-            //assert    
+            //assert
             Assert.AreEqual(4, value);
             Assert.AreEqual("ServerSource", _target.ResourceType);
             Assert.AreEqual("localhost", _target.ResourceName);
@@ -263,7 +263,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             childDbService.SetupGet(it => it.ResourceName).Returns("DbSource");
             childDbService.SetupGet(it => it.ResourcePath).Returns("DbSourcePath");
             childDbService.SetupGet(it => it.IsSource).Returns(true);
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>()
+            _target.Children = new ObservableCollection<IExplorerItemViewModel>
             {
                 childVersion.Object,
                 childMessage.Object,
@@ -284,7 +284,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _target.UpdateChildrenCount();
             var value = _target.FindByPath("DbSource");
 
-            //assert    
+            //assert
             Assert.AreEqual(_target, value);
         }
 
@@ -308,7 +308,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             childDbService.SetupGet(it => it.ResourceName).Returns("DbSource");
             childDbService.SetupGet(it => it.ResourcePath).Returns("DbSourcePath");
             childDbService.SetupGet(it => it.IsSource).Returns(true);
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>()
+            _target.Children = new ObservableCollection<IExplorerItemViewModel>
             {
                 childVersion.Object,
                 childMessage.Object,
@@ -329,7 +329,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _target.UpdateChildrenCount();
             var value = _target.FindByPath("\\Message\\DbSource");
 
-            //assert    
+            //assert
             Assert.AreEqual(_target, value);
         }
 
@@ -494,7 +494,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             windowsGroupPermissionMock.SetupGet(it => it.Contribute).Returns(true);
             windowsGroupPermissionMock.SetupGet(it => it.Administrator).Returns(true);
             windowsGroupPermissionMock.SetupGet(it => it.IsServer).Returns(true);
-            _serverMock.SetupGet(it => it.Permissions).Returns(new List<IWindowsGroupPermission>()
+            _serverMock.SetupGet(it => it.Permissions).Returns(new IWindowsGroupPermission[]
             {
                 windowsGroupPermissionMock.Object
             });
@@ -546,7 +546,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var child = new Mock<IExplorerItemViewModel>();
             child.SetupGet(it => it.AllowResourceCheck).Returns(true);
             child.SetupGet(it => it.IsVisible).Returns(true);
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>() { child.Object };
+            _target.Children = new ObservableCollection<IExplorerItemViewModel> { child.Object };
 
 
             //act
@@ -560,7 +560,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestIsExpanderVisibleFalse()
         {
             //arrange
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>() { };
+            _target.Children = new ObservableCollection<IExplorerItemViewModel>();
 
 
             //act
@@ -744,7 +744,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             windowsGroupPermissionMock.SetupGet(it => it.Contribute).Returns(true);
             windowsGroupPermissionMock.SetupGet(it => it.Administrator).Returns(true);
             windowsGroupPermissionMock.SetupGet(it => it.IsServer).Returns(true);
-            _serverMock.SetupGet(it => it.Permissions).Returns(new List<IWindowsGroupPermission>()
+            _serverMock.SetupGet(it => it.Permissions).Returns(new IWindowsGroupPermission[]
             {
                 windowsGroupPermissionMock.Object
             });
@@ -789,7 +789,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var child = new Mock<IExplorerItemViewModel>();
             child.SetupGet(it => it.AllowResourceCheck).Returns(true);
             child.SetupGet(it => it.IsVisible).Returns(true);
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>() { child.Object };
+            _target.Children = new ObservableCollection<IExplorerItemViewModel> { child.Object };
             var isChildrenChanged = false;
             _target.PropertyChanged += (s, e) =>
              {
@@ -817,9 +817,9 @@ namespace Warewolf.Studio.ViewModels.Tests
             grandChild.SetupGet(it => it.ResourceId).Returns(resId);
             grandChild.SetupGet(it => it.IsVisible).Returns(true);
             child.SetupGet(it => it.IsVisible).Returns(true);
-            child.SetupGet(it => it.Children).Returns(new ObservableCollection<IExplorerItemViewModel>() { grandChild.Object });
+            child.SetupGet(it => it.Children).Returns(new ObservableCollection<IExplorerItemViewModel> { grandChild.Object });
 
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>() { child.Object };
+            _target.Children = new ObservableCollection<IExplorerItemViewModel> { child.Object };
             var isChildrenChanged = false;
             _target.PropertyChanged += (s, e) =>
             {
@@ -842,7 +842,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var id = Guid.NewGuid();
             child.SetupGet(it => it.ResourceId).Returns(id);
             child.SetupGet(it => it.IsVisible).Returns(true);
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>() { child.Object };
+            _target.Children = new ObservableCollection<IExplorerItemViewModel> { child.Object };
 
             //act
             _target.SetItemCheckedState(id, true);
@@ -857,7 +857,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //arrange
             var child = new Mock<IExplorerItemViewModel>();
             child.SetupGet(it => it.IsVisible).Returns(true);
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>() { child.Object };
+            _target.Children = new ObservableCollection<IExplorerItemViewModel> { child.Object };
             var isChildrenChanged = false;
             _target.PropertyChanged += (s, e) =>
             {
@@ -879,7 +879,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //arrange
             var child = new Mock<IExplorerItemViewModel>();
             child.SetupGet(it => it.IsVisible).Returns(true);
-            _target.Children = new ObservableCollection<IExplorerItemViewModel>() { child.Object };
+            _target.Children = new ObservableCollection<IExplorerItemViewModel> { child.Object };
             var isChildrenChanged = false;
             _target.PropertyChanged += (s, e) =>
             {
@@ -939,18 +939,18 @@ namespace Warewolf.Studio.ViewModels.Tests
             exploreItm1.SetupGet(model => model.ResourceType).Returns("Dev2Server");
             exploreItm1.SetupGet(model => model.ResourceId).Returns(serverID);
             exploreItm1.SetupGet(model => model.Children).Returns(new BindableCollection<IExplorerItemViewModel>());
-            env.SetupGet(model => model.Children).Returns(new BindableCollection<IExplorerItemViewModel>()
+            env.SetupGet(model => model.Children).Returns(new BindableCollection<IExplorerItemViewModel>
             {
                 exploreItm.Object,exploreItm1.Object
             });
 
             shellViewModel.SetupGet(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
-            shellViewModel.SetupGet(model => model.ExplorerViewModel.Environments).Returns(new BindableCollection<IEnvironmentViewModel>()
+            shellViewModel.SetupGet(model => model.ExplorerViewModel.Environments).Returns(new BindableCollection<IEnvironmentViewModel>
             {
                 env.Object
             });
             var mockConnectControl = new Mock<IConnectControlViewModel>();
-            mockConnectControl.SetupGet(a => a.Servers).Returns(new BindableCollection<IServer>()
+            mockConnectControl.SetupGet(a => a.Servers).Returns(new BindableCollection<IServer>
             {
                 _serverMock.Object
             });
@@ -972,7 +972,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public async Task TestDeletedServerResourceLoad()
         {
             //arrange
-           
+
             var serverID = Guid.NewGuid();
             var explorerItemMock = new Mock<IExplorerItem>();
             _serverMock.SetupGet(it => it.IsConnected).Returns(true);
@@ -1009,18 +1009,18 @@ namespace Warewolf.Studio.ViewModels.Tests
             exploreItm1.SetupGet(model => model.ResourceType).Returns("Dev2Server");
             exploreItm1.SetupGet(model => model.ResourceId).Returns(serverID);
             exploreItm1.SetupGet(model => model.Children).Returns(new BindableCollection<IExplorerItemViewModel>());
-            env.SetupGet(model => model.Children).Returns(new BindableCollection<IExplorerItemViewModel>()
+            env.SetupGet(model => model.Children).Returns(new BindableCollection<IExplorerItemViewModel>
             {
                 exploreItm.Object,exploreItm1.Object
             });
 
             shellViewModel.SetupGet(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
-            shellViewModel.SetupGet(model => model.ExplorerViewModel.Environments).Returns(new BindableCollection<IEnvironmentViewModel>()
+            shellViewModel.SetupGet(model => model.ExplorerViewModel.Environments).Returns(new BindableCollection<IEnvironmentViewModel>
             {
                 env.Object
             });
             var mockConnectControl = new Mock<IConnectControlViewModel>();
-            mockConnectControl.SetupGet(a => a.Servers).Returns(new BindableCollection<IServer>()
+            mockConnectControl.SetupGet(a => a.Servers).Returns(new BindableCollection<IServer>
             {
                 _serverMock.Object, serverMock1.Object, serverMock2.Object
             });
@@ -1029,7 +1029,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             shellViewModel.Setup(x => x.LocalhostServer).Returns(localhost.Object);
             shellViewModel.Setup(x => x.ActiveServer).Returns(new Mock<IServer>().Object);
             CustomContainer.Register(shellViewModel.Object);
-            
+
             _target = new EnvironmentViewModel(_serverMock.Object, shellViewModel.Object);
 
             //act
@@ -1058,12 +1058,12 @@ namespace Warewolf.Studio.ViewModels.Tests
             var parentMock = new Mock<IExplorerTreeItem>();
             var collectionParent = new AsyncObservableCollection<IExplorerItemViewModel>();
             parentMock.SetupGet(it => it.Children).Returns(collectionParent);
-            var collectionItem = new AsyncObservableCollection<IExplorerItem>() { childExplorerItem.Object };
+            var collectionItem = new AsyncObservableCollection<IExplorerItem> { childExplorerItem.Object };
             explorerItem.SetupGet(it => it.Children).Returns(collectionItem);
             var serverMock = new Mock<IServer>();
-            var permissions = new List<IWindowsGroupPermission>();
+            var permissions = new IWindowsGroupPermission[]{};
             serverMock.SetupGet(it => it.Permissions).Returns(permissions);
-            var items = new List<IExplorerItem>() { explorerItem.Object };
+            var items = new List<IExplorerItem> { explorerItem.Object };
             _target.SelectAction = (a) => { };
 
             //act
@@ -1094,14 +1094,14 @@ namespace Warewolf.Studio.ViewModels.Tests
             var parentMock = new Mock<IExplorerTreeItem>();
             var child = new Mock<IExplorerItemViewModel>();
             child.SetupGet(it => it.ResourcePath).Returns("someDisplayName");
-            var collectionParent = new AsyncObservableCollection<IExplorerItemViewModel>() { child.Object };
+            var collectionParent = new AsyncObservableCollection<IExplorerItemViewModel> { child.Object };
             parentMock.SetupGet(it => it.Children).Returns(collectionParent);
-            var collectionItem = new AsyncObservableCollection<IExplorerItem>() { childExplorerItem.Object };
+            var collectionItem = new AsyncObservableCollection<IExplorerItem> { childExplorerItem.Object };
             explorerItem.SetupGet(it => it.Children).Returns(collectionItem);
             var serverMock = new Mock<IServer>();
-            var permissions = new List<IWindowsGroupPermission>();
+            var permissions = new IWindowsGroupPermission[]{};
             serverMock.SetupGet(it => it.Permissions).Returns(permissions);
-            var items = new List<IExplorerItem>() { explorerItem.Object };
+            var items = new List<IExplorerItem> { explorerItem.Object };
             _target.SelectAction = (a) => { };
 
             //act

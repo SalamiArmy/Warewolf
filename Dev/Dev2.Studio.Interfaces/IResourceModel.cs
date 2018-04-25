@@ -61,7 +61,7 @@ namespace Dev2.Studio.Interfaces
         IObservableReadOnlyList<IErrorInfo> Errors { get; }
         IObservableReadOnlyList<IErrorInfo> FixedErrors { get; }
 
-        IList<IErrorInfo> GetErrors(Guid instanceId);
+        IEnumerable<IErrorInfo> GetErrors(Guid instanceId);
         void AddError(IErrorInfo error);
         void RemoveError(IErrorInfo error);
         void Commit();

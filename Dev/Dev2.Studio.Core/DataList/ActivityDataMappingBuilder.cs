@@ -27,7 +27,7 @@ using Dev2.Studio.ViewModels.DataList;
 namespace Dev2.DataList
 {
     /// <summary>
-    /// Used to perform fuzzy matching of sorts ;)
+    /// Used to perform fuzzy matching of sorts
     /// NOTE : Commented out code for future extention on this piece
     /// </summary>
     class FuzzyMatchVo
@@ -55,23 +55,23 @@ namespace Dev2.DataList
     }
 
     /// <summary>
-    /// Used to return the mapping view models ;)
+    /// Used to return the mapping view models
     /// </summary>
     public class MappingViewModelTO
     {
-        public IList<IInputOutputViewModel> Inputs { get; private set; }
+        public IInputOutputViewModel[] Inputs { get; private set; }
 
-        public IList<IInputOutputViewModel> Outputs { get; private set; }
+        public IInputOutputViewModel[] Outputs { get; private set; }
 
-        public MappingViewModelTO(IList<IInputOutputViewModel> inputs, IList<IInputOutputViewModel> outputs)
+        public MappingViewModelTO(IEnumerable<IInputOutputViewModel> inputs, IEnumerable<IInputOutputViewModel> outputs)
         {
-            Inputs = inputs;
-            Outputs = outputs;
+            Inputs = inputs.ToArray();
+            Outputs = outputs.ToArray();
         }
     }
 
     /// <summary>
-    /// Used to generate the data mapping view model data via the builder pattern ;)
+    /// Used to generate the data mapping view model data via the builder pattern
     /// </summary>
     public class ActivityDataMappingBuilder
     {
@@ -142,7 +142,7 @@ namespace Dev2.DataList
                     string inputs;
                     string outputs;
 
-                    // handle workflows differently ;)
+                    // handle workflows differently
 
                     if(activity.IsNotAvailable())
                     {
@@ -286,73 +286,47 @@ namespace Dev2.DataList
             return result;
         }
         
-        string GetInputString(IList<IInputOutputViewModel> inputData)
+        string GetInputString(IEnumerable<IInputOutputViewModel> inputData)
         {
-            var inputString = string.Empty;
-            IList<IDev2Definition> inputs = new List<IDev2Definition>();
-            if (inputData.Count != 0)
-            {
-                foreach (IInputOutputViewModel itp in inputData)
-                {
-                    inputs.Add(itp.GetGenerationTO());
-                }
-                inputString = DataMappingListFactory.GenerateMapping(inputs, enDev2ArgumentType.Input);
-            }
+            var inputs = inputData.Select(o => o.GetGenerationTO());
+            var inputString = DataMappingListFactory.GenerateMapping(inputs, enDev2ArgumentType.Input);
             return inputString;
         }
         
-        string GetOutputString(IList<IInputOutputViewModel> outputData)
+        string GetOutputString(IEnumerable<IInputOutputViewModel> outputData)
         {
-            var outputString = string.Empty;
-            IList<IDev2Definition> outputs = new List<IDev2Definition>();
-            if (outputData.Count != 0)
-            {
-                foreach (IInputOutputViewModel otp in outputData)
-                {
-                    outputs.Add(otp.GetGenerationTO());
-                }
-                outputString = DataMappingListFactory.GenerateMapping(outputs, enDev2ArgumentType.Output);
-            }
+            var outputs = outputData.Select(o => o.GetGenerationTO());
+            var outputString = DataMappingListFactory.GenerateMapping(outputs, enDev2ArgumentType.Output);
             return outputString;
         }
         
-        IList<IInputOutputViewModel> GenerateMapping(string savedMappingData, string mappingDefinitions, bool isOutputMapping, IDev2LanguageParser parser)
+        IEnumerable<IInputOutputViewModel> GenerateMapping(string savedMappingData, string mappingDefinitions, bool isOutputMapping, IDev2LanguageParser parser)
         {
-            IList<IInputOutputViewModel> result;
-
             if (string.IsNullOrEmpty(savedMappingData))
             {
-                // TODO : Inject fuzzy matching logic here ;)
+                // TODO : Inject fuzzy matching logic here
                 var fuzzyMatchDefinitions = GenerateMatchFragmentsFromDataList();
 
-                result = CreateMappingList(mappingDefinitions, parser, true, isOutputMapping, fuzzyMatchDefinitions);
+                return CreateMappingList(mappingDefinitions, parser, true, isOutputMapping, fuzzyMatchDefinitions);
             }
             else
             {
-
-                // generate the master view ;)
                 var masterView = CreateMappingList(mappingDefinitions, parser, true, isOutputMapping);
-
-                // use existing data ;)
                 var existingView = CreateMappingList(savedMappingData, parser, false, isOutputMapping);
 
-                // Now adjust for the difference between the two views ;)
-                result = ReconcileExistingAndMasterView(masterView, existingView);
+                // Now adjust for the difference between the two views
+                return ReconcileExistingAndMasterView(masterView, existingView);
             }
-
-            return result;
         }
-        
-        IList<IInputOutputViewModel> ReconcileExistingAndMasterView(IList<IInputOutputViewModel> masterView, IEnumerable<IInputOutputViewModel> existingView)
+
+        IEnumerable<IInputOutputViewModel> ReconcileExistingAndMasterView(IEnumerable<IInputOutputViewModel> masterView, IEnumerable<IInputOutputViewModel> existingView)
         {
             var equalityCompareImpl = new InputOutputViewModelEqualityComparer();
 
-            var intersectionResult = existingView.Intersect(masterView, equalityCompareImpl);
+            var inputOutputViewModels = existingView.Intersect(masterView, equalityCompareImpl);
 
-            IEnumerable<IInputOutputViewModel> inputOutputViewModels = intersectionResult as IList<IInputOutputViewModel> ?? intersectionResult.ToList();
             foreach (var intersectionRowItem in inputOutputViewModels)
             {
-                //  Find a match in master list and tranfer properties ;)
                 var match = masterView.FirstOrDefault(c => c.DisplayName == intersectionRowItem.DisplayName);
 
                 if (match != null)
@@ -363,16 +337,12 @@ namespace Dev2.DataList
                 }
             }
 
-
-            // ordering maters ;)
-            IList<IInputOutputViewModel> result = inputOutputViewModels.Union(masterView, equalityCompareImpl).ToList();
-
+            var result = inputOutputViewModels.Union(masterView, equalityCompareImpl);
             return result;
         }
-        
-        IList<IInputOutputViewModel> CreateMappingList(string mappingDefinitions, IDev2LanguageParser parser, bool autoAddBrackets, bool isOutputMapping, FuzzyMatchVo fuzzyMatch = null)
+
+        IEnumerable<IInputOutputViewModel> CreateMappingList(string mappingDefinitions, IDev2LanguageParser parser, bool autoAddBrackets, bool isOutputMapping, FuzzyMatchVo fuzzyMatch = null)
         {
-            IList<IInputOutputViewModel> result = new List<IInputOutputViewModel>();
             var concreteDefinitions = parser.ParseAndAllowBlanks(mappingDefinitions);
 
             foreach (var def in concreteDefinitions)
@@ -384,7 +354,7 @@ namespace Dev2.DataList
                 }
                 var injectMapsTo = def.MapsTo;
 
-                // no saved mappings add brackets ;)
+                // no saved mappings add brackets
                 if (!string.IsNullOrEmpty(injectMapsTo) && string.IsNullOrEmpty(SavedInputMapping))
                 {
                     injectMapsTo = DataListUtil.AddBracketsToValueIfNotExist(injectMapsTo);
@@ -394,17 +364,19 @@ namespace Dev2.DataList
                     if (def.IsRecordSet)
                     {
                         var tmp = injectValue.Replace("()", "(*)");
-                        injectMapsTo = tmp; // tag it as the same ;)
+                        injectMapsTo = tmp;
                     }
                     else
                     {
-                        injectMapsTo = injectValue; // tag it as the same ;)
+                        injectMapsTo = injectValue;
                     }
                 }
 
                 // def.RecordSetName -> recordsetName
-                var viewModel = new InputOutputViewModel(def.Name, injectValue, injectMapsTo, def.DefaultValue, def.IsRequired, def.RecordSetName, def.EmptyToNull);
-                viewModel.IsObject = def.IsObject;
+                var viewModel = new InputOutputViewModel(def.Name, injectValue, injectMapsTo, def.DefaultValue, def.IsRequired, def.RecordSetName, def.EmptyToNull)
+                {
+                    IsObject = def.IsObject,
+                };
                 if (def.IsObject)
                 {
                     var complexObjectItemModel = _complexObjects.FirstOrDefault(model => model.Name == def.Name);
@@ -413,10 +385,8 @@ namespace Dev2.DataList
                         viewModel.JsonString = complexObjectItemModel.GetJson();
                     }
                 }
-                result.Add(viewModel);
+                yield return viewModel;
             }
-
-            return result;
         }
 
         string CreateInjectValue(bool isOutputMapping, FuzzyMatchVo fuzzyMatch, IDev2Definition def)
@@ -430,15 +400,7 @@ namespace Dev2.DataList
                 var field = def.Name;
 
                 var recordsetName = fuzzyMatch.FetchMatch(def.Name, def.RecordSetName);
-                if (!string.IsNullOrEmpty(recordsetName))
-                {
-                    masterRecordsetName = recordsetName;
-                }
-                else
-                {
-                    // we have no match, use the current mapping value ;)
-                    masterRecordsetName = def.RecordSetName;
-                }
+                masterRecordsetName = !string.IsNullOrEmpty(recordsetName) ? recordsetName : def.RecordSetName;
 
                 injectValue = FormatString(masterRecordsetName, field);
             }
@@ -475,7 +437,6 @@ namespace Dev2.DataList
         
         FuzzyMatchVo GenerateMatchFragmentsFromDataList()
         {
-            FuzzyMatchVo result = null;
             if (!string.IsNullOrEmpty(DataList))
             {
                 var dataListModel = new DataListModel();
@@ -486,15 +447,14 @@ namespace Dev2.DataList
                 {
                     MapRecordsetColumn(tmp, rs);
                 }
-                result = new FuzzyMatchVo(tmp);
+                return new FuzzyMatchVo(tmp);
             }
 
-            return result;
+            return default(FuzzyMatchVo);
         }
 
         private static void MapRecordsetColumn(IDictionary<Tuple<string, string>, string> tmp, IRecordSet rs)
         {
-            // build map for each column in a recordset ;)
             foreach (var col in rs.Columns)
             {
                 foreach (var scalar in col.Value)

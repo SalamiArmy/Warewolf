@@ -42,7 +42,7 @@ namespace Dev2.Studio.Interfaces.DataList
         /// <date>2/21/2013</date>
         void RemoveDataListItem(IDataListItemModel itemToRemove);
         
-        void SetIsUsedDataListItems(IList<IDataListVerifyPart> parts, bool isUsed);
+        void SetIsUsedDataListItems(IEnumerable<IDataListVerifyPart> parts, bool isUsed);
         
         void InitializeDataListViewModel(IResourceModel resourceModel);
         
@@ -54,19 +54,19 @@ namespace Dev2.Studio.Interfaces.DataList
         
         void AddRecordsetNamesIfMissing();
         
-        void AddMissingDataListItems(IList<IDataListVerifyPart> parts);
+        void AddMissingDataListItems(IEnumerable<IDataListVerifyPart> parts);
         
         void RemoveUnusedDataListItems();
         
         void ValidateNames(IDataListItemModel item);
 
-        List<IDataListVerifyPart> MissingWorkflowItems(IList<IDataListVerifyPart> partsToVerify);
+        IEnumerable<IDataListVerifyPart> MissingWorkflowItems(IEnumerable<IDataListVerifyPart> partsToVerify);
 
-        List<IDataListVerifyPart> MissingWorkflowItems(IList<IDataListVerifyPart> partsToVerify, bool excludeUnusedItems);
+        IEnumerable<IDataListVerifyPart> MissingWorkflowItems(IEnumerable<IDataListVerifyPart> partsToVerify, bool excludeUnusedItems);
 
-        List<IDataListVerifyPart> MissingDataListParts(IList<IDataListVerifyPart> partsToVerify);
+        IEnumerable<IDataListVerifyPart> MissingDataListParts(IEnumerable<IDataListVerifyPart> partsToVerify);
 
-        List<IDataListVerifyPart> UpdateDataListItems(IResourceModel contextualResourceModel, IList<IDataListVerifyPart> workflowFields);
+        IEnumerable<IDataListVerifyPart> UpdateDataListItems(IResourceModel contextualResourceModel, IEnumerable<IDataListVerifyPart> workflowFields);
         
         void CreateListsOfIDataListItemModelToBindTo(out string errorString);
 

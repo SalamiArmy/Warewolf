@@ -1,7 +1,7 @@
 /*
 *  Warewolf - Once bitten, there's no going back
 *  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
-*  Licensed under GNU Affero General Public License 3.0 or later. 
+*  Licensed under GNU Affero General Public License 3.0 or later.
 *  Some rights reserved.
 *  Visit our website for more information <http://warewolf.io/>
 *  AUTHORS <http://warewolf.io/authors.php> , CONTRIBUTORS <http://warewolf.io/contributors.php>
@@ -24,7 +24,7 @@ namespace Dev2.Workspaces
     public class WorkspaceItemRepository : IWorkspaceItemRepository
     {
         #region Singleton Instance
-        
+
         static volatile IWorkspaceItemRepository _instance;
         static readonly object SyncRoot = new Object();
 
@@ -51,7 +51,7 @@ namespace Dev2.Workspaces
 
         IList<IWorkspaceItem> _workspaceItems;
 
-        public IList<IWorkspaceItem> WorkspaceItems => _workspaceItems ?? (_workspaceItems = Read());
+        public IList<IWorkspaceItem> WorkspaceItems => _workspaceItems ?? (_workspaceItems = Read().ToList());
 
         #region CTOR
 
@@ -101,24 +101,30 @@ namespace Dev2.Workspaces
 
         #region Read
 
-        IList<IWorkspaceItem> Read()
+        IEnumerable<IWorkspaceItem> Read()
         {
-            var result = new List<IWorkspaceItem>();
             if (File.Exists(RepositoryPath))
             {
+                IEnumerable<XElement> elements = null;
                 try
                 {
                     var xml = XElement.Parse(File.ReadAllText(RepositoryPath));
-                    result.AddRange(xml.Elements().Select(x => new WorkspaceItem(x)));
+                    elements = xml.Elements();
                 }
-
                 catch
-
                 {
                     // corrupt so ignore
                 }
+                if (elements is null)
+                {
+                    yield break;
+                }
+
+                foreach (var item in elements.Select(x => new WorkspaceItem(x)))
+                {
+                    yield return item;
+                }
             }
-            return result;
         }
 
         #endregion
@@ -158,7 +164,7 @@ namespace Dev2.Workspaces
         {
             if(model == null)
             {
-                throw new ArgumentNullException("model");
+                throw new ArgumentNullException(nameof(model));
             }
             var workspaceItem = WorkspaceItems.FirstOrDefault(wi => wi.ID == model.ID && wi.EnvironmentID == model.Environment.EnvironmentID);
             if(workspaceItem != null)
@@ -188,7 +194,7 @@ namespace Dev2.Workspaces
         {
             if(resourceModel == null)
             {
-                throw new ArgumentNullException("resourceModel");
+                throw new ArgumentNullException(nameof(resourceModel));
             }
             var workspaceItem = WorkspaceItems.FirstOrDefault(wi => wi.ID == resourceModel.ID && wi.EnvironmentID == resourceModel.Environment.EnvironmentID);
 

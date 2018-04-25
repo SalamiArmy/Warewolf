@@ -152,7 +152,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             deployViewModel.Object.DeployCommand.Execute(null);
             deployViewModel.Verify(model => model.DeployCommand.Execute(null), Times.AtLeast(1));
         }
-        
+
         [TestMethod]
         [Owner("Sanele Mthembu")]
         public void Given_SameItem_OnSourceAndDestination_DeployStatsViewerViewModel_CheckDestinationPersmisions_ShouldBeFalse()
@@ -169,11 +169,12 @@ namespace Warewolf.Studio.ViewModels.Tests
                 envMock.Object
             });
             var eventAggregator = new Mock<IEventAggregator>();
-            var destPermissions = new List<IWindowsGroupPermission>();
-            destPermissions.Add(new WindowsGroupPermission
-            {
-                Administrator = true
-            });
+            var destPermissions = new IWindowsGroupPermission[]{
+                new WindowsGroupPermission
+                {
+                    Administrator = true
+                }
+            };
             var localhost = new Mock<IServer>();
             localhost.Setup(a => a.DisplayName).Returns("Localhost");
             localhost.SetupGet(server => server.Permissions).Returns(destPermissions);
@@ -181,15 +182,15 @@ namespace Warewolf.Studio.ViewModels.Tests
             shellViewModel.Setup(x => x.LocalhostServer).Returns(localhost.Object);
             shellViewModel.Setup(x => x.ActiveServer).Returns(new Mock<IServer>().Object);
             var deployDestinationViewModel = new DeployDestinationViewModel(shellViewModel.Object, eventAggregator.Object);
-            
-            IList<IExplorerTreeItem> items = new List<IExplorerTreeItem>();            
+
+            IList<IExplorerTreeItem> items = new List<IExplorerTreeItem>();
             var parentMock = new Mock<IExplorerTreeItem>();
             var itemViewModel = new ExplorerItemViewModel(localhost.Object, parentMock.Object, null, shellViewModel.Object, null);
             var explorerItemViewModel = new ExplorerItemNodeViewModel(localhost.Object, itemViewModel, null);
             var destinationViewModel = new AsyncObservableCollection<IExplorerItemViewModel>();
             destinationViewModel.Add(explorerItemViewModel);
             parentMock.SetupGet(it => it.Children).Returns(destinationViewModel);
-            var sourcePermissions = new List<IWindowsGroupPermission>();
+            var sourcePermissions = new IWindowsGroupPermission[]{};
             var otherServer = new Mock<IServer>();
             otherServer.SetupGet(server => server.Permissions).Returns(sourcePermissions);
             otherServer.SetupGet(server => server.CanDeployFrom).Returns(true);
@@ -197,7 +198,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             items.Add(parentMock.Object);
             deployDestinationViewModel.Environments.First().Children = destinationViewModel;
             deployDestinationViewModel.SelectedEnvironment = deployDestinationViewModel.Environments.First();
-            
+
             var stat = new DeployStatsViewerViewModel(items, deployDestinationViewModel);
             Assert.IsTrue(deployDestinationViewModel.SelectedEnvironment.AsList().Count > 0);
             //------------Execute Test---------------------------
@@ -223,7 +224,7 @@ namespace Warewolf.Studio.ViewModels.Tests
                 envMock.Object
             });
             var eventAggregator = new Mock<IEventAggregator>();
-                        
+
             var localhost = new Mock<IServer>();
             localhost.Setup(a => a.DisplayName).Returns("Localhost");
             localhost.SetupGet(server => server.CanDeployTo).Returns(true);
@@ -242,7 +243,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             CustomContainer.Register(environmentRepository.Object);
 
             var deployDestinationViewModel = new DeployDestinationViewModel(shellViewModel.Object, eventAggregator.Object);
-            
+
             var sourceItemViewModel = new ExplorerItemViewModel(localhost.Object, null, null, shellViewModel.Object, null);
 
             var sourceViewModel = new AsyncObservableCollection<IExplorerItemViewModel>();
@@ -250,11 +251,11 @@ namespace Warewolf.Studio.ViewModels.Tests
             sourceViewModel.Add(sourceExplorerItemViewModel);
 
             var destinationViewModel = SetDestinationExplorerItemViewModels(Guid.NewGuid(), otherServer, shellViewModel, localhost);
-            
+
             IList<IExplorerTreeItem> sourceExplorerItem = new List<IExplorerTreeItem>();
 
             sourceExplorerItem.Add(sourceExplorerItemViewModel);
-            
+
             deployDestinationViewModel.Environments.First().Children = destinationViewModel;
             deployDestinationViewModel.SelectedEnvironment = deployDestinationViewModel.Environments.First();
             deployDestinationViewModel.SelectedEnvironment.Connect();
@@ -292,7 +293,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             localhost.Setup(a => a.DisplayName).Returns("Localhost");
             localhost.SetupGet(server => server.CanDeployTo).Returns(true);
             localhost.SetupGet(server => server.CanDeployFrom).Returns(true);
-          
+
             shellViewModel.Setup(x => x.LocalhostServer).Returns(localhost.Object);
 
             var deployDestinationViewModel = new DeployDestinationViewModel(shellViewModel.Object, eventAggregator.Object);

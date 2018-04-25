@@ -32,7 +32,7 @@ namespace Dev2.DataList.Contract
 
         public enDev2ArgumentType ArgumentType { get; set; }
 
-        public IList<IDev2Definition> Definitions { get; set; }
+        public IEnumerable<IDev2Definition> Definitions { get; set; }
 
         /// <summary>
         /// Generates this instance.

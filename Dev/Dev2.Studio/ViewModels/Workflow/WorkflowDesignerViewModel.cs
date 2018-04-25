@@ -1221,7 +1221,7 @@ namespace Dev2.Studio.ViewModels.Workflow
             }
         }
 
-        IList<IDataListVerifyPart> BuildWorkflowFields()
+        IEnumerable<IDataListVerifyPart> BuildWorkflowFields()
         {
             var dataPartVerifyDuplicates = new DataListVerifyPartDuplicationParser();
             _uniqueWorkflowParts = new Dictionary<IDataListVerifyPart, string>(dataPartVerifyDuplicates);
@@ -1232,7 +1232,7 @@ namespace Dev2.Studio.ViewModels.Workflow
 
                 GetWorkflowFieldsFromFlowNodes(flowNodes);
             }
-            var flattenedList = _uniqueWorkflowParts.Keys.ToList();
+            var flattenedList = _uniqueWorkflowParts.Keys;
             return flattenedList;
         }
 
@@ -1251,13 +1251,14 @@ namespace Dev2.Studio.ViewModels.Workflow
 
         IEnumerable<string> GetWorkflowFieldsFromModelItem(ModelItem flowNode)
         {
-            var workflowFields = new List<string>();
-
             var modelProperty = flowNode.Properties["Action"];
             if (modelProperty != null)
             {
                 var activity = modelProperty.ComputedValue;
-                workflowFields = GetActivityElements(activity);
+                foreach (var workflowField in GetActivityElements(activity))
+                {
+                    yield return workflowField;
+                }
             }
             else
             {
@@ -1276,21 +1277,28 @@ namespace Dev2.Studio.ViewModels.Workflow
                 var property = flowNode.Properties[propertyName];
                 if (property != null)
                 {
-                    workflowFields = GetWorkflowFieldsFromProperty(workflowFields, property);
+                    foreach (var workflowField in GetWorkflowFieldsFromProperty(property))
+                    {
+                        yield return workflowField;
+                    }
                 }
             }
-            return workflowFields;
         }
 
-        List<string> GetWorkflowFieldsFromProperty(List<string> workflowFields, ModelProperty property)
+        IEnumerable<string> GetWorkflowFieldsFromProperty(ModelProperty property)
         {
             if (!string.IsNullOrEmpty(_expressionString))
             {
-                workflowFields = TryGetDecisionElements(_expressionString, DataListSingleton.ActiveDataList);
+                foreach (var workflowField in TryGetDecisionElements(_expressionString, DataListSingleton.ActiveDataList)) {
+                    yield return workflowField;
+                }
                 var activity = property.ComputedValue;
                 if (activity != null)
                 {
-                    workflowFields.AddRange(TryGetDecisionElements(((dynamic)activity).ExpressionText, DataListSingleton.ActiveDataList));
+                    foreach (var workflowField in TryGetDecisionElements(((dynamic)activity).ExpressionText, DataListSingleton.ActiveDataList))
+                    {
+                        yield return workflowField;
+                    }
                 }
             }
             else
@@ -1298,45 +1306,62 @@ namespace Dev2.Studio.ViewModels.Workflow
                 var activity = property.ComputedValue;
                 if (activity != null)
                 {
-                    workflowFields.AddRange(TryGetDecisionElements(((dynamic)activity).ExpressionText, DataListSingleton.ActiveDataList));
+                    foreach (var workflowField in TryGetDecisionElements(((dynamic)activity).ExpressionText, DataListSingleton.ActiveDataList))
+                    {
+                        yield return workflowField;
+                    }
                 }
             }
-
-            return workflowFields;
         }
 
-        public static List<String> TryGetDecisionElements(string expression, IDataListViewModel datalistModel)
+        public static IEnumerable<string> TryGetDecisionElements(string expression, IDataListViewModel datalistModel)
         {
-            var decisionFields = new List<string>();
             if (!string.IsNullOrEmpty(expression))
             {
                 var startIndex = expression.IndexOf('"');
                 startIndex = startIndex + 1;
                 var endindex = expression.IndexOf('"', startIndex);
                 var decisionValue = expression.Substring(startIndex, endindex - startIndex);
+
+                IEnumerable<string> decisionFields = null;
                 try
                 {
                     decisionFields = GetDecisionElements(datalistModel, decisionFields, decisionValue);
                 }
                 catch (Exception)
                 {
-                    if (!DataListUtil.IsValueRecordset(decisionValue))
+                    decisionFields = GetDecisionFieldsIfException(decisionValue, decisionFields);
+                }
+                if (decisionFields != null)
+                {
+                    foreach (var decisionField in decisionFields)
                     {
-                        var parts = DataListFactory.CreateLanguageParser().ParseExpressionIntoParts(decisionValue, new List<IDev2DataLanguageIntellisensePart>());
-                        decisionFields.AddRange(parts.Select(part => DataListUtil.StripBracketsFromValue(part.Option.DisplayValue)));
-                        return decisionFields;
-                    }
-                    if (DataListSingleton.ActiveDataList != null)
-                    {
-                        var parts = DataListFactory.CreateLanguageParser().ParseDataLanguageForIntellisense(decisionValue, DataListSingleton.ActiveDataList.WriteToResourceModel(), true);
-                        decisionFields.AddRange(parts.Select(part => DataListUtil.StripBracketsFromValue(part.Option.DisplayValue)));
+                        yield return decisionField;
                     }
                 }
             }
+        }
+
+        private static IEnumerable<string> GetDecisionFieldsIfException(string decisionValue, IEnumerable<string> decisionFields)
+        {
+            if (!DataListUtil.IsValueRecordset(decisionValue))
+            {
+                var parts = DataListFactory.CreateLanguageParser().ParseExpressionIntoParts(decisionValue, new List<IDev2DataLanguageIntellisensePart>());
+                decisionFields = parts.Select(part => DataListUtil.StripBracketsFromValue(part.Option.DisplayValue));
+            }
+            else
+            {
+                if (DataListSingleton.ActiveDataList != null)
+                {
+                    var parts = DataListFactory.CreateLanguageParser().ParseDataLanguageForIntellisense(decisionValue, DataListSingleton.ActiveDataList.WriteToResourceModel(), true);
+                    decisionFields = parts.Select(part => DataListUtil.StripBracketsFromValue(part.Option.DisplayValue));
+                }
+            }
+
             return decisionFields;
         }
 
-        private static List<string> GetDecisionElements(IDataListViewModel datalistModel, List<string> decisionFields, string decisionValue)
+        private static IEnumerable<string> GetDecisionElements(IDataListViewModel datalistModel, IEnumerable<string> decisionFields, string decisionValue)
         {
             var dds = JsonConvert.DeserializeObject<Dev2DecisionStack>(decisionValue.Replace('!', '\"'));
             foreach (var decision in dds.TheStack)
@@ -1350,7 +1375,7 @@ namespace Dev2.Studio.ViewModels.Workflow
             return decisionFields;
         }
 
-        private static List<string> GetDecisionFields(IDataListViewModel datalistModel, List<string> decisionFields, string decisionValue, string[] getCols, int i)
+        private static IEnumerable<string> GetDecisionFields(IDataListViewModel datalistModel, IEnumerable<string> decisionFields, string decisionValue, string[] getCols, int i)
         {
             var getCol = getCols[i];
             if (datalistModel != null)
@@ -1359,7 +1384,7 @@ namespace Dev2.Studio.ViewModels.Workflow
                 if (!DataListUtil.IsValueRecordset(getCol) && parsed.Any(DataListUtil.IsValueRecordset))
                 {
                     var parts = DataListFactory.CreateLanguageParser().ParseExpressionIntoParts(decisionValue, new List<IDev2DataLanguageIntellisensePart>());
-                    decisionFields.AddRange(parts.Select(part => DataListUtil.StripBracketsFromValue(part.Option.DisplayValue)));
+                    decisionFields = decisionFields.Concat(parts.Select(part => DataListUtil.StripBracketsFromValue(part.Option.DisplayValue)));
                 }
                 else
                 {
@@ -2274,8 +2299,7 @@ namespace Dev2.Studio.ViewModels.Workflow
 
             if (server.Permissions == null)
             {
-                server.Permissions = new List<IWindowsGroupPermission>();
-                server.Permissions.AddRange(server.AuthorizationService.SecurityService.Permissions);
+                server.Permissions = server.AuthorizationService.SecurityService.Permissions.ToArray();
             }
             var env = new EnvironmentViewModel(server, CustomContainer.Get<IShellViewModel>(), true);
             var res = new ResourcePickerDialog(activityType, env);

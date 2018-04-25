@@ -420,7 +420,7 @@ namespace Dev2.Studio.Core.Models
             }
         }
 
-        public IList<IErrorInfo> GetErrors(Guid instanceId) => _errors.Where(e => e.InstanceID == instanceId).ToList();
+        public IEnumerable<IErrorInfo> GetErrors(Guid instanceId) => _errors.Where(e => e.InstanceID == instanceId);
 
         public void AddError(IErrorInfo error)
         {

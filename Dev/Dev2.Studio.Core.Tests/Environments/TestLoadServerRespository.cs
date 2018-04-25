@@ -46,7 +46,7 @@ namespace Dev2.Core.Tests.Environments
             return Environments;
         }
 
-        public override ICollection<IServer> All()
+        public override IEnumerable<IServer> All()
         {
             return Environments;
         }

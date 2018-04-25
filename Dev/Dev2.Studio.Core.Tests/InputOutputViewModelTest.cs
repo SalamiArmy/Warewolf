@@ -280,7 +280,7 @@ namespace Dev2.Core.Tests
         public void InputOutputMappingViewModel_MapsTo_ChangedToNonEmptyAndRequiredIsFalse_RequireMissingFalse()
         {
             //------------Setup for test--------------------------
-            var viewModel = InputOutputViewModelFactory.CreateInputOutputViewModel("testName", "testValue", "", "", false, "");
+            var viewModel = new InputOutputViewModel("testName", "testValue", "", "", false, "");
 
             Assert.IsFalse(viewModel.Required);
             Assert.IsFalse(viewModel.RequiredMissing);
@@ -299,7 +299,7 @@ namespace Dev2.Core.Tests
         public void InputOutputMappingViewModel_MapsTo_ChangedToNonEmptyAndRequiredIsTrue_RequireMissingFalse()
         {
             //------------Setup for test--------------------------
-            var viewModel = InputOutputViewModelFactory.CreateInputOutputViewModel("testName", "testValue", "", "", true, "");
+            var viewModel = new InputOutputViewModel("testName", "testValue", "", "", true, "");
 
             Assert.IsTrue(viewModel.Required);
             Assert.IsFalse(viewModel.RequiredMissing);
@@ -318,7 +318,7 @@ namespace Dev2.Core.Tests
         public void InputOutputMappingViewModel_MapsTo_ChangedToEmptyAndRequiredIsFalse_RequireMissingFalse()
         {
             //------------Setup for test--------------------------
-            var viewModel = InputOutputViewModelFactory.CreateInputOutputViewModel("testName", "testValue", "newValue", "", false, "");
+            var viewModel = new InputOutputViewModel("testName", "testValue", "newValue", "", false, "");
 
             Assert.IsFalse(viewModel.Required);
             Assert.IsFalse(viewModel.RequiredMissing);
@@ -337,7 +337,7 @@ namespace Dev2.Core.Tests
         public void InputOutputMappingViewModel_MapsTo_ChangedToEmptyAndRequiredIsTrue_RequireMissingTrue()
         {
             //------------Setup for test--------------------------
-            var viewModel = InputOutputViewModelFactory.CreateInputOutputViewModel("testName", "testValue", "newValue", "", true, "");
+            var viewModel = new InputOutputViewModel("testName", "testValue", "newValue", "", true, "");
 
             Assert.IsTrue(viewModel.Required);
             Assert.IsFalse(viewModel.RequiredMissing);
@@ -354,7 +354,7 @@ namespace Dev2.Core.Tests
 
         void SetInputOutputMappingViewModelFromTestMappingObject(InputOutputViewModelTestObject mappingObject)
         {
-            _inputOutputViewModel = InputOutputViewModelFactory.CreateInputOutputViewModel(mappingObject.Name, mappingObject.Value, mappingObject.MapsTo, mappingObject.DefaultValue, mappingObject.Required, mappingObject.RecordSetName);
+            _inputOutputViewModel = new InputOutputViewModel(mappingObject.Name, mappingObject.Value, mappingObject.MapsTo, mappingObject.DefaultValue, mappingObject.Required, mappingObject.RecordSetName);
         }
 
         #endregion Test Methods

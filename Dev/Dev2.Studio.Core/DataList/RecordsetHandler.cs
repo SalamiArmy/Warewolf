@@ -76,8 +76,8 @@ namespace Dev2.Studio.Core.DataList
 
         public void RemoveBlankRecordsets()
         {
-            var blankList = _vm.RecsetCollection.Where(c => c.IsBlank && c.Children.Count == 1 && c.Children[0].IsBlank).ToList();
-            if (blankList.Count <= 1)
+            var blankList = _vm.RecsetCollection.Where(c => c.IsBlank && c.Children.Count == 1 && c.Children[0].IsBlank);
+            if (blankList.Count() <= 1)
             {
                 return;
             }
@@ -85,12 +85,12 @@ namespace Dev2.Studio.Core.DataList
             _vm.RecsetCollection.Remove(blankList.First());
         }
 
-        public void RemoveBlankRecordsetFields()
+        public void RemoveBlankFieldFromRecordsets()
         {
             foreach (var recset in _vm.RecsetCollection)
             {
-                var blankChildList = recset.Children.Where(c => c.IsBlank).ToList();
-                if (blankChildList.Count <= 1)
+                var blankChildList = recset.Children.Where(c => c.IsBlank);
+                if (blankChildList.Count() <= 1)
                 {
                     continue;
                 }
@@ -139,17 +139,17 @@ namespace Dev2.Studio.Core.DataList
 
         public void AddRowToRecordsets()
         {
-            var blankList = _vm.RecsetCollection.Where(c => c.IsBlank && c.Children.Count == 1 && c.Children[0].IsBlank).ToList();
+            var blankList = _vm.RecsetCollection.Where(c => c.IsBlank && c.Children.Count == 1 && c.Children[0].IsBlank);
 
-            if (blankList.Count == 0)
+            if (!blankList.Any())
             {
                 AddRecordSet();
             }
 
             foreach (var recset in _vm.RecsetCollection)
             {
-                var blankChildList = recset.Children.Where(c => c.IsBlank).ToList();
-                if (blankChildList.Count != 0)
+                var blankChildList = recset.Children.Where(c => c.IsBlank);
+                if (blankChildList.Any())
                 {
                     continue;
                 }
@@ -164,7 +164,7 @@ namespace Dev2.Studio.Core.DataList
         }
         void CheckDataListItemsForDuplicates(IEnumerable<IDataListItemModel> itemsToCheck)
         {
-            var duplicates = itemsToCheck.ToLookup(x => x.DisplayName).ToList();
+            var duplicates = itemsToCheck.ToLookup(x => x.DisplayName);
             foreach (var duplicate in duplicates)
             {
                 if (duplicate.Count() > 1 && !String.IsNullOrEmpty(duplicate.Key))
@@ -215,13 +215,24 @@ namespace Dev2.Studio.Core.DataList
 
         public void SortRecset(bool ascending)
         {
-            IList<IRecordSetItemModel> newRecsetCollection = ascending ? _vm.RecsetCollection.Where(model => !model.IsBlank).OrderBy(c => c.DisplayName).ToList() : _vm.RecsetCollection.Where(model => !model.IsBlank).OrderByDescending(c =>  c.DisplayName).ToList();
-            for (int i = 0; i < newRecsetCollection.Count; i++)
+            var newRecsetCollection = ascending
+                ? _vm.RecsetCollection.Where(model => !model.IsBlank).OrderBy(c => c.DisplayName)
+                : _vm.RecsetCollection.Where(model => !model.IsBlank).OrderByDescending(c =>  c.DisplayName);
+
+            var recordSetItemModelIter = newRecsetCollection.GetEnumerator();
+            var i = 0;
+            while (recordSetItemModelIter.MoveNext())
             {
-                var recordSetItemModel = newRecsetCollection[i];
-                IList<IRecordSetFieldItemModel> recSetChildrenSorted = ascending ? recordSetItemModel.Children.Where(model => !model.IsBlank).OrderBy(c => c.DisplayName).ToList() : recordSetItemModel.Children.Where(model => !model.IsBlank).OrderByDescending(c => c.DisplayName).ToList();
+                var recordSetItemModel = recordSetItemModelIter.Current;
+
+                var recSetChildrenSorted = ascending
+                    ? recordSetItemModel.Children.Where(model => !model.IsBlank).OrderBy(c => c.DisplayName)
+                    : recordSetItemModel.Children.Where(model => !model.IsBlank).OrderByDescending(c => c.DisplayName);
+
                 recordSetItemModel.Children = new ObservableCollection<IRecordSetFieldItemModel>(recSetChildrenSorted);
                 _vm.RecsetCollection.Move(_vm.RecsetCollection.IndexOf(recordSetItemModel), i);
+
+                i++;
             }
         }
 
@@ -282,14 +293,14 @@ namespace Dev2.Studio.Core.DataList
                 return;
             }
 
-            var recset = _vm.RecsetCollection.Where(c => c.DisplayName == part.Recordset).ToList();
+            var recset = _vm.RecsetCollection.Where(c => c.DisplayName == part.Recordset);
             if (!recset.Any())
             {
                 missingDataParts.Add(part);
             }
             else
             {
-                if (!string.IsNullOrEmpty(part.Field) && recset[0].Children.Count(c => c.DisplayName == part.Field) == 0)
+                if (!string.IsNullOrEmpty(part.Field) && !recset.First().Children.Any(c => c.DisplayName == part.Field))
                 {
                     missingDataParts.Add(part);
                 }
@@ -311,7 +322,7 @@ namespace Dev2.Studio.Core.DataList
                     return true;
                 }
             }
-            var childErrors = model.Children.Where(child => child.HasError).ToList();
+            var childErrors = model.Children.Where(child => child.HasError);
             if (childErrors.Any())
             {
                 errorMessage = string.Join(Environment.NewLine, childErrors.Select(BuildErrorMessage));
@@ -367,7 +378,7 @@ namespace Dev2.Studio.Core.DataList
 
         public void RemoveUnusedRecordSets()
         {
-            var unusedRecordsets = _vm.RecsetCollection.Where(c => !c.IsUsed).ToList();
+            var unusedRecordsets = _vm.RecsetCollection.Where(c => !c.IsUsed);
             if (unusedRecordsets.Any())
             {
                 foreach (var dataListItemModel in unusedRecordsets)
@@ -382,7 +393,7 @@ namespace Dev2.Studio.Core.DataList
                     continue;
                 }
 
-                var unusedRecsetChildren = recset.Children.Where(c => !c.IsUsed).ToList();
+                var unusedRecsetChildren = recset.Children.Where(c => !c.IsUsed);
                 if (!unusedRecsetChildren.Any())
                 {
                     continue;

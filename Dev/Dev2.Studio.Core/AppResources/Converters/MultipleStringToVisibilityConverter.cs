@@ -32,13 +32,13 @@ namespace Dev2.Studio.Core.AppResources.Converters
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             var strings = new List<string>();
-            values.ToList().ForEach(o =>
+            foreach (var o in values)
             {
                 if (o is string s)
                 {
                     strings.Add(s);
                 }
-            });
+            }
 
             var invertStr = parameter as string;
             bool.TryParse(invertStr, out bool invert);

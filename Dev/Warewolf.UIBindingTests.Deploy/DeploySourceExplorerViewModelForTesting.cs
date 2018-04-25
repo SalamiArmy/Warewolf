@@ -68,11 +68,12 @@ namespace Warewolf.UIBindingTests.Deploy
         {
             ExplorerItemViewModel ax = null;
             var perm = new Mock<IServer>();
-            var perms = new List<IWindowsGroupPermission>();
-            perms.Add(new WindowsGroupPermission
-            {
-                Permissions = Permissions.View
-            });
+            var perms = new IWindowsGroupPermission[] {
+                new WindowsGroupPermission
+                {
+                    Permissions = Permissions.View
+                }
+            };
             perm.Setup(server => server.Permissions)
                 .Returns(perms);
             ax = new ExplorerItemViewModel(new Mock<IServer>().Object, null, a => { }, new Mock<IShellViewModel>().Object, new Mock<Dev2.Common.Interfaces.Studio.Controller.IPopupController>().Object)

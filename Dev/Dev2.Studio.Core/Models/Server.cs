@@ -86,7 +86,7 @@ namespace Dev2.Studio.Core.Models
 
         void RaisePermissionsModifiedEvent(object sender, List<WindowsGroupPermission> windowsGroupPermissions)
         {
-            Permissions = windowsGroupPermissions.Select(permission => permission as IWindowsGroupPermission).ToList();
+            Permissions = windowsGroupPermissions.Select(permission => permission as IWindowsGroupPermission).ToArray();
         }
 
         void ItemAdded(IExplorerItem obj)
@@ -365,7 +365,7 @@ namespace Dev2.Studio.Core.Models
         public IStudioUpdateManager UpdateRepository { get; private set; }
         public IQueryManager QueryProxy => _proxyLayer.QueryManagerProxy;
         public bool AllowEdit => Connection != null && !Connection.IsLocalHost;
-        public List<IWindowsGroupPermission> Permissions { get; set; }
+        public IWindowsGroupPermission[] Permissions { get; set; }
         public Guid? ServerID => Connection.ServerID;
 
         public event NetworkStateChanged NetworkStateChanged;

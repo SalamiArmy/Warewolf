@@ -70,7 +70,7 @@ namespace Dev2.Studio.Interfaces
         IQueryManager QueryProxy { get; }
 
         bool AllowEdit { get; }
-        List<IWindowsGroupPermission> Permissions { get; set; }
+        IWindowsGroupPermission[] Permissions { get; set; }
         Guid EnvironmentID { get; }
         Guid? ServerID { get; }
 

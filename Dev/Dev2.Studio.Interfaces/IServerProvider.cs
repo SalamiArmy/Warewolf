@@ -17,9 +17,9 @@ namespace Dev2.Studio.Interfaces
     /// </summary>
     public interface IEnvironmentModelProvider
     {
-        List<IServer> Load();
-        List<IServer> ReloadServers();
-        List<IServer> Load(IServerRepository serverRepository);
-        List<IServer> ReloadServers(IServerRepository serverRepository);
+        IEnumerable<IServer> Load();
+        IEnumerable<IServer> ReloadServers();
+        IEnumerable<IServer> Load(IServerRepository serverRepository);
+        IEnumerable<IServer> ReloadServers(IServerRepository serverRepository);
     }
 }

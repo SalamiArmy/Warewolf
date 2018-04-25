@@ -27,7 +27,7 @@ namespace Dev2.Studio.Core.DataList
             _scalarCollection = scalarCollection;
         }
 
-        public IEnumerable<IDataListVerifyPart> MissingRecordsets(IList<IDataListVerifyPart> partsToVerify, bool excludeUnusedItems)
+        public IEnumerable<IDataListVerifyPart> MissingRecordsets(IEnumerable<IDataListVerifyPart> partsToVerify, bool excludeUnusedItems)
         {
             var missingWorkflowParts = new List<IDataListVerifyPart>();
             foreach (var dataListItem in _recsetCollection.Where(model => !string.IsNullOrEmpty(model.DisplayName)))
@@ -60,7 +60,7 @@ namespace Dev2.Studio.Core.DataList
             return missingWorkflowParts;
         }
 
-        static void MissingRecordsets(IList<IDataListVerifyPart> partsToVerify, bool excludeUnusedItems, List<IDataListVerifyPart> missingWorkflowParts, IRecordSetItemModel dataListItem)
+        static void MissingRecordsets(IEnumerable<IDataListVerifyPart> partsToVerify, bool excludeUnusedItems, List<IDataListVerifyPart> missingWorkflowParts, IRecordSetItemModel dataListItem)
         {
             if (excludeUnusedItems && !dataListItem.IsUsed)
             {

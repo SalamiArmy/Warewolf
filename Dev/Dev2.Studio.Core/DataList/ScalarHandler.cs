@@ -80,11 +80,17 @@ namespace Dev2.Studio.Core.DataList
 
         public void SortScalars(bool ascending)
         {
-            IList<IScalarItemModel> newScalarCollection = @ascending ? _vm.ScalarCollection.Where(c => !c.IsBlank).OrderBy(c => c.DisplayName).ToList() : _vm.ScalarCollection.Where(c => !c.IsBlank).OrderByDescending(c => c.DisplayName).ToList();
-            for (int i = 0; i < newScalarCollection.Count; i++)
+            var newScalarCollection = @ascending
+                ? _vm.ScalarCollection.Where(c => !c.IsBlank).OrderBy(c => c.DisplayName)
+                : _vm.ScalarCollection.Where(c => !c.IsBlank).OrderByDescending(c => c.DisplayName);
+
+            var iter = newScalarCollection.GetEnumerator();
+            int i = 0;
+            while (iter.MoveNext())
             {
-                _vm.ScalarCollection.Move(_vm.ScalarCollection.IndexOf(newScalarCollection[i]), i);
-            }            
+                _vm.ScalarCollection.Move(_vm.ScalarCollection.IndexOf(iter.Current), i);
+                i++;
+            }
         }
 
         public void FixNamingForScalar(IDataListItemModel scalar)
@@ -98,8 +104,8 @@ namespace Dev2.Studio.Core.DataList
 
         public void AddRowToScalars()
         {
-            var blankList = _vm.ScalarCollection.Where(c => c.IsBlank).ToList();
-            if (blankList.Count != 0)
+            var blankList = _vm.ScalarCollection.Where(c => c.IsBlank);
+            if (blankList.Any())
             {
                 return;
             }
@@ -108,10 +114,10 @@ namespace Dev2.Studio.Core.DataList
             _vm.ScalarCollection.Add(scalar);
         }
 
-        public void RemoveBlankScalars()
+        public void RemoveBlankScalar()
         {
-            var blankList = _vm.ScalarCollection.Where(c => c.IsBlank).ToList();
-            if (blankList.Count <= 1)
+            var blankList = _vm.ScalarCollection.Where(c => c.IsBlank);
+            if (blankList.Count() <= 1)
             {
                 return;
             }
@@ -121,7 +127,7 @@ namespace Dev2.Studio.Core.DataList
 
         public void RemoveUnusedScalars()
         {
-            var unusedScalars = _vm.ScalarCollection.Where(c => !c.IsUsed).ToList();
+            var unusedScalars = _vm.ScalarCollection.Where(c => !c.IsUsed);
             if (unusedScalars.Any())
             {
                 foreach (var dataListItemModel in unusedScalars)

@@ -803,7 +803,7 @@ namespace Dev2.Studio.Core.AppResources.Repositories
             var xml = XElement.Parse(msg.Message.ToString());
             var nodes = xml.DescendantsAndSelf("node").Select(node => node.Attribute("id")).Where(idAttr => idAttr != null).Select(idAttr => idAttr.Value);
             var resources = resourceModel.Environment.ResourceRepository.All().Join(nodes, r => r.ID.ToString(), n => n, (r, n) => r);
-            var returnList = resources.ToList().Distinct().ToList();
+            var returnList = resources.Distinct().ToList();
             return returnList;
         }
 
@@ -1021,17 +1021,11 @@ namespace Dev2.Studio.Core.AppResources.Repositories
         {
             lock (_updatingPermissions)
             {
-                ReceivePermissionsModified(windowsGroupPermissions);
+                UpdateResourcesBasedOnPermissions(windowsGroupPermissions);
             }
         }
 
-        void ReceivePermissionsModified(List<WindowsGroupPermission> modifiedPermissions)
-        {
-            var windowsGroupPermissions = modifiedPermissions as IList<WindowsGroupPermission> ?? modifiedPermissions.ToList();
-            UpdateResourcesBasedOnPermissions(windowsGroupPermissions);
-        }
-
-        void UpdateResourcesBasedOnPermissions(IList<WindowsGroupPermission> windowsGroupPermissions)
+        void UpdateResourcesBasedOnPermissions(IEnumerable<WindowsGroupPermission> windowsGroupPermissions)
         {
             var serverPermissions = _server.AuthorizationService.GetResourcePermissions(Guid.Empty);
             _resourceModels.ForEach(model =>

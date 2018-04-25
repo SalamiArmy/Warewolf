@@ -36,7 +36,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _localhostServerMock = new Mock<IServer>();
             _localhostServerMock.Setup(it => it.EnvironmentID).Returns(_localhostServerEnvironmentId);
             _windowsGroupPermissionMock = new Mock<IWindowsGroupPermission>();
-            _localhostServerMock.Setup(it => it.Permissions).Returns(new List<IWindowsGroupPermission>()
+            _localhostServerMock.Setup(it => it.Permissions).Returns(new IWindowsGroupPermission[]
             {
                 _windowsGroupPermissionMock.Object
             });

@@ -722,8 +722,8 @@ namespace Dev2.Core.Tests
             var errors = model.GetErrors(instanceID);
 
             //------------Assert Results-------------------------
-            Assert.AreEqual(1, errors.Count);
-            Assert.AreEqual(instanceID, errors[0].InstanceID);
+            Assert.AreEqual(1, errors.Count());
+            Assert.AreEqual(instanceID, errors.First().InstanceID);
         }
 
         [TestMethod]
@@ -892,8 +892,8 @@ namespace Dev2.Core.Tests
             //------------Assert Results-------------------------
             var errors = model.GetErrors(instanceID);
 
-            Assert.AreEqual(1, errors.Count);
-            Assert.AreSame(err2, errors[0]);
+            Assert.AreEqual(1, errors.Count());
+            Assert.AreSame(err2, errors.First());
         }
 
         [TestMethod]
@@ -931,9 +931,9 @@ namespace Dev2.Core.Tests
             //------------Assert Results-------------------------
             var errors = model.GetErrors(instanceID);
 
-            Assert.AreEqual(2, errors.Count);
-            Assert.AreSame(err1, errors[0]);
-            Assert.AreSame(err2, errors[1]);
+            Assert.AreEqual(2, errors.Count());
+            Assert.AreSame(err1, errors.ElementAt(0));
+            Assert.AreSame(err2, errors.ElementAt(1));
         }
 
         [TestMethod]
@@ -971,8 +971,8 @@ namespace Dev2.Core.Tests
             //------------Assert Results-------------------------
             var errors = model.GetErrors(instanceID);
 
-            Assert.AreEqual(1, errors.Count);
-            Assert.AreSame(err2, errors[0]);
+            Assert.AreEqual(1, errors.Count());
+            Assert.AreSame(err2, errors.First());
         }
 
         [TestMethod]
@@ -991,7 +991,7 @@ namespace Dev2.Core.Tests
             var model = new ResourceModel(environment.Object, new Mock<IEventAggregator>().Object);
 
             var errors = model.GetErrors(instanceID);
-            Assert.AreEqual(0, errors.Count);
+            Assert.AreEqual(0, errors.Count());
 
             var err = new ErrorInfo
             {
@@ -1013,8 +1013,8 @@ namespace Dev2.Core.Tests
 
             //------------Assert Results-------------------------
             errors = model.GetErrors(instanceID);
-            Assert.AreEqual(1, errors.Count);
-            Assert.AreSame(err, errors[0]);
+            Assert.AreEqual(1, errors.Count());
+            Assert.AreSame(err, errors.First());
         }
 
         [TestMethod]
@@ -1044,7 +1044,5 @@ namespace Dev2.Core.Tests
                 Assert.AreEqual(expected, authorized);
             }
         }
-
-
     }
 }

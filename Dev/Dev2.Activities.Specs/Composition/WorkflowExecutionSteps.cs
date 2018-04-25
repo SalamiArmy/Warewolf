@@ -2593,7 +2593,7 @@ namespace Dev2.Activities.Specs.Composition
             var rep = new Studio.Core.VersionManagerProxy(new CommunicationControllerFactory(), server.Connection);
             var versions = rep.GetVersions(id);
             _scenarioContext["Versions"] = versions;
-            Assert.AreEqual(numberOfVersions, versions.Count);
+            Assert.AreEqual(numberOfVersions, versions.Count());
         }
 
         [Then(@"explorer as")]

@@ -643,8 +643,7 @@ namespace Dev2.Settings.Scheduler
 
             if (server.Permissions == null)
             {
-                server.Permissions = new List<IWindowsGroupPermission>();
-                server.Permissions.AddRange(server.AuthorizationService.SecurityService.Permissions);
+                server.Permissions = server.AuthorizationService.SecurityService.Permissions.ToArray();
             }
             SchedulerTaskManager.Source = new EnvironmentViewModel(server, CustomContainer.Get<IShellViewModel>(), true);
         }

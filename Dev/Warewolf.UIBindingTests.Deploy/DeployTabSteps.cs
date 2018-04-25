@@ -140,7 +140,7 @@ namespace Warewolf.UIBindingTests.Deploy
                 mock.SetupGet(p => p.DisplayName).Returns(name);
                 mock.SetupGet(p => p.EnvironmentID).Returns(Guid.NewGuid);
                 mock.SetupGet(p => p.IsConnected).Returns(true);
-                mock.SetupGet(p => p.Permissions).Returns(new List<IWindowsGroupPermission>());
+                mock.SetupGet(p => p.Permissions).Returns(new IWindowsGroupPermission[]{ });
                 mock.SetupGet(p => p.CanDeployTo).Returns(true);
                 mock.SetupGet(p => p.CanDeployFrom).Returns(true);
                 mock.Setup(a => a.GetServerVersion()).Returns("1.0.0.0");
@@ -171,7 +171,7 @@ namespace Warewolf.UIBindingTests.Deploy
             var qp = new Mock<IQueryManager>();
             qp.Setup(a => a.FetchDependenciesOnList(It.IsAny<IEnumerable<Guid>>())).Returns(new List<Guid> { Guid.Parse("5C8B5660-CE6E-4D22-84D8-5B77DC749F70") });
             server.Setup(a => a.LoadExplorer(It.IsAny<bool>())).Returns(Task.FromResult(CreateExplorerSourceItems()));
-            server.Setup(a => a.Permissions).Returns(new List<IWindowsGroupPermission>
+            server.Setup(a => a.Permissions).Returns(new IWindowsGroupPermission[]
             {
                 new WindowsGroupPermission
                 {
@@ -212,7 +212,7 @@ namespace Warewolf.UIBindingTests.Deploy
             server.Setup(a => a.DisplayName).Returns("Remote");
             server.Setup(a => a.CanDeployTo).Returns(true);
             server.Setup(a => a.CanDeployFrom).Returns(true);
-            server.Setup(a => a.Permissions).Returns(new List<IWindowsGroupPermission>
+            server.Setup(a => a.Permissions).Returns(new IWindowsGroupPermission[]
             {
                 new WindowsGroupPermission
                 {
@@ -541,7 +541,7 @@ namespace Warewolf.UIBindingTests.Deploy
             var destinationServer = Mockserver;
             destinationServer.Setup(server => server.CanDeployFrom).Returns(deployFrom);
             destinationServer.Setup(server => server.CanDeployTo).Returns(deployTo);
-            destinationServer.Setup(server => server.Permissions).Returns(new List<IWindowsGroupPermission>
+            destinationServer.Setup(server => server.Permissions).Returns(new IWindowsGroupPermission[]
             {
                 new WindowsGroupPermission
                 {
@@ -558,7 +558,7 @@ namespace Warewolf.UIBindingTests.Deploy
         [Given(@"I cannot deploy from source")]
         public void GivenICannotDeployFromSource()
         {
-            GetViewModel().Source.SelectedServer.Permissions = new List<IWindowsGroupPermission>
+            GetViewModel().Source.SelectedServer.Permissions = new IWindowsGroupPermission[]
             {
                 new WindowsGroupPermission
                 {

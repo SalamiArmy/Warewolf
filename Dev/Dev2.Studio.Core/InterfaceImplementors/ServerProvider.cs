@@ -60,9 +60,9 @@ namespace Dev2.Studio.Core.InterfaceImplementors
 
         #region Load
 
-        public List<IServer> Load() => Load(CustomContainer.Get<IServerRepository>());
+        public IEnumerable<IServer> Load() => Load(CustomContainer.Get<IServerRepository>());
 
-        public List<IServer> Load(IServerRepository serverRepository)
+        public IEnumerable<IServer> Load(IServerRepository serverRepository)
         {
             // PBI 6597 : TWR
             // BUG 9276 : TWR : 2013.04.19 - refactored so that we share environments
@@ -74,12 +74,12 @@ namespace Dev2.Studio.Core.InterfaceImplementors
 
             var environments = serverRepository.All();
 
-            return environments.ToList();
+            return environments;
         }
 
-        public List<IServer> ReloadServers() => ReloadServers(CustomContainer.Get<IServerRepository>());
+        public IEnumerable<IServer> ReloadServers() => ReloadServers(CustomContainer.Get<IServerRepository>());
 
-        public List<IServer> ReloadServers(IServerRepository serverRepository)
+        public IEnumerable<IServer> ReloadServers(IServerRepository serverRepository)
         {
             // PBI 6597 : TWR
             // BUG 9276 : TWR : 2013.04.19 - refactored so that we share environments
@@ -91,7 +91,7 @@ namespace Dev2.Studio.Core.InterfaceImplementors
 
             var environments = serverRepository.ReloadServers();
 
-            return environments.ToList();
+            return environments;
         }
 
         #endregion Methods
