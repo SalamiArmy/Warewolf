@@ -260,10 +260,10 @@ namespace Dev2.Activities.Designers2.SharepointListRead
             SelectedList = selectedTable;
         }
 
-        List<SharepointListTo> GetSharepointLists(SharepointSource sharepointSource)
+        IEnumerable<SharepointListTo> GetSharepointLists(SharepointSource sharepointSource)
         {
             var sharepointLists = _server.ResourceRepository.GetSharepointLists(sharepointSource);
-            return sharepointLists ?? new List<SharepointListTo>();
+            return sharepointLists ?? new SharepointListTo[] { };
         }
 
         void LoadLists(System.Action continueWith = null)
@@ -307,7 +307,7 @@ namespace Dev2.Activities.Designers2.SharepointListRead
 
         IEnumerable<SharepointSource> GetSharepointServers()
         {
-            var sources = _server.ResourceRepository.FindSourcesByType<SharepointSource>(_server, enSourceType.SharepointServerSource) ?? new List<SharepointSource>();
+            var sources = _server.ResourceRepository.FindSourcesByType<SharepointSource>(_server, enSourceType.SharepointServerSource) ?? new SharepointSource[] { };
             return sources;
         }
 
@@ -423,17 +423,17 @@ namespace Dev2.Activities.Designers2.SharepointListRead
             });
         }
 
-        private void LoadColumnListFields(bool isFromListChange, List<ISharepointFieldTo> columnList, SharepointListTo selectedList)
+        private void LoadColumnListFields(bool isFromListChange, IEnumerable<ISharepointFieldTo> columnList, SharepointListTo selectedList)
         {
             var fieldMappings = columnList.Select(mapping =>
             {
                 var recordsetDisplayValue = DataListUtil.CreateRecordsetDisplayValue(selectedList.FullName.Replace(" ", "").Replace(".", ""), GetValidVariableName(mapping), "*");
                 var sharepointReadListTo = new SharepointReadListTo(DataListUtil.AddBracketsToValueIfNotExist(recordsetDisplayValue), mapping.Name, mapping.InternalName, mapping.Type.ToString()) { IsRequired = mapping.IsRequired };
                 return sharepointReadListTo;
-            }).ToList();
+            });
             if (ReadListItems == null || ReadListItems.Count == 0 || isFromListChange)
             {
-                ReadListItems = fieldMappings;
+                ReadListItems = fieldMappings.ToList();
             }
             else
             {
@@ -467,10 +467,10 @@ namespace Dev2.Activities.Designers2.SharepointListRead
             return fixedName;
         }
 
-        List<ISharepointFieldTo> GetListFields(ISharepointSource source, SharepointListTo list)
+        IEnumerable<ISharepointFieldTo> GetListFields(ISharepointSource source, SharepointListTo list)
         {
             var columns = _server.ResourceRepository.GetSharepointListFields(source, list, _loadOnlyEditableFields);
-            return columns ?? new List<ISharepointFieldTo>();
+            return columns ?? new ISharepointFieldTo[] { };
         }
 
         protected void RefreshLists()

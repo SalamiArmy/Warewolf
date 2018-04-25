@@ -198,7 +198,7 @@ namespace Dev2.Activities.Specs.Composition
 
             // connect to the remove environment now ;)
             var remoteServerList = environmentModel.ResourceRepository.FindSourcesByType<Connection>(environmentModel, enSourceType.Dev2Server);
-            if (remoteServerList != null && remoteServerList.Count > 0)
+            if (remoteServerList != null && remoteServerList.Any())
             {
                 var remoteServer = remoteServerList.FirstOrDefault(r => r.ResourceName == serverName);
 
@@ -1901,10 +1901,10 @@ namespace Dev2.Activities.Specs.Composition
             return fixedName;
         }
 
-        List<ISharepointFieldTo> GetListFields(IServer server, ISharepointSource source, SharepointListTo list)
+        IEnumerable<ISharepointFieldTo> GetListFields(IServer server, ISharepointSource source, SharepointListTo list)
         {
             var columns = server.ResourceRepository.GetSharepointListFields(source, list, true);
-            return columns ?? new List<ISharepointFieldTo>();
+            return columns ?? new ISharepointFieldTo[] { };
         }
         [Given(@"""(.*)"" contains SharepointDeleteFile ""(.*)"" as")]
         public void GivenContainsSharepointDeleteFileAs(string parentName, string activityName, Table table)

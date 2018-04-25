@@ -583,7 +583,7 @@ namespace Dev2.Studio.Core.AppResources.Repositories
             }
         }
 
-        public TestSaveResult SaveTests(IResourceModel resourceId, List<IServiceTestModelTO> tests)
+        public TestSaveResult SaveTests(IResourceModel resourceId, IEnumerable<IServiceTestModelTO> tests)
         {
             if (GetCommunicationController != null)
             {
@@ -670,7 +670,7 @@ namespace Dev2.Studio.Core.AppResources.Repositories
             }
         }
 
-        public List<IServiceTestModelTO> LoadResourceTests(Guid resourceId)
+        public IEnumerable<IServiceTestModelTO> LoadResourceTests(Guid resourceId)
         {
             if (GetCommunicationController != null)
             {
@@ -684,12 +684,12 @@ namespace Dev2.Studio.Core.AppResources.Repositories
                     var msg = serializer.Deserialize<StringBuilder>(message);
                     throw new Exception(msg.ToString());
                 }
-                var testsTO = serializer.Deserialize<List<IServiceTestModelTO>>(message);
+                var testsTO = serializer.Deserialize<IServiceTestModelTO[]>(message);
                 if (testsTO != null)
                 {
                     return testsTO;
                 }
-                return new List<IServiceTestModelTO>();
+                return new IServiceTestModelTO[] { };
             }
             else
             {
@@ -697,7 +697,7 @@ namespace Dev2.Studio.Core.AppResources.Repositories
             }
         }
 
-        public List<IServiceTestModelTO> LoadAllTests()
+        public IEnumerable<IServiceTestModelTO> LoadAllTests()
         {
             if (GetCommunicationController != null)
             {
@@ -710,17 +710,17 @@ namespace Dev2.Studio.Core.AppResources.Repositories
                     var msg = serializer.Deserialize<StringBuilder>(message);
                     throw new Exception(msg.ToString());
                 }
-                var testsTO = serializer.Deserialize<List<IServiceTestModelTO>>(message);
+                var testsTO = serializer.Deserialize<IServiceTestModelTO[]>(message);
                 if (testsTO != null)
                 {
                     return testsTO;
                 }
-                return new List<IServiceTestModelTO>();
+                return new IServiceTestModelTO[] { };
             }
             throw new NullReferenceException("Cannot load resource tests. Cannot get Communication Controller.");
         }
 
-        public List<IServiceTestModelTO> LoadResourceTestsForDeploy(Guid resourceId)
+        public IEnumerable<IServiceTestModelTO> LoadResourceTestsForDeploy(Guid resourceId)
         {
             if (GetCommunicationController != null)
             {
@@ -734,12 +734,12 @@ namespace Dev2.Studio.Core.AppResources.Repositories
                     var msg = serializer.Deserialize<StringBuilder>(message);
                     throw new Exception(msg.ToString());
                 }
-                var testsTO = serializer.Deserialize<List<IServiceTestModelTO>>(message);
+                var testsTO = serializer.Deserialize<IServiceTestModelTO[]>(message);
                 if (testsTO != null)
                 {
                     return testsTO;
                 }
-                return new List<IServiceTestModelTO>();
+                return new IServiceTestModelTO[] { };
             }
             else
             {
@@ -793,25 +793,24 @@ namespace Dev2.Studio.Core.AppResources.Repositories
             return result;
         }
 
-        public List<IResourceModel> GetUniqueDependencies(IContextualResourceModel resourceModel)
+        public IEnumerable<IResourceModel> GetUniqueDependencies(IContextualResourceModel resourceModel)
         {
             if (resourceModel?.Environment?.ResourceRepository == null)
             {
-                return new List<IResourceModel>();
+                return new IResourceModel[] { };
             }
             var msg = GetDependenciesXml(resourceModel, true);
             var xml = XElement.Parse(msg.Message.ToString());
             var nodes = xml.DescendantsAndSelf("node").Select(node => node.Attribute("id")).Where(idAttr => idAttr != null).Select(idAttr => idAttr.Value);
             var resources = resourceModel.Environment.ResourceRepository.All().Join(nodes, r => r.ID.ToString(), n => n, (r, n) => r);
-            var returnList = resources.Distinct().ToList();
+            var returnList = resources.Distinct();
             return returnList;
         }
 
         public bool HasDependencies(IContextualResourceModel resourceModel)
         {
             var uniqueList = GetUniqueDependencies(resourceModel);
-            uniqueList.RemoveAll(res => res.ID == resourceModel.ID);
-            return uniqueList.Count > 0;
+            return uniqueList.Any(res => res.ID != resourceModel.ID);
         }
 
         public ExecuteMessage GetDependenciesXml(IContextualResourceModel resourceModel, bool getDependsOnMe)
@@ -883,11 +882,11 @@ namespace Dev2.Studio.Core.AppResources.Repositories
             return columns;
         }
 
-        public List<SharepointListTo> GetSharepointLists(SharepointSource source)
+        public IEnumerable<SharepointListTo> GetSharepointLists(SharepointSource source)
         {
             var comController = new CommunicationController { ServiceName = "GetSharepointListService" };
             comController.AddPayloadArgument("SharepointServer", _serializer.Serialize(source));
-            var lists = comController.ExecuteCommand<List<SharepointListTo>>(_server.Connection, GlobalConstants.ServerWorkspaceID);
+            var lists = comController.ExecuteCommand<SharepointListTo[]>(_server.Connection, GlobalConstants.ServerWorkspaceID);
             return lists;
         }
         string CreateServiceName(Type type)
@@ -901,13 +900,13 @@ namespace Dev2.Studio.Core.AppResources.Repositories
             var sources = comController.ExecuteCommand<List<T>>(targetEnvironment.Connection, GlobalConstants.ServerWorkspaceID);
             return sources;
         }
-        public List<ISharepointFieldTo> GetSharepointListFields(ISharepointSource source, SharepointListTo list, bool onlyEditable)
+        public IEnumerable<ISharepointFieldTo> GetSharepointListFields(ISharepointSource source, SharepointListTo list, bool onlyEditable)
         {
             var comController = new CommunicationController { ServiceName = "GetSharepointListFields" };
             comController.AddPayloadArgument("SharepointServer", _serializer.Serialize(source));
             comController.AddPayloadArgument("ListName", _serializer.Serialize(list.FullName));
             comController.AddPayloadArgument("OnlyEditable", _serializer.Serialize(onlyEditable));
-            var fields = comController.ExecuteCommand<List<ISharepointFieldTo>>(_server.Connection, GlobalConstants.ServerWorkspaceID);
+            var fields = comController.ExecuteCommand<ISharepointFieldTo[]>(_server.Connection, GlobalConstants.ServerWorkspaceID);
             return fields;
         }
 
@@ -921,26 +920,28 @@ namespace Dev2.Studio.Core.AppResources.Repositories
             return false;
         }
 
-        public List<IResourceModel> FindResourcesByID(IServer targetEnvironment, IEnumerable<string> guids, ResourceType resourceType)
+        public IEnumerable<IResourceModel> FindResourcesByID(IServer targetEnvironment, IEnumerable<string> guids, ResourceType resourceType)
         {
             if (targetEnvironment == null || guids == null)
             {
-                return new List<IResourceModel>();
+                yield break;
             }
             var comController = new CommunicationController { ServiceName = "FindResourcesByID" };
             comController.AddPayloadArgument("GuidCsv", string.Join(",", guids));
             comController.AddPayloadArgument("Type", Enum.GetName(typeof(ResourceType), resourceType));
             var models = comController.ExecuteCompressedCommand<List<SerializableResource>>(targetEnvironment.Connection, GlobalConstants.ServerWorkspaceID);
             var serverId = targetEnvironment.Connection.ServerID;
-            var result = new List<IResourceModel>();
+
             if (models != null)
             {
-                result.AddRange(models.Select(model => HydrateResourceModel(model, serverId)));
+                foreach (var item in models.Select(model => HydrateResourceModel(model, serverId)))
+                {
+                    yield return item;
+                }
             }
-            return result;
         }
 
-        public List<T> FindSourcesByType<T>(IServer targetEnvironment, enSourceType sourceType)
+        public IEnumerable<T> FindSourcesByType<T>(IServer targetEnvironment, enSourceType sourceType)
         {
             var result = new List<T>();
             if (targetEnvironment == null)

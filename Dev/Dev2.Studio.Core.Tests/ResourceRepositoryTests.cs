@@ -1178,7 +1178,7 @@ namespace BusinessDesignStudio.Unit.Tests
         {
             var resourceRepository = new ResourceRepository(new Mock<IServer>().Object);
             var result = resourceRepository.GetUniqueDependencies(null);
-            Assert.AreEqual(0, result.Count);
+            Assert.AreEqual(0, result.Count());
         }
 
         [TestMethod]
@@ -1231,7 +1231,7 @@ namespace BusinessDesignStudio.Unit.Tests
             environmentModel.Setup(e => e.ResourceRepository).Returns(resRepo);
 
             var result = resRepo.GetUniqueDependencies(new ResourceModel(environmentModel.Object) { ResourceName = "Button" });
-            Assert.AreEqual(0, result.Count);
+            Assert.AreEqual(0, result.Count());
         }
 
         #endregion GetUniqueDependancies Tests
@@ -1284,7 +1284,7 @@ namespace BusinessDesignStudio.Unit.Tests
             var resourceRepository = GetResourceRepository();
             var result = resourceRepository.FindResourcesByID(null, null, ResourceType.Source);
             Assert.IsNotNull(result);
-            Assert.AreEqual(0, result.Count);
+            Assert.AreEqual(0, result.Count());
         }
 
         [TestMethod]
@@ -1301,7 +1301,7 @@ namespace BusinessDesignStudio.Unit.Tests
 
             var result = resourceRepository.FindResourcesByID(env.Object, servers, ResourceType.Source);
 
-            Assert.AreNotEqual(0, result.Count);
+            Assert.AreNotEqual(0, result.Count());
         }
 
         #endregion
@@ -1381,7 +1381,7 @@ namespace BusinessDesignStudio.Unit.Tests
             var result = new ResourceRepository(env.Object);
             var serviceTestModels = result.LoadResourceTests(Guid.NewGuid());
             //------------Assert Results-------------------------
-            Assert.AreEqual(0, serviceTestModels.Count);
+            Assert.AreEqual(0, serviceTestModels.Count());
         }
 
         [TestMethod]
@@ -1409,7 +1409,7 @@ namespace BusinessDesignStudio.Unit.Tests
             var result = new ResourceRepository(env.Object);
             var serviceTestModels = result.LoadResourceTestsForDeploy(Guid.NewGuid());
             //------------Assert Results-------------------------
-            Assert.AreEqual(0, serviceTestModels.Count);
+            Assert.AreEqual(0, serviceTestModels.Count());
         }
 
         [TestMethod]
@@ -1663,7 +1663,7 @@ namespace BusinessDesignStudio.Unit.Tests
             var resourceRepository = GetResourceRepository();
             var result = resourceRepository.FindSourcesByType<IServer>(null, enSourceType.Dev2Server);
             Assert.IsNotNull(result);
-            Assert.AreEqual(0, result.Count);
+            Assert.AreEqual(0, result.Count());
         }
 
         [TestMethod]
@@ -1678,7 +1678,7 @@ namespace BusinessDesignStudio.Unit.Tests
             var resourceRepository = GetResourceRepository();
             var result = resourceRepository.FindSourcesByType<EmailSource>(env.Object, enSourceType.EmailSource);
 
-            Assert.AreNotEqual(0, result.Count);
+            Assert.AreNotEqual(0, result.Count());
         }
 
         [TestMethod]

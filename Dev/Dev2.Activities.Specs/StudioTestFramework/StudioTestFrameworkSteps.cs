@@ -282,7 +282,7 @@ namespace Dev2.Activities.Specs.TestFramework
         {
             var resourceID = MyContext.Get<Guid>(resourceName + "id");
             var serviceTestModelTos = _environmentModel.ResourceRepository.LoadResourceTests(resourceID);
-            Assert.AreEqual(numberOdTests, serviceTestModelTos.Count, "Number count is not the same for resource - " + resourceName);
+            Assert.AreEqual(numberOdTests, serviceTestModelTos.Count(), "Number count is not the same for resource - " + resourceName);
         }
 
         [When(@"I delete resource ""(.*)""")]

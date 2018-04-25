@@ -38,15 +38,15 @@ namespace Dev2.Studio.Interfaces
         ExecuteMessage SaveToServer(IResourceModel instanceObj, string reason);
         void DeployResources(IServer targetEnviroment, IServer sourceEnviroment, IDeployDto dto);
         ExecuteMessage FetchResourceDefinition(IServer targetEnv, Guid workspaceId, Guid resourceModelId, bool prepaireForDeployment);
-        List<T> FindSourcesByType<T>(IServer targetEnvironment, enSourceType sourceType);
-        List<IResourceModel> FindResourcesByID(IServer targetEnvironment, IEnumerable<string> guids, ResourceType resourceType);
+        IEnumerable<T> FindSourcesByType<T>(IServer targetEnvironment, enSourceType sourceType);
+        IEnumerable<IResourceModel> FindResourcesByID(IServer targetEnvironment, IEnumerable<string> guids, ResourceType resourceType);
         IList<T> GetResourceList<T>(IServer targetEnvironment) where T : new();
         Settings ReadSettings(IServer currentEnv);
         ExecuteMessage WriteSettings(IServer currentEnv, Settings settings);
         DbTableList GetDatabaseTables(DbSource dbSource);
-        List<SharepointListTo> GetSharepointLists(SharepointSource source);
+        IEnumerable<SharepointListTo> GetSharepointLists(SharepointSource source);
         DbColumnList GetDatabaseTableColumns(DbSource dbSource, DbTable dbTable);
-        List<ISharepointFieldTo> GetSharepointListFields(ISharepointSource source, SharepointListTo list, bool onlyEditable);
+        IEnumerable<ISharepointFieldTo> GetSharepointListFields(ISharepointSource source, SharepointListTo list, bool onlyEditable);
         ExecuteMessage GetDependenciesXml(IContextualResourceModel resourceModel, bool getDependsOnMe);
         bool HasDependencies(IContextualResourceModel resourceModel);
         ExecuteMessage StopExecution(IContextualResourceModel resourceModel);
@@ -64,11 +64,11 @@ namespace Dev2.Studio.Interfaces
         IContextualResourceModel LoadContextualResourceModel(Guid resourceId);
         Task<ExecuteMessage> GetDependenciesXmlAsync(IContextualResourceModel resourceModel, bool getDependsOnMe);
         Task<IContextualResourceModel> LoadContextualResourceModelAsync(Guid resourceId);
-        TestSaveResult SaveTests(IResourceModel resourceId, List<IServiceTestModelTO> tests);
-        List<IServiceTestModelTO> LoadResourceTests(Guid resourceId);
-        List<IServiceTestModelTO> LoadAllTests();
+        TestSaveResult SaveTests(IResourceModel resourceId, IEnumerable<IServiceTestModelTO> tests);
+        IEnumerable<IServiceTestModelTO> LoadResourceTests(Guid resourceId);
+        IEnumerable<IServiceTestModelTO> LoadAllTests();
         void DeleteResourceTest(Guid resourceId, string testName);
-        List<IServiceTestModelTO> LoadResourceTestsForDeploy(Guid resourceId);
+        IEnumerable<IServiceTestModelTO> LoadResourceTestsForDeploy(Guid resourceId);
         IServiceTestModelTO ExecuteTest(IContextualResourceModel resourceModel, string testName);
 
         Task<ExecuteMessage> DeleteResourceFromWorkspaceAsync(IContextualResourceModel resourceModel);
