@@ -351,9 +351,6 @@
                                             AutomationProperties.AutomationId="UI_DocumentHost_AutoID" Focusable="True" >
                         <igDock:SplitPane x:Name="DockCentre" AutomationProperties.AutomationId="UI_SplitPane_AutoID">
                             <igDock:TabGroupPane x:Name="TabManager" TabStripPlacement="Top"  AutomationProperties.AutomationId="UI_TabManager_AutoID">
-                                <i:Interaction.Behaviors>
-                                    <behaviors:TabGroupPaneBindingBehavior DocumentHost="{Binding ElementName=DocumentHost, IsAsync=False}" />
-                                </i:Interaction.Behaviors>
                                 <dock:ContentPaneFactory.PaneFactory>
                                     <dock:ContentPaneFactory ItemsSource="{Binding Items}" TabHeaderPath="WorkSurfaceViewModel" ContentPath="WorkSurfaceViewModel" >
                                         <dock:ContentPaneFactory.ContainerStyle>
