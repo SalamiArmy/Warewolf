@@ -169,18 +169,18 @@ namespace Dev2.Activities
                 var fromValue = colItr.FetchNextValue(fromItr);
                 var toValue = colItr.FetchNextValue(toItr);
                 var lengthValue = colItr.FetchNextValue(lengthItr);
-                fromNum = GetFrom(allErrors, fromValue);
+                fromNum = GetFrom(errors, fromValue);
                 if (RandomType == enRandomType.Numbers && errors.HasErrors())
                 {
                     continue;
                 }
-                toNum = GetTo(allErrors, toValue);
+                toNum = GetTo(errors, toValue);
                 if (RandomType == enRandomType.Numbers && errors.HasErrors())
                 {
                     continue;
                 }
-                lengthNum = GetLength(allErrors, lengthValue);
-                if (RandomType != enRandomType.Numbers && RandomType != enRandomType.Guid && allErrors.HasErrors())
+                lengthNum = GetLength(errors, lengthValue);
+                if (RandomType != enRandomType.Numbers && RandomType != enRandomType.Guid && errors.HasErrors())
                 {
                     continue;
                 }
