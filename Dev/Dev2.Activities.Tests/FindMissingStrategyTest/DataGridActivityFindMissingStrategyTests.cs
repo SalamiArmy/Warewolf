@@ -15,27 +15,15 @@ using Dev2.Common.Interfaces.Core.Convertors.Case;
 using Dev2.Common.Interfaces.DB;
 using Dev2.Data.Interfaces.Enums;
 using Dev2.Factories;
-using Dev2.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 using Warewolf.Core;
 
 namespace Dev2.Tests.Activities.FindMissingStrategyTest
 {
-    /// <summary>
-    /// Summary description for DataGridActivityFindMissingStrategyTests
-    /// </summary>
     [TestClass]
     public class DataGridActivityFindMissingStrategyTests
     {
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext { get; set; }
-
-        #region BaseConvert Activity Tests
-
         [TestMethod]
         public void GetActivityFieldsOffBaseConvertActivityExpectedAllFindMissingFieldsToBeReturned()
         {
@@ -46,8 +34,6 @@ namespace Dev2.Tests.Activities.FindMissingStrategyTest
             var expected = new List<string> { "[[FromExpression]]", "[[ToExpression]]", "[[FromExpression2]]", "[[ToExpression2]]" };
             CollectionAssert.AreEqual(expected, actual);
         }
-
-        #endregion
 
         [TestMethod]
         public void GetActivityFieldsOffGatherSystemInfoExpectedAllFindMissingFieldsToBeReturned()

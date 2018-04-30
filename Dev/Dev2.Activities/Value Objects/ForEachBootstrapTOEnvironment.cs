@@ -11,10 +11,6 @@ using Warewolf.Storage.Interfaces;
 
 namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
 {
-    /// <summary>
-    /// Used with the ForEach Activity
-    /// </summary>
-
     public class ForEachBootstrapTO : DynamicObject
     {
         public enForEachExecutionType ExeType { get; set; }
@@ -23,9 +19,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
         public ForEachInnerActivityTO InnerActivity { get; set; }
         public IIndexIterator IndexIterator { get; set; }
         public enForEachType ForEachType { get; private set; }
-
-
-        //MO - Changed : new ctor that accepts the new arguments
+        
         public ForEachBootstrapTO(enForEachType forEachType, string from, string to, string csvNumbers, string numberOfExecutes, string recordsetName, IExecutionEnvironment compiler, out ErrorResultTO errors, int update)
         {
             errors = new ErrorResultTO();
@@ -35,7 +29,6 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
             switch (forEachType)
             {
                 case enForEachType.InRecordset:
-
                     if (string.IsNullOrEmpty(recordsetName))
                     {
                         errors.AddError(string.Format(ErrorResource.IsRequired, "The Recordset Field"));
@@ -47,34 +40,25 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
                         errors.AddError("When selecting a recordset only valid recordsets can be used");
                         break;
                     }
-
                     localIndexIterator = new IndexListIndexIterator(records);
-
-
                     IndexIterator = localIndexIterator;
                     break;
-
                 case enForEachType.InRange:
                     if (string.IsNullOrWhiteSpace(@from))
                     {
                         errors.AddError(string.Format(ErrorResource.IsRequired, "The FROM field"));
                         break;
                     }
-
                     if (string.IsNullOrWhiteSpace(to))
                     {
                         errors.AddError(string.Format(ErrorResource.IsRequired, "The TO field"));
                         break;
                     }
-
                     if (@from.Contains("(*)"))
                     {
                         errors.AddError(string.Format(ErrorResource.StarNotationNotAllowed, "From field"));
                         break;
                     }
-
-
-
                     var evalledFrom = ExecutionEnvironment.WarewolfEvalResultToString(compiler.Eval(@from, update));
                     int intFrom;
                     if (!int.TryParse(evalledFrom, out intFrom) || intFrom < 1)
@@ -82,15 +66,12 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
                         errors.AddError(string.Format(ErrorResource.RangeFromOne, "FROM range"));
                         break;
                     }
-
                     if (to.Contains("(*)"))
                     {
                         errors.AddError(string.Format(ErrorResource.StarNotationNotAllowed, "TO field."));
                         break;
                     }
-
                     var evalledTo = ExecutionEnvironment.WarewolfEvalResultToString(compiler.Eval(@to, update));
-
                     int intTo;
                     if (!int.TryParse(evalledTo, out intTo) || intTo < 1)
                     {
