@@ -26,98 +26,56 @@ namespace Dev2.FindMissingStrategies
         
         public List<string> GetActivityFields(object activity)
         {
-            var activityType = activity.GetType();
-            if (activityType == typeof(DsfBaseConvertActivity))
+            switch (activity)
             {
-                return GetDsfBaseConvertActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfCaseConvertActivity))
-            {
-                return GetDsfCaseConvertActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfMultiAssignActivity))
-            {
-                return GetDsfMultiAssignActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfMultiAssignObjectActivity))
-            {
-                return GetDsfMultiAssignObjectActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfDotNetMultiAssignActivity))
-            {
-                return GetDsfDotNetMultiAssignActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfDotNetMultiAssignObjectActivity))
-            {
-                return GetDsfDotNetMultiAssignObjectActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfGatherSystemInformationActivity))
-            {
-                return GetDsfGatherSystemInformationActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfDotNetGatherSystemInformationActivity))
-            {
-                return GetDsfDotNetGatherSystemInformationActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfSqlServerDatabaseActivity))
-            {
-                return GetDsfSqlServerDatabaseActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfMySqlDatabaseActivity))
-            {
-                return GetDsfMySqlDatabaseActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfPostgreSqlActivity))
-            {
-                return GetDsfPostgreSqlActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfOracleDatabaseActivity))
-            {
-                return GetDsfOracleDatabaseActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfODBCDatabaseActivity))
-            {
-                return GetDsfODBCDatabaseActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfWebPostActivity))
-            {
-                return GetDsfWebPostActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfWebDeleteActivity))
-            {
-                return GetDsfWebDeleteActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfWebPutActivity))
-            {
-                return GetDsfWebPutActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfWebGetActivity))
-            {
-                return GetDsfWebGetActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfDotNetDllActivity))
-            {
-                return GetDsfDotNetDllActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfEnhancedDotNetDllActivity))
-            {
-                return GetDsfEnhancedDotNetDllActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfComDllActivity))
-            {
-                return GetDsfComDllActivityFields(activity);
-            }
-            else if (activityType == typeof(DsfWcfEndPointActivity))
-            {
-                return GetDsfWcfEndPointActivityFields(activity);
-            }
-            else
-            {
-                return new List<string>();
+                case DsfBaseConvertActivity dsfBaseConvertActivity:
+                    return GetActivityFields(dsfBaseConvertActivity);
+                case DsfCaseConvertActivity dsfCaseConvertActivity:
+                    return GetActivityFields(dsfCaseConvertActivity);
+                case DsfMultiAssignActivity dsfMultiAssignActivity:
+                    return GetActivityFields(dsfMultiAssignActivity);
+                case DsfMultiAssignObjectActivity dsfMultiAssignObjectActivity:
+                    return GetActivityFields(dsfMultiAssignObjectActivity);
+                case DsfDotNetMultiAssignActivity dsfDotNetMultiAssignActivity:
+                    return GetActivityFields(dsfDotNetMultiAssignActivity);
+                case DsfDotNetMultiAssignObjectActivity dsfDotNetMultiAssignObjectActivity:
+                    return GetActivityFields(dsfDotNetMultiAssignObjectActivity);
+                case DsfGatherSystemInformationActivity dsfGatherSystemInformationActivity:
+                    return GetActivityFields(dsfGatherSystemInformationActivity);
+                case DsfDotNetGatherSystemInformationActivity dsfDotNetGatherSystemInformationActivity:
+                    return GetActivityFields(dsfDotNetGatherSystemInformationActivity);
+                case DsfSqlServerDatabaseActivity dsfSqlServerDatabaseActivity:
+                    return GetActivityFields(dsfSqlServerDatabaseActivity);
+                case DsfMySqlDatabaseActivity dsfMySqlDatabaseActivity:
+                    return GetActivityFields(dsfMySqlDatabaseActivity);
+                case DsfPostgreSqlActivity dsfPostgreSqlActivity:
+                    return GetActivityFields(dsfPostgreSqlActivity);
+                case DsfOracleDatabaseActivity dsfOracleDatabaseActivity:
+                    return GetActivityFields(dsfOracleDatabaseActivity);
+                case DsfODBCDatabaseActivity dsfODBCDatabaseActivity:
+                    return GetActivityFields(dsfODBCDatabaseActivity);
+                case DsfWebPostActivity dsfWebPostActivity:
+                    return GetActivityFields(dsfWebPostActivity);
+                case DsfWebDeleteActivity dsfWebDeleteActivity:
+                    return GetActivityFields(dsfWebDeleteActivity);
+                case DsfWebPutActivity dsfWebPutActivity:
+                    return GetActivityFields(dsfWebPutActivity);
+                case DsfWebGetActivity dsfWebGetActivity:
+                    return GetActivityFields(dsfWebGetActivity);
+                case DsfDotNetDllActivity dsfDotNetDllActivity:
+                    return GetActivityFields(dsfDotNetDllActivity);
+                case DsfEnhancedDotNetDllActivity dsfEnhancedDotNetDllActivity:
+                    return GetActivityFields(dsfEnhancedDotNetDllActivity);
+                case DsfComDllActivity dsfComDllActivity:
+                    return GetActivityFields(dsfComDllActivity);
+                case DsfWcfEndPointActivity dsfWcfEndPointActivity:
+                    return GetActivityFields(dsfWcfEndPointActivity);
+                default:
+                    return new List<string>();
             }
         }
 
-        List<string> GetDsfWcfEndPointActivityFields(object activity)
+        List<string> GetActivityFields(DsfWcfEndPointActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfWcfEndPointActivity maAct)
@@ -154,7 +112,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfComDllActivityFields(object activity)
+        List<string> GetActivityFields(DsfComDllActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfComDllActivity maAct)
@@ -189,7 +147,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfEnhancedDotNetDllActivityFields(object activity)
+        List<string> GetActivityFields(DsfEnhancedDotNetDllActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfEnhancedDotNetDllActivity maAct)
@@ -233,7 +191,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        private void AddMethodsToRun(List<string> results, Common.Interfaces.IPluginAction pluginAction)
+        void AddMethodsToRun(List<string> results, Common.Interfaces.IPluginAction pluginAction)
         {
             if (pluginAction?.Inputs != null)
             {
@@ -245,7 +203,7 @@ namespace Dev2.FindMissingStrategies
             }
         }
 
-        List<string> GetDsfDotNetDllActivityFields(object activity)
+        List<string> GetActivityFields(DsfDotNetDllActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfDotNetDllActivity maAct)
@@ -281,7 +239,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfWebGetActivityFields(object activity)
+        List<string> GetActivityFields(DsfWebGetActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfWebGetActivity maAct)
@@ -333,7 +291,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfWebPutActivityFields(object activity)
+        List<string> GetActivityFields(DsfWebPutActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfWebPutActivity maAct)
@@ -385,7 +343,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfWebDeleteActivityFields(object activity)
+        List<string> GetActivityFields(DsfWebDeleteActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfWebDeleteActivity maAct)
@@ -433,7 +391,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        private List<string> GetDsfWebPostActivityFields(object activity)
+        List<string> GetActivityFields(DsfWebPostActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfWebPostActivity maAct)
@@ -481,7 +439,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfODBCDatabaseActivityFields(object activity)
+        List<string> GetActivityFields(DsfODBCDatabaseActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfODBCDatabaseActivity maAct)
@@ -511,7 +469,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfOracleDatabaseActivityFields(object activity)
+        List<string> GetActivityFields(DsfOracleDatabaseActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfOracleDatabaseActivity maAct)
@@ -537,7 +495,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfPostgreSqlActivityFields(object activity)
+        List<string> GetActivityFields(DsfPostgreSqlActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfPostgreSqlActivity maAct)
@@ -563,7 +521,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfMySqlDatabaseActivityFields(object activity)
+        List<string> GetActivityFields(DsfMySqlDatabaseActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfMySqlDatabaseActivity maAct)
@@ -589,7 +547,7 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfSqlServerDatabaseActivityFields(object activity)
+        List<string> GetActivityFields(DsfSqlServerDatabaseActivity activity)
         {
             var results = new List<string>();
             if (activity is DsfSqlServerDatabaseActivity maAct)
@@ -615,85 +573,12 @@ namespace Dev2.FindMissingStrategies
             return results;
         }
 
-        List<string> GetDsfDotNetGatherSystemInformationActivityFields(object activity)
-        {
-            var results = new List<string>();
-            if (activity is DsfDotNetGatherSystemInformationActivity maAct)
-            {
-                results.AddRange(InternalFindMissing(maAct.SystemInformationCollection));
-            }
-            return results;
-        }
-
-        List<string> GetDsfGatherSystemInformationActivityFields(object activity)
-        {
-            var results = new List<string>();
-            if (activity is DsfGatherSystemInformationActivity maAct)
-            {
-                results.AddRange(InternalFindMissing(maAct.SystemInformationCollection));
-            }
-            return results;
-        }
-
-        List<string> GetDsfDotNetMultiAssignObjectActivityFields(object activity)
-        {
-            var results = new List<string>();
-            if (activity is DsfDotNetMultiAssignObjectActivity maAct)
-            {
-                results.AddRange(InternalFindMissing(maAct.FieldsCollection));
-            }
-            return results;
-        }
-
-        List<string> GetDsfDotNetMultiAssignActivityFields(object activity)
-        {
-            var results = new List<string>();
-            if (activity is DsfDotNetMultiAssignActivity maAct)
-            {
-                results.AddRange(InternalFindMissing(maAct.FieldsCollection));
-            }
-            return results;
-        }
-
-        List<string> GetDsfMultiAssignObjectActivityFields(object activity)
-        {
-            var results = new List<string>();
-            if (activity is DsfMultiAssignObjectActivity maAct)
-            {
-                results.AddRange(InternalFindMissing(maAct.FieldsCollection));
-            }
-            return results;
-        }
-
-        List<string> GetDsfMultiAssignActivityFields(object activity)
-        {
-            var results = new List<string>();
-            if (activity is DsfMultiAssignActivity maAct)
-            {
-                results.AddRange(InternalFindMissing(maAct.FieldsCollection));
-            }
-            return results;
-        }
-
-        List<string> GetDsfCaseConvertActivityFields(object activity)
-        {
-            var results = new List<string>();
-            if (activity is DsfCaseConvertActivity ccAct)
-            {
-                results.AddRange(InternalFindMissing(ccAct.ConvertCollection));
-            }
-            return results;
-        }
-
-        List<string> GetDsfBaseConvertActivityFields(object activity)
-        {
-            var results = new List<string>();
-            if (activity is DsfBaseConvertActivity bcAct)
-            {
-                results.AddRange(InternalFindMissing(bcAct.ConvertCollection));
-            }
-            return results;
-        }
+        List<string> GetActivityFields(DsfDotNetGatherSystemInformationActivity activity) => (List<string>)InternalFindMissing(activity.SystemInformationCollection);
+        List<string> GetActivityFields(DsfGatherSystemInformationActivity activity) => (List<string>)InternalFindMissing(activity.SystemInformationCollection);
+        List<string> GetActivityFields(DsfDotNetMultiAssignObjectActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
+        List<string> GetActivityFields(DsfDotNetMultiAssignActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
+        List<string> GetActivityFields(DsfMultiAssignObjectActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
+        List<string> GetActivityFields(DsfMultiAssignActivity activity) => (List<string>)InternalFindMissing(activity.FieldsCollection);
 
         static List<string> AddAllHeaders(DsfWebPostActivity maAct)
         {
