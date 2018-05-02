@@ -25,41 +25,27 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
             errors = new ErrorResultTO();
             ForEachType = forEachType;
             IIndexIterator localIndexIterator;
-            if (MissingRecordsetField(forEachType, recordsetName, errors))
+            if (MissingRecordsetField(forEachType, recordsetName, errors) || MissingRecordset(forEachType, recordsetName, compiler, errors))
             {
                 return;
             }
 
+
             if (forEachType == enForEachType.InRecordset)
             {
                 var records = compiler.EvalRecordSetIndexes(recordsetName, update);
-                if (!compiler.HasRecordSet(recordsetName))
-                {
-                    errors.AddError("When selecting a recordset only valid recordsets can be used");
-                    return;
-                }
                 localIndexIterator = new IndexListIndexIterator(records);
                 IndexIterator = localIndexIterator;
                 return;
             }
 
+            if (FromFieldMissing(forEachType, from, errors) || ToFieldIsMissing(forEachType, to, errors) || StarNotationInFromField(forEachType, from, errors))
+            {
+                return;
+            }
+
             if (forEachType == enForEachType.InRange)
             {
-                if (string.IsNullOrWhiteSpace(@from))
-                {
-                    errors.AddError(string.Format(ErrorResource.IsRequired, "The FROM field"));
-                    return;
-                }
-                if (string.IsNullOrWhiteSpace(to))
-                {
-                    errors.AddError(string.Format(ErrorResource.IsRequired, "The TO field"));
-                    return;
-                }
-                if (@from.Contains("(*)"))
-                {
-                    errors.AddError(string.Format(ErrorResource.StarNotationNotAllowed, "From field"));
-                    return;
-                }
                 var evalledFrom = ExecutionEnvironment.WarewolfEvalResultToString(compiler.Eval(@from, update));
                 int intFrom;
                 if (!int.TryParse(evalledFrom, out intFrom) || intFrom < 1)
@@ -136,6 +122,50 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
                 }
                 IndexIterator = new IndexIterator(new HashSet<int>(), intExNum);
             }
+        }
+
+        static bool StarNotationInFromField(enForEachType forEachType, string from, ErrorResultTO errors)
+        {
+            bool StarNotationInFromField = forEachType == enForEachType.InRange && @from.Contains("(*)");
+            if (StarNotationInFromField)
+            {
+                errors.AddError(string.Format(ErrorResource.StarNotationNotAllowed, "From field"));
+            }
+
+            return StarNotationInFromField;
+        }
+
+        static bool ToFieldIsMissing(enForEachType forEachType, string to, ErrorResultTO errors)
+        {
+            bool ToFieldIsMissing = forEachType == enForEachType.InRange && string.IsNullOrWhiteSpace(to);
+            if (ToFieldIsMissing)
+            {
+                errors.AddError(string.Format(ErrorResource.IsRequired, "The TO field"));
+            }
+
+            return ToFieldIsMissing;
+        }
+
+        static bool FromFieldMissing(enForEachType forEachType, string from, ErrorResultTO errors)
+        {
+            bool FromFieldMissing = forEachType == enForEachType.InRange && string.IsNullOrWhiteSpace(@from);
+            if (FromFieldMissing)
+            {
+                errors.AddError(string.Format(ErrorResource.IsRequired, "The FROM field"));
+            }
+
+            return FromFieldMissing;
+        }
+
+        static bool MissingRecordset(enForEachType forEachType, string recordsetName, IExecutionEnvironment compiler, ErrorResultTO errors)
+        {
+            bool MissingRecordset = forEachType == enForEachType.InRecordset && !compiler.HasRecordSet(recordsetName);
+            if (MissingRecordset)
+            {
+                errors.AddError("When selecting a recordset only valid recordsets can be used");
+            }
+
+            return MissingRecordset;
         }
 
         static bool MissingRecordsetField(enForEachType forEachType, string recordsetName, ErrorResultTO errors)
