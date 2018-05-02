@@ -25,14 +25,13 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
             errors = new ErrorResultTO();
             ForEachType = forEachType;
             IIndexIterator localIndexIterator;
+            if (MissingRecordsetField(forEachType, recordsetName, errors))
+            {
+                return;
+            }
 
             if (forEachType == enForEachType.InRecordset)
             {
-                if (string.IsNullOrEmpty(recordsetName))
-                {
-                    errors.AddError(string.Format(ErrorResource.IsRequired, "The Recordset Field"));
-                    return;
-                }
                 var records = compiler.EvalRecordSetIndexes(recordsetName, update);
                 if (!compiler.HasRecordSet(recordsetName))
                 {
@@ -137,6 +136,17 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
                 }
                 IndexIterator = new IndexIterator(new HashSet<int>(), intExNum);
             }
+        }
+
+        static bool MissingRecordsetField(enForEachType forEachType, string recordsetName, ErrorResultTO errors)
+        {
+            bool MissingRecordsetField = forEachType == enForEachType.InRecordset && string.IsNullOrEmpty(recordsetName);
+            if (MissingRecordsetField)
+            {
+                errors.AddError(string.Format(ErrorResource.IsRequired, "The Recordset Field"));
+            }
+
+            return MissingRecordsetField;
         }
 
         List<int> SplitOutCsvIndexes(string csvNumbers, out ErrorResultTO errors)
