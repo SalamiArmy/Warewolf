@@ -29,8 +29,7 @@ namespace Unlimited.Applications.BusinessDesignStudio.Activities.Value_Objects
             {
                 return;
             }
-
-
+            
             if (forEachType == enForEachType.InRecordset)
             {
                 var records = compiler.EvalRecordSetIndexes(recordsetName, update);
