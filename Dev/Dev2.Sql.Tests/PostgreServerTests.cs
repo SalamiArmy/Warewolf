@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Dev2.Common;
 using Dev2.Common.Interfaces.Services.Sql;
 using Dev2.Services.Sql;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Npgsql;
 
 namespace Dev2.Sql.Tests
 {
@@ -128,10 +130,8 @@ namespace Dev2.Sql.Tests
                 sqlServer.Dispose();
             }
         }
-
+                
         
-        
-
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("PostgreServer_FetchDataTable_addParams")]

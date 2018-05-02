@@ -400,37 +400,7 @@ namespace Dev2.Services.Sql
 
             return true;
         }
-
-        public DataTable FetchDataTable(params IDbDataParameter[] dbDataParameters)
-        {
-
-            if (_connection == null)
-            {
-                throw new Exception(ErrorResource.PleaseConnectFirst);
-            }
-            _connection.TryOpen();
-
-            using (_connection)
-            {
-                if (_connection.State != ConnectionState.Open)
-                {
-                    _connection = _connectionBuilder.BuildConnection(_connectionString);
-                }
-                using (var sqlCommand = _connection.CreateCommand())
-                {
-                    TrySetTransaction(_transaction, sqlCommand);
-                    sqlCommand.CommandText = _commantText;
-                    sqlCommand.CommandType = _commandType;
-                    sqlCommand.CommandTimeout = (int)GlobalConstants.TransactionTimeout.TotalSeconds;
-                    foreach (var dbDataParameter in dbDataParameters)
-                    {
-                        sqlCommand.Parameters.Add(dbDataParameter);
-                    }
-                    return FetchDataTable(sqlCommand);
-                }
-            }
-
-        }
+       
     }
 
     public class WarewolfDbException : DbException
