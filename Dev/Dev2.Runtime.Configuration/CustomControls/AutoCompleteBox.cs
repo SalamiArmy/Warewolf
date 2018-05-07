@@ -1498,7 +1498,7 @@ namespace System.Windows.Controls
                 }
                 else
                 {
-                    AddOrInsertItem(viewIndex, viewCount, item);
+                    AddOrInsertItem(viewIndex, item);
                     viewIndex++;
                     viewCount++;
                 }
