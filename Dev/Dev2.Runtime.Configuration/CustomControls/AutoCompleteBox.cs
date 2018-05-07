@@ -1513,16 +1513,9 @@ namespace System.Windows.Controls
             }
         }
 
-        private void AddOrInsertItem(int viewIndex, int viewCount, object item)
+        private void AddOrInsertItem(int viewIndex, object item)
         {
-            if (viewIndex == viewCount)
-            {
-                _view.Add(item);
-            }
-            else
-            {
-                _view.Insert(viewIndex, item);
-            }
+            _view.Insert(viewIndex, item);
         }
 
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "oldValue", Justification = "This makes it easy to add validation or other changes in the future.")]
