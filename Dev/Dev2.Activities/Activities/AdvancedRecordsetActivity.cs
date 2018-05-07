@@ -337,11 +337,10 @@ namespace Dev2.Activities
             }
             return Outputs.Select(mapping => mapping.MappedTo).ToList();
         }
-        protected override void ExecutionImpl(IEsbChannel esbChannel, IDSFDataObject dataObject, string inputs, string outputs, out ErrorResultTO tmpErrors, int update)
-        {
-            throw new NotImplementedException();
-        }
-        public override List<DebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
+
+        protected override void ExecutionImpl(IEsbChannel esbChannel, IDSFDataObject dataObject, string inputs, string outputs, out ErrorResultTO tmpErrors, int update) => throw new NotImplementedException();
+
+        public override List<IDebugItem> GetDebugInputs(IExecutionEnvironment env, int update)
         {
             foreach (IDebugItem debugInput in _debugInputs)
             {
@@ -349,6 +348,7 @@ namespace Dev2.Activities
             }
             return _debugInputs;
         }
+
         public bool Equals(AdvancedRecordsetActivity other)
         {
             if (other is null)
