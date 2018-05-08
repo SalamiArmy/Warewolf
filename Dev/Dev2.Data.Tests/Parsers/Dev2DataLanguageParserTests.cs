@@ -106,6 +106,20 @@ namespace Dev2.Data.Tests.Parsers
         }
 
         [TestMethod]
+        public void ParseDataLanguageForIntellisense_GivenInvalidDatalist_ShouldSwallowException()
+        {
+            //---------------Set up test pack-------------------
+            var parser = new Dev2DataLanguageParser();
+            var datalist = "Invalid Datalist!!!";
+            //---------------Assert Precondition----------------
+
+            //---------------Execute Test ----------------------
+            var expressionIntoParts = parser.ParseDataLanguageForIntellisense("some value", datalist);
+            //---------------Test Result -----------------------
+            Assert.AreEqual(0, expressionIntoParts.Count);
+        }
+
+        [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         public void ParseDataLanguageForIntellisense_GivenEmpty_ShouldExecutesCorreclty()
         {
@@ -508,13 +522,12 @@ namespace Dev2.Data.Tests.Parsers
             };
             var intellisenseParts = new List<IDev2DataLanguageIntellisensePart>();
             var privateObject = new PrivateObject(parser);
-            //ExtractActualIntellisenseOptions(ParseTO payload, IEnumerable<IDev2DataLanguageIntellisensePart> refParts, bool addCompleteParts)
             //---------------Assert Precondition----------------
             //---------------Execute Test ----------------------
             try
             {
-                privateObject.Invoke("ExtractActualIntellisenseOptions", parseTO, intellisenseParts, true);
-                privateObject.Invoke("ExtractActualIntellisenseOptions", parseTORecSet, intellisenseParts, false);
+                privateObject.Invoke("TryExtractActualIntellisenseOptions", parseTO, intellisenseParts, true);
+                privateObject.Invoke("TryExtractActualIntellisenseOptions", parseTORecSet, intellisenseParts, false);
             }
             catch (Exception e)
             {
