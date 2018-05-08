@@ -75,14 +75,7 @@ namespace Dev2.Studio.ViewModels.WorkSurface
 
         public IWorkSurfaceKey WorkSurfaceKey { get; }
 
-        public IServer Environment
-        {
-            get
-            {
-                var environmentModel = ContextualResourceModel?.Environment;
-                return environmentModel;
-            }
-        }
+        public IServer Environment => ContextualResourceModel?.Environment;
 
         public DebugOutputViewModel DebugOutputViewModel
         {
@@ -471,10 +464,7 @@ namespace Dev2.Studio.ViewModels.WorkSurface
         bool _waitingforDialog;
         bool _workspaceSaved;
 
-        public void ShowSaveDialog(IContextualResourceModel resourceModel, bool addToTabManager)
-        {
-            SaveDialogHelper.ShowNewWorkflowSaveDialog(resourceModel, null, addToTabManager);
-        }
+        public void ShowSaveDialog(IContextualResourceModel resourceModel, bool addToTabManager) => SaveDialogHelper.ShowNewWorkflowSaveDialog(resourceModel, null, addToTabManager);
 
         public bool Save() => Save(false, false);
         public bool Save(bool isLocalSave, bool isStudioShutdown)
