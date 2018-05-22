@@ -1,6 +1,7 @@
 using System;
 using System.Activities;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using Dev2.Activities.Debug;
@@ -20,8 +21,6 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 using Warewolf.Core;
 using Warewolf.Storage.Interfaces;
 using WarewolfParserInterop;
-
-
 
 namespace Dev2.Activities.Sharepoint
 {
@@ -50,19 +49,22 @@ namespace Dev2.Activities.Sharepoint
             ExecuteTool(dataObject, 0);
         }
 
-
         public override List<string> GetOutputs() => ReadListItems.Select(to => to.VariableName).ToList();
 
+        [ExcludeFromCodeCoverage]
         public override void UpdateForEachInputs(IList<Tuple<string, string>> updates)
         {
         }
 
+        [ExcludeFromCodeCoverage]
         public override void UpdateForEachOutputs(IList<Tuple<string, string>> updates)
         {
         }
 
+        [ExcludeFromCodeCoverage]
         public override IList<DsfForEachItem> GetForEachInputs() => null;
 
+        [ExcludeFromCodeCoverage]
         public override IList<DsfForEachItem> GetForEachOutputs() => null;
 
         public override enFindMissingType GetFindMissingType() => enFindMissingType.MixedActivity;
@@ -329,7 +331,6 @@ namespace Dev2.Activities.Sharepoint
             }
             return _debugOutputs;
         }
-
 
         public bool Equals(SharepointReadListActivity other)
         {

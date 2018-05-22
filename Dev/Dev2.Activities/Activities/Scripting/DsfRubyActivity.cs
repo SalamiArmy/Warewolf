@@ -71,14 +71,13 @@ namespace Dev2.Activities.Scripting
         {
             AddScriptSourcePathsToList();
             var allErrors = new ErrorResultTO();
-            var errors = new ErrorResultTO();
-            allErrors.MergeErrors(errors);
             var env = dataObject.Environment;
             InitializeDebug(dataObject);
             try
             {
                 TryExecute(dataObject, update, allErrors, env);
             }
+
             catch (Exception e) when (e is NullReferenceException || e is RuntimeBinderException)
             {
                 allErrors.AddError(e.GetType() == typeof(NullReferenceException) || e.GetType() == typeof(RuntimeBinderException) ? ErrorResource.ScriptingErrorReturningValue : e.Message.Replace(" for main:Object", string.Empty));
@@ -205,9 +204,9 @@ namespace Dev2.Activities.Scripting
                 return true;
             }
 
-            return base.Equals(other) 
+            return base.Equals(other)
                 && string.Equals(Script, other.Script)
-                && ScriptType == other.ScriptType 
+                && ScriptType == other.ScriptType
                 && EscapeScript == other.EscapeScript
                 && string.Equals(Result, other.Result)
                 && string.Equals(IncludeFile, other.IncludeFile);
@@ -230,7 +229,7 @@ namespace Dev2.Activities.Scripting
                 return false;
             }
 
-            return Equals((DsfRubyActivity) obj);
+            return Equals((DsfRubyActivity)obj);
         }
 
         public override int GetHashCode()
@@ -240,7 +239,7 @@ namespace Dev2.Activities.Scripting
                 var hashCode = base.GetHashCode();
                 hashCode = (hashCode * 397) ^ (_sources != null ? _sources.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Script != null ? Script.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (int) ScriptType;
+                hashCode = (hashCode * 397) ^ (int)ScriptType;
                 hashCode = (hashCode * 397) ^ EscapeScript.GetHashCode();
                 hashCode = (hashCode * 397) ^ (Result != null ? Result.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (IncludeFile != null ? IncludeFile.GetHashCode() : 0);

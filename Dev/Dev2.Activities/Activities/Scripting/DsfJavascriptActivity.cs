@@ -77,30 +77,19 @@ namespace Dev2.Activities.Scripting
         {
             AddScriptSourcePathsToList();
             var allErrors = new ErrorResultTO();
-            var errors = new ErrorResultTO();
-            allErrors.MergeErrors(errors);
             var env = dataObject.Environment;
             InitializeDebug(dataObject);
             try
             {
-                if (!errors.HasErrors())
+
+                if (dataObject.IsDebugMode())
                 {
-                    if (dataObject.IsDebugMode())
-                    {
-                        var language = ScriptType.GetDescription();
-                        AddDebugInputItem(new DebugItemStaticDataParams(language, "Language"));
-                        AddDebugInputItem(new DebugEvalResult(Script, "Script", env, update));
-                    }
-
-                    allErrors.MergeErrors(errors);
-
-                    if (allErrors.HasErrors())
-                    {
-                        return;
-                    }
-
-                    TryExecute(dataObject, update, allErrors, env);
+                    var language = ScriptType.GetDescription();
+                    AddDebugInputItem(new DebugItemStaticDataParams(language, "Language"));
+                    AddDebugInputItem(new DebugEvalResult(Script, "Script", env, update));
                 }
+                
+                TryExecute(dataObject, update, allErrors, env);
             }
             catch (Exception e) when (e is NullReferenceException || e is RuntimeBinderException)
             {
@@ -223,11 +212,11 @@ namespace Dev2.Activities.Scripting
                 return true;
             }
 
-            return base.Equals(other) 
+            return base.Equals(other)
                 && string.Equals(Script, other.Script)
                 && ScriptType == other.ScriptType
-                && EscapeScript == other.EscapeScript 
-                && string.Equals(Result, other.Result) 
+                && EscapeScript == other.EscapeScript
+                && string.Equals(Result, other.Result)
                 && string.Equals(IncludeFile, other.IncludeFile);
         }
 
@@ -248,7 +237,7 @@ namespace Dev2.Activities.Scripting
                 return false;
             }
 
-            return Equals((DsfJavascriptActivity) obj);
+            return Equals((DsfJavascriptActivity)obj);
         }
 
         public override int GetHashCode()
@@ -258,7 +247,7 @@ namespace Dev2.Activities.Scripting
                 var hashCode = base.GetHashCode();
                 hashCode = (hashCode * 397) ^ (_sources != null ? _sources.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Script != null ? Script.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (int) ScriptType;
+                hashCode = (hashCode * 397) ^ (int)ScriptType;
                 hashCode = (hashCode * 397) ^ EscapeScript.GetHashCode();
                 hashCode = (hashCode * 397) ^ (Result != null ? Result.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (DisplayName != null ? DisplayName.GetHashCode() : 0);
