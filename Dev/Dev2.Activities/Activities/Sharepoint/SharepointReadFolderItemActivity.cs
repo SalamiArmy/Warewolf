@@ -93,9 +93,8 @@ namespace Dev2.Activities.Sharepoint
         public override IList<DsfForEachItem> GetForEachOutputs() => null;
 
         protected override IList<OutputTO> TryExecuteConcreteAction(IDSFDataObject context, out ErrorResultTO error, int update)
-        {
-           
-            _debugInputs = new List<DebugItem>();
+        {           
+            _debugInputs = new List<IDebugItem>();
             error = new ErrorResultTO();
             IList<OutputTO> outputs = new List<OutputTO>();
             var colItr = new WarewolfListIterator();
