@@ -20,7 +20,6 @@ namespace Dev2.Activities.Designers2.Service
             ErrorType = ErrorType.None,
             Message = @"Service Working Normally"
         };
-        IDesignValidationService _validationService;
         IErrorInfo _worstDesignError;
         bool _versionsDifferent;
 
@@ -114,7 +113,7 @@ namespace Dev2.Activities.Designers2.Service
         {
             if (server?.Connection?.ServerEvents != null)
             {
-                _validationService = new DesignValidationService(server.Connection.ServerEvents);
+                var _validationService = new DesignValidationService(server.Connection.ServerEvents);
                 _validationService.Subscribe(_serviceDesignerViewModel.UniqueID, a => _serviceDesignerViewModel.MappingManager.UpdateLastValidationMemo(a));
             }
         }
