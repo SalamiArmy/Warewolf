@@ -72,10 +72,11 @@ namespace Bashley
                 ["Overlapping User Groups Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "OverlappingUserGroupsPermissionsSecurity"),
                 ["Resource Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "ResourcePermissionsSecurity"),
                 ["Server Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "ServerPermissionsSecurity"),
+                //Web UI Tests
                 ["Other Web UI Tests"] = new Tuple<string, string>("Warewolf.Web.UI.Tests", null),
                 ["Execution Logging Web UI Tests"] = new Tuple<string, string>("Warewolf.Web.UI.Tests", "ExecutionLogging"),
                 ["No Warewolf Server Web UI Tests"] = new Tuple<string, string>("Warewolf.Web.UI.Tests", "NoWarewolfServer"),
-                //UI Tests
+                //Desktop UI Tests
                 ["Other UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", null),
                 ["Other UI Specs"] = new Tuple<string, string>("Warewolf.UI.Specs", null),
                 ["Assign Tool UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Assign Tool"),
@@ -123,9 +124,26 @@ namespace Bashley
                 ["Web Sources UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Web Sources"),
                 ["Workflow Mocking Tests UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Workflow Mocking Tests"),
                 ["Workflow Testing UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Workflow Testing"),
-                ["Workflow Merging UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Merge"),
-                //UI Load Spec
-                ["UI Load Spec"] = new Tuple<string, string>("Warewolf.UI.Load.Specs", null)
+                ["Workflow Merge with All Tools Conflicting"] = new Tuple<string, string>("Warewolf.UI.Tests", "Merge All Tools Conflicts"),
+                ["Workflow Merge with Assign Tools Conflicting"] = new Tuple<string, string>("Warewolf.UI.Tests", "Merge Assign Conflicts"),
+                ["Workflow Merge with Decision Tools Conflicting"] = new Tuple<string, string>("Warewolf.UI.Tests", "Merge Decision Conflicts"),
+                ["Workflow Merge with Foreach Tools Conflicting"] = new Tuple<string, string>("Warewolf.UI.Tests", "Merge Foreach"),
+                ["Workflow Merge with Sequence Tools Conflicting"] = new Tuple<string, string>("Warewolf.UI.Tests", "Merge Sequence Conflicts"),
+                ["Workflow Merge with Simple Tools Conflicting"] = new Tuple<string, string>("Warewolf.UI.Tests", "Merge Simple Tools Conflicts"),
+                ["Workflow Merge with Switch Tools Conflicting"] = new Tuple<string, string>("Warewolf.UI.Tests", "Merge Switch Conflicts"),
+                ["Workflow Merge with Variables Conflicting"] = new Tuple<string, string>("Warewolf.UI.Tests", "Merge Variable Conflicts"),
+                ["Search UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Search"),
+                ["Input Search UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Input Search"),
+                ["Output Search UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Output Search"),
+                ["Test Name Search UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Test Name Search"),
+                ["Scalar Search UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Scalar Search"),
+                ["Recordset Search UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Recordset Search"),
+                ["Object Search UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Object Search"),
+                ["Service Search UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Service Search"),
+                ["Title Search UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", "Title Search"),
+                //Load Tests
+                ["UI Load Specs"] = new Tuple<string, string>("Warewolf.UI.Load.Specs", null),
+                ["Load Tests"] = new Tuple<string, string>("Dev2.Integration.Tests", "Load Tests")
             };
         }
     }
