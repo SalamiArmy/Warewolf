@@ -111,7 +111,6 @@ namespace Dev2.Activities.Designers2.Service
 
         public void InitializeValidationService(IServer server)
         {
-            IDesignValidationService _validationService;
             if (server?.Connection?.ServerEvents != null)
             {
                 var _validationService = new DesignValidationService(server.Connection.ServerEvents);
