@@ -76,9 +76,7 @@ namespace Dev2.SignalR.Wrappers.New
         public Task Start()
         {
             var serverSentEventsTransport = new ServerSentEventsTransport();
-            var result = _wrapped.Start(serverSentEventsTransport);
-            result.Wait(120000);
-            return result;
+            return _wrapped.Start(serverSentEventsTransport);
         }
 
         public void Stop(TimeSpan timeSpan)
