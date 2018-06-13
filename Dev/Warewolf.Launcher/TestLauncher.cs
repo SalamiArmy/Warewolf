@@ -1490,6 +1490,8 @@ namespace Warewolf.Launcher
                 {
                     trxFilePath = ParseTrxFilePath(testRunLine);
                 }
+                testRunLine = process.StandardError.ReadLine();
+                Console.WriteLine(testRunLine);
             }
 
             process.WaitForExit();
