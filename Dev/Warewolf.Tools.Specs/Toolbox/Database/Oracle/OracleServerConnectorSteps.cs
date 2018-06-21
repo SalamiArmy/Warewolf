@@ -24,6 +24,8 @@ using Warewolf.Studio.ViewModels;
 using Dev2.Activities.Specs.BaseTypes;
 using Dev2.Studio.Core;
 using Dev2.Studio.Core.Models;
+using Dev2.Common;
+using System.IO;
 
 namespace Dev2.Activities.Specs.Toolbox.Resources
 {
@@ -426,7 +428,7 @@ namespace Dev2.Activities.Specs.Toolbox.Resources
         {
             var proxyLayer = _scenarioContext.Get<StudioServerProxy>("proxyLayer");
             var vm = GetViewModel();
-            Assert.IsNotNull(vm.SourceRegion);            
+            Assert.IsNotNull(vm.SourceRegion);
             var dbSources = proxyLayer.QueryManagerProxy.FetchDbSources().ToList();
             Assert.IsNotNull(dbSources, "dbSources is null");
             var dbSource = dbSources.Single(source => source.Name == sourceName);
@@ -443,7 +445,7 @@ namespace Dev2.Activities.Specs.Toolbox.Resources
             Assert.IsNotNull(vm.ActionRegion);
             vm.ActionRegion.SelectedAction = vm.ActionRegion.Actions.FirstOrDefault(p => p.Name == actionName);
             SetDbAction(activityName, actionName);
-            Assert.IsNotNull(vm.ActionRegion.SelectedAction,  "Could not set Action");
+            Assert.IsNotNull(vm.ActionRegion.SelectedAction, "Could not set Action");
         }
 
         [Given(@"Oracle Command Timeout is ""(.*)"" milliseconds for ""(.*)""")]
@@ -521,7 +523,14 @@ namespace Dev2.Activities.Specs.Toolbox.Resources
         [AfterScenario("@ExecuteOracleServerWithTimeout")]
         public void CleanUp()
         {
-            CleanupForTimeOutSpecs();
+            var resourceModel = _scenarioContext.Get<ResourceModel>("resourceModel");
+            if (resourceModel != null)
+            {
+                if (File.Exists(Path.Combine(EnvironmentVariables.ResourcePath, resourceModel.Category + ".bite")))
+                {
+                    CleanupForTimeOutSpecs();
+                }
+            }
         }
 
         #region Private Methods

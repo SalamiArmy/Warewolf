@@ -296,6 +296,10 @@ namespace Dev2.Studio.Core.AppResources.Repositories
 
         public ExecuteMessage DeleteResource(IResourceModel resource)
         {
+            if (resource == null)
+            {
+                throw new ArgumentNullException(nameof(resource));
+            }
             Dev2Logger.Info($"DeleteResource Resource: {resource.DisplayName}  Environment:{_server.Name}", GlobalConstants.WarewolfInfo);
             var res = _resourceModels.FirstOrDefault(c => c.ID == resource.ID);
 
