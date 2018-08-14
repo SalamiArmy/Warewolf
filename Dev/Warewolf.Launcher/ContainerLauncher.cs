@@ -253,13 +253,13 @@ namespace Warewolf.Launcher
         void InspectContainer()
         {
             int count = 0;
-            while ((Status != "healthy" || string.IsNullOrEmpty(IP)) && count++ < 7)
+            Console.WriteLine($"Inspecting {serverContainerID.Substring(0, 12)} on {remoteSwarmDockerApi}.");
+            while ((Status != "healthy" || string.IsNullOrEmpty(IP)) && ++count < 100)
             {
-                Console.WriteLine($"Inspecting {serverContainerID.Substring(0, 12)} on {remoteSwarmDockerApi}.");
                 var url = $"http://{remoteSwarmDockerApi}:2375/containers/{serverContainerID}/json";
                 using (var client = new HttpClient())
                 {
-                    client.Timeout = new TimeSpan(0, 20, 0);
+                    client.Timeout = new TimeSpan(0, 3, 0);
                     var response = client.GetAsync(url).Result;
                     var streamingResult = response.Content.ReadAsStreamAsync().Result;
                     using (StreamReader reader = new StreamReader(streamingResult, Encoding.UTF8))
@@ -268,10 +268,10 @@ namespace Warewolf.Launcher
                         {
                             ParseForNetworkID(reader.ReadToEnd());
                         }
-                        else
+                        if ((Status != "healthy" || string.IsNullOrEmpty(IP)) && count < 100)
                         {
                             Console.WriteLine($"Still inspecting {serverContainerID.Substring(0, 12)}.");
-                            Thread.Sleep(1000);
+                            Thread.Sleep(3000);
                         }
                     }
                 }
@@ -602,12 +602,14 @@ namespace Warewolf.Launcher
             if (JSONObj.NetworkSettings.Networks.ContainsKey("nat"))
             {
                 IP = JSONObj.NetworkSettings.Networks["nat"].IPAddress;
-                Console.WriteLine($"Got IP Address for {serverContainerID.Substring(0, 12)} as {IP}.");
             }
             Hostname = JSONObj.Config.Hostname;
-            Console.WriteLine($"Got Hostname for {serverContainerID.Substring(0, 12)} as {Hostname}.");
             Status = JSONObj.State.Health?.Status??"healthy";
-            Console.WriteLine($"Got Status for {serverContainerID.Substring(0, 12)} as {Status}.");
+            if (Status == "healthy")
+            {
+                Console.WriteLine($"Got IP Address for {serverContainerID.Substring(0, 12)} as {IP}.");
+                Console.WriteLine($"Got Hostname for {serverContainerID.Substring(0, 12)} as {Hostname}.");
+            }
         }
 
         string ParseForNodeHostname(string responseText)
