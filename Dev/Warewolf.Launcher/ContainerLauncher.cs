@@ -385,35 +385,14 @@ namespace Warewolf.Launcher
             containerStartContent.Headers.Add("Content-Type", "application/json");
             using (var client = new HttpClient())
             {
-                client.Timeout = new TimeSpan(0, 1, 30);
-                int retryCount = 0;
-                while (++retryCount < 10)
+                client.Timeout = new TimeSpan(0, 5, 0);
+                var response = client.PostAsync(url, containerStartContent).Result;
+                var streamingResult = response.Content.ReadAsStreamAsync().Result;
+                using (StreamReader reader = new StreamReader(streamingResult, Encoding.UTF8))
                 {
-                    try
+                    if (!response.IsSuccessStatusCode)
                     {
-                        var response = client.PostAsync(url, containerStartContent).Result;
-                        var streamingResult = response.Content.ReadAsStreamAsync().Result;
-                        using (StreamReader reader = new StreamReader(streamingResult, Encoding.UTF8))
-                        {
-                            if (!response.IsSuccessStatusCode)
-                            {
-                                throw new HttpRequestException("Error starting container. " + reader.ReadToEnd());
-                            }
-                            else
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        if (retryCount == 9)
-                        {
-                            Console.WriteLine("Timed out waiting for start container.");
-                            throw e;
-                        }
-                        Console.WriteLine($"Still waiting for container {serverContainerID.Substring(0, 12)} to start.");
-                        Thread.Sleep(1000);
+                        throw new HttpRequestException($"Error {response.StatusCode} starting container. " + reader.ReadToEnd());
                     }
                 }
             }
@@ -663,7 +642,7 @@ namespace Warewolf.Launcher
                 {
                     if (!response.IsSuccessStatusCode)
                     {
-                        Console.WriteLine($"Error stopping server container on {remoteSwarmDockerApi}: " + reader.ReadToEnd());
+                        Console.WriteLine($"Error {response.StatusCode} stopping server container on {remoteSwarmDockerApi}: " + reader.ReadToEnd());
                     }
                     else
                     {
