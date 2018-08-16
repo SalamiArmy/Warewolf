@@ -751,6 +751,7 @@ namespace Dev2.Activities.Specs.Composition
         [Given(@"""(.*)"" contains ""(.*)"" from server ""(.*)"" with mapping as")]
         public void GivenContainsFromServerWithMappingAs(string wf, string remoteWf, string server, Table mappings)
         {
+            //Workflows that need Windows containers:
             if (server == "Remote Container")
             {
                 _containerOps = TestLauncher.StartLocalCIRemoteContainer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestResults"));
@@ -764,13 +765,19 @@ namespace Dev2.Activities.Specs.Composition
                 _containerOps = TestLauncher.StartLocalRabbitMQContainer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestResults"));
             }
 
-            var localHostEnv = LocalEnvModel;
+           var localHostEnv = LocalEnvModel;
 
             EnsureEnvironmentConnected(localHostEnv, EnvironmentConnectionTimeout);
 
+            //Workflows that need Linux containers:
             if (server == "localhost" && remoteWf == "TestmySqlReturningXml")
             {
                 _containerOps = TestLauncher.StartLocalMySQLContainer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestResults"));
+                localHostEnv.LoadExplorer(true);
+            }
+            else if (server == "localhost" && remoteWf == "TestPostgresReturningXml")
+            {
+                _containerOps = TestLauncher.StartLocalPostgresContainer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestResults"));
                 localHostEnv.LoadExplorer(true);
             }
 
@@ -4021,6 +4028,7 @@ namespace Dev2.Activities.Specs.Composition
         [Given(@"""(.*)"" contains a postgre tool using ""(.*)"" with mappings as")]
         public void GivenContainsAPostgreToolUsingWithMappingsAs(string parentName, string serviceName, Table table)
         {
+            _containerOps = TestLauncher.StartLocalPostgresContainer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestResults"));
 
             var resourceId = "62652f31-813a-4b97-b488-02e4c16150ff".ToGuid();
 

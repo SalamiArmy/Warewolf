@@ -166,6 +166,18 @@ namespace Warewolf.Launcher
             return containerLauncher;
         }
 
+        public static ContainerLauncher StartLocalPostgresContainer(string logDirectory)
+        {
+            var containerLauncher = new ContainerLauncher("postgres-connector-testing", "test-postgres", "localhost")
+            {
+                LogOutputDirectory = logDirectory
+            };
+            string sourcePath = Environment.ExpandEnvironmentVariables(@"%programdata%\Warewolf\Resources\Sources\Database\NewPostgresSource.bite");
+            File.WriteAllText(sourcePath, InsertServerSourceAddress(File.ReadAllText(sourcePath), $"Host={containerLauncher.IP};Username=postgres;Password=test123;Database=TestDB"));
+            Thread.Sleep(30000);
+            return containerLauncher;
+        }
+
         public static ContainerLauncher StartLocalRabbitMQContainer(string logDirectory)
         {
             var containerLauncher = new ContainerLauncher("rabbitmq-connector-testing", "test-rabbitmq", "localhost")

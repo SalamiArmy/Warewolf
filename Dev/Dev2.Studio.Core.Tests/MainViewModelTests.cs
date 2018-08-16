@@ -2061,6 +2061,7 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_EditPostgreSqlSource")]
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
+        [DeploymentItem("InfragisticsWPF4.Controls.Interactions.XamDialogWindow.v15.1.dll")]
         public void MainViewModel_EditPostgreSqlSource_Handle_Result()
         {
             //------------Setup for test--------------------------

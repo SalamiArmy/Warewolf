@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using Dev2.Activities.Designers2.Core;
 using Dev2.Activities.Designers2.PostgreSql;
 using Dev2.Activities.Specs.BaseTypes;
@@ -20,6 +22,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using TechTalk.SpecFlow;
 using Warewolf.Core;
+using Warewolf.Launcher;
 using Warewolf.Studio.ViewModels;
 using Warewolf.Tools.Specs.Toolbox.Database;
 
@@ -34,6 +37,7 @@ namespace Dev2.Activities.Specs.Toolbox.Resources
         DbAction _getEmployees;
         readonly ScenarioContext _scenarioContext;
         readonly CommonSteps _commonSteps;
+        static ContainerLauncher _containerOps;
 
         public PostgresSqlConnectorSteps(ScenarioContext scenarioContext)
             : base(scenarioContext)
@@ -305,6 +309,8 @@ namespace Dev2.Activities.Specs.Toolbox.Resources
         {
             var environmentModel = _scenarioContext.Get<IServer>("server");
             environmentModel.Connect();
+            _containerOps = TestLauncher.StartLocalPostgresContainer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestResults"));
+            environmentModel.LoadExplorer(true);
             CreateNewResourceModel(workflowName, environmentModel);
             CreateDBServiceModel(environmentModel);
 
