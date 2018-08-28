@@ -25,7 +25,6 @@ namespace Warewolf.Launcher
         public bool Cleanup { get; set; }
         public string AssemblyFileVersionsTest { get; set; }
         public string RecordScreen { get; set; }
-        public bool Parallelize { get; set; }
         public string Category { get; set; }
         public string ProjectName { get; set; }
         public string RunAllUnitTests { get; set; }

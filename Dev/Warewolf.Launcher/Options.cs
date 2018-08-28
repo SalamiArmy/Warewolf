@@ -109,9 +109,6 @@ namespace Warewolf.Launcher
         [Option("AdminMode")]
         public bool AdminMode { get; private set; }
 
-        [Option("Parallelize")]
-        public bool Parallelize { get; set; }
-
         [Option("StartContainer")]
         public string StartContainer { get; set; }
 
@@ -304,10 +301,6 @@ namespace Warewolf.Launcher
                 if (options.AdminMode)
                 {
                     testLauncher.AdminMode = true;
-                }
-                if (options.Parallelize)
-                {
-                    testLauncher.Parallelize = true;
                 }
                 if (options.StartContainer != null)
                 {
