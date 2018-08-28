@@ -748,7 +748,7 @@ namespace Warewolf.Launcher
                         this.CleanupServerStudio(JobName, !ApplyDotCover);
                     }
                 }
-                this.MoveArtifactsToTestResults(ApplyDotCover, (!string.IsNullOrEmpty(DoServerStart) || !string.IsNullOrEmpty(DoStudioStart)), !string.IsNullOrEmpty(DoStudioStart), JobName);
+                this.MoveArtifactsToTestResults(ApplyDotCover, (!string.IsNullOrEmpty(DoServerStart) || !string.IsNullOrEmpty(DoStudioStart)), !string.IsNullOrEmpty(DoStudioStart), JobName, trxTestResultsFile);
             }
             return trxTestResultsFile;
         }
