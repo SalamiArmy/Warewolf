@@ -718,7 +718,7 @@ namespace Warewolf.Launcher
             {
                 if (!string.IsNullOrEmpty(DoServerStart) || !string.IsNullOrEmpty(DoStudioStart) || !string.IsNullOrEmpty(DomywarewolfioStart))
                 {
-                    this.CleanupServerStudio();
+                    this.CleanupServerStudio(JobName);
                     Startmywarewolfio();
                     if (!string.IsNullOrEmpty(DoServerStart) || !string.IsNullOrEmpty(DoStudioStart))
                     {
@@ -737,7 +737,7 @@ namespace Warewolf.Launcher
                     trxTestResultsFile = ProcessUtils.RunFileInThisProcess(DotCoverRunnerPath);
                     if (!string.IsNullOrEmpty(DoServerStart) || !string.IsNullOrEmpty(DoStudioStart) || !string.IsNullOrEmpty(DomywarewolfioStart))
                     {
-                        this.CleanupServerStudio(false);
+                        this.CleanupServerStudio(JobName, false);
                     }
                 }
                 else
@@ -746,7 +746,7 @@ namespace Warewolf.Launcher
                     trxTestResultsFile = ProcessUtils.RunFileInThisProcess(TestRunnerPath);
                     if (!string.IsNullOrEmpty(DoServerStart) || !string.IsNullOrEmpty(DoStudioStart) || !string.IsNullOrEmpty(DomywarewolfioStart))
                     {
-                        this.CleanupServerStudio(!ApplyDotCover);
+                        this.CleanupServerStudio(JobName, !ApplyDotCover);
                     }
                 }
                 this.MoveArtifactsToTestResults(ApplyDotCover, (!string.IsNullOrEmpty(DoServerStart) || !string.IsNullOrEmpty(DoStudioStart)), !string.IsNullOrEmpty(DoStudioStart), JobName);
@@ -788,7 +788,7 @@ namespace Warewolf.Launcher
         {
             JobName = string.Join(",", JobSpecs.Keys.ToList().GetRange(startIndex, NumberOfUnitTestJobs));
             RunTestJobs();
-            this.CleanupServerStudio(ApplyDotCover);
+            this.CleanupServerStudio(JobName, ApplyDotCover);
         }
 
         public void RunAllServerTestJobs(int startIndex, int NumberOfServerTestJobs)
@@ -797,7 +797,7 @@ namespace Warewolf.Launcher
             ResourcesType = "ServerTests";
             DoServerStart = "true";
             RunTestJobs();
-            this.CleanupServerStudio(ApplyDotCover);
+            this.CleanupServerStudio(JobName, ApplyDotCover);
         }
 
         public void RunAllReleaseResourcesTestJobs(int startIndex, int NumberOfReleaseResourcesTestJobs)
@@ -806,7 +806,7 @@ namespace Warewolf.Launcher
             ResourcesType = "Release";
             DoServerStart = "true";
             RunTestJobs();
-            this.CleanupServerStudio(ApplyDotCover);
+            this.CleanupServerStudio(JobName, ApplyDotCover);
         }
 
         public void RunAllDesktopUITestJobs(int startIndex, int NumberOfDesktopUITestJobs)
@@ -815,7 +815,7 @@ namespace Warewolf.Launcher
             ResourcesType = "UITests";
             DoStudioStart = "true";
             RunTestJobs();
-            this.CleanupServerStudio(ApplyDotCover);
+            this.CleanupServerStudio(JobName, ApplyDotCover);
         }
 
         public void RunAllWebUITestJobs(int startIndex, int NumberOfWebUITestJobs)
@@ -823,7 +823,7 @@ namespace Warewolf.Launcher
             JobName = string.Join(",", JobSpecs.Keys.ToList().GetRange(startIndex, NumberOfWebUITestJobs));
             DomywarewolfioStart = "true";
             RunTestJobs();
-            this.CleanupServerStudio(ApplyDotCover);
+            this.CleanupServerStudio(JobName, ApplyDotCover);
         }
 
         public void RunAllLoadTestJobs(int startIndex, int NumberOfLoadTestJobs)
@@ -832,7 +832,7 @@ namespace Warewolf.Launcher
             ResourcesType = "Load";
             DoStudioStart = "true";
             RunTestJobs();
-            this.CleanupServerStudio(ApplyDotCover);
+            this.CleanupServerStudio(JobName, ApplyDotCover);
         }
 
         public void RunTestJobs(string jobName = "")

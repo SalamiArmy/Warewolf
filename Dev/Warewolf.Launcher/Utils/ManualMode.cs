@@ -7,7 +7,7 @@ namespace Warewolf.Launcher.Utils
         public static void Run(TestLauncher build)
         {
             build.InstallServer();
-            build.CleanupServerStudio();
+            build.CleanupServerStudio(build.JobName);
             build.Startmywarewolfio();
             if (String.IsNullOrEmpty(build.DomywarewolfioStart))
             {
@@ -19,7 +19,7 @@ namespace Warewolf.Launcher.Utils
             }
             Console.WriteLine("Press Enter to Shutdown.");
             Console.ReadKey();
-            build.CleanupServerStudio();
+            build.CleanupServerStudio(build.JobName);
         }
     }
 }
