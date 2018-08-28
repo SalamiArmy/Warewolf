@@ -307,7 +307,6 @@ namespace Warewolf.Launcher
                 }
                 if (options.Parallelize)
                 {
-                    Console.WriteLine("Parallelize: Running tests in parallel within each job.");
                     testLauncher.Parallelize = true;
                 }
                 if (options.StartContainer != null)
