@@ -453,11 +453,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Ruby.feature</DependentUpon>
     </Compile>
-    <Compile Include="Toolbox\Scripting\Script\Script.feature.cs">
-      <DependentUpon>Script.feature</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Toolbox\Scripting\Script\ScriptSteps.cs" />
     <Compile Include="Toolbox\Storage\Dropbox\DeleteDropbox.feature.cs">
       <AutoGen>True</AutoGen>
@@ -772,10 +767,6 @@
     <None Include="Toolbox\Scripting\ruby\Ruby.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Ruby.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Toolbox\Scripting\Script\Script.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Script.feature.cs</LastGenOutput>
     </None>
     <None Include="Toolbox\Storage\Dropbox\DeleteDropbox.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
