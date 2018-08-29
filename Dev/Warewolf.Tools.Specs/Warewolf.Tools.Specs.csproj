@@ -302,6 +302,13 @@
       <DependentUpon>WebGet.feature</DependentUpon>
     </Compile>
     <Compile Include="Toolbox\Resources\Web\WebGetSteps.cs" />
+    <Compile Include="Toolbox\Utility\DateandTime\DateandTime.feature.cs" />
+    <Compile Include="Toolbox\Utility\DateandTime\DateandTime1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DateandTime.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Toolbox\Utility\DateandTime\DateandTimeSteps.cs" />
     <Compile Include="Toolbox\Utility\RabbitMQ\Consume\ConsumeRabbitMQSteps.cs" />
     <Compile Include="Toolbox\Utility\RabbitMQ\Consume\ConsumeRabbitMQ.feature.cs">
       <AutoGen>True</AutoGen>
@@ -661,6 +668,10 @@
     <None Include="Toolbox\Resources\Web\WebGet.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WebGet.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Toolbox\Utility\DateandTime\DateandTime.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DateandTime1.feature.cs</LastGenOutput>
     </None>
     <None Include="Toolbox\Utility\RabbitMQ\Consume\ConsumeRabbitMQ.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
