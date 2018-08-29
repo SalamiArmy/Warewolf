@@ -205,23 +205,18 @@ namespace Dev2.Activities.Specs.Toolbox.Utility.DateandTime
             GetScalarValueFromEnvironment(result.Environment, DataListUtil.RemoveLanguageBrackets(ResultVariable),
                                        out string actualValue, out string error);
             Assert.IsTrue(actualValue.Contains("."));
-
-
         }
 
         [Then(@"the datetime result should contain milliseconds Standard Format")]
         public void ThenTheDatetimeResultShouldContainMillisecondsStandardFormat()
         {
             var result = scenarioContext.Get<IDSFDataObject>("result");
-
             GetScalarValueFromEnvironment(result.Environment, DataListUtil.RemoveLanguageBrackets(ResultVariable),
                                        out string actualValue, out string error);
 
             var parsed = DateTime.Parse(actualValue, CultureInfo.InvariantCulture);
             var milliseconds = parsed.Millisecond;
-            Assert.AreEqual(0, milliseconds);
+            Assert.AreNotEqual(0, milliseconds);
         }
-
-
     }
 }
