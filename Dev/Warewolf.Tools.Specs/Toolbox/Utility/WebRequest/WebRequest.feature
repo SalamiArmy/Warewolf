@@ -4,7 +4,7 @@ Feature: WebRequest
 	As a Warewolf user
 	I want a tool that I can input a url and get a html document
 
-
+@MSTest:DoNotParallelize
 Scenario: Enter a URL to download html  
 	Given I have the url "http://rsaklfsvrtfsbld:9810/api/products/Get" without timeout
 	When the web request tool is executed 
@@ -17,6 +17,7 @@ Scenario: Enter a URL to download html
 	|                                                                                                                   |
 	| [[result]] = [{ Id :1, Name : Television , Category : Electronic , Price :82000.0},{ Id :2, Name : Refrigerator , |
 
+@MSTest:DoNotParallelize
 Scenario: Enter a badly formed URL
 	Given I have the url "www.google.comx" without timeout
 	When the web request tool is executed 
@@ -29,6 +30,7 @@ Scenario: Enter a badly formed URL
 	|              |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Enter a URL made up of text and variables with no header
     Given I have the url "http://[[site]][[file]]" without timeout
 	And I have a web request variable "[[site]]" equal to "rsaklfsvrtfsbld:9810/api/products/"	
@@ -43,7 +45,7 @@ Scenario: Enter a URL made up of text and variables with no header
 	|                     |
 	| [[result]] = String |
 
-
+@MSTest:DoNotParallelize
 Scenario: Enter a URL and 2 variables each with a header parameter (json)
 	Given I have the url "http://rsaklfsvrtfsbld:9810/api/products/Get" without timeout
 	And I have a web request variable "[[ContentType]]" equal to "Content-Type"	
@@ -74,6 +76,7 @@ Scenario: Enter a URL and 2 variables each with a header parameter (xml)
 	|                                                                                                                   |
 	| [[result]] = <ArrayOfProduct xmlns:i= http://www.w3.org/2001/XMLSchema-instance  xmlns= http://schemas.datacontra |
 
+@MSTest:DoNotParallelize
 Scenario: Enter a URL that returns json
 	Given I have the url "http://rsaklfsvrtfsbld:9810/api/products/Get" without timeout
 	When the web request tool is executed	
@@ -111,6 +114,7 @@ Scenario: Enter a blank URL
 	|              |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Enter a URL that is a negative index recordset
 	Given I have the url "[[rec(-1).set]]" without timeout
 	When the web request tool is executed	
@@ -123,6 +127,7 @@ Scenario: Enter a URL that is a negative index recordset
 	|              |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Enter a number or variable that does not exist as URL
 	Given I have the url "<url>" with timeoutSeconds "<timeoutSeconds>"
 	And I have the Header "<Header>"
@@ -155,7 +160,7 @@ Scenario: Enter a URL that is a null variable
 	| URL       | Header |
 	| [[var]] = |        |
 
-
+@MSTest:DoNotParallelize
 Scenario: Enter a URL that is a non existent variable
 	Given I have the url "[[var]]" without timeout
 	When the web request tool is executed	
@@ -179,6 +184,7 @@ Scenario Outline: Enter a URL to download html with timeout specified too short
 	| http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=150 | 10             |
 	| http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15  | 10             |
 
+@MSTest:DoNotParallelize
 Scenario: Enter a recordset star input and output
 	Given I have a web request variable "[[urls().url]]" equal to "http://rsaklfsvrtfsbld/IntegrationTestSite/Proxy.ashx"	
 	And I have a web request variable "[[urls().url]]" equal to "http://tst-ci-remote-obsolete:3142/secure/Wait?WaitSeconds=15"	

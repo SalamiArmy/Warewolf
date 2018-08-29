@@ -4,6 +4,7 @@ Feature: PublishRabbitMQ
 	As a Warewolf user
 	I want a tool that performs this action
 
+@MSTest:DoNotParallelize
 Scenario: Open new RabbitMQ Publish Tool
 	Given I drag RabbitMQPublish tool onto the design surface
     And New Button is Enabled

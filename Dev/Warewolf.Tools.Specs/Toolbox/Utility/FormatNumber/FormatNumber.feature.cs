@@ -454,24 +454,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Format number rounding up to a character")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FormatNumberRoundingUpToACharacter()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format number rounding up to a character", new string[] {
-                        "Utility"});
-#line 127
-this.ScenarioSetup(scenarioInfo);
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
 #line 128
- testRunner.Given("I have a number 34.2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 129
- testRunner.And("I selected rounding \"Up\" to \"c\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a number 34.2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 130
- testRunner.And("I want to show 2 decimals decimals with value \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I selected rounding \"Up\" to \"c\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 131
- testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I want to show 2 decimals decimals with value \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 132
- testRunner.Then("the result \"\" will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 133
+ testRunner.Then("the result \"\" will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 134
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -484,14 +487,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Up",
                         "c",
                         "2"});
-#line 134
+#line 135
  testRunner.And("the debug inputs as", ((string)(null)), table17, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table18.AddRow(new string[] {
                         "[[result]] ="});
-#line 137
+#line 138
  testRunner.And("the debug output as", ((string)(null)), table18, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -500,20 +503,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Format number that is blank")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FormatNumberThatIsBlank()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format number that is blank", new string[] {
-                        "Utility"});
-#line 142
-this.ScenarioSetup(scenarioInfo);
-#line 143
- testRunner.Given("I have a number \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
 #line 144
- testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 145
- testRunner.Then("the result \"\" will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I have a number \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 146
+ testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 147
+ testRunner.Then("the result \"\" will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 148
    testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -522,24 +528,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Format non numeric")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FormatNonNumeric()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format non numeric", new string[] {
-                        "Utility"});
-#line 149
-this.ScenarioSetup(scenarioInfo);
-#line 150
- testRunner.Given("I have a number \"asdf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 151
- testRunner.And("I selected rounding \"None\" to 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
 #line 152
- testRunner.And("I want to show -2 decimals decimals with value \"-2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 153
- testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have a number \"asdf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 154
- testRunner.Then("the result \"\" will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I selected rounding \"None\" to 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 155
+ testRunner.And("I want to show -2 decimals decimals with value \"-2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 156
+ testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 157
+ testRunner.Then("the result \"\" will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 158
    testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -548,24 +557,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Format number to charater decimals")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FormatNumberToCharaterDecimals()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format number to charater decimals", new string[] {
-                        "Utility"});
-#line 158
-this.ScenarioSetup(scenarioInfo);
-#line 159
- testRunner.Given("I have a number 34.2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 160
- testRunner.And("I selected rounding \"Up\" to \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 161
- testRunner.And("I want to show \"asdf\" decimals decimals with value \"asdf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
 #line 162
- testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 163
- testRunner.Then("the result \"\" will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I have a number 34.2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 164
+ testRunner.And("I selected rounding \"Up\" to \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 165
+ testRunner.And("I want to show \"asdf\" decimals decimals with value \"asdf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 166
+ testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 167
+ testRunner.Then("the result \"\" will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 168
    testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -575,31 +587,34 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Format number with multipart variables and numbers for number rounding and decima" +
             "ls to show")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FormatNumberWithMultipartVariablesAndNumbersForNumberRoundingAndDecimalsToShow()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format number with multipart variables and numbers for number rounding and decima" +
                     "ls to show", new string[] {
-                        "Utility"});
-#line 167
-this.ScenarioSetup(scenarioInfo);
-#line 168
- testRunner.Given("I have a formatnumber variable \"[[int]]\" equal to 788", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 169
- testRunner.And("I have a number \"[[int]].894564545645\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 170
- testRunner.And("I have a formatnumber variable \"[[rounding]]\" equal to 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 171
- testRunner.And("I selected rounding \"Up\" to \"-[[rounding]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
 #line 172
- testRunner.And("I have a formatnumber variable \"[[decimals]]\" equal to \"-\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 173
- testRunner.And("I want to show \"[[decimals]]1\" decimals with value \"[[decimals]]1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a formatnumber variable \"[[int]]\" equal to 788", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 174
- testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I have a number \"[[int]].894564545645\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 175
- testRunner.Then("the result 80 will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I have a formatnumber variable \"[[rounding]]\" equal to 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 176
+ testRunner.And("I selected rounding \"Up\" to \"-[[rounding]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 177
+ testRunner.And("I have a formatnumber variable \"[[decimals]]\" equal to \"-\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 178
+ testRunner.And("I want to show \"[[decimals]]1\" decimals with value \"[[decimals]]1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 179
+ testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 180
+ testRunner.Then("the result 80 will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 181
     testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -612,14 +627,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Up",
                         "-[[rounding]] = -2",
                         "[[decimals]]1 = -1"});
-#line 177
+#line 182
  testRunner.And("the debug inputs as", ((string)(null)), table19, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table20.AddRow(new string[] {
                         "[[result]] = 80"});
-#line 180
+#line 185
  testRunner.And("the debug output as", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -628,18 +643,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Format number with negative recordset index for number")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FormatNumberWithNegativeRecordsetIndexForNumber()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format number with negative recordset index for number", new string[] {
-                        "Utility"});
-#line 185
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
+#line 191
 this.ScenarioSetup(scenarioInfo);
-#line 186
+#line 192
  testRunner.Given("I have a number \"[[my(-1).int]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 187
+#line 193
  testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 188
+#line 194
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -653,17 +671,17 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format number with negative recordset index for rounding", new string[] {
                         "Utility"});
-#line 191
+#line 197
 this.ScenarioSetup(scenarioInfo);
-#line 192
+#line 198
  testRunner.Given("I have a formatnumber variable \"[[int]]\" equal to 788", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 193
+#line 199
  testRunner.And("I have a number \"[[int]].894564545645\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 194
+#line 200
  testRunner.And("I selected rounding \"Up\" to \"[[my(-1).rounding]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 195
+#line 201
  testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 196
+#line 202
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -672,22 +690,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Format number with negative recordset index for decimals to show")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FormatNumberWithNegativeRecordsetIndexForDecimalsToShow()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format number with negative recordset index for decimals to show", new string[] {
-                        "Utility"});
-#line 199
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
+#line 206
 this.ScenarioSetup(scenarioInfo);
-#line 200
+#line 207
  testRunner.Given("I have a formatnumber variable \"[[int]]\" equal to 788", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 201
+#line 208
  testRunner.And("I have a number \"[[int]].894564545645\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 202
+#line 209
  testRunner.And("I want to show \"[[my(-1).decimals]]\" decimals with value \"[[my(-1).decimals]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 203
+#line 210
  testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 204
+#line 211
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -696,24 +717,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Format number with unknown scalar for rounding")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FormatNumberWithUnknownScalarForRounding()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format number with unknown scalar for rounding", new string[] {
-                        "Utility"});
-#line 207
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
+#line 215
 this.ScenarioSetup(scenarioInfo);
-#line 208
+#line 216
  testRunner.Given("I have a formatnumber variable \"[[int]]\" equal to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 209
+#line 217
  testRunner.And("I have a number \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 210
+#line 218
  testRunner.And("I selected rounding \"up\" to \"[[var]]\" equal to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 211
+#line 219
  testRunner.And("I want to show \"[[decimal]]\" decimals with value \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 212
+#line 220
  testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 213
+#line 221
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -722,24 +746,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Format number rounding with unknown scalar decimals value to show")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FormatNumberRoundingWithUnknownScalarDecimalsValueToShow()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format number rounding with unknown scalar decimals value to show", new string[] {
-                        "Utility"});
-#line 216
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
+#line 225
 this.ScenarioSetup(scenarioInfo);
-#line 217
+#line 226
  testRunner.Given("I have a number 788.894564545645", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 218
+#line 227
  testRunner.And("I selected rounding \"Normal\" to 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 219
+#line 228
  testRunner.And("I want to show \"[[var]]\" decimals with values \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 220
+#line 229
  testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 221
+#line 230
  testRunner.Then("the result 789 will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 222
+#line 231
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -752,14 +779,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Normal",
                         "0",
                         "\"\""});
-#line 223
+#line 232
  testRunner.And("the debug inputs as", ((string)(null)), table21, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table22.AddRow(new string[] {
                         "[[result]] = 789"});
-#line 226
+#line 235
  testRunner.And("the debug output as", ((string)(null)), table22, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -773,17 +800,17 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format a variable with a null value", new string[] {
                         "Utility"});
-#line 231
+#line 240
 this.ScenarioSetup(scenarioInfo);
-#line 232
+#line 241
  testRunner.Given("I have a formatnumber variable \"[[int]]\" equal to NULL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 233
+#line 242
  testRunner.And("I have a number \"[[int]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 234
+#line 243
  testRunner.And("I want to show 2 decimals decimals with value \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 235
+#line 244
  testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 236
+#line 245
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -797,15 +824,15 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format a variable with a non existent value", new string[] {
                         "Utility"});
-#line 239
+#line 248
 this.ScenarioSetup(scenarioInfo);
-#line 240
+#line 249
  testRunner.Given("I have a number \"[[int]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 241
+#line 250
  testRunner.And("I want to show 2 decimals decimals with value \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 242
+#line 251
  testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 243
+#line 252
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -814,30 +841,33 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Format number with record star notation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FormatNumberWithRecordStarNotation()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Format number with record star notation", new string[] {
-                        "Utility"});
-#line 246
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
+#line 256
 this.ScenarioSetup(scenarioInfo);
-#line 247
+#line 257
  testRunner.Given("I have a formatnumber variable \"[[format().num]]\" equal to 788", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 248
+#line 258
  testRunner.Given("I have a formatnumber variable \"[[format().num]]\" equal to \"9.894564545645\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 249
+#line 259
  testRunner.And("I have a number \"[[format(*).num]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 250
+#line 260
  testRunner.And("I have a formatnumber variable \"[[res().val]]\" equal to 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 251
+#line 261
  testRunner.And("I selected rounding \"Up\" to \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 252
+#line 262
  testRunner.And("I want to show \"4\" decimals with value \"4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 253
+#line 263
  testRunner.And("I have a formatnumber result is \"[[res(*).val]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 254
+#line 264
  testRunner.When("the format number is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 255
+#line 265
     testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -855,7 +885,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Up",
                         "3",
                         "4"});
-#line 256
+#line 266
  testRunner.And("the debug inputs as", ((string)(null)), table23, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -864,7 +894,7 @@ this.ScenarioSetup(scenarioInfo);
                         "[[res(1).val]] = 788.0000"});
             table24.AddRow(new string[] {
                         "[[res(2).val]] = 9.8950"});
-#line 260
+#line 270
  testRunner.And("the debug output as", ((string)(null)), table24, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -873,12 +903,15 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Number Format tool with complext object multi array")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void NumberFormatToolWithComplextObjectMultiArray()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Number Format tool with complext object multi array", new string[] {
-                        "Utility"});
-#line 266
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
+#line 277
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -893,11 +926,11 @@ this.ScenarioSetup(scenarioInfo);
             table25.AddRow(new string[] {
                         "[[@Person().Score()]]",
                         "0.12"});
-#line 267
+#line 278
  testRunner.Given("There is a complexobject in the datalist with this shape", ((string)(null)), table25, "Given ");
-#line 272
+#line 283
  testRunner.And("Alias is \"[[Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 273
+#line 284
  testRunner.And("Datasource is \"[[@Person(*).Score(*)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -912,17 +945,17 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "3",
                         "[[Score]]"});
-#line 274
+#line 285
  testRunner.And("I use a Number Format tool configured as", ((string)(null)), table26, "And ");
-#line 277
+#line 288
  testRunner.When("the selectAndApply tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 278
+#line 289
  testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 279
+#line 290
  testRunner.And("\"[[@Person(1).Score(1)]]\" has a value of \"0.300\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 280
+#line 291
  testRunner.And("\"[[@Person(2).Score(1)]]\" has a value of \"0.450\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 281
+#line 292
  testRunner.And("\"[[@Person(3).Score(1)]]\" has a value of \"0.120\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -931,12 +964,15 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Number Format tool with complex object multi array and field")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void NumberFormatToolWithComplexObjectMultiArrayAndField()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Number Format tool with complex object multi array and field", new string[] {
-                        "Utility"});
-#line 284
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
+#line 296
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -951,11 +987,11 @@ this.ScenarioSetup(scenarioInfo);
             table27.AddRow(new string[] {
                         "[[@Person.Member().Team().Score]]",
                         "0.12"});
-#line 285
+#line 297
  testRunner.Given("There is a complexobject in the datalist with this shape", ((string)(null)), table27, "Given ");
-#line 290
+#line 302
  testRunner.And("Alias is \"[[Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 291
+#line 303
  testRunner.And("Datasource is \"[[@Person.Member().Team().Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -970,17 +1006,17 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "3",
                         "[[Score]]"});
-#line 292
+#line 304
  testRunner.And("I use a Number Format tool configured as", ((string)(null)), table28, "And ");
-#line 295
+#line 307
  testRunner.When("the selectAndApply tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 296
+#line 308
  testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 297
+#line 309
  testRunner.And("\"[[@Person.Member(1).Team(1).Score]]\" has a value of \"0.300\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 298
+#line 310
  testRunner.And("\"[[@Person.Member(2).Team(1).Score]]\" has a value of \"0.450\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 299
+#line 311
  testRunner.And("\"[[@Person.Member(3).Team(1).Score]]\" has a value of \"0.120\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -989,12 +1025,15 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Number Format tool with complex object multi array and field and multi values")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void NumberFormatToolWithComplexObjectMultiArrayAndFieldAndMultiValues()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Number Format tool with complex object multi array and field and multi values", new string[] {
-                        "Utility"});
-#line 302
+                        "Utility",
+                        "MSTest:DoNotParallelize"});
+#line 315
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1018,11 +1057,11 @@ this.ScenarioSetup(scenarioInfo);
             table29.AddRow(new string[] {
                         "[[@Person.Member(3).Team(1).Score]]",
                         "0.14"});
-#line 303
+#line 316
  testRunner.Given("There is a complexobject in the datalist with this shape", ((string)(null)), table29, "Given ");
-#line 311
+#line 324
  testRunner.And("Alias is \"[[Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 312
+#line 325
  testRunner.And("Datasource is \"[[@Person.Member().Team().Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1037,23 +1076,23 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "3",
                         "[[Score]]"});
-#line 313
+#line 326
  testRunner.And("I use a Number Format tool configured as", ((string)(null)), table30, "And ");
-#line 316
+#line 329
  testRunner.When("the selectAndApply tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 317
+#line 330
  testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 318
+#line 331
  testRunner.And("\"[[@Person.Member(1).Team(1).Score]]\" has a value of \"0.300\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 319
+#line 332
  testRunner.And("\"[[@Person.Member(1).Team(2).Score]]\" has a value of \"0.450\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 320
+#line 333
  testRunner.And("\"[[@Person.Member(2).Team(1).Score]]\" has a value of \"0.120\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 321
+#line 334
  testRunner.And("\"[[@Person.Member(2).Team(2).Score]]\" has a value of \"0.110\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 322
+#line 335
  testRunner.And("\"[[@Person.Member(2).Team(3).Score]]\" has a value of \"0.130\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 323
+#line 336
  testRunner.And("\"[[@Person.Member(3).Team(1).Score]]\" has a value of \"0.140\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1068,7 +1107,7 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Number Format tool with complex non array", new string[] {
                         "MSTest:DoNotParallelize"});
-#line 326
+#line 339
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1077,11 +1116,11 @@ this.ScenarioSetup(scenarioInfo);
             table31.AddRow(new string[] {
                         "[[@Person.Member.Team.Score]]",
                         "0.3"});
-#line 327
+#line 340
  testRunner.Given("There is a complexobject in the datalist with this shape", ((string)(null)), table31, "Given ");
-#line 330
+#line 343
  testRunner.And("Alias is \"[[Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 331
+#line 344
  testRunner.And("Datasource is \"[[@Person.Member.Team.Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1096,13 +1135,13 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "3",
                         "[[Score]]"});
-#line 332
+#line 345
  testRunner.And("I use a Number Format tool configured as", ((string)(null)), table32, "And ");
-#line 335
+#line 348
  testRunner.When("the selectAndApply tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 336
+#line 349
  testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 337
+#line 350
  testRunner.And("\"[[@Person.Member.Team.Score]]\" has a value of \"0.300\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

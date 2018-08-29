@@ -4,8 +4,9 @@ Feature: ConsumeRabbitMQ
 	As a Warewolf user
 	I want a tool that performs this action
 
+@MSTest:DoNotParallelize
 Scenario: I Create a new Consume tool
-Given I create New Workflow
+	Given I create New Workflow
 	And I drag RabbitMQConsume tool onto the design surface    
 	And EditButton is Disabled
 	And RabbitMq Source is Enabled

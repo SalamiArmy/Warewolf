@@ -32,6 +32,7 @@ Scenario: Calculate using a given formula
 	|                 |
 	| [[result]] = 0 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate using multiple scalars and recordset inputs
 	Given I have a calculate variable "[[var]]" equal to "1"
 	And I have a calculate variable "[[var2]]" equal to "20"
@@ -104,6 +105,7 @@ Scenario: Calculate using Recordset (*) input in an agregate function like SUM a
 	| [[rs(2).val]] = 2 |
 	| [[rs(3).val]] = 3 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate using Recordset (*) input in an agregate function like SUM and output recordset star complex
 	Given I have a calculate variable "[[var().int]]" equal to 
 	| var().int	|
@@ -129,6 +131,7 @@ Scenario: Calculate using Recordset (*) input in an agregate function like SUM a
 	| [[rs(2).val]] = 17 |
 	| [[rs(3).val]] = 18 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate using incorrect formula
 	Given I have the formula "asdf"
 	When the calculate tool is executed
@@ -141,7 +144,7 @@ Scenario: Calculate using incorrect formula
 	|               |
 	| [[result]] = |
 
-
+@MSTest:DoNotParallelize
 Scenario: Calculate using variable as full calculation
 	Given I have a calculate variable "[[var]]" equal to "SUM(1,2,3)-5"
 	And I have the formula "[[var]]"
@@ -155,6 +158,7 @@ Scenario: Calculate using variable as full calculation
 	|                 |
 	| [[result]] = 1 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate using a negative index recordset value
 	Given I have the formula "[[my(-1).formula]]"
 	When the calculate tool is executed
@@ -166,6 +170,7 @@ Scenario: Calculate using a negative index recordset value
 	|              |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate using isnumber and blank
     Given I have the formula "if(isnumber(""),"Is number","Not number")"
 	When the calculate tool is executed
@@ -175,7 +180,7 @@ Scenario: Calculate using isnumber and blank
 	| "if(isnumber(""),"Is number","Not number")" |	
 	And the execution has "NO" error
 
-#This scenario should pass after the bug 11871 is fixed
+@MSTest:DoNotParallelize
 Scenario: Calculate Assign by evaluating a variable inside a variable
 	Given I have a calculate variable "[[a]]" equal to "b"
 	And I have a calculate variable "[[b]]" equal to "20"
@@ -190,6 +195,7 @@ Scenario: Calculate Assign by evaluating a variable inside a variable
 	|                 |
 	| [[result]] = 21 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate Assign by evaluating a variable inside a variable with function
 	Given I have a calculate variable "[[a]]" equal to "b"
 	And I have a calculate variable "[[b]]" equal to "20"
@@ -204,6 +210,7 @@ Scenario: Calculate Assign by evaluating a variable inside a variable with funct
 	|                 |
 	| [[result]] = 40 |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Calculate Assign by evaluating variables with functions
 	Given I have a calculate variable "[[x]]" equal to "1"
 	And I have a calculate variable "[[y]]" equal to "2"
@@ -387,6 +394,7 @@ Scenario Outline: Calculate Assign by evaluating variables with functions
 #	| 168                 | FALSE                                                      | FALSE                    |
 #	| 169                 | TRUE                                                       | TRUE                     |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Calculate using Recordset input in aggregate functions like SUM
 	Given I have a calculate variable "[[var().int]]" equal to 
 	| var().int	|
@@ -404,6 +412,7 @@ Scenario Outline: Calculate using Recordset input in aggregate functions like SU
 		| 2  | SUM([[var([[val]]).int]],[[var([[val]]).int]]) |  6     |
 		| 3  | SUM([[var([[val]]).int]],[[var([[val]]).int]]) |  6     |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate using variables with a null value
 	Given I have a calculate variable "[[a]]" equal to "NULL"
 	And I have a calculate variable "[[b]]" equal to "NULL"
@@ -414,6 +423,7 @@ Scenario: Calculate using variables with a null value
 	| fx =                       |
 	| SUM([[a]],[[b]]) = SUM(,) |
 
+@MSTest:DoNotParallelize
 Scenario: Variable that does not exist
 	Given I have a calculate variable "[[a]]" equal to "1"
 	And I have a calculate variable "[[b]]" equal to "20"
