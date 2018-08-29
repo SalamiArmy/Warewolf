@@ -450,7 +450,11 @@ namespace Warewolf.Launcher
                         {
                             if (!response.IsSuccessStatusCode)
                             {
-                                throw new HttpRequestException($"Error {(int)response.StatusCode} {response.ReasonPhrase} starting container. " + reader.ReadToEnd());
+                                int statusCode = (int)response.StatusCode;
+                                if (statusCode != 304)
+                                {
+                                    throw new HttpRequestException($"Error {statusCode} {response.ReasonPhrase} starting container. " + reader.ReadToEnd());
+                                }
                             }
                             else
                             {
@@ -722,9 +726,10 @@ namespace Warewolf.Launcher
                 var streamingResult = response.Content.ReadAsStreamAsync().Result;
                 using (StreamReader reader = new StreamReader(streamingResult, Encoding.UTF8))
                 {
-                    if (!response.IsSuccessStatusCode)
+                    int statusCode = (int)response.StatusCode;
+                    if (!response.IsSuccessStatusCode && statusCode != 304)
                     {
-                        Console.WriteLine($"Error {(int)response.StatusCode} {response.ReasonPhrase} stopping server container on {remoteSwarmDockerApi}: " + reader.ReadToEnd());
+                        Console.WriteLine($"Error {statusCode} {response.ReasonPhrase} stopping server container on {remoteSwarmDockerApi}: " + reader.ReadToEnd());
                     }
                     else
                     {
