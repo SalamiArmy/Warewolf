@@ -1614,7 +1614,7 @@ namespace Dev2.Activities.Specs.Composition
             var server = table.Rows[0]["Server"];
             var result = table.Rows[0]["Result"];
             var serverPath = table.Rows[0]["ServerPathFrom"];
-            var serverPathUniqueNameGuid = ScenarioContext.Current.Get<string>("serverPathToUniqueNameGuid");
+            var serverPathUniqueNameGuid = _scenarioContext.Get<string>("serverPathToUniqueNameGuid");
             serverPath = CommonSteps.AddGuidToPath(serverPath, serverPathUniqueNameGuid);
             var localPath = table.Rows[0]["LocalPathTo"];
             var downLoadActivity = new SharepointFileDownLoadActivity
@@ -1644,7 +1644,7 @@ namespace Dev2.Activities.Specs.Composition
             var result = table.Rows[0]["Result"];
             var name = table.Rows[0]["Server"];
             var serverPathFrom = table.Rows[0]["ServerPathFrom"];
-            var serverPathUniqueNameGuid = ScenarioContext.Current.Get<string>("serverPathToUniqueNameGuid");
+            var serverPathUniqueNameGuid = _scenarioContext.Get<string>("serverPathToUniqueNameGuid");
             serverPathFrom = CommonSteps.AddGuidToPath(serverPathFrom, serverPathUniqueNameGuid);
             var serverPathTo = table.Rows[0]["ServerPathTo"];
             var sharepointServerResourceId = ConfigurationManager.AppSettings[name].ToGuid();
@@ -1676,7 +1676,7 @@ namespace Dev2.Activities.Specs.Composition
             var name = table.Rows[0]["Server"];
             var overwrite = table.Rows[0]["Overwrite"];
             var serverPathFrom = table.Rows[0]["ServerPathFrom"];
-            var serverPathUniqueNameGuid = ScenarioContext.Current.Get<string>("serverPathToUniqueNameGuid");
+            var serverPathUniqueNameGuid = _scenarioContext.Get<string>("serverPathToUniqueNameGuid");
             serverPathFrom = CommonSteps.AddGuidToPath(serverPathFrom, serverPathUniqueNameGuid);
             var serverPathTo = table.Rows[0]["ServerPathTo"];
             var sharepointServerResourceId = ConfigurationManager.AppSettings[name].ToGuid();
@@ -1832,7 +1832,7 @@ namespace Dev2.Activities.Specs.Composition
             environmentModel.Connect();
 
             var sharepointList = table.Rows[0]["List"];
-            sharepointList += "_" + ScenarioContext.Current.Get<int>("recordsetNameRandomizer").ToString();
+            sharepointList += "_" + _scenarioContext.Get<int>("recordsetNameRandomizer").ToString();
             var result = table.Rows[0]["Result"];
             var createListItemActivity = new SharepointUpdateListItemActivity
             {
@@ -2051,7 +2051,7 @@ namespace Dev2.Activities.Specs.Composition
             var serverPathTo = table.Rows[0]["ServerPathTo"];
             var serverPathToUniqueNameGuid = CommonSteps.GetGuid();
             serverPathTo = CommonSteps.AddGuidToPath(serverPathTo, serverPathToUniqueNameGuid);
-            ScenarioContext.Current.Add("serverPathToUniqueNameGuid", serverPathToUniqueNameGuid);
+            _scenarioContext.Add("serverPathToUniqueNameGuid", serverPathToUniqueNameGuid);
             var sharepointServerResourceId = ConfigurationManager.AppSettings[name].ToGuid();
             var sharepointSource = sources.Single(source => source.ResourceID == sharepointServerResourceId);
             var fileUploadActivity = new SharepointFileUploadActivity
@@ -2684,9 +2684,9 @@ namespace Dev2.Activities.Specs.Composition
         }
 
 
-        static void DeleteSharepointFile(string serverPathTo)
+        void DeleteSharepointFile(string serverPathTo)
         {
-            var serverPathUniqueNameGuid = ScenarioContext.Current.Get<string>("serverPathToUniqueNameGuid");
+            var serverPathUniqueNameGuid = _scenarioContext.Get<string>("serverPathToUniqueNameGuid");
             var serverPath = CommonSteps.AddGuidToPath(serverPathTo, serverPathUniqueNameGuid);
             if (!String.IsNullOrEmpty(serverPathUniqueNameGuid))
             {
@@ -2702,7 +2702,7 @@ namespace Dev2.Activities.Specs.Composition
             TryGetValue(workflowName, out IContextualResourceModel resourceModel);
             TryGetValue("environment", out IServer server);
             TryGetValue("resourceRepo", out IResourceRepository repository);
-            var rep = new Studio.Core.VersionManagerProxy(new CommunicationControllerFactory(), server.Connection);
+            var rep = new VersionManagerProxy(new CommunicationControllerFactory(), server.Connection);
             var versions = rep.GetVersions(id);
             _scenarioContext["Versions"] = versions;
             Assert.AreEqual(numberOfVersions, versions.Count);
@@ -2783,7 +2783,7 @@ namespace Dev2.Activities.Specs.Composition
         {
             var assignActivity = new DsfMultiAssignActivity { DisplayName = assignName };
             var recordsetNameRandomizer = new Random().Next(60) + 1;
-            ScenarioContext.Current.Add("recordsetNameRandomizer", recordsetNameRandomizer);
+            _scenarioContext.Add("recordsetNameRandomizer", recordsetNameRandomizer);
 
             foreach (var tableRow in table.Rows)
             {
@@ -2875,8 +2875,8 @@ namespace Dev2.Activities.Specs.Composition
             }
             dsfEnhancedDotNetDllActivity.Namespace = namespaceItem;
             dsfEnhancedDotNetDllActivity.SourceId = pluginSource.Id;
-            ScenarioContext.Current.Add(dotNetServiceName, dsfEnhancedDotNetDllActivity);
-            ScenarioContext.Current.Add("pluginConstructors", pluginConstructors);
+            _scenarioContext.Add(dotNetServiceName, dsfEnhancedDotNetDllActivity);
+            _scenarioContext.Add("pluginConstructors", pluginConstructors);
             _commonSteps.AddVariableToVariableList(ObjectName);
             _commonSteps.AddVariableToVariableList(ActionOutputVaribale);
             _commonSteps.AddVariableToVariableList(recNumber);
@@ -2897,13 +2897,13 @@ namespace Dev2.Activities.Specs.Composition
             var localFile = table.Rows[0]["Local File"];
             var localFileUniqueNameGuid = CommonSteps.GetGuid();
             localFile = CommonSteps.AddGuidToPath(localFile, localFileUniqueNameGuid);
-            ScenarioContext.Current.Add("localFileUniqueNameGuid", localFileUniqueNameGuid);
+            _scenarioContext.Add("localFileUniqueNameGuid", localFileUniqueNameGuid);
             Console.WriteLine("Generated new local file path as " + localFileUniqueNameGuid + ".");
             var overwriteOrAdd = table.Rows[0]["OverwriteOrAdd"];
             var dropboxFile = table.Rows[0]["DropboxFile"];
             var serverPathToUniqueNameGuid = CommonSteps.GetGuid();
             dropboxFile = CommonSteps.AddGuidToPath(dropboxFile, serverPathToUniqueNameGuid);
-            ScenarioContext.Current.Add("serverPathToUniqueNameGuid", serverPathToUniqueNameGuid);
+            _scenarioContext.Add("serverPathToUniqueNameGuid", serverPathToUniqueNameGuid);
             Console.WriteLine("Generated new server path for dropbox server path as " + serverPathToUniqueNameGuid + ".");
             var result = table.Rows[0]["Result"];
             uploadActivity.FromPath = localFile;
@@ -2970,7 +2970,7 @@ namespace Dev2.Activities.Specs.Composition
             var dropBoxSource = GetDropBoxSource();
             downloadActivity.SelectedSource = dropBoxSource;
             downloadActivity.FromPath = table.Rows[0]["Local File"];
-            var serverPathUniqueNameGuid = ScenarioContext.Current.Get<string>("serverPathToUniqueNameGuid");
+            var serverPathUniqueNameGuid = _scenarioContext.Get<string>("serverPathToUniqueNameGuid");
             downloadActivity.ToPath = CommonSteps.AddGuidToPath(table.Rows[0]["DropboxFile"], serverPathUniqueNameGuid);
             var overwriteOrAdd = table.Rows[0]["OverwriteOrAdd"];
             downloadActivity.OverwriteFile = overwriteOrAdd.ToLower() == "Overwrite".ToLower();
@@ -2990,7 +2990,7 @@ namespace Dev2.Activities.Specs.Composition
             var dropBoxSource = GetDropBoxSource();
             deleteActivity.SelectedSource = dropBoxSource;
             var dropboxFile = table.Rows[0]["DropboxFile"];
-            var serverPathUniqueNameGuid = ScenarioContext.Current.Get<string>("serverPathToUniqueNameGuid");
+            var serverPathUniqueNameGuid = _scenarioContext.Get<string>("serverPathToUniqueNameGuid");
             dropboxFile = CommonSteps.AddGuidToPath(dropboxFile, serverPathUniqueNameGuid);
             deleteActivity.DeletePath = dropboxFile;
             var result = table.Rows[0]["Result"];
@@ -3069,8 +3069,8 @@ namespace Dev2.Activities.Specs.Composition
         [Given(@"""(.*)"" constructorinputs (.*) with inputs as")]
         public void GivenConstructorWithInputsAs(string serviceName, int p1, Table table)
         {
-            var dsfEnhancedDotNetDllActivity = ScenarioContext.Current.Get<DsfEnhancedDotNetDllActivity>(serviceName);
-            var pluginConstructors = ScenarioContext.Current.Get<IList<IPluginConstructor>>("pluginConstructors");
+            var dsfEnhancedDotNetDllActivity = _scenarioContext.Get<DsfEnhancedDotNetDllActivity>(serviceName);
+            var pluginConstructors = _scenarioContext.Get<IList<IPluginConstructor>>("pluginConstructors");
             var pluginConstructor = pluginConstructors.FirstOrDefault(constructor => constructor.Inputs.Count == p1);
             dsfEnhancedDotNetDllActivity.Constructor = pluginConstructor;
             dsfEnhancedDotNetDllActivity.ConstructorInputs = new List<IServiceInput>();
@@ -3089,7 +3089,7 @@ namespace Dev2.Activities.Specs.Composition
         [Given(@"""(.*)"" service Action ""(.*)"" with inputs and output ""(.*)"" as")]
         public void GivenServiceActionWithInputsAndOutputAs(string serviceName, string action, string outputVar, Table table)
         {
-            var dsfEnhancedDotNetDllActivity = ScenarioContext.Current.Get<DsfEnhancedDotNetDllActivity>(serviceName);
+            var dsfEnhancedDotNetDllActivity = _scenarioContext.Get<DsfEnhancedDotNetDllActivity>(serviceName);
             var pluginAction = allPluginActions.Single(action1 => action1.Method == action);
             pluginAction.OutputVariable = outputVar;
             foreach (var tableRow in table.Rows)
@@ -3793,7 +3793,7 @@ namespace Dev2.Activities.Specs.Composition
                 DisplayName = activityName
             };
 
-            ScenarioContext.Current.Add("RabbitMqTool", dsfConsumeRabbitMqActivity);
+            _scenarioContext.Add("RabbitMqTool", dsfConsumeRabbitMqActivity);
             _commonSteps.AddActivityToActivityList(parentName, activityName, dsfConsumeRabbitMqActivity);
         }
 
@@ -3801,21 +3801,21 @@ namespace Dev2.Activities.Specs.Composition
         public void GivenIsObjectIsSetTo(string toolName, string isObjectString)
         {
             var isObject = bool.Parse(isObjectString);
-            var dsfConsumeRabbitMqActivity = ScenarioContext.Current.Get<DsfConsumeRabbitMQActivity>("RabbitMqTool");
+            var dsfConsumeRabbitMqActivity = _scenarioContext.Get<DsfConsumeRabbitMQActivity>("RabbitMqTool");
             dsfConsumeRabbitMqActivity.IsObject = isObject;
         }
 
         [Given(@"""(.*)"" objectname as ""(.*)""")]
         public void GivenObjectnameAs(string toolName, string Objectname)
         {
-            var dsfConsumeRabbitMqActivity = ScenarioContext.Current.Get<DsfConsumeRabbitMQActivity>("RabbitMqTool");
+            var dsfConsumeRabbitMqActivity = _scenarioContext.Get<DsfConsumeRabbitMQActivity>("RabbitMqTool");
             dsfConsumeRabbitMqActivity.ObjectName = Objectname;
         }
 
         [Given(@"Queue Name as ""(.*)""")]
         public void GivenQueueNameAs(string queueName)
         {
-            var dsfConsumeRabbitMqActivity = ScenarioContext.Current.Get<DsfConsumeRabbitMQActivity>("RabbitMqTool");
+            var dsfConsumeRabbitMqActivity = _scenarioContext.Get<DsfConsumeRabbitMQActivity>("RabbitMqTool");
             dsfConsumeRabbitMqActivity.QueueName = queueName;
         }
 
