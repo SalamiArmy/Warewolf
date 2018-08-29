@@ -121,6 +121,7 @@ Examples:
 	| 17       | [[var]],[[var2]],[[rec()]],[[rec().var2]],[[rec().var]]                                | All        | [[[[a]]]]             | 5     | [[var]],[[var2]],[[rec().var]],[[rec().var2]]                                | [[var]]         | [[var]]]]              | Default  | 7             |
 	| 18       | [[var]],[[var2]],[[rec()]],[[rec().var2]],[[rec().var]]                                | All        | [[                    | 2     | [[var]],[[var2]],[[rec().var]],[[rec().var2]]                                | [[var]]         | [[var]]                | Default  | 7             |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Insert for RecordsetsOnly FilterType and Default Provider
 	Given I have the following intellisense options '<varlist>'
 		And the filter type is '<filterType>'

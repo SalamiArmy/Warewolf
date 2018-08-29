@@ -1421,24 +1421,30 @@ this.InsertForAllFilterTypeAndDefaultProvider("18", "[[var]],[[var2]],[[rec()]],
         
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider(string testName, string varlist, string filterType, string input, string index, string dropDownList, string option, string result, string provider, string caretposition, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insert for RecordsetsOnly FilterType and Default Provider", exampleTags);
-#line 124
-this.ScenarioSetup(scenarioInfo);
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insert for RecordsetsOnly FilterType and Default Provider", @__tags);
 #line 125
- testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 126
-  testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 127
- testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 128
- testRunner.And(string.Format("the cursor is at index \'{0}\'", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 129
- testRunner.And(string.Format("the provider used is \'{0}\'", provider), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the cursor is at index \'{0}\'", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 130
- testRunner.And(string.Format("the suggestion list as \'{0}\'", dropDownList), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the provider used is \'{0}\'", provider), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 131
- testRunner.When(string.Format("I select the following string option \'{0}\'", option), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And(string.Format("the suggestion list as \'{0}\'", dropDownList), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 132
+ testRunner.When(string.Format("I select the following string option \'{0}\'", option), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 133
  testRunner.Then(string.Format("the result text should be \"{0}\" with caret position will be \'{1}\'", result, caretposition), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1447,6 +1453,8 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]")]
@@ -1460,7 +1468,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "9")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_1()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("1", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]", "RecordsetsOnly", "u", "1", "[[sum()]],[[mus()]]", "[[sum()]]", "[[sum()]]", "Default", "9", ((string[])(null)));
 #line hidden
         }
@@ -1468,6 +1476,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("1", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]")]
@@ -1481,7 +1491,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("1", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "1")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_2()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("2", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]", "RecordsetsOnly", "b", "1", "", "", "b", "Default", "1", ((string[])(null)));
 #line hidden
         }
@@ -1489,6 +1499,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("2", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]")]
@@ -1502,7 +1514,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("2", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "3")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_3()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("3", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]", "RecordsetsOnly", "[[()]]", "3", "", "", "[[()]]", "Default", "3", ((string[])(null)));
 #line hidden
         }
@@ -1510,6 +1522,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("3", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]")]
@@ -1523,7 +1537,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("3", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "11")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_4()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("4", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]", "RecordsetsOnly", "[[sum()]] s", "11", "[[sum()]],[[mus()]]", "", "[[sum()]] s", "Default", "11", ((string[])(null)));
 #line hidden
         }
@@ -1531,6 +1545,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("4", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]")]
@@ -1544,7 +1560,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("4", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "19")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_5()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("5", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]", "RecordsetsOnly", "[[sum()]] [[", "12", "[[sum()]],[[mus()]]", "[[mus()]]", "[[sum()]] [[mus()]]", "Default", "19", ((string[])(null)));
 #line hidden
         }
@@ -1552,6 +1568,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("5", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]")]
@@ -1565,7 +1583,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("5", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "13")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_6()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("6", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]", "RecordsetsOnly", "rec s", "5", "[[sum()]],[[mus()]]", "[[mus()]]", "rec [[mus()]]", "Default", "13", ((string[])(null)));
 #line hidden
         }
@@ -1573,6 +1591,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("6", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]")]
@@ -1586,7 +1606,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("6", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "12")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_7()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("7", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]", "RecordsetFields", "[[sum().b]]", "9", "[[sum().b]],[[sum().ba]]", "[[sum().ba]]", "[[sum().ba]]", "Default", "12", ((string[])(null)));
 #line hidden
         }
@@ -1594,6 +1614,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("7", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]")]
@@ -1607,7 +1629,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("7", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "11")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_8()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("8", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]", "All", "[[sum(b).b]]", "7", "[[b]],[[sum().b]],[[sum().ba]],[[mus().b]]", "[[b]]", "[[sum([[b]]).b]]", "Default", "11", ((string[])(null)));
 #line hidden
         }
@@ -1615,6 +1637,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("8", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[ba]],[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]")]
@@ -1628,7 +1652,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("8", "[[b]],[[sum().b]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "12")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_9()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("9", "[[ba]],[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]", "All", "[[sum([[b]]).b]]", "14", "[[sum().b]],[[sum().ba]]", "[[sum().ba]]", "[[sum().ba]]", "Default", "12", ((string[])(null)));
 #line hidden
         }
@@ -1636,6 +1660,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("9", "[[ba]],[[b]],[[su
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[ba]],[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]")]
@@ -1649,7 +1675,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("9", "[[ba]],[[b]],[[su
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "11")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_10()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("10", "[[ba]],[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]", "All", "[[sum([[b]]).b]]", "14", "[[sum().b]],[[sum().ba]]", "[[sum().b]]", "[[sum().b]]", "Default", "11", ((string[])(null)));
 #line hidden
         }
@@ -1657,6 +1683,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("10", "[[ba]],[[b]],[[s
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]")]
@@ -1670,7 +1698,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("10", "[[ba]],[[b]],[[s
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "11")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_11()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("11", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]", "RecordsetsOnly", "u u", "3", "[[sum()]],[[mus()]]", "[[sum()]]", "u [[sum()]]", "Default", "11", ((string[])(null)));
 #line hidden
         }
@@ -1678,6 +1706,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("11", "[[b]],[[sum().b]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]")]
@@ -1691,7 +1721,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("11", "[[b]],[[sum().b]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "19")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_12()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("12", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]", "RecordsetsOnly", "[[sum()]] s", "11", "[[sum()]],[[mus()]]", "[[mus()]]", "[[sum()]] [[mus()]]", "Default", "19", ((string[])(null)));
 #line hidden
         }
@@ -1699,6 +1729,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("12", "[[b]],[[sum().b]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]")]
@@ -1712,7 +1744,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("12", "[[b]],[[sum().b]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "23")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_13()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("13", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]", "RecordsetFields", "[[sum().b]][[sum().b]]", "20", "[[sum().b]],[[sum().ba]],[[mus().b]]", "[[sum().ba]]", "[[sum().b]][[sum().ba]]", "Default", "23", ((string[])(null)));
 #line hidden
         }
@@ -1720,6 +1752,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("13", "[[b]],[[sum().b]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[ba]],[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]")]
@@ -1733,7 +1767,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("13", "[[b]],[[sum().b]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "12")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_14()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("14", "[[ba]],[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]", "All", "[[sum().b]]", "9", "[[sum().b]],[[sum().ba]]", "[[sum().ba]]", "[[sum().ba]]", "Default", "12", ((string[])(null)));
 #line hidden
         }
@@ -1741,6 +1775,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("14", "[[ba]],[[b]],[[s
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[ba]],[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]")]
@@ -1754,7 +1790,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("14", "[[ba]],[[b]],[[s
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "17")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_15()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("15", "[[ba]],[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]]", "All", "[[sum().b]]b", "12", "[[b]],[[ba]],[[sum().b]],[[sum().ba]],[[mus().b]]", "[[ba]]", "[[sum().b]][[ba]]", "Default", "17", ((string[])(null)));
 #line hidden
         }
@@ -1762,6 +1798,8 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("15", "[[ba]],[[b]],[[s
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Insert for RecordsetsOnly FilterType and Default Provider: 16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DefaultIntellisense")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:testName", "16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:varlist", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]")]
@@ -1775,7 +1813,7 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("15", "[[ba]],[[b]],[[s
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "10")]
         public virtual void InsertForRecordsetsOnlyFilterTypeAndDefaultProvider_16()
         {
-#line 124
+#line 125
 this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("16", "[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]", "RecordsetsOnly", "=u", "2", "[[sum()]],[[mus()]]", "[[sum()]]", "=[[sum()]]", "Default", "10", ((string[])(null)));
 #line hidden
         }
@@ -1789,23 +1827,23 @@ this.InsertForRecordsetsOnlyFilterTypeAndDefaultProvider("16", "[[b]],[[sum().b]
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insert for Json FilterType and Default Provider Case Insensitive", @__tags);
-#line 153
-this.ScenarioSetup(scenarioInfo);
 #line 154
- testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 155
- testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 156
- testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 157
- testRunner.And(string.Format("the cursor is at index \'{0}\'", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 158
- testRunner.And(string.Format("the provider used is \'{0}\'", provider), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the cursor is at index \'{0}\'", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 159
- testRunner.And(string.Format("the suggestion list as \'{0}\'", dropDownList), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the provider used is \'{0}\'", provider), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 160
- testRunner.When(string.Format("I select the following string option \'{0}\'", option), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And(string.Format("the suggestion list as \'{0}\'", dropDownList), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 161
+ testRunner.When(string.Format("I select the following string option \'{0}\'", option), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 162
  testRunner.Then(string.Format("the result text should be \"{0}\" with caret position will be \'{1}\'", result, caretposition), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1829,7 +1867,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive_1()
         {
-#line 153
+#line 154
 this.InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive("1", "[[@Person]],[[@Person.name]]", "JsonObject", "@P", "2", "[[@Person.name]],[[@Person]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -1852,7 +1890,7 @@ this.InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive("1", "[[@Person]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive_2()
         {
-#line 153
+#line 154
 this.InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive("2", "[[@Person]],[[@Person.name]]", "JsonObject", "[[", "3", "[[@Person.name]],[[@Person]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -1875,7 +1913,7 @@ this.InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive("2", "[[@Person]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive_3()
         {
-#line 153
+#line 154
 this.InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive("3", "[[@Person]],[[@Person.name]]", "JsonObject", "@PERSON.", "8", "[[@Person.name]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -1898,7 +1936,7 @@ this.InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive("3", "[[@Person]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive_4()
         {
-#line 153
+#line 154
 this.InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive("4", "[[@Person]],[[@Person.name]]", "JsonObject", "[[@PERSON.", "10", "[[@Person.name]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -1921,7 +1959,7 @@ this.InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive("4", "[[@Person]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive_5()
         {
-#line 153
+#line 154
 this.InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive("5", "[[@Person]],[[@PERSON.name]]", "JsonObject", "[[@person", "9", "[[@PERSON.name]]", "[[@PERSON.name]]", "[[@PERSON.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -1935,23 +1973,23 @@ this.InsertForJsonFilterTypeAndDefaultProviderCaseInsensitive("5", "[[@Person]],
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insert for Json FilterType and Default Provider", @__tags);
-#line 171
-this.ScenarioSetup(scenarioInfo);
 #line 172
- testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 173
-  testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 174
- testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 175
- testRunner.And(string.Format("the cursor is at index \'{0}\'", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 176
- testRunner.And(string.Format("the provider used is \'{0}\'", provider), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the cursor is at index \'{0}\'", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 177
- testRunner.And(string.Format("the suggestion list as \'{0}\'", dropDownList), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the provider used is \'{0}\'", provider), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 178
- testRunner.When(string.Format("I select the following string option \'{0}\'", option), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And(string.Format("the suggestion list as \'{0}\'", dropDownList), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 179
+ testRunner.When(string.Format("I select the following string option \'{0}\'", option), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 180
  testRunner.Then(string.Format("the result text should be \"{0}\" with caret position will be \'{1}\'", result, caretposition), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1975,7 +2013,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_1()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("1", "[[@Person]],[[@Person.name]]", "JsonObject", "@P", "2", "[[@Person.name]],[[@Person]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -1998,7 +2036,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("1", "[[@Person]],[[@Person.name]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_2()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("2", "[[@Person]],[[@Person.name]]", "JsonObject", "[[", "3", "[[@Person.name]],[[@Person]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2021,7 +2059,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("2", "[[@Person]],[[@Person.name]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_3()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("3", "[[@Person]],[[@Person.name]]", "JsonObject", "@Person.", "8", "[[@Person.name]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2044,7 +2082,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("3", "[[@Person]],[[@Person.name]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_4()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("4", "[[@Person]],[[@Person.name]]", "JsonObject", "[[@Person.", "10", "[[@Person.name]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2067,7 +2105,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("4", "[[@Person]],[[@Person.name]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_5()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("5", "[[@Person]],[[@Person.name]]", "JsonObject", "[[@Person.name", "15", "[[@Person.name]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2090,7 +2128,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("5", "[[@Person]],[[@Person.name]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_6()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("6", "[[@Person]],[[@Person.name]]", "JsonObject", "name", "4", "[[@Person.name]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2113,7 +2151,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("6", "[[@Person]],[[@Person.name]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_7()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("7", "[[@Person]],[[@Person.name]]", "JsonObject", "[", "1", "[[@Person.name]],[[@Person]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2136,7 +2174,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("7", "[[@Person]],[[@Person.name]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_8()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("8", "[[@Person]],[[@Person.name]]", "JsonObject", "rson", "3", "[[@Person.name]],[[@Person]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2159,7 +2197,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("8", "[[@Person]],[[@Person.name]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_9()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("9", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "@P", "2", "[[@Person.Age]],[[@Person.name]],[[@Person]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2182,7 +2220,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("9", "[[@Person]],[[@Person.name]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "15")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_10()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("10", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "@P", "2", "[[@Person.Age]],[[@Person.name]],[[@Person]]", "[[@Person.Age]]", "[[@Person.Age]]", "Default", "15", ((string[])(null)));
 #line hidden
         }
@@ -2205,7 +2243,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("10", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "15")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_11()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("11", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "[[", "2", "[[@Person.Age]],[[@Person.name]],[[@Person]]", "[[@Person.Age]]", "[[@Person.Age]]", "Default", "15", ((string[])(null)));
 #line hidden
         }
@@ -2228,7 +2266,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("11", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_12()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("12", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "[[", "2", "[[@Person.Age]],[[@Person.name]],[[@Person]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2251,7 +2289,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("12", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_14()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("14", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "@Person.", "8", "[[@Person.Age]],[[@Person.name]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2274,7 +2312,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("14", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "15")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_15()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("15", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "@Person.", "8", "[[@Person.Age]],[[@Person.name]]", "[[@Person.Age]]", "[[@Person.Age]]", "Default", "15", ((string[])(null)));
 #line hidden
         }
@@ -2297,7 +2335,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("15", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_16()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("16", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "[[@Person.", "10", "[[@Person.Age]],[[@Person.name]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2320,7 +2358,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("16", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "15")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_17()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("17", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "[[@Person.", "10", "[[@Person.name]],[[@Person.Age]]", "[[@Person.Age]]", "[[@Person.Age]]", "Default", "15", ((string[])(null)));
 #line hidden
         }
@@ -2343,7 +2381,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("17", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_18()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("18", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "[[@Person.name", "15", "[[@Person.name]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2366,7 +2404,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("18", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "15")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_19()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("19", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "[[@Person.Age", "10", "[[@Person.Age]]", "[[@Person.Age]]", "[[@Person.Age]]", "Default", "15", ((string[])(null)));
 #line hidden
         }
@@ -2389,7 +2427,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("19", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "16")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_20()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("20", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "name", "4", "[[@Person.name]]", "[[@Person.name]]", "[[@Person.name]]", "Default", "16", ((string[])(null)));
 #line hidden
         }
@@ -2412,7 +2450,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("20", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "15")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_21()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("21", "[[@Person]],[[@Person.name]],[[@Person.Age]]", "JsonObject", "Age", "3", "[[@Person.Age]]", "[[@Person.Age]]", "[[@Person.Age]]", "Default", "15", ((string[])(null)));
 #line hidden
         }
@@ -2435,7 +2473,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("21", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "22")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_22()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("22", "[[@Person]],[[@Person.name]],[[@Person.Age]],[[@Person.Child.Name]]", "JsonObject", "Name", "4", "[[@Person.Child.Name]]", "[[@Person.Child.Name]]", "[[@Person.Child.Name]]", "Default", "22", ((string[])(null)));
 #line hidden
         }
@@ -2458,7 +2496,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("22", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "22")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_23()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("23", "[[@Person]],[[@Person.name]],[[@Person.Age]],[[@Person.Child.Name]]", "JsonObject", "Name", "1", "[[@Person.Child.Name]]", "[[@Person.Child.Name]]", "[[@Person.Child.Name]]", "Default", "22", ((string[])(null)));
 #line hidden
         }
@@ -2481,7 +2519,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("23", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "27")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_25()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("25", "[[@Person]],[[@Person.name]],[[@Person.Age]],[[@Person.Child.Name]]", "JsonObject", "Junk P", "6", "[[@Person.Age]],[[@Person.name]],[[@Person]],[[@Person.Child.Name]]", "[[@Person.Child.Name]]", "Junk [[@Person.Child.Name]]", "Default", "27", ((string[])(null)));
 #line hidden
         }
@@ -2504,7 +2542,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("25", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "31")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_26()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("26", "[[@Person]],[[@Person.name]],[[@Person.Age]],[[@Person.Child.Name]]", "JsonObject", "[[Junk]] P", "10", "[[@Person.Age]],[[@Person.name]],[[@Person]],[[@Person.Child.Name]]", "[[@Person.Child.Name]]", "[[Junk]] [[@Person.Child.Name]]", "Default", "31", ((string[])(null)));
 #line hidden
         }
@@ -2527,7 +2565,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("26", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "25")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_28()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("28", "[[@Person]],[[@Person.name]],[[@Person.Age]],[[@Person.Child.Name]]", "JsonObject", "]] P", "4", "[[@Person.Age]],[[@Person.name]],[[@Person]],[[@Person.Child.Name]]", "[[@Person.Child.Name]]", "]] [[@Person.Child.Name]]", "Default", "25", ((string[])(null)));
 #line hidden
         }
@@ -2550,7 +2588,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("28", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "24")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_29()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("29", "[[@Person]],[[@Person.name]],[[@Person.Age]],[[@Person.Child.Name]]", "JsonObject", "( P", "3", "[[@Person.Age]],[[@Person.name]],[[@Person]],[[@Person.Child.Name]]", "[[@Person.Child.Name]]", "( [[@Person.Child.Name]]", "Default", "24", ((string[])(null)));
 #line hidden
         }
@@ -2573,7 +2611,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("29", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "24")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_30()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("30", "[[@Person]],[[@Person.name]],[[@Person.Age]],[[@Person.Child.Name]]", "JsonObject", ") P", "3", "[[@Person.Age]],[[@Person.name]],[[@Person]],[[@Person.Child.Name]]", "[[@Person.Child.Name]]", ") [[@Person.Child.Name]]", "Default", "24", ((string[])(null)));
 #line hidden
         }
@@ -2596,7 +2634,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("30", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "24")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_35()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("35", "[[@Person]],[[@Person.name]],[[@Person.Age]],[[@Person.Child.Name]]", "JsonObject", ". P [[", "3", "[[@Person.Age]],[[@Person.name]],[[@Person.Child.Name]]", "[[@Person.Child.Name]]", ". [[@Person.Child.Name]] [[", "Default", "24", ((string[])(null)));
 #line hidden
         }
@@ -2619,7 +2657,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("35", "[[@Person]],[[@Person.name
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "26")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_39()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("39", "[[@Person]],[[@Person.Childs(*).name]]", "JsonObject", "[[P", "3", "[[@Person]],[[@Person.Childs(*).name]]", "[[@Person.Childs(*).name]]", "[[@Person.Childs(*).name]]", "Default", "26", ((string[])(null)));
 #line hidden
         }
@@ -2642,7 +2680,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("39", "[[@Person]],[[@Person.Chil
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "26")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_41()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("41", "[[@Person]],[[@Person.Childs(*).name]],[[@Person.Childs().name]]", "JsonObject", "[[@Person.Childs(*", "19", "[[@Person.Childs(*).name]]", "[[@Person.Childs(*).name]]", "[[@Person.Childs(*).name]]", "Default", "26", ((string[])(null)));
 #line hidden
         }
@@ -2665,7 +2703,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("41", "[[@Person]],[[@Person.Chil
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "28")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_42()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("42", "[[@Person]],[[@Person.Childs(*).name]],[[@Person.Childs().name]]", "JsonObject", "[[@Person.Childs([[", "19", "[[@Person.Childs(*).name]],[[@Person.Childs().name]]", "[[@Person]]", "[[@Person.Childs([[@Person]]", "Default", "28", ((string[])(null)));
 #line hidden
         }
@@ -2688,7 +2726,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("42", "[[@Person]],[[@Person.Chil
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "43")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_43()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("43", "[[@Person]],[[@Person.Childs(*).name]],[[@Person.Childs().name]]", "JsonObject", "[[@Person.Childs([[", "19", "[[@Person.Childs(*).name]],[[@Person.Childs().name]]", "[[@Person.Childs(*).name]]", "[[@Person.Childs([[@Person.Childs(*).name]]", "Default", "43", ((string[])(null)));
 #line hidden
         }
@@ -2711,7 +2749,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("43", "[[@Person]],[[@Person.Chil
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "26")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_44()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("44", "[[@Person]],[[@Person.Childs(*).name]],[[@Person.Childs().name]]", "JsonObject", "@", "1", "[[@Person.Childs(*).name]],[[@Person.Childs().name]]", "[[@Person.Childs(*).name]]", "[[@Person.Childs(*).name]]", "Default", "26", ((string[])(null)));
 #line hidden
         }
@@ -2734,7 +2772,7 @@ this.InsertForJsonFilterTypeAndDefaultProvider("44", "[[@Person]],[[@Person.Chil
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "26")]
         public virtual void InsertForJsonFilterTypeAndDefaultProvider_45()
         {
-#line 171
+#line 172
 this.InsertForJsonFilterTypeAndDefaultProvider("45", "[[@Person]],[[@Person.Childs(*).name]],[[@Person.Childs().name]]", "JsonObject", "[[@", "3", "[[@Person.Childs(*).name]],[[@Person.Childs().name]]", "[[@Person.Childs(*).name]]", "[[@Person.Childs(*).name]]", "Default", "26", ((string[])(null)));
 #line hidden
         }
@@ -2748,23 +2786,23 @@ this.InsertForJsonFilterTypeAndDefaultProvider("45", "[[@Person]],[[@Person.Chil
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insert for RecordsetFields FilterType and Default Provider", @__tags);
-#line 218
-this.ScenarioSetup(scenarioInfo);
 #line 219
- testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 220
-  testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 221
- testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 222
- testRunner.And(string.Format("the cursor is at index \'{0}\'", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 223
- testRunner.And(string.Format("the provider used is \'{0}\'", provider), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the cursor is at index \'{0}\'", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 224
- testRunner.And(string.Format("the suggestion list as \'{0}\'", dropDownList), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the provider used is \'{0}\'", provider), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 225
- testRunner.When(string.Format("I select the following string option \'{0}\'", option), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And(string.Format("the suggestion list as \'{0}\'", dropDownList), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 226
+ testRunner.When(string.Format("I select the following string option \'{0}\'", option), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 227
  testRunner.Then(string.Format("the result text should be \"{0}\" with caret position will be \'{1}\'", result, caretposition), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -2789,7 +2827,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "12")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_1()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("1", "[[a]],[[rec()]],[[rec().a]],[[set()]],[[set().z]],[[rec(*)]],[[rec(*).a]],[[set(*" +
                     ")]],[[set(*).z]]", "RecordsetFields", "a", "1", "[[rec().a]],[[rec(*).a]]", "[[rec(*).a]]", "[[rec(*).a]]", "Default", "12", ((string[])(null)));
 #line hidden
@@ -2814,7 +2852,7 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("1", "[[a]],[[rec()]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "1")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_2()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("2", "[[a]],[[rec()]],[[rec().a]],[[set()]],[[set().z]],[[rec(*)]],[[rec(*).a]],[[set(*" +
                     ")]],[[set(*).z]]", "RecordsetFields", "b", "1", "", "", "b", "Default", "1", ((string[])(null)));
 #line hidden
@@ -2839,7 +2877,7 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("2", "[[a]],[[rec()]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "3")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_3()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("3", "[[a]],[[rec()]],[[rec().a]],[[set()]],[[set().z]],[[rec(*)]],[[rec(*).a]],[[set(*" +
                     ")]],[[set(*).z]]", "RecordsetFields", "[[()]]", "3", "", "", "[[()]]", "Default", "3", ((string[])(null)));
 #line hidden
@@ -2864,7 +2902,7 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("3", "[[a]],[[rec()]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "11")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_4()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("4", "[[a]],[[rec()]],[[rec().a]],[[set()]],[[set().z]],[[rec(*)]],[[rec(*).a]],[[set(*" +
                     ")]],[[set(*).z]]", "RecordsetFields", "[[rec().a]]", "11", "", "", "[[rec().a]]", "Default", "11", ((string[])(null)));
 #line hidden
@@ -2888,7 +2926,7 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("4", "[[a]],[[rec()]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "11")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_5()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("5", "[[rec()]],[[rec().a]],[[a]],[[rec().z]],[[rec(*)]],[[rec(*).a]],[[rec(*).z]]", "RecordsetFields", "[[rec().a]]", "5", "[[rec().a]],[[rec(*).a]],[[rec().z]],[[rec(*).z]]", "[[rec().z]]", "[[rec().z]]", "Default", "11", ((string[])(null)));
 #line hidden
         }
@@ -2911,7 +2949,7 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("5", "[[rec()]],[[rec(
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "11")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_6()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("6", "[[rec()]],[[rec().a]],[[a]],[[rec().z]],[[rec(*)]],[[rec(*).a]],[[rec(*).z]]", "RecordsetFields", "[[rec", "5", "[[rec().a]],[[rec(*).a]],[[rec().z]],[[rec(*).z]]", "[[rec().z]]", "[[rec().z]]", "Default", "11", ((string[])(null)));
 #line hidden
         }
@@ -2935,7 +2973,7 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("6", "[[rec()]],[[rec(
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "15")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_7()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("7", "[[a]],[[rec()]],[[rec().a]],[[set()]],[[set().z]],[[rec(*)]],[[rec(*).a]],[[set(*" +
                     ")]],[[set(*).z]]", "RecordsetFields", "rec e", "5", "[[rec().a]],[[rec(*).a]],[[set().z]],[[set(*).z]]", "[[rec().a]]", "rec [[rec().a]]", "Default", "15", ((string[])(null)));
 #line hidden
@@ -2960,7 +2998,7 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("7", "[[a]],[[rec()]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "12")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_8()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("8", "[[a]],[[rec()]],[[rec().a]],[[set()]],[[set().z]],[[rec(*)]],[[rec(*).a]],[[set(*" +
                     ")]],[[set(*).z]]", "RecordsetFields", "a a", "1", "[[rec().a]],[[rec(*).a]]", "[[rec(*).a]]", "[[rec(*).a]] a", "Default", "12", ((string[])(null)));
 #line hidden
@@ -2985,7 +3023,7 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("8", "[[a]],[[rec()]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "1")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_9()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("9", "[[a]],[[rec()]],[[rec().a]],[[set()]],[[set().z]],[[rec(*)]],[[rec(*).a]],[[set(*" +
                     ")]],[[set(*).z]]", "RecordsetFields", "b b", "1", "", "", "b b", "Default", "1", ((string[])(null)));
 #line hidden
@@ -3009,7 +3047,7 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("9", "[[a]],[[rec()]],
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "11")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_10()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("10", "[[rec()]],[[rec().a]],[[a]],[[rec().z]],[[rec(*)]],[[rec(*).a]],[[rec(*).z]]", "RecordsetFields", "[[rec().a]],[[rec().a]]", "5", "[[rec().a]],[[rec(*).a]],[[rec().z]],[[rec(*).z]]", "[[rec().z]]", "[[rec().z]],[[rec().a]]", "Default", "11", ((string[])(null)));
 #line hidden
         }
@@ -3032,7 +3070,7 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("10", "[[rec()]],[[rec
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "11")]
         public virtual void InsertForRecordsetFieldsFilterTypeAndDefaultProvider_11()
         {
-#line 218
+#line 219
 this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("11", "[[rec()]],[[rec().a]],[[a]],[[rec().z]],[[rec(*)]],[[rec(*).a]],[[rec(*).z]]", "RecordsetFields", "[[rec [[rec().a]]", "5", "[[rec().a]],[[rec(*).a]],[[rec().z]],[[rec(*).z]]", "[[rec().z]]", "[[rec().z]] [[rec().a]]", "Default", "11", ((string[])(null)));
 #line hidden
         }
@@ -3046,13 +3084,13 @@ this.InsertForRecordsetFieldsFilterTypeAndDefaultProvider("11", "[[rec()]],[[rec
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validation messages when Invalid Variables", @__tags);
-#line 242
-this.ScenarioSetup(scenarioInfo);
 #line 243
- testRunner.Given(string.Format("the current text in the textbox is \'{0}\'", variable), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 244
- testRunner.And("the provider used is \'Default\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given(string.Format("the current text in the textbox is \'{0}\'", variable), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 245
+ testRunner.And("the provider used is \'Default\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 246
  testRunner.Then(string.Format("the result has the error \'{0}\'", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -3069,7 +3107,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Recordset index [ -1 ] is not greater than zero")]
         public virtual void ValidationMessagesWhenInvalidVariables_1()
         {
-#line 242
+#line 243
 this.ValidationMessagesWhenInvalidVariables("1", "[[my(-1).var]]", "Recordset index [ -1 ] is not greater than zero", ((string[])(null)));
 #line hidden
         }
@@ -3086,7 +3124,7 @@ this.ValidationMessagesWhenInvalidVariables("1", "[[my(-1).var]]", "Recordset in
             "_ and -")]
         public virtual void ValidationMessagesWhenInvalidVariables_2()
         {
-#line 242
+#line 243
 this.ValidationMessagesWhenInvalidVariables("2", "[[rec\"()\".a]]", "Variable name [[rec\"()\".a]] contains invalid character(s). Only use alphanumeric " +
                     "_ and -", ((string[])(null)));
 #line hidden
@@ -3104,7 +3142,7 @@ this.ValidationMessagesWhenInvalidVariables("2", "[[rec\"()\".a]]", "Variable na
             "d -")]
         public virtual void ValidationMessagesWhenInvalidVariables_3()
         {
-#line 242
+#line 243
 this.ValidationMessagesWhenInvalidVariables("3", "[[rec.a]]", "Variable name [[rec.a]] contains invalid character(s). Only use alphanumeric _ an" +
                     "d -", ((string[])(null)));
 #line hidden
@@ -3121,7 +3159,7 @@ this.ValidationMessagesWhenInvalidVariables("3", "[[rec.a]]", "Variable name [[r
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Recordset field [[1]] begins with a number")]
         public virtual void ValidationMessagesWhenInvalidVariables_4()
         {
-#line 242
+#line 243
 this.ValidationMessagesWhenInvalidVariables("4", "[[1]]", "Recordset field [[1]] begins with a number", ((string[])(null)));
 #line hidden
         }
@@ -3137,7 +3175,7 @@ this.ValidationMessagesWhenInvalidVariables("4", "[[1]]", "Recordset field [[1]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Variable name [[@]] contains invalid character(s). Only use alphanumeric _ and -")]
         public virtual void ValidationMessagesWhenInvalidVariables_5()
         {
-#line 242
+#line 243
 this.ValidationMessagesWhenInvalidVariables("5", "[[@]]", "Variable name [[@]] contains invalid character(s). Only use alphanumeric _ and -", ((string[])(null)));
 #line hidden
         }
@@ -3154,7 +3192,7 @@ this.ValidationMessagesWhenInvalidVariables("5", "[[@]]", "Variable name [[@]] c
             " -")]
         public virtual void ValidationMessagesWhenInvalidVariables_6()
         {
-#line 242
+#line 243
 this.ValidationMessagesWhenInvalidVariables("6", "[[var#]]", "Variable name [[var#]] contains invalid character(s). Only use alphanumeric _ and" +
                     " -", ((string[])(null)));
 #line hidden
@@ -3171,7 +3209,7 @@ this.ValidationMessagesWhenInvalidVariables("6", "[[var#]]", "Variable name [[va
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid region detected: A close ]] without a related open [[")]
         public virtual void ValidationMessagesWhenInvalidVariables_7()
         {
-#line 242
+#line 243
 this.ValidationMessagesWhenInvalidVariables("7", "[[var]]00]]", "Invalid region detected: A close ]] without a related open [[", ((string[])(null)));
 #line hidden
         }
@@ -3187,7 +3225,7 @@ this.ValidationMessagesWhenInvalidVariables("7", "[[var]]00]]", "Invalid region 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Variable name [[]] contains invalid character(s). Only use alphanumeric _ and -")]
         public virtual void ValidationMessagesWhenInvalidVariables_8()
         {
-#line 242
+#line 243
 this.ValidationMessagesWhenInvalidVariables("8", "[[]]", "Variable name [[]] contains invalid character(s). Only use alphanumeric _ and -", ((string[])(null)));
 #line hidden
         }
@@ -3204,7 +3242,7 @@ this.ValidationMessagesWhenInvalidVariables("8", "[[]]", "Variable name [[]] con
             "r(s). Only use alphanumeric _ and -")]
         public virtual void ValidationMessagesWhenInvalidVariables_9()
         {
-#line 242
+#line 243
 this.ValidationMessagesWhenInvalidVariables("9", "[[r(q).a]][[r()..]][[r\"]][[r()]][[]][[1]]", "Variable name [[r(q).a]][[r()..]][[r\"]][[r()]][[]][[1]] contains invalid characte" +
                     "r(s). Only use alphanumeric _ and -", ((string[])(null)));
 #line hidden
@@ -3221,7 +3259,7 @@ this.ValidationMessagesWhenInvalidVariables("9", "[[r(q).a]][[r()..]][[r\"]][[r(
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid region detected: An open [[ without a related close ]]")]
         public virtual void ValidationMessagesWhenInvalidVariables_10()
         {
-#line 242
+#line 243
 this.ValidationMessagesWhenInvalidVariables("10", "[[var]]00[[", "Invalid region detected: An open [[ without a related close ]]", ((string[])(null)));
 #line hidden
         }
@@ -3235,23 +3273,23 @@ this.ValidationMessagesWhenInvalidVariables("10", "[[var]]00[[", "Invalid region
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insert for All FilterType and Default Provider Case Insensitive", @__tags);
-#line 260
-this.ScenarioSetup(scenarioInfo);
 #line 261
- testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 262
- testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 263
- testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 264
- testRunner.And(string.Format("the cursor is at index \'{0}\'", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 265
- testRunner.And(string.Format("the provider used is \'{0}\'", provider), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the cursor is at index \'{0}\'", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 266
- testRunner.And(string.Format("the suggestion list as \'{0}\'", dropDownList), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the provider used is \'{0}\'", provider), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 267
- testRunner.When(string.Format("I select the following string option \'{0}\'", option), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And(string.Format("the suggestion list as \'{0}\'", dropDownList), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 268
+ testRunner.When(string.Format("I select the following string option \'{0}\'", option), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 269
  testRunner.Then(string.Format("the result text should be \"{0}\" with caret position will be \'{1}\'", result, caretposition), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -3275,7 +3313,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "12")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_1()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("1", "[[Var]],[[VAR2]],[[Rec()]],[[rEc().var]],[[rec().VAR2]]", "All", "text var", "8", "[[Var]],[[VAR2]],[[rEc().var]],[[rec().VAR2]]", "[[Var]]", "text [[Var]]", "Default", "12", ((string[])(null)));
 #line hidden
         }
@@ -3298,7 +3336,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("1", "[[Var]],[[VAR
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "12")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_2()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("2", "[[var]],[[Var2]],[[rec()]],[[rec().var2]],[[rec().var]]", "All", "text[[var", "9", "[[var]],[[Var2]],[[rec().var]],[[rec().var2]]", "[[Var2]]", "text[[Var2]]", "Default", "12", ((string[])(null)));
 #line hidden
         }
@@ -3321,7 +3359,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("2", "[[var]],[[Var
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "18")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_3()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("3", "[[var]],[[var2]],[[REC()]],[[rec().VAR2]],[[rec().var]]", "All", "text[[REC().var]]", "15", "[[rec().var]],[[rec().VAR2]]", "[[rec().VAR2]]", "text[[rec().VAR2]]", "Default", "18", ((string[])(null)));
 #line hidden
         }
@@ -3344,7 +3382,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("3", "[[var]],[[var
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "8")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_4()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("4", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "[[", "2", "[[var]],[[var2]],[[rec().var]],[[rec().var2]]", "[[var2]]", "[[var2]]", "Default", "8", ((string[])(null)));
 #line hidden
         }
@@ -3367,7 +3405,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("4", "[[var]],[[var
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "20")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_5()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("5", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "text[[REC().[[var", "17", "[[var]],[[var2]]", "[[var2]]", "text[[REC().[[var2]]", "Default", "20", ((string[])(null)));
 #line hidden
         }
@@ -3390,7 +3428,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("5", "[[var]],[[var
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "20")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_6()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("6", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "text[[rec().[[var]]", "17", "[[var]],[[var2]]", "[[var2]]", "text[[rec().[[var2]]", "Default", "20", ((string[])(null)));
 #line hidden
         }
@@ -3413,7 +3451,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("6", "[[var]],[[var
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "20")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_7()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("7", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "text[[rec().[[var]]]]", "17", "[[var]],[[var2]]", "[[var2]]", "text[[rec().[[var2]]]]", "Default", "20", ((string[])(null)));
 #line hidden
         }
@@ -3437,7 +3475,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("7", "[[var]],[[var
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "21")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_8()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("8", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec(*).var2]],[[rec().var]],[[rec(*)." +
                     "var]]", "All", "[[var]]v", "8", "[[var]],[[var2]],[[rec().var]],[[rec(*).var]],[[rec().var2]],[[rec(*).var2]]", "[[rec(*).var]]", "[[var]][[rec(*).var]]", "Default", "21", ((string[])(null)));
 #line hidden
@@ -3461,7 +3499,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("8", "[[var]],[[var
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "20")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_9()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("9", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "[[var]][[", "9", "[[var]],[[var2]],[[rec().var]],[[rec().var2]]", "[[rec().var]]", "[[var]][[rec().var]]", "Default", "20", ((string[])(null)));
 #line hidden
         }
@@ -3485,7 +3523,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("9", "[[var]],[[var
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "22")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_10()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("10", "[[var]],[[VAR2]],[[REC()]],[[rec().var2]],[[rec(*).var2]],[[rec().var]],[[REC(*)." +
                     "var]]", "All", "[[var]][[VAR", "12", "[[var]],[[VAR2]],[[rec(*).var2]],[[rec().var2]],[[REC(*).var]],[[rec().var]]", "[[rec(*).var2]]", "[[var]][[rec(*).var2]]", "Default", "22", ((string[])(null)));
 #line hidden
@@ -3510,7 +3548,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("10", "[[var]],[[VA
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "22")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_11()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("11", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec(*).var2]],[[rec().var]],[[rec(*)." +
                     "var]]", "All", "[[var]][[var]]", "12", "[[var]],[[var2]],[[rec().var]],[[rec(*).var]],[[rec().var2]],[[rec(*).var2]]", "[[rec(*).var2]]", "[[var]][[rec(*).var2]]", "Default", "22", ((string[])(null)));
 #line hidden
@@ -3534,7 +3572,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("11", "[[var]],[[va
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "7")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_12()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("12", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "[[var]]", "7", "", "", "[[var]]", "Default", "7", ((string[])(null)));
 #line hidden
         }
@@ -3557,7 +3595,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("12", "[[var]],[[va
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "13")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_13()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("13", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "[[var]] text", "13", "", "", "[[var]] text", "Default", "13", ((string[])(null)));
 #line hidden
         }
@@ -3580,7 +3618,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("13", "[[var]],[[va
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "18")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_14()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("14", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "text[[var2]]text", "10", "[[var2]],[[rec().var2]]", "[[rec().var2]]", "text[[rec().var2]]text", "Default", "18", ((string[])(null)));
 #line hidden
         }
@@ -3603,7 +3641,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("14", "[[var]],[[va
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "14")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_15()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("15", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "r", "1", "[[var]],[[var2]],[[rec().var]],[[rec().var2]]", "[[rec().var2]]", "[[rec().var2]]", "Default", "14", ((string[])(null)));
 #line hidden
         }
@@ -3626,7 +3664,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("15", "[[var]],[[va
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "13")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_16()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("16", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "[[rec([[va]]).var]]", "10", "[[var]],[[var2]],[[rec().var]],[[rec().var2]]", "[[var]]", "[[rec([[var]]).var]]", "Default", "13", ((string[])(null)));
 #line hidden
         }
@@ -3649,7 +3687,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("16", "[[var]],[[va
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "7")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_17()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("17", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[rec().var]]", "All", "[[[[a]]]]", "5", "[[var]],[[var2]],[[rec().var]],[[rec().var2]]", "[[var]]", "[[var]]]]", "Default", "7", ((string[])(null)));
 #line hidden
         }
@@ -3672,7 +3710,7 @@ this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("17", "[[var]],[[va
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:caretposition", "7")]
         public virtual void InsertForAllFilterTypeAndDefaultProviderCaseInsensitive_18()
         {
-#line 260
+#line 261
 this.InsertForAllFilterTypeAndDefaultProviderCaseInsensitive("18", "[[var]],[[var2]],[[REC()]],[[rec().var2]],[[REc().var]]", "All", "[[", "2", "[[var]],[[var2]],[[REc().var]],[[rec().var2]]", "[[var]]", "[[var]]", "Default", "7", ((string[])(null)));
 #line hidden
         }

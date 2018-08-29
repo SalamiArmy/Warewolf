@@ -351,25 +351,7 @@ Scenario: Execute Python with a negative recordset index
 	| Python   | [[my(-1).val]] = |
 	And the debug output as 
 	|               |
-	| [[result]] = |
-
-@MSTest:DoNotParallelize
-Scenario Outline:Excute Javascript with incorrect values
-	Given I have the script to execute "<script>"
-	And I have selected the language as "JavaScript"
-	When I execute the script tool
-	Then the execution has "AN" error
-	And the execution has "<ErrorOccured>" error
-	And the debug inputs as  
-	| Language | Script           |
-	| JavaScript   | <script> |
-	And the debug output as 
-	|               |
-	| [[result]] = |
-	Examples: 
-	| Script  | ErrorOccured                                                                                                               |
-	| 88      | There was an error when returning a value from your script, remember to use the "Return" keyword when returning the result |
-	| [[var]] | Scalar value {var} is NULL                                                                                                 |
+	| [[result]] = |                                                                                               |
 
 @MSTest:DoNotParallelize
 Scenario: Execute JavaScript with a null variable 
