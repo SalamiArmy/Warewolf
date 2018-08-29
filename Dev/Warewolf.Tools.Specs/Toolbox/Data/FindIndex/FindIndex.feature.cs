@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Data.FindIndex
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Find Index", "\tIn order to find where characters or values are in sentences or words\r\n\tAs a War" +
                     "ewolf user\r\n\tI want a tool that finds indexes", ProgrammingLanguage.CSharp, new string[] {
                         "Data"});
@@ -88,27 +88,30 @@ namespace Warewolf.Tools.Specs.Toolbox.Data.FindIndex
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find the first Occurrence of a character in a sentence")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindTheFirstOccurrenceOfACharacterInASentence()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find the first Occurrence of a character in a sentence", ((string[])(null)));
-#line 7
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find the first Occurrence of a character in a sentence", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 8
+this.ScenarioSetup(scenarioInfo);
+#line 9
  testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"I have managed to spend time in re" +
                     "al innovation since I started using Warewolf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
- testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
- testRunner.And("I search for characters \"since\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I search for characters \"since\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
- testRunner.Then("the find index result is \"49\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
+ testRunner.Then("the find index result is \"49\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 16
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -122,14 +125,14 @@ this.ScenarioSetup(scenarioInfo);
                         "First Occurrence",
                         "since",
                         "Left to Right"});
-#line 16
+#line 17
  testRunner.And("the debug inputs as", ((string)(null)), table1, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table2.AddRow(new string[] {
                         "[[result]] = 49"});
-#line 19
+#line 20
  testRunner.And("the debug output as", ((string)(null)), table2, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -144,24 +147,24 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find all Occurrences of a word in a sentence and output to scalar going left to r" +
                     "ight", ((string[])(null)));
-#line 23
-this.ScenarioSetup(scenarioInfo);
 #line 24
+this.ScenarioSetup(scenarioInfo);
+#line 25
  testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"I have managed to spend time in re" +
                     "al innovation since I started using Warewolf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 25
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 26
- testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 27
- testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 28
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 29
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 30
- testRunner.Then("the find index result is \"4,9,11,35,43,59,72\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 31
+ testRunner.Then("the find index result is \"4,9,11,35,43,59,72\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 32
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -175,14 +178,14 @@ this.ScenarioSetup(scenarioInfo);
                         "All Occurrences",
                         "a",
                         "Left to Right"});
-#line 32
+#line 33
  testRunner.And("the debug inputs as", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table4.AddRow(new string[] {
                         "[[result]] = 4,9,11,35,43,59,72"});
-#line 35
+#line 36
  testRunner.And("the debug output as", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -193,24 +196,27 @@ this.ScenarioSetup(scenarioInfo);
             "to left")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindAllOccurrencesOfAWordInASentenceAndOutputToRecordsetGoingRightToLeft()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find all Occurrences of a word in a sentence and output to recordset going right " +
-                    "to left", ((string[])(null)));
-#line 39
+                    "to left", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 41
 this.ScenarioSetup(scenarioInfo);
-#line 40
+#line 42
  testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"I have managed to spend time in re" +
                     "al innovation since I started using Warewolf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 41
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 42
- testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 43
- testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 44
- testRunner.And("I selected direction as \"Right to Left\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 45
+ testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 46
+ testRunner.And("I selected direction as \"Right to Left\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 47
  testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -229,9 +235,9 @@ this.ScenarioSetup(scenarioInfo);
                         "70"});
             table5.AddRow(new string[] {
                         "75"});
-#line 46
+#line 48
  testRunner.Then("the find index result is", ((string)(null)), table5, "Then ");
-#line 55
+#line 57
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -245,14 +251,14 @@ this.ScenarioSetup(scenarioInfo);
                         "All Occurrences",
                         "a",
                         "Right to Left"});
-#line 56
+#line 58
  testRunner.And("the debug inputs as", ((string)(null)), table6, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table7.AddRow(new string[] {
                         "[[result]] = 7,20,36,44,68,70,75"});
-#line 59
+#line 61
  testRunner.And("the debug output as", ((string)(null)), table7, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -265,23 +271,23 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindLastOccurrenceOfABracketInASentence()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find last Occurrence of a bracket in a sentence", ((string[])(null)));
-#line 63
-this.ScenarioSetup(scenarioInfo);
-#line 64
- testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"!@#$%)@#$%)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 65
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 66
- testRunner.And("I selected Index \"Last Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"!@#$%)@#$%)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 67
- testRunner.And("I search for characters \")\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 68
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I selected Index \"Last Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 69
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I search for characters \")\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 70
- testRunner.Then("the find index result is \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 71
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 72
+ testRunner.Then("the find index result is \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 73
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -294,14 +300,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Last Occurrence",
                         ")",
                         "Left to Right"});
-#line 72
+#line 74
  testRunner.And("the debug inputs as", ((string)(null)), table8, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table9.AddRow(new string[] {
                         "[[result]] = 11"});
-#line 75
+#line 77
  testRunner.And("the debug output as", ((string)(null)), table9, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -314,23 +320,23 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindFirstOccurrenceOfACharacterInABlankString()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find first Occurrence of a character in a blank string", ((string[])(null)));
-#line 79
-this.ScenarioSetup(scenarioInfo);
-#line 80
- testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"blank\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 81
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 82
- testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"blank\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 83
- testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 84
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 85
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 86
- testRunner.Then("the find index result is \"-1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 87
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 88
+ testRunner.Then("the find index result is \"-1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 89
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -343,14 +349,14 @@ this.ScenarioSetup(scenarioInfo);
                         "First Occurrence",
                         "a",
                         "Left to Right"});
-#line 88
+#line 90
  testRunner.And("the debug inputs as", ((string)(null)), table10, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table11.AddRow(new string[] {
                         "[[result]] = -1"});
-#line 91
+#line 93
  testRunner.And("the debug output as", ((string)(null)), table11, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -360,26 +366,29 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find first Occurrence of a character in a string where it doesnt exist")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindFirstOccurrenceOfACharacterInAStringWhereItDoesntExist()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find first Occurrence of a character in a string where it doesnt exist", ((string[])(null)));
-#line 95
-this.ScenarioSetup(scenarioInfo);
-#line 96
- testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"fff\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 97
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find first Occurrence of a character in a string where it doesnt exist", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 98
- testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 99
- testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"fff\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 100
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 101
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 102
- testRunner.Then("the find index result is \"-1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 103
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 104
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 105
+ testRunner.Then("the find index result is \"-1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 106
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -392,14 +401,14 @@ this.ScenarioSetup(scenarioInfo);
                         "First Occurrence",
                         "a",
                         "Left to Right"});
-#line 104
+#line 107
  testRunner.And("the debug inputs as", ((string)(null)), table12, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table13.AddRow(new string[] {
                         "[[result]] = -1"});
-#line 107
+#line 110
  testRunner.And("the debug output as", ((string)(null)), table13, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -412,23 +421,23 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindAllOccurrencesOfACharacterInAStringWhereItDoesntExist()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find all Occurrences of a character in a string where it doesnt exist", ((string[])(null)));
-#line 111
-this.ScenarioSetup(scenarioInfo);
-#line 112
- testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"blank\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 113
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 114
- testRunner.And("I selected Index \"All Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 115
- testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"blank\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 116
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 117
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I selected Index \"All Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 118
- testRunner.Then("the find index result is \"-1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 119
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 120
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 121
+ testRunner.Then("the find index result is \"-1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 122
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -441,14 +450,14 @@ this.ScenarioSetup(scenarioInfo);
                         "All Occurrence",
                         "a",
                         "Left to Right"});
-#line 120
+#line 123
  testRunner.And("the debug inputs as", ((string)(null)), table14, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table15.AddRow(new string[] {
                         "[[result]] = -1"});
-#line 123
+#line 126
  testRunner.And("the debug output as", ((string)(null)), table15, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -461,25 +470,25 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindAnXmlFragmentInABiggerXmlDocument()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find an xml fragment in a bigger xml document", ((string[])(null)));
-#line 127
-this.ScenarioSetup(scenarioInfo);
-#line 128
- testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"<x><b id=\"1\">One</b></x>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 129
- testRunner.And("I have a Find Index variable \"[[id]]\" equal to \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 130
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 131
- testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"<x><b id=\"1\">One</b></x>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 132
- testRunner.And("I search for characters \"<b id=\"[[id]]\">\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have a Find Index variable \"[[id]]\" equal to \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 133
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 134
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 135
- testRunner.Then("the find index result is \"4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I search for characters \"<b id=\"[[id]]\">\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 136
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 137
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 138
+ testRunner.Then("the find index result is \"4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 139
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -492,14 +501,14 @@ this.ScenarioSetup(scenarioInfo);
                         "First Occurrence",
                         "<b id=\"[[id]]\"> = <b id=\"1\">",
                         "Left to Right"});
-#line 137
+#line 140
  testRunner.And("the debug inputs as", ((string)(null)), table16, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table17.AddRow(new string[] {
                         "[[result]] = 4"});
-#line 140
+#line 143
  testRunner.And("the debug output as", ((string)(null)), table17, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -509,24 +518,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find a negative recordset index in a string")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindANegativeRecordsetIndexInAString()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find a negative recordset index in a string", ((string[])(null)));
-#line 144
-this.ScenarioSetup(scenarioInfo);
-#line 145
- testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"<x><b id=\"1\">One</b></x>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 146
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 147
- testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find a negative recordset index in a string", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 148
- testRunner.And("I search for characters \"[[my(-1).data]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 149
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"<x><b id=\"1\">One</b></x>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 150
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 151
+ testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 152
+ testRunner.And("I search for characters \"[[my(-1).data]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 153
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 154
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 155
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -539,14 +551,14 @@ this.ScenarioSetup(scenarioInfo);
                         "First Occurrence",
                         "[[my(-1).data]] =",
                         "Left to Right"});
-#line 152
+#line 156
  testRunner.And("the debug inputs as", ((string)(null)), table18, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table19.AddRow(new string[] {
                         "[[result]] ="});
-#line 155
+#line 159
  testRunner.And("the debug output as", ((string)(null)), table19, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -556,22 +568,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find something with a negative recordset index as Input")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindSomethingWithANegativeRecordsetIndexAsInput()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find something with a negative recordset index as Input", ((string[])(null)));
-#line 159
-this.ScenarioSetup(scenarioInfo);
-#line 160
- testRunner.Given("the sentence \"[[a(-1).b]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 161
- testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 162
- testRunner.And("I search for characters \"12\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 163
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find something with a negative recordset index as Input", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 164
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 165
+ testRunner.Given("the sentence \"[[a(-1).b]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 166
+ testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 167
+ testRunner.And("I search for characters \"12\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 168
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 169
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 170
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -584,14 +599,14 @@ this.ScenarioSetup(scenarioInfo);
                         "First Occurrence",
                         "12",
                         "Left to Right"});
-#line 166
+#line 171
  testRunner.And("the debug inputs as", ((string)(null)), table20, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table21.AddRow(new string[] {
                         "[[result]] ="});
-#line 169
+#line 174
  testRunner.And("the debug output as", ((string)(null)), table21, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -601,24 +616,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Output values in recordset with star notation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void OutputValuesInRecordsetWithStarNotation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Output values in recordset with star notation", ((string[])(null)));
-#line 173
-this.ScenarioSetup(scenarioInfo);
-#line 174
-    testRunner.Given("the sentence \"abc3cde3fgh3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 175
- testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 176
- testRunner.And("I search for characters \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 177
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 178
- testRunner.And("result variable as \"[[rs(*).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Output values in recordset with star notation", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 179
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 180
+    testRunner.Given("the sentence \"abc3cde3fgh3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 181
+ testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 182
+ testRunner.And("I search for characters \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 183
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 184
+ testRunner.And("result variable as \"[[rs(*).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 185
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 186
  testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -631,14 +649,14 @@ this.ScenarioSetup(scenarioInfo);
                         "All Occurrences",
                         "3",
                         "Left to Right"});
-#line 181
+#line 187
  testRunner.And("the debug inputs as", ((string)(null)), table22, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table23.AddRow(new string[] {
                         "[[rs(1).a]] = 4,8,12"});
-#line 184
+#line 190
  testRunner.And("the debug output as", ((string)(null)), table23, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -648,24 +666,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Output values in recordset with numeric notation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void OutputValuesInRecordsetWithNumericNotation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Output values in recordset with numeric notation", ((string[])(null)));
-#line 188
-this.ScenarioSetup(scenarioInfo);
-#line 189
-    testRunner.Given("the sentence \"abc3cde3fgh3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 190
- testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 191
- testRunner.And("I search for characters \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 192
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 193
- testRunner.And("result variable as \"[[rs(1).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 194
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Output values in recordset with numeric notation", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 195
+this.ScenarioSetup(scenarioInfo);
+#line 196
+    testRunner.Given("the sentence \"abc3cde3fgh3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 197
+ testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 198
+ testRunner.And("I search for characters \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 199
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 200
+ testRunner.And("result variable as \"[[rs(1).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 201
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 202
  testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -678,14 +699,14 @@ this.ScenarioSetup(scenarioInfo);
                         "All Occurrences",
                         "3",
                         "Left to Right"});
-#line 196
+#line 203
  testRunner.And("the debug inputs as", ((string)(null)), table24, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table25.AddRow(new string[] {
                         "[[rs(1).a]] = 4,8,12"});
-#line 199
+#line 206
  testRunner.And("the debug output as", ((string)(null)), table25, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -698,21 +719,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void OutputValuesInMultipleResultVariables()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Output values in multiple result variables", ((string[])(null)));
-#line 203
-this.ScenarioSetup(scenarioInfo);
-#line 204
-    testRunner.Given("the sentence \"abc3cde3fgh3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 205
- testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 206
- testRunner.And("I search for characters \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 207
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 208
- testRunner.And("result variable as \"[[res]],[[rs(*).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 209
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 210
+this.ScenarioSetup(scenarioInfo);
+#line 211
+    testRunner.Given("the sentence \"abc3cde3fgh3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 212
+ testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 213
+ testRunner.And("I search for characters \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 214
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 215
+ testRunner.And("result variable as \"[[res]],[[rs(*).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 216
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 217
  testRunner.Then("the execution has \"An\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -725,14 +746,14 @@ this.ScenarioSetup(scenarioInfo);
                         "All Occurrences",
                         "3",
                         "Left to Right"});
-#line 211
+#line 218
  testRunner.And("the debug inputs as", ((string)(null)), table26, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table27.AddRow(new string[] {
                         "[[res]],[[rs(*).a]] ="});
-#line 214
+#line 221
  testRunner.And("the debug output as", ((string)(null)), table27, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -745,21 +766,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void InFieldIsBlank()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("InField is blank", ((string[])(null)));
-#line 218
-this.ScenarioSetup(scenarioInfo);
-#line 219
- testRunner.Given("I have a Find Index variable \"\" equal to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 220
- testRunner.And("the sentence \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 221
- testRunner.And("I selected Index \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 222
- testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 223
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 224
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 225
+this.ScenarioSetup(scenarioInfo);
+#line 226
+ testRunner.Given("I have a Find Index variable \"\" equal to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 227
+ testRunner.And("the sentence \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 228
+ testRunner.And("I selected Index \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 229
+ testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 230
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 231
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 232
  testRunner.Then("the execution has \"An\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -772,22 +793,22 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void CharactersIsBlank()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Characters is blank", ((string[])(null)));
-#line 227
+#line 234
 this.ScenarioSetup(scenarioInfo);
-#line 228
+#line 235
  testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"I have managed to spend time in re" +
                     "al innovation since I started using Warewolf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 229
+#line 236
  testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 230
+#line 237
  testRunner.And("I selected Index \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 231
+#line 238
  testRunner.And("I search for characters \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 232
+#line 239
  testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 233
+#line 240
  testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 234
+#line 241
  testRunner.Then("the execution has \"An\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -800,23 +821,23 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindAllOccurrencesOfANumericCharacterInAString()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find all Occurrences of a numeric character in a string", ((string[])(null)));
-#line 238
-this.ScenarioSetup(scenarioInfo);
-#line 239
- testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"2211\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 240
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 241
- testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 242
- testRunner.And("I search for characters \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 243
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 244
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 245
- testRunner.Then("the find index result is \"1,2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 246
+ testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"2211\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 247
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 248
+ testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 249
+ testRunner.And("I search for characters \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 250
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 251
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 252
+ testRunner.Then("the find index result is \"1,2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 253
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -829,14 +850,14 @@ this.ScenarioSetup(scenarioInfo);
                         "All Occurrences",
                         "2",
                         "Left to Right"});
-#line 247
+#line 254
  testRunner.And("the debug inputs as", ((string)(null)), table28, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table29.AddRow(new string[] {
                         "[[result]] = 1,2"});
-#line 250
+#line 257
  testRunner.And("the debug output as", ((string)(null)), table29, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -844,24 +865,30 @@ this.ScenarioSetup(scenarioInfo);
         
         public virtual void FindAllOccurancesOfCharactersInAString(string no, string index, string characters, string directon, string result, string res, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find all occurances of Characters in a string", exampleTags);
-#line 255
-this.ScenarioSetup(scenarioInfo);
-#line 256
- testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"Warewolf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 257
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 258
- testRunner.And(string.Format("I have selected Index \"{0}\"", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 259
- testRunner.And(string.Format("I search for characters \"{0}\"", characters), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 260
- testRunner.And("I selected direction as \"<Direction>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 261
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find all occurances of Characters in a string", @__tags);
 #line 262
- testRunner.Then(string.Format("the find index result is \"{0}\"", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 263
+ testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"Warewolf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 264
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 265
+ testRunner.And(string.Format("I have selected Index \"{0}\"", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 266
+ testRunner.And(string.Format("I search for characters \"{0}\"", characters), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 267
+ testRunner.And("I selected direction as \"<Direction>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 268
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 269
+ testRunner.Then(string.Format("the find index result is \"{0}\"", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 270
  testRunner.And("the execution has \"<Error>\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -874,14 +901,14 @@ this.ScenarioSetup(scenarioInfo);
                         string.Format("{0}", index),
                         string.Format("{0}", characters),
                         "<Direction>"});
-#line 264
+#line 271
  testRunner.And("the debug inputs as", ((string)(null)), table30, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table31.AddRow(new string[] {
                         string.Format("{0}", res)});
-#line 267
+#line 274
  testRunner.And("the debug output as", ((string)(null)), table31, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -891,6 +918,8 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all occurances of Characters in a string: 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Index", "All Occurrences")]
@@ -900,7 +929,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:res", "[[result]] = -1")]
         public virtual void FindAllOccurancesOfCharactersInAString_1()
         {
-#line 255
+#line 262
 this.FindAllOccurancesOfCharactersInAString("1", "All Occurrences", "\"\"", "Left to Right", "-1", "[[result]] = -1", ((string[])(null)));
 #line hidden
         }
@@ -909,6 +938,8 @@ this.FindAllOccurancesOfCharactersInAString("1", "All Occurrences", "\"\"", "Lef
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all occurances of Characters in a string: 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Index", "All Occurrences")]
@@ -918,7 +949,7 @@ this.FindAllOccurancesOfCharactersInAString("1", "All Occurrences", "\"\"", "Lef
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:res", "[[result]] = -1")]
         public virtual void FindAllOccurancesOfCharactersInAString_2()
         {
-#line 255
+#line 262
 this.FindAllOccurancesOfCharactersInAString("2", "All Occurrences", "\" \"", "Left to Right", "-1", "[[result]] = -1", ((string[])(null)));
 #line hidden
         }
@@ -927,6 +958,8 @@ this.FindAllOccurancesOfCharactersInAString("2", "All Occurrences", "\" \"", "Le
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all occurances of Characters in a string: 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Index", "All Occurrences")]
@@ -936,7 +969,7 @@ this.FindAllOccurancesOfCharactersInAString("2", "All Occurrences", "\" \"", "Le
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:res", "[[result]] = 1,5")]
         public virtual void FindAllOccurancesOfCharactersInAString_3()
         {
-#line 255
+#line 262
 this.FindAllOccurancesOfCharactersInAString("3", "All Occurrences", "w", "Left to Right", "1,5", "[[result]] = 1,5", ((string[])(null)));
 #line hidden
         }
@@ -945,6 +978,8 @@ this.FindAllOccurancesOfCharactersInAString("3", "All Occurrences", "w", "Left t
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all occurances of Characters in a string: 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Index", "All Occurrences")]
@@ -954,7 +989,7 @@ this.FindAllOccurancesOfCharactersInAString("3", "All Occurrences", "w", "Left t
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:res", "[[result]] = 2")]
         public virtual void FindAllOccurancesOfCharactersInAString_4()
         {
-#line 255
+#line 262
 this.FindAllOccurancesOfCharactersInAString("4", "All Occurrences", "a", "Left to Right", "2", "[[result]] = 2", ((string[])(null)));
 #line hidden
         }
@@ -963,6 +998,8 @@ this.FindAllOccurancesOfCharactersInAString("4", "All Occurrences", "a", "Left t
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all occurances of Characters in a string: 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Index", "All Occurrences")]
@@ -972,27 +1009,33 @@ this.FindAllOccurancesOfCharactersInAString("4", "All Occurrences", "a", "Left t
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:res", "[[result]] = 1,5")]
         public virtual void FindAllOccurancesOfCharactersInAString_5()
         {
-#line 255
+#line 262
 this.FindAllOccurancesOfCharactersInAString("5", "All Occurrences", "w", "Right to Left", "1,5", "[[result]] = 1,5", ((string[])(null)));
 #line hidden
         }
         
         public virtual void FindAllRecordsetsWithInvalidIndexes(string no, string var, string value, string characters, string result, string error, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find all Recordsets with invalid Indexes", exampleTags);
-#line 278
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find all Recordsets with invalid Indexes", @__tags);
+#line 286
 this.ScenarioSetup(scenarioInfo);
-#line 279
+#line 287
  testRunner.Given(string.Format("I have a Find Index variable \"{0}\" equal to \"{1}\"", var, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 280
+#line 288
  testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 281
+#line 289
  testRunner.And("I search for characters \"<Character>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 282
+#line 290
  testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 283
+#line 291
  testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 284
+#line 292
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1005,14 +1048,14 @@ this.ScenarioSetup(scenarioInfo);
                         "First Occurrence",
                         "12",
                         "Left to Right"});
-#line 285
+#line 293
  testRunner.And("the debug inputs as", ((string)(null)), table32, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table33.AddRow(new string[] {
                         string.Format("{0}", result)});
-#line 288
+#line 296
  testRunner.And("the debug output as", ((string)(null)), table33, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1022,6 +1065,8 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all Recordsets with invalid Indexes: 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "[[var]]")]
@@ -1031,7 +1076,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Index is not an integer")]
         public virtual void FindAllRecordsetsWithInvalidIndexes_1()
         {
-#line 278
+#line 286
 this.FindAllRecordsetsWithInvalidIndexes("1", "[[var]]", "wolf", "[[rs([[var]]).a]]", "[[result]] = -1", "Index is not an integer", ((string[])(null)));
 #line hidden
         }
@@ -1040,6 +1085,8 @@ this.FindAllRecordsetsWithInvalidIndexes("1", "[[var]]", "wolf", "[[rs([[var]]).
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all Recordsets with invalid Indexes: 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "[[var]]")]
@@ -1049,7 +1096,7 @@ this.FindAllRecordsetsWithInvalidIndexes("1", "[[var]]", "wolf", "[[rs([[var]]).
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Index is not an integer")]
         public virtual void FindAllRecordsetsWithInvalidIndexes_2()
         {
-#line 278
+#line 286
 this.FindAllRecordsetsWithInvalidIndexes("2", "[[var]]", "w", "[[rs([[var]]).a]]", "[[result]] = -1", "Index is not an integer", ((string[])(null)));
 #line hidden
         }
@@ -1058,6 +1105,8 @@ this.FindAllRecordsetsWithInvalidIndexes("2", "[[var]]", "w", "[[rs([[var]]).a]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all Recordsets with invalid Indexes: 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "[[var]]")]
@@ -1067,7 +1116,7 @@ this.FindAllRecordsetsWithInvalidIndexes("2", "[[var]]", "w", "[[rs([[var]]).a]]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Index is not an integer")]
         public virtual void FindAllRecordsetsWithInvalidIndexes_3()
         {
-#line 278
+#line 286
 this.FindAllRecordsetsWithInvalidIndexes("3", "[[var]]", "\" \"", "[[rs([[var]]).a]]", "[[result]] =", "Index is not an integer", ((string[])(null)));
 #line hidden
         }
@@ -1076,6 +1125,8 @@ this.FindAllRecordsetsWithInvalidIndexes("3", "[[var]]", "\" \"", "[[rs([[var]])
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all Recordsets with invalid Indexes: 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "[[var]]")]
@@ -1085,7 +1136,7 @@ this.FindAllRecordsetsWithInvalidIndexes("3", "[[var]]", "\" \"", "[[rs([[var]])
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Index is not an integer")]
         public virtual void FindAllRecordsetsWithInvalidIndexes_4()
         {
-#line 278
+#line 286
 this.FindAllRecordsetsWithInvalidIndexes("4", "[[var]]", "1.2", "[[rs([[var]]).a]]", "[[result]] =", "Index is not an integer", ((string[])(null)));
 #line hidden
         }
@@ -1094,6 +1145,8 @@ this.FindAllRecordsetsWithInvalidIndexes("4", "[[var]]", "1.2", "[[rs([[var]]).a
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all Recordsets with invalid Indexes: 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "[[var]]")]
@@ -1103,7 +1156,7 @@ this.FindAllRecordsetsWithInvalidIndexes("4", "[[var]]", "1.2", "[[rs([[var]]).a
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Index is not valid")]
         public virtual void FindAllRecordsetsWithInvalidIndexes_6()
         {
-#line 278
+#line 286
 this.FindAllRecordsetsWithInvalidIndexes("6", "[[var]]", "123", "[[rs([[var]]).a]]", "[[result]] = -1", "Index is not valid", ((string[])(null)));
 #line hidden
         }
@@ -1112,6 +1165,8 @@ this.FindAllRecordsetsWithInvalidIndexes("6", "[[var]]", "123", "[[rs([[var]]).a
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find all Recordsets with invalid Indexes: 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "")]
@@ -1121,7 +1176,7 @@ this.FindAllRecordsetsWithInvalidIndexes("6", "[[var]]", "123", "[[rs([[var]]).a
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Index is not valid")]
         public virtual void FindAllRecordsetsWithInvalidIndexes_7()
         {
-#line 278
+#line 286
 this.FindAllRecordsetsWithInvalidIndexes("7", "", "", "[[rs([[var]]).a]]", "[[result]] = -1", "Index is not valid", ((string[])(null)));
 #line hidden
         }
@@ -1133,21 +1188,21 @@ this.FindAllRecordsetsWithInvalidIndexes("7", "", "", "[[rs([[var]]).a]]", "[[re
         public virtual void ToolDoesNotReturn()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tool does not return", ((string[])(null)));
-#line 301
+#line 309
 this.ScenarioSetup(scenarioInfo);
-#line 302
+#line 310
  testRunner.Given("I have a Find Index variable \"\" equal to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 303
+#line 311
  testRunner.And("I selected Index \"All Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 304
+#line 312
  testRunner.And("I search for characters \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 305
+#line 313
  testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 306
+#line 314
  testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 307
+#line 315
  testRunner.Then("the find index result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 308
+#line 316
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1160,14 +1215,14 @@ this.ScenarioSetup(scenarioInfo);
                         "All Occurrence",
                         "",
                         "Left to Right"});
-#line 309
+#line 317
  testRunner.And("the debug inputs as", ((string)(null)), table34, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table35.AddRow(new string[] {
                         "[[result]] = Index is not an integer"});
-#line 312
+#line 320
  testRunner.And("the debug output as", ((string)(null)), table35, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1180,19 +1235,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindFirstOccurrenceOfACharacterNonExistentImput()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find first Occurrence of a character non existent imput", ((string[])(null)));
-#line 318
-this.ScenarioSetup(scenarioInfo);
-#line 319
- testRunner.Given("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 320
- testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 321
- testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 322
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 323
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 324
+this.ScenarioSetup(scenarioInfo);
+#line 325
+ testRunner.Given("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 326
+ testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 327
+ testRunner.And("I search for characters \"a\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 328
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 329
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 330
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1205,21 +1260,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindFirstOccurrenceOfOfACharacterNonExistentCharacter()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find first Occurrence of  of a character non existent character", ((string[])(null)));
-#line 326
-this.ScenarioSetup(scenarioInfo);
-#line 327
- testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 328
- testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 329
- testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 330
- testRunner.And("I search for characters \"[[x]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 331
- testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 332
- testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 333
+ testRunner.Given("I have a Find Index variable \"[[a]]\" equal to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 334
+ testRunner.And("the sentence \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 335
+ testRunner.And("I selected Index \"First Occurrence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 336
+ testRunner.And("I search for characters \"[[x]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 337
+ testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 338
+ testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 339
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1230,11 +1285,14 @@ this.ScenarioSetup(scenarioInfo);
             "tion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Find Index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindAllOccurrencesOfANumericCharacterInAStringUsingRecordsetStarNotation()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find all Occurrences of a numeric character in a string using recordset star nota" +
-                    "tion", ((string[])(null)));
-#line 335
+                    "tion", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 342
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1249,21 +1307,21 @@ this.ScenarioSetup(scenarioInfo);
             table36.AddRow(new string[] {
                         "rs().row",
                         "512"});
-#line 336
- testRunner.Given("a find index recordset", ((string)(null)), table36, "Given ");
-#line 341
- testRunner.And("the sentence \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 342
- testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 343
+ testRunner.Given("a find index recordset", ((string)(null)), table36, "Given ");
+#line 348
+ testRunner.And("the sentence \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 349
+ testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 350
  testRunner.And("I search for characters \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 344
+#line 351
  testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 345
+#line 352
  testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 346
+#line 353
  testRunner.Then("the find index result is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 347
+#line 354
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1286,14 +1344,14 @@ this.ScenarioSetup(scenarioInfo);
                         "All Occurrences",
                         "2",
                         "Left to Right"});
-#line 348
+#line 355
  testRunner.And("the debug inputs as", ((string)(null)), table37, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table38.AddRow(new string[] {
                         "[[result]] = 3"});
-#line 353
+#line 360
  testRunner.And("the debug output as", ((string)(null)), table38, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1308,7 +1366,7 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find all Occurrences of a numeric character in a string using recordset star nota" +
                     "tion in and out", ((string[])(null)));
-#line 357
+#line 364
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1323,21 +1381,21 @@ this.ScenarioSetup(scenarioInfo);
             table39.AddRow(new string[] {
                         "rs().row",
                         "512"});
-#line 358
- testRunner.Given("a find index recordset", ((string)(null)), table39, "Given ");
-#line 363
- testRunner.And("the sentence \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 364
- testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 365
+ testRunner.Given("a find index recordset", ((string)(null)), table39, "Given ");
+#line 370
+ testRunner.And("the sentence \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 371
+ testRunner.And("I selected Index \"All Occurrences\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 372
  testRunner.And("I search for characters \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 366
+#line 373
  testRunner.And("I selected direction as \"Left to Right\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 367
+#line 374
  testRunner.And("result variable as \"[[rec(*).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 368
+#line 375
  testRunner.When("the data find index tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 369
+#line 376
  testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1360,14 +1418,14 @@ this.ScenarioSetup(scenarioInfo);
                         "All Occurrences",
                         "2",
                         "Left to Right"});
-#line 370
+#line 377
  testRunner.And("the debug inputs as", ((string)(null)), table40, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table41.AddRow(new string[] {
                         "[[rec(1).a]] = 3"});
-#line 375
+#line 382
  testRunner.And("the debug output as", ((string)(null)), table41, "And ");
 #line hidden
             this.ScenarioCleanup();

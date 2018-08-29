@@ -4,6 +4,7 @@ Feature: Unique
 	As a Warewolf user
 	I want tool that will allow me 
 
+@MSTest:DoNotParallelize
 Scenario: Find unique records in a recordset
 	Given I have the following duplicated recordset
 	| rs       | val |
@@ -29,6 +30,7 @@ Scenario: Find unique records in a recordset
 	|   | [[rec(2).unique]] = 20 |
 	|   | [[rec(3).unique]] = 30 |
 
+@MSTest:DoNotParallelize
 Scenario: Find unique records in an empty recordset
 	Given I have the following empty recordset
 	| rs       | val |	
@@ -40,6 +42,7 @@ Scenario: Find unique records in an empty recordset
 	And the execution has "AN" error
 
 
+@MSTest:DoNotParallelize
 Scenario: Find unique records in a recordset and the in field is blank
 	Given I have the following duplicated recordset
 	| rs       | val |
@@ -101,6 +104,7 @@ Scenario: Find unique records using a negative recordset index for In Field
 	|  |                    |
 	|  | [[rec(*).unique]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Find unique records using a * for In Field
 	Given I have the following duplicated recordset
 	| rs       | val |
@@ -130,6 +134,7 @@ Scenario: Find unique records using a * for In Field
 	|   | [[rec(2).unique]] = 2 |
 	|   | [[rec(3).unique]] = 3 |
 
+@MSTest:DoNotParallelize
 Scenario: Find unique records using a negative recordset index for Return Field
 	Given I have the following duplicated recordset
 	| rs       | val |
@@ -150,6 +155,7 @@ Scenario: Find unique records using a negative recordset index for Return Field
 	|  |                    |
 	|  | [[rec(*).unique]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Find unique records using a * for Return Field
 	Given I have the following duplicated recordset
 	| rs       | val |
@@ -217,6 +223,7 @@ Scenario: Executing Unique record tool with empty In Return and Result Field
 	And the debug output as 
 	|  |  |
 
+@MSTest:DoNotParallelize
 Scenario: Find unique records and assigning result to scalar must error
 	Given I have the following duplicated recordset
 	| rs       | val |
@@ -232,6 +239,7 @@ Scenario: Find unique records and assigning result to scalar must error
 	| #           |                    | Return Fields  |
 	| In Field(s) | [[rs(4).row]] = 30 | [[rs().row]] = |	
 
+@MSTest:DoNotParallelize
 Scenario Outline: Invalid expressions
 Given I have the following duplicated recordset
 	| rs       | val |

@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Recordset.LengthNullHandler
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Length", "\tIn order to get the length of a records\r\n\tAs a Warewolf user\r\n\tI want a tool tha" +
                     "t takes a record set gives me its length", ProgrammingLanguage.CSharp, new string[] {
                         "Recordset"});
@@ -98,10 +98,13 @@ namespace Warewolf.Tools.Specs.Toolbox.Recordset.LengthNullHandler
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Length of a recordset with 3 rows")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void LengthOfARecordsetWith3Rows()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Length of a recordset with 3 rows", ((string[])(null)));
-#line 11
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Length of a recordset with 3 rows", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 12
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -118,15 +121,15 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "rs(5).row",
                         "3"});
-#line 12
+#line 13
  testRunner.Given("I get the length from a recordset that looks like with this shape", ((string)(null)), table1, "Given ");
-#line 17
- testRunner.And("get length on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
- testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("get length on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
- testRunner.Then("the length result should be 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 20
+ testRunner.Then("the length result should be 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 21
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -137,14 +140,14 @@ this.FeatureBackground();
                         "[[rs(3).row]] = 2"});
             table2.AddRow(new string[] {
                         "[[rs(5).row]] = 3"});
-#line 21
+#line 22
  testRunner.And("the debug inputs as", ((string)(null)), table2, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table3.AddRow(new string[] {
                         "[[result]] = 5"});
-#line 26
+#line 27
  testRunner.And("the debug output as", ((string)(null)), table3, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -154,10 +157,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Length of a recordset with 8 rows")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void LengthOfARecordsetWith8Rows()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Length of a recordset with 8 rows", ((string[])(null)));
-#line 30
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Length of a recordset with 8 rows", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 32
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -189,15 +195,15 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "rs(8).row",
                         "8"});
-#line 31
+#line 33
  testRunner.Given("I get the length from a recordset that looks like with this shape", ((string)(null)), table4, "Given ");
-#line 41
- testRunner.And("get length on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 42
- testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 43
- testRunner.Then("the length result should be 8", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("get length on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 44
+ testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 45
+ testRunner.Then("the length result should be 8", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 46
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -218,14 +224,14 @@ this.FeatureBackground();
                         "[[rs(7).row]] =  7"});
             table5.AddRow(new string[] {
                         "[[rs(8).row]] =  8"});
-#line 45
+#line 47
  testRunner.And("the debug inputs as", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table6.AddRow(new string[] {
                         "[[result]] = 8"});
-#line 55
+#line 57
  testRunner.And("the debug output as", ((string)(null)), table6, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -235,10 +241,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Recordset length for coloumn")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void RecordsetLengthForColoumn()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Recordset length for coloumn", ((string[])(null)));
-#line 59
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Recordset length for coloumn", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 62
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -270,23 +279,23 @@ this.FeatureBackground();
             table7.AddRow(new string[] {
                         "rs(8).row",
                         "8"});
-#line 60
+#line 63
  testRunner.Given("I get the length from a recordset that looks like with this shape", ((string)(null)), table7, "Given ");
-#line 70
+#line 73
  testRunner.And("get length on record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 71
+#line 74
  testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 72
+#line 75
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Recordset"});
-#line 73
+#line 76
  testRunner.And("the debug inputs as", ((string)(null)), table8, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
-#line 75
+#line 78
  testRunner.And("the debug output as", ((string)(null)), table9, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -299,7 +308,7 @@ this.FeatureBackground();
         public virtual void RecordsetLengthForColoumnsInvalid()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Recordset length for coloumns invalid", ((string[])(null)));
-#line 78
+#line 81
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -328,23 +337,23 @@ this.FeatureBackground();
             table10.AddRow(new string[] {
                         "rs().row2",
                         "7"});
-#line 79
+#line 82
  testRunner.Given("I get the length from a recordset that looks like with this shape", ((string)(null)), table10, "Given ");
-#line 88
+#line 91
  testRunner.And("get length on record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 89
+#line 92
  testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 90
+#line 93
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Recordset"});
-#line 91
+#line 94
  testRunner.And("the debug inputs as", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
-#line 93
+#line 96
  testRunner.And("the debug output as", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -354,10 +363,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Recordset length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void RecordsetLength()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Recordset length", ((string[])(null)));
-#line 96
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Recordset length", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 100
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -386,15 +398,15 @@ this.FeatureBackground();
             table13.AddRow(new string[] {
                         "rs().row2",
                         "7"});
-#line 97
+#line 101
  testRunner.Given("I get the length from a recordset that looks like with this shape", ((string)(null)), table13, "Given ");
-#line 106
+#line 110
  testRunner.And("get length on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 107
+#line 111
  testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 108
+#line 112
  testRunner.Then("the length result should be 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 109
+#line 113
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -413,14 +425,14 @@ this.FeatureBackground();
                         "[[rs(5).row2]] =  6"});
             table14.AddRow(new string[] {
                         "[[rs(6).row2]] =  7"});
-#line 110
+#line 114
  testRunner.And("the debug inputs as", ((string)(null)), table14, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table15.AddRow(new string[] {
                         "[[result]] = 6"});
-#line 119
+#line 123
  testRunner.And("the debug output as", ((string)(null)), table15, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -433,7 +445,7 @@ this.FeatureBackground();
         public virtual void RecordsetLengthForInvalidRecordset()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Recordset length for invalid recordset", ((string[])(null)));
-#line 123
+#line 127
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -465,23 +477,23 @@ this.FeatureBackground();
             table16.AddRow(new string[] {
                         "rs(8).row",
                         "8"});
-#line 124
+#line 128
  testRunner.Given("I get the length from a recordset that looks like with this shape", ((string)(null)), table16, "Given ");
-#line 134
+#line 138
  testRunner.And("get length on record \"[[rs().&^]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 135
+#line 139
  testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 136
+#line 140
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                         "Recordset"});
-#line 137
+#line 141
  testRunner.And("the debug inputs as", ((string)(null)), table17, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
-#line 139
+#line 143
  testRunner.And("the debug output as", ((string)(null)), table18, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -489,8 +501,14 @@ this.FeatureBackground();
         
         public virtual void EnsureRecordsetLengthInputsWorkAsExpected(string variable, string val, string error, string message, string result, string value, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ensure Recordset length inputs work as expected", exampleTags);
-#line 142
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ensure Recordset length inputs work as expected", @__tags);
+#line 147
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -519,13 +537,13 @@ this.FeatureBackground();
             table19.AddRow(new string[] {
                         "rs().row2",
                         "7"});
-#line 143
+#line 148
  testRunner.Given("I get the length from a recordset that looks like with this shape", ((string)(null)), table19, "Given ");
-#line 152
+#line 157
  testRunner.And(string.Format("get length on record \"{0}\"", variable), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 153
+#line 158
  testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 154
+#line 159
  testRunner.Then(string.Format("the execution has \"{0}\" error", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -535,6 +553,8 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure Recordset length inputs work as expected: [[a]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[a]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:variable", "[[a]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "The")]
@@ -544,7 +564,7 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "[[b]] = failure")]
         public virtual void EnsureRecordsetLengthInputsWorkAsExpected_A()
         {
-#line 142
+#line 147
 this.EnsureRecordsetLengthInputsWorkAsExpected("[[a]]", "The", "AN", "Scalar not allowed", "[[b]]", "[[b]] = failure", ((string[])(null)));
 #line hidden
         }
@@ -553,6 +573,8 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("[[a]]", "The", "AN", "Scalar not
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure Recordset length inputs work as expected: \"\"")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "\"\"")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:variable", "\"\"")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "\"\"")]
@@ -562,7 +584,7 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("[[a]]", "The", "AN", "Scalar not
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "0")]
         public virtual void EnsureRecordsetLengthInputsWorkAsExpected_()
         {
-#line 142
+#line 147
 this.EnsureRecordsetLengthInputsWorkAsExpected("\"\"", "\"\"", "AN", "", "[[rec(1).a]]", "0", ((string[])(null)));
 #line hidden
         }
@@ -571,6 +593,8 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("\"\"", "\"\"", "AN", "", "[[rec(
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure Recordset length inputs work as expected: dfsd")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "dfsd")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:variable", "dfsd")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "dfsd")]
@@ -580,7 +604,7 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("\"\"", "\"\"", "AN", "", "[[rec(
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Failure")]
         public virtual void EnsureRecordsetLengthInputsWorkAsExpected_Dfsd()
         {
-#line 142
+#line 147
 this.EnsureRecordsetLengthInputsWorkAsExpected("dfsd", "dfsd", "AN", "Invalid characters have been entered as Recordset", "[[rec(*).a]]", "Failure", ((string[])(null)));
 #line hidden
         }
@@ -589,6 +613,8 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("dfsd", "dfsd", "AN", "Invalid ch
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure Recordset length inputs work as expected: 12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:variable", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "12")]
@@ -598,7 +624,7 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("dfsd", "dfsd", "AN", "Invalid ch
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Failure")]
         public virtual void EnsureRecordsetLengthInputsWorkAsExpected_12()
         {
-#line 142
+#line 147
 this.EnsureRecordsetLengthInputsWorkAsExpected("12", "12", "AN", "Invalid characters have been entered as Recordset", "[[rec([[int]]).a]]", "Failure", ((string[])(null)));
 #line hidden
         }
@@ -607,6 +633,8 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("12", "12", "AN", "Invalid charac
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure Recordset length inputs work as expected: [[rec(1)]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[rec(1)]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:variable", "[[rec(1)]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "\"\"")]
@@ -616,7 +644,7 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("12", "12", "AN", "Invalid charac
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "[[rs(1).a]] = 3")]
         public virtual void EnsureRecordsetLengthInputsWorkAsExpected_Rec1()
         {
-#line 142
+#line 147
 this.EnsureRecordsetLengthInputsWorkAsExpected("[[rec(1)]]", "\"\"", "AN", "", "[[rs().a]]", "[[rs(1).a]] = 3", ((string[])(null)));
 #line hidden
         }
@@ -625,6 +653,8 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("[[rec(1)]]", "\"\"", "AN", "", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure Recordset length inputs work as expected: [[rec(*)]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[rec(*)]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:variable", "[[rec(*)]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "\"\"")]
@@ -634,7 +664,7 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("[[rec(1)]]", "\"\"", "AN", "", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "\"\"")]
         public virtual void EnsureRecordsetLengthInputsWorkAsExpected_Rec()
         {
-#line 142
+#line 147
 this.EnsureRecordsetLengthInputsWorkAsExpected("[[rec(*)]]", "\"\"", "AN", "Blank result variable", "\"\"", "\"\"", ((string[])(null)));
 #line hidden
         }
@@ -643,6 +673,8 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("[[rec(*)]]", "\"\"", "AN", "Blan
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure Recordset length inputs work as expected: [[rec([[int]])]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[rec([[int]])]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:variable", "[[rec([[int]])]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "\"\"")]
@@ -652,7 +684,7 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("[[rec(*)]]", "\"\"", "AN", "Blan
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "3")]
         public virtual void EnsureRecordsetLengthInputsWorkAsExpected_RecInt()
         {
-#line 142
+#line 147
 this.EnsureRecordsetLengthInputsWorkAsExpected("[[rec([[int]])]]", "\"\"", "AN", "", "[[sdasd]]", "3", ((string[])(null)));
 #line hidden
         }
@@ -661,6 +693,8 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("[[rec([[int]])]]", "\"\"", "AN",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure Recordset length inputs work as expected: [[c]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[c]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:variable", "[[c]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "\"\"")]
@@ -670,7 +704,7 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("[[rec([[int]])]]", "\"\"", "AN",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Failure")]
         public virtual void EnsureRecordsetLengthInputsWorkAsExpected_C()
         {
-#line 142
+#line 147
 this.EnsureRecordsetLengthInputsWorkAsExpected("[[c]]", "\"\"", "AN", "Scalar not allowed", "[[d]]", "Failure", ((string[])(null)));
 #line hidden
         }
@@ -682,7 +716,7 @@ this.EnsureRecordsetLengthInputsWorkAsExpected("[[c]]", "\"\"", "AN", "Scalar no
         public virtual void LengthOfAnNullRecordset()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Length of an null recordset", ((string[])(null)));
-#line 166
+#line 171
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -693,15 +727,15 @@ this.FeatureBackground();
             table20.AddRow(new string[] {
                         "[[rs().row]]",
                         "NULL"});
-#line 167
- testRunner.Given("I get the length from a recordset that looks like with this shape", ((string)(null)), table20, "Given ");
-#line 170
- testRunner.And("get length on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 171
- testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 172
+ testRunner.Given("I get the length from a recordset that looks like with this shape", ((string)(null)), table20, "Given ");
+#line 175
+ testRunner.And("get length on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 176
+ testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 177
  testRunner.Then("the length result should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 173
+#line 178
  testRunner.And("the execution has \"No\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -714,17 +748,17 @@ this.FeatureBackground();
         public virtual void LengthOfAnUnassignedRecordsetWithNullCheckNotSelected()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Length Of An Unassigned Recordset With Null Check Not Selected", ((string[])(null)));
-#line 175
+#line 180
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 176
+#line 181
  testRunner.Given("get length on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 177
+#line 182
  testRunner.And("Length Treat Null as Empty Recordset is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 178
+#line 183
  testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 179
+#line 184
  testRunner.Then("the execution has \"An\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -737,17 +771,17 @@ this.FeatureBackground();
         public virtual void LengthOfAnUnassignedRecordsetWithNullCheckSelected()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Length Of An Unassigned Recordset With Null Check Selected", ((string[])(null)));
-#line 181
+#line 186
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 182
+#line 187
  testRunner.Given("get length on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 183
+#line 188
  testRunner.And("Length Treat Null as Empty Recordset is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 184
+#line 189
  testRunner.When("the length tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 185
+#line 190
  testRunner.Then("the execution has \"No\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Recordset.Sort
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Sort", "\tIn order to sort a recordset\r\n\tAs a Warewolf user\r\n\tI want a tool I can use to a" +
                     "rrange records in either ascending or descending order ", ProgrammingLanguage.CSharp, new string[] {
                         "Recordset"});
@@ -88,10 +88,13 @@ namespace Warewolf.Tools.Specs.Toolbox.Recordset.Sort
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort a recordset forwards using star notation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void SortARecordsetForwardsUsingStarNotation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset forwards using star notation", ((string[])(null)));
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset forwards using star notation", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 8
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -118,13 +121,13 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "rs().row",
                         "so far"});
-#line 8
+#line 9
  testRunner.Given("I have the following recordset to sort", ((string)(null)), table1, "Given ");
-#line 17
- testRunner.And("I sort a record \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
- testRunner.And("my sort order is \"Forward\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I sort a record \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
+ testRunner.And("my sort order is \"Forward\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 20
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -151,9 +154,9 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "rs().row",
                         "You"});
-#line 20
+#line 21
  testRunner.Then("the sorted recordset \"[[rs(*).row]]\"  will be", ((string)(null)), table2, "Then ");
-#line 29
+#line 30
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -180,7 +183,7 @@ this.ScenarioSetup(scenarioInfo);
             table3.AddRow(new string[] {
                         "[[rs(7).row]] = so far",
                         "Forward"});
-#line 30
+#line 31
  testRunner.And("the debug inputs as", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -199,7 +202,7 @@ this.ScenarioSetup(scenarioInfo);
                         "[[rs(6).row]] = Warewolf"});
             table4.AddRow(new string[] {
                         "[[rs(7).row]] = You"});
-#line 39
+#line 40
  testRunner.And("the debug output as", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -209,10 +212,13 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort a recordset backwards using star notation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void SortARecordsetBackwardsUsingStarNotation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset backwards using star notation", ((string[])(null)));
-#line 49
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset backwards using star notation", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 51
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -239,13 +245,13 @@ this.ScenarioSetup(scenarioInfo);
             table5.AddRow(new string[] {
                         "rs().row",
                         "so far"});
-#line 50
+#line 52
  testRunner.Given("I have the following recordset to sort", ((string)(null)), table5, "Given ");
-#line 59
- testRunner.And("I sort a record \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 60
- testRunner.And("my sort order is \"Backwards\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 61
+ testRunner.And("I sort a record \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 62
+ testRunner.And("my sort order is \"Backwards\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 63
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -272,9 +278,9 @@ this.ScenarioSetup(scenarioInfo);
             table6.AddRow(new string[] {
                         "rs().row",
                         "are"});
-#line 62
+#line 64
  testRunner.Then("the sorted recordset \"[[rs(*).row]]\"  will be", ((string)(null)), table6, "Then ");
-#line 71
+#line 73
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -301,7 +307,7 @@ this.ScenarioSetup(scenarioInfo);
             table7.AddRow(new string[] {
                         "[[rs(7).row]] = so far",
                         "Backwards"});
-#line 72
+#line 74
  testRunner.And("the debug inputs as", ((string)(null)), table7, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -320,7 +326,7 @@ this.ScenarioSetup(scenarioInfo);
                         "[[rs(6).row]] = best"});
             table8.AddRow(new string[] {
                         "[[rs(7).row]] = are"});
-#line 81
+#line 83
  testRunner.And("the debug output as", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -330,10 +336,13 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort a recordset forwards")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void SortARecordsetForwards()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset forwards", ((string[])(null)));
-#line 91
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset forwards", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 94
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -360,13 +369,13 @@ this.ScenarioSetup(scenarioInfo);
             table9.AddRow(new string[] {
                         "rs().row",
                         "so far"});
-#line 92
+#line 95
  testRunner.Given("I have the following recordset to sort", ((string)(null)), table9, "Given ");
-#line 101
+#line 104
  testRunner.And("I sort a record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 102
+#line 105
  testRunner.And("my sort order is \"Forward\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 103
+#line 106
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -393,9 +402,9 @@ this.ScenarioSetup(scenarioInfo);
             table10.AddRow(new string[] {
                         "rs().row",
                         "You"});
-#line 104
+#line 107
  testRunner.Then("the sorted recordset \"[[rs(*).row]]\"  will be", ((string)(null)), table10, "Then ");
-#line 113
+#line 116
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -422,7 +431,7 @@ this.ScenarioSetup(scenarioInfo);
             table11.AddRow(new string[] {
                         "[[rs(7).row]] = so far",
                         "Forward"});
-#line 114
+#line 117
  testRunner.And("the debug inputs as", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -441,7 +450,7 @@ this.ScenarioSetup(scenarioInfo);
                         "[[rs(6).row]] = Warewolf"});
             table12.AddRow(new string[] {
                         "[[rs(7).row]] = You"});
-#line 123
+#line 126
  testRunner.And("the debug output as", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -454,7 +463,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SortARecordsetBackwards()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset backwards", ((string[])(null)));
-#line 133
+#line 136
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -481,13 +490,13 @@ this.ScenarioSetup(scenarioInfo);
             table13.AddRow(new string[] {
                         "rs().row",
                         "so far"});
-#line 134
+#line 137
  testRunner.Given("I have the following recordset to sort", ((string)(null)), table13, "Given ");
-#line 143
+#line 146
  testRunner.And("I sort a record \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 144
+#line 147
  testRunner.And("my sort order is \"Backwards\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 145
+#line 148
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -514,9 +523,9 @@ this.ScenarioSetup(scenarioInfo);
             table14.AddRow(new string[] {
                         "rs().row",
                         "are"});
-#line 146
+#line 149
  testRunner.Then("the sorted recordset \"[[rs(*).row]]\"  will be", ((string)(null)), table14, "Then ");
-#line 155
+#line 158
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -543,7 +552,7 @@ this.ScenarioSetup(scenarioInfo);
             table15.AddRow(new string[] {
                         "[[rs(7).row]] = so far",
                         "Backwards"});
-#line 156
+#line 159
  testRunner.And("the debug inputs as", ((string)(null)), table15, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -562,7 +571,7 @@ this.ScenarioSetup(scenarioInfo);
                         "[[rs(6).row]] = best"});
             table16.AddRow(new string[] {
                         "[[rs(7).row]] = are"});
-#line 165
+#line 168
  testRunner.And("the debug output as", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -572,24 +581,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort a recordset forwards empty recordset")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void SortARecordsetForwardsEmptyRecordset()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset forwards empty recordset", ((string[])(null)));
-#line 175
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset forwards empty recordset", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 179
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                         "rs",
                         "value"});
-#line 176
- testRunner.Given("I have the following recordset to sort", ((string)(null)), table17, "Given ");
-#line 178
- testRunner.And("I sort a record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 179
- testRunner.And("my sort order is \"Forward\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 180
+ testRunner.Given("I have the following recordset to sort", ((string)(null)), table17, "Given ");
+#line 182
+ testRunner.And("I sort a record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 183
+ testRunner.And("my sort order is \"Forward\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 184
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 181
+#line 185
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -602,21 +614,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SortARecordsetBackwardsEmptyRecordset()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset backwards empty recordset", ((string[])(null)));
-#line 184
+#line 188
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         "rs",
                         "value"});
-#line 185
- testRunner.Given("I have the following recordset to sort", ((string)(null)), table18, "Given ");
-#line 187
- testRunner.And("I sort a record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 188
- testRunner.And("my sort order is \"Backwards\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 189
+ testRunner.Given("I have the following recordset to sort", ((string)(null)), table18, "Given ");
+#line 191
+ testRunner.And("I sort a record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 192
+ testRunner.And("my sort order is \"Backwards\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 193
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 190
+#line 194
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -629,7 +641,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SortARecordsetForwardsWithOneRow()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset forwards with one row", ((string[])(null)));
-#line 192
+#line 196
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -638,13 +650,13 @@ this.ScenarioSetup(scenarioInfo);
             table19.AddRow(new string[] {
                         "rs().row",
                         "Warewolf"});
-#line 193
- testRunner.Given("I have the following recordset to sort", ((string)(null)), table19, "Given ");
-#line 196
- testRunner.And("I sort a record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 197
+ testRunner.Given("I have the following recordset to sort", ((string)(null)), table19, "Given ");
+#line 200
+ testRunner.And("I sort a record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 201
  testRunner.And("my sort order is \"Forward\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 198
+#line 202
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -653,9 +665,9 @@ this.ScenarioSetup(scenarioInfo);
             table20.AddRow(new string[] {
                         "rs().row",
                         "Warewolf"});
-#line 199
+#line 203
  testRunner.Then("the sorted recordset \"[[rs(*).row]]\"  will be", ((string)(null)), table20, "Then ");
-#line 202
+#line 206
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -664,14 +676,14 @@ this.ScenarioSetup(scenarioInfo);
             table21.AddRow(new string[] {
                         "[[rs(1).row]] = Warewolf",
                         "Forward"});
-#line 203
+#line 207
  testRunner.And("the debug inputs as", ((string)(null)), table21, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table22.AddRow(new string[] {
                         "[[rs(1).row]] = Warewolf"});
-#line 206
+#line 210
  testRunner.And("the debug output as", ((string)(null)), table22, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -684,7 +696,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SortARecordsetBackwardsRecordsetWithOneRow()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort a recordset backwards recordset  with one row", ((string[])(null)));
-#line 210
+#line 214
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -693,13 +705,13 @@ this.ScenarioSetup(scenarioInfo);
             table23.AddRow(new string[] {
                         "rs().row",
                         "Warewolf"});
-#line 211
- testRunner.Given("I have the following recordset to sort", ((string)(null)), table23, "Given ");
-#line 214
- testRunner.And("I sort a record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 215
+ testRunner.Given("I have the following recordset to sort", ((string)(null)), table23, "Given ");
+#line 218
+ testRunner.And("I sort a record \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 219
  testRunner.And("my sort order is \"Backwards\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 216
+#line 220
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -708,9 +720,9 @@ this.ScenarioSetup(scenarioInfo);
             table24.AddRow(new string[] {
                         "rs().row",
                         "Warewolf"});
-#line 217
+#line 221
  testRunner.Then("the sorted recordset \"[[rs(*).row]]\"  will be", ((string)(null)), table24, "Then ");
-#line 220
+#line 224
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -719,14 +731,14 @@ this.ScenarioSetup(scenarioInfo);
             table25.AddRow(new string[] {
                         "[[rs(1).row]] = Warewolf",
                         "Backwards"});
-#line 221
+#line 225
  testRunner.And("the debug inputs as", ((string)(null)), table25, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table26.AddRow(new string[] {
                         "[[rs(1).row]] = Warewolf"});
-#line 224
+#line 228
  testRunner.And("the debug output as", ((string)(null)), table26, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -734,8 +746,14 @@ this.ScenarioSetup(scenarioInfo);
         
         public virtual void Sort2ColumnsBackwards(string input, string direction, string error, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort 2 columns backwards", exampleTags);
-#line 228
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort 2 columns backwards", @__tags);
+#line 233
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -753,15 +771,15 @@ this.ScenarioSetup(scenarioInfo);
             table27.AddRow(new string[] {
                         "rs().a",
                         "Australia"});
-#line 229
+#line 234
  testRunner.Given("I have the following recordset to sort", ((string)(null)), table27, "Given ");
-#line 235
+#line 240
  testRunner.And(string.Format("I sort a record \"{0}\"", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 236
+#line 241
  testRunner.And(string.Format("my sort order is \"{0}\"", direction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 237
+#line 242
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 238
+#line 243
  testRunner.Then(string.Format("the execution has \"{0}\" error", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -771,13 +789,15 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort 2 columns backwards: Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "[[rs(*).a]],[[rs(*).a]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:direction", "Backwards")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Only recordsets that contain recordset columns can be sorted")]
         public virtual void Sort2ColumnsBackwards_Variant0()
         {
-#line 228
+#line 233
 this.Sort2ColumnsBackwards("[[rs(*).a]],[[rs(*).a]]", "Backwards", "Only recordsets that contain recordset columns can be sorted", ((string[])(null)));
 #line hidden
         }
@@ -786,13 +806,15 @@ this.Sort2ColumnsBackwards("[[rs(*).a]],[[rs(*).a]]", "Backwards", "Only records
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort 2 columns backwards: Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "[[rs(*).a]],[[rs(*).a]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:direction", "Forward")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Only recordsets that contain recordset columns can be sorted")]
         public virtual void Sort2ColumnsBackwards_Variant1()
         {
-#line 228
+#line 233
 this.Sort2ColumnsBackwards("[[rs(*).a]],[[rs(*).a]]", "Forward", "Only recordsets that contain recordset columns can be sorted", ((string[])(null)));
 #line hidden
         }
@@ -801,13 +823,15 @@ this.Sort2ColumnsBackwards("[[rs(*).a]],[[rs(*).a]]", "Forward", "Only recordset
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort 2 columns backwards: Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "[[rs(*)]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:direction", "Backwards")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Only recordsets that contain recordset columns can be sorted")]
         public virtual void Sort2ColumnsBackwards_Variant2()
         {
-#line 228
+#line 233
 this.Sort2ColumnsBackwards("[[rs(*)]]", "Backwards", "Only recordsets that contain recordset columns can be sorted", ((string[])(null)));
 #line hidden
         }
@@ -816,13 +840,15 @@ this.Sort2ColumnsBackwards("[[rs(*)]]", "Backwards", "Only recordsets that conta
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort 2 columns backwards: Variant 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "[[rs(*)]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:direction", "Forward")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Only recordsets that contain recordset columns can be sorted")]
         public virtual void Sort2ColumnsBackwards_Variant3()
         {
-#line 228
+#line 233
 this.Sort2ColumnsBackwards("[[rs(*)]]", "Forward", "Only recordsets that contain recordset columns can be sorted", ((string[])(null)));
 #line hidden
         }
@@ -831,13 +857,15 @@ this.Sort2ColumnsBackwards("[[rs(*)]]", "Forward", "Only recordsets that contain
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort 2 columns backwards: Variant 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "[[va]] = tree")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:direction", "Forward")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Only recordsets that contain recordset columns can be sorted")]
         public virtual void Sort2ColumnsBackwards_Variant4()
         {
-#line 228
+#line 233
 this.Sort2ColumnsBackwards("[[va]] = tree", "Forward", "Only recordsets that contain recordset columns can be sorted", ((string[])(null)));
 #line hidden
         }
@@ -846,13 +874,15 @@ this.Sort2ColumnsBackwards("[[va]] = tree", "Forward", "Only recordsets that con
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort 2 columns backwards: Variant 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "\"\"")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:direction", "Forward")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Only recordsets that contain recordset columns can be sorted")]
         public virtual void Sort2ColumnsBackwards_Variant5()
         {
-#line 228
+#line 233
 this.Sort2ColumnsBackwards("\"\"", "Forward", "Only recordsets that contain recordset columns can be sorted", ((string[])(null)));
 #line hidden
         }
@@ -861,13 +891,15 @@ this.Sort2ColumnsBackwards("\"\"", "Forward", "Only recordsets that contain reco
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort 2 columns backwards: Variant 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "asdas")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:direction", "Forward")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Only recordsets that contain recordset columns can be sorted")]
         public virtual void Sort2ColumnsBackwards_Variant6()
         {
-#line 228
+#line 233
 this.Sort2ColumnsBackwards("asdas", "Forward", "Only recordsets that contain recordset columns can be sorted", ((string[])(null)));
 #line hidden
         }
@@ -876,13 +908,15 @@ this.Sort2ColumnsBackwards("asdas", "Forward", "Only recordsets that contain rec
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort 2 columns backwards: Variant 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "99")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:direction", "Forward")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Only recordsets that contain recordset columns can be sorted")]
         public virtual void Sort2ColumnsBackwards_Variant7()
         {
-#line 228
+#line 233
 this.Sort2ColumnsBackwards("99", "Forward", "Only recordsets that contain recordset columns can be sorted", ((string[])(null)));
 #line hidden
         }
@@ -891,13 +925,15 @@ this.Sort2ColumnsBackwards("99", "Forward", "Only recordsets that contain record
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Sort 2 columns backwards: Variant 8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Sort")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "[[a]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:direction", "Forward")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Only recordsets that contain recordset columns can be sorted")]
         public virtual void Sort2ColumnsBackwards_Variant8()
         {
-#line 228
+#line 233
 this.Sort2ColumnsBackwards("[[a]]", "Forward", "Only recordsets that contain recordset columns can be sorted", ((string[])(null)));
 #line hidden
         }
@@ -905,7 +941,7 @@ this.Sort2ColumnsBackwards("[[a]]", "Forward", "Only recordsets that contain rec
         public virtual void SortRecordset(string input, string direction, string result, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort recordset", exampleTags);
-#line 251
+#line 256
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -923,15 +959,15 @@ this.ScenarioSetup(scenarioInfo);
             table28.AddRow(new string[] {
                         "rs().a",
                         "Australia"});
-#line 252
+#line 257
  testRunner.Given("I have the following recordset to sort", ((string)(null)), table28, "Given ");
-#line 258
+#line 263
  testRunner.And(string.Format("I sort a record \"{0}\"", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 259
+#line 264
  testRunner.And(string.Format("my sort order is \"{0}\"", direction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 260
+#line 265
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 261
+#line 266
  testRunner.Then("the execution has \"No\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -947,7 +983,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:result", "Mongolia,Zambia")]
         public virtual void SortRecordset_Rs1_A()
         {
-#line 251
+#line 256
 this.SortRecordset("[[rs(1).a]]", "Forward", "Mongolia,Zambia", ((string[])(null)));
 #line hidden
         }
@@ -959,7 +995,7 @@ this.SortRecordset("[[rs(1).a]]", "Forward", "Mongolia,Zambia", ((string[])(null
         public virtual void SortRecordsetWithoutFieldForwards()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort Recordset without field Forwards", ((string[])(null)));
-#line 266
+#line 271
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -977,15 +1013,15 @@ this.ScenarioSetup(scenarioInfo);
             table29.AddRow(new string[] {
                         "rec(2).a",
                         "Australia"});
-#line 267
+#line 272
  testRunner.Given("I have the following recordset to sort", ((string)(null)), table29, "Given ");
-#line 273
+#line 278
  testRunner.And("I sort a record \"[[rs(*)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 274
+#line 279
  testRunner.And("my sort order is \"Forward\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 275
+#line 280
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 276
+#line 281
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -998,7 +1034,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SortNullRecordset()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort Null Recordset", ((string[])(null)));
-#line 279
+#line 284
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1007,15 +1043,15 @@ this.ScenarioSetup(scenarioInfo);
             table30.AddRow(new string[] {
                         "[[rs().a]]",
                         "NULL"});
-#line 280
- testRunner.Given("I have the following recordset to sort", ((string)(null)), table30, "Given ");
-#line 283
- testRunner.And("I sort a record \"[[rs(*).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 284
- testRunner.And("my sort order is \"Backwards\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 285
+ testRunner.Given("I have the following recordset to sort", ((string)(null)), table30, "Given ");
+#line 288
+ testRunner.And("I sort a record \"[[rs(*).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 289
+ testRunner.And("my sort order is \"Backwards\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 290
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 286
+#line 291
  testRunner.Then("the execution has \"No\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1028,15 +1064,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SortNonExistentRecordset()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sort non existent Recordset", ((string[])(null)));
-#line 289
+#line 294
  this.ScenarioSetup(scenarioInfo);
-#line 290
+#line 295
  testRunner.Given("I sort a record \"[[rs(*)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 291
+#line 296
  testRunner.And("my sort order is \"Backwards\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 292
+#line 297
  testRunner.When("the sort records tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 293
+#line 298
  testRunner.Then("the execution has \"An\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Utility.FormatNumber
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "FormatNumber", "\tIn order to round off numbers\r\n\tAs a Warewolf user\r\n\tI want a tool that will aid" +
                     " me to do so ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
@@ -1062,10 +1062,13 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Number Format tool with complex non array")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "FormatNumber")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void NumberFormatToolWithComplexNonArray()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Number Format tool with complex non array", ((string[])(null)));
-#line 325
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Number Format tool with complex non array", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 326
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1074,11 +1077,11 @@ this.ScenarioSetup(scenarioInfo);
             table31.AddRow(new string[] {
                         "[[@Person.Member.Team.Score]]",
                         "0.3"});
-#line 326
+#line 327
  testRunner.Given("There is a complexobject in the datalist with this shape", ((string)(null)), table31, "Given ");
-#line 329
- testRunner.And("Alias is \"[[Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 330
+ testRunner.And("Alias is \"[[Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 331
  testRunner.And("Datasource is \"[[@Person.Member.Team.Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1093,13 +1096,13 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "3",
                         "[[Score]]"});
-#line 331
+#line 332
  testRunner.And("I use a Number Format tool configured as", ((string)(null)), table32, "And ");
-#line 334
- testRunner.When("the selectAndApply tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 335
- testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the selectAndApply tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 336
+ testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 337
  testRunner.And("\"[[@Person.Member.Team.Score]]\" has a value of \"0.300\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

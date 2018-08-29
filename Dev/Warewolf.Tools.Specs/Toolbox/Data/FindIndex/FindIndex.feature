@@ -4,6 +4,7 @@ Feature: Find Index
 	As a Warewolf user
 	I want a tool that finds indexes
 
+@MSTest:DoNotParallelize
 Scenario: Find the first Occurrence of a character in a sentence
 	Given I have a Find Index variable "[[a]]" equal to "I have managed to spend time in real innovation since I started using Warewolf" 
 	And the sentence "[[a]]"
@@ -36,6 +37,7 @@ Scenario: Find all Occurrences of a word in a sentence and output to scalar goin
 	|                                  |
 	| [[result]] = 4,9,11,35,43,59,72 |
 
+@MSTest:DoNotParallelize
 Scenario: Find all Occurrences of a word in a sentence and output to recordset going right to left
 	Given I have a Find Index variable "[[a]]" equal to "I have managed to spend time in real innovation since I started using Warewolf" 
 	And the sentence "[[a]]"
@@ -92,6 +94,7 @@ Scenario: Find first Occurrence of a character in a blank string
 	|                  |
 	| [[result]] = -1 |
 
+@MSTest:DoNotParallelize
 Scenario: Find first Occurrence of a character in a string where it doesnt exist
 	Given I have a Find Index variable "[[a]]" equal to "fff" 
 	And the sentence "[[a]]"
@@ -141,6 +144,7 @@ Scenario: Find an xml fragment in a bigger xml document
 	|                 |
 	| [[result]] = 4 |
 
+@MSTest:DoNotParallelize
 Scenario: Find a negative recordset index in a string
 	Given I have a Find Index variable "[[a]]" equal to "<x><b id="1">One</b></x>" 
 	And the sentence "[[a]]"
@@ -156,6 +160,7 @@ Scenario: Find a negative recordset index in a string
 	|                   |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Find something with a negative recordset index as Input
 	Given the sentence "[[a(-1).b]]"
 	And I selected Index "First Occurrence"
@@ -170,6 +175,7 @@ Scenario: Find something with a negative recordset index as Input
 	|                  |
 	|    [[result]] =              |
 
+@MSTest:DoNotParallelize
 Scenario: Output values in recordset with star notation
     Given the sentence "abc3cde3fgh3"
 	And I selected Index "All Occurrences"
@@ -185,6 +191,7 @@ Scenario: Output values in recordset with star notation
 	|                      |
 	| [[rs(1).a]] = 4,8,12 |
 
+@MSTest:DoNotParallelize
 Scenario: Output values in recordset with numeric notation
     Given the sentence "abc3cde3fgh3"
 	And I selected Index "All Occurrences"
@@ -251,7 +258,7 @@ Scenario: Find all Occurrences of a numeric character in a string
 	|                  |
 	| [[result]] = 1,2 |
 
-
+@MSTest:DoNotParallelize
 Scenario Outline: Find all occurances of Characters in a string
 	Given I have a Find Index variable "[[a]]" equal to "Warewolf" 
 	And the sentence "[[a]]"
@@ -275,6 +282,7 @@ Examples:
 | 4  | All Occurrences | a          | Left to Right | 2      | [[result]] = 2   |
 | 5  | All Occurrences | w          | Right to Left | 1,5    | [[result]] = 1,5 |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Find all Recordsets with invalid Indexes
 	Given I have a Find Index variable "<var>" equal to "<value>"
 	And I selected Index "First Occurrence"
@@ -313,8 +321,6 @@ Scenario: Tool does not return
 	|                                      |
 	| [[result]] = Index is not an integer |
 
-	
-
 Scenario: Find first Occurrence of a character non existent imput
 	Given the sentence "[[a]]"
 	And I selected Index "First Occurrence"
@@ -332,6 +338,7 @@ Scenario: Find first Occurrence of  of a character non existent character
 	When the data find index tool is executed
 	Then the execution has "AN" error
 
+@MSTest:DoNotParallelize
 Scenario: Find all Occurrences of a numeric character in a string using recordset star notation
 	Given a find index recordset
 	| rs       | val |

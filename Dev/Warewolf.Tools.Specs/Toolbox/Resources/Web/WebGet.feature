@@ -3,6 +3,7 @@
 	As a Warewolf User
 	I want to Create or Edit Warewolf Web Get Request.
 
+@MSTest:DoNotParallelize
 Scenario: Open new Get Web Tool
 	And I drag Web Get Request Connector Tool onto the design surface
 	And New Source is Enabled

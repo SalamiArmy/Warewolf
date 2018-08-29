@@ -61,6 +61,7 @@ Scenario: Change the recordset on existing mysql server connector tool
 	Then The recordset name changes to "SomeRecordSet" for mysql connector tool
 	
 @ExecuteMySqlServerWithTimeout
+@MSTest:DoNotParallelize
 Scenario: Execute MySql Server With Timeout
     Given I have workflow "MySqlWorkflowForTimeout" with "MySqlActivity" MySql database connector
     And Mysql server is Enabled

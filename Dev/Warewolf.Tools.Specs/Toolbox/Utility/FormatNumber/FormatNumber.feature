@@ -322,6 +322,7 @@ Scenario: Number Format tool with complex object multi array and field and multi
 	And "[[@Person.Member(2).Team(3).Score]]" has a value of "0.130"
 	And "[[@Person.Member(3).Team(1).Score]]" has a value of "0.140"
 
+@MSTest:DoNotParallelize
 Scenario: Number Format tool with complex non array
 	Given There is a complexobject in the datalist with this shape
 	| rs                            | value |

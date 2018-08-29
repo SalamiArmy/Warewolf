@@ -5,6 +5,7 @@ Feature: Javascript
 	As a Warewolf user
 	I want a tool that allows me to execute javascripts
 
+@MSTest:DoNotParallelize
 Scenario: Execute Javascript Variable is 1
 	Given I have a script variable "[[val]]" with this value "1"
 	And I have this script to execute "javascript_one_variable.txt"
@@ -19,6 +20,7 @@ Scenario: Execute Javascript Variable is 1
 	|                   |
 	| [[result]] = one |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Javascript blank script	
 	Given I have this script to execute ""
 	And I have selected the language as "JavaScript"
@@ -32,6 +34,7 @@ Scenario: Execute Javascript blank script
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Javascript Variable is 2
 	Given I have a script variable "[[val]]" with this value "2"
 	And I have this script to execute "javascript_one_variable.txt"
@@ -46,6 +49,7 @@ Scenario: Execute Javascript Variable is 2
 	|                   |
 	| [[result]] = two |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Javascript Variable is 3
 	Given I have a script variable "[[val]]" with this value "3"
 	And I have this script to execute "javascript_one_variable.txt"
@@ -60,6 +64,7 @@ Scenario: Execute Javascript Variable is 3
 	|                              |
 	| [[result]] = not one or two |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Javascript Variable is 100
 	Given I have a script variable "[[val]]" with this value "100"
 	And I have this script to execute "javascript_one_variable.txt"
@@ -74,6 +79,7 @@ Scenario: Execute Javascript Variable is 100
 	|                              |
 	| [[result]] = not one or two |
 
+@MSTest:DoNotParallelize
 Scenario: Execute badly formed Javascript
 	Given I have a script variable "[[val]]" with this value "1"
 	And I have this script to execute "javascript_badly_formatted.txt"
@@ -87,6 +93,7 @@ Scenario: Execute badly formed Javascript
 	|              |
 	| [[result]] = |
 	
+@MSTest:DoNotParallelize
 Scenario: Execute Javascript with 2 variables
 	Given I have a script variable "[[val1]]" with this value "1"
 	Given I have a script variable "[[val2]]" with this value "1"
@@ -102,7 +109,8 @@ Scenario: Execute Javascript with 2 variables
 	|                   |
 	| [[result]] = two |
 
-	Scenario Outline:Excute Javascript with incorrect values
+@MSTest:DoNotParallelize
+Scenario Outline:Excute Javascript with incorrect values
 	Given I have the script to execute "<script>"
 	And I have selected the language as "JavaScript"
 	When I execute the script tool
@@ -119,6 +127,7 @@ Scenario: Execute Javascript with 2 variables
 	| 88      | There was an error when returning a value from your script, remember to use the "Return" keyword when returning the result |
 	| [[var]] | Scalar value {var} is NULL                                                                                                 |
 
+@MSTest:DoNotParallelize
 Scenario: Execute JavaScript with a null variable 
 	Given I have a script variable "[[val1]]" with this value "null"
 	Given I have a script variable "[[val2]]" with this value "null"
@@ -127,8 +136,7 @@ Scenario: Execute JavaScript with a null variable
 	When I execute the script tool
 	Then the execution has "An" error
 
-
-	Scenario: Execute JavaScript with a non existent variable 
+Scenario: Execute JavaScript with a non existent variable 
 	Given I have this script to execute "[[val2]]"
 	And I have selected the language as "JavaScript"
 	When I execute the script tool

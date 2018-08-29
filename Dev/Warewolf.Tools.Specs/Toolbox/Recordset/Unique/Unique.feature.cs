@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Recordset.Unique
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Unique", "\tIn order to find unique records in a recordset\r\n\tAs a Warewolf user\r\n\tI want too" +
                     "l that will allow me ", ProgrammingLanguage.CSharp, new string[] {
                         "Recordset"});
@@ -88,10 +88,13 @@ namespace Warewolf.Tools.Specs.Toolbox.Recordset.Unique
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find unique records in a recordset")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindUniqueRecordsInARecordset()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records in a recordset", ((string[])(null)));
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records in a recordset", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 8
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -109,14 +112,14 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "rs().row",
                         "30"});
-#line 8
+#line 9
  testRunner.Given("I have the following duplicated recordset", ((string)(null)), table1, "Given ");
-#line 14
+#line 15
  testRunner.And("I want to find unique in field \"[[rs().row]]\" with the return field \"[[rs().row]]" +
                     "\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 15
- testRunner.And("The result variable is \"[[rec().unique]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
+ testRunner.And("The result variable is \"[[rec().unique]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 17
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -131,9 +134,9 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "rec().unique",
                         "30"});
-#line 17
+#line 18
  testRunner.Then("the unique result will be", ((string)(null)), table2, "Then ");
-#line 22
+#line 23
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -144,7 +147,7 @@ this.ScenarioSetup(scenarioInfo);
                         "In Field(s)",
                         "[[rs(4).row]] = 30",
                         "[[rs().row]] ="});
-#line 23
+#line 24
  testRunner.And("the debug inputs as", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -159,7 +162,7 @@ this.ScenarioSetup(scenarioInfo);
             table4.AddRow(new string[] {
                         "",
                         "[[rec(3).unique]] = 30"});
-#line 26
+#line 27
  testRunner.And("the debug output as", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -169,31 +172,34 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find unique records in an empty recordset")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindUniqueRecordsInAnEmptyRecordset()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records in an empty recordset", ((string[])(null)));
-#line 32
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records in an empty recordset", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 34
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "rs",
                         "val"});
-#line 33
- testRunner.Given("I have the following empty recordset", ((string)(null)), table5, "Given ");
 #line 35
+ testRunner.Given("I have the following empty recordset", ((string)(null)), table5, "Given ");
+#line 37
  testRunner.And("I want to find unique in field \"[[rs().row]]\" with the return field \"[[rs().row]]" +
                     "\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 36
+#line 38
  testRunner.And("The result variable is \"[[rec().unique]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 37
+#line 39
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "rec",
                         "unique"});
-#line 38
- testRunner.Then("the unique result will be", ((string)(null)), table6, "Then ");
 #line 40
+ testRunner.Then("the unique result will be", ((string)(null)), table6, "Then ");
+#line 42
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -203,10 +209,13 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find unique records in a recordset and the in field is blank")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindUniqueRecordsInARecordsetAndTheInFieldIsBlank()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records in a recordset and the in field is blank", ((string[])(null)));
-#line 43
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records in a recordset and the in field is blank", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 46
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -224,21 +233,21 @@ this.ScenarioSetup(scenarioInfo);
             table7.AddRow(new string[] {
                         "rs().row",
                         "3"});
-#line 44
+#line 47
  testRunner.Given("I have the following duplicated recordset", ((string)(null)), table7, "Given ");
-#line 50
+#line 53
  testRunner.And("I want to find unique in field \"\" with the return field \"[[rs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 51
+#line 54
  testRunner.And("The result variable is \"[[rec().unique]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 52
+#line 55
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "rec",
                         "unique"});
-#line 53
+#line 56
  testRunner.Then("the unique result will be", ((string)(null)), table8, "Then ");
-#line 55
+#line 58
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -249,7 +258,7 @@ this.ScenarioSetup(scenarioInfo);
                         "In Field(s)",
                         "",
                         "[[rs().row]] ="});
-#line 56
+#line 59
  testRunner.And("the debug inputs as", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -258,7 +267,7 @@ this.ScenarioSetup(scenarioInfo);
             table10.AddRow(new string[] {
                         "",
                         "[[rec(*).unique]] ="});
-#line 59
+#line 62
  testRunner.And("the debug output as", ((string)(null)), table10, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -271,7 +280,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindUniqueRecordsInARecordsetTheReturnFieldIsBlank()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records in a recordset the return field is blank", ((string[])(null)));
-#line 63
+#line 66
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -289,21 +298,21 @@ this.ScenarioSetup(scenarioInfo);
             table11.AddRow(new string[] {
                         "rs().row",
                         "3"});
-#line 64
+#line 67
  testRunner.Given("I have the following duplicated recordset", ((string)(null)), table11, "Given ");
-#line 70
+#line 73
  testRunner.And("I want to find unique in field \"[[rs().row]]\" with the return field \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 71
+#line 74
  testRunner.And("The result variable is \"[[rec().unique]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 72
+#line 75
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "rec",
                         "unique"});
-#line 73
+#line 76
  testRunner.Then("the unique result will be", ((string)(null)), table12, "Then ");
-#line 75
+#line 78
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -314,7 +323,7 @@ this.ScenarioSetup(scenarioInfo);
                         "In Field(s)",
                         "[[rs(4).row]] = 3",
                         "\"\""});
-#line 76
+#line 79
  testRunner.And("the debug inputs as", ((string)(null)), table13, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -323,7 +332,7 @@ this.ScenarioSetup(scenarioInfo);
             table14.AddRow(new string[] {
                         "",
                         "[[rec(*).unique]] ="});
-#line 79
+#line 82
  testRunner.And("the debug output as", ((string)(null)), table14, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -336,7 +345,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindUniqueRecordsUsingANegativeRecordsetIndexForInField()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records using a negative recordset index for In Field", ((string[])(null)));
-#line 83
+#line 86
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -354,22 +363,22 @@ this.ScenarioSetup(scenarioInfo);
             table15.AddRow(new string[] {
                         "rs().row",
                         "3"});
-#line 84
+#line 87
  testRunner.Given("I have the following duplicated recordset", ((string)(null)), table15, "Given ");
-#line 90
+#line 93
  testRunner.And("I want to find unique in field \"[[rs(-1).row]]\" with the return field \"[[rs().row" +
                     "]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 91
+#line 94
  testRunner.And("The result variable is \"[[rec().unique]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 92
+#line 95
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         "rec",
                         "unique"});
-#line 93
+#line 96
  testRunner.Then("the unique result will be", ((string)(null)), table16, "Then ");
-#line 95
+#line 98
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -384,7 +393,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "[[rs().row]]  ="});
-#line 96
+#line 99
  testRunner.And("the debug inputs as", ((string)(null)), table17, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -393,7 +402,7 @@ this.ScenarioSetup(scenarioInfo);
             table18.AddRow(new string[] {
                         "",
                         "[[rec(*).unique]] ="});
-#line 100
+#line 103
  testRunner.And("the debug output as", ((string)(null)), table18, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -403,10 +412,13 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find unique records using a * for In Field")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindUniqueRecordsUsingAForInField()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records using a * for In Field", ((string[])(null)));
-#line 104
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records using a * for In Field", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 108
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -424,14 +436,14 @@ this.ScenarioSetup(scenarioInfo);
             table19.AddRow(new string[] {
                         "rs().row",
                         "3"});
-#line 105
+#line 109
  testRunner.Given("I have the following duplicated recordset", ((string)(null)), table19, "Given ");
-#line 111
+#line 115
  testRunner.And("I want to find unique in field \"[[rs(*).row]]\" with the return field \"[[rs().row]" +
                     "]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 112
+#line 116
  testRunner.And("The result variable is \"[[rec().unique]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 113
+#line 117
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -446,9 +458,9 @@ this.ScenarioSetup(scenarioInfo);
             table20.AddRow(new string[] {
                         "rec().unique",
                         "3"});
-#line 114
+#line 118
  testRunner.Then("the unique result will be", ((string)(null)), table20, "Then ");
-#line 119
+#line 123
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -475,7 +487,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "[[rs().row]] ="});
-#line 120
+#line 124
  testRunner.And("the debug inputs as", ((string)(null)), table21, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -490,7 +502,7 @@ this.ScenarioSetup(scenarioInfo);
             table22.AddRow(new string[] {
                         "",
                         "[[rec(3).unique]] = 3"});
-#line 127
+#line 131
  testRunner.And("the debug output as", ((string)(null)), table22, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -500,10 +512,13 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find unique records using a negative recordset index for Return Field")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindUniqueRecordsUsingANegativeRecordsetIndexForReturnField()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records using a negative recordset index for Return Field", ((string[])(null)));
-#line 133
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records using a negative recordset index for Return Field", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 138
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -521,22 +536,22 @@ this.ScenarioSetup(scenarioInfo);
             table23.AddRow(new string[] {
                         "rs().row",
                         "3"});
-#line 134
+#line 139
  testRunner.Given("I have the following duplicated recordset", ((string)(null)), table23, "Given ");
-#line 140
+#line 145
  testRunner.And("I want to find unique in field \"[[rs().row]]\" with the return field \"[[rs(-1).row" +
                     "]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 141
+#line 146
  testRunner.And("The result variable is \"[[rec().unique]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 142
+#line 147
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         "rec",
                         "unique"});
-#line 143
+#line 148
  testRunner.Then("the unique result will be", ((string)(null)), table24, "Then ");
-#line 145
+#line 150
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -547,7 +562,7 @@ this.ScenarioSetup(scenarioInfo);
                         "In Field(s)",
                         "[[rs(4).row]] = 3",
                         "[[rs(-1).row]] ="});
-#line 146
+#line 151
  testRunner.And("the debug inputs as", ((string)(null)), table25, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -556,7 +571,7 @@ this.ScenarioSetup(scenarioInfo);
             table26.AddRow(new string[] {
                         "",
                         "[[rec(*).unique]] ="});
-#line 149
+#line 154
  testRunner.And("the debug output as", ((string)(null)), table26, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -566,10 +581,13 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find unique records using a * for Return Field")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindUniqueRecordsUsingAForReturnField()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records using a * for Return Field", ((string[])(null)));
-#line 153
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records using a * for Return Field", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 159
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -587,14 +605,14 @@ this.ScenarioSetup(scenarioInfo);
             table27.AddRow(new string[] {
                         "rs().row",
                         "3"});
-#line 154
- testRunner.Given("I have the following duplicated recordset", ((string)(null)), table27, "Given ");
 #line 160
+ testRunner.Given("I have the following duplicated recordset", ((string)(null)), table27, "Given ");
+#line 166
  testRunner.And("I want to find unique in field \"[[rs().row]]\" with the return field \"[[rs(*).row]" +
                     "]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 161
+#line 167
  testRunner.And("The result variable is \"[[rec().unique]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 162
+#line 168
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -609,9 +627,9 @@ this.ScenarioSetup(scenarioInfo);
             table28.AddRow(new string[] {
                         "rec().unique",
                         "3"});
-#line 163
+#line 169
  testRunner.Then("the unique result will be", ((string)(null)), table28, "Then ");
-#line 168
+#line 174
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -622,7 +640,7 @@ this.ScenarioSetup(scenarioInfo);
                         "In Field(s)",
                         "[[rs(4).row]] = 3",
                         "[[rs(*).row]] ="});
-#line 169
+#line 175
  testRunner.And("the debug inputs as", ((string)(null)), table29, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -637,7 +655,7 @@ this.ScenarioSetup(scenarioInfo);
             table30.AddRow(new string[] {
                         "",
                         "[[rec(3).unique]] = 3"});
-#line 172
+#line 178
  testRunner.And("the debug output as", ((string)(null)), table30, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -650,7 +668,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ExecutingUniqueRecordToolWithEmptyInFields()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Executing Unique record tool with empty In Fields", ((string[])(null)));
-#line 178
+#line 184
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -668,21 +686,21 @@ this.ScenarioSetup(scenarioInfo);
             table31.AddRow(new string[] {
                         "rs().row",
                         "3"});
-#line 179
- testRunner.Given("I have the following duplicated recordset", ((string)(null)), table31, "Given ");
 #line 185
+ testRunner.Given("I have the following duplicated recordset", ((string)(null)), table31, "Given ");
+#line 191
  testRunner.And("I want to find unique in field \"\" with the return field \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 186
+#line 192
  testRunner.And("The result variable is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 187
+#line 193
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
                         "rec",
                         "unique"});
-#line 188
+#line 194
  testRunner.Then("the unique result will be", ((string)(null)), table32, "Then ");
-#line 190
+#line 196
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -693,13 +711,13 @@ this.ScenarioSetup(scenarioInfo);
                         "In Field(s)",
                         "",
                         "[[rs(*).row]] ="});
-#line 191
+#line 197
  testRunner.And("the debug inputs as", ((string)(null)), table33, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
                         ""});
-#line 194
+#line 200
  testRunner.And("the debug output as", ((string)(null)), table34, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -712,7 +730,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ExecutingUniqueRecordToolWithEmptyInReturnAndResultField()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Executing Unique record tool with empty In Return and Result Field", ((string[])(null)));
-#line 198
+#line 204
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
@@ -730,21 +748,21 @@ this.ScenarioSetup(scenarioInfo);
             table35.AddRow(new string[] {
                         "rs().row",
                         "3"});
-#line 199
- testRunner.Given("I have the following duplicated recordset", ((string)(null)), table35, "Given ");
 #line 205
+ testRunner.Given("I have the following duplicated recordset", ((string)(null)), table35, "Given ");
+#line 211
  testRunner.And("I want to find unique in field \"[[rs(*).row]]\" with the return field \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 206
+#line 212
  testRunner.And("The result variable is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 207
+#line 213
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
                         "rec",
                         "unique"});
-#line 208
+#line 214
  testRunner.Then("the unique result will be", ((string)(null)), table36, "Then ");
-#line 210
+#line 216
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -767,13 +785,13 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "[[rs(4).row]] = 3",
                         "\"\""});
-#line 211
+#line 217
  testRunner.And("the debug inputs as", ((string)(null)), table37, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
                         ""});
-#line 217
+#line 223
  testRunner.And("the debug output as", ((string)(null)), table38, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -783,10 +801,13 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Find unique records and assigning result to scalar must error")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void FindUniqueRecordsAndAssigningResultToScalarMustError()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records and assigning result to scalar must error", ((string[])(null)));
-#line 220
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find unique records and assigning result to scalar must error", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 227
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
@@ -804,16 +825,16 @@ this.ScenarioSetup(scenarioInfo);
             table39.AddRow(new string[] {
                         "rs().row",
                         "30"});
-#line 221
+#line 228
  testRunner.Given("I have the following duplicated recordset", ((string)(null)), table39, "Given ");
-#line 227
+#line 234
  testRunner.And("I want to find unique in field \"[[rs().row]]\" with the return field \"[[rs().row]]" +
                     "\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 228
+#line 235
  testRunner.And("The result variable is \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 229
+#line 236
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 230
+#line 237
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
@@ -824,7 +845,7 @@ this.ScenarioSetup(scenarioInfo);
                         "In Field(s)",
                         "[[rs(4).row]] = 30",
                         "[[rs().row]] ="});
-#line 231
+#line 238
  testRunner.And("the debug inputs as", ((string)(null)), table40, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -832,8 +853,14 @@ this.ScenarioSetup(scenarioInfo);
         
         public virtual void InvalidExpressions(string inField, string @return, string result, string value, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Invalid expressions", exampleTags);
-#line 235
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Invalid expressions", @__tags);
+#line 243
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
@@ -851,21 +878,21 @@ this.ScenarioSetup(scenarioInfo);
             table41.AddRow(new string[] {
                         "rs().row",
                         "30"});
-#line 236
-testRunner.Given("I have the following duplicated recordset", ((string)(null)), table41, "Given ");
-#line 242
- testRunner.And(string.Format("I want to find unique in field \"{0}\" with the return field \"{1}\"", inField, @return), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 243
- testRunner.And(string.Format("The result variable is \"{0}\" equals \"{1}\"", result, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 244
+testRunner.Given("I have the following duplicated recordset", ((string)(null)), table41, "Given ");
+#line 250
+ testRunner.And(string.Format("I want to find unique in field \"{0}\" with the return field \"{1}\"", inField, @return), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 251
+ testRunner.And(string.Format("The result variable is \"{0}\" equals \"{1}\"", result, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 252
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
                         "rec",
                         "unique"});
-#line 245
+#line 253
  testRunner.Then("the unique result will be", ((string)(null)), table42, "Then ");
-#line 247
+#line 255
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
@@ -880,7 +907,7 @@ testRunner.Given("I have the following duplicated recordset", ((string)(null)), 
                         string.Format("{0}", @return),
                         string.Format("{0}", result),
                         string.Format("{0}", value)});
-#line 248
+#line 256
  testRunner.And("the debug inputs as", ((string)(null)), table43, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -890,6 +917,8 @@ testRunner.Given("I have the following duplicated recordset", ((string)(null)), 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Invalid expressions: Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InField", "asda")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Return", "[[rs().row]]")]
@@ -897,7 +926,7 @@ testRunner.Given("I have the following duplicated recordset", ((string)(null)), 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Error : scalar in unique")]
         public virtual void InvalidExpressions_Variant0()
         {
-#line 235
+#line 243
 this.InvalidExpressions("asda", "[[rs().row]]", "[[var]]", "Error : scalar in unique", ((string[])(null)));
 #line hidden
         }
@@ -906,6 +935,8 @@ this.InvalidExpressions("asda", "[[rs().row]]", "[[var]]", "Error : scalar in un
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Invalid expressions: Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InField", "[[c]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Return", "[[rs().row]]")]
@@ -913,7 +944,7 @@ this.InvalidExpressions("asda", "[[rs().row]]", "[[var]]", "Error : scalar in un
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Error : scalar in unique")]
         public virtual void InvalidExpressions_Variant1()
         {
-#line 235
+#line 243
 this.InvalidExpressions("[[c]]", "[[rs().row]]", "[[var]]", "Error : scalar in unique", ((string[])(null)));
 #line hidden
         }
@@ -922,6 +953,8 @@ this.InvalidExpressions("[[c]]", "[[rs().row]]", "[[var]]", "Error : scalar in u
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Invalid expressions: Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InField", "")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Return", "[[rs().row]]")]
@@ -929,7 +962,7 @@ this.InvalidExpressions("[[c]]", "[[rs().row]]", "[[var]]", "Error : scalar in u
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Error : Invalid in Fields")]
         public virtual void InvalidExpressions_Variant2()
         {
-#line 235
+#line 243
 this.InvalidExpressions("", "[[rs().row]]", "[[var]]", "Error : Invalid in Fields", ((string[])(null)));
 #line hidden
         }
@@ -938,6 +971,8 @@ this.InvalidExpressions("", "[[rs().row]]", "[[var]]", "Error : Invalid in Field
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Invalid expressions: Variant 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InField", "99")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Return", "[[rs().row]]")]
@@ -945,7 +980,7 @@ this.InvalidExpressions("", "[[rs().row]]", "[[var]]", "Error : Invalid in Field
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Error : scalar in unique")]
         public virtual void InvalidExpressions_Variant3()
         {
-#line 235
+#line 243
 this.InvalidExpressions("99", "[[rs().row]]", "[[rec(1).a]]", "Error : scalar in unique", ((string[])(null)));
 #line hidden
         }
@@ -954,6 +989,8 @@ this.InvalidExpressions("99", "[[rs().row]]", "[[rec(1).a]]", "Error : scalar in
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Invalid expressions: Variant 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InField", "[[v]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Return", "[[rs().row]]")]
@@ -961,7 +998,7 @@ this.InvalidExpressions("99", "[[rs().row]]", "[[rec(1).a]]", "Error : scalar in
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Error : scalar in unique")]
         public virtual void InvalidExpressions_Variant4()
         {
-#line 235
+#line 243
 this.InvalidExpressions("[[v]]", "[[rs().row]]", "[[rec([[int]]).a]], [[int]]", "Error : scalar in unique", ((string[])(null)));
 #line hidden
         }
@@ -970,6 +1007,8 @@ this.InvalidExpressions("[[v]]", "[[rs().row]]", "[[rec([[int]]).a]], [[int]]", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Invalid expressions: Variant 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InField", "[[rs().row]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Return", "[[v]]")]
@@ -977,7 +1016,7 @@ this.InvalidExpressions("[[v]]", "[[rs().row]]", "[[rec([[int]]).a]], [[int]]", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Error : scalar in unique")]
         public virtual void InvalidExpressions_Variant5()
         {
-#line 235
+#line 243
 this.InvalidExpressions("[[rs().row]]", "[[v]]", "[[rec(1).a]]", "Error : scalar in unique", ((string[])(null)));
 #line hidden
         }
@@ -986,6 +1025,8 @@ this.InvalidExpressions("[[rs().row]]", "[[v]]", "[[rec(1).a]]", "Error : scalar
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Invalid expressions: Variant 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InField", "[[rs().row]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Return", "51")]
@@ -993,7 +1034,7 @@ this.InvalidExpressions("[[rs().row]]", "[[v]]", "[[rec(1).a]]", "Error : scalar
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Error : scalar in unique")]
         public virtual void InvalidExpressions_Variant6()
         {
-#line 235
+#line 243
 this.InvalidExpressions("[[rs().row]]", "51", "[[rec(1).a]]", "Error : scalar in unique", ((string[])(null)));
 #line hidden
         }
@@ -1002,6 +1043,8 @@ this.InvalidExpressions("[[rs().row]]", "51", "[[rec(1).a]]", "Error : scalar in
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Invalid expressions: Variant 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Unique")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:InField", "[[rs().row]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Return", "adas")]
@@ -1009,7 +1052,7 @@ this.InvalidExpressions("[[rs().row]]", "51", "[[rec(1).a]]", "Error : scalar in
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "Error : scalar in unique")]
         public virtual void InvalidExpressions_Variant7()
         {
-#line 235
+#line 243
 this.InvalidExpressions("[[rs().row]]", "adas", "[[rec(1).a]]", "Error : scalar in unique", ((string[])(null)));
 #line hidden
         }
@@ -1021,7 +1064,7 @@ this.InvalidExpressions("[[rs().row]]", "adas", "[[rec(1).a]]", "Error : scalar 
         public virtual void ExecutingUniqueRecordToolWithNULLRecordset()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Executing Unique record tool with NULL recordset", ((string[])(null)));
-#line 262
+#line 270
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1033,15 +1076,15 @@ this.ScenarioSetup(scenarioInfo);
             table44.AddRow(new string[] {
                         "rs().val",
                         "NULL"});
-#line 263
+#line 271
  testRunner.Given("I have the following duplicated recordset", ((string)(null)), table44, "Given ");
-#line 267
+#line 275
  testRunner.And("I want to find unique in field \"\" with the return field \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 268
+#line 276
  testRunner.And("The result variable is \"[[rs().val]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 269
+#line 277
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 270
+#line 278
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1054,15 +1097,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ExecutingUniqueRecordToolWithNonExistentRecordset()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Executing Unique record tool with non existent recordset", ((string[])(null)));
-#line 273
+#line 281
 this.ScenarioSetup(scenarioInfo);
-#line 274
+#line 282
  testRunner.Given("I want to find unique in field \"\" with the return field \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 275
+#line 283
  testRunner.And("The result variable is \"[[rs().val]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 276
+#line 284
  testRunner.When("the unique tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 277
+#line 285
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

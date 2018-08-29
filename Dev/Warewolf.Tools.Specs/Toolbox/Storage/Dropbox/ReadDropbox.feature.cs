@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Storage.Dropbox
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ReadDropbox", "\tIn order to read a list of directories from an dropbox Server\r\n\tAs a Warewolf Us" +
                     "er\r\n\tI want to be to view files available on a dropbox account", ProgrammingLanguage.CSharp, new string[] {
                         "Storage"});
@@ -88,9 +88,12 @@ namespace Warewolf.Tools.Specs.Toolbox.Storage.Dropbox
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Open new Read Dropbox Tool")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ReadDropbox")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Storage")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void OpenNewReadDropboxTool()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open new Read Dropbox Tool", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open new Read Dropbox Tool", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9

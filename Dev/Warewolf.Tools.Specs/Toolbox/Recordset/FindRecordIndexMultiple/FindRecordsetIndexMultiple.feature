@@ -174,6 +174,7 @@ Scenario: Find an index of data in a recordset with Is Hex
 	|                 |
 	| [[result]] = 4 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset with Not Base64
 	Given I have the following recordset to search for multiple criteria
 	| rs       | value    |
@@ -196,6 +197,7 @@ Scenario: Find an index of data in a recordset with Not Base64
 	|                 |
 	| [[result]] = 4 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset with Not Between DateTime
 	Given I have the following recordset to search for multiple criteria
 	| rs       | value    |
@@ -218,6 +220,7 @@ Scenario: Find an index of data in a recordset with Not Between DateTime
 	|                 |
 	| [[result]] = 2 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset with Not Between numeric
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value |
@@ -262,6 +265,7 @@ Scenario: Find an index of data in a recordset with Not Binary
 	|                 |
 	| [[result]] = 4 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset with Not Hex
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value            |
@@ -306,6 +310,7 @@ Scenario: Find an index of data in a recordset with Not Regex
 	|                 |
 	| [[result]] = 4 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset with Doesn"t Start With
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value |
@@ -326,6 +331,7 @@ Scenario: Find an index of data in a recordset with Doesn"t Start With
 	|                 |
 	| [[result]] = 3 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset with Doesn"t End With
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value  |
@@ -402,6 +408,7 @@ Scenario: Find an index of data in a recordset search type is Equal To multiple 
 	|                   |
 	| [[result]] = 1,6 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Equal To result doesnt exist
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value    |
@@ -428,6 +435,7 @@ Scenario: Find an index of data in a recordset search type is Equal To result do
 	|                  |
 	| [[result]] = -1 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Greater Than
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value    |
@@ -534,6 +542,7 @@ Scenario: Find an index of data in a recordset search type is Less Than
 	|                 |
 	| [[result]] = 1 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Less Than multiple results
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value |
@@ -640,6 +649,7 @@ Scenario: Find an index of data in a recordset search type is Not Equal To multi
 	|                         |
 	| [[result]] = 1,2,3,4,6 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Not Equal To result doesnt exist
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value |
@@ -744,6 +754,7 @@ Scenario: Find an index of data in a recordset search type is Greater Or Equal T
 	|                  |
 	| [[result]] = -1 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Less Or Equal
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value |
@@ -822,6 +833,7 @@ Scenario: Find an index of data in a recordset search type is Less Or Equal resu
 	|                  |
 	| [[result]] = -1 |  
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Starts With
 	Given I have the following recordset to search for multiple criteria
 	| rs       | value    |
@@ -848,6 +860,7 @@ Scenario: Find an index of data in a recordset search type is Starts With
 	|                 |
 	| [[result]] = 5 |  
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Starts With multiple results
 	Given I have the following recordset to search for multiple criteria
 	| rs       | value    |
@@ -956,6 +969,7 @@ Scenario: Find an index of data in a recordset search type is Ends With multiple
 	|                   |
 	| [[result]] = 1,6 |  
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Ends With result doesnt exist
 	Given I have the following recordset to search for multiple criteria
 	| rs       | value    |
@@ -1036,6 +1050,7 @@ Scenario: Find an index of data in a recordset search type is Contains multiple 
 	|                   |
 	| [[result]] = 1,6 |  
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Contains result doesnt exist
 	Given I have the following recordset to search for multiple criteria
 	| rs       | value    |
@@ -1062,6 +1077,7 @@ Scenario: Find an index of data in a recordset search type is Contains result do
 	|                  |
 	| [[result]] = -1 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Doesn"t Contain
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value    |
@@ -1088,6 +1104,7 @@ Scenario: Find an index of data in a recordset search type is Doesn"t Contain
 	|                 |
 	| [[result]] = 5 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Doesn"t Contain multiple results
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value    |
@@ -1114,6 +1131,7 @@ Scenario: Find an index of data in a recordset search type is Doesn"t Contain mu
 	|                   |
 	| [[result]] = 1,5 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Doesn"t Contain result doesnt exist
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value |
@@ -1140,6 +1158,7 @@ Scenario: Find an index of data in a recordset search type is Doesn"t Contain re
 	|                  |
 	| [[result]] = -1 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Is Alphanumeric
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value    |
@@ -1220,6 +1239,7 @@ Scenario: Find an index of data in a recordset search type is Is Alphanumeric re
 	|                  |
 	| [[result]] = -1 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Is Base64
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value        |
@@ -1246,6 +1266,7 @@ Scenario: Find an index of data in a recordset search type is Is Base64
 	|                 |
 	| [[result]] = 5 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Is Base64 multiple results
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value        |
@@ -1274,6 +1295,7 @@ Scenario: Find an index of data in a recordset search type is Is Base64 multiple
 	|                   |
 	| [[result]] = 1,6 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Is Base64 result doesnt exist
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value |
@@ -1300,7 +1322,8 @@ Scenario: Find an index of data in a recordset search type is Is Base64 result d
 	|                  |
 	| [[result]] = -1 |
 
-	Scenario: Find an index of data in a recordset search type is Is Date
+@MSTest:DoNotParallelize
+Scenario: Find an index of data in a recordset search type is Is Date
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value      |
 	| rs().field | You        |
@@ -1326,6 +1349,7 @@ Scenario: Find an index of data in a recordset search type is Is Base64 result d
 	|                 |
 	| [[result]] = 5 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Is Date multiple results
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value      |
@@ -1354,6 +1378,7 @@ Scenario: Find an index of data in a recordset search type is Is Date multiple r
 	|                   |
 	| [[result]] = 1,6 |
 
+@MSTest:DoNotParallelize
 Scenario: Find an index of data in a recordset search type is Is Date result doesnt exist
 	Given I have the following recordset to search for multiple criteria
 	| rs         | value    |

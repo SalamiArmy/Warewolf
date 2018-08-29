@@ -4,6 +4,7 @@ Feature: Assign
 	As a Warewolf user
 	I want a tool that assigns data to variables
 
+@MSTest:DoNotParallelize
 Scenario: Assign a value to a variable
 	Given I assign the value "10" to a variable "[[var]]"	
 	When the assign tool is executed
@@ -47,6 +48,7 @@ Scenario: Assign a variable to a variable
     | 3 | [[var]] = 60  |
 
 
+@MSTest:DoNotParallelize
 Scenario: Assign multiple variables with a calculate expression to a variable
 	Given I assign the value SUM(1,2,3)-5 to a variable "[[var]]"	
 	And I assign the value =[[var]] to a variable "[[test]]"	
@@ -80,6 +82,7 @@ Scenario: Assign multiple variables to a variable
     | 2 | [[test]] = World        |
     | 3 | [[value]]  = HelloWorld |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a variable to mixed scalar, char and recordset values
 	Given I assign the value Hello to a variable "[[var]]"	
 	And I assign the value World to a variable "[[rec(1).set]]"
@@ -98,6 +101,7 @@ Scenario: Assign a variable to mixed scalar, char and recordset values
     | 2 | [[rec(1).set]] = World    |
     | 3 | [[value]] = Hello World ! |
 
+@MSTest:DoNotParallelize
 Scenario: Assign multiple variables to the end of a recordset
 	Given I assign the value 10 to a variable "[[rec().set]]"	
 	And I assign the value 20 to a variable "[[rec().set]]"
@@ -119,6 +123,7 @@ Scenario: Assign multiple variables to the end of a recordset
     | 3 | [[rec(3).set]] = 30 |
     | 4 | [[value]] = 30      |
 
+@MSTest:DoNotParallelize
 Scenario: Assign all recordset values to a single variable
 	Given I assign the value 10 to a variable "[[rec(1).set]]"	
 	And I assign the value 20 to a variable "[[rec(2).set]]"
@@ -229,6 +234,7 @@ Scenario: Assign a scalar equal to a calculation
 	| 1 | [[var]] = 30   |
 	| 2 | [[Result]] = 0 |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a variable equal to a group calculation (sum)
 	Given I assign the value 30 to a variable "[[var1]]"
 	And I assign the value 30 to a variable "[[var2]]"
@@ -268,6 +274,7 @@ Scenario: Assign multiple recordset to the end of a recordset
 	| 3 | [[rec(3).set]] = 30 |
 	| 4 | [[des(1).val]] = 30 |
 
+@MSTest:DoNotParallelize
 Scenario: Assign the value of a negative recordset index
 	Given I assign the value 10 to a variable "[[rec().set]]"	
 	And I assign the value [[rec(-1).set]] to a variable "[[var]]"
@@ -280,6 +287,7 @@ Scenario: Assign the value of a negative recordset index
 	| # |                     |
 	| 1 | [[rec(1).set]] = 10 |
 
+@MSTest:DoNotParallelize
 Scenario: Assign the value of a negative recordset index and another assign after
 	Given I assign the value 10 to a variable "[[rec().set]]"	
 	And I assign the value [[rec(-1).set]] to a variable "[[var]]"
@@ -306,6 +314,7 @@ Scenario: Assign to a negative recordset index
 	And the debug output as
 	| # |                      |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a scalar equal to a calculation with a blank variable
 	Given I assign the value "=[[cnt]]+1" to a variable "[[cnt]]"
 	When the assign tool is executed
@@ -317,6 +326,7 @@ Scenario: Assign a scalar equal to a calculation with a blank variable
 	
 
 #Bug 11499
+@MSTest:DoNotParallelize
 Scenario Outline: Assign to an invalid variable
    Given I assign the value 10 to a variable "<var>"
    When the assign tool is executed
@@ -402,7 +412,7 @@ Scenario: Assign values to different columns in a reccord set
     | 5 | [[e]] = 20        |
     | 6 | [[f]] = 30        |
 
-
+@MSTest:DoNotParallelize
 Scenario: Assign a record set variable equal to a group calculation (sum)
 	Given I assign the value 30 to a variable "[[rec(1).a]]"
 	And I assign the value 30 to a variable "[[rec(1).b]]"
@@ -421,7 +431,7 @@ Scenario: Assign a record set variable equal to a group calculation (sum)
 	| 2 | [[rec(1).b]] = 30 |
 	| 3 | [[Result]] = 60   |
 
-
+@MSTest:DoNotParallelize
 Scenario: Assign a variable equal to a group calculation with scalar and recordset
 	Given I assign the value 1 to a variable "[[a]]"
 	And I assign the value 2 to a variable "[[b]]"
@@ -446,6 +456,7 @@ Scenario: Assign a variable equal to a group calculation with scalar and records
 	| 4 | [[rec(1).b]] = 2 |
 	| 5 | [[Result]] = 3   |
 
+@MSTest:DoNotParallelize
 Scenario: Evaluating recursive variable in a group calculation
 	Given I assign the value 1 to a variable "[[a]]"
 	And I assign the value "a" to a variable "[[b]]"
@@ -464,6 +475,7 @@ Scenario: Evaluating recursive variable in a group calculation
 	| 2 | [[b]]     =        a |
 	| 3 | [[Result]]     =  2  |
 #
+@MSTest:DoNotParallelize
 Scenario: Evaluating recursive recordset variable in a group calculation
 	Given I assign the value 1 to a variable "[[rec(1).a]]"
 	And I assign the value "rec(1).a" to a variable "[[rec(1).b]]"
@@ -482,6 +494,7 @@ Scenario: Evaluating recursive recordset variable in a group calculation
 	| 2 | [[rec(1).b]] = rec(1).a |
 	| 3 | [[Result]] =  2         |
 
+@MSTest:DoNotParallelize
 Scenario: Evaluating recursive invalid recordset variable in a group calculation
 	Given I assign the value 1 to a variable "[[rec(1).a]]"
 	And I assign the value "rec(1).a*" to a variable "[[rec(1).b]]"
@@ -581,6 +594,7 @@ Scenario: Assign two recordset with index as recordset variable to scalr
 	| 4 | [[Index(2).a]]  = 2        |
 	| 5 | [[Result]]  = TestWarewolf |
 
+@MSTest:DoNotParallelize
 Scenario: Assign addition of all variables to scalar2
 	Given I assign the value 1 to a variable "[[rec(1).test]]"	
 	And I assign the value 2 to a variable "[[rec(2).test]]"

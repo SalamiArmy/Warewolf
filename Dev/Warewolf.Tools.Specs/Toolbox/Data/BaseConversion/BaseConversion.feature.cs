@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Data.BaseConversion
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "BaseConversion", "\tIn order to convert base encoding types\r\n\tAs a Warewolf user\r\n\tI want a tool tha" +
                     "t converts data from one base econding to another", ProgrammingLanguage.CSharp, new string[] {
                         "Data"});
@@ -1474,20 +1474,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Convert negative recordset index from binary to text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ConvertNegativeRecordsetIndexFromBinaryToText()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from binary to text", ((string[])(null)));
-#line 407
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from binary to text", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 408
- testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0100000101000001\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 409
- testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Binary\" to type \"Text\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0100000101000001\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 410
- testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Binary\" to type \"Text\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 411
- testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 412
+ testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 413
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1500,13 +1503,13 @@ this.ScenarioSetup(scenarioInfo);
                         "[[my(-1).var]] =",
                         "Binary",
                         "Text"});
-#line 413
+#line 414
  testRunner.And("the debug inputs as", ((string)(null)), table63, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
                         "#",
                         ""});
-#line 416
+#line 417
  testRunner.And("the debug output as", ((string)(null)), table64, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1519,17 +1522,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ConvertNegativeRecordsetIndexFromBinaryToHexadecimal()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from binary to hexadecimal", ((string[])(null)));
-#line 419
-this.ScenarioSetup(scenarioInfo);
 #line 420
- testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0100000101000001\"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 421
- testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Binary\" to type \"Hex\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0100000101000001\"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 422
- testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Binary\" to type \"Hex\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 423
- testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 424
+ testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 425
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1542,13 +1545,13 @@ this.ScenarioSetup(scenarioInfo);
                         "[[my(-1).var]] =",
                         "Binary",
                         "Hex"});
-#line 425
+#line 426
  testRunner.And("the debug inputs as", ((string)(null)), table65, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
                         "#",
                         ""});
-#line 428
+#line 429
  testRunner.And("the debug output as", ((string)(null)), table66, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1558,20 +1561,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Convert negative recordset index from binary to base64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ConvertNegativeRecordsetIndexFromBinaryToBase64()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from binary to base64", ((string[])(null)));
-#line 431
-this.ScenarioSetup(scenarioInfo);
-#line 432
- testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0100000101000001\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from binary to base64", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 433
- testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Binary\" to type \"Base 64\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 434
- testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0100000101000001\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 435
- testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Binary\" to type \"Base 64\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 436
+ testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 437
+ testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 438
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table67 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1584,13 +1590,13 @@ this.ScenarioSetup(scenarioInfo);
                         "[[my(-1).var]] =",
                         "Binary",
                         "Base 64"});
-#line 437
+#line 439
  testRunner.And("the debug inputs as", ((string)(null)), table67, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table68 = new TechTalk.SpecFlow.Table(new string[] {
                         "#",
                         ""});
-#line 440
+#line 442
  testRunner.And("the debug output as", ((string)(null)), table68, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1603,17 +1609,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ConvertNegativeRecordsetIndexFromHexadecimalToText()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from hexadecimal to text", ((string[])(null)));
-#line 443
-this.ScenarioSetup(scenarioInfo);
-#line 444
- testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0x4141\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 445
- testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Hex\" to type \"Text\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 446
- testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0x4141\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 447
- testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Hex\" to type \"Text\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 448
+ testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 449
+ testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 450
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1626,13 +1632,13 @@ this.ScenarioSetup(scenarioInfo);
                         "[[my(-1).var]] =",
                         "Hex",
                         "Text"});
-#line 449
+#line 451
  testRunner.And("the debug inputs as", ((string)(null)), table69, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table70 = new TechTalk.SpecFlow.Table(new string[] {
                         "#",
                         ""});
-#line 452
+#line 454
  testRunner.And("the debug output as", ((string)(null)), table70, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1642,20 +1648,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Convert negative recordset index from hexadecimal to binary")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ConvertNegativeRecordsetIndexFromHexadecimalToBinary()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from hexadecimal to binary", ((string[])(null)));
-#line 455
-this.ScenarioSetup(scenarioInfo);
-#line 456
- testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0x4141\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 457
- testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Hex\" to type \"Binary\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from hexadecimal to binary", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 458
- testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 459
- testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0x4141\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 460
+ testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Hex\" to type \"Binary\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 461
+ testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 462
+ testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 463
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1668,13 +1677,13 @@ this.ScenarioSetup(scenarioInfo);
                         "[[my(-1).var]] =",
                         "Hex",
                         "Binary"});
-#line 461
+#line 464
  testRunner.And("the debug inputs as", ((string)(null)), table71, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
                         "#",
                         ""});
-#line 464
+#line 467
  testRunner.And("the debug output as", ((string)(null)), table72, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1687,17 +1696,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ConvertNegativeRecordsetIndexFromHexadecimalToBase64()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from hexadecimal to base64", ((string[])(null)));
-#line 467
-this.ScenarioSetup(scenarioInfo);
-#line 468
- testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0x4141\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 469
- testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Hex\" to type \"Base 64\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 470
- testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 471
- testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"0x4141\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 472
+ testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Hex\" to type \"Base 64\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 473
+ testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 474
+ testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 475
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1710,13 +1719,13 @@ this.ScenarioSetup(scenarioInfo);
                         "[[my(-1).var]] =",
                         "Hex",
                         "Base 64"});
-#line 473
+#line 476
  testRunner.And("the debug inputs as", ((string)(null)), table73, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table74 = new TechTalk.SpecFlow.Table(new string[] {
                         "#",
                         ""});
-#line 476
+#line 479
  testRunner.And("the debug output as", ((string)(null)), table74, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1726,20 +1735,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Convert negative recordset index from base64 to hexadecimal")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ConvertNegativeRecordsetIndexFromBase64ToHexadecimal()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from base64 to hexadecimal", ((string[])(null)));
-#line 479
-this.ScenarioSetup(scenarioInfo);
-#line 480
- testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"QUE=\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 481
- testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Base 64\" to type \"Hex\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 482
- testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from base64 to hexadecimal", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 483
- testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 484
+ testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"QUE=\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 485
+ testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Base 64\" to type \"Hex\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 486
+ testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 487
+ testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 488
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1752,13 +1764,13 @@ this.ScenarioSetup(scenarioInfo);
                         "[[my(-1).var]] =",
                         "Base 64",
                         "Hex"});
-#line 485
+#line 489
  testRunner.And("the debug inputs as", ((string)(null)), table75, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
                         "#",
                         ""});
-#line 488
+#line 492
  testRunner.And("the debug output as", ((string)(null)), table76, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1768,20 +1780,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Convert negative recordset index from base64 to text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ConvertNegativeRecordsetIndexFromBase64ToText()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from base64 to text", ((string[])(null)));
-#line 491
-this.ScenarioSetup(scenarioInfo);
-#line 492
- testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"QUE=\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 493
- testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Base 64\" to type \"Text\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 494
- testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 495
- testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from base64 to text", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 496
+this.ScenarioSetup(scenarioInfo);
+#line 497
+ testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"QUE=\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 498
+ testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Base 64\" to type \"Text\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 499
+ testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 500
+ testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 501
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1794,13 +1809,13 @@ this.ScenarioSetup(scenarioInfo);
                         "[[my(-1).var]] =",
                         "Base 64",
                         "Text"});
-#line 497
+#line 502
  testRunner.And("the debug inputs as", ((string)(null)), table77, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table78 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
                         ""});
-#line 500
+#line 505
  testRunner.And("the debug output as", ((string)(null)), table78, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1813,17 +1828,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ConvertNegativeRecordsetIndexFromBase64ToBinary()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert negative recordset index from base64 to binary", ((string[])(null)));
-#line 503
-this.ScenarioSetup(scenarioInfo);
-#line 504
- testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"QUE=\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 505
- testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Base 64\" to type \"Binary\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 506
- testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 507
- testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 508
+this.ScenarioSetup(scenarioInfo);
+#line 509
+ testRunner.Given("I have a convert variable \"[[my(-1).var]]\" with a value of \"QUE=\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 510
+ testRunner.And("I convert a variable \"[[my(-1).var]]\" from type \"Base 64\" to type \"Binary\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 511
+ testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 512
+ testRunner.Then("the result is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 513
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table79 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1836,13 +1851,13 @@ this.ScenarioSetup(scenarioInfo);
                         "[[my(-1).var]] =",
                         "Base 64",
                         "Binary"});
-#line 509
+#line 514
  testRunner.And("the debug inputs as", ((string)(null)), table79, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table80 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
                         ""});
-#line 512
+#line 517
  testRunner.And("the debug output as", ((string)(null)), table80, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1850,18 +1865,24 @@ this.ScenarioSetup(scenarioInfo);
         
         public virtual void ConvertingTwoVariblesOnOneRow(string no, string from, string to, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Converting two varibles on one row", exampleTags);
-#line 516
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Converting two varibles on one row", @__tags);
+#line 522
 this.ScenarioSetup(scenarioInfo);
-#line 517
+#line 523
  testRunner.Given("I have a convert variable \"[[a]]\" with a value of \"QUE=\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 518
+#line 524
  testRunner.And("I have a convert variable \"[[b]]\" with a value of \"QUE=\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 519
+#line 525
  testRunner.And(string.Format("I convert a variable \"[[a]][[b]]\" from type \"{0}\" to type \"{1}\"", from, to), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 520
+#line 526
  testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 521
+#line 527
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table81 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1874,7 +1895,7 @@ this.ScenarioSetup(scenarioInfo);
                         "[[a]][[b]] = QUE=QUE=",
                         string.Format("{0}", from),
                         string.Format("{0}", to)});
-#line 522
+#line 528
  testRunner.And("the debug inputs as", ((string)(null)), table81, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1884,13 +1905,15 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Base 64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ConvertingTwoVariblesOnOneRow_1()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("1", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -1899,13 +1922,15 @@ this.ConvertingTwoVariblesOnOneRow("1", "Base 64", "Binary", ((string[])(null)))
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Base 64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ConvertingTwoVariblesOnOneRow_2()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("2", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -1914,13 +1939,15 @@ this.ConvertingTwoVariblesOnOneRow("2", "Base 64", "Text", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Base 64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ConvertingTwoVariblesOnOneRow_3()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("3", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -1929,13 +1956,15 @@ this.ConvertingTwoVariblesOnOneRow("3", "Base 64", "Hex", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Binary")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ConvertingTwoVariblesOnOneRow_4()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("4", "Binary", "Text", ((string[])(null)));
 #line hidden
         }
@@ -1944,13 +1973,15 @@ this.ConvertingTwoVariblesOnOneRow("4", "Binary", "Text", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Binary")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ConvertingTwoVariblesOnOneRow_5()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("5", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -1959,13 +1990,15 @@ this.ConvertingTwoVariblesOnOneRow("5", "Binary", "Hex", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Binary")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ConvertingTwoVariblesOnOneRow_6()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("6", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -1974,13 +2007,15 @@ this.ConvertingTwoVariblesOnOneRow("6", "Binary", "Base 64", ((string[])(null)))
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ConvertingTwoVariblesOnOneRow_7()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("7", "Text", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -1989,13 +2024,15 @@ this.ConvertingTwoVariblesOnOneRow("7", "Text", "Binary", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ConvertingTwoVariblesOnOneRow_8()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("8", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2004,13 +2041,15 @@ this.ConvertingTwoVariblesOnOneRow("8", "Text", "Hex", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ConvertingTwoVariblesOnOneRow_9()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("9", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -2019,13 +2058,15 @@ this.ConvertingTwoVariblesOnOneRow("9", "Text", "Base 64", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Hex")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ConvertingTwoVariblesOnOneRow_10()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("10", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2034,13 +2075,15 @@ this.ConvertingTwoVariblesOnOneRow("10", "Hex", "Binary", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Hex")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ConvertingTwoVariblesOnOneRow_11()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("11", "Hex", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2049,29 +2092,37 @@ this.ConvertingTwoVariblesOnOneRow("11", "Hex", "Text", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting two varibles on one row: 12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Hex")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ConvertingTwoVariblesOnOneRow_12()
         {
-#line 516
+#line 522
 this.ConvertingTwoVariblesOnOneRow("12", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
         
         public virtual void ConvertingVariblesWithData(string no, string from, string to, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Converting varibles with data", exampleTags);
-#line 541
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Converting varibles with data", @__tags);
+#line 548
 this.ScenarioSetup(scenarioInfo);
-#line 542
+#line 549
  testRunner.Given("I have a convert variable \"[[a]]\" with a value of \"QUE=\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 543
+#line 550
  testRunner.And(string.Format("I convert a variable \"[[a]]test\" from type \"{0}\" to type \"{1}\"", from, to), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 544
+#line 551
  testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 545
+#line 552
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -2081,13 +2132,15 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Base 64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ConvertingVariblesWithData_1()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("1", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2096,13 +2149,15 @@ this.ConvertingVariblesWithData("1", "Base 64", "Binary", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Base 64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ConvertingVariblesWithData_2()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("2", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2111,13 +2166,15 @@ this.ConvertingVariblesWithData("2", "Base 64", "Text", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Base 64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ConvertingVariblesWithData_3()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("3", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2126,13 +2183,15 @@ this.ConvertingVariblesWithData("3", "Base 64", "Hex", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Base 64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ConvertingVariblesWithData_4()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("4", "Base 64", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -2141,13 +2200,15 @@ this.ConvertingVariblesWithData("4", "Base 64", "Base 64", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Binary")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ConvertingVariblesWithData_5()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("5", "Binary", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2156,13 +2217,15 @@ this.ConvertingVariblesWithData("5", "Binary", "Binary", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Binary")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ConvertingVariblesWithData_6()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("6", "Binary", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2171,13 +2234,15 @@ this.ConvertingVariblesWithData("6", "Binary", "Text", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Binary")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ConvertingVariblesWithData_7()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("7", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2186,13 +2251,15 @@ this.ConvertingVariblesWithData("7", "Binary", "Hex", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Binary")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ConvertingVariblesWithData_8()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("8", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -2201,13 +2268,15 @@ this.ConvertingVariblesWithData("8", "Binary", "Base 64", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ConvertingVariblesWithData_9()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("9", "Text", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2216,13 +2285,15 @@ this.ConvertingVariblesWithData("9", "Text", "Binary", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ConvertingVariblesWithData_10()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("10", "Text", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2231,13 +2302,15 @@ this.ConvertingVariblesWithData("10", "Text", "Text", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ConvertingVariblesWithData_11()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("11", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2246,13 +2319,15 @@ this.ConvertingVariblesWithData("11", "Text", "Hex", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ConvertingVariblesWithData_12()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("12", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -2261,13 +2336,15 @@ this.ConvertingVariblesWithData("12", "Text", "Base 64", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Hex")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ConvertingVariblesWithData_13()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("13", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2276,13 +2353,15 @@ this.ConvertingVariblesWithData("13", "Hex", "Binary", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Hex")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ConvertingVariblesWithData_14()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("14", "Hex", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2291,13 +2370,15 @@ this.ConvertingVariblesWithData("14", "Hex", "Text", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Hex")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ConvertingVariblesWithData_15()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("15", "Hex", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2306,29 +2387,37 @@ this.ConvertingVariblesWithData("15", "Hex", "Hex", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Converting varibles with data: 16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:From", "Hex")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ConvertingVariblesWithData_16()
         {
-#line 541
+#line 548
 this.ConvertingVariblesWithData("16", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
         
         public virtual void ValidationMessagesWhenConvertInvalidVariables(string no, string variable, string value, string from, string to, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validation messages when Convert Invalid Variables", exampleTags);
-#line 567
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validation messages when Convert Invalid Variables", @__tags);
+#line 575
 this.ScenarioSetup(scenarioInfo);
-#line 568
+#line 576
  testRunner.Given(string.Format("I have a convert variable \"{0}\" with a value of \"{1}\"", variable, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 569
+#line 577
  testRunner.And(string.Format("I convert a variable \"{0}\" from type \"{1}\" to type \"{2}\"", variable, from, to), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 570
+#line 578
  testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 571
+#line 579
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -2338,6 +2427,8 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -2346,7 +2437,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant0()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("1", "[[my(-1).var]]", "QUE=", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2355,6 +2446,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("1", "[[my(-1).var]]", "QUE="
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -2363,7 +2456,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("1", "[[my(-1).var]]", "QUE="
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant1()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("2", "[[my(-1).var]]", "QUE=", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2372,6 +2465,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("2", "[[my(-1).var]]", "QUE="
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my([-1]).var]]")]
@@ -2380,7 +2475,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("2", "[[my(-1).var]]", "QUE="
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant2()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("3", "[[my([-1]).var]]", "QUE=", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2389,6 +2484,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("3", "[[my([-1]).var]]", "QUE
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[rec().a]]=]]")]
@@ -2397,7 +2494,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("3", "[[my([-1]).var]]", "QUE
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant3()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("4", "[rec().a]]=]]", "QUE=", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2406,6 +2503,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("4", "[rec().a]]=]]", "QUE=",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\"()\".a]]")]
@@ -2414,7 +2513,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("4", "[rec().a]]=]]", "QUE=",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant4()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("5", "[[rec\"()\".a]]", "QUE=", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2423,6 +2522,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("5", "[[rec\"()\".a]]", "QUE=
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\"()\".a]]")]
@@ -2431,7 +2532,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("5", "[[rec\"()\".a]]", "QUE=
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant5()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("6", "[[rec\"()\".a]]", "QUE=", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2440,6 +2541,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("6", "[[rec\"()\".a]]", "QUE=
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\".a]]")]
@@ -2448,7 +2551,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("6", "[[rec\"()\".a]]", "QUE=
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant6()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("7", "[[rec\".a]]", "QUE=", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2457,6 +2560,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("7", "[[rec\".a]]", "QUE=", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec.a]]")]
@@ -2465,7 +2570,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("7", "[[rec\".a]]", "QUE=", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant7()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("8", "[[rec.a]]", "QUE=", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2474,6 +2579,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("8", "[[rec.a]]", "QUE=", "Ba
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()*.a]]")]
@@ -2482,7 +2589,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("8", "[[rec.a]]", "QUE=", "Ba
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant8()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("9", "[[rec()*.a]]", "QUE=", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2491,6 +2598,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("9", "[[rec()*.a]]", "QUE=", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec().a]]*")]
@@ -2499,7 +2608,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("9", "[[rec()*.a]]", "QUE=", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant9()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("10", "[[rec().a]]*", "QUE=", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2508,6 +2617,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("10", "[[rec().a]]*", "QUE=",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[1]]")]
@@ -2516,7 +2627,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("10", "[[rec().a]]*", "QUE=",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant10()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("11", "[[1]]", "QUE=", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2525,6 +2636,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("11", "[[1]]", "QUE=", "Base 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[@]]")]
@@ -2533,7 +2646,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("11", "[[1]]", "QUE=", "Base 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant11()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("12", "[[@]]", "QUE=", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2542,6 +2655,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("12", "[[@]]", "QUE=", "Base 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var#]]")]
@@ -2550,7 +2665,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("12", "[[@]]", "QUE=", "Base 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant12()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("13", "[[var#]]", "QUE=", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2559,6 +2674,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("13", "[[var#]]", "QUE=", "Ba
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var]]00]]")]
@@ -2567,7 +2684,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("13", "[[var#]]", "QUE=", "Ba
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant13()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("14", "[[var]]00]]", "QUE=", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2576,6 +2693,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("14", "[[var]]00]]", "QUE=", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var]]@]]")]
@@ -2584,7 +2703,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("14", "[[var]]00]]", "QUE=", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant14()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("15", "[[var]]@]]", "QUE=", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2593,6 +2712,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("15", "[[var]]@]]", "QUE=", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var.()]]")]
@@ -2601,7 +2722,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("15", "[[var]]@]]", "QUE=", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant15()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("16", "[[var.()]]", "QUE=", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2610,6 +2731,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("16", "[[var.()]]", "QUE=", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "17")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[]]")]
@@ -2618,7 +2741,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("16", "[[var.()]]", "QUE=", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant16()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("17", "[[]]", "QUE=", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2627,6 +2750,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("17", "[[]]", "QUE=", "Base 6
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 17")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 17")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "18")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[()]]")]
@@ -2635,7 +2760,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("17", "[[]]", "QUE=", "Base 6
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant17()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("18", "[[()]]", "QUE=", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2644,6 +2769,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("18", "[[()]]", "QUE=", "Base
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 18")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 18")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "19")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var[[a]*]]]")]
@@ -2652,7 +2779,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("18", "[[()]]", "QUE=", "Base
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant18()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("19", "[[var[[a]*]]]", "QUE=", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2661,6 +2788,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("19", "[[var[[a]*]]]", "QUE="
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 19")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 19")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "20")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var[[]]")]
@@ -2669,7 +2798,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("19", "[[var[[a]*]]]", "QUE="
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant19()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("20", "[[var[[]]", "QUE=", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2678,6 +2807,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("20", "[[var[[]]", "QUE=", "B
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 20")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 20")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "21")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var1.a]]")]
@@ -2686,7 +2817,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("20", "[[var[[]]", "QUE=", "B
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant20()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("21", "[[var1.a]]", "QUE=", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2695,6 +2826,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("21", "[[var1.a]]", "QUE=", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 21")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 21")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "22")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()!a]]")]
@@ -2703,7 +2836,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("21", "[[var1.a]]", "QUE=", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant21()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("22", "[[rec()!a]]", "QUE=", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2712,6 +2845,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("22", "[[rec()!a]]", "QUE=", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 22")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 22")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "23")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()         a]]")]
@@ -2720,7 +2855,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("22", "[[rec()!a]]", "QUE=", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant22()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("23", "[[rec()         a]]", "QUE=", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2729,6 +2864,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("23", "[[rec()         a]]", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 23")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 23")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "24")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[{{rec(_).a}}]]]")]
@@ -2737,7 +2874,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("23", "[[rec()         a]]", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant23()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("24", "[[{{rec(_).a}}]]]", "QUE=", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2746,6 +2883,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("24", "[[{{rec(_).a}}]]]", "Q
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 24")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 24")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "25")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec(23).[[var*]]]]")]
@@ -2754,7 +2893,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("24", "[[{{rec(_).a}}]]]", "Q
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant24()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("25", "[[rec(23).[[var*]]]]", "QUE=", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2763,6 +2902,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("25", "[[rec(23).[[var*]]]]",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 25")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 25")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "26")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[r(q).a]][[r()..]][[r\"]][[r()]][[]][[1]]")]
@@ -2771,7 +2912,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("25", "[[rec(23).[[var*]]]]",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant25()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("26", "[[r(q).a]][[r()..]][[r\"]][[r()]][[]][[1]]", "QUE=", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2780,6 +2921,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("26", "[[r(q).a]][[r()..]][[r
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 26")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 26")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "27")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec().a]]&[[a]]")]
@@ -2788,7 +2931,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("26", "[[r(q).a]][[r()..]][[r
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant26()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("27", "[[rec().a]]&[[a]]", "QUE=", "Base 64", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2797,6 +2940,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("27", "[[rec().a]]&[[a]]", "Q
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 27")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 27")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "28")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "a[[rec([[[[b]]]]).a]]@")]
@@ -2805,7 +2950,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("27", "[[rec().a]]&[[a]]", "Q
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant27()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("28", "a[[rec([[[[b]]]]).a]]@", "QUE=", "Base 64", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2814,6 +2959,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("28", "a[[rec([[[[b]]]]).a]]@
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 28")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 28")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "29")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var  ]]")]
@@ -2822,7 +2969,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("28", "a[[rec([[[[b]]]]).a]]@
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant28()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("29", "[[var  ]]", "QUE=", "Base 64", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2831,6 +2978,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("29", "[[var  ]]", "QUE=", "B
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 29")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 29")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "30")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -2839,7 +2988,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("29", "[[var  ]]", "QUE=", "B
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant29()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("30", "[[my(-1).var]]", "AA", "Text", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -2848,6 +2997,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("30", "[[my(-1).var]]", "AA",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 30")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 30")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "31")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -2856,7 +3007,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("30", "[[my(-1).var]]", "AA",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant30()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("31", "[[my(-1).var]]", "AA", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2865,6 +3016,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("31", "[[my(-1).var]]", "AA",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 31")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 31")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "32")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -2873,7 +3026,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("31", "[[my(-1).var]]", "AA",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant31()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("32", "[[my(-1).var]]", "AA", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -2882,6 +3035,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("32", "[[my(-1).var]]", "AA",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 32")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 32")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "33")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\"()\".a]]")]
@@ -2890,7 +3045,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("32", "[[my(-1).var]]", "AA",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant32()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("33", "[[rec\"()\".a]]", "AA", "Text", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2899,6 +3054,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("33", "[[rec\"()\".a]]", "AA"
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 33")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 33")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "34")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\"()\".a]]")]
@@ -2907,7 +3064,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("33", "[[rec\"()\".a]]", "AA"
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant33()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("34", "[[rec\"()\".a]]", "AA", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2916,6 +3073,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("34", "[[rec\"()\".a]]", "AA"
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 34")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 34")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "35")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\".a]]")]
@@ -2924,7 +3083,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("34", "[[rec\"()\".a]]", "AA"
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant34()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("35", "[[rec\".a]]", "AA", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -2933,6 +3092,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("35", "[[rec\".a]]", "AA", "T
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 35")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 35")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "36")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec.a]]")]
@@ -2941,7 +3102,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("35", "[[rec\".a]]", "AA", "T
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant35()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("36", "[[rec.a]]", "AA", "Text", "Text", ((string[])(null)));
 #line hidden
         }
@@ -2950,6 +3111,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("36", "[[rec.a]]", "AA", "Tex
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 36")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 36")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "37")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()*.a]]")]
@@ -2958,7 +3121,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("36", "[[rec.a]]", "AA", "Tex
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant36()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("37", "[[rec()*.a]]", "AA", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -2967,6 +3130,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("37", "[[rec()*.a]]", "AA", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 37")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 37")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "38")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec().a]]*")]
@@ -2975,7 +3140,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("37", "[[rec()*.a]]", "AA", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant37()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("38", "[[rec().a]]*", "AA", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -2984,6 +3149,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("38", "[[rec().a]]*", "AA", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 38")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 38")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "39")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[1]]")]
@@ -2992,7 +3159,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("38", "[[rec().a]]*", "AA", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant38()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("39", "[[1]]", "AA", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3001,6 +3168,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("39", "[[1]]", "AA", "Text", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 39")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 39")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "40")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[@]]")]
@@ -3009,7 +3178,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("39", "[[1]]", "AA", "Text", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant39()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("40", "[[@]]", "AA", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3018,6 +3187,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("40", "[[@]]", "AA", "Text", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 40")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 40")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "41")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var#]]")]
@@ -3026,7 +3197,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("40", "[[@]]", "AA", "Text", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant40()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("41", "[[var#]]", "AA", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3035,6 +3206,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("41", "[[var#]]", "AA", "Text
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 41")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 41")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "42")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var]]00]]")]
@@ -3043,7 +3216,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("41", "[[var#]]", "AA", "Text
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant41()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("42", "[[var]]00]]", "AA", "Text", "Text", ((string[])(null)));
 #line hidden
         }
@@ -3052,6 +3225,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("42", "[[var]]00]]", "AA", "T
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 42")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 42")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "43")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var]]@]]")]
@@ -3060,7 +3235,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("42", "[[var]]00]]", "AA", "T
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant42()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("43", "[[var]]@]]", "AA", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3069,6 +3244,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("43", "[[var]]@]]", "AA", "Te
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 43")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 43")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "44")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var.()]]")]
@@ -3077,7 +3254,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("43", "[[var]]@]]", "AA", "Te
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant43()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("44", "[[var.()]]", "AA", "Text", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -3086,6 +3263,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("44", "[[var.()]]", "AA", "Te
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 44")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 44")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "45")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[]]")]
@@ -3094,7 +3273,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("44", "[[var.()]]", "AA", "Te
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant44()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("45", "[[]]", "AA", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3103,6 +3282,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("45", "[[]]", "AA", "Text", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 45")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 45")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "46")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[()]]")]
@@ -3111,7 +3292,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("45", "[[]]", "AA", "Text", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant45()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("46", "[[()]]", "AA", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3120,6 +3301,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("46", "[[()]]", "AA", "Text",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 46")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 46")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "47")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "19")]
@@ -3128,7 +3311,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("46", "[[()]]", "AA", "Text",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant46()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("47", "19", "AA", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3137,6 +3320,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("47", "19", "AA", "Text", "Ba
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 47")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 47")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "48")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var[[]]")]
@@ -3145,7 +3330,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("47", "19", "AA", "Text", "Ba
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant47()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("48", "[[var[[]]", "AA", "Text", "Text", ((string[])(null)));
 #line hidden
         }
@@ -3154,6 +3339,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("48", "[[var[[]]", "AA", "Tex
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 48")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 48")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "49")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var1.a]]")]
@@ -3162,7 +3349,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("48", "[[var[[]]", "AA", "Tex
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant48()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("49", "[[var1.a]]", "AA", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3171,6 +3358,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("49", "[[var1.a]]", "AA", "Te
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 49")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 49")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "50")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()!a]]")]
@@ -3179,7 +3368,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("49", "[[var1.a]]", "AA", "Te
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant49()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("50", "[[rec()!a]]", "AA", "Text", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -3188,6 +3377,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("50", "[[rec()!a]]", "AA", "T
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 50")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 50")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "51")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()         a]]")]
@@ -3196,7 +3387,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("50", "[[rec()!a]]", "AA", "T
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant50()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("51", "[[rec()         a]]", "AA", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3205,6 +3396,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("51", "[[rec()         a]]", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 51")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 51")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "52")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[{{rec(_).a}}]]]")]
@@ -3213,7 +3406,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("51", "[[rec()         a]]", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant51()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("52", "[[{{rec(_).a}}]]]", "AA", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3222,6 +3415,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("52", "[[{{rec(_).a}}]]]", "A
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 52")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 52")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "53")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec(23).[[var*]]]]")]
@@ -3230,7 +3425,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("52", "[[{{rec(_).a}}]]]", "A
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant52()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("53", "[[rec(23).[[var*]]]]", "AA", "Text", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -3239,6 +3434,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("53", "[[rec(23).[[var*]]]]",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 53")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 53")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "54")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[r(q).a]][[r()..]][[r\"]][[r()]][[]][[1]]")]
@@ -3247,7 +3444,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("53", "[[rec(23).[[var*]]]]",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant53()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("54", "[[r(q).a]][[r()..]][[r\"]][[r()]][[]][[1]]", "AA", "Text", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -3256,6 +3453,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("54", "[[r(q).a]][[r()..]][[r
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 54")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 54")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "55")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec().a]]&[[a]]")]
@@ -3264,7 +3463,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("54", "[[r(q).a]][[r()..]][[r
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant54()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("55", "[[rec().a]]&[[a]]", "AA", "Text", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3273,6 +3472,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("55", "[[rec().a]]&[[a]]", "A
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 55")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 55")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "56")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "a[[rec([[[[b]]]]).a]]@")]
@@ -3281,7 +3482,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("55", "[[rec().a]]&[[a]]", "A
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant55()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("56", "a[[rec([[[[b]]]]).a]]@", "AA", "Text", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -3290,6 +3491,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("56", "a[[rec([[[[b]]]]).a]]@
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 56")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 56")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "57")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var  ]]")]
@@ -3298,7 +3501,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("56", "a[[rec([[[[b]]]]).a]]@
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant56()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("57", "[[var  ]]", "AA", "Text", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3307,6 +3510,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("57", "[[var  ]]", "AA", "Tex
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 57")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 57")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "58")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -3315,7 +3520,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("57", "[[var  ]]", "AA", "Tex
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant57()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("58", "[[my(-1).var]]", "0100000101000001", "Binary", "Text", ((string[])(null)));
 #line hidden
         }
@@ -3324,6 +3529,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("58", "[[my(-1).var]]", "0100
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 58")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 58")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "59")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -3332,7 +3539,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("58", "[[my(-1).var]]", "0100
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant58()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("59", "[[my(-1).var]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3341,6 +3548,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("59", "[[my(-1).var]]", "0100
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 59")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 59")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "60")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -3349,7 +3558,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("59", "[[my(-1).var]]", "0100
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant59()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("60", "[[my(-1).var]]", "0100000101000001", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3358,6 +3567,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("60", "[[my(-1).var]]", "0100
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 60")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 60")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "61")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\"()\".a]]")]
@@ -3366,7 +3577,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("60", "[[my(-1).var]]", "0100
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant60()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("61", "[[rec\"()\".a]]", "0100000101000001", "Binary", "Text", ((string[])(null)));
 #line hidden
         }
@@ -3375,6 +3586,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("61", "[[rec\"()\".a]]", "010
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 61")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 61")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "62")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\"()\".a]]")]
@@ -3383,7 +3596,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("61", "[[rec\"()\".a]]", "010
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant61()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("62", "[[rec\"()\".a]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3392,6 +3605,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("62", "[[rec\"()\".a]]", "010
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 62")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 62")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "63")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\".a]]")]
@@ -3400,7 +3615,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("62", "[[rec\"()\".a]]", "010
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant62()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("63", "[[rec\".a]]", "0100000101000001", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3409,6 +3624,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("63", "[[rec\".a]]", "0100000
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 63")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 63")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec.a]]")]
@@ -3417,7 +3634,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("63", "[[rec\".a]]", "0100000
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant63()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("64", "[[rec.a]]", "0100000101000001", "Binary", "Text", ((string[])(null)));
 #line hidden
         }
@@ -3426,6 +3643,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("64", "[[rec.a]]", "010000010
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 64")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "65")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()*.a]]")]
@@ -3434,7 +3653,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("64", "[[rec.a]]", "010000010
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant64()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("65", "[[rec()*.a]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3443,6 +3662,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("65", "[[rec()*.a]]", "010000
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 65")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 65")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "66")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec().a]]*")]
@@ -3451,7 +3672,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("65", "[[rec()*.a]]", "010000
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant65()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("66", "[[rec().a]]*", "0100000101000001", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3460,6 +3681,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("66", "[[rec().a]]*", "010000
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 66")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 66")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "67")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[1]]")]
@@ -3468,7 +3691,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("66", "[[rec().a]]*", "010000
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant66()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("67", "[[1]]", "0100000101000001", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3477,6 +3700,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("67", "[[1]]", "0100000101000
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 67")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 67")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "68")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[@]]")]
@@ -3485,7 +3710,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("67", "[[1]]", "0100000101000
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant67()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("68", "[[@]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3494,6 +3719,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("68", "[[@]]", "0100000101000
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 68")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 68")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "69")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var#]]")]
@@ -3502,7 +3729,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("68", "[[@]]", "0100000101000
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant68()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("69", "[[var#]]", "0100000101000001", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3511,6 +3738,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("69", "[[var#]]", "0100000101
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 69")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 69")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "70")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var]]00]]")]
@@ -3519,7 +3748,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("69", "[[var#]]", "0100000101
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant69()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("70", "[[var]]00]]", "0100000101000001", "Binary", "Text", ((string[])(null)));
 #line hidden
         }
@@ -3528,6 +3757,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("70", "[[var]]00]]", "0100000
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 70")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 70")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "71")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var]]@]]")]
@@ -3536,7 +3767,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("70", "[[var]]00]]", "0100000
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant70()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("71", "[[var]]@]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3545,6 +3776,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("71", "[[var]]@]]", "01000001
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 71")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 71")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "72")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var.()]]")]
@@ -3553,7 +3786,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("71", "[[var]]@]]", "01000001
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant71()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("72", "[[var.()]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3562,6 +3795,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("72", "[[var.()]]", "01000001
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 72")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 72")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "73")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[]]")]
@@ -3570,7 +3805,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("72", "[[var.()]]", "01000001
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant72()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("73", "[[]]", "0100000101000001", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3579,6 +3814,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("73", "[[]]", "01000001010000
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 73")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 73")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "74")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[()]]")]
@@ -3587,7 +3824,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("73", "[[]]", "01000001010000
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant73()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("74", "[[()]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3596,6 +3833,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("74", "[[()]]", "010000010100
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 74")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 74")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "75")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "19")]
@@ -3604,7 +3843,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("74", "[[()]]", "010000010100
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant74()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("75", "19", "0100000101000001", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3613,6 +3852,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("75", "19", "0100000101000001
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 75")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 75")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "75")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var[[]]")]
@@ -3621,7 +3862,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("75", "19", "0100000101000001
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant75()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("75", "[[var[[]]", "0100000101000001", "Binary", "Text", ((string[])(null)));
 #line hidden
         }
@@ -3630,6 +3871,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("75", "[[var[[]]", "010000010
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 76")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 76")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "77")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var1.a]]")]
@@ -3638,7 +3881,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("75", "[[var[[]]", "010000010
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant76()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("77", "[[var1.a]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3647,6 +3890,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("77", "[[var1.a]]", "01000001
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 77")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 77")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "78")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()!a]]")]
@@ -3655,7 +3900,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("77", "[[var1.a]]", "01000001
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant77()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("78", "[[rec()!a]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3664,6 +3909,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("78", "[[rec()!a]]", "0100000
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 78")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 78")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "79")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()         a]]")]
@@ -3672,7 +3919,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("78", "[[rec()!a]]", "0100000
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant78()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("79", "[[rec()         a]]", "0100000101000001", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3681,6 +3928,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("79", "[[rec()         a]]", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 79")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 79")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "80")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[{{rec(_).a}}]]]")]
@@ -3689,7 +3938,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("79", "[[rec()         a]]", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant79()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("80", "[[{{rec(_).a}}]]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3698,6 +3947,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("80", "[[{{rec(_).a}}]]]", "0
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 80")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 80")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "81")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec(23).[[var*]]]]")]
@@ -3706,7 +3957,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("80", "[[{{rec(_).a}}]]]", "0
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant80()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("81", "[[rec(23).[[var*]]]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3715,6 +3966,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("81", "[[rec(23).[[var*]]]]",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 81")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 81")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "82")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[r(q).a]][[r()..]][[r\"]][[r()]][[]][[1]]")]
@@ -3723,7 +3976,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("81", "[[rec(23).[[var*]]]]",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant81()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("82", "[[r(q).a]][[r()..]][[r\"]][[r()]][[]][[1]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3732,6 +3985,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("82", "[[r(q).a]][[r()..]][[r
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 82")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 82")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "83")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec().a]]&[[a]]")]
@@ -3740,7 +3995,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("82", "[[r(q).a]][[r()..]][[r
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant82()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("83", "[[rec().a]]&[[a]]", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3749,6 +4004,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("83", "[[rec().a]]&[[a]]", "0
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 83")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 83")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "84")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "a[[rec([[[[b]]]]).a]]@")]
@@ -3757,7 +4014,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("83", "[[rec().a]]&[[a]]", "0
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant83()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("84", "a[[rec([[[[b]]]]).a]]@", "0100000101000001", "Binary", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3766,6 +4023,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("84", "a[[rec([[[[b]]]]).a]]@
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 84")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 84")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "85")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var  ]]")]
@@ -3774,7 +4033,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("84", "a[[rec([[[[b]]]]).a]]@
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant84()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("85", "[[var  ]]", "0100000101000001", "Binary", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3783,6 +4042,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("85", "[[var  ]]", "010000010
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 85")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 85")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "86")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -3791,7 +4052,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("85", "[[var  ]]", "010000010
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant85()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("86", "[[my(-1).var]]", "0x4141", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -3800,6 +4061,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("86", "[[my(-1).var]]", "0x41
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 86")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 86")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "87")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -3808,7 +4071,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("86", "[[my(-1).var]]", "0x41
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant86()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("87", "[[my(-1).var]]", "0x4141", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3817,6 +4080,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("87", "[[my(-1).var]]", "0x41
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 87")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 87")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "88")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[my(-1).var]]")]
@@ -3825,7 +4090,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("87", "[[my(-1).var]]", "0x41
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant87()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("88", "[[my(-1).var]]", "0x4141", "Hex", "Text", ((string[])(null)));
 #line hidden
         }
@@ -3834,6 +4099,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("88", "[[my(-1).var]]", "0x41
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 88")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 88")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "89")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\"()\".a]]")]
@@ -3842,7 +4109,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("88", "[[my(-1).var]]", "0x41
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant88()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("89", "[[rec\"()\".a]]", "0x4141", "Hex", "Text", ((string[])(null)));
 #line hidden
         }
@@ -3851,6 +4118,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("89", "[[rec\"()\".a]]", "0x4
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 89")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 89")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "90")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\"()\".a]]")]
@@ -3859,7 +4128,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("89", "[[rec\"()\".a]]", "0x4
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant89()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("90", "[[rec\"()\".a]]", "0x4141", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3868,6 +4137,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("90", "[[rec\"()\".a]]", "0x4
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 90")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 90")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "91")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec\".a]]")]
@@ -3876,7 +4147,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("90", "[[rec\"()\".a]]", "0x4
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant90()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("91", "[[rec\".a]]", "0x4141", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3885,6 +4156,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("91", "[[rec\".a]]", "0x4141"
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 91")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 91")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "92")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec.a]]")]
@@ -3893,7 +4166,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("91", "[[rec\".a]]", "0x4141"
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant91()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("92", "[[rec.a]]", "0x4141", "Hex", "Text", ((string[])(null)));
 #line hidden
         }
@@ -3902,6 +4175,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("92", "[[rec.a]]", "0x4141", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 92")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 92")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "93")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()*.a]]")]
@@ -3910,7 +4185,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("92", "[[rec.a]]", "0x4141", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant92()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("93", "[[rec()*.a]]", "0x4141", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3919,6 +4194,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("93", "[[rec()*.a]]", "0x4141
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 93")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 93")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "94")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec().a]]*")]
@@ -3927,7 +4204,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("93", "[[rec()*.a]]", "0x4141
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant93()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("94", "[[rec().a]]*", "0x4141", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3936,6 +4213,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("94", "[[rec().a]]*", "0x4141
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 94")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 94")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "95")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[1]]")]
@@ -3944,7 +4223,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("94", "[[rec().a]]*", "0x4141
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant94()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("95", "[[1]]", "0x4141", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3953,6 +4232,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("95", "[[1]]", "0x4141", "Hex
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 95")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 95")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "96")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[@]]")]
@@ -3961,7 +4242,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("95", "[[1]]", "0x4141", "Hex
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Hex")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant95()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("96", "[[@]]", "0x4141", "Hex", "Hex", ((string[])(null)));
 #line hidden
         }
@@ -3970,6 +4251,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("96", "[[@]]", "0x4141", "Hex
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 96")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 96")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "97")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var#]]")]
@@ -3978,7 +4261,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("96", "[[@]]", "0x4141", "Hex
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant96()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("97", "[[var#]]", "0x4141", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -3987,6 +4270,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("97", "[[var#]]", "0x4141", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 97")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 97")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "98")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var]]00]]")]
@@ -3995,7 +4280,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("97", "[[var#]]", "0x4141", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant97()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("98", "[[var]]00]]", "0x4141", "Hex", "Text", ((string[])(null)));
 #line hidden
         }
@@ -4004,6 +4289,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("98", "[[var]]00]]", "0x4141"
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 98")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 98")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "99")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var]]@]]")]
@@ -4012,7 +4299,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("98", "[[var]]00]]", "0x4141"
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant98()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("99", "[[var]]@]]", "0x4141", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -4021,6 +4308,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("99", "[[var]]@]]", "0x4141",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 99")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 99")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "100")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var.()]]")]
@@ -4029,7 +4318,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("99", "[[var]]@]]", "0x4141",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant99()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("100", "[[var.()]]", "0x4141", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -4038,6 +4327,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("100", "[[var.()]]", "0x4141"
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 100")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 100")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "101")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[]]")]
@@ -4046,7 +4337,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("100", "[[var.()]]", "0x4141"
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant100()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("101", "[[]]", "0x4141", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -4055,6 +4346,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("101", "[[]]", "0x4141", "Hex
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 101")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 101")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "102")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[()]]")]
@@ -4063,7 +4356,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("101", "[[]]", "0x4141", "Hex
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant101()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("102", "[[()]]", "0x4141", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -4072,6 +4365,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("102", "[[()]]", "0x4141", "H
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 102")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 102")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "103")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "19")]
@@ -4080,7 +4375,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("102", "[[()]]", "0x4141", "H
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant102()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("103", "19", "0x4141", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -4089,6 +4384,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("103", "19", "0x4141", "Hex",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 103")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 103")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "104")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var[[]]")]
@@ -4097,7 +4394,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("103", "19", "0x4141", "Hex",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Text")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant103()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("104", "[[var[[]]", "0x4141", "Hex", "Text", ((string[])(null)));
 #line hidden
         }
@@ -4106,6 +4403,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("104", "[[var[[]]", "0x4141",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 104")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 104")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "105")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[var1.a]]")]
@@ -4114,7 +4413,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("104", "[[var[[]]", "0x4141",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant104()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("105", "[[var1.a]]", "0x4141", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -4123,6 +4422,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("105", "[[var1.a]]", "0x4141"
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 105")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 105")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "106")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()!a]]")]
@@ -4131,7 +4432,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("105", "[[var1.a]]", "0x4141"
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant105()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("106", "[[rec()!a]]", "0x4141", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -4140,6 +4441,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("106", "[[rec()!a]]", "0x4141
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 106")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 106")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "107")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec()         a]]")]
@@ -4148,7 +4451,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("106", "[[rec()!a]]", "0x4141
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Base 64")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant106()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("107", "[[rec()         a]]", "0x4141", "Hex", "Base 64", ((string[])(null)));
 #line hidden
         }
@@ -4157,6 +4460,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("107", "[[rec()         a]]",
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 107")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 107")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "108")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[{{rec(_).a}}]]]")]
@@ -4165,7 +4470,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("107", "[[rec()         a]]",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant107()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("108", "[[{{rec(_).a}}]]]", "0x4141", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -4174,6 +4479,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("108", "[[{{rec(_).a}}]]]", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 108")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 108")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "109")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[rec(23).[[var*]]]]")]
@@ -4182,7 +4489,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("108", "[[{{rec(_).a}}]]]", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant108()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("109", "[[rec(23).[[var*]]]]", "0x4141", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -4191,6 +4498,8 @@ this.ValidationMessagesWhenConvertInvalidVariables("109", "[[rec(23).[[var*]]]]"
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validation messages when Convert Invalid Variables: Variant 109")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "BaseConversion")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 109")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:No", "110")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Variable", "[[r(q).a]][[r()..]][[r\"]][[r()]][[]][[1")]
@@ -4199,7 +4508,7 @@ this.ValidationMessagesWhenConvertInvalidVariables("109", "[[rec(23).[[var*]]]]"
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:To", "Binary")]
         public virtual void ValidationMessagesWhenConvertInvalidVariables_Variant109()
         {
-#line 567
+#line 575
 this.ValidationMessagesWhenConvertInvalidVariables("110", "[[r(q).a]][[r()..]][[r\"]][[r()]][[]][[1", "0x4141", "Hex", "Binary", ((string[])(null)));
 #line hidden
         }
@@ -4211,15 +4520,15 @@ this.ValidationMessagesWhenConvertInvalidVariables("110", "[[r(q).a]][[r()..]][[
         public virtual void ConvertAVariableThatDoesNotExist()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert a Variable That Does Not Exist", ((string[])(null)));
-#line 685
+#line 693
 this.ScenarioSetup(scenarioInfo);
-#line 686
+#line 694
  testRunner.Given("I have a convert variable \"[[var]]\" with a value of \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 687
+#line 695
  testRunner.And("I convert a variable \"[[var]]\" from type \"Text\" to type \"Binary\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 688
+#line 696
  testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 689
+#line 697
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -4228,15 +4537,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ConvertAnEmptyRecordset(string no, string variable, string value, string from, string to, string error, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert an empty recordset *", exampleTags);
-#line 691
+#line 699
 this.ScenarioSetup(scenarioInfo);
-#line 692
+#line 700
  testRunner.Given(string.Format("I have a convert variable \"{0}\" with a value of \"{1}\"", variable, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 693
+#line 701
  testRunner.And(string.Format("I convert a variable \"{0}\" from type \"{1}\" to type \"{2}\"", variable, from, to), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 694
+#line 702
  testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 695
+#line 703
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -4255,7 +4564,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_1()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("1", "[[rs(*).row]]", "", "Binary", "Binary", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4273,7 +4582,7 @@ this.ConvertAnEmptyRecordset("1", "[[rs(*).row]]", "", "Binary", "Binary", "Inva
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_2()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("2", "[[rs(*).row]]", "", "Binary", "Text", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4291,7 +4600,7 @@ this.ConvertAnEmptyRecordset("2", "[[rs(*).row]]", "", "Binary", "Text", "Invali
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_3()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("3", "[[rs(*).row]]", "", "Binary", "Hex", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4309,7 +4618,7 @@ this.ConvertAnEmptyRecordset("3", "[[rs(*).row]]", "", "Binary", "Hex", "Invalid
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_4()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("4", "[[rs(*).row]]", "", "Binary", "Base 64", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4327,7 +4636,7 @@ this.ConvertAnEmptyRecordset("4", "[[rs(*).row]]", "", "Binary", "Base 64", "Inv
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_5()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("5", "[[rs(*).row]]", "", "Text", "Binary", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4345,7 +4654,7 @@ this.ConvertAnEmptyRecordset("5", "[[rs(*).row]]", "", "Text", "Binary", "Invali
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_6()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("6", "[[rs(*).row]]", "", "Text", "Text", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4363,7 +4672,7 @@ this.ConvertAnEmptyRecordset("6", "[[rs(*).row]]", "", "Text", "Text", "Invalid 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_7()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("7", "[[rs(*).row]]", "", "Text", "Hex", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4381,7 +4690,7 @@ this.ConvertAnEmptyRecordset("7", "[[rs(*).row]]", "", "Text", "Hex", "Invalid R
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_8()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("8", "[[rs(*).row]]", "", "Text", "Base 64", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4399,7 +4708,7 @@ this.ConvertAnEmptyRecordset("8", "[[rs(*).row]]", "", "Text", "Base 64", "Inval
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_9()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("9", "[[rs(*).row]]", "", "Hex", "Binary", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4417,7 +4726,7 @@ this.ConvertAnEmptyRecordset("9", "[[rs(*).row]]", "", "Hex", "Binary", "Invalid
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_10()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("10", "[[rs(*).row]]", "", "Hex", "Text", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4435,7 +4744,7 @@ this.ConvertAnEmptyRecordset("10", "[[rs(*).row]]", "", "Hex", "Text", "Invalid 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_11()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("11", "[[rs(*).row]]", "", "Hex", "Hex", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4453,7 +4762,7 @@ this.ConvertAnEmptyRecordset("11", "[[rs(*).row]]", "", "Hex", "Hex", "Invalid R
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_12()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("12", "[[rs(*).row]]", "", "Hex", "Base 64", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4471,7 +4780,7 @@ this.ConvertAnEmptyRecordset("12", "[[rs(*).row]]", "", "Hex", "Base 64", "Inval
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_13()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("13", "[[rs(*).row]]", "", "Base 64", "Binary", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4489,7 +4798,7 @@ this.ConvertAnEmptyRecordset("13", "[[rs(*).row]]", "", "Base 64", "Binary", "In
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_14()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("14", "[[rs(*).row]]", "", "Base 64", "Text", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4507,7 +4816,7 @@ this.ConvertAnEmptyRecordset("14", "[[rs(*).row]]", "", "Base 64", "Text", "Inva
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_15()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("15", "[[rs(*).row]]", "", "Base 64", "Hex", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4525,7 +4834,7 @@ this.ConvertAnEmptyRecordset("15", "[[rs(*).row]]", "", "Base 64", "Hex", "Inval
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_16()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("16", "[[rs(*).row]]", "", "Base 64", "Base 64", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4543,7 +4852,7 @@ this.ConvertAnEmptyRecordset("16", "[[rs(*).row]]", "", "Base 64", "Base 64", "I
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_17()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("17", "[[rs([[var]]).row]]", "", "Binary", "Binary", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4561,7 +4870,7 @@ this.ConvertAnEmptyRecordset("17", "[[rs([[var]]).row]]", "", "Binary", "Binary"
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_18()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("18", "[[rs([[var]]).row]]", "", "Binary", "Text", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4579,7 +4888,7 @@ this.ConvertAnEmptyRecordset("18", "[[rs([[var]]).row]]", "", "Binary", "Text", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_19()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("19", "[[rs([[var]]).row]]", "", "Binary", "Hex", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4597,7 +4906,7 @@ this.ConvertAnEmptyRecordset("19", "[[rs([[var]]).row]]", "", "Binary", "Hex", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_20()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("20", "[[rs([[var]]).row]]", "", "Binary", "Base 64", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4615,7 +4924,7 @@ this.ConvertAnEmptyRecordset("20", "[[rs([[var]]).row]]", "", "Binary", "Base 64
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_21()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("21", "[[rs([[var]]).row]]", "", "Text", "Binary", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4633,7 +4942,7 @@ this.ConvertAnEmptyRecordset("21", "[[rs([[var]]).row]]", "", "Text", "Binary", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_22()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("22", "[[rs([[var]]).row]]", "", "Text", "Text", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4651,7 +4960,7 @@ this.ConvertAnEmptyRecordset("22", "[[rs([[var]]).row]]", "", "Text", "Text", "I
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_23()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("23", "[[rs([[var]]).row]]", "", "Text", "Hex", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4669,7 +4978,7 @@ this.ConvertAnEmptyRecordset("23", "[[rs([[var]]).row]]", "", "Text", "Hex", "In
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_24()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("24", "[[rs([[var]]).row]]", "", "Text", "Base 64", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4687,7 +4996,7 @@ this.ConvertAnEmptyRecordset("24", "[[rs([[var]]).row]]", "", "Text", "Base 64",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_25()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("25", "[[rs([[var]]).row]]", "", "Hex", "Binary", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4705,7 +5014,7 @@ this.ConvertAnEmptyRecordset("25", "[[rs([[var]]).row]]", "", "Hex", "Binary", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_26()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("26", "[[rs([[var]]).row]]", "", "Hex", "Text", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4723,7 +5032,7 @@ this.ConvertAnEmptyRecordset("26", "[[rs([[var]]).row]]", "", "Hex", "Text", "In
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_27()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("27", "[[rs([[var]]).row]]", "", "Hex", "Hex", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4741,7 +5050,7 @@ this.ConvertAnEmptyRecordset("27", "[[rs([[var]]).row]]", "", "Hex", "Hex", "Inv
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_28()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("28", "[[rs([[var]]).row]]", "", "Hex", "Base 64", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4759,7 +5068,7 @@ this.ConvertAnEmptyRecordset("28", "[[rs([[var]]).row]]", "", "Hex", "Base 64", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_29()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("29", "[[rs([[var]]).row]]", "", "Base 64", "Binary", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4777,7 +5086,7 @@ this.ConvertAnEmptyRecordset("29", "[[rs([[var]]).row]]", "", "Base 64", "Binary
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_30()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("30", "[[rs([[var]]).row]]", "", "Base 64", "Text", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4795,7 +5104,7 @@ this.ConvertAnEmptyRecordset("30", "[[rs([[var]]).row]]", "", "Base 64", "Text",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_31()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("31", "[[rs([[var]]).row]]", "", "Base 64", "Hex", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4813,7 +5122,7 @@ this.ConvertAnEmptyRecordset("31", "[[rs([[var]]).row]]", "", "Base 64", "Hex", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Index")]
         public virtual void ConvertAnEmptyRecordset_32()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("32", "[[rs([[var]]).row]]", "", "Base 64", "Base 64", "Invalid Index", ((string[])(null)));
 #line hidden
         }
@@ -4831,7 +5140,7 @@ this.ConvertAnEmptyRecordset("32", "[[rs([[var]]).row]]", "", "Base 64", "Base 6
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_33()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("33", "[[rs().row]]", "", "Binary", "Binary", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4849,7 +5158,7 @@ this.ConvertAnEmptyRecordset("33", "[[rs().row]]", "", "Binary", "Binary", "Inva
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_34()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("34", "[[rs().row]]", "", "Binary", "Text", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4867,7 +5176,7 @@ this.ConvertAnEmptyRecordset("34", "[[rs().row]]", "", "Binary", "Text", "Invali
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_35()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("35", "[[rs().row]]", "", "Binary", "Hex", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4885,7 +5194,7 @@ this.ConvertAnEmptyRecordset("35", "[[rs().row]]", "", "Binary", "Hex", "Invalid
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_36()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("36", "[[rs().row]]", "", "Binary", "Base 64", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4903,7 +5212,7 @@ this.ConvertAnEmptyRecordset("36", "[[rs().row]]", "", "Binary", "Base 64", "Inv
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_37()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("37", "[[rs().row]]", "", "Text", "Binary", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4921,7 +5230,7 @@ this.ConvertAnEmptyRecordset("37", "[[rs().row]]", "", "Text", "Binary", "Invali
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_38()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("38", "[[rs().row]]", "", "Text", "Text", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4939,7 +5248,7 @@ this.ConvertAnEmptyRecordset("38", "[[rs().row]]", "", "Text", "Text", "Invalid 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_39()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("39", "[[rs().row]]", "", "Text", "Hex", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4957,7 +5266,7 @@ this.ConvertAnEmptyRecordset("39", "[[rs().row]]", "", "Text", "Hex", "Invalid R
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_40()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("40", "[[rs().row]]", "", "Text", "Base 64", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4975,7 +5284,7 @@ this.ConvertAnEmptyRecordset("40", "[[rs().row]]", "", "Text", "Base 64", "Inval
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_41()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("41", "[[rs().row]]", "", "Hex", "Binary", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -4993,7 +5302,7 @@ this.ConvertAnEmptyRecordset("41", "[[rs().row]]", "", "Hex", "Binary", "Invalid
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_42()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("42", "[[rs().row]]", "", "Hex", "Text", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -5011,7 +5320,7 @@ this.ConvertAnEmptyRecordset("42", "[[rs().row]]", "", "Hex", "Text", "Invalid R
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_43()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("43", "[[rs().row]]", "", "Hex", "Hex", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -5029,7 +5338,7 @@ this.ConvertAnEmptyRecordset("43", "[[rs().row]]", "", "Hex", "Hex", "Invalid Re
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_44()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("44", "[[rs().row]]", "", "Hex", "Base 64", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -5047,7 +5356,7 @@ this.ConvertAnEmptyRecordset("44", "[[rs().row]]", "", "Hex", "Base 64", "Invali
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_45()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("45", "[[rs().row]]", "", "Base 64", "Binary", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -5065,7 +5374,7 @@ this.ConvertAnEmptyRecordset("45", "[[rs().row]]", "", "Base 64", "Binary", "Inv
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_46()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("46", "[[rs().row]]", "", "Base 64", "Text", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -5083,7 +5392,7 @@ this.ConvertAnEmptyRecordset("46", "[[rs().row]]", "", "Base 64", "Text", "Inval
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_47()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("47", "[[rs().row]]", "", "Base 64", "Hex", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -5101,7 +5410,7 @@ this.ConvertAnEmptyRecordset("47", "[[rs().row]]", "", "Base 64", "Hex", "Invali
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid Recordset")]
         public virtual void ConvertAnEmptyRecordset_48()
         {
-#line 691
+#line 699
 this.ConvertAnEmptyRecordset("48", "[[rs().row]]", "", "Base 64", "Base 64", "Invalid Recordset", ((string[])(null)));
 #line hidden
         }
@@ -5113,17 +5422,17 @@ this.ConvertAnEmptyRecordset("48", "[[rs().row]]", "", "Base 64", "Base 64", "In
         public virtual void ConvertAVariableThatIsNull()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Convert a Variable that is null", ((string[])(null)));
-#line 748
+#line 756
 this.ScenarioSetup(scenarioInfo);
-#line 749
+#line 757
  testRunner.Given("I have a convert variable \"[[var]]\" with a value of \"NULL\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 750
+#line 758
  testRunner.And("I convert a variable \"[[var]]\" from type \"Text\" to type \"Binary\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 751
+#line 759
  testRunner.When("the base conversion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 752
+#line 760
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 753
+#line 761
  testRunner.And("the execution has \"Scalar value {[[var]]} is NULL\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

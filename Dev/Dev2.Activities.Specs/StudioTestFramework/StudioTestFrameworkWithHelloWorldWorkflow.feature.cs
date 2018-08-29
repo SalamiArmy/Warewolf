@@ -43,7 +43,7 @@ namespace Dev2.Activities.Specs.StudioTestFramework
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "StudioTestFrameworkWithHelloWorldWorkflow", "\tIn order to test the Hello World workflow in warewolf \r\n\tAs a user\r\n\tI want to c" +
                     "reate, edit, delete and update tests in a test window", ProgrammingLanguage.CSharp, new string[] {
                         "StudioTestFrameworkWithHelloWorldWorkflow"});

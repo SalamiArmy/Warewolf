@@ -101,7 +101,7 @@ Scenario: Decide if variable [[A]] is alphanumeric (True)
 	|         |
 	| YES    |
 
-
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] is alphanumeric (False)
 	Given a decision variable "[[A]]" value "@"	
 	And decide if "[[A]]" "IsAlphanumeric"
@@ -129,6 +129,7 @@ Scenario: decide if variable [[A]] is Base64 (True)
 	|         |
 	| YES    |
 
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] is Base64 (False)
 	Given a decision variable "[[A]]" value "011110"	
 	And decide if "[[A]]" "IsBase64"
@@ -197,6 +198,7 @@ Scenario: decide if variable [[A]] is a Date (False)
 	|         |
 	| NO     |
 
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] is an Email (True)
 	Given a decision variable "[[A]]" value "testmail@freemail.net"	
 	And decide if "[[A]]" "IsEmail" 
@@ -222,7 +224,8 @@ Scenario: decide if variable [[A]] is an Email (False)
 	And the debug output as 
 	|         |
 	| NO     |
-
+	
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] is Hex (True)
 	Given a decision variable "[[A]]" value "1E"	
 	And decide if "[[A]]" "IsHex" 
@@ -236,6 +239,7 @@ Scenario: decide if variable [[A]] is Hex (True)
 	|         |
 	| YES    |
 
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] is Hex (False)
 	Given a decision variable "[[A]]" value "KLM"	
 	And decide if "[[A]]" "IsHex"
@@ -292,6 +296,7 @@ Scenario: decide if variable [[A]] is Regex (True)
 	| String |
 
 #Note that the debug comes out incorrectly beacuse the regex requires to be escaped but it fails the evaluation wehn escaped
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] is Regex (False)
 	Given a decision variable "[[A]]" value "787877787"		
 	And is "[[A]]" "IsRegEx" "^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"	
@@ -305,8 +310,7 @@ Scenario: decide if variable [[A]] is Regex (False)
 	|         |
 	| String |
 
-
-
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] is Text (True)
 	Given a decision variable "[[A]]" value "Hello Africa"	
 	And decide if "[[A]]" "IsText" 
@@ -320,6 +324,7 @@ Scenario: decide if variable [[A]] is Text (True)
 	|         |
 	| YES    |
 
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] is Text (False)
 	Given a decision variable "[[A]]" value "3000"	
 	And decide if "[[A]]" "IsText"
@@ -346,6 +351,7 @@ Scenario: decide if variable [[A]] Is XML (True)
 	|         |
 	| YES    |
 
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] Is XML (False)
 	Given a decision variable "[[A]]" value "@"	
 	And decide if "[[A]]" "IsXML"
@@ -385,6 +391,7 @@ Scenario: decide if variable [[A]] Not Alphanumeric (False)
 	|         |
 	| NO     |
 
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] Not Base64 (True)
 	Given a decision variable "[[A]]" value "011110"	
 	And decide if "[[A]]" "IsNotBase64" 
@@ -412,6 +419,7 @@ Scenario: decide if variable [[A]] Not Base64 (False)
 	|         |
 	| NO     |
 
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] Not Binary (True)
 	Given a decision variable "[[A]]" value "dHNoZXBv"	
 	And decide if "[[A]]" "IsNotBinary" 
@@ -438,6 +446,7 @@ Scenario: decide if variable [[A]] Not Binary (False)
 	|         |
 	| NO     |
 
+@MSTest:DoNotParallelize
 Scenario: decide if variable [[A]] Not Date (True)
 	Given a decision variable "[[A]]" value "Gracious"	
 	And decide if "[[A]]" "IsNotDate" 

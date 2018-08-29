@@ -4,6 +4,7 @@ Feature: Sort
 	As a Warewolf user
 	I want a tool I can use to arrange records in either ascending or descending order 
 
+@MSTest:DoNotParallelize
 Scenario: Sort a recordset forwards using star notation
 	Given I have the following recordset to sort
 	| rs       | value    |
@@ -46,6 +47,7 @@ Scenario: Sort a recordset forwards using star notation
 	| [[rs(6).row]] = Warewolf |
 	| [[rs(7).row]] = You      |
 
+@MSTest:DoNotParallelize
 Scenario: Sort a recordset backwards using star notation
 	Given I have the following recordset to sort
 	| rs       | value    |
@@ -88,6 +90,7 @@ Scenario: Sort a recordset backwards using star notation
 	| [[rs(6).row]] = best     |
 	| [[rs(7).row]] = are      |	
 
+@MSTest:DoNotParallelize
 Scenario: Sort a recordset forwards 
 	Given I have the following recordset to sort
 	| rs       | value    |
@@ -172,6 +175,7 @@ Scenario: Sort a recordset backwards
 	| [[rs(6).row]] = best     |
 	| [[rs(7).row]] = are      |	
 	
+@MSTest:DoNotParallelize
 Scenario: Sort a recordset forwards empty recordset
 	Given I have the following recordset to sort
 	| rs       | value    |	
@@ -225,6 +229,7 @@ Scenario: Sort a recordset backwards recordset  with one row
     |                          |
     | [[rs(1).row]] = Warewolf |	
 
+@MSTest:DoNotParallelize
 Scenario Outline: Sort 2 columns backwards
 	Given I have the following recordset to sort
 	| rs     | value     |

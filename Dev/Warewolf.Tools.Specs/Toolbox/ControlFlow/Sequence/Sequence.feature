@@ -4,6 +4,7 @@ Feature: Sequence
 	As a Warewolf user
 	I want to a tool that will allow me to construct and execute tools and services in sequence
 
+@MSTest:DoNotParallelize
 Scenario: Execute Sequence with Assign
           Given I have a Sequence "Test"
           And "Test" contains an Assign "TestAssign" as
@@ -21,6 +22,7 @@ Scenario: Execute Sequence with Assign
           | 1 | [[var1]] = 1 |
           | 2 | [[var2]] = 2 |           		  
 
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with Assign and Calculate
        Given I have a Sequence "Test"
 	   And "Test" contains an Assign "SetVariables" as
@@ -45,6 +47,7 @@ Scenario: Execute a Sequence with Assign and Calculate
 	   |                |
 	   | [[result]] = 3 |
 
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with Assign and Aggregate Calculate
        Given I have a Sequence "Test"
 	   And "Test" contains an Assign "SetVariables" as
@@ -68,8 +71,9 @@ Scenario: Execute a Sequence with Assign and Aggregate Calculate
        And the "Calculate Aggregate Sum" debug outputs as
 	   |                |
 	   | [[result]] = 3 |
-
- Scenario: Execute a Sequence with Assign and Count
+	   
+@MSTest:DoNotParallelize
+Scenario: Execute a Sequence with Assign and Count
       Given I have a Sequence "Test"
 	  And "Test" contains an Assign "Records" as
       | variable    | value |
@@ -102,6 +106,7 @@ Scenario: Execute a Sequence with Assign and Aggregate Calculate
 	  |                |
 	  | [[result]] = 4 |
 
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with Assign and Delete
       Given I have a Sequence "Test"
 	  And "Test" contains an Assign "All Records" as
@@ -137,8 +142,7 @@ Scenario: Execute a Sequence with Assign and Delete
 	  |                      |
 	  | [[result]] = Success |
 
-	
-
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with Assign and Find Record Index
       Given I have a Sequence "Test"
 	  And "Test" contains an Assign "Assign Records" as
@@ -174,7 +178,7 @@ Scenario: Execute a Sequence with Assign and Find Record Index
 	  |                |					      
 	  | [[result]] = 1 |
 
-
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with Assign and Unique Records
       Given I have a Sequence "Test"
 	  And "Test" contains an Assign "Assign data" as
@@ -239,6 +243,7 @@ Scenario: Execute a Sequence with Assign and Unique Records
 
 
 
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with Assign, Base Convert and Case Convert
       Given I have a Sequence "Test"
 	  And "Test" contains an Assign "Rec To Convert" as
@@ -274,6 +279,7 @@ Scenario: Execute a Sequence with Assign, Base Convert and Case Convert
 	  | # |                                 |
 	  | 1 | [[rec(1).a]] = 0100000101000001 |
 
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with Assign, Data Merge and Data Split
       Given I have a Sequence "Test"
 	  And "Test" contains an Assign "Assign To Merge" as
@@ -321,6 +327,7 @@ Scenario: Execute a Sequence with Assign, Data Merge and Data Split
 	  | 2 | [[rec(4).b]] = warewolf |
 
 
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with Assign, Data Merge, Data Split, Find Index and Replace
       Given I have a Sequence "Test"
 	  And "Test" contains an Assign "Assign To Merge" as
@@ -393,6 +400,7 @@ Scenario: Execute a Sequence with Assign, Data Merge, Data Split, Find Index and
 	  | [[replaceResult]] = 4          |
 	  
 
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with Gather System Information, Date and Time Difference, Date and Time, Random, and Format Number tools.
       Given I have a Sequence "Test"
 	  And "Test" contains Gather System Info "Sys info" as
@@ -443,6 +451,7 @@ Scenario: Execute a Sequence with Gather System Information, Date and Time Diffe
 	  |                      |
 	  | [[result4]] = 788.895 |
      
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with For each
       Given I have a ForEach "ForEachTest" as "NumOfExecution" executions "1"
 	  And I have a Sequence "Test"
@@ -497,6 +506,7 @@ Scenario: Execute a Sequence with For each
 	  |                      |
 	  | [[result4]] = 788.895 |
 
+@MSTest:DoNotParallelize
 Scenario: Execute a Sequence with For each with 3 executions
       Given I have a ForEach "ForEachTest" as "NumOfExecution" executions "3"
 	  And I have a Sequence "Test"

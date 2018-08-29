@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Data.AssignObject
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "AssignObject", "\tIn order to use json \r\n\tAs a Warewolf user\r\n\tI want a tool that assigns data to " +
                     "json objects", ProgrammingLanguage.CSharp, new string[] {
                         "Data"});
@@ -129,22 +129,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign values to json objects")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignValuesToJsonObjects()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign values to json objects", ((string[])(null)));
-#line 19
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign values to json objects", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 20
- testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 21
- testRunner.And("I assign the value \"Smith\" to a json object \"[[@Person.Surname]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 22
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I assign the value \"Smith\" to a json object \"[[@Person.Surname]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 23
- testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 24
- testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Smith\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 25
+ testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Smith\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 26
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -159,7 +162,7 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "[[@Person.Surname]] =",
                         "Smith"});
-#line 26
+#line 27
  testRunner.And("the debug inputs as", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -171,7 +174,7 @@ this.ScenarioSetup(scenarioInfo);
             table4.AddRow(new string[] {
                         "2",
                         "[[@Person.Surname]] = Smith"});
-#line 30
+#line 31
  testRunner.And("the debug output as", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -184,23 +187,23 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignValuesWithDifferentTypesToJsonObjects()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign values with different types to json objects", ((string[])(null)));
-#line 35
-this.ScenarioSetup(scenarioInfo);
 #line 36
- testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 37
- testRunner.And("I assign the value \"Smith\" to a json object \"[[@Person.Surname]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 38
- testRunner.And("I assign the value 21 to a json object \"[[@Person.Age]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I assign the value \"Smith\" to a json object \"[[@Person.Surname]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 39
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I assign the value 21 to a json object \"[[@Person.Age]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 40
- testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 41
- testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Smith\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 42
- testRunner.And("the json object \"[[@Person.Age]]\" equals \"21\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Smith\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 43
+ testRunner.And("the json object \"[[@Person.Age]]\" equals \"21\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 44
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -219,7 +222,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Person.Age]] =",
                         "21"});
-#line 44
+#line 45
  testRunner.And("the debug inputs as", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -234,7 +237,7 @@ this.ScenarioSetup(scenarioInfo);
             table6.AddRow(new string[] {
                         "3",
                         "[[@Person.Age]] = 21"});
-#line 49
+#line 50
  testRunner.And("the debug output as", ((string)(null)), table6, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -247,15 +250,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignAValueWithPlusInItToAJsonObject()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value with plus in it to a json object", ((string[])(null)));
-#line 55
-this.ScenarioSetup(scenarioInfo);
 #line 56
- testRunner.Given("I assign the value \"+10\" to a json object \"[[@Person.Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 57
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I assign the value \"+10\" to a json object \"[[@Person.Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 58
- testRunner.Then("the json object \"[[@Person.Score]]\" equals \"+10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 59
+ testRunner.Then("the json object \"[[@Person.Score]]\" equals \"+10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 60
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -266,7 +269,7 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "[[@Person.Score]] =",
                         "+10"});
-#line 60
+#line 61
  testRunner.And("the debug inputs as", ((string)(null)), table7, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -275,7 +278,7 @@ this.ScenarioSetup(scenarioInfo);
             table8.AddRow(new string[] {
                         "1",
                         "[[@Person.Score]] = +10"});
-#line 63
+#line 64
  testRunner.And("the debug output as", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -288,15 +291,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignAValueWithMinusInItToAJsonObject()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value with minus in it to a json object", ((string[])(null)));
-#line 67
-this.ScenarioSetup(scenarioInfo);
 #line 68
- testRunner.Given("I assign the value \"-10\" to a json object \"[[@Person.Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 69
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I assign the value \"-10\" to a json object \"[[@Person.Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 70
- testRunner.Then("the json object \"[[@Person.Score]]\" equals \"-10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 71
+ testRunner.Then("the json object \"[[@Person.Score]]\" equals \"-10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 72
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -307,7 +310,7 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "[[@Person.Score]] =",
                         "-10"});
-#line 72
+#line 73
  testRunner.And("the debug inputs as", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -316,7 +319,7 @@ this.ScenarioSetup(scenarioInfo);
             table10.AddRow(new string[] {
                         "1",
                         "[[@Person.Score]] = -10"});
-#line 75
+#line 76
  testRunner.And("the debug output as", ((string)(null)), table10, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -329,20 +332,20 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignAJsonObjectValueToAJsonObject()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a json object value to a json object", ((string[])(null)));
-#line 79
-this.ScenarioSetup(scenarioInfo);
 #line 80
- testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 81
+ testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 82
  testRunner.And("I assign the value \"[[@Person.FirstName]]\" to a json object \"[[@Person.Surname]]\"" +
                     "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 82
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 83
- testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 84
- testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 85
+ testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 86
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -357,7 +360,7 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "[[@Person.Surname]] =",
                         "[[@Person.FirstName]] = Bob"});
-#line 86
+#line 87
  testRunner.And("the debug inputs as", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -369,7 +372,7 @@ this.ScenarioSetup(scenarioInfo);
             table12.AddRow(new string[] {
                         "2",
                         "[[@Person.Surname]] = Bob"});
-#line 90
+#line 91
  testRunner.And("the debug output as", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -379,25 +382,28 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a json object value to a json object overwriting the existing value")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignAJsonObjectValueToAJsonObjectOverwritingTheExistingValue()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a json object value to a json object overwriting the existing value", ((string[])(null)));
-#line 95
-this.ScenarioSetup(scenarioInfo);
-#line 96
- testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a json object value to a json object overwriting the existing value", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 97
- testRunner.And("I assign the value \"Smith\" to a json object \"[[@Person.Surname]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 98
+ testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 99
+ testRunner.And("I assign the value \"Smith\" to a json object \"[[@Person.Surname]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 100
  testRunner.And("I assign the value \"[[@Person.FirstName]]\" to a json object \"[[@Person.Surname]]\"" +
                     "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 99
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 100
- testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 101
- testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 102
+ testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 103
+ testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 104
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -416,7 +422,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Person.Surname]] = Smith",
                         "[[@Person.FirstName]] = Bob"});
-#line 103
+#line 105
  testRunner.And("the debug inputs as", ((string)(null)), table13, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -431,7 +437,7 @@ this.ScenarioSetup(scenarioInfo);
             table14.AddRow(new string[] {
                         "3",
                         "[[@Person.Surname]] = Bob"});
-#line 108
+#line 110
  testRunner.And("the debug output as", ((string)(null)), table14, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -439,30 +445,36 @@ this.ScenarioSetup(scenarioInfo);
         
         public virtual void AssignAValueToAnInvalidJsonObject(string no, string var, string error, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value to an invalid json object", exampleTags);
-#line 114
-this.ScenarioSetup(scenarioInfo);
-#line 115
- testRunner.Given(string.Format("I assign the value \"[[@Person.Score]]\" to a json object \"{0}\"", var), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 116
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value to an invalid json object", @__tags);
 #line 117
- testRunner.Then(string.Format("the execution has \"{0}\" error", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 118
+ testRunner.Given(string.Format("I assign the value \"[[@Person.Score]]\" to a json object \"{0}\"", var), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 119
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 120
+ testRunner.Then(string.Format("the execution has \"{0}\" error", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 121
  testRunner.And("the execution has \"parse error\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "#",
                         "Variable",
                         "New Value"});
-#line 119
+#line 122
    testRunner.And("the debug inputs as", ((string)(null)), table15, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         "#",
                         "",
                         ""});
-#line 121
+#line 124
    testRunner.And("the debug output as", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -472,13 +484,15 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "[[@Person..Score]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant0()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("1", "[[@Person..Score]]", "AN", ((string[])(null)));
 #line hidden
         }
@@ -487,13 +501,15 @@ this.AssignAValueToAnInvalidJsonObject("1", "[[@Person..Score]]", "AN", ((string
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant1()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("2", "@", "AN", ((string[])(null)));
 #line hidden
         }
@@ -502,13 +518,15 @@ this.AssignAValueToAnInvalidJsonObject("2", "@", "AN", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant2()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("3", "@.", "AN", ((string[])(null)));
 #line hidden
         }
@@ -517,13 +535,15 @@ this.AssignAValueToAnInvalidJsonObject("3", "@.", "AN", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@()")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant3()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("4", "@()", "AN", ((string[])(null)));
 #line hidden
         }
@@ -532,13 +552,15 @@ this.AssignAValueToAnInvalidJsonObject("4", "@()", "AN", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@().")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant4()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("5", "@().", "AN", ((string[])(null)));
 #line hidden
         }
@@ -547,13 +569,15 @@ this.AssignAValueToAnInvalidJsonObject("5", "@().", "AN", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@.Field")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant5()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("6", "@.Field", "AN", ((string[])(null)));
 #line hidden
         }
@@ -562,13 +586,15 @@ this.AssignAValueToAnInvalidJsonObject("6", "@.Field", "AN", ((string[])(null)))
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@Object.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant6()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("7", "@Object.", "AN", ((string[])(null)));
 #line hidden
         }
@@ -577,13 +603,15 @@ this.AssignAValueToAnInvalidJsonObject("7", "@Object.", "AN", ((string[])(null))
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 7")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant7()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("8", "@1", "AN", ((string[])(null)));
 #line hidden
         }
@@ -592,13 +620,15 @@ this.AssignAValueToAnInvalidJsonObject("8", "@1", "AN", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 8")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@1.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant8()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("9", "@1.", "AN", ((string[])(null)));
 #line hidden
         }
@@ -607,13 +637,15 @@ this.AssignAValueToAnInvalidJsonObject("9", "@1.", "AN", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 9")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@1.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant9()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("10", "@1.1", "AN", ((string[])(null)));
 #line hidden
         }
@@ -622,13 +654,15 @@ this.AssignAValueToAnInvalidJsonObject("10", "@1.1", "AN", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 10")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@Rec1.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant10()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("11", "@Rec1.", "AN", ((string[])(null)));
 #line hidden
         }
@@ -637,13 +671,15 @@ this.AssignAValueToAnInvalidJsonObject("11", "@Rec1.", "AN", ((string[])(null)))
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 11")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@Rec1.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant11()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("12", "@Rec1.1", "AN", ((string[])(null)));
 #line hidden
         }
@@ -652,13 +688,15 @@ this.AssignAValueToAnInvalidJsonObject("12", "@Rec1.1", "AN", ((string[])(null))
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@1Rec")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant12()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("13", "@1Rec", "AN", ((string[])(null)));
 #line hidden
         }
@@ -667,13 +705,15 @@ this.AssignAValueToAnInvalidJsonObject("13", "@1Rec", "AN", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 13")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@Rec1.#Field#")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant13()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("14", "@Rec1.#Field#", "AN", ((string[])(null)));
 #line hidden
         }
@@ -682,13 +722,15 @@ this.AssignAValueToAnInvalidJsonObject("14", "@Rec1.#Field#", "AN", ((string[])(
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 14")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@Rec1.1Field")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant14()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("15", "@Rec1.1Field", "AN", ((string[])(null)));
 #line hidden
         }
@@ -697,13 +739,15 @@ this.AssignAValueToAnInvalidJsonObject("15", "@Rec1.1Field", "AN", ((string[])(n
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@Var;iable")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant15()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("16", "@Var;iable", "AN", ((string[])(null)));
 #line hidden
         }
@@ -712,13 +756,15 @@ this.AssignAValueToAnInvalidJsonObject("16", "@Var;iable", "AN", ((string[])(nul
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 16")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "17")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@(Rec1@)")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant16()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("17", "@(Rec1@)", "AN", ((string[])(null)));
 #line hidden
         }
@@ -727,13 +773,15 @@ this.AssignAValueToAnInvalidJsonObject("17", "@(Rec1@)", "AN", ((string[])(null)
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 17")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 17")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "18")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "[[@(Rec1@)]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant17()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("18", "[[@(Rec1@)]]", "AN", ((string[])(null)));
 #line hidden
         }
@@ -742,13 +790,15 @@ this.AssignAValueToAnInvalidJsonObject("18", "[[@(Rec1@)]]", "AN", ((string[])(n
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 18")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 18")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "19")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@(Rec)")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant18()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("19", "@(Rec)", "AN", ((string[])(null)));
 #line hidden
         }
@@ -757,13 +807,15 @@ this.AssignAValueToAnInvalidJsonObject("19", "@(Rec)", "AN", ((string[])(null)))
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to an invalid json object: Variant 19")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 19")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:no", "12")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:var", "@;;;;p")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         public virtual void AssignAValueToAnInvalidJsonObject_Variant19()
         {
-#line 114
+#line 117
 this.AssignAValueToAnInvalidJsonObject("12", "@;;;;p", "AN", ((string[])(null)));
 #line hidden
         }
@@ -775,15 +827,15 @@ this.AssignAValueToAnInvalidJsonObject("12", "@;;;;p", "AN", ((string[])(null)))
         public virtual void AssignAnInvalidValueToAJsonObject()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign an invalid value to a json object", ((string[])(null)));
-#line 146
-this.ScenarioSetup(scenarioInfo);
-#line 147
- testRunner.Given("I assign the value \"[[@Person..Score]]\" to a json object \"[[@Person..Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 148
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 149
- testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 150
+ testRunner.Given("I assign the value \"[[@Person..Score]]\" to a json object \"[[@Person..Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 151
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 152
+ testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 153
  testRunner.And("the execution has \"parse error\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -796,24 +848,24 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignMultipleJsonVariablesToAJsonObject()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign multiple json variables to a json object", ((string[])(null)));
-#line 152
-this.ScenarioSetup(scenarioInfo);
-#line 153
- testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 154
- testRunner.And("I assign the value \"Smith\" to a json object \"[[@Person.Surname]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 155
+this.ScenarioSetup(scenarioInfo);
+#line 156
+ testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 157
+ testRunner.And("I assign the value \"Smith\" to a json object \"[[@Person.Surname]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 158
  testRunner.And("I assign the value \"[[@Person.FirstName]][[@Person.Surname]]\" to a json object \"[" +
                     "[@Person.FullName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 156
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 157
- testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 158
- testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Smith\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 159
- testRunner.And("the value of \"[[@Person.FullName]]\" equals BobSmith", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 160
+ testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 161
+ testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Smith\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 162
+ testRunner.And("the value of \"[[@Person.FullName]]\" equals BobSmith", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 163
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -832,7 +884,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Person.FullName]] =",
                         "[[@Person.FirstName]][[@Person.Surname]] = BobSmith"});
-#line 161
+#line 164
  testRunner.And("the debug inputs as", ((string)(null)), table17, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -847,7 +899,7 @@ this.ScenarioSetup(scenarioInfo);
             table18.AddRow(new string[] {
                         "3",
                         "[[@Person.FullName]]  = BobSmith"});
-#line 166
+#line 169
  testRunner.And("the debug output as", ((string)(null)), table18, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -860,24 +912,24 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignMultipleJsonVariablesToAJsonObjectWithALiteral()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign multiple json variables to a json object with a literal", ((string[])(null)));
-#line 172
-this.ScenarioSetup(scenarioInfo);
-#line 173
- testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 174
- testRunner.And("I assign the value \"Smith\" to a json object \"[[@Person.Surname]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 175
+this.ScenarioSetup(scenarioInfo);
+#line 176
+ testRunner.Given("I assign the value \"Bob\" to a json object \"[[@Person.FirstName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 177
+ testRunner.And("I assign the value \"Smith\" to a json object \"[[@Person.Surname]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 178
  testRunner.And("I assign the value \"[[@Person.FirstName]] the killa [[@Person.Surname]]\" to a jso" +
                     "n object \"[[@Person.FullName]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 176
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 177
- testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 178
- testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Smith\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 179
- testRunner.And("the value of \"[[@Person.FullName]]\" equals Bob the killa Smith", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 180
+ testRunner.Then("the json object \"[[@Person.FirstName]]\" equals \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 181
+ testRunner.And("the json object \"[[@Person.Surname]]\" equals \"Smith\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 182
+ testRunner.And("the value of \"[[@Person.FullName]]\" equals Bob the killa Smith", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 183
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -896,7 +948,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Person.FullName]] =",
                         "[[@Person.FirstName]] the killa [[@Person.Surname]] = Bob the killa Smith"});
-#line 181
+#line 184
  testRunner.And("the debug inputs as", ((string)(null)), table19, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -911,7 +963,7 @@ this.ScenarioSetup(scenarioInfo);
             table20.AddRow(new string[] {
                         "3",
                         "[[@Person.FullName]]  = Bob the killa Smith"});
-#line 186
+#line 189
  testRunner.And("the debug output as", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -921,26 +973,29 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign values to a json object array within a json object")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignValuesToAJsonObjectArrayWithinAJsonObject()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign values to a json object array within a json object", ((string[])(null)));
-#line 192
-this.ScenarioSetup(scenarioInfo);
-#line 193
- testRunner.Given("I assign the value \"11\" to a json object \"[[@Person.Score(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 194
- testRunner.And("I assign the value \"22\" to a json object \"[[@Person.Score(2)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 195
- testRunner.And("I assign the value \"33\" to a json object \"[[@Person.Score(3)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign values to a json object array within a json object", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 196
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 197
- testRunner.Then("the json object \"[[@Person.Score(1)]]\" equals \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I assign the value \"11\" to a json object \"[[@Person.Score(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 198
- testRunner.And("the json object \"[[@Person.Score(2)]]\" equals \"22\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I assign the value \"22\" to a json object \"[[@Person.Score(2)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 199
- testRunner.And("the json object \"[[@Person.Score(3)]]\" equals \"33\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I assign the value \"33\" to a json object \"[[@Person.Score(3)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 200
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 201
+ testRunner.Then("the json object \"[[@Person.Score(1)]]\" equals \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 202
+ testRunner.And("the json object \"[[@Person.Score(2)]]\" equals \"22\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 203
+ testRunner.And("the json object \"[[@Person.Score(3)]]\" equals \"33\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 204
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -959,7 +1014,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Person.Score(3)]] =",
                         "33"});
-#line 201
+#line 205
  testRunner.And("the debug inputs as", ((string)(null)), table21, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -974,7 +1029,7 @@ this.ScenarioSetup(scenarioInfo);
             table22.AddRow(new string[] {
                         "3",
                         "[[@Person.Score(3)]] = 33"});
-#line 206
+#line 210
  testRunner.And("the debug output as", ((string)(null)), table22, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -987,23 +1042,23 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignValuesToAJsonObjectArray()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign values to a json object array", ((string[])(null)));
-#line 212
-this.ScenarioSetup(scenarioInfo);
-#line 213
- testRunner.Given("I assign the value \"11\" to a json object \"[[@Score(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 214
- testRunner.And("I assign the value \"22\" to a json object \"[[@Score(2)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 215
- testRunner.And("I assign the value \"33\" to a json object \"[[@Score(3)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 216
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 217
- testRunner.Then("the json object \"[[@Score(1)]]\" equals \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I assign the value \"11\" to a json object \"[[@Score(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 218
- testRunner.And("the json object \"[[@Score(2)]]\" equals \"22\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I assign the value \"22\" to a json object \"[[@Score(2)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 219
- testRunner.And("the json object \"[[@Score(3)]]\" equals \"33\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I assign the value \"33\" to a json object \"[[@Score(3)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 220
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 221
+ testRunner.Then("the json object \"[[@Score(1)]]\" equals \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 222
+ testRunner.And("the json object \"[[@Score(2)]]\" equals \"22\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 223
+ testRunner.And("the json object \"[[@Score(3)]]\" equals \"33\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 224
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1022,7 +1077,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Score(3)]] =",
                         "33"});
-#line 221
+#line 225
  testRunner.And("the debug inputs as", ((string)(null)), table23, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1037,7 +1092,7 @@ this.ScenarioSetup(scenarioInfo);
             table24.AddRow(new string[] {
                         "3",
                         "[[@Score(3)]] = 33"});
-#line 226
+#line 230
  testRunner.And("the debug output as", ((string)(null)), table24, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1047,28 +1102,31 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to all elements of a json object array within a json object")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignAValueToAllElementsOfAJsonObjectArrayWithinAJsonObject()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value to all elements of a json object array within a json object", ((string[])(null)));
-#line 232
-this.ScenarioSetup(scenarioInfo);
-#line 233
- testRunner.Given("I assign the value \"11\" to a json object \"[[@Person.Score(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 234
- testRunner.And("I assign the value \"22\" to a json object \"[[@Person.Score(2)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 235
- testRunner.And("I assign the value \"33\" to a json object \"[[@Person.Score(3)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 236
- testRunner.And("I assign the value \"44\" to a json object \"[[@Person.Score(*)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value to all elements of a json object array within a json object", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 237
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 238
- testRunner.Then("the json object \"[[@Person.Score(1)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I assign the value \"11\" to a json object \"[[@Person.Score(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 239
- testRunner.And("the json object \"[[@Person.Score(2)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I assign the value \"22\" to a json object \"[[@Person.Score(2)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 240
- testRunner.And("the json object \"[[@Person.Score(3)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I assign the value \"33\" to a json object \"[[@Person.Score(3)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 241
+ testRunner.And("I assign the value \"44\" to a json object \"[[@Person.Score(*)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 242
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 243
+ testRunner.Then("the json object \"[[@Person.Score(1)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 244
+ testRunner.And("the json object \"[[@Person.Score(2)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 245
+ testRunner.And("the json object \"[[@Person.Score(3)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 246
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1091,7 +1149,7 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "[[@Person.Score(*)]] =",
                         "44"});
-#line 242
+#line 247
  testRunner.And("the debug inputs as", ((string)(null)), table25, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1115,7 +1173,7 @@ this.ScenarioSetup(scenarioInfo);
             table26.AddRow(new string[] {
                         "",
                         "[[@Person.Score(3)]] = 44"});
-#line 248
+#line 253
  testRunner.And("the debug output as", ((string)(null)), table26, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1128,25 +1186,25 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignAValueToAllElementsOfAJsonObjectArray()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value to all elements of a json object array", ((string[])(null)));
-#line 257
-this.ScenarioSetup(scenarioInfo);
-#line 258
- testRunner.Given("I assign the value \"11\" to a json object \"[[@Score(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 259
- testRunner.And("I assign the value \"22\" to a json object \"[[@Score(2)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 260
- testRunner.And("I assign the value \"33\" to a json object \"[[@Score(3)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 261
- testRunner.And("I assign the value \"44\" to a json object \"[[@Score(*)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 262
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 263
- testRunner.Then("the json object \"[[@Score(1)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I assign the value \"11\" to a json object \"[[@Score(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 264
- testRunner.And("the json object \"[[@Score(2)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I assign the value \"22\" to a json object \"[[@Score(2)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 265
- testRunner.And("the json object \"[[@Score(3)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I assign the value \"33\" to a json object \"[[@Score(3)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 266
+ testRunner.And("I assign the value \"44\" to a json object \"[[@Score(*)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 267
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 268
+ testRunner.Then("the json object \"[[@Score(1)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 269
+ testRunner.And("the json object \"[[@Score(2)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 270
+ testRunner.And("the json object \"[[@Score(3)]]\" equals \"44\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 271
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1169,7 +1227,7 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "[[@Score(*)]] =",
                         "44"});
-#line 267
+#line 272
  testRunner.And("the debug inputs as", ((string)(null)), table27, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1193,7 +1251,7 @@ this.ScenarioSetup(scenarioInfo);
             table28.AddRow(new string[] {
                         "",
                         "[[@Score(3)]] = 44"});
-#line 273
+#line 278
  testRunner.And("the debug output as", ((string)(null)), table28, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1203,26 +1261,29 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to the end of a json object array within a json object")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignAValueToTheEndOfAJsonObjectArrayWithinAJsonObject()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value to the end of a json object array within a json object", ((string[])(null)));
-#line 282
-this.ScenarioSetup(scenarioInfo);
-#line 283
- testRunner.Given("I assign the value \"11\" to a json object \"[[@Person.Score()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 284
- testRunner.And("I assign the value \"22\" to a json object \"[[@Person.Score()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 285
- testRunner.And("I assign the value \"33\" to a json object \"[[@Person.Score()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 286
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 287
- testRunner.Then("the json object \"[[@Person.Score(1)]]\" equals \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value to the end of a json object array within a json object", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 288
- testRunner.And("the json object \"[[@Person.Score(2)]]\" equals \"22\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 289
- testRunner.And("the json object \"[[@Person.Score(3)]]\" equals \"33\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I assign the value \"11\" to a json object \"[[@Person.Score()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 290
+ testRunner.And("I assign the value \"22\" to a json object \"[[@Person.Score()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 291
+ testRunner.And("I assign the value \"33\" to a json object \"[[@Person.Score()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 292
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 293
+ testRunner.Then("the json object \"[[@Person.Score(1)]]\" equals \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 294
+ testRunner.And("the json object \"[[@Person.Score(2)]]\" equals \"22\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 295
+ testRunner.And("the json object \"[[@Person.Score(3)]]\" equals \"33\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 296
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1241,7 +1302,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Person.Score()]] =",
                         "33"});
-#line 291
+#line 297
  testRunner.And("the debug inputs as", ((string)(null)), table29, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1256,7 +1317,7 @@ this.ScenarioSetup(scenarioInfo);
             table30.AddRow(new string[] {
                         "3",
                         "[[@Person.Score()]] = 33"});
-#line 296
+#line 302
  testRunner.And("the debug output as", ((string)(null)), table30, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1266,26 +1327,29 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a value to a new json object array within a json object")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignAValueToANewJsonObjectArrayWithinAJsonObject()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value to a new json object array within a json object", ((string[])(null)));
-#line 302
-this.ScenarioSetup(scenarioInfo);
-#line 303
- testRunner.Given("I assign the value \"11\" to a json object \"[[@Person.Score1()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 304
- testRunner.And("I assign the value \"22\" to a json object \"[[@Person.Score2()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 305
- testRunner.And("I assign the value \"33\" to a json object \"[[@Person.Score3()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 306
- testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 307
- testRunner.Then("the json object \"[[@Person.Score1(1)]]\" equals \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 308
- testRunner.And("the json object \"[[@Person.Score2(1)]]\" equals \"22\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a value to a new json object array within a json object", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 309
- testRunner.And("the json object \"[[@Person.Score3(1)]]\" equals \"33\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 310
+ testRunner.Given("I assign the value \"11\" to a json object \"[[@Person.Score1()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 311
+ testRunner.And("I assign the value \"22\" to a json object \"[[@Person.Score2()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 312
+ testRunner.And("I assign the value \"33\" to a json object \"[[@Person.Score3()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 313
+ testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 314
+ testRunner.Then("the json object \"[[@Person.Score1(1)]]\" equals \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 315
+ testRunner.And("the json object \"[[@Person.Score2(1)]]\" equals \"22\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 316
+ testRunner.And("the json object \"[[@Person.Score3(1)]]\" equals \"33\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 317
     testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1304,7 +1368,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Person.Score3()]] =",
                         "33"});
-#line 311
+#line 318
     testRunner.And("the debug inputs as", ((string)(null)), table31, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1319,7 +1383,7 @@ this.ScenarioSetup(scenarioInfo);
             table32.AddRow(new string[] {
                         "3",
                         "[[@Person.Score3()]] = 33"});
-#line 316
+#line 323
     testRunner.And("the debug output as", ((string)(null)), table32, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1329,18 +1393,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a json variable with a calculate expression")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignAJsonVariableWithACalculateExpression()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a json variable with a calculate expression", ((string[])(null)));
-#line 322
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a json variable with a calculate expression", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 330
 this.ScenarioSetup(scenarioInfo);
-#line 323
+#line 331
  testRunner.Given("I assign the value \"=SUM(1,2,3)+1\" to a json object \"[[@Person.Score]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 324
+#line 332
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 325
+#line 333
  testRunner.Then("the json object \"[[@Person.Score]]\" equals \"7\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 326
+#line 334
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1351,7 +1418,7 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "[[@Person.Score]] =",
                         "SUM(1,2,3)+1"});
-#line 327
+#line 335
  testRunner.And("the debug inputs as", ((string)(null)), table33, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1360,7 +1427,7 @@ this.ScenarioSetup(scenarioInfo);
             table34.AddRow(new string[] {
                         "1",
                         "[[@Person.Score]] = 7"});
-#line 330
+#line 338
  testRunner.And("the debug output as", ((string)(null)), table34, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1373,22 +1440,22 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignAJsonVariableWithACalculateExpressionUsingJsonObjects()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a json variable with a calculate expression using json objects", ((string[])(null)));
-#line 334
+#line 342
 this.ScenarioSetup(scenarioInfo);
-#line 335
+#line 343
  testRunner.Given("I assign the value \"1\" to a json object \"[[@Person.Score(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 336
+#line 344
  testRunner.And("I assign the value \"2\" to a json object \"[[@Person.Score(2)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 337
+#line 345
  testRunner.And("I assign the value \"3\" to a json object \"[[@Person.Score(3)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 338
+#line 346
  testRunner.And("I assign the value \"=SUM([[@Person.Score(*)]])+1\" to a json object \"[[@Person.Tot" +
                     "alScore]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 339
+#line 347
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 340
+#line 348
  testRunner.Then("the json object \"[[@Person.TotalScore]]\" equals \"4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 341
+#line 349
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1419,7 +1486,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "SUM([[@Person.Score(*)]])+1 =SUM(3)+1"});
-#line 342
+#line 350
  testRunner.And("the debug inputs as", ((string)(null)), table35, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1437,7 +1504,7 @@ this.ScenarioSetup(scenarioInfo);
             table36.AddRow(new string[] {
                         "4",
                         "[[@Person.TotalScore]] = 4"});
-#line 350
+#line 358
  testRunner.And("the debug output as", ((string)(null)), table36, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1447,25 +1514,28 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a json variable with a calculate expression using json array")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignAJsonVariableWithACalculateExpressionUsingJsonArray()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a json variable with a calculate expression using json array", ((string[])(null)));
-#line 357
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a json variable with a calculate expression using json array", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 366
 this.ScenarioSetup(scenarioInfo);
-#line 358
+#line 367
  testRunner.Given("I assign the value \"1\" to a json object \"[[@Person.Score(1).val]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 359
+#line 368
  testRunner.And("I assign the value \"2\" to a json object \"[[@Person.Score(2).val]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 360
+#line 369
  testRunner.And("I assign the value \"3\" to a json object \"[[@Person.Score(3).val]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 361
+#line 370
  testRunner.And("I assign the value \"=SUM([[@Person.Score(*).val]])+1\" to a json object \"[[@Person" +
                     ".TotalScore]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 362
+#line 371
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 363
+#line 372
  testRunner.Then("the json object \"[[@Person.TotalScore]]\" equals \"4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 364
+#line 373
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1496,7 +1566,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         "SUM([[@Person.Score(3).val]])+1 =SUM(3)+1"});
-#line 365
+#line 374
  testRunner.And("the debug inputs as", ((string)(null)), table37, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1514,7 +1584,7 @@ this.ScenarioSetup(scenarioInfo);
             table38.AddRow(new string[] {
                         "4",
                         "[[@Person.TotalScore]] = 4"});
-#line 373
+#line 382
  testRunner.And("the debug output as", ((string)(null)), table38, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1524,23 +1594,26 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign two json and data")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignTwoJsonAndData()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign two json and data", ((string[])(null)));
-#line 380
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign two json and data", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 390
 this.ScenarioSetup(scenarioInfo);
-#line 381
+#line 391
  testRunner.Given("I assign the value 1 to a json object \"[[@rec.a(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 382
+#line 392
  testRunner.And("I assign the value 2 to a json object \"[[@rec.a(2)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 383
+#line 393
  testRunner.And("I assign the value \"Test[[@rec.a(1)]].Warewolf[[@rec.a(2)]]\" to a json object \"[[" +
                     "@Lr.a(1)]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 384
+#line 394
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 385
+#line 395
  testRunner.Then("the value of \"[[@Lr.a(1)]]\" equals \"Test1.Warewolf2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 386
+#line 396
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1559,7 +1632,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Lr.a(1)]] =",
                         "Test[[@rec.a(1)]].Warewolf[[@rec.a(2)]] = Test1.Warewolf2"});
-#line 387
+#line 397
  testRunner.And("the debug inputs as", ((string)(null)), table39, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1574,7 +1647,7 @@ this.ScenarioSetup(scenarioInfo);
             table40.AddRow(new string[] {
                         "3",
                         "[[@Lr.a(1)]]  = Test1.Warewolf2"});
-#line 392
+#line 402
  testRunner.And("the debug output as", ((string)(null)), table40, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1584,18 +1657,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign the value of a negative json index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignTheValueOfANegativeJsonIndex()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign the value of a negative json index", ((string[])(null)));
-#line 398
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign the value of a negative json index", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 409
 this.ScenarioSetup(scenarioInfo);
-#line 399
+#line 410
  testRunner.Given("I assign the value 10 to a json object \"[[@rec.set()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 400
+#line 411
  testRunner.And("I assign the value \"[[@rec.set(-1)]]\" to a json object \"[[var]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 401
+#line 412
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 402
+#line 413
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1605,23 +1681,26 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a record set variable equal to a group calculation (sum)")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignARecordSetVariableEqualToAGroupCalculationSum()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a record set variable equal to a group calculation (sum)", ((string[])(null)));
-#line 404
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a record set variable equal to a group calculation (sum)", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 416
 this.ScenarioSetup(scenarioInfo);
-#line 405
+#line 417
  testRunner.Given("I assign the value 30 to a json object \"[[@rec(1).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 406
+#line 418
  testRunner.And("I assign the value 30 to a json object \"[[@rec(1).b]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 407
+#line 419
  testRunner.And("I assign the value \"=SUM([[@rec(1).a]],[[@rec(1).b]])\" to a json object \"[[@Resul" +
                     "t.a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 408
+#line 420
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 409
+#line 421
  testRunner.Then("the value of \"[[@Result.a]]\" equals \"60\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 410
+#line 422
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1640,7 +1719,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Result.a]] =",
                         "SUM([[@rec(1).a]],[[@rec(1).b]]) = SUM(30,30)"});
-#line 411
+#line 423
  testRunner.And("the debug inputs as", ((string)(null)), table41, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1655,7 +1734,7 @@ this.ScenarioSetup(scenarioInfo);
             table42.AddRow(new string[] {
                         "3",
                         "[[@Result.a]] = 60"});
-#line 416
+#line 428
  testRunner.And("the debug output as", ((string)(null)), table42, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1665,27 +1744,30 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a variable equal to a group calculation with scalar and recordset")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignAVariableEqualToAGroupCalculationWithScalarAndRecordset()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a variable equal to a group calculation with scalar and recordset", ((string[])(null)));
-#line 423
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a variable equal to a group calculation with scalar and recordset", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 436
 this.ScenarioSetup(scenarioInfo);
-#line 424
+#line 437
  testRunner.Given("I assign the value 1 to a json object \"[[@a.b]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 425
+#line 438
  testRunner.And("I assign the value 2 to a json object \"[[@b.a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 426
+#line 439
  testRunner.And("I assign the value \"[[@a.b]]\" to a json object \"[[@rec(1).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 427
+#line 440
  testRunner.And("I assign the value \"[[@b.a]]\" to a json object \"[[@rec(1).b]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 428
+#line 441
  testRunner.And("I assign the value \"=SUM([[@rec(1).a]],[[@rec(1).b]])\" to a json object \"[[@Resul" +
                     "t.a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 429
+#line 442
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 430
+#line 443
  testRunner.Then("the value of \"[[@Result.a]]\" equals \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 431
+#line 444
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1712,7 +1794,7 @@ this.ScenarioSetup(scenarioInfo);
                         "5",
                         "[[@Result.a]] =",
                         "SUM([[@rec(1).a]],[[@rec(1).b]]) = SUM(1,2)"});
-#line 432
+#line 445
  testRunner.And("the debug inputs as", ((string)(null)), table43, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1733,7 +1815,7 @@ this.ScenarioSetup(scenarioInfo);
             table44.AddRow(new string[] {
                         "5",
                         "[[@Result.a]] = 3"});
-#line 439
+#line 452
  testRunner.And("the debug output as", ((string)(null)), table44, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1746,13 +1828,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignAJsonStringToJsonObjectVariable()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a json string to json object variable", ((string[])(null)));
-#line 447
+#line 460
 this.ScenarioSetup(scenarioInfo);
-#line 448
+#line 461
  testRunner.Given("I assign the string \"{\"Five\":\"5\"}\" to a json object \"[[@Numbers]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 449
+#line 462
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 450
+#line 463
  testRunner.Then("the value of \"[[@Numbers.Five]]\" equals \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1765,15 +1847,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignAJsonStringToJsonObjectVariableHasTwoRecords()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a json string to json object variable has two records", ((string[])(null)));
-#line 452
+#line 465
 this.ScenarioSetup(scenarioInfo);
-#line 453
+#line 466
  testRunner.Given("I assign the string \"{\"Five\":\"5\", \"Ten\":\"10\"}\" to a json object \"[[@Numbers]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 454
+#line 467
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 455
+#line 468
  testRunner.Then("the value of \"[[@Numbers.Five]]\" equals \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 456
+#line 469
  testRunner.Then("the value of \"[[@Numbers.Ten]]\" equals \"10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1783,22 +1865,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Evaluating recursive recordset variable in a group calculation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void EvaluatingRecursiveRecordsetVariableInAGroupCalculation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Evaluating recursive recordset variable in a group calculation", ((string[])(null)));
-#line 458
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Evaluating recursive recordset variable in a group calculation", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 472
 this.ScenarioSetup(scenarioInfo);
-#line 459
+#line 473
  testRunner.Given("I assign the value 1 to a json object \"[[@rec(1).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 460
+#line 474
  testRunner.And("I assign the value \"rec(1).a\" to a json object \"[[@rec(1).b]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 461
+#line 475
  testRunner.And("I assign the value \"=sum(1+1)\" to a json object \"[[@Result.a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 462
+#line 476
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 463
+#line 477
  testRunner.Then("the value of \"[[@Result.a]]\" equals \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 464
+#line 478
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1817,7 +1902,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "[[@Result.a]] =",
                         "sum(1+1)"});
-#line 465
+#line 479
  testRunner.And("the debug inputs as", ((string)(null)), table45, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1832,7 +1917,7 @@ this.ScenarioSetup(scenarioInfo);
             table46.AddRow(new string[] {
                         "3",
                         "[[@Result.a]] =  2"});
-#line 470
+#line 484
  testRunner.And("the debug output as", ((string)(null)), table46, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1842,20 +1927,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Evaluating recursive invalid recordset variable in a group calculation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AssignObject")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void EvaluatingRecursiveInvalidRecordsetVariableInAGroupCalculation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Evaluating recursive invalid recordset variable in a group calculation", ((string[])(null)));
-#line 477
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Evaluating recursive invalid recordset variable in a group calculation", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 492
 this.ScenarioSetup(scenarioInfo);
-#line 478
+#line 493
  testRunner.Given("I assign the value 1 to a json object \"[[@rec(1).a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 479
+#line 494
  testRunner.And("I assign the value \"rec(1).a*\" to a json object \"[[@rec(1).b]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 480
+#line 495
  testRunner.And("I assign the value \"=[[[[@rec(1).b]]]]+1\" to a json object \"[[@Result.c]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 481
+#line 496
  testRunner.When("the assign object tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 482
+#line 497
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

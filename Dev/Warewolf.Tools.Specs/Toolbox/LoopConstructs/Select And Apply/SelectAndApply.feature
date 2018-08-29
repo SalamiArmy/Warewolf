@@ -4,6 +4,7 @@ Feature: SelectAndApply
 	As a Warewolf user
 	I want to add a tool that will allow me to construct and execute tools using an alias within the select and apply
 
+@MSTest:DoNotParallelize
 Scenario: Execute a selectAndApply tool with a mocked test tool with a recordSet array of json objects
 	Given There is a complexobject in the datalist with this shape
 	| rs				| value |
@@ -20,6 +21,7 @@ Scenario: Execute a selectAndApply tool with a mocked test tool with a recordSet
 	| [[@Score(*).Value]]	|
 	| As = [[Score]]		|
 
+@MSTest:DoNotParallelize
 Scenario: Execute a selectAndApply tool with a mocked test tool with a json object array of json objects
 	Given There is a complexobject in the datalist with this shape
 	| rs				| value |
@@ -53,6 +55,7 @@ Scenario: Execute a selectAndApply tool with a Number Format tool with a recordS
 	And "[[@Score(2).Value]]" has a value of "0.450"
 	And "[[@Score(3).Value]]" has a value of "0.120"
 
+@MSTest:DoNotParallelize
 Scenario: Execute a selectAndApply tool with a Number Format tool with a json object array of json objects
 	Given There is a complexobject in the datalist with this shape
 	| rs				| value |
@@ -104,6 +107,7 @@ Scenario: Execute a selectAndApply tool with a Number Format tool with a json ob
 	And "[[@Score(2)]]" has a value of "0.450"
 	And "[[@Score(3)]]" has a value of "0.120"
 
+@MSTest:DoNotParallelize
 Scenario: Execute a selectAndApply tool with a Number Format tool with a RecordSet
 	Given There is a complexobject in the datalist with this shape
 	| rs				| value |
@@ -116,6 +120,7 @@ Scenario: Execute a selectAndApply tool with a Number Format tool with a RecordS
 	When the selectAndApply tool is executed
 	Then the execution has "NO" error
 
+@MSTest:DoNotParallelize
 Scenario: Execute a selectAndApply tool with a Number Format tool with a json object
 	Given There is a complexobject in the datalist with this shape
 	| rs				| value |
@@ -152,6 +157,7 @@ Scenario: Execute a selectAndApply tool with a Number Format tool with a json ob
 	When the selectAndApply tool is executed
 	Then the execution has "NO" error
 
+@MSTest:DoNotParallelize
 Scenario: Execute a selectAndApply tool with a Number Format tool with json object array within a json object
 	Given There is a complexobject in the datalist with this shape
 	| rs					| value |
@@ -185,6 +191,7 @@ Scenario: Execute a selectAndApply over a tool using a recordset with 3 rows
 	| [[rs(*).field]]	|
 	| As = [[rs]]		|
 
+@MSTest:DoNotParallelize
 Scenario: Execute a selectAndApply over a tool using a JSON Object with 3 rows
 	Given There is a recordset in the datalist with this shape
 	| rs             | value |
@@ -235,6 +242,7 @@ Scenario: Execute a selectAndApply over a tool using a JSON object with 4 rows
 	| [[@rs(*).field]]	|
 	| As = [[rs]]		|
 
+@MSTest:DoNotParallelize
 Scenario: Execute a selectAndApply over an activity using a recordset with 3 rows
 	Given There is a recordset in the datalist with this shape
 	| rs             | value |

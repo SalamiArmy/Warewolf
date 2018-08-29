@@ -16,6 +16,7 @@ Feature: Replace
 
 
 
+@MSTest:DoNotParallelize
 Scenario: Replace placeholders in a sentence with names
 	Given I have a replace variable "[[sentence]]" equal to "Dear Mr XXXX, We welcome you as a customer"
 	And I have a sentence "[[sentence]]"
@@ -32,6 +33,7 @@ Scenario: Replace placeholders in a sentence with names
 	|                                                                    |                |
 	| [[sentence]] = Dear Mr Warewolf user, We welcome you as a customer | [[result]] = 1 |
 
+@MSTest:DoNotParallelize
 Scenario: Replace when the in field(s) is blank
 	Given I have a replace variable "[[sentence]]" equal to "blank"
 	And I have a sentence "[[sentence]]"
@@ -48,6 +50,7 @@ Scenario: Replace when the in field(s) is blank
 	|                |  |
 	| [[result]] = 0 |  |
 
+@MSTest:DoNotParallelize
 Scenario: Replace when text to find is blank 
 	Given I have a replace variable "[[sentence]]" equal to "Dear Mr XXXX, We welcome you as a customer"
 	And I have a sentence "[[sentence]]"
@@ -64,6 +67,7 @@ Scenario: Replace when text to find is blank
 	|                |
 	| [[result]] = 0 |
 
+@MSTest:DoNotParallelize
 Scenario: Replace when the replace with is blank
 	Given I have a replace variable "[[sentence]]" equal to "Dear Mr XXXX, We welcome you as a customer"
 	And I have a sentence "[[sentence]]"
@@ -105,7 +109,7 @@ Scenario: Replace when text to find is negative recordset index
 	When the replace tool is executed
 	Then the execution has "AN" error
 	
-
+@MSTest:DoNotParallelize
 Scenario: Replace when the replace with is negative recordset index
 	Given I have a replace variable "[[sentence]]" equal to "Dear Mr XXXX, We welcome you as a customer"
 	And I have a sentence "[[sentence]]"
@@ -114,6 +118,7 @@ Scenario: Replace when the replace with is negative recordset index
 	When the replace tool is executed
 	Then the execution has "AN" error
 
+@MSTest:DoNotParallelize
 Scenario: Replace when negative recordset index is input
 	Given I have a sentence "[[my(-1).sentence]]"
 	And I want to find the characters "XXXX"
@@ -158,6 +163,7 @@ Scenario: Using recordset star notation for input and result
 	|                          | [[rs(2).val]] = 2 |
 	|                          | [[rs(3).val]] = 0 |
 
+@MSTest:DoNotParallelize
 Scenario Outline:  Ensuring recordsets work as a Result
 	Given I have a replace variable "[[sentence]]" equal to "Dear Mr XXXX, We welcome you as a customer"
 	And I have a sentence "[[sentence]]"
