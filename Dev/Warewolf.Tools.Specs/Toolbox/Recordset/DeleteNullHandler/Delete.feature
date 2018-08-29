@@ -8,6 +8,7 @@ Background: Setup for workflows for tests
 	Given this feature 
 	Then activity is DsfCountRecordsetNullHandlerActivity
 
+@MSTest:DoNotParallelize
 Scenario: Delete last record in a recordset 
 	Given I have the following recordset
 	| rs       | val |
@@ -32,6 +33,7 @@ Scenario: Delete last record in a recordset
 	|                       |
 	| [[result]] = Success |	
 
+@MSTest:DoNotParallelize
 Scenario: Delete an invalid recordset (recordset with no fields declared)
 	Given I have the following recordset
 	| rs       | val |
@@ -49,6 +51,7 @@ Scenario: Delete an invalid recordset (recordset with no fields declared)
 	|                       |
 	| [[result]] = Failure |
 		
+@MSTest:DoNotParallelize
 Scenario: Delete the first record in a recordset 
 	Given I have the following recordset
 	| rs       | val |
@@ -70,6 +73,7 @@ Scenario: Delete the first record in a recordset
 	|                      |
 	| [[result]] = Success |	
 	
+@MSTest:DoNotParallelize
 Scenario: Delete a record using an index from a variable
 	Given I have the following recordset
 	| rs       | val |
@@ -172,6 +176,7 @@ Scenario: Delete a record an empty recordset
 	|                      |
 	| [[result]] = Failure |
 
+@MSTest:DoNotParallelize
 Scenario: Delete a record With An Empty Recordset And Null Check Selected
 	Given I have the following recordset
 	| rs       | row |
@@ -187,6 +192,7 @@ Scenario: Delete a record With An Empty Recordset And Null Check Selected
 	|                      |
 	| [[result]] = Success|
 
+@MSTest:DoNotParallelize
 Scenario: Delete a scalar insted of a recordset
 	Given I have a delete variable "[[var]]" equal to ""
 	And I delete a record "[[var]]"
@@ -224,6 +230,7 @@ Scenario: Delete two recordset data.
 	|                      |
 	| [[result]] = Failure |
 
+@MSTest:DoNotParallelize
 Scenario: Delete two specific recordset data.
 	Given I have the following recordset
 	| rs       | val |
@@ -247,7 +254,7 @@ Scenario: Delete two specific recordset data.
 	|                      |
 	| [[result]] = Failure  |
 
-
+@MSTest:DoNotParallelize
 Scenario Outline: Ensure delete variables of different types produce desired results
 	Given I have a delete variable "<variable>" equal to "<value>"
 	And I delete a record "<variable>"

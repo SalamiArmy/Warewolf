@@ -111,11 +111,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\Dev2.IntegrationTests\Services.Sql\SqlServerTestUtils.cs">
       <Link>Toolbox\Recordset\SqlBulkInsert\SqlServerTestUtils.cs</Link>
-    </Compile>
-    <Compile Include="..\AssemblyCommonInfo.cs" Condition="Exists('..\AssemblyCommonInfo.cs')">
-      <Link>Properties\AssemblyCommonInfo.cs</Link>
     </Compile>
     <None Include="..\Run Tests.ps1">
       <Visible>False</Visible>
@@ -304,11 +302,6 @@
       <DependentUpon>WebGet.feature</DependentUpon>
     </Compile>
     <Compile Include="Toolbox\Resources\Web\WebGetSteps.cs" />
-    <Compile Include="Toolbox\Utility\DateandTime\DateandTime.feature.cs">
-      <DependentUpon>DateandTime.feature</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="Toolbox\Utility\RabbitMQ\Consume\ConsumeRabbitMQSteps.cs" />
     <Compile Include="Toolbox\Utility\RabbitMQ\Consume\ConsumeRabbitMQ.feature.cs">
       <AutoGen>True</AutoGen>
@@ -455,11 +448,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Ruby.feature</DependentUpon>
     </Compile>
-    <Compile Include="Toolbox\Scripting\Script\Script.feature.cs">
-      <DependentUpon>Script.feature</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Toolbox\Scripting\Script\ScriptSteps.cs" />
     <Compile Include="Toolbox\Storage\Dropbox\DeleteDropbox.feature.cs">
       <AutoGen>True</AutoGen>
@@ -502,7 +490,6 @@
       <DependentUpon>DateandTimeDifference.feature</DependentUpon>
     </Compile>
     <Compile Include="Toolbox\Utility\DateandTimeDifference\DateandTimeDifferenceSteps.cs" />
-    <Compile Include="Toolbox\Utility\DateandTime\DateandTimeSteps.cs" />
     <Compile Include="Toolbox\Email\Email\Email.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -675,10 +662,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WebGet.feature.cs</LastGenOutput>
     </None>
-    <None Include="Toolbox\Utility\DateandTime\DateandTime.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>DateandTime.feature.cs</LastGenOutput>
-    </None>
     <None Include="Toolbox\Utility\RabbitMQ\Consume\ConsumeRabbitMQ.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ConsumeRabbitMQ.feature.cs</LastGenOutput>
@@ -774,10 +757,6 @@
     <None Include="Toolbox\Scripting\ruby\Ruby.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Ruby.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Toolbox\Scripting\Script\Script.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Script.feature.cs</LastGenOutput>
     </None>
     <None Include="Toolbox\Storage\Dropbox\DeleteDropbox.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

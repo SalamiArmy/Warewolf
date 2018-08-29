@@ -27,6 +27,7 @@ Scenario: Count a number of records in a recordset with 3 rows
 	|                |
 	| [[result]] = 3 |
 
+@MSTest:DoNotParallelize
 Scenario: Count a number of records in a recordset with 8 rows
 	Given I have a recordset with this shape
 	| rs       |   |
@@ -74,6 +75,7 @@ Scenario: Count a number of records in a unassigned recordset
 	When the count tool is executed
 	Then the execution has "An" error
 
+@MSTest:DoNotParallelize
 Scenario: Count A Number Of Records In A Unassigned Recordset Null Check Selected
 	Given count on record "[[rs()]]"
 	And treat null as Empty Recordset is selected
@@ -81,7 +83,7 @@ Scenario: Count A Number Of Records In A Unassigned Recordset Null Check Selecte
 	Then the result count should be 0
 	And the execution has "No" error
 
-
+@MSTest:DoNotParallelize
 Scenario: Count record with invalid variables
 	Given I have a recordset with this shape
 	| rs       |   |
@@ -102,6 +104,7 @@ Scenario: Count record with invalid variables
 	And the debug output as 
 	|              |
 
+@MSTest:DoNotParallelize
 Scenario: Count only one column record
 	Given I have a recordset with this shape
 	| rs       |   |
@@ -122,6 +125,7 @@ Scenario: Count only one column record
 	And the debug output as 
 	|              |
 
+@MSTest:DoNotParallelize
 Scenario: Count only one coloumn record
 	Given I have a recordset with this shape
 	| rs       |   |
@@ -168,6 +172,7 @@ Scenario: Count a number of records when two recordsets are defined.
 	|                |
 	| [[result]] = 5 |
 
+@MSTest:DoNotParallelize
 Scenario: Executing Count with two variables in result field
 	Given I have a recordset with this shape
 	| rs        |   |
@@ -189,6 +194,7 @@ Scenario: Executing Count with two variables in result field
 	And the debug output as 
 	|                |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Ensure variables of different types produce desired results
 	Given I have a recordset with this shape
 	| [[rs]]   |   |

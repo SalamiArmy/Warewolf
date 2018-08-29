@@ -3,6 +3,7 @@ Feature: WcfServiceConnector
 	In Order to access an Wcf endpoint
 	as a Warewolf user.
 
+@MSTest:DoNotParallelize
 Scenario: create Wcf tool
 	Given I open New Wcf Tool
 	Then  "Sources" wcf combobox is enabled
@@ -37,6 +38,7 @@ Scenario: Create new wcf Tool and Select a Source
 	And wcf Recordset is ""
 	And there are "no" wcf validation errors of ""
 
+@MSTest:DoNotParallelize
 Scenario: Create new wcf Tool and Select a Action
 	Given I open New Wcf Tool
 	Then  "Sources" wcf combobox is enabled

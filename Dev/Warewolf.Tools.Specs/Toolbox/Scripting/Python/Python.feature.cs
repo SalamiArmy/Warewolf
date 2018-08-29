@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Scripting.Python
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Python", "\tIn order to execute Python\r\n\tAs a Warewolf user\r\n\tI want a tool that allows me t" +
                     "o execute Python", ProgrammingLanguage.CSharp, new string[] {
                         "Scripting",
@@ -90,22 +90,25 @@ namespace Warewolf.Tools.Specs.Toolbox.Scripting.Python
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Python")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Scripting")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PythonFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ExecutePythonVariableIs1()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python Variable is 1", ((string[])(null)));
-#line 8
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python Variable is 1", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 9
- testRunner.Given("I have a script variable \"[[val]]\" with this value \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 10
- testRunner.And("I have this script to execute \"python_one_variable.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a script variable \"[[val]]\" with this value \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 11
- testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have this script to execute \"python_one_variable.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
- testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
- testRunner.Then("the script result should be \"one\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
+ testRunner.Then("the script result should be \"one\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 15
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -114,14 +117,14 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "Python",
                         "String = String"});
-#line 15
+#line 16
  testRunner.And("the debug inputs as", ((string)(null)), table1, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table2.AddRow(new string[] {
                         "[[result]] = one"});
-#line 18
+#line 19
  testRunner.And("the debug output as", ((string)(null)), table2, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -132,20 +135,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Python")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Scripting")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PythonFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ExecutePythonBlankScript()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python blank script", ((string[])(null)));
-#line 23
-this.ScenarioSetup(scenarioInfo);
-#line 24
- testRunner.Given("I have this script to execute \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python blank script", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 25
- testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 26
- testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have this script to execute \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 27
- testRunner.Then("the script result should be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 28
+ testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 29
+ testRunner.Then("the script result should be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 30
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -154,14 +160,14 @@ this.ScenarioSetup(scenarioInfo);
             table3.AddRow(new string[] {
                         "Python",
                         "\"\""});
-#line 29
+#line 31
  testRunner.And("the debug inputs as", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table4.AddRow(new string[] {
                         "[[result]] ="});
-#line 32
+#line 34
  testRunner.And("the debug output as", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -172,22 +178,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Python")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Scripting")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PythonFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ExecutePythonVariableIs2()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python Variable is 2", ((string[])(null)));
-#line 36
-this.ScenarioSetup(scenarioInfo);
-#line 37
- testRunner.Given("I have a script variable \"[[val]]\" with this value \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 38
- testRunner.And("I have this script to execute \"python_one_variable.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python Variable is 2", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 39
- testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 40
- testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have a script variable \"[[val]]\" with this value \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 41
- testRunner.Then("the script result should be \"two\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I have this script to execute \"python_one_variable.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 42
+ testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 43
+ testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 44
+ testRunner.Then("the script result should be \"two\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 45
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -196,14 +205,14 @@ this.ScenarioSetup(scenarioInfo);
             table5.AddRow(new string[] {
                         "Python",
                         "String = String"});
-#line 43
+#line 46
  testRunner.And("the debug inputs as", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table6.AddRow(new string[] {
                         "[[result]] = two"});
-#line 46
+#line 49
  testRunner.And("the debug output as", ((string)(null)), table6, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -214,22 +223,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Python")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Scripting")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PythonFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ExecutePythonVariableIs3()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python Variable is 3", ((string[])(null)));
-#line 50
-this.ScenarioSetup(scenarioInfo);
-#line 51
- testRunner.Given("I have a script variable \"[[val]]\" with this value \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 52
- testRunner.And("I have this script to execute \"python_one_variable.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 53
- testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python Variable is 3", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 54
- testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 55
- testRunner.Then("the script result should be \"not one or two\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I have a script variable \"[[val]]\" with this value \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 56
+ testRunner.And("I have this script to execute \"python_one_variable.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 57
+ testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 58
+ testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 59
+ testRunner.Then("the script result should be \"not one or two\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 60
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -238,14 +250,14 @@ this.ScenarioSetup(scenarioInfo);
             table7.AddRow(new string[] {
                         "Python",
                         "String = String"});
-#line 57
+#line 61
  testRunner.And("the debug inputs as", ((string)(null)), table7, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table8.AddRow(new string[] {
                         "[[result]] = not one or two"});
-#line 60
+#line 64
  testRunner.And("the debug output as", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -256,22 +268,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Python")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Scripting")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PythonFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ExecutePythonVariableIs100()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python Variable is 100", ((string[])(null)));
-#line 64
-this.ScenarioSetup(scenarioInfo);
-#line 65
- testRunner.Given("I have a script variable \"[[val]]\" with this value \"100\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 66
- testRunner.And("I have this script to execute \"python_one_variable.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 67
- testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 68
- testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python Variable is 100", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 69
- testRunner.Then("the script result should be \"not one or two\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 70
+ testRunner.Given("I have a script variable \"[[val]]\" with this value \"100\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 71
+ testRunner.And("I have this script to execute \"python_one_variable.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 72
+ testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 73
+ testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 74
+ testRunner.Then("the script result should be \"not one or two\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 75
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -280,14 +295,14 @@ this.ScenarioSetup(scenarioInfo);
             table9.AddRow(new string[] {
                         "Python",
                         "String = String"});
-#line 71
+#line 76
  testRunner.And("the debug inputs as", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table10.AddRow(new string[] {
                         "[[result]] = not one or two"});
-#line 74
+#line 79
  testRunner.And("the debug output as", ((string)(null)), table10, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -298,20 +313,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Python")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Scripting")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PythonFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ExecuteBadlyFormedPython()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute badly formed Python", ((string[])(null)));
-#line 78
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute badly formed Python", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 84
 this.ScenarioSetup(scenarioInfo);
-#line 79
+#line 85
  testRunner.Given("I have a script variable \"[[val]]\" with this value \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 80
+#line 86
  testRunner.And("I have this script to execute \"python_badly_formatted.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 81
+#line 87
  testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 82
+#line 88
  testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 83
+#line 89
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -320,14 +338,14 @@ this.ScenarioSetup(scenarioInfo);
             table11.AddRow(new string[] {
                         "Python",
                         "String = String"});
-#line 84
+#line 90
  testRunner.And("the debug inputs as", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table12.AddRow(new string[] {
                         "[[result]] ="});
-#line 87
+#line 93
  testRunner.And("the debug output as", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -341,21 +359,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ExecutePythonWith2Variables()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python with 2 variables", ((string[])(null)));
-#line 91
-this.ScenarioSetup(scenarioInfo);
-#line 92
- testRunner.Given("I have a script variable \"[[val1]]\" with this value \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 93
- testRunner.Given("I have a script variable \"[[val2]]\" with this value \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 94
- testRunner.And("I have this script to execute \"python_two_variables.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 95
- testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 96
- testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 97
- testRunner.Then("the script result should be \"two\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 98
+ testRunner.Given("I have a script variable \"[[val1]]\" with this value \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 99
+ testRunner.Given("I have a script variable \"[[val2]]\" with this value \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 100
+ testRunner.And("I have this script to execute \"python_two_variables.txt\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 101
+ testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 102
+ testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 103
+ testRunner.Then("the script result should be \"two\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 104
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -364,14 +382,14 @@ this.ScenarioSetup(scenarioInfo);
             table13.AddRow(new string[] {
                         "Python",
                         "String = String"});
-#line 99
+#line 105
  testRunner.And("the debug inputs as", ((string)(null)), table13, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table14.AddRow(new string[] {
                         "[[result]] = two"});
-#line 102
+#line 108
  testRunner.And("the debug output as", ((string)(null)), table14, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -382,18 +400,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Python")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Scripting")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PythonFeature")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ExecutePythonWithANegativeRecordsetIndex()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python with a negative recordset index", ((string[])(null)));
-#line 106
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Execute Python with a negative recordset index", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 113
 this.ScenarioSetup(scenarioInfo);
-#line 107
+#line 114
  testRunner.Given("I have this script to execute \"[[my(-1).val]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 108
+#line 115
  testRunner.And("I have selected the language as \"Python\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 109
+#line 116
  testRunner.When("I execute the script tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 110
+#line 117
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -402,14 +423,14 @@ this.ScenarioSetup(scenarioInfo);
             table15.AddRow(new string[] {
                         "Python",
                         "[[my(-1).val]] ="});
-#line 111
+#line 118
  testRunner.And("the debug inputs as", ((string)(null)), table15, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table16.AddRow(new string[] {
                         "[[result]] ="});
-#line 114
+#line 121
  testRunner.And("the debug output as", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();

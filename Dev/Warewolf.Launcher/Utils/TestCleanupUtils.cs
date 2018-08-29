@@ -111,7 +111,7 @@ namespace Warewolf.Launcher
             }
         }
 
-        public static void CleanupServerStudio(this TestLauncher build, bool Force = true)
+        public static void CleanupServerStudio(this TestLauncher build, string JobName, bool Force = true)
         {
             if (!string.IsNullOrEmpty(build.ServerPath) && File.Exists(build.ServerPath))
             {
@@ -272,26 +272,22 @@ namespace Warewolf.Launcher
                 var ActualPath = Environment.ExpandEnvironmentVariables(FileOrFolder);
                 if (Directory.Exists(ActualPath))
                 {
-                    MoveFolderToTestResults(Environment.ExpandEnvironmentVariables(ActualPath), $"{build.JobName} Server {Path.GetFileName(ActualPath)} Folder", build.TestRunner.TestsResultsPath);
+                    MoveFolderToTestResults(Environment.ExpandEnvironmentVariables(ActualPath), $"{JobName} Server {Path.GetFileName(ActualPath)} Folder", build.TestRunner.TestsResultsPath);
                 }
             }
         }
 
-        public static void MoveArtifactsToTestResults(this TestLauncher build, bool DotCover, bool Server, bool Studio, string JobName)
+        public static void MoveArtifactsToTestResults(this TestLauncher build, bool DotCover, bool Server, bool Studio, string JobName, string TrxTestResultsFile = null)
         {
-            string testsResultsPath = build.TestRunner.TestsResultsPath;
-            if (Directory.Exists(testsResultsPath))
+            if (TrxTestResultsFile != null && File.Exists(TrxTestResultsFile))
             {
-                foreach (var FullTRXFilePath in Directory.GetFiles(testsResultsPath, "*.trx"))
+                XmlDocument trxContent = new XmlDocument();
+                trxContent.Load(TrxTestResultsFile);
+                var namespaceManager = new XmlNamespaceManager(trxContent.NameTable);
+                namespaceManager.AddNamespace("a", "http://microsoft.com/schemas/VisualStudio/TeamTest/2010");
+                if (trxContent.DocumentElement.SelectSingleNode("/a:TestRun/a:ResultSummary", namespaceManager).Attributes["outcome"].Value != "Completed")
                 {
-                    XmlDocument trxContent = new XmlDocument();
-                    trxContent.Load(FullTRXFilePath);
-                    var namespaceManager = new XmlNamespaceManager(trxContent.NameTable);
-                    namespaceManager.AddNamespace("a", "http://microsoft.com/schemas/VisualStudio/TeamTest/2010");
-                    if (trxContent.DocumentElement.SelectSingleNode("/a:TestRun/a:ResultSummary", namespaceManager).Attributes["outcome"].Value != "Completed")
-                    {
-                        WriteFailingTestPlaylist($"{build.TestRunner.TestsResultsPath}\\{JobName} Failures.playlist", FullTRXFilePath, trxContent, namespaceManager);
-                    }
+                    WriteFailingTestPlaylist($"{build.TestRunner.TestsResultsPath}\\{JobName} Failures.playlist", TrxTestResultsFile, trxContent, namespaceManager);
                 }
             }
 
@@ -299,7 +295,7 @@ namespace Warewolf.Launcher
             if (File.Exists(containerLogFile))
             {
                 WaitForFileUnlock(containerLogFile);
-                MoveFileToTestResults(containerLogFile, $"{build.JobName} Container Launcher.log", build.TestRunner.TestsResultsPath);
+                MoveFileToTestResults(containerLogFile, $"{JobName} Container Launcher.log", build.TestRunner.TestsResultsPath);
             }
 
             if (Studio)

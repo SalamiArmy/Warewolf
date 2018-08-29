@@ -20,6 +20,7 @@ Scenario: Send New Exchange Email to multiple recipients
 	|                      |
 	| [[result]] = Success |
 
+@MSTest:DoNotParallelize
 Scenario: Send New Exchange email with no To Accounts
 	Given new exchange to address is ""
 	And the new exchange subject is "Just testing"	
@@ -33,6 +34,7 @@ Scenario: Send New Exchange email with no To Accounts
 	|              |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Send New Exchange email with Subject as both text and variable as xml 
 	Given new exchange to address is "test1@freemail.com"
 	And I have a new exchange email variable "[[subject]]" equal to "<Wow>400%</Wow>"
@@ -48,6 +50,7 @@ Scenario: Send New Exchange email with Subject as both text and variable as xml
 	|                      |
 	| [[result]] = Success |
 
+@MSTest:DoNotParallelize
 Scenario: Send New Exchange email with no body
 	Given new exchange to address is "test1@freemail.com"	
 	And the new exchange subject is "Testing this cool framework"	
@@ -61,6 +64,7 @@ Scenario: Send New Exchange email with no body
 	|                      |
 	| [[result]] = Success |
 
+@MSTest:DoNotParallelize
 Scenario: Send New Exchange email with Body as both text and variable 
 	Given new exchange to address is "test1@freemail.com"
 	And I have a new exchange email variable "[[body]]" equal to "<body><inner>inside</inner></body>"
@@ -101,6 +105,7 @@ Scenario: Send New Exchange email with everything blank
 	|              |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Send New Exchange email with a negative index recordset for Recipients
 	And new exchange to address is "[[me(-1).to]]"
 	And the new exchange subject is "Just testing"	

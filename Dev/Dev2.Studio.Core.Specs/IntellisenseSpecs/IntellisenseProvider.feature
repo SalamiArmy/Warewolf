@@ -3,6 +3,7 @@
 	As a Warewolf user
 	I want to be able to select it from the intellisense drop down
 
+@MSTest:DoNotParallelize
 Scenario Outline: Insert for All FilterType and DateTime Provider
 	Given I have the following variable list '<varlist>'
 	And the filter type is '<filterType>'
@@ -29,6 +30,7 @@ Scenario Outline: Insert for All FilterType and DateTime Provider
 	| 13       | <ww/><min/><rec><minss/></rec> | All        | text gg     | 6     | gg                                                         | gg              | text gg             | Default, DateTime | 7             |
 	| 14       | <ww/><min/><rec><minss/></rec> | All        | text FFFFFF | 9     | FFFFFF,FFFF,FFFFF,FFFFFFF                                                     | FFFFFF          | text FFFFFF         | Default, DateTime | 11             |
 	
+@MSTest:DoNotParallelize
 Scenario Outline: Insert for All FilterType and File Provider
 	Given I have the following variable list '<varlist>'
 	And the file path structure is '<pathStructure>'
@@ -53,6 +55,7 @@ Scenario Outline: Insert for All FilterType and File Provider
 	| 10       | c:\,c:\FolderA,c:\FolderA\FileA.txt | <c/><cd/>                     | All        | del c:\FolderA c   | 16    | [[c]],[[cd]],c:\,c:\FolderA,c:\FolderA\FileA.txt                        | [[cd]]               | del c:\FolderA [[cd]]               | Default, File | 21            |
 	| 11       | c:\,c:\FolderA,c:\FolderA\FileA.txt | <c/><cd/>                     | All        | del c:\FolderA\    | 15    | c:\FolderA\FileA.txt                                                    | c:\FolderA\FileA.txt | del c:\FolderA\FileA.txt            | Default, File | 24            |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Insert for All FilterType and Calculate Provider
 	Given I have the following variable list '<varlist>'
 	And the filter type is '<filterType>'
@@ -74,6 +77,7 @@ Scenario Outline: Insert for All FilterType and Calculate Provider
 	| 7        | <a/><b/><c/>              | All        | =[[b]]+b               | 8     | [[b]],bin2dec,bin2hex,bin2oct | [[b]]   | =[[b]]+[[b]]            | Default, Calculate | 12            |
 	| 8        | <a/><att/><sum><b/></sum> | All        | tan([[at]]) tan([[a]]) | 8     | [[att]]                       | [[att]] | tan([[att]]) tan([[a]]) | Default, Calculate | 11            |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Recset only has no errors for valid variable indexes
 	Given I have the following variable list '<varlist>'
 	And the filter type is 'RecordsetsOnly'
@@ -86,6 +90,7 @@ Examples:
 	| 1        | <x/><sum><b/></sum><mus><b/></mus> | true       | [[sum([[x]])]]    |
 	| 1        | <x/><sum><b/></sum><mus><b/></mus> | true        | [[sum([[assc]])]] |
 	
+@MSTest:DoNotParallelize
 Scenario Outline: Insert for All FilterType and Default Provider
 	Given I have the following intellisense options '<varlist>'
 	And the filter type is '<filterType>'
@@ -116,9 +121,10 @@ Examples:
 	| 17       | [[var]],[[var2]],[[rec()]],[[rec().var2]],[[rec().var]]                                | All        | [[[[a]]]]             | 5     | [[var]],[[var2]],[[rec().var]],[[rec().var2]]                                | [[var]]         | [[var]]]]              | Default  | 7             |
 	| 18       | [[var]],[[var2]],[[rec()]],[[rec().var2]],[[rec().var]]                                | All        | [[                    | 2     | [[var]],[[var2]],[[rec().var]],[[rec().var2]]                                | [[var]]         | [[var]]                | Default  | 7             |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Insert for RecordsetsOnly FilterType and Default Provider
 	Given I have the following intellisense options '<varlist>'
-		And the filter type is '<filterType>'
+	And the filter type is '<filterType>'
 	And the current text in the textbox is '<input>'
 	And the cursor is at index '<index>'		
 	And the provider used is '<provider>'	
@@ -144,7 +150,8 @@ Scenario Outline: Insert for RecordsetsOnly FilterType and Default Provider
 	| 15       | [[ba]],[[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]],[[sum().ba]] | All             | [[sum().b]]b           | 12    | [[b]],[[ba]],[[sum().b]],[[sum().ba]],[[mus().b]] | [[ba]]       | [[sum().b]][[ba]]       | Default  | 17            |
 	| 16       | [[b]],[[sum().b]],[[mus().b]],[[sum()]],[[mus()]]                     | RecordsetsOnly  | =u                     | 2     | [[sum()]],[[mus()]]                               | [[sum()]]    | =[[sum()]]              | Default  | 10            |
 
-	Scenario Outline: Insert for Json FilterType and Default Provider Case Insensitive
+@MSTest:DoNotParallelize
+Scenario Outline: Insert for Json FilterType and Default Provider Case Insensitive
 	Given I have the following intellisense options '<varlist>'
 	And the filter type is '<filterType>'
 	And the current text in the textbox is '<input>'
@@ -161,6 +168,7 @@ Scenario Outline: Insert for RecordsetsOnly FilterType and Default Provider
 	| 4        | [[@Person]],[[@Person.name]] | JsonObject | [[@PERSON. | 10    | [[@Person.name]]             | [[@Person.name]] | [[@Person.name]] | Default  | 16            |
 	| 5        | [[@Person]],[[@PERSON.name]] | JsonObject | [[@person  | 9     | [[@PERSON.name]]             | [[@PERSON.name]] | [[@PERSON.name]] | Default  | 16            |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Insert for Json FilterType and Default Provider
 	Given I have the following intellisense options '<varlist>'
 		And the filter type is '<filterType>'
@@ -207,8 +215,7 @@ Scenario Outline: Insert for Json FilterType and Default Provider
 	| 44       | [[@Person]],[[@Person.Childs(*).name]],[[@Person.Childs().name]]    | JsonObject | @                   | 1     | [[@Person.Childs(*).name]],[[@Person.Childs().name]]                | [[@Person.Childs(*).name]] | [[@Person.Childs(*).name]]                  | Default  | 26            |
 	| 45       | [[@Person]],[[@Person.Childs(*).name]],[[@Person.Childs().name]]    | JsonObject | [[@                 | 3     | [[@Person.Childs(*).name]],[[@Person.Childs().name]]                | [[@Person.Childs(*).name]] | [[@Person.Childs(*).name]]                  | Default  | 26            |
 
-
-
+@MSTest:DoNotParallelize
 Scenario Outline: Insert for RecordsetFields FilterType and Default Provider
 	Given I have the following intellisense options '<varlist>'
 		And the filter type is '<filterType>'
@@ -232,7 +239,7 @@ Scenario Outline: Insert for RecordsetFields FilterType and Default Provider
 	| 10       | [[rec()]],[[rec().a]],[[a]],[[rec().z]],[[rec(*)]],[[rec(*).a]],[[rec(*).z]]                      | RecordsetFields | [[rec().a]],[[rec().a]] | 5     | [[rec().a]],[[rec(*).a]],[[rec().z]],[[rec(*).z]] | [[rec().z]]  | [[rec().z]],[[rec().a]] | Default  | 11            |
 	| 11       | [[rec()]],[[rec().a]],[[a]],[[rec().z]],[[rec(*)]],[[rec(*).a]],[[rec(*).z]]                      | RecordsetFields | [[rec [[rec().a]]       | 5     | [[rec().a]],[[rec(*).a]],[[rec().z]],[[rec(*).z]] | [[rec().z]]  | [[rec().z]] [[rec().a]] | Default  | 11            |
 
-
+@MSTest:DoNotParallelize
 Scenario Outline: Validation messages when Invalid Variables  
 	Given the current text in the textbox is '<Variable>'
 	And the provider used is 'Default'	
@@ -250,6 +257,7 @@ Examples:
 	| 9  | [[r(q).a]][[r()..]][[r"]][[r()]][[]][[1]] | Variable name [[r(q).a]][[r()..]][[r"]][[r()]][[]][[1]] contains invalid character(s). Only use alphanumeric _ and - |
 	| 10 | [[var]]00[[                               | Invalid region detected: An open [[ without a related close ]]                                                       |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Insert for All FilterType and Default Provider Case Insensitive
 	Given I have the following intellisense options '<varlist>'
 	And the filter type is '<filterType>'

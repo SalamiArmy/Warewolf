@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Utility.XPath
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "XPath", "\tIn order to run a query against xml\r\n\tAs a Warewolf user\r\n\tI want a tool that I " +
                     "can use to execute xpath queries", ProgrammingLanguage.CSharp, new string[] {
                         "Utility"});
@@ -88,22 +88,25 @@ namespace Warewolf.Tools.Specs.Toolbox.Utility.XPath
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Use XPath to get data off XML - Id = 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "XPath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void UseXPathToGetDataOffXML_Id1()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath to get data off XML - Id = 1", ((string[])(null)));
-#line 7
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath to get data off XML - Id = 1", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 8
+this.ScenarioSetup(scenarioInfo);
+#line 9
  testRunner.Given("I have this xml \"<root><number id=\"1\">One</number><number id=\"2\">Two</number><num" +
                     "ber id=\"3\">Three</number></root>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
+#line 10
  testRunner.And("I have a variable \"[[firstNum]]\" output with xpath \"//root/number[@id=\"1\"]/text()" +
                     "\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
- testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
- testRunner.Then("the variable \"[[firstNum]]\" should have a value \"One\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
+ testRunner.Then("the variable \"[[firstNum]]\" should have a value \"One\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 13
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -115,7 +118,7 @@ this.ScenarioSetup(scenarioInfo);
                             "/number></root>",
                         "1",
                         "[[firstNum]] = //root/number[@id=\"1\"]/text()"});
-#line 13
+#line 14
  testRunner.And("the debug inputs as", ((string)(null)), table1, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -124,7 +127,7 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "1",
                         "[[firstNum]] = One"});
-#line 16
+#line 17
  testRunner.And("the debug output as", ((string)(null)), table2, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -134,22 +137,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Use XPath to get data off XML - Id = 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "XPath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void UseXPathToGetDataOffXML_Id2()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath to get data off XML - Id = 2", ((string[])(null)));
-#line 20
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath to get data off XML - Id = 2", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 22
 this.ScenarioSetup(scenarioInfo);
-#line 21
+#line 23
  testRunner.Given("I have this xml \"<root><number id=\"1\">One</number><number id=\"2\">Two</number><num" +
                     "ber id=\"3\">Three</number></root>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
+#line 24
  testRunner.And("I have a variable \"[[firstNum]]\" output with xpath \"//root/number[@id=\"2\"]/text()" +
                     "\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
- testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 24
- testRunner.Then("the variable \"[[firstNum]]\" should have a value \"Two\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 25
+ testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 26
+ testRunner.Then("the variable \"[[firstNum]]\" should have a value \"Two\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 27
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -161,7 +167,7 @@ this.ScenarioSetup(scenarioInfo);
                             "/number></root>",
                         "1",
                         "[[firstNum]] = //root/number[@id=\"2\"]/text()"});
-#line 26
+#line 28
  testRunner.And("the debug inputs as", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -170,7 +176,7 @@ this.ScenarioSetup(scenarioInfo);
             table4.AddRow(new string[] {
                         "1",
                         "[[firstNum]] = Two"});
-#line 29
+#line 31
  testRunner.And("the debug output as", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -180,19 +186,22 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Use XPath to build a recordset with 2 fields")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "XPath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void UseXPathToBuildARecordsetWith2Fields()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath to build a recordset with 2 fields", ((string[])(null)));
-#line 33
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath to build a recordset with 2 fields", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 36
 this.ScenarioSetup(scenarioInfo);
-#line 34
+#line 37
  testRunner.Given("I have this xml \"<root><number id=\"1\">One</number><number id=\"2\">Two</number><num" +
                     "ber id=\"3\">Three</number></root>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 35
+#line 38
  testRunner.And("I have a variable \"[[rec(*).id]]\" output with xpath \"//root/number/@id\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 36
+#line 39
  testRunner.And("I have a variable \"[[rec2(*).text]]\" output with xpath \"//root/number/text()\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 37
+#line 40
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -203,7 +212,7 @@ this.ScenarioSetup(scenarioInfo);
                         "2"});
             table5.AddRow(new string[] {
                         "3"});
-#line 38
+#line 41
  testRunner.Then("the xpath result for this varibale \"[[rec(*).id]]\" will be", ((string)(null)), table5, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -214,9 +223,9 @@ this.ScenarioSetup(scenarioInfo);
                         "Two"});
             table6.AddRow(new string[] {
                         "Three"});
-#line 43
+#line 46
  testRunner.Then("the xpath result for this varibale \"[[rec2(*).text]]\" will be", ((string)(null)), table6, "Then ");
-#line 48
+#line 51
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -232,7 +241,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "2",
                         "[[rec2(*).text]] = //root/number/text()"});
-#line 49
+#line 52
  testRunner.And("the debug inputs as", ((string)(null)), table7, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -256,7 +265,7 @@ this.ScenarioSetup(scenarioInfo);
             table8.AddRow(new string[] {
                         "",
                         "[[rec2(3).text]] = Three"});
-#line 53
+#line 56
  testRunner.And("the debug output as", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -266,21 +275,24 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Use XPath that does not exist")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "XPath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void UseXPathThatDoesNotExist()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath that does not exist", ((string[])(null)));
-#line 62
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath that does not exist", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 66
 this.ScenarioSetup(scenarioInfo);
-#line 63
+#line 67
  testRunner.Given("I have this xml \"<root><number id=\"1\">One</number><number id=\"2\">Two</number><num" +
                     "ber id=\"3\">Three</number></root>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 64
+#line 68
  testRunner.And("I have a variable \"[[ids]]\" output with xpath \"//root/num/@id\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 65
+#line 69
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 66
+#line 70
  testRunner.Then("the variable \"[[ids]]\" should have a value \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 67
+#line 71
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -292,7 +304,7 @@ this.ScenarioSetup(scenarioInfo);
                             "/number></root>",
                         "1",
                         "[[ids]] = //root/num/@id"});
-#line 68
+#line 72
  testRunner.And("the debug inputs as", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -301,7 +313,7 @@ this.ScenarioSetup(scenarioInfo);
             table10.AddRow(new string[] {
                         "1",
                         "[[ids]] ="});
-#line 71
+#line 75
  testRunner.And("the debug output as", ((string)(null)), table10, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -311,23 +323,26 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Use invalid xpath query")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "XPath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void UseInvalidXpathQuery()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use invalid xpath query", ((string[])(null)));
-#line 75
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use invalid xpath query", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 80
 this.ScenarioSetup(scenarioInfo);
-#line 76
+#line 81
  testRunner.Given("I have this xml \"<root><number id=\"1\">One</number><number id=\"2\">Two</number><num" +
                     "ber id=\"3\">Three</number></root>\" in a variable \'[[myxml]]\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 77
+#line 82
  testRunner.And("I assign the variable \"[[myxml]]\" as xml input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 78
+#line 83
  testRunner.And("I have a variable \"[[ids]]\" output with xpath \"@@#$\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 79
+#line 84
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 80
+#line 85
  testRunner.Then("the variable \"[[ids]]\" should have a value \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 81
+#line 86
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -339,7 +354,7 @@ this.ScenarioSetup(scenarioInfo);
                             "d=\"3\">Three</number></root>",
                         "1",
                         "[[ids]] = @@#$"});
-#line 82
+#line 87
  testRunner.And("the debug inputs as", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -348,7 +363,7 @@ this.ScenarioSetup(scenarioInfo);
             table12.AddRow(new string[] {
                         "1",
                         "[[ids]] ="});
-#line 85
+#line 90
  testRunner.And("the debug output as", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -358,19 +373,22 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Use XPath with append notation should add")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "XPath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void UseXPathWithAppendNotationShouldAdd()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath with append notation should add", ((string[])(null)));
-#line 89
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath with append notation should add", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 95
 this.ScenarioSetup(scenarioInfo);
-#line 90
+#line 96
  testRunner.Given("I have this xml \"<root><number id=\"1\">One</number><number id=\"2\">Two</number><num" +
                     "ber id=\"3\">Three</number></root>\" in a variable \'[[rec().set]]\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 91
+#line 97
  testRunner.And("I assign the variable \"[[rec().set]]\" as xml input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 92
+#line 98
  testRunner.And("I have a variable \"[[rec().set]]\" output with xpath \"//root/number/@id\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 93
+#line 99
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -384,9 +402,9 @@ this.ScenarioSetup(scenarioInfo);
                         "2"});
             table13.AddRow(new string[] {
                         "3"});
-#line 94
- testRunner.Then("the xpath result for this varibale \"[[rec().set]]\" will be", ((string)(null)), table13, "Then ");
 #line 100
+ testRunner.Then("the xpath result for this varibale \"[[rec().set]]\" will be", ((string)(null)), table13, "Then ");
+#line 106
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -398,7 +416,7 @@ this.ScenarioSetup(scenarioInfo);
                             "ber id=\"3\">Three</number></root>",
                         "1",
                         "[[rec().set]] = //root/number/@id"});
-#line 101
+#line 107
  testRunner.And("the debug inputs as", ((string)(null)), table14, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -417,7 +435,7 @@ this.ScenarioSetup(scenarioInfo);
             table15.AddRow(new string[] {
                         "",
                         "[[rec(4).set]] = 3"});
-#line 104
+#line 110
  testRunner.And("the debug output as", ((string)(null)), table15, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -427,22 +445,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Use XPath with invalid XML as input inside a")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "XPath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void UseXPathWithInvalidXMLAsInputInsideA()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath with invalid XML as input inside a", ((string[])(null)));
-#line 111
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath with invalid XML as input inside a", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 118
 this.ScenarioSetup(scenarioInfo);
-#line 112
+#line 119
  testRunner.Given("I have this xml \"<start></end>\" in a variable \'[[myxml]]\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 113
+#line 120
  testRunner.And("I assign the variable \"[[myxml]]\" as xml input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 114
+#line 121
  testRunner.And("I have a variable \"[[ids]]\" output with xpath \"//root\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 115
+#line 122
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 116
+#line 123
  testRunner.Then("the variable \"[[ids]]\" should have a value \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 117
+#line 124
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -453,7 +474,7 @@ this.ScenarioSetup(scenarioInfo);
                         "[[myxml]] = <start></end>",
                         "1",
                         "[[ids]] = //root"});
-#line 118
+#line 125
  testRunner.And("the debug inputs as", ((string)(null)), table16, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -462,7 +483,7 @@ this.ScenarioSetup(scenarioInfo);
             table17.AddRow(new string[] {
                         "1",
                         "[[ids]] ="});
-#line 121
+#line 128
  testRunner.And("the debug output as", ((string)(null)), table17, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -472,19 +493,22 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Use XPath with no  result but valid xpath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "XPath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void UseXPathWithNoResultButValidXpath()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath with no  result but valid xpath", ((string[])(null)));
-#line 125
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath with no  result but valid xpath", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 133
 this.ScenarioSetup(scenarioInfo);
-#line 126
+#line 134
  testRunner.Given("I have this xml \"<root><number id=\"1\">One</number><number id=\"2\">Two</number><num" +
                     "ber id=\"3\">Three</number></root>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 127
+#line 135
  testRunner.And("I have a variable \"\" output with xpath \"//root/number/@id\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 128
+#line 136
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 129
+#line 137
  testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -496,7 +520,7 @@ this.ScenarioSetup(scenarioInfo);
                             "/number></root>",
                         "",
                         ""});
-#line 130
+#line 138
  testRunner.And("the debug inputs as", ((string)(null)), table18, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -509,18 +533,18 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void UseXPathToGetMultipleResultsIntoAScalarIsLastResult()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath to get multiple results into a scalar is last result", ((string[])(null)));
-#line 134
+#line 142
 this.ScenarioSetup(scenarioInfo);
-#line 135
+#line 143
  testRunner.Given("I have this xml \"<root><number id=\"1\">One</number><number id=\"2\">Two</number><num" +
                     "ber id=\"3\">Three</number></root>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 136
+#line 144
  testRunner.And("I have a variable \"[[ids]]\" output with xpath \"//root/number/@id\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 137
+#line 145
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 138
+#line 146
  testRunner.Then("the variable \"[[ids]]\" should have a value \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 139
+#line 147
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -532,7 +556,7 @@ this.ScenarioSetup(scenarioInfo);
                             "/number></root>",
                         "1",
                         "[[ids]] = //root/number/@id"});
-#line 140
+#line 148
  testRunner.And("the debug inputs as", ((string)(null)), table19, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -541,7 +565,7 @@ this.ScenarioSetup(scenarioInfo);
             table20.AddRow(new string[] {
                         "1",
                         "[[ids]] = 3"});
-#line 143
+#line 151
  testRunner.And("the debug output as", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -554,17 +578,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void UseTheXPathToProcessBlankXML()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use the XPath to process blank XML", ((string[])(null)));
-#line 147
+#line 155
 this.ScenarioSetup(scenarioInfo);
-#line 148
+#line 156
  testRunner.Given("I have this xml \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 149
+#line 157
  testRunner.And("I have a variable \"[[ids]]\" output with xpath \"//root/number/@id\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 150
+#line 158
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 151
+#line 159
  testRunner.Then("the variable \"[[ids]]\" should have a value \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 152
+#line 160
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -574,21 +598,24 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Use the XPath without any xpath query")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "XPath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void UseTheXPathWithoutAnyXpathQuery()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use the XPath without any xpath query", ((string[])(null)));
-#line 154
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use the XPath without any xpath query", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 163
 this.ScenarioSetup(scenarioInfo);
-#line 155
+#line 164
  testRunner.Given("I have this xml \"<root><number id=\"1\">One</number><number id=\"2\">Two</number><num" +
                     "ber id=\"3\">Three</number></root>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 156
+#line 165
  testRunner.And("I have a variable \"[[ids]]\" output with xpath \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 157
+#line 166
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 158
+#line 167
  testRunner.Then("the variable \"[[ids]]\" should have a value \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 159
+#line 168
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -600,7 +627,7 @@ this.ScenarioSetup(scenarioInfo);
                             "/number></root>",
                         "1",
                         "[[ids]] ="});
-#line 160
+#line 169
  testRunner.And("the debug inputs as", ((string)(null)), table21, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -609,7 +636,7 @@ this.ScenarioSetup(scenarioInfo);
             table22.AddRow(new string[] {
                         "1",
                         "[[ids]] ="});
-#line 163
+#line 172
  testRunner.And("the debug output as", ((string)(null)), table22, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -622,19 +649,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void UseXPathWithBlankAsXMLInput()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath with blank  as XML input", ((string[])(null)));
-#line 167
+#line 176
 this.ScenarioSetup(scenarioInfo);
-#line 168
+#line 177
  testRunner.Given("I have this xml \"\" in a variable \'[[myxml]]\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 169
+#line 178
  testRunner.And("I assign the variable \"[[myxml]]\" as xml input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 170
+#line 179
  testRunner.And("I have a variable \"[[ids]]\" output with xpath \"//root/num/@id\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 171
+#line 180
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 172
+#line 181
  testRunner.Then("the variable \"[[ids]]\" should have a value \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 173
+#line 182
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -645,7 +672,7 @@ this.ScenarioSetup(scenarioInfo);
                         "[[myxml]] =",
                         "1",
                         "[[ids]] = //root/num/@id"});
-#line 174
+#line 183
  testRunner.And("the debug inputs as", ((string)(null)), table23, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -654,7 +681,7 @@ this.ScenarioSetup(scenarioInfo);
             table24.AddRow(new string[] {
                         "1",
                         "[[ids]] ="});
-#line 177
+#line 186
  testRunner.And("the debug output as", ((string)(null)), table24, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -667,19 +694,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void UseXPathWithNegativeRecordsetIndexAsOutput()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath with negative recordset index as output", ((string[])(null)));
-#line 182
+#line 191
 this.ScenarioSetup(scenarioInfo);
-#line 183
+#line 192
  testRunner.Given("I have this xml \"<root><number id=\"1\">One</number><number id=\"2\">Two</number><num" +
                     "ber id=\"3\">Three</number></root>\" in a variable \'[[xml]]\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 184
+#line 193
  testRunner.And("I assign the variable \"[[xml]]\" as xml input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 185
+#line 194
  testRunner.And("I have a variable \"[[rec(-1).ids]]\" output with xpath \"//root/number[@id=\"2\"]/tex" +
                     "t()\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 186
+#line 195
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 187
+#line 196
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -691,7 +718,7 @@ this.ScenarioSetup(scenarioInfo);
                             "\"3\">Three</number></root>",
                         "1",
                         "[[rec(-1).ids]] = //root/number[@id=\"2\"]/text()"});
-#line 188
+#line 197
  testRunner.And("the debug inputs as", ((string)(null)), table25, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -700,7 +727,7 @@ this.ScenarioSetup(scenarioInfo);
             table26.AddRow(new string[] {
                         "1",
                         "[[rec(-1).ids]] ="});
-#line 191
+#line 200
  testRunner.And("the debug output as", ((string)(null)), table26, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -710,20 +737,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Use XPath to with a comment in it")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "XPath")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void UseXPathToWithACommentInIt()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath to with a comment in it", ((string[])(null)));
-#line 195
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use XPath to with a comment in it", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 205
 this.ScenarioSetup(scenarioInfo);
-#line 196
+#line 206
  testRunner.Given("I have this xml \"<?xml version=\"1.0\" encoding=\"utf-8\"?><!-- Generated by Warewolf" +
                     " --><root><number id=\"1\">One</number><number id=\"2\">Two</number><number id=\"3\">T" +
                     "hree</number></root>\" in a variable \'[[xml]]\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 197
+#line 207
  testRunner.And("I assign the variable \"[[xml]]\" as xml input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 198
+#line 208
  testRunner.And("I have a variable \"[[rec(*).id]]\" output with xpath \"//root/number/@id\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 199
+#line 209
  testRunner.When("the xpath tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -734,9 +764,9 @@ this.ScenarioSetup(scenarioInfo);
                         "2"});
             table27.AddRow(new string[] {
                         "3"});
-#line 200
+#line 210
  testRunner.Then("the xpath result for this varibale \"[[rec(*).id]]\" will be", ((string)(null)), table27, "Then ");
-#line 205
+#line 215
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -748,7 +778,7 @@ this.ScenarioSetup(scenarioInfo);
                             "ot><number id=\"1\">One</number",
                         "1",
                         "[[rec(*).id]] = //root/number/@id"});
-#line 206
+#line 216
  testRunner.And("the debug inputs as", ((string)(null)), table28, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -763,7 +793,7 @@ this.ScenarioSetup(scenarioInfo);
             table29.AddRow(new string[] {
                         "",
                         "[[rec(3).id]] = 3"});
-#line 209
+#line 219
  testRunner.And("the debug output as", ((string)(null)), table29, "And ");
 #line hidden
             this.ScenarioCleanup();

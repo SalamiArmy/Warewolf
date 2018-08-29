@@ -4,7 +4,6 @@ Feature: Random
 	As a Warewolf user
 	I want a tool that can generate, numbers, guids and letters
 
-
 Scenario: Generate Letters
 	Given I have a type as "Letters"
 	And I have a length as "10"
@@ -18,6 +17,7 @@ Scenario: Generate Letters
 	|                     |
 	| [[result]] = String |
 
+@MSTest:DoNotParallelize
 Scenario: Generate Letters and Numbers
 	Given I have a type as "LetterAndNumbers"
 	And I have a length as "10"
@@ -31,6 +31,7 @@ Scenario: Generate Letters and Numbers
 	|                      |
 	| [[result]] = String |
 	
+@MSTest:DoNotParallelize
 Scenario: Generate Numbers one digit
 	Given I have a type as "Numbers"
 	And I have a range from "0" to "9" 
@@ -57,6 +58,7 @@ Scenario: Generate Numbers two digits
 	|                     |
 	| [[result]] = Int32 | 
 
+@MSTest:DoNotParallelize
 Scenario: Generate Guid
 	Given I have a type as "Guid"
 	When the random tool is executed 
@@ -69,7 +71,7 @@ Scenario: Generate Guid
 	|                    |
 	| [[result]] = Guid |
 	
-
+@MSTest:DoNotParallelize
 Scenario: Generate Numbers with blank range
 	Given I have a type as "Numbers"
 	And I have a range from "" to "" 
@@ -96,6 +98,7 @@ Scenario: Generate Numbers with one blank range
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Generate Numbers with a negative range
 	Given I have a type as "Numbers"
 	And I have a range from "-1" to "-9" 
@@ -121,6 +124,7 @@ Scenario: Generate Letters with blank length
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Generate Letters with a negative length
 	Given I have a type as "Letters"
 	And I have a length as "-1"
@@ -134,6 +138,7 @@ Scenario: Generate Letters with a negative length
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Generate Letters and Numbers with blank length
 	Given I have a type as "LetterAndNumbers"
 	And I have a length as ""
@@ -160,7 +165,7 @@ Scenario: Generate Letters and Numbers with a negative length
 	|               |
 	| [[result]] = |
 	
-
+@MSTest:DoNotParallelize
 Scenario: Generate a Number between 5 and 5
 	Given I have a type as "Numbers"
 	And I have a range from "5" to "5" 
@@ -184,7 +189,7 @@ Scenario: Generate a Number between a negative index in a recordset and 5
 	| Random  | From              | To |
 	| Numbers | [[rec(-1).set]] = | 5  |
 
-
+@MSTest:DoNotParallelize
 Scenario: Generate a Number between 5 and a negative index in a recordset
 	Given I have a type as "Numbers"
 	And I have a range from "5" to "[[rec(-1).set]]" 
@@ -194,6 +199,7 @@ Scenario: Generate a Number between 5 and a negative index in a recordset
 	| Random  | From | To                 |
 	| Numbers | 5    | [[rec(-1).set]]  = |
 
+@MSTest:DoNotParallelize
 Scenario: Generate Letters with a negative recordset index for length
 	Given I have a type as "Letters"
 	And I have a length as "[[rec(-1).set]]"
@@ -213,8 +219,7 @@ Scenario: Generate Letters and Numbers with a negative recordset index for lengt
 	| Random            | Length            |
 	| Letters & Numbers | [[rec(-1).set]] = |
 
-
-	
+@MSTest:DoNotParallelize
 Scenario: Generate decimal Numbers one digit
 	Given I have a type as "Numbers"
 	And I have a range from "0.1" to "0.9" 
@@ -228,7 +233,7 @@ Scenario: Generate decimal Numbers one digit
 	|                     |
 	| [[result]] = Double |	
 
-	
+@MSTest:DoNotParallelize
 Scenario: Generate decimal Numbers many digits
 	Given I have a type as "Numbers"
 	And I have a range from "0.000000001" to "0.9" 
@@ -272,7 +277,7 @@ Scenario: Generate a Number between double min and double max
 	|                     |
 	| [[result]] = Double |
 
-	
+@MSTest:DoNotParallelize
 Scenario: Generate a Number between double min and double max with no decimals
 	Given I have a type as "Numbers"
 	And I have a range from "0" to "170000000000000" 
@@ -287,7 +292,7 @@ Scenario: Generate a Number between double min and double max with no decimals
 	|                     |
 	| [[result]] = Double |
 
-
+@MSTest:DoNotParallelize
 Scenario: Generate random using star notation
 	Given I have a type as "Letters"
 	And I have a a random variable "[[rand().num]]" equal to "5"

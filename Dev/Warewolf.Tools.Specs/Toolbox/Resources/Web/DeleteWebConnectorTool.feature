@@ -5,6 +5,7 @@ Feature: Delete Web Connector Tool
 	I want to Create or Edit Warewolf Web Delete Request.
 
 
+@MSTest:DoNotParallelize
 Scenario: Open new Deletge Web Tool
 	And I drag Web Delete Request Connector Tool onto the design surface
     And Delete New is Enabled
@@ -21,6 +22,7 @@ Scenario: Open new Deletge Web Tool
 	And Delete mapped outputs are
 	| Output | Output Alias |
 
+@MSTest:DoNotParallelize
 Scenario: Create Delete Web Service with different methods
 	And I drag Web Delete Request Connector Tool onto the design surface
     And Delete New is Enabled
@@ -46,8 +48,7 @@ Scenario: Create Delete Web Service with different methods
 	| CountryID   | [[CountryID]]   |
 	| Description | [[Description]] |
 	
-
-
+@MSTest:DoNotParallelize
 Scenario: Adding parameters in Delete Post Web Connector Tool request headers is updating variables
 	And I drag Web Delete Request Connector Tool onto the design surface
     And Delete New is Enabled
@@ -79,7 +80,8 @@ Scenario: Adding parameters in Delete Post Web Connector Tool request headers is
 	| CountryID   | [[CountryID]]   |
 	| Description | [[Description]] |
 
- Scenario: Editing Delete Web Service
+ @MSTest:DoNotParallelize
+Scenario: Editing Delete Web Service
 	And I drag Web Delete Request Connector Tool onto the design surface
     And Delete New is Enabled
 	When I Select "Dev2CountriesWebService" as a Delete web Source
@@ -88,6 +90,7 @@ Scenario: Adding parameters in Delete Post Web Connector Tool request headers is
 	When I click Delete Edit
 	Then the "Dev2CountriesWebService" Delete Source tab is opened
 
+@MSTest:DoNotParallelize
 Scenario: Changing Delete Web Connector Tool Sources 
 	And I drag Web Delete Request Connector Tool onto the design surface
     And Delete New is Enabled
@@ -116,6 +119,7 @@ Scenario: Changing Delete Web Connector Tool Sources
 	And Delete Mappings is Disabled
 
 	
+@MSTest:DoNotParallelize
 Scenario: Delete Web Connector Tool returns text
 	And I drag Web Delete Request Connector Tool onto the design surface
     And Delete New is Enabled	

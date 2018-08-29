@@ -5,6 +5,7 @@ Feature: Python
 	As a Warewolf user
 	I want a tool that allows me to execute Python
 
+@MSTest:DoNotParallelize
 Scenario: Execute Python Variable is 1
 	Given I have a script variable "[[val]]" with this value "1"
 	And I have this script to execute "python_one_variable.txt"
@@ -20,6 +21,7 @@ Scenario: Execute Python Variable is 1
 	| [[result]] = one |
 
 
+@MSTest:DoNotParallelize
 Scenario: Execute Python blank script	
 	Given I have this script to execute ""
 	And I have selected the language as "Python"
@@ -33,6 +35,7 @@ Scenario: Execute Python blank script
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Python Variable is 2
 	Given I have a script variable "[[val]]" with this value "2"
 	And I have this script to execute "python_one_variable.txt"
@@ -47,6 +50,7 @@ Scenario: Execute Python Variable is 2
 	|                   |
 	| [[result]] = two |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Python Variable is 3
 	Given I have a script variable "[[val]]" with this value "3"
 	And I have this script to execute "python_one_variable.txt"
@@ -61,6 +65,7 @@ Scenario: Execute Python Variable is 3
 	|                              |
 	| [[result]] = not one or two |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Python Variable is 100
 	Given I have a script variable "[[val]]" with this value "100"
 	And I have this script to execute "python_one_variable.txt"
@@ -75,6 +80,7 @@ Scenario: Execute Python Variable is 100
 	|                              |
 	| [[result]] = not one or two |
 
+@MSTest:DoNotParallelize
 Scenario: Execute badly formed Python
 	Given I have a script variable "[[val]]" with this value "1"
 	And I have this script to execute "python_badly_formatted.txt"
@@ -103,6 +109,7 @@ Scenario: Execute Python with 2 variables
 	|                   |
 	| [[result]] = two |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Python with a negative recordset index
 	Given I have this script to execute "[[my(-1).val]]"
 	And I have selected the language as "Python"

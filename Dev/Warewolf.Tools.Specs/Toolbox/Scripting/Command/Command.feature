@@ -4,6 +4,7 @@ Feature: Command
 	As a Warewolf user
 	I want a tool that allows me to execute commands 
 
+@MSTest:DoNotParallelize
 Scenario: Execute commands 
 	Given I have a command variable "[[drive]]" equal to "C:\"
 	Given I have these command scripts to execute in a single execution run
@@ -21,6 +22,7 @@ Scenario: Execute commands
 	|                      |
 	| [[result]] = String |
 
+@MSTest:DoNotParallelize
 Scenario: Execute a command that requires user interaction like pause
 	Given I have this command script to execute "pause"
 	When the command tool is executed

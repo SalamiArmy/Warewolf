@@ -8,6 +8,7 @@ Background: Setup for subworkflow execution
 			Given Debug events are reset
 			And Debug states are cleared			
 
+@MSTest:DoNotParallelize
 Scenario: Executing mySql For Xml testing workflow base
 	  Given I have a workflow "Testing - mySql For Xml"
 	  And "Testing - mySql For Xml" contains "TestmySqlReturningXml" from server "localhost" with mapping as
@@ -18,6 +19,7 @@ Scenario: Executing mySql For Xml testing workflow base
 	  |                     |
 	  | [[Result]] = Passed |
 
+@MSTest:DoNotParallelize
 Scenario: Workflow with an assign and remote workflow
 	Given I have a workflow "TestAssignWithRemoteWF"
 	 And "TestAssignWithRemoteWF" contains an Assign "AssignData" as
@@ -71,6 +73,7 @@ Scenario: Executing Workflow Service and Decision tool expected bubling out erro
 	  | [[thehero(1).pushups]] = All of them.                                |
 	  | [[thehero(1).name]] =   Chuck Norris                                 |
 
+@MSTest:DoNotParallelize
 Scenario: Error from workflow service is expected to buble out
 	  Given I have a workflow "TestAssignWithRemoteOutputsErrors"
 	  And "TestAssignWithRemoteOutputsErrors" contains an Assign "AssignData" as
@@ -153,7 +156,8 @@ Examples:
 	  |                     |
 	  | [[Result]] = Passed |
 
- Scenario: Executing Sql For Xml testing workflow base
+ @MSTest:DoNotParallelize
+Scenario: Executing Sql For Xml testing workflow base
 	  Given I have a workflow "Testing - Sql For Xml"
 	  And "Testing - Sql For Xml" contains "TestSqlReturningXml" from server "localhost" with mapping as
 	  | Input to Service | From Variable | Output from Service | To Variable      |
@@ -184,7 +188,8 @@ Examples:
 	  |                      |
 	  | [[Result]] = Passed |
 	  
- Scenario: Executing Sql Store Procedure Executese once
+ @MSTest:DoNotParallelize
+Scenario: Executing Sql Store Procedure Executese once
 	  Given I have a workflow "Testing - Sql For Xml"
 	  And "Testing - Sql For Xml" contains "TestSqlExecutesOnce" from server "localhost" with mapping as
 	  | Input to Service | From Variable | Output from Service | To Variable      |
@@ -239,6 +244,7 @@ Scenario: Plugin connector backward Compatiblity
 	Then the workflow execution has "NO" error
 
 @UsingRemoteResources
+@MSTest:DoNotParallelize
 Scenario: Executing WF on a remote server 
          Given I have a workflow "Testing - TestRemoteTools"
          And "Testing - TestRemoteTools" contains "TestRemoteTools" from server "Remote Container" with mapping as
@@ -357,6 +363,7 @@ Scenario: Error not bubbling up error message
 	  |                   |
 	  | [[Result]] = Pass |
 
+@MSTest:DoNotParallelize
 Scenario: Rabbit MQ Test
 	  Given I have a workflow "RabbitMQ Tester WF"
 	  And "RabbitMQ Tester WF" contains "RabbitMQTest" from server "localhost" with mapping as

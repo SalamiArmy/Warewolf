@@ -4,6 +4,7 @@ Feature: DataSplit
 	As a Warewolf user
 	I want a tool that splits two or more pieces of data
 
+@MSTest:DoNotParallelize
 Scenario: Split text to a recordset using Index using Star notation
 	Given A string to split with value "abcde"
 	And  assign to variable "[[vowels(*).letters]]" split type "Index" at "1" and Include "unselected" without escaping
@@ -27,6 +28,7 @@ Scenario: Split text to a recordset using Index using Star notation
 	|   | [[vowels(4).letters]] = d |
 	|   | [[vowels(5).letters]] = e |	
 
+@MSTest:DoNotParallelize
 Scenario: Split text to a scalar
 	Given A string to split with value "abcde"
 	And  assign to variable "[[a]]" split type "Index" at "1" and Include "unselected" without escaping
@@ -37,6 +39,7 @@ Scenario: Split text to a scalar
 	And the execution has "NO" error
 
 
+@MSTest:DoNotParallelize
 Scenario: Split text to a recordset using Index using Append notation
 	Given A string to split with value "abcde"
 	And  assign to variable "[[vowels().letters]]" split type "Index" at "1" and Include "unselected" without escaping
@@ -100,6 +103,7 @@ Scenario: Split characters using Index Going Backwards Using Append notation
 	|   | [[vowels(2).chars]] = ><":}{+ |
 	|   | [[vowels(3).chars]] = @!?     |
 
+@MSTest:DoNotParallelize
 Scenario: Split characters using Index Going Forward using Star notation
 	Given A string to split with value "@!?><":}{+_)(*&^~"
 	And assign to variable "[[vowels(*).chars]]" split type "Index" at "7" and Include "unselected" without escaping
@@ -120,6 +124,7 @@ Scenario: Split characters using Index Going Forward using Star notation
 	|   | [[vowels(2).chars]] = }{+_)(* |
 	|   | [[vowels(3).chars]] = &^~     |
 
+@MSTest:DoNotParallelize
 Scenario: Split characters using Index Going Forward using Append Notation
 	Given A string to split with value "@!?><":}{+_)(*&^~"
 	And assign to variable "[[vowels().chars]]" split type "Index" at "7" and Include "unselected" without escaping
@@ -140,6 +145,7 @@ Scenario: Split characters using Index Going Forward using Append Notation
 	|   | [[vowels(2).chars]] = }{+_)(* |
 	|   | [[vowels(3).chars]] = &^~     |
 
+@MSTest:DoNotParallelize
 Scenario: Split text using All split types - Some with Include selected
 	Given A string to split with value "IndexTab	Chars,space end"
 	And assign to variable "[[vowels(*).letters]]" split type "Index" at "5" and Include "Selected" and Escape ""	
@@ -172,7 +178,7 @@ Scenario: Split text using All split types - Some with Include selected
 	|   | [[vowels(4).letters]] = space  |
 	|   | [[vowels(5).letters]] = end    |
 	
-
+@MSTest:DoNotParallelize
 Scenario: Split text using All split types - Some with Include selected using a Star Notation
 	Given A string to split with value "IndexTab	Chars,space end"
 	And assign to variable "[[vowels(*).letters]]" split type "Index" at "5" and Include "Selected" and Escape ""	
@@ -302,6 +308,7 @@ Scenario: Split CSV file format into recordset - Skip blank rows selected
 	|   | [[rec(3).phone]] = 5678  |
 	|   | [[rec(4).phone]] =       |
 
+@MSTest:DoNotParallelize
 Scenario: Split blank text using All split types
 	Given A string to split with value ""
 	And  assign to variable "[[vowels().letters]]" split type "Index" at "5" and Include "Selected" and Escape ""	
@@ -337,6 +344,7 @@ Scenario: Split text using Index where and Space >
 	And the debug output as
 	| # |                         |
 
+@MSTest:DoNotParallelize
 Scenario: Split text using Char and Escape character
 	Given A string to split with value "123\,45,1"
 	And assign to variable "[[var]]" split type "Chars" at "," and Include "Unselected" and Escape "\"
@@ -389,6 +397,7 @@ Scenario: Split text using a index with "," and space
 	 When the data split tool is executed
 	 Then the execution has "AN" error
 
+@MSTest:DoNotParallelize
 Scenario: Split text using Index where index is not numeric - variable
      Given A string to split with value "123" 
 	 And I have a variable "[[idx]]" with a value "2"	 
@@ -408,6 +417,7 @@ Scenario: Split text using Index where index > provided
 	 | [[var]] | 123   |
      And the execution has "NO" error
 
+@MSTest:DoNotParallelize
 Scenario: Sending Error in error variable and calling webservice
     Given remote server container has started
     And A string to split with value "@!?><":}{+_)(*&^~"
@@ -424,6 +434,7 @@ Scenario: Sending Error in error variable and calling webservice
     And the debug output as
 	| # |                       |
 
+@MSTest:DoNotParallelize
 Scenario: Split negative record index as Input
 	Given A string to split with value "[[my(-1).var]]"
 	And assign to variable "[[vowels().letters]]" split type "Index" at "5" and Include "Selected" and Escape ""	
@@ -435,6 +446,7 @@ Scenario: Split negative record index as Input
 	And the debug output as
 	| # |                         |
 
+@MSTest:DoNotParallelize
 Scenario: Split text into negative recordset index
 	Given A string to split with value "abcd"
 	And assign to variable "[[vowels(-1).letters]]" split type "Index" at "5" and Include "Selected" and Escape ""	
@@ -446,7 +458,7 @@ Scenario: Split text into negative recordset index
 	And the debug output as
 	| # |                          |
 
-
+@MSTest:DoNotParallelize
 Scenario Outline: Split Text using type Index but Index is invalid
 	Given A string to split with value "abcd"
 	And assign to variable "[[rec().a]]" split type "Index" at "<Type>" and Include "Selected" and Escape ""
@@ -462,6 +474,7 @@ Scenario Outline: Split Text using type Index but Index is invalid
 	| 1  |        |
 	| 2  | [[%$]] |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Debug output Validation errors
 	Given A string to split with value "Warewolf"	
 	And assign to variable "<Variable>" split type "Index" at "5" and Include "Selected" and Escape ""
@@ -558,6 +571,7 @@ Examples:
 	 | 89 | [[rec(-1).a                               |
 	 | 90 | [[r(q).a]][[r()..]][[r"]][[r()]][[]][[1]] |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Split data using scalars and recordsets
 	Given A string to split with value "<String>"
 	And assign to variable "<Variable>" split type "<Type>" at "<Using>" and Include "Selected" and Escape ""
@@ -604,6 +618,7 @@ Scenario: Split text format into recordset - With Escape value
 	|   | [[rec(3).id]] = bob\',c |
 	|   | [[rec(4).id]] = d        |
 
+@MSTest:DoNotParallelize
 Scenario: Split text format into recordset - With NewLine value
 	Given A string to split with new line value
 	And  assign to variable "[[rec().id]]" split type "Chars" at "\r\n2" and Include "unselected" and Escape "" 

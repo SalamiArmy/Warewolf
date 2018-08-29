@@ -4,6 +4,7 @@ Feature: ODBCConnector
 	As a math idiot
 	I want to be told the sum of two numbers
 
+@MSTest:DoNotParallelize
 Scenario: Running ODBC Tool Test
 	Given I open workflow with ODBC connector
 	And ODBC Source is Enabled
@@ -65,6 +66,7 @@ Scenario: Change ODBC tool Source
 	And ODBC Outputs are Disabled
 	And Validate ODBC is Enabled
 
+@MSTest:DoNotParallelize
 Scenario: Changing ODBC Tool Actions
 	Given I open workflow with ODBC connector
 	And ODBC Source is Enabled

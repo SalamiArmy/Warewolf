@@ -21,6 +21,7 @@ Feature: Email
 ##Send Email with an attachment
 ##Sending an email 
 
+@MSTest:DoNotParallelize
 Scenario: Send email to multiple receipients
 	Given I have an email variable "[[firstMail]]" equal to "test1@freemail.com"
 	And I have an email variable "[[secondMail]]" equal to "test2@freemail.com"	
@@ -101,6 +102,7 @@ Scenario: Send email with Subject as both text and variable as xml
 	|               |
 	| [[result]] = Success|
 
+@MSTest:DoNotParallelize
 Scenario: Send email with no body
 	Given the from account is "me@freemail.com"
 	And to address is "test1@freemail.com"	
@@ -131,6 +133,7 @@ Scenario: Send email with Body as both text and variable
 	|                       |
 	| [[result]] = Success |
 
+@MSTest:DoNotParallelize
 Scenario: Send email with variable as Body that is xml
 	Given the from account is "me@freemail.com"
 	And to address is "test1@freemail.com" 
@@ -159,6 +162,7 @@ Scenario: Send email with everything blank
 	|                       |
 	| [[result]] =  |
 
+@MSTest:DoNotParallelize
 Scenario: Send email with a blank from account
 	Given the from account is "" 
 	And to address is "test1@freemail.com"	
@@ -172,6 +176,7 @@ Scenario: Send email with a blank from account
 	|                       |
 	| [[result]] =  |
 
+@MSTest:DoNotParallelize
 Scenario: Send email with a negative index recordset for From Accounts
 	Given the from account is "[[me(-1).from]]"  
 	And to address is "me@freemail.com"
@@ -187,6 +192,7 @@ Scenario: Send email with a negative index recordset for From Accounts
 	|                       |
 	| [[result]] =  |
 
+@MSTest:DoNotParallelize
 Scenario: Send email with a negative index recordset for Recipients
 	Given the from account is "me@freemail.com"
 	And to address is "[[me(-1).to]]"
@@ -232,6 +238,7 @@ Scenario: Send email with a negative index recordset for Body
 	| [[result]] =  |
 
 
+@MSTest:DoNotParallelize
 Scenario: Send email with a null variable in from account
 	Given I have an email variable "[[a]]" equal to "NULL" 
 	And the from account is "[[a]]" 

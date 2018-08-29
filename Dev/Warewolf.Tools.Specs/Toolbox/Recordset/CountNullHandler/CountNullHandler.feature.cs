@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Recordset.CountNullHandler
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Count", "\tIn order to count records\r\n\tAs a Warewolf user\r\n\tI want a tool that takes a reco" +
                     "rd set counts it", ProgrammingLanguage.CSharp, new string[] {
                         "Recordset"});
@@ -154,10 +154,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Count a number of records in a recordset with 8 rows")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void CountANumberOfRecordsInARecordsetWith8Rows()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count a number of records in a recordset with 8 rows", ((string[])(null)));
-#line 30
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count a number of records in a recordset with 8 rows", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 31
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -189,15 +192,15 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "rs().row",
                         "8"});
-#line 31
+#line 32
  testRunner.Given("I have a recordset with this shape", ((string)(null)), table4, "Given ");
-#line 41
- testRunner.And("count on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 42
- testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("count on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 43
- testRunner.Then("the result count should be 8", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 44
+ testRunner.Then("the result count should be 8", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 45
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -218,14 +221,14 @@ this.FeatureBackground();
                         "[[rs(7).row]] =  7"});
             table5.AddRow(new string[] {
                         "[[rs(8).row]] =  8"});
-#line 45
+#line 46
  testRunner.And("the debug inputs as", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table6.AddRow(new string[] {
                         "[[result]] = 8"});
-#line 55
+#line 56
  testRunner.And("the debug output as", ((string)(null)), table6, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -238,7 +241,7 @@ this.FeatureBackground();
         public virtual void CountANumberOfRecordsInAEmptyRecordset()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count a number of records in a empty recordset", ((string[])(null)));
-#line 61
+#line 62
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -249,15 +252,15 @@ this.FeatureBackground();
             table7.AddRow(new string[] {
                         "[[rs().row]]",
                         "NULL"});
-#line 62
+#line 63
  testRunner.Given("I have a recordset with this shape", ((string)(null)), table7, "Given ");
-#line 65
- testRunner.And("count on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 66
- testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("count on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 67
- testRunner.Then("the result count should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 68
+ testRunner.Then("the result count should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 69
  testRunner.And("the execution has \"No\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -270,17 +273,17 @@ this.FeatureBackground();
         public virtual void CountANumberOfRecordsInAUnassignedRecordset()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count a number of records in a unassigned recordset", ((string[])(null)));
-#line 71
+#line 72
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 72
- testRunner.Given("count on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 73
- testRunner.And("treat null as Empty Recordset is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("count on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 74
- testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("treat null as Empty Recordset is not selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 75
+ testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 76
  testRunner.Then("the execution has \"An\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -290,22 +293,25 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Count A Number Of Records In A Unassigned Recordset Null Check Selected")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void CountANumberOfRecordsInAUnassignedRecordsetNullCheckSelected()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count A Number Of Records In A Unassigned Recordset Null Check Selected", ((string[])(null)));
-#line 77
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count A Number Of Records In A Unassigned Recordset Null Check Selected", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 79
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 78
- testRunner.Given("count on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 79
- testRunner.And("treat null as Empty Recordset is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 80
- testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("count on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 81
- testRunner.Then("the result count should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("treat null as Empty Recordset is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 82
+ testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 83
+ testRunner.Then("the result count should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 84
  testRunner.And("the execution has \"No\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -315,10 +321,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Count record with invalid variables")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void CountRecordWithInvalidVariables()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count record with invalid variables", ((string[])(null)));
-#line 85
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count record with invalid variables", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 87
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -350,25 +359,25 @@ this.FeatureBackground();
             table8.AddRow(new string[] {
                         "rs().row",
                         "8"});
-#line 86
+#line 88
  testRunner.Given("I have a recordset with this shape", ((string)(null)), table8, "Given ");
-#line 96
- testRunner.And("count on record \"[[rs().#$]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 97
- testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 98
- testRunner.Then("the result count should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("count on record \"[[rs().#$]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 99
+ testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 100
+ testRunner.Then("the result count should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 101
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Recordset"});
-#line 100
+#line 102
  testRunner.And("the debug inputs as", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
-#line 102
+#line 104
  testRunner.And("the debug output as", ((string)(null)), table10, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -378,10 +387,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Count only one column record")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void CountOnlyOneColumnRecord()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count only one column record", ((string[])(null)));
-#line 105
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count only one column record", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 108
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -413,25 +425,25 @@ this.FeatureBackground();
             table11.AddRow(new string[] {
                         "rs().row",
                         "8"});
-#line 106
+#line 109
  testRunner.Given("I have a recordset with this shape", ((string)(null)), table11, "Given ");
-#line 116
- testRunner.And("count on record \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 117
- testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 118
- testRunner.Then("the result count should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 119
+ testRunner.And("count on record \"[[rs(*).row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 120
+ testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 121
+ testRunner.Then("the result count should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 122
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Recordset"});
-#line 120
+#line 123
  testRunner.And("the debug inputs as", ((string)(null)), table12, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
-#line 122
+#line 125
  testRunner.And("the debug output as", ((string)(null)), table13, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -441,10 +453,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Count only one coloumn record")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void CountOnlyOneColoumnRecord()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count only one coloumn record", ((string[])(null)));
-#line 125
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count only one coloumn record", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 129
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -476,25 +491,25 @@ this.FeatureBackground();
             table14.AddRow(new string[] {
                         "fs().row",
                         "8"});
-#line 126
+#line 130
  testRunner.Given("I have a recordset with this shape", ((string)(null)), table14, "Given ");
-#line 136
+#line 140
  testRunner.And("count on record \"[[rs().row]],[[fs().row]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 137
+#line 141
  testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 138
+#line 142
  testRunner.Then("the result count should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 139
+#line 143
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "Recordset"});
-#line 140
+#line 144
  testRunner.And("the debug inputs as", ((string)(null)), table15, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
-#line 142
+#line 146
  testRunner.And("the debug output as", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -507,7 +522,7 @@ this.FeatureBackground();
         public virtual void CountANumberOfRecordsWhenTwoRecordsetsAreDefined_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Count a number of records when two recordsets are defined.", ((string[])(null)));
-#line 145
+#line 149
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -539,15 +554,15 @@ this.FeatureBackground();
             table17.AddRow(new string[] {
                         "rs().row",
                         "e"});
-#line 146
+#line 150
  testRunner.Given("I have a recordset with this shape", ((string)(null)), table17, "Given ");
-#line 156
+#line 160
  testRunner.And("count on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 157
+#line 161
  testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 158
+#line 162
  testRunner.Then("the result count should be 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 159
+#line 163
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -562,14 +577,14 @@ this.FeatureBackground();
                         "[[rs(4).row]] =  d"});
             table18.AddRow(new string[] {
                         "[[rs(5).row]] =  e"});
-#line 160
+#line 164
  testRunner.And("the debug inputs as", ((string)(null)), table18, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table19.AddRow(new string[] {
                         "[[result]] = 5"});
-#line 167
+#line 171
  testRunner.And("the debug output as", ((string)(null)), table19, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -579,10 +594,13 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Executing Count with two variables in result field")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void ExecutingCountWithTwoVariablesInResultField()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Executing Count with two variables in result field", ((string[])(null)));
-#line 171
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Executing Count with two variables in result field", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 176
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -602,17 +620,17 @@ this.FeatureBackground();
             table20.AddRow(new string[] {
                         "rs(4).row",
                         "4"});
-#line 172
+#line 177
  testRunner.Given("I have a recordset with this shape", ((string)(null)), table20, "Given ");
-#line 178
+#line 183
  testRunner.And("count on record \"[[rs()]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 179
+#line 184
     testRunner.And("result variable as \"[[b]][[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 180
+#line 185
  testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 181
+#line 186
  testRunner.Then("the result count should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 182
+#line 187
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -625,12 +643,12 @@ this.FeatureBackground();
                         "[[rs(3).row]] = 3"});
             table21.AddRow(new string[] {
                         "[[rs(4).row]] = 4"});
-#line 183
+#line 188
  testRunner.And("the debug inputs as", ((string)(null)), table21, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
-#line 189
+#line 194
  testRunner.And("the debug output as", ((string)(null)), table22, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -638,8 +656,14 @@ this.FeatureBackground();
         
         public virtual void EnsureVariablesOfDifferentTypesProduceDesiredResults(string count, string val, string error, string message, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ensure variables of different types produce desired results", exampleTags);
-#line 192
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ensure variables of different types produce desired results", @__tags);
+#line 198
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
@@ -656,15 +680,15 @@ this.FeatureBackground();
             table23.AddRow(new string[] {
                         "rs().row",
                         "3"});
-#line 193
- testRunner.Given("I have a recordset with this shape", ((string)(null)), table23, "Given ");
-#line 198
- testRunner.And("count on record \"<count>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 199
+ testRunner.Given("I have a recordset with this shape", ((string)(null)), table23, "Given ");
+#line 204
+ testRunner.And("count on record \"<count>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 205
  testRunner.When("the count tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 200
+#line 206
  testRunner.Then(string.Format("the result count should be \"{0}\"", val), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 201
+#line 207
  testRunner.And(string.Format("the execution has \"{0}\" error", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -674,13 +698,15 @@ this.FeatureBackground();
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure variables of different types produce desired results: ")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Count", "")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "AN")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Message", "Recordset not given")]
         public virtual void EnsureVariablesOfDifferentTypesProduceDesiredResults_()
         {
-#line 192
+#line 198
 this.EnsureVariablesOfDifferentTypesProduceDesiredResults("", "0", "AN", "Recordset not given", ((string[])(null)));
 #line hidden
         }
@@ -689,6 +715,8 @@ this.EnsureVariablesOfDifferentTypesProduceDesiredResults("", "0", "AN", "Record
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure variables of different types produce desired results: [[var]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[var]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Count", "[[var]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "0")]
@@ -696,7 +724,7 @@ this.EnsureVariablesOfDifferentTypesProduceDesiredResults("", "0", "AN", "Record
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Message", "Scalar not allowed")]
         public virtual void EnsureVariablesOfDifferentTypesProduceDesiredResults_Var()
         {
-#line 192
+#line 198
 this.EnsureVariablesOfDifferentTypesProduceDesiredResults("[[var]]", "0", "AN", "Scalar not allowed", ((string[])(null)));
 #line hidden
         }
@@ -705,6 +733,8 @@ this.EnsureVariablesOfDifferentTypesProduceDesiredResults("[[var]]", "0", "AN", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure variables of different types produce desired results: [[q]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[q]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Count", "[[q]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "0")]
@@ -712,7 +742,7 @@ this.EnsureVariablesOfDifferentTypesProduceDesiredResults("[[var]]", "0", "AN", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Message", "Value must be a recordset")]
         public virtual void EnsureVariablesOfDifferentTypesProduceDesiredResults_Q()
         {
-#line 192
+#line 198
 this.EnsureVariablesOfDifferentTypesProduceDesiredResults("[[q]]", "0", "AN", "Value must be a recordset", ((string[])(null)));
 #line hidden
         }
@@ -721,6 +751,8 @@ this.EnsureVariablesOfDifferentTypesProduceDesiredResults("[[q]]", "0", "AN", "V
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure variables of different types produce desired results: Test")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Test")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Count", "Test")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "0")]
@@ -728,7 +760,7 @@ this.EnsureVariablesOfDifferentTypesProduceDesiredResults("[[q]]", "0", "AN", "V
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Message", "Value must be a recordset")]
         public virtual void EnsureVariablesOfDifferentTypesProduceDesiredResults_Test()
         {
-#line 192
+#line 198
 this.EnsureVariablesOfDifferentTypesProduceDesiredResults("Test", "0", "AN", "Value must be a recordset", ((string[])(null)));
 #line hidden
         }
@@ -737,6 +769,8 @@ this.EnsureVariablesOfDifferentTypesProduceDesiredResults("Test", "0", "AN", "Va
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure variables of different types produce desired results: 99")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "99")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Count", "99")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "0")]
@@ -744,7 +778,7 @@ this.EnsureVariablesOfDifferentTypesProduceDesiredResults("Test", "0", "AN", "Va
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Message", "Value must be a recordset")]
         public virtual void EnsureVariablesOfDifferentTypesProduceDesiredResults_99()
         {
-#line 192
+#line 198
 this.EnsureVariablesOfDifferentTypesProduceDesiredResults("99", "0", "AN", "Value must be a recordset", ((string[])(null)));
 #line hidden
         }
@@ -753,6 +787,8 @@ this.EnsureVariablesOfDifferentTypesProduceDesiredResults("99", "0", "AN", "Valu
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ensure variables of different types produce desired results: [[rs([[var]])]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Count")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Recordset")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[rs([[var]])]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Count", "[[rs([[var]])]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:val", "0")]
@@ -760,7 +796,7 @@ this.EnsureVariablesOfDifferentTypesProduceDesiredResults("99", "0", "AN", "Valu
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Message", "[[result]] = Error")]
         public virtual void EnsureVariablesOfDifferentTypesProduceDesiredResults_RsVar()
         {
-#line 192
+#line 198
 this.EnsureVariablesOfDifferentTypesProduceDesiredResults("[[rs([[var]])]]", "0", "AN", "[[result]] = Error", ((string[])(null)));
 #line hidden
         }

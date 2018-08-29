@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Exchange
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ExchangeEmail", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
                     "f two numbers", ProgrammingLanguage.CSharp, new string[] {
                         "Exchange"});
@@ -137,20 +137,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Send New Exchange email with no To Accounts")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ExchangeEmail")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Exchange")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void SendNewExchangeEmailWithNoToAccounts()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with no To Accounts", ((string[])(null)));
-#line 23
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with no To Accounts", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 24
- testRunner.Given("new exchange to address is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 25
- testRunner.And("the new exchange subject is \"Just testing\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("new exchange to address is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 26
- testRunner.And("new exchange body is \"testing email from the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the new exchange subject is \"Just testing\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 27
- testRunner.When("the new exchange email tool is executed \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("new exchange body is \"testing email from the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 28
+ testRunner.When("the new exchange email tool is executed \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 29
  testRunner.Then("the new exchange email result will be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -161,14 +164,14 @@ this.ScenarioSetup(scenarioInfo);
                         "\"\"",
                         "Just testing",
                         "testing email from the cool specflow"});
-#line 29
+#line 30
  testRunner.And("the debug inputs as", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table4.AddRow(new string[] {
                         "[[result]] ="});
-#line 32
+#line 33
  testRunner.And("the debug output as", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -178,24 +181,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Send New Exchange email with Subject as both text and variable as xml")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ExchangeEmail")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Exchange")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void SendNewExchangeEmailWithSubjectAsBothTextAndVariableAsXml()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with Subject as both text and variable as xml", ((string[])(null)));
-#line 36
-this.ScenarioSetup(scenarioInfo);
-#line 37
- testRunner.Given("new exchange to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with Subject as both text and variable as xml", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 38
- testRunner.And("I have a new exchange email variable \"[[subject]]\" equal to \"<Wow>400%</Wow>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 39
- testRunner.And("the new exchange subject is \"News: [[subject]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("new exchange to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 40
- testRunner.And("new exchange body is \"testing email from the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have a new exchange email variable \"[[subject]]\" equal to \"<Wow>400%</Wow>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 41
- testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("the new exchange subject is \"News: [[subject]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 42
- testRunner.Then("the new exchange email result will be \"Success\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("new exchange body is \"testing email from the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 43
+ testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 44
+ testRunner.Then("the new exchange email result will be \"Success\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 45
  testRunner.And("the new exchange execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -206,14 +212,14 @@ this.ScenarioSetup(scenarioInfo);
                         "test1@freemail.com",
                         "News: [[subject]] = News: <Wow>400%</Wow>",
                         "testing email from the cool specflow"});
-#line 44
+#line 46
  testRunner.And("the debug inputs as", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table6.AddRow(new string[] {
                         "[[result]] = Success"});
-#line 47
+#line 49
  testRunner.And("the debug output as", ((string)(null)), table6, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -223,20 +229,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Send New Exchange email with no body")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ExchangeEmail")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Exchange")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void SendNewExchangeEmailWithNoBody()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with no body", ((string[])(null)));
-#line 51
-this.ScenarioSetup(scenarioInfo);
-#line 52
- testRunner.Given("new exchange to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 53
- testRunner.And("the new exchange subject is \"Testing this cool framework\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with no body", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 54
- testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 55
- testRunner.Then("the new exchange email result will be \"Success\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("new exchange to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 56
+ testRunner.And("the new exchange subject is \"Testing this cool framework\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 57
+ testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 58
+ testRunner.Then("the new exchange email result will be \"Success\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 59
  testRunner.And("the new exchange execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -247,14 +256,14 @@ this.ScenarioSetup(scenarioInfo);
                         "test1@freemail.com",
                         "Testing this cool framework",
                         "\"\""});
-#line 57
+#line 60
  testRunner.And("the debug inputs as", ((string)(null)), table7, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table8.AddRow(new string[] {
                         "[[result]] = Success"});
-#line 60
+#line 63
  testRunner.And("the debug output as", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -264,25 +273,28 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Send New Exchange email with Body as both text and variable")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ExchangeEmail")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Exchange")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void SendNewExchangeEmailWithBodyAsBothTextAndVariable()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with Body as both text and variable", ((string[])(null)));
-#line 64
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with Body as both text and variable", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 68
 this.ScenarioSetup(scenarioInfo);
-#line 65
+#line 69
  testRunner.Given("new exchange to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 66
+#line 70
  testRunner.And("I have a new exchange email variable \"[[body]]\" equal to \"<body><inner>inside</in" +
                     "ner></body>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 67
- testRunner.And("the new exchange subject is \"News\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 68
- testRunner.And("new exchange body is \"testing email from [[body]] the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 69
- testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 70
- testRunner.Then("the new exchange email result will be \"Success\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 71
+ testRunner.And("the new exchange subject is \"News\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 72
+ testRunner.And("new exchange body is \"testing email from [[body]] the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 73
+ testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 74
+ testRunner.Then("the new exchange email result will be \"Success\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 75
  testRunner.And("the new exchange execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -294,14 +306,14 @@ this.ScenarioSetup(scenarioInfo);
                         "News",
                         "testing email from [[body]] the cool specflow = testing email from <body><inner>i" +
                             "nside</inner></body> the cool specflow"});
-#line 72
+#line 76
  testRunner.And("the debug inputs as", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table10.AddRow(new string[] {
                         "[[result]] = Success"});
-#line 75
+#line 79
  testRunner.And("the debug output as", ((string)(null)), table10, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -314,22 +326,22 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SendNewExchangeEmailWithVariableAsBodyThatIsXml()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with variable as Body that is xml", ((string[])(null)));
-#line 79
+#line 83
 this.ScenarioSetup(scenarioInfo);
-#line 80
+#line 84
  testRunner.Given("new exchange to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 81
+#line 85
  testRunner.And("I have a new exchange email variable \"[[body]]\" equal to \"<body><inner>inside</in" +
                     "ner></body>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 82
- testRunner.And("the new exchange subject is \"News\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 83
- testRunner.And("new exchange body is \"[[body]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 84
- testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 85
- testRunner.Then("the new exchange email result will be \"Success\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 86
+ testRunner.And("the new exchange subject is \"News\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 87
+ testRunner.And("new exchange body is \"[[body]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 88
+ testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 89
+ testRunner.Then("the new exchange email result will be \"Success\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 90
  testRunner.And("the new exchange execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -340,14 +352,14 @@ this.ScenarioSetup(scenarioInfo);
                         "test1@freemail.com",
                         "News",
                         "[[body]] =  <body><inner>inside</inner></body>"});
-#line 87
+#line 91
  testRunner.And("the debug inputs as", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table12.AddRow(new string[] {
                         "[[result]] = Success"});
-#line 90
+#line 94
  testRunner.And("the debug output as", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -360,11 +372,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SendNewExchangeEmailWithEverythingBlank()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with everything blank", ((string[])(null)));
-#line 94
+#line 98
 this.ScenarioSetup(scenarioInfo);
-#line 95
+#line 99
  testRunner.When("the new exchange email tool is executed \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 96
+#line 100
  testRunner.Then("the new exchange email result will be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -375,14 +387,14 @@ this.ScenarioSetup(scenarioInfo);
                         "\"\"",
                         "\"\"",
                         "\"\""});
-#line 97
+#line 101
  testRunner.And("the debug inputs as", ((string)(null)), table13, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table14.AddRow(new string[] {
                         "[[result]] ="});
-#line 100
+#line 104
  testRunner.And("the debug output as", ((string)(null)), table14, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -392,22 +404,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Send New Exchange email with a negative index recordset for Recipients")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ExchangeEmail")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Exchange")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void SendNewExchangeEmailWithANegativeIndexRecordsetForRecipients()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with a negative index recordset for Recipients", ((string[])(null)));
-#line 104
-this.ScenarioSetup(scenarioInfo);
-#line 105
- testRunner.And("new exchange to address is \"[[me(-1).to]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 106
- testRunner.And("the new exchange subject is \"Just testing\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 107
- testRunner.And("new exchange body is \"testing email from the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 108
- testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with a negative index recordset for Recipients", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 109
- testRunner.Then("the new exchange email result will be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 110
+ testRunner.And("new exchange to address is \"[[me(-1).to]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 111
+ testRunner.And("the new exchange subject is \"Just testing\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 112
+ testRunner.And("new exchange body is \"testing email from the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 113
+ testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 114
+ testRunner.Then("the new exchange email result will be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 115
  testRunner.And("the new exchange execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -418,14 +433,14 @@ this.ScenarioSetup(scenarioInfo);
                         "[[me(-1).to]] =",
                         "Just testing",
                         "testing email from the cool specflow"});
-#line 111
+#line 116
  testRunner.And("the debug inputs as", ((string)(null)), table15, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table16.AddRow(new string[] {
                         "[[result]] ="});
-#line 114
+#line 119
  testRunner.And("the debug output as", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -438,19 +453,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SendNewExchangeEmailWithANegativeIndexRecordsetForSubject()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with a negative index recordset for Subject", ((string[])(null)));
-#line 118
-this.ScenarioSetup(scenarioInfo);
-#line 119
- testRunner.And("new exchange to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 120
- testRunner.And("the new exchange subject is \"[[my(-1).subject]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 121
- testRunner.And("new exchange body is \"testing email from the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 122
- testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 123
- testRunner.Then("the new exchange email result will be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 124
+ testRunner.And("new exchange to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 125
+ testRunner.And("the new exchange subject is \"[[my(-1).subject]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 126
+ testRunner.And("new exchange body is \"testing email from the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 127
+ testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 128
+ testRunner.Then("the new exchange email result will be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 129
  testRunner.And("the new exchange execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -461,14 +476,14 @@ this.ScenarioSetup(scenarioInfo);
                         "test1@freemail.com",
                         "[[my(-1).subject]] =",
                         "testing email from the cool specflow"});
-#line 125
+#line 130
  testRunner.And("the debug inputs as", ((string)(null)), table17, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table18.AddRow(new string[] {
                         "[[result]] ="});
-#line 128
+#line 133
  testRunner.And("the debug output as", ((string)(null)), table18, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -481,17 +496,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SendNewExchangeEmailWithANegativeIndexRecordsetForBody()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with a negative index recordset for Body", ((string[])(null)));
-#line 132
-this.ScenarioSetup(scenarioInfo);
-#line 133
- testRunner.And("new to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 134
- testRunner.And("new exchange body is \"[[my(-1).body]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 135
- testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 136
- testRunner.Then("the new exchange email result will be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 137
+this.ScenarioSetup(scenarioInfo);
+#line 138
+ testRunner.And("new to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 139
+ testRunner.And("new exchange body is \"[[my(-1).body]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 140
+ testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 141
+ testRunner.Then("the new exchange email result will be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 142
  testRunner.And("the new exchange execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -502,14 +517,14 @@ this.ScenarioSetup(scenarioInfo);
                         "test1@freemail.com",
                         "\"\"",
                         "[[my(-1).body]] ="});
-#line 138
+#line 143
  testRunner.And("the debug inputs as", ((string)(null)), table19, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table20.AddRow(new string[] {
                         "[[result]] ="});
-#line 141
+#line 146
  testRunner.And("the debug output as", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -522,19 +537,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SendNewExchangeEmailWithNewLineInBody()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with new line in body", ((string[])(null)));
-#line 145
-this.ScenarioSetup(scenarioInfo);
-#line 146
- testRunner.Given("new exchange to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 147
- testRunner.And("the new exchange subject is \"Testing this cool framework\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 148
- testRunner.And("new exchange body is \"testing email with \\r\\n new line\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 149
- testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 150
- testRunner.Then("the new exchange email result will be \"Success\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 151
+ testRunner.Given("new exchange to address is \"test1@freemail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 152
+ testRunner.And("the new exchange subject is \"Testing this cool framework\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 153
+ testRunner.And("new exchange body is \"testing email with \\r\\n new line\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 154
+ testRunner.When("the new exchange email tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 155
+ testRunner.Then("the new exchange email result will be \"Success\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 156
  testRunner.And("the new exchange execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -545,14 +560,14 @@ this.ScenarioSetup(scenarioInfo);
                         "test1@freemail.com",
                         "Testing this cool framework",
                         "testing email with \\r\n new line"});
-#line 152
+#line 157
  testRunner.And("the debug inputs as", ((string)(null)), table21, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table22.AddRow(new string[] {
                         "[[result]] = Success"});
-#line 155
+#line 160
  testRunner.And("the debug output as", ((string)(null)), table22, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -565,19 +580,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SendNewExchangeEmailWithHtmlFalse()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Send New Exchange email with Html false", ((string[])(null)));
-#line 159
-this.ScenarioSetup(scenarioInfo);
-#line 160
- testRunner.Given("new exchange to address is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 161
- testRunner.And("the new exchange subject is \"Just testing\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 162
- testRunner.And("new exchange body is \"testing email from the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 163
- testRunner.And("new exchange IsHtml is \"true\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 164
- testRunner.When("the new exchange email tool is executed \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 165
+ testRunner.Given("new exchange to address is \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 166
+ testRunner.And("the new exchange subject is \"Just testing\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 167
+ testRunner.And("new exchange body is \"testing email from the cool specflow\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 168
+ testRunner.And("new exchange IsHtml is \"true\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 169
+ testRunner.When("the new exchange email tool is executed \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 170
  testRunner.Then("the new exchange email result will be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -588,14 +603,14 @@ this.ScenarioSetup(scenarioInfo);
                         "\"\"",
                         "Just testing",
                         "testing email from the cool specflow"});
-#line 166
+#line 171
  testRunner.And("the debug inputs as", ((string)(null)), table23, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table24.AddRow(new string[] {
                         "[[result]] ="});
-#line 169
+#line 174
  testRunner.And("the debug output as", ((string)(null)), table24, "And ");
 #line hidden
             this.ScenarioCleanup();

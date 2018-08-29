@@ -4,6 +4,7 @@ Feature: Length
 	As a Warewolf user
 	I want a tool that takes a record set gives me its length
 
+@MSTest:DoNotParallelize
 Scenario: Length of a recordset with 3 rows
 	Given I get the length from a recordset that looks like with this shape
 	| [[rs]]    |   |
@@ -23,6 +24,7 @@ Scenario: Length of a recordset with 3 rows
 	|                |
 	| [[result]] = 5 |
 
+@MSTest:DoNotParallelize
 Scenario: Length of a recordset with 8 rows
 	Given I get the length from a recordset that looks like with this shape
 	| rs        |   |
@@ -52,6 +54,7 @@ Scenario: Length of a recordset with 8 rows
 	|                 |
 	| [[result]] = 8 |
 
+@MSTest:DoNotParallelize
 Scenario: Recordset length for coloumn
 	Given I get the length from a recordset that looks like with this shape
 	| rs        |   |
@@ -89,6 +92,7 @@ Scenario: Recordset length for coloumns invalid
 	And the debug output as 
 	|                |
 
+@MSTest:DoNotParallelize
 Scenario: Recordset length 
 	Given I get the length from a recordset that looks like with this shape
 	| rs        |   |
@@ -135,6 +139,7 @@ Scenario: Recordset length for invalid recordset
 	And the debug output as 
 	|                |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Ensure Recordset length inputs work as expected 
 	Given I get the length from a recordset that looks like with this shape
 	| rs        |   |
@@ -168,6 +173,7 @@ Scenario: Length of an null recordset
 	Then the length result should be 0
 	And the execution has "No" error
 
+@MSTest:DoNotParallelize
 Scenario: Length of an unassigned recordset
 	Given get length on record "[[rs()]]"	
 	When the length tool is executed

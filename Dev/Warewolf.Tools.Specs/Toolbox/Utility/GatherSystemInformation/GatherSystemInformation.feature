@@ -4,7 +4,7 @@ Feature: GatherSystemInformation
 	As a warewolf user
 	I want a tool that I retrieve system info
 
-
+@MSTest:DoNotParallelize
 Scenario: Assign a system operating system into a scalar
 	Given I have a variable "[[testvar]]" and I selected "OperatingSystem"	
 	When the gather system infomartion tool is executed
@@ -14,6 +14,7 @@ Scenario: Assign a system operating system into a scalar
 	| # |                      |
 	| 1 | [[testvar]] = String |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a system service pack into a scalar
 	Given I have a variable "[[testvar]]" and I selected "ServicePack"	
 	When the gather system infomartion tool is executed
@@ -32,6 +33,7 @@ Scenario: Assign a system OS Bit Value into a scalar
 	| # |                     |
 	| 1 | [[testvar]] = Int32 |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a system date time into a scalar
 	Given I have a variable "[[testvar]]" and I selected "FullDateTime"	
 	When the gather system infomartion tool is executed
@@ -41,6 +43,7 @@ Scenario: Assign a system date time into a scalar
 	| # |                        |
 	| 1 | [[testvar]] = DateTime |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a system Date Time Format into a scalar
 	Given I have a variable "[[testvar]]" and I selected "DateTimeFormat"	
 	When the gather system infomartion tool is executed
@@ -50,6 +53,7 @@ Scenario: Assign a system Date Time Format into a scalar
 	| # |                      |
 	| 1 | [[testvar]] = String |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a system Disk Available into a scalar
 	Given I have a variable "[[testvar]]" and I selected "DiskAvailable"	
 	When the gather system infomartion tool is executed
@@ -59,6 +63,7 @@ Scenario: Assign a system Disk Available into a scalar
 	| # |                      |
 	| 1 | [[testvar]] = String |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a system Disk Total into a scalar
 	Given I have a variable "[[testvar]]" and I selected "DiskTotal"	
 	When the gather system infomartion tool is executed
@@ -77,6 +82,7 @@ Scenario: Assign a system Physical Memory Available into a scalar
 	| # |                     |
 	| 1 | [[testvar]] = Int32 |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a system Physical Memory Total into a scalar
 	Given I have a variable "[[testvar]]" and I selected "PhysicalMemoryTotal"	
 	When the gather system infomartion tool is executed
@@ -86,6 +92,7 @@ Scenario: Assign a system Physical Memory Total into a scalar
 	| # |                     |
 	| 1 | [[testvar]] = Int32 |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a system CPU Available into a scalar
 	Given I have a variable "[[testvar]]" and I selected "CPUAvailable"	
 	When the gather system infomartion tool is executed
@@ -104,6 +111,7 @@ Scenario: Assign a system CPU Total into a scalar
 	| # |                      |
 	| 1 | [[testvar]] = String |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a system Language into a scalar
 	Given I have a variable "[[testvar]]" and I selected "Language"	
 	When the gather system infomartion tool is executed
@@ -113,6 +121,7 @@ Scenario: Assign a system Language into a scalar
 	| # |                      |
 	| 1 | [[testvar]] = String |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a system Region into a scalar
 	Given I have a variable "[[testvar]]" and I selected "Region"	
 	When the gather system infomartion tool is executed
@@ -131,6 +140,7 @@ Scenario: Assign a system User Roles into a scalar
 	| # |                      |
 	| 1 | [[testvar]] = String |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a system User Name into a scalar
 	Given I have a variable "[[testvar]]" and I selected "UserName"	
 	When the gather system infomartion tool is executed
@@ -149,6 +159,7 @@ Scenario: Assign a system Domain into a scalar
 	| # |                      |
 	| 1 | [[testvar]] = String |
 
+@MSTest:DoNotParallelize
 Scenario: Assign User Roles into a recordset
 	Given I have a variable "[[my(2).roles]]" and I selected "UserRoles"	
 	When the gather system infomartion tool is executed
@@ -158,6 +169,7 @@ Scenario: Assign User Roles into a recordset
 	| # |                          |
 	| 1 | [[my(2).roles]] = String |
 
+@MSTest:DoNotParallelize
 Scenario: Assign User Roles into a multiple fields in recordset
 	Given I have a variable "[[my().roles]]" and I selected "UserRoles"	
 	And I have a variable "[[my().ram]]" and I selected "PhysicalMemoryAvailable"
@@ -173,7 +185,7 @@ Scenario: Assign User Roles into a multiple fields in recordset
 	| 2 | [[my(1).ram]] = Int32 |
 	| 3 | [[my(1).ramtot]] = Int32 |
 	
-
+@MSTest:DoNotParallelize
 Scenario: Assign a system Domain into a negative recordset index
 	Given I have a variable "[[rec(-1).set]]" and I selected "Domain"	
 	When the gather system infomartion tool is executed
@@ -183,6 +195,7 @@ Scenario: Assign a system Domain into a negative recordset index
 	| 1 | [[rec(-1).set]] = |
 
 #This scenario requires the machine the test runs on to have more than 1 drive. You can map a network drive if it only has 1 logical.
+@MSTest:DoNotParallelize
 Scenario: Assign Disk Total into a recordset
 	Given I have a variable "[[my().disks]]" and I selected "DiskTotal"	
 	When the gather system infomartion tool is executed
@@ -193,6 +206,7 @@ Scenario: Assign Disk Total into a recordset
 	| 1 | [[my(1).disks]] = String |
 
 #This scenario requires the machine the test runs on to have more than 1 drive. You can map a network drive if it only has 1 logical.
+@MSTest:DoNotParallelize
 Scenario: Assign Disk Available into a recordset
 	Given I have a variable "[[my().disks]]" and I selected "DiskAvailable"	
 	When the gather system infomartion tool is executed
@@ -202,6 +216,7 @@ Scenario: Assign Disk Available into a recordset
 	| # |                           |
 	| 1 | [[my(1).disks]] =  String |
 
+@MSTest:DoNotParallelize
 Scenario Outline:Executing with Incorrect Recordsets 
 	Given I have a variable "<input>" and I selected "DiskAvailable"	
 	When the gather system infomartion tool is executed

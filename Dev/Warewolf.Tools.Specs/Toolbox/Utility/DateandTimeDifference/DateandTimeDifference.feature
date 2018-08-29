@@ -4,6 +4,7 @@ Feature: DateandTimeDifference
 	As a Warewolf user
 	I want a tool that will allow me to compare two dates
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of days between two given dates
 	Given I have a first date "2013-11-29" 
 	And I have a second date "2014-11-28" 
@@ -19,6 +20,7 @@ Scenario: Calculate the number of days between two given dates
 	|                  |
 	| [[result]] = 52 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of years with mulitpart text and variable inputs to both input fields
 	Given I have a DateAndTimeDifference variable "[[years]]" equal to 13
 	And I have a first date "20[[years]]-11-29" 
@@ -51,6 +53,7 @@ Scenario: Calculate the number of Months between two given dates
 	|                  |
 	| [[result]] = 12 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of hours between two given dates
 	Given I have a first date "2013-11-29" 
 	And I have a second date "2014-11-01" 
@@ -96,6 +99,7 @@ Scenario: Calculate the number of seconds between two given dates
 	|                        |
 	| [[result]] = 29116800 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of split seconds between two given dates
 	Given I have a first date "2013-11-29" 
 	And I have a second date "2014-11-01" 
@@ -111,6 +115,7 @@ Scenario: Calculate the number of split seconds between two given dates
 	|                          |
 	| [[result]] = 29116800000 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of weeks between two given dates
 	Given I have a first date "2013-11-29" 
 	And I have a second date "2014-11-01" 
@@ -126,6 +131,7 @@ Scenario: Calculate the number of weeks between two given dates
 	|                    |
 	| [[result]] = 8088 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of minutes between two blank inputs
 	Given I have a first date "" 
 	And I have a second date "" 
@@ -156,6 +162,7 @@ Scenario: Calculate the number of minutes first date is blank
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of minutes second date is blank
 	Given I have a first date "2014-11-01" 
 	And I have a second date "" 
@@ -171,6 +178,7 @@ Scenario: Calculate the number of minutes second date is blank
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of seconds with badly formed input format
 	Given I have a first date "2013-11-29" 
 	And I have a second date "2014-11-01" 
@@ -186,6 +194,7 @@ Scenario: Calculate the number of seconds with badly formed input format
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Leave input dates blank
 	Given I selected output in "Years"
 	When the datetime difference tool is executed
@@ -198,6 +207,7 @@ Scenario: Leave input dates blank
 	|                 |
 	| [[result]] = 0 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of weeks dates do not match date format
 	Given I have a first date "20131212" 
 	And I have a second date "20141212" 
@@ -213,6 +223,7 @@ Scenario: Calculate the number of weeks dates do not match date format
 	|               |
 	| [[result]] = |
 	
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of weeks using an invalid date
 	Given I have a first date "2" 
 	And I have a second date "20141212" 
@@ -228,6 +239,7 @@ Scenario: Calculate the number of weeks using an invalid date
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate with negative recordset index for Input 1
 	Given I have a first date "[[my(-1).date]]" 
 	And I have a second date "2014-11-01" 
@@ -254,6 +266,7 @@ Scenario: Calculate with negative recordset index for Input 2
 	And the debug output as 
 	|               |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate with negative recordset index for Format
 	Given I have a first date "2014-11-01" 
 	And I have a second date "2014-11-01" 
@@ -267,6 +280,7 @@ Scenario: Calculate with negative recordset index for Format
 	And the debug output as 
 	|              |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of weeks between two given dates format has quoted strings
 	Given I have a first date "2013-11-29 date" 
 	And I have a second date "2014-11-01 date" 
@@ -282,6 +296,7 @@ Scenario: Calculate the number of weeks between two given dates format has quote
 	|                   |
 	| [[result]] = 8088 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of years with incorrect inputs
 	Given I have a DateAndTimeDifference variable "[[a]]" equal to 01.
 	And I have a first date "2014/[[a]]/01" 
@@ -298,6 +313,7 @@ Scenario: Calculate the number of years with incorrect inputs
 	|              |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of years with incorrect variable in input1
 	Given I have a DateAndTimeDifference variable "[[a]]" equal to 01.
 	And I have a first date "[[2014/01/01]]" 
@@ -326,7 +342,7 @@ Scenario: Calculate the number of split seconds
 	|                 |
 	| [[result]] = 68 |
 
-#Bug 12330
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of split seconds by using default date format
 	Given I have a first date "01/06/2014 08:00:01.00" 
 	And I have a second date "01/06/2014 08:00:01.68" 
@@ -372,6 +388,7 @@ Scenario: Calculate the number of weeks by using default format
 	|                |
 	| [[result]] = 3 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of hours by using default format
 	Given I have a first date "01/06/2014 08:00:01.00" 
 	And I have a second date "01/30/2014 08:00:01.06" 
@@ -387,6 +404,7 @@ Scenario: Calculate the number of hours by using default format
 	|                |
 	| [[result]] = 576 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of Minutes by using default format
 	Given I have a first date "01/06/2014 08:00:01.00" 
 	And I have a second date "01/30/2014 08:00:01.68" 
@@ -402,6 +420,7 @@ Scenario: Calculate the number of Minutes by using default format
 	|                    |
 	| [[result]] = 34560 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of Seconds by using default format
 	Given I have a first date "01/06/2014 08:00:01.00" 
 	And I have a second date "01/30/2014 08:00:01.68" 
@@ -417,6 +436,7 @@ Scenario: Calculate the number of Seconds by using default format
 	|                      |
 	| [[result]] = 2073600 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of Days by using default format
 	Given I have a first date "01/06/2014 08:00:01.00" 
 	And I have a second date "01/30/2014 08:00:01.68" 
@@ -432,6 +452,7 @@ Scenario: Calculate the number of Days by using default format
 	|                 |
 	| [[result]] = 24 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of Months by using default format
 	Given I have a first date "08/06/2011 08:00:01.00" 
 	And I have a second date "01/30/2014 08:00:01.68" 
@@ -447,6 +468,7 @@ Scenario: Calculate the number of Months by using default format
 	|                 |
 	| [[result]] = 29 |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of Years by using default system date
 	Given I have a first date "2014/01/06 08:00:01.00" 
 	And I have a second date "" 
@@ -458,6 +480,7 @@ Scenario: Calculate the number of Years by using default system date
 	| Input 1                | Input 2                | Input Format | Output In |
 	| 2014/01/06 08:00:01.00 | now() = !!DateWithMS!! | ""           | Years     |
 
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of Years by using default system date Input 1
 	Given I have a first date ""  
 	And I have a second date "2014/01/06 08:00:01.00" 
@@ -469,7 +492,7 @@ Scenario: Calculate the number of Years by using default system date Input 1
 	| Input 1                | Input 2                | Input Format | Output In |
 	| now() = !!DateWithMS!! | 2014/01/06 08:00:01.00 | ""           | Years     |
 
-
+@MSTest:DoNotParallelize
 Scenario Outline: Calculate the number of months between two given dates using variables and recordsets
 	Given I have a DateAndTimeDifference variable "<input1>" equal to <Val1>
 	Given I have a DateAndTimeDifference variable "<input2>" equal to <Val2>
@@ -488,7 +511,7 @@ Examples:
 	| [[rec().a]]  | 30/07/2015 | [[rs(*).a]] | 01/01/2016 | [[rj(1).a]] | dd/mm/yyyy | [[rg(1).set]] | 7      |
 	| [[rec(*).a]] | 30/07/2015 | [[rs(1).a]] | 01/01/2016 | [[rj().a]]  | dd/mm/yyyy | [[rg().set]]  | 7      |
 	
-
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of Years by using Null variable as first date
 	Given I have date time difference variable "[[a]]" with value "NULL"
 	And I have a first date "[[a]]"  
@@ -498,8 +521,7 @@ Scenario: Calculate the number of Years by using Null variable as first date
 	When the datetime difference tool is executed
 	Then the execution has "AN" error
 
-
-
+@MSTest:DoNotParallelize
 Scenario: Calculate the number of Years by using non existent variable as first date
 	Given  I have a first date "[[a]]"  
 	And I have a second date "2014/01/06 08:00:01.00" 
@@ -507,5 +529,3 @@ Scenario: Calculate the number of Years by using non existent variable as first 
 	And I selected output in "Years" 	
 	When the datetime difference tool is executed
 	Then the execution has "AN" error
-
-

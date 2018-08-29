@@ -20,6 +20,7 @@ Feature: Aggregated Calculation
 ##Calculate using Recordset ([[val]]) input in an agregate function like SUM
 
 
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation using a given formula
 	Given I have the formula "mod(sqrt(49), 7)"	
 	When the aggregate calculate tool is executed
@@ -32,6 +33,7 @@ Scenario: Aggregated Calculation using a given formula
 	|                 |
 	| [[result]] = 0 |
 
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation using multiple scalars and recordset inputs
 	Given I have a calculate variable "[[var]]" equal to "1"
 	And I have a calculate variable "[[var2]]" equal to "20"
@@ -46,6 +48,7 @@ Scenario: Aggregated Calculation using multiple scalars and recordset inputs
 	|                   |
 	| [[result]] = 20.1 |
 
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation with new lines should concatenate values
 	Given I have a calculate variable "[[var]]" equal to "1"
 	And I have a calculate variable "[[var2]]" equal to "20"
@@ -60,6 +63,7 @@ Scenario: Aggregated Calculation with new lines should concatenate values
 	|                  |
 	| [[result]] = 120 |
 
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation using Recordset (*) input in an agregate function like SUM
 	Given I have a calculate variable "[[var().int]]" equal to 
 	| var().int	|
@@ -121,6 +125,7 @@ Scenario: Aggregated Calculation using Recordset (*) input in an agregate functi
 	| [[rs(1).val]] = 21 |
 	| [[rs(2).val]] = 23 |
 
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation using incorrect formula
 	Given I have the formula "asdf"
 	When the aggregate calculate tool is executed
@@ -133,7 +138,7 @@ Scenario: Aggregated Calculation using incorrect formula
 	|               |
 	| [[result]] = |
 
-
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation using variable as full calculation
 	Given I have a calculate variable "[[var]]" equal to "SUM(1,2,3)-5"
 	And I have the formula "[[var]]"
@@ -147,6 +152,7 @@ Scenario: Aggregated Calculation using variable as full calculation
 	|                 |
 	| [[result]] = 1 |
 
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation using a negative index recordset value
 	Given I have the formula "[[my(-1).formula]]"
 	When the aggregate calculate tool is executed
@@ -158,6 +164,7 @@ Scenario: Aggregated Calculation using a negative index recordset value
 	|              |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation using isnumber and blank
     Given I have the formula "if(isnumber(""),"Is number","Not number")"
 	When the calculate tool is executed
@@ -167,7 +174,6 @@ Scenario: Aggregated Calculation using isnumber and blank
 	| "if(isnumber(""),"Is number","Not number")" |	
 	And the execution has "NO" error
 
-#This scenario should pass after the bug 11871 is fixed
 Scenario: Aggregated Calculation Assign by evaluating a variable inside a variable
 	Given I have a calculate variable "[[a]]" equal to "b"
 	And I have a calculate variable "[[b]]" equal to "20"
@@ -182,6 +188,7 @@ Scenario: Aggregated Calculation Assign by evaluating a variable inside a variab
 	|                 |
 	| [[result]] = 21 |
 
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation Assign by evaluating a variable inside a variable with function
 	Given I have a calculate variable "[[a]]" equal to "b"
 	And I have a calculate variable "[[b]]" equal to "20"
@@ -196,6 +203,7 @@ Scenario: Aggregated Calculation Assign by evaluating a variable inside a variab
 	|                 |
 	| [[result]] = 40 |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Aggregated Calculation Assign by evaluating variables with functions
 	Given I have a calculate variable "[[x]]" equal to "1"
 	And I have a calculate variable "[[y]]" equal to "2"
@@ -379,6 +387,7 @@ Scenario Outline: Aggregated Calculation Assign by evaluating variables with fun
 #	| 168                 | FALSE                                                      | FALSE                    |
 #	| 169                 | TRUE                                                       | TRUE                     |
 
+@MSTest:DoNotParallelize
 Scenario Outline: Calculate using Recordset input in an agregate function like SUM
 	Given I have a calculate variable "[[var().int]]" equal to 
 	| var().int	|
@@ -396,6 +405,7 @@ Scenario Outline: Calculate using Recordset input in an agregate function like S
 		| 2  | SUM([[var([[val]]).int]],[[var([[val]]).int]]) |  6     |
 		| 3  | SUM([[var([[val]]).int]],[[var([[val]]).int]]) |  6     |
 
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation using variables with a null value
 	Given I have a calculate variable "[[a]]" equal to "NULL"
 	And I have a calculate variable "[[b]]" equal to "NULL"
@@ -406,6 +416,7 @@ Scenario: Aggregated Calculation using variables with a null value
 	| fx =                      |
 	| SUM([[a]],[[b]]) = SUM(,) |
 
+@MSTest:DoNotParallelize
 Scenario: Variable that does not exist
 	Given I have a calculate variable "[[a]]" equal to "1"
 	And I have a calculate variable "[[b]]" equal to "20"
@@ -419,6 +430,7 @@ Scenario: Variable that does not exist
 	|                |
 	| [[rs().a]] = 3 |
 
+@MSTest:DoNotParallelize
 Scenario: Aggregated Calculation using variables with a no existent value
 	Given I have the formula "SUM([[a]],[[b]])"
 	When the aggregate calculate tool is executed
@@ -427,7 +439,7 @@ Scenario: Aggregated Calculation using variables with a no existent value
 	| fx =                |
 	| SUM([[a]],[[b]]) =  |
 
-
+@MSTest:DoNotParallelize
 Scenario: Aggregate all recordset values to all recordset complex with calculation multiple recordset star
 	Given I have a calculate variable "[[rec(1).set]]" equal to "10"
 	And I have a calculate variable "[[rec(2).set]]" equal to "20"
@@ -443,6 +455,7 @@ Scenario: Aggregate all recordset values to all recordset complex with calculati
 	| fx =                                              |
 	| [[rec(*).set]]*[[rec(*).val]] = 10,20,30*10,20,30 |		
 
+@MSTest:DoNotParallelize
 Scenario: Aggregate all recordset values to all recordset complex with calculation multiple recordset star addition
 	Given I have a calculate variable "[[rec(1).set]]" equal to "10"
 	And I have a calculate variable "[[rec(2).set]]" equal to "20"
@@ -458,7 +471,7 @@ Scenario: Aggregate all recordset values to all recordset complex with calculati
 	| fx =                                              |
 	| [[rec(*).set]]*[[rec(*).val]] = 10,20,30+10,20,30 |		
 	
-
+@MSTest:DoNotParallelize
 Scenario: Aggregate all recordset values to all recordset complex with calculation multiple recordset star addition to scalar
 	Given I have a calculate variable "[[rec(1).set]]" equal to "10"
 	And I have a calculate variable "[[rec(2).set]]" equal to "20"

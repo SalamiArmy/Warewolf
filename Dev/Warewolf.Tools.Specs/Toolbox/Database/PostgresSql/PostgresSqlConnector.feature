@@ -21,6 +21,7 @@ Scenario: Creating PostgresSql Connector
 	| Bill | 4200   | 45  |
 
 @OpeningSavedWorkflowWithPostgresServerTool
+@MSTest:DoNotParallelize
 Scenario: Opening Saved workflow with PostgresSql tool
 	Given I Open workflow with PostgreSql connector
 	And PostgresSql Source Is Enabled
@@ -34,6 +35,7 @@ Scenario: Opening Saved workflow with PostgresSql tool
 	And Validate PostgresSql Is Enabled
 
 @ChangeTheSourceOnExistingPostgresql	
+@MSTest:DoNotParallelize
 Scenario: Change the source on existing PostgresSql tool
 	Given I Open workflow with PostgreSql connector
 	And PostgresSql Source Is Enabled
@@ -72,6 +74,7 @@ Scenario: Change the recordset on existing PostgresSql tool
 	And Validate PostgresSql Is Enabled
 
 @ExecutePostgresServerWithTimeout		
+@MSTest:DoNotParallelize
 Scenario: Execute Postgres Server With Timeout
     Given I have workflow "PostgreWorkflowForTimeout" with "PostgresActivity" Postgres database connector
     And Postgres Server Source is Enabled

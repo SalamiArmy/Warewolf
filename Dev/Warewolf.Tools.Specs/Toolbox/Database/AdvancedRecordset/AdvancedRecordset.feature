@@ -4069,7 +4069,8 @@ Scenario:  math functions Select With ABS Text Returns0
     | [[TableCopy(3).name]] = Hatter              |
     | [[TableCopy(3).numberofseconds]] = 31613104 |
 
-    Scenario: datetime Select the date and time given a unix timestamp 1092941466:
+@MSTest:DoNotParallelize
+Scenario: datetime Select the date and time given a unix timestamp 1092941466:
     Given I have a recordset with this shape
     | [[person]]     |                     |
     | person(1).name | Bob                 |
@@ -4106,7 +4107,8 @@ Scenario:  math functions Select With ABS Text Returns0
     | [[TableCopy(3).dob]] = 2004-08-19 18:51:06 |
     | [[TableCopy(3).name]] = Hatter             |
 
-    Scenario: time Select the time given a dob:
+@MSTest:DoNotParallelize
+Scenario: time Select the time given a dob:
     Given I have a recordset with this shape
     | [[person]]     |                     |
     | person(1).name | Bob                 |
@@ -4177,6 +4179,7 @@ Scenario:  Use an undeclare variable on the query returns error
     | name        | [[TableCopy().name]] |
     When Advanced Recordset tool is executed
    
+@MSTest:DoNotParallelize
 Scenario: Select Group By Having statement
     Given I have a recordset with this shape
     | [[person]]         |              |
@@ -4221,6 +4224,7 @@ Scenario: Select Group By Having statement
     | [[TableCopy(1).city]] = Durban  |
     | [[TableCopy(1).people]] = 2     |
 
+@MSTest:DoNotParallelize
 Scenario: Handle Nulls set to Nothing
     Given I have a recordset with this shape
     | [[person]]         |              |

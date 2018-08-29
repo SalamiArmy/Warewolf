@@ -4,7 +4,7 @@ Feature: ReadDropbox
 	As a Warewolf User
 	I want to be to view files available on a dropbox account
 
-
+@MSTest:DoNotParallelize
 Scenario: Open new Read Dropbox Tool
 	Given I drag Readlist Dropbox Tool onto the design surface
     And Readlist New is Enabled

@@ -4,8 +4,7 @@ Feature: Put Web Connector Tool
 	As a Warewolf User
 	I want to Create or Edit Warewolf Web Put Request.
 
-# layout of tool not ready
-
+@MSTest:DoNotParallelize
 Scenario: Open new Put Web Tool
 	And I drag Web Put Request Connector Tool onto the design surface
     And Put New is Enabled

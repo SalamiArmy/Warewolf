@@ -16,6 +16,7 @@ Scenario: Assign a value to a json object
 	| # |						|
 	| 1 | [[@Person.Name]] = Bob |
 
+@MSTest:DoNotParallelize
 Scenario: Assign values to json objects
 	Given I assign the value "Bob" to a json object "[[@Person.FirstName]]"
 	And I assign the value "Smith" to a json object "[[@Person.Surname]]"
@@ -92,6 +93,7 @@ Scenario: Assign a json object value to a json object
 	| 1 | [[@Person.FirstName]] = Bob	|
 	| 2 | [[@Person.Surname]] = Bob		|
 
+@MSTest:DoNotParallelize
 Scenario: Assign a json object value to a json object overwriting the existing value
 	Given I assign the value "Bob" to a json object "[[@Person.FirstName]]"
 	And I assign the value "Smith" to a json object "[[@Person.Surname]]"
@@ -111,6 +113,7 @@ Scenario: Assign a json object value to a json object overwriting the existing v
 	| 2 | [[@Person.Surname]] = Smith	|
 	| 3 | [[@Person.Surname]] = Bob		|
 
+@MSTest:DoNotParallelize
 Scenario Outline: Assign a value to an invalid json object
 	Given I assign the value "[[@Person.Score]]" to a json object "<var>"
 	When the assign object tool is executed
@@ -189,6 +192,7 @@ Scenario: Assign multiple json variables to a json object with a literal
     | 2 | [[@Person.Surname]] = Smith					|
     | 3 | [[@Person.FullName]]  = Bob the killa Smith	|
 
+@MSTest:DoNotParallelize
 Scenario: Assign values to a json object array within a json object
 	Given I assign the value "11" to a json object "[[@Person.Score(1)]]"
 	And I assign the value "22" to a json object "[[@Person.Score(2)]]"
@@ -229,6 +233,7 @@ Scenario: Assign values to a json object array
     | 2 | [[@Score(2)]] = 22	|
     | 3 | [[@Score(3)]] = 33	|
 
+@MSTest:DoNotParallelize
 Scenario: Assign a value to all elements of a json object array within a json object
 	Given I assign the value "11" to a json object "[[@Person.Score(1)]]"
 	And I assign the value "22" to a json object "[[@Person.Score(2)]]"
@@ -279,6 +284,7 @@ Scenario: Assign a value to all elements of a json object array
     |   | [[@Score(2)]] = 44	|
     |   | [[@Score(3)]] = 44	|
 
+@MSTest:DoNotParallelize
 Scenario: Assign a value to the end of a json object array within a json object
 	Given I assign the value "11" to a json object "[[@Person.Score()]]"
 	And I assign the value "22" to a json object "[[@Person.Score()]]"
@@ -299,6 +305,7 @@ Scenario: Assign a value to the end of a json object array within a json object
     | 2 | [[@Person.Score()]] = 22	|
     | 3 | [[@Person.Score()]] = 33	|
 
+@MSTest:DoNotParallelize
 Scenario: Assign a value to a new json object array within a json object
 	Given I assign the value "11" to a json object "[[@Person.Score1()]]"
 	And I assign the value "22" to a json object "[[@Person.Score2()]]"
@@ -319,6 +326,7 @@ Scenario: Assign a value to a new json object array within a json object
     | 2 | [[@Person.Score2()]] = 22	|
     | 3 | [[@Person.Score3()]] = 33	|
 
+@MSTest:DoNotParallelize
 Scenario: Assign a json variable with a calculate expression
 	Given I assign the value "=SUM(1,2,3)+1" to a json object "[[@Person.Score]]"
 	When the assign object tool is executed
@@ -354,6 +362,7 @@ Scenario: Assign a json variable with a calculate expression using json objects
     | 3 | [[@Person.Score(3)]] = 3   |
     | 4 | [[@Person.TotalScore]] = 4 |
 
+@MSTest:DoNotParallelize
 Scenario: Assign a json variable with a calculate expression using json array
 	Given I assign the value "1" to a json object "[[@Person.Score(1).val]]"
 	And I assign the value "2" to a json object "[[@Person.Score(2).val]]"
@@ -377,6 +386,7 @@ Scenario: Assign a json variable with a calculate expression using json array
     | 3 | [[@Person.Score(3).val]] = 3 |
     | 4 | [[@Person.TotalScore]] = 4   |
 
+@MSTest:DoNotParallelize
 Scenario: Assign two json and data 
 	Given I assign the value 1 to a json object "[[@rec.a(1)]]"	
 	And I assign the value 2 to a json object "[[@rec.a(2)]]"
@@ -395,12 +405,14 @@ Scenario: Assign two json and data
 	| 2 | [[@rec.a(2)]] = 2               |
 	| 3 | [[@Lr.a(1)]]  = Test1.Warewolf2 |
 
+@MSTest:DoNotParallelize
 Scenario: Assign the value of a negative json index
 	Given I assign the value 10 to a json object "[[@rec.set()]]"	
 	And I assign the value "[[@rec.set(-1)]]" to a json object "[[var]]"
 	When the assign object tool is executed
 	Then the execution has "AN" error
 
+@MSTest:DoNotParallelize
 Scenario: Assign a record set variable equal to a group calculation (sum)
 	Given I assign the value 30 to a json object "[[@rec(1).a]]"
 	And I assign the value 30 to a json object "[[@rec(1).b]]"
@@ -420,6 +432,7 @@ Scenario: Assign a record set variable equal to a group calculation (sum)
 	| 3 | [[@Result.a]] = 60 |
 
 
+@MSTest:DoNotParallelize
 Scenario: Assign a variable equal to a group calculation with scalar and recordset
 	Given I assign the value 1 to a json object "[[@a.b]]"
 	And I assign the value 2 to a json object "[[@b.a]]"
@@ -455,6 +468,7 @@ Scenario: Assign a json string to json object variable has two records
 	Then the value of "[[@Numbers.Five]]" equals "5"
 	Then the value of "[[@Numbers.Ten]]" equals "10"
 
+@MSTest:DoNotParallelize
 Scenario: Evaluating recursive recordset variable in a group calculation
 	Given I assign the value 1 to a json object "[[@rec(1).a]]"
 	And I assign the value "rec(1).a" to a json object "[[@rec(1).b]]"
@@ -474,6 +488,7 @@ Scenario: Evaluating recursive recordset variable in a group calculation
 	| 3 | [[@Result.a]] =  2       |
 
 
+@MSTest:DoNotParallelize
 Scenario: Evaluating recursive invalid recordset variable in a group calculation
 	Given I assign the value 1 to a json object "[[@rec(1).a]]"
 	And I assign the value "rec(1).a*" to a json object "[[@rec(1).b]]"

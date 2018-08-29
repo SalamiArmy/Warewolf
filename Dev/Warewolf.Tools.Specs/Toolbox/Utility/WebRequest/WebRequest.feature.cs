@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Utility.WebRequest
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "WebRequest", "\tIn order to download html content\r\n\tAs a Warewolf user\r\n\tI want a tool that I ca" +
                     "n input a url and get a html document", ProgrammingLanguage.CSharp, new string[] {
                         "Utility"});
@@ -88,9 +88,12 @@ namespace Warewolf.Tools.Specs.Toolbox.Utility.WebRequest
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a URL to download html")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void EnterAURLToDownloadHtml()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL to download html", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL to download html", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9
@@ -127,18 +130,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a badly formed URL")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void EnterABadlyFormedURL()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a badly formed URL", ((string[])(null)));
-#line 20
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a badly formed URL", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 21
- testRunner.Given("I have the url \"www.google.comx\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 22
- testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have the url \"www.google.comx\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 23
- testRunner.Then("the result should contain the string \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 24
+ testRunner.Then("the result should contain the string \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 25
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -147,14 +153,14 @@ this.ScenarioSetup(scenarioInfo);
             table3.AddRow(new string[] {
                         "www.google.comx",
                         ""});
-#line 25
+#line 26
  testRunner.And("the debug inputs as", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table4.AddRow(new string[] {
                         "[[result]] ="});
-#line 28
+#line 29
  testRunner.And("the debug output as", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -164,24 +170,27 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a URL made up of text and variables with no header")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void EnterAURLMadeUpOfTextAndVariablesWithNoHeader()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL made up of text and variables with no header", ((string[])(null)));
-#line 32
-this.ScenarioSetup(scenarioInfo);
-#line 33
-    testRunner.Given("I have the url \"http://[[site]][[file]]\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL made up of text and variables with no header", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 34
+this.ScenarioSetup(scenarioInfo);
+#line 35
+    testRunner.Given("I have the url \"http://[[site]][[file]]\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 36
  testRunner.And("I have a web request variable \"[[site]]\" equal to \"rsaklfsvrtfsbld:9810/api/produ" +
                     "cts/\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 35
- testRunner.And("I have a web request variable \"[[file]]\" equal to \"Get\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 36
- testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 37
+ testRunner.And("I have a web request variable \"[[file]]\" equal to \"Get\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 38
+ testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 39
  testRunner.Then("the result should contain the string \"{\"Id\":1,\"Name\":\"Television\",\"Category\":\"Ele" +
                     "ctronic\",\"Price\":82000.0}\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 38
+#line 40
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -190,14 +199,14 @@ this.ScenarioSetup(scenarioInfo);
             table5.AddRow(new string[] {
                         "http://[[site]][[file]] = http://rsaklfsvrtfsbld:9810/api/products/Get",
                         ""});
-#line 39
+#line 41
  testRunner.And("the debug inputs as", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table6.AddRow(new string[] {
                         "[[result]] = String"});
-#line 42
+#line 44
  testRunner.And("the debug output as", ((string)(null)), table6, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -207,25 +216,28 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a URL and 2 variables each with a header parameter (json)")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void EnterAURLAnd2VariablesEachWithAHeaderParameterJson()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL and 2 variables each with a header parameter (json)", ((string[])(null)));
-#line 47
-this.ScenarioSetup(scenarioInfo);
-#line 48
- testRunner.Given("I have the url \"http://rsaklfsvrtfsbld:9810/api/products/Get\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL and 2 variables each with a header parameter (json)", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 49
- testRunner.And("I have a web request variable \"[[ContentType]]\" equal to \"Content-Type\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 50
- testRunner.And("I have a web request variable \"[[Type]]\" equal to \"application/json\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have the url \"http://rsaklfsvrtfsbld:9810/api/products/Get\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 51
- testRunner.And("I have the Header \"[[ContentType]]: [[Type]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have a web request variable \"[[ContentType]]\" equal to \"Content-Type\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 52
- testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I have a web request variable \"[[Type]]\" equal to \"application/json\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 53
+ testRunner.And("I have the Header \"[[ContentType]]: [[Type]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 54
+ testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 55
  testRunner.Then("the result should contain the string \"{\"Id\":1,\"Name\":\"Television\",\"Category\":\"Ele" +
                     "ctronic\",\"Price\":82000.0}\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 54
+#line 56
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -234,7 +246,7 @@ this.ScenarioSetup(scenarioInfo);
             table7.AddRow(new string[] {
                         "http://rsaklfsvrtfsbld:9810/api/products/Get",
                         "[[ContentType]]: [[Type]] = Content-Type: application/json\""});
-#line 55
+#line 57
  testRunner.And("the debug inputs as", ((string)(null)), table7, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -242,7 +254,7 @@ this.ScenarioSetup(scenarioInfo);
             table8.AddRow(new string[] {
                         "[[result]] = [{ Id :1, Name : Television , Category : Electronic , Price :82000.0" +
                             "},{ Id :2, Name : Refrigerator ,"});
-#line 58
+#line 60
  testRunner.And("the debug output as", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -255,22 +267,22 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void EnterAURLAnd2VariablesEachWithAHeaderParameterXml()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL and 2 variables each with a header parameter (xml)", ((string[])(null)));
-#line 62
-this.ScenarioSetup(scenarioInfo);
-#line 63
- testRunner.Given("I have the url \"http://rsaklfsvrtfsbld:9810/api/products/Get\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 64
- testRunner.And("I have a web request variable \"[[ContentType]]\" equal to \"Content-Type\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 65
- testRunner.And("I have a web request variable \"[[Type]]\" equal to \"application/xml\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have the url \"http://rsaklfsvrtfsbld:9810/api/products/Get\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 66
- testRunner.And("I have the Header \"[[ContentType]]: [[Type]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have a web request variable \"[[ContentType]]\" equal to \"Content-Type\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 67
- testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I have a web request variable \"[[Type]]\" equal to \"application/xml\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 68
+ testRunner.And("I have the Header \"[[ContentType]]: [[Type]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 69
+ testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 70
  testRunner.Then("the result should contain the string \"<Product><Category>Electronic</Category><Id" +
                     ">1</Id><Name>Television</Name><Price>82000</Price></Product>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 69
+#line 71
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -279,7 +291,7 @@ this.ScenarioSetup(scenarioInfo);
             table9.AddRow(new string[] {
                         "http://rsaklfsvrtfsbld:9810/api/products/Get",
                         "[[ContentType]]: [[Type]] = Content-Type: application/xml\""});
-#line 70
+#line 72
  testRunner.And("the debug inputs as", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -287,7 +299,7 @@ this.ScenarioSetup(scenarioInfo);
             table10.AddRow(new string[] {
                         "[[result]] = <ArrayOfProduct xmlns:i= http://www.w3.org/2001/XMLSchema-instance  " +
                             "xmlns= http://schemas.datacontra"});
-#line 73
+#line 75
  testRunner.And("the debug output as", ((string)(null)), table10, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -297,19 +309,22 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a URL that returns json")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void EnterAURLThatReturnsJson()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL that returns json", ((string[])(null)));
-#line 77
-this.ScenarioSetup(scenarioInfo);
-#line 78
- testRunner.Given("I have the url \"http://rsaklfsvrtfsbld:9810/api/products/Get\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 79
- testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL that returns json", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 80
+this.ScenarioSetup(scenarioInfo);
+#line 81
+ testRunner.Given("I have the url \"http://rsaklfsvrtfsbld:9810/api/products/Get\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 82
+ testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 83
  testRunner.Then("the result should contain the string \"{\"Id\":1,\"Name\":\"Television\",\"Category\":\"Ele" +
                     "ctronic\",\"Price\":82000.0}\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 81
+#line 84
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -318,7 +333,7 @@ this.ScenarioSetup(scenarioInfo);
             table11.AddRow(new string[] {
                         "http://rsaklfsvrtfsbld:9810/api/products/Get",
                         ""});
-#line 82
+#line 85
  testRunner.And("the debug inputs as", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -326,7 +341,7 @@ this.ScenarioSetup(scenarioInfo);
             table12.AddRow(new string[] {
                         "[[result]] = [{ Id :1, Name : Television , Category : Electronic , Price :82000.0" +
                             "},{ Id :2, Name : Refrigerator ,"});
-#line 85
+#line 88
  testRunner.And("the debug output as", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -339,18 +354,18 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void EnterAURLThatReturnsXml()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL that returns xml", ((string[])(null)));
-#line 89
-this.ScenarioSetup(scenarioInfo);
-#line 90
- testRunner.Given("I have the url \"http://rsaklfsvrtfsbld:9810/api/products/Get\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 91
- testRunner.And("I have the Header \"Content-Type: application/xml\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 92
- testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 93
+ testRunner.Given("I have the url \"http://rsaklfsvrtfsbld:9810/api/products/Get\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 94
+ testRunner.And("I have the Header \"Content-Type: application/xml\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 95
+ testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 96
  testRunner.Then("the result should contain the string \"<Product><Category>Electronic</Category><Id" +
                     ">1</Id><Name>Television</Name><Price>82000</Price></Product>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 94
+#line 97
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -359,7 +374,7 @@ this.ScenarioSetup(scenarioInfo);
             table13.AddRow(new string[] {
                         "http://rsaklfsvrtfsbld:9810/api/products/Get",
                         ""});
-#line 95
+#line 98
  testRunner.And("the debug inputs as", ((string)(null)), table13, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -367,7 +382,7 @@ this.ScenarioSetup(scenarioInfo);
             table14.AddRow(new string[] {
                         "[[result]] = <ArrayOfProduct xmlns:i= http://www.w3.org/2001/XMLSchema-instance  " +
                             "xmlns= http://schemas.datacontra"});
-#line 98
+#line 101
  testRunner.And("the debug output as", ((string)(null)), table14, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -380,15 +395,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void EnterABlankURL()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a blank URL", ((string[])(null)));
-#line 102
-this.ScenarioSetup(scenarioInfo);
-#line 103
- testRunner.Given("I have the url \"\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 104
- testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 105
- testRunner.Then("the result should contain the string \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 106
+ testRunner.Given("I have the url \"\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 107
+ testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 108
+ testRunner.Then("the result should contain the string \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 109
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -397,14 +412,14 @@ this.ScenarioSetup(scenarioInfo);
             table15.AddRow(new string[] {
                         "\"\"",
                         ""});
-#line 107
+#line 110
  testRunner.And("the debug inputs as", ((string)(null)), table15, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table16.AddRow(new string[] {
                         "[[result]] ="});
-#line 110
+#line 113
  testRunner.And("the debug output as", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -414,18 +429,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a URL that is a negative index recordset")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void EnterAURLThatIsANegativeIndexRecordset()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL that is a negative index recordset", ((string[])(null)));
-#line 114
-this.ScenarioSetup(scenarioInfo);
-#line 115
- testRunner.Given("I have the url \"[[rec(-1).set]]\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 116
- testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 117
- testRunner.Then("the result should contain the string \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL that is a negative index recordset", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 118
+this.ScenarioSetup(scenarioInfo);
+#line 119
+ testRunner.Given("I have the url \"[[rec(-1).set]]\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 120
+ testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 121
+ testRunner.Then("the result should contain the string \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 122
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -434,14 +452,14 @@ this.ScenarioSetup(scenarioInfo);
             table17.AddRow(new string[] {
                         "[[rec(-1).set]] =",
                         ""});
-#line 119
+#line 123
  testRunner.And("the debug inputs as", ((string)(null)), table17, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table18.AddRow(new string[] {
                         "[[result]] ="});
-#line 122
+#line 126
  testRunner.And("the debug output as", ((string)(null)), table18, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -449,18 +467,24 @@ this.ScenarioSetup(scenarioInfo);
         
         public virtual void EnterANumberOrVariableThatDoesNotExistAsURL(string url, string timeoutSeconds, string header, string error, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a number or variable that does not exist as URL", exampleTags);
-#line 126
-this.ScenarioSetup(scenarioInfo);
-#line 127
- testRunner.Given(string.Format("I have the url \"{0}\" with timeoutSeconds \"{1}\"", url, timeoutSeconds), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 128
- testRunner.And(string.Format("I have the Header \"{0}\"", header), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 129
- testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 130
- testRunner.Then("the result should contain the string \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a number or variable that does not exist as URL", @__tags);
 #line 131
+this.ScenarioSetup(scenarioInfo);
+#line 132
+ testRunner.Given(string.Format("I have the url \"{0}\" with timeoutSeconds \"{1}\"", url, timeoutSeconds), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 133
+ testRunner.And(string.Format("I have the Header \"{0}\"", header), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 134
+ testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 135
+ testRunner.Then("the result should contain the string \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 136
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -471,14 +495,14 @@ this.ScenarioSetup(scenarioInfo);
                         string.Format("{0}", url),
                         string.Format("{0}", header),
                         string.Format("{0}", timeoutSeconds)});
-#line 132
+#line 137
  testRunner.And("the debug inputs as", ((string)(null)), table19, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table20.AddRow(new string[] {
                         "[[result]] ="});
-#line 135
+#line 140
  testRunner.And("the debug output as", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -488,6 +512,8 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a number or variable that does not exist as URL: Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", "88")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:timeoutSeconds", "")]
@@ -495,7 +521,7 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Unable to connect to the remote server")]
         public virtual void EnterANumberOrVariableThatDoesNotExistAsURL_Variant0()
         {
-#line 126
+#line 131
 this.EnterANumberOrVariableThatDoesNotExistAsURL("88", "", "", "Unable to connect to the remote server", ((string[])(null)));
 #line hidden
         }
@@ -504,6 +530,8 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("88", "", "", "Unable to connec
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a number or variable that does not exist as URL: Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", "[[y]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:timeoutSeconds", "")]
@@ -511,7 +539,7 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("88", "", "", "Unable to connec
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Invalid URI: The hostname could not be parsed")]
         public virtual void EnterANumberOrVariableThatDoesNotExistAsURL_Variant1()
         {
-#line 126
+#line 131
 this.EnterANumberOrVariableThatDoesNotExistAsURL("[[y]]", "", "", "Invalid URI: The hostname could not be parsed", ((string[])(null)));
 #line hidden
         }
@@ -520,6 +548,8 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("[[y]]", "", "", "Invalid URI: 
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a number or variable that does not exist as URL: Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", "http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:timeoutSeconds", "10")]
@@ -527,7 +557,7 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("[[y]]", "", "", "Invalid URI: 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Value [[y]] for TimeoutSeconds Text could not be interpreted as a numeric value.")]
         public virtual void EnterANumberOrVariableThatDoesNotExistAsURL_Variant2()
         {
-#line 126
+#line 131
 this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15", "10", "", "Value [[y]] for TimeoutSeconds Text could not be interpreted as a numeric value.", ((string[])(null)));
 #line hidden
         }
@@ -536,6 +566,8 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a number or variable that does not exist as URL: Variant 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", "http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:timeoutSeconds", "10")]
@@ -543,7 +575,7 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Value    for TimeoutSeconds Text could not be interpreted as a numeric value.")]
         public virtual void EnterANumberOrVariableThatDoesNotExistAsURL_Variant3()
         {
-#line 126
+#line 131
 this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15", "10", "", "Value    for TimeoutSeconds Text could not be interpreted as a numeric value.", ((string[])(null)));
 #line hidden
         }
@@ -552,6 +584,8 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a number or variable that does not exist as URL: Variant 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 4")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", "http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:timeoutSeconds", "10")]
@@ -559,7 +593,7 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Value sdf for TimeoutSeconds Text could not be interpreted as a numeric value.")]
         public virtual void EnterANumberOrVariableThatDoesNotExistAsURL_Variant4()
         {
-#line 126
+#line 131
 this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15", "10", "", "Value sdf for TimeoutSeconds Text could not be interpreted as a numeric value.", ((string[])(null)));
 #line hidden
         }
@@ -568,6 +602,8 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a number or variable that does not exist as URL: Variant 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", "http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:timeoutSeconds", "10")]
@@ -575,7 +611,7 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Index was outside the bounds of the array")]
         public virtual void EnterANumberOrVariableThatDoesNotExistAsURL_Variant5()
         {
-#line 126
+#line 131
 this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15", "10", "21245", "Index was outside the bounds of the array", ((string[])(null)));
 #line hidden
         }
@@ -584,6 +620,8 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a number or variable that does not exist as URL: Variant 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", "http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:timeoutSeconds", "10")]
@@ -591,7 +629,7 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Object reference not set to instance  of object")]
         public virtual void EnterANumberOrVariableThatDoesNotExistAsURL_Variant6()
         {
-#line 126
+#line 131
 this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15", "10", "[[var]]", "Object reference not set to instance  of object", ((string[])(null)));
 #line hidden
         }
@@ -603,15 +641,15 @@ this.EnterANumberOrVariableThatDoesNotExistAsURL("http://tst-ci-remote-obsolete:
         public virtual void EnterAURLThatIsANullVariable()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL that is a null variable", ((string[])(null)));
-#line 149
+#line 154
 this.ScenarioSetup(scenarioInfo);
-#line 150
+#line 155
  testRunner.Given("I have a formatnumber variable \"[[var]]\" equal to NULL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 151
+#line 156
  testRunner.And("I have the url \"[[var]]\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 152
+#line 157
  testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 153
+#line 158
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -620,7 +658,7 @@ this.ScenarioSetup(scenarioInfo);
             table21.AddRow(new string[] {
                         "[[var]] =",
                         ""});
-#line 154
+#line 159
  testRunner.And("the debug inputs as", ((string)(null)), table21, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -630,16 +668,19 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a URL that is a non existent variable")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void EnterAURLThatIsANonExistentVariable()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL that is a non existent variable", ((string[])(null)));
-#line 159
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL that is a non existent variable", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 164
 this.ScenarioSetup(scenarioInfo);
-#line 160
+#line 165
  testRunner.Given("I have the url \"[[var]]\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 161
+#line 166
  testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 162
+#line 167
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -648,7 +689,7 @@ this.ScenarioSetup(scenarioInfo);
             table22.AddRow(new string[] {
                         "[[var]] =",
                         ""});
-#line 163
+#line 168
  testRunner.And("the debug inputs as", ((string)(null)), table22, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -657,13 +698,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void EnterAURLToDownloadHtmlWithTimeoutSpecifiedTooShort(string url, string timeoutSeconds, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a URL to download html with timeout specified too short", exampleTags);
-#line 167
+#line 172
 this.ScenarioSetup(scenarioInfo);
-#line 168
+#line 173
  testRunner.Given(string.Format("I have the url \"{0}\" with timeoutSeconds \"{1}\"", url, timeoutSeconds), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 169
+#line 174
  testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 170
+#line 175
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -674,14 +715,14 @@ this.ScenarioSetup(scenarioInfo);
                         string.Format("{0}", url),
                         "",
                         string.Format("{0}", timeoutSeconds)});
-#line 171
+#line 176
  testRunner.And("the debug inputs as", ((string)(null)), table23, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table24.AddRow(new string[] {
                         "[[result]] = String"});
-#line 174
+#line 179
  testRunner.And("the debug output as", ((string)(null)), table24, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -689,30 +730,30 @@ this.ScenarioSetup(scenarioInfo);
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a URL to download html with timeout specified too short: http://tst-ci-remo" +
-            "te:3142/Public/Wait?WaitSeconds=150")]
+            "te-obsolete:3142/Public/Wait?WaitSeconds=150")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=150")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", "http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=150")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:timeoutSeconds", "10")]
-        public virtual void EnterAURLToDownloadHtmlWithTimeoutSpecifiedTooShort_HttpTst_Ci_Remote3142PublicWaitWaitSeconds150()
+        public virtual void EnterAURLToDownloadHtmlWithTimeoutSpecifiedTooShort_HttpTst_Ci_Remote_Obsolete3142PublicWaitWaitSeconds150()
         {
-#line 167
+#line 172
 this.EnterAURLToDownloadHtmlWithTimeoutSpecifiedTooShort("http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=150", "10", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a URL to download html with timeout specified too short: http://tst-ci-remo" +
-            "te:3142/Public/Wait?WaitSeconds=15")]
+            "te-obsolete:3142/Public/Wait?WaitSeconds=15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", "http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:timeoutSeconds", "10")]
-        public virtual void EnterAURLToDownloadHtmlWithTimeoutSpecifiedTooShort_HttpTst_Ci_Remote3142PublicWaitWaitSeconds15()
+        public virtual void EnterAURLToDownloadHtmlWithTimeoutSpecifiedTooShort_HttpTst_Ci_Remote_Obsolete3142PublicWaitWaitSeconds15()
         {
-#line 167
+#line 172
 this.EnterAURLToDownloadHtmlWithTimeoutSpecifiedTooShort("http://tst-ci-remote-obsolete:3142/Public/Wait?WaitSeconds=15", "10", ((string[])(null)));
 #line hidden
         }
@@ -721,26 +762,29 @@ this.EnterAURLToDownloadHtmlWithTimeoutSpecifiedTooShort("http://tst-ci-remote-o
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enter a recordset star input and output")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "WebRequest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void EnterARecordsetStarInputAndOutput()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a recordset star input and output", ((string[])(null)));
-#line 182
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enter a recordset star input and output", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 188
 this.ScenarioSetup(scenarioInfo);
-#line 183
+#line 189
  testRunner.Given("I have a web request variable \"[[urls().url]]\" equal to \"http://rsaklfsvrtfsbld/I" +
                     "ntegrationTestSite/Proxy.ashx\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 184
- testRunner.And("I have a web request variable \"[[urls().url]]\" equal to \"http://tst-ci-remote-obsolete:314" +
-                    "2/secure/Wait?WaitSeconds=15\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 185
+#line 190
+ testRunner.And("I have a web request variable \"[[urls().url]]\" equal to \"http://tst-ci-remote-obs" +
+                    "olete:3142/secure/Wait?WaitSeconds=15\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 191
  testRunner.And("I have a web request variable \"[[results().res]]\" equal to \"res1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 186
+#line 192
  testRunner.And("I have the url \"[[urls(*).url]]\" without timeout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 187
+#line 193
  testRunner.And("I have web request result as \"[[results(*).res]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 188
+#line 194
  testRunner.When("the web request tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 189
+#line 195
  testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -752,7 +796,7 @@ this.ScenarioSetup(scenarioInfo);
             table25.AddRow(new string[] {
                         "[[urls(2).url]] = http://tst-ci-remote-obsolete:3142/secure/Wait?WaitSeconds=15",
                         ""});
-#line 190
+#line 196
  testRunner.And("the debug inputs as", ((string)(null)), table25, "And ");
 #line hidden
             this.ScenarioCleanup();

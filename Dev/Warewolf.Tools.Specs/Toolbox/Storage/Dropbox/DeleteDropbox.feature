@@ -4,6 +4,7 @@ Feature: DeleteDropbox
 	As a Warewolf User
 	I want to be to delete files on a dropbox account
 
+@MSTest:DoNotParallelize
 Scenario: Open new Delete Dropbox Tool
 	And I drag Delete Dropbox Tool onto the design surface
     And Dropbox Delete New is Enabled
@@ -11,7 +12,7 @@ Scenario: Open new Delete Dropbox Tool
 	And Delete Dropbox File is Enabled
 	When I Click Delete New
 	
-	
+@MSTest:DoNotParallelize
 Scenario: Editing Delete Dropbox Tool
 	And I drag Delete Dropbox Tool onto the design surface
     And Dropbox Delete New is Enabled
@@ -21,7 +22,7 @@ Scenario: Editing Delete Dropbox Tool
 	Then Dropbox Delete Edit is Enabled
 	When I click Dropbox Delete Edit
 	
-
+@MSTest:DoNotParallelize
 Scenario: Change Delete Dropbox Source
 	And I drag Delete Dropbox Tool onto the design surface
     And Dropbox Delete New is Enabled

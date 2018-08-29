@@ -4,6 +4,7 @@ Feature: ForEach
 	As a Warewolf user
 	I want to a tool that will allow me to execute other tools in an loop
 
+@MSTest:DoNotParallelize
 Scenario: Execute a foreach over a tool using a recordset with 3 rows
 	Given There is a recordset in the datalist with this shape
 	| rs             | value |
@@ -21,6 +22,7 @@ Scenario: Execute a foreach over a tool using a recordset with 3 rows
     |                | [[rs(2)]] = |
     |                | [[rs(3)]] = | 
 
+@MSTest:DoNotParallelize
 Scenario: Execute a foreach over a tool using a recordset with 4 rows
 	Given There is a recordset in the datalist with this shape
 	| rs             | value |
@@ -40,6 +42,7 @@ Scenario: Execute a foreach over a tool using a recordset with 4 rows
 	|                | [[rs(3)]] = |
 	|                | [[rs(4)]] = |
 	
+@MSTest:DoNotParallelize
 Scenario Outline: Execute a foreach over a tool using a recordset with invalid
 	Given There is a recordset in the datalist with this shape
 	| rs             | value |
@@ -59,6 +62,7 @@ Scenario Outline: Execute a foreach over a tool using a recordset with invalid
 	| InRecordset | [[rs()]]#$%3 | Failure |
 
 
+@MSTest:DoNotParallelize
 Scenario: Execute a foreach over a tool for range 0 to 0
 	And I have selected the foreach type as "InRange" from 0 to 0
 	And the underlying dropped activity is a(n) "Tool"
@@ -76,6 +80,7 @@ Scenario: Execute a foreach over a tool for range 1 to 5
 	|            | From | To |
 	| * in Range | 1    | 5  |
 
+@MSTest:DoNotParallelize
 Scenario: Execute a foreach over a tool for range 9 to 10
 	And I have selected the foreach type as "InRange" from 9 to 10
 	And the underlying dropped activity is a(n) "Tool"
@@ -96,6 +101,7 @@ Scenario: Execute a foreach over a tool with Csv Indexes 1,2,3
 	|          | Csv Indexes |
 	| * in CSV | 1,2,3       |
 
+@MSTest:DoNotParallelize
 Scenario: Execute a foreach over a tool with Csv Indexes 2,4,6
 	And I have selected the foreach type as "InCSV" as "2,4,6"
 	And the underlying dropped activity is a(n) "Tool"

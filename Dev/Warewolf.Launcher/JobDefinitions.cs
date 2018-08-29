@@ -72,6 +72,8 @@ namespace Warewolf.Launcher
                 ["Studio Test Framework With Subworkflow Specs"] = new Tuple<string, string>("Dev2.Activities.Specs", "StudioTestFrameworkWithSubworkflow"),
                 ["Studio Test Framework With Utility Tools Specs"] = new Tuple<string, string>("Dev2.Activities.Specs", "StudioTestFrameworkWithUtilityTools"),
                 ["Other Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", null),
+                ["Server Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "ServerPermissionsSecurity"),
+                //Release Resource Tests
                 ["Conflicting Contribute View And Execute Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "ConflictingContributeViewExecutePermissionsSecurity"),
                 ["Conflicting Execute Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "ConflictingExecutePermissionsSecurity"),
                 ["Conflicting View And Execute Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "ConflictingViewExecutePermissionsSecurity"),
@@ -79,8 +81,6 @@ namespace Warewolf.Launcher
                 ["No Conflicting Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "NoConflictingPermissionsSecurity"),
                 ["Overlapping User Groups Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "OverlappingUserGroupsPermissionsSecurity"),
                 ["Resource Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "ResourcePermissionsSecurity"),
-                ["Server Permissions Security Specs"] = new Tuple<string, string>("Warewolf.Security.Specs", "ServerPermissionsSecurity"),
-                //Release Resource Tests
                 ["Example Workflow Execution Specs"] = new Tuple<string, string>("Dev2.Activities.Specs", "ExampleWorkflowExecution"),
                 //Desktop UI Tests
                 ["Other UI Tests"] = new Tuple<string, string>("Warewolf.UI.Tests", null),

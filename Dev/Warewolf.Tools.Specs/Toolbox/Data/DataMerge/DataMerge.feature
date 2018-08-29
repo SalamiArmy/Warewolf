@@ -20,6 +20,7 @@ Scenario: Merge a scalar to a scalar using merge type none
 	|                              |
 	| [[result]] = Warewolf Rocks |
 
+@MSTest:DoNotParallelize
 Scenario: Merge a recordset table and free text using None
 	Given a merge recordset
 	| rs       | val |
@@ -67,6 +68,7 @@ Scenario: Merge a recordset table and free text using Chars
 	|                               |
 	| [[result]] = 100002000030000 |
 
+@MSTest:DoNotParallelize
 Scenario: Merge a recordset table and free text using New Line
 	Given a merge recordset
 	| rs       | val |
@@ -121,6 +123,7 @@ Scenario: Merge a variable using index that is a char
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Merge a variable using index that is a variable and is blank
 	Given a merge variable "[[a]]" equal to "aA "
 	And a merge variable "[[b]]" equal to ""	
@@ -176,6 +179,7 @@ Scenario: Merge a recordset that has xml data using Tabs
 	| [[result]] = <record>	<x id="1">One</x>	</record><record>	<x id="2">two</x>	</record><record>	<x id="3">three</x>	</record> |
 
 
+@MSTest:DoNotParallelize
 Scenario: Merge a short string using big index and padding and alignment
 	Given a merge variable "[[a]]" equal to "Warewolf" 
 	And a merge variable "[[b]]" equal to "123"
@@ -242,6 +246,7 @@ Scenario: Merge a long string using small index and padding and alignment at inv
 	|               |
 	| [[result]] = |
 		
+@MSTest:DoNotParallelize
 Scenario: Merge a long string using small index and padding multiple character and alignment at index
 	Given a merge variable "[[a]]" equal to "Warewolf" 
 	And a merge variable "[[b]]" equal to "12345"
@@ -269,6 +274,7 @@ Scenario: Merge a negative recordset index Input
 	|              |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Merge a negative recordset index for String At
 	Given an Input "12" and merge type "Index" and string at as "[[my(-1).a]]" and Padding " " and Alignment "Left"	
 	When the data merge tool is executed

@@ -29,29 +29,25 @@ namespace Dev2.Activities.Specs.Toolbox.Scripting.Script
         public ScriptSteps(ScenarioContext scenarioContext)
             : base(scenarioContext)
         {
-            if (scenarioContext == null)
-            {
-                throw new ArgumentNullException(nameof(scenarioContext));
-            }
-
-            this.scenarioContext = scenarioContext;
+            this.scenarioContext = scenarioContext ?? throw new ArgumentNullException("scenarioContext");
         }
 
-        [BeforeFeature("PythonFeature")]
-        public static void SetupPython()
+        [BeforeScenario("PythonFeature")]
+        public void SetupPython()
         {
-            FeatureContext.Current.Add("pythonActivity", new DsfPythonActivity());
+            scenarioContext.Add("pythonActivity", new DsfPythonActivity());
         }
 
-        [BeforeFeature("JavascriptFeature")]
-        public static void SetupJavascript()
+        [BeforeScenario("JavascriptFeature")]
+        public void SetupJavascript()
         {
-            FeatureContext.Current.Add("javascript", new DsfJavascriptActivity());
+            scenarioContext.Add("javascript", new DsfJavascriptActivity());
         }
-        [BeforeFeature("RubyFeature")]
-        public static void SetupRuby()
+
+        [BeforeScenario("RubyFeature")]
+        public void SetupRuby()
         {
-            FeatureContext.Current.Add("rubyActivity", new DsfRubyActivity());
+            scenarioContext.Add("rubyActivity", new DsfRubyActivity());
         }
         
 
@@ -85,7 +81,7 @@ namespace Dev2.Activities.Specs.Toolbox.Scripting.Script
                 return;
             }
 
-            FeatureContext.Current.TryGetValue("pythonActivity", out DsfPythonActivity pythonActivity);
+            scenarioContext.TryGetValue("pythonActivity", out DsfPythonActivity pythonActivity);
 
             if (pythonActivity != null)
             {
@@ -100,7 +96,7 @@ namespace Dev2.Activities.Specs.Toolbox.Scripting.Script
                 return;
             }
 
-            FeatureContext.Current.TryGetValue("rubyActivity", out DsfRubyActivity rubyActivity);
+            scenarioContext.TryGetValue("rubyActivity", out DsfRubyActivity rubyActivity);
 
             if (rubyActivity != null)
             {

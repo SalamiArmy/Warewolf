@@ -74,6 +74,7 @@
     <Compile Include="AssignTests.cs" />
     <Compile Include="EvalFunctionTests.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortTest.cs" />
     <Compile Include="TestAst.cs" />
     <Compile Include="TestCommonFunctions.cs" />
@@ -81,9 +82,6 @@
     <Compile Include="TestDistinct.cs" />
     <Compile Include="TestEvaluation.cs" />
     <Compile Include="TestParser.cs" />
-    <Compile Include="..\AssemblyCommonInfo.cs" Condition="Exists('..\AssemblyCommonInfo.cs')">
-      <Link>Properties\AssemblyCommonInfo.cs</Link>
-    </Compile>
     <None Include="..\Run Tests.ps1">
       <Visible>False</Visible>
       <Link>Run Tests.ps1</Link>

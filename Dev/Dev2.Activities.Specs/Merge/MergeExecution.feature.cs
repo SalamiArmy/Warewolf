@@ -43,7 +43,7 @@ namespace Dev2.Activities.Specs.Merge
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "MergeExecution", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
                     "f two numbers", ProgrammingLanguage.CSharp, new string[] {
                         "WorkflowMerging"});
@@ -88,30 +88,33 @@ namespace Dev2.Activities.Specs.Merge
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge AssignOnlyWithNoOutput Workflow with Same Version")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeAssignOnlyWithNoOutputWorkflowWithSameVersion()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge AssignOnlyWithNoOutput Workflow with Same Version", ((string[])(null)));
-#line 7
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge AssignOnlyWithNoOutput Workflow with Same Version", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 8
-  testRunner.Given("I Load workflow \"AssignOnlyWithNoOutput\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 9
-  testRunner.And("I Load workflow \"AssignOnlyWithNoOutput\" from \"Remote Container\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Given("I Load workflow \"AssignOnlyWithNoOutput\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
-  testRunner.When("Merge Window is opened with remote \"AssignOnlyWithNoOutput\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.And("I Load workflow \"AssignOnlyWithNoOutput\" from \"Remote Container\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
-  testRunner.Then("Current workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.When("Merge Window is opened with remote \"AssignOnlyWithNoOutput\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
-  testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("Current workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 13
-  testRunner.And("Different workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 14
-  testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 15
-  testRunner.And("Merge conflicts count is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
-  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Merge conflicts count is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
+  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 18
   testRunner.And("Merge window has no Conflicting tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -121,30 +124,33 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge VersionHelloWorld Workflow")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeVersionHelloWorldWorkflow()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge VersionHelloWorld Workflow", ((string[])(null)));
-#line 20
-this.ScenarioSetup(scenarioInfo);
-#line 21
-  testRunner.Given("I Load workflow \"MergeHelloWorld\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge VersionHelloWorld Workflow", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 22
-  testRunner.And("I Load workflow \"VersionHelloWorld\" from \"Remote Container\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 23
-  testRunner.When("Merge Window is opened with remote \"VersionHelloWorld\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.Given("I Load workflow \"MergeHelloWorld\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 24
-  testRunner.Then("Current workflow contains \"6\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.And("I Load workflow \"VersionHelloWorld\" from \"Remote Container\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 25
-  testRunner.Then("Current workflow contains \"5\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.When("Merge Window is opened with remote \"VersionHelloWorld\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 26
-  testRunner.And("Different workflow contains \"6\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"6\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 27
-  testRunner.And("Different workflow contains \"5\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"5\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 28
-  testRunner.And("Merge conflicts count is \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"6\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 29
-  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"5\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 30
+  testRunner.And("Merge conflicts count is \"11\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 31
+  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 32
   testRunner.And("Merge window has \"1\" Conflicting tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -154,30 +160,33 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge WorkFlowWithOneScalar different input mapping")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkFlowWithOneScalarDifferentInputMapping()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge WorkFlowWithOneScalar different input mapping", ((string[])(null)));
-#line 32
-this.ScenarioSetup(scenarioInfo);
-#line 33
-  testRunner.Given("I Load workflow \"WorkFlowWithOneScalar\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 34
-  testRunner.And("I Load workflow version of WorkFlowWithOneScalar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge WorkFlowWithOneScalar different input mapping", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 35
-  testRunner.When("Merge Window is opened with local \"WorkFlowWithOneScalar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 36
-  testRunner.Then("Current workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Given("I Load workflow \"WorkFlowWithOneScalar\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 37
-  testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.And("I Load workflow version of WorkFlowWithOneScalar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 38
-  testRunner.And("Different workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.When("Merge Window is opened with local \"WorkFlowWithOneScalar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 39
-  testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 40
-  testRunner.And("Merge conflicts count is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 41
-  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 42
+  testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 43
+  testRunner.And("Merge conflicts count is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 44
+  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 45
   testRunner.And("Merge window has \"2\" Conflicting tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -187,30 +196,33 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge WorkFlowWithOneRecordSet different input mapping")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkFlowWithOneRecordSetDifferentInputMapping()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge WorkFlowWithOneRecordSet different input mapping", ((string[])(null)));
-#line 44
-this.ScenarioSetup(scenarioInfo);
-#line 45
-  testRunner.Given("I Load workflow \"WorkFlowWithOneRecordSet\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 46
-  testRunner.And("I Load workflow version of WorkFlowWithOneRecordSet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 47
-  testRunner.When("Merge Window is opened with local \"WorkFlowWithOneRecordSet\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge WorkFlowWithOneRecordSet different input mapping", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 48
-  testRunner.Then("Current workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 49
-  testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Given("I Load workflow \"WorkFlowWithOneRecordSet\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 50
-  testRunner.And("Different workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I Load workflow version of WorkFlowWithOneRecordSet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 51
-  testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.When("Merge Window is opened with local \"WorkFlowWithOneRecordSet\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 52
-  testRunner.And("Merge conflicts count is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 53
-  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 54
+  testRunner.And("Different workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 55
+  testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 56
+  testRunner.And("Merge conflicts count is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 57
+  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 58
   testRunner.And("Merge window has \"2\" Conflicting tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -220,30 +232,33 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge WorkFlowWithOneObject different input mapping")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkFlowWithOneObjectDifferentInputMapping()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge WorkFlowWithOneObject different input mapping", ((string[])(null)));
-#line 56
-this.ScenarioSetup(scenarioInfo);
-#line 57
-  testRunner.Given("I Load workflow \"WorkFlowWithOneObject\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 58
-  testRunner.And("I Load workflow version of WorkFlowWithOneObject", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 59
-  testRunner.When("Merge Window is opened with local \"WorkFlowWithOneObject\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 60
-  testRunner.Then("Current workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge WorkFlowWithOneObject different input mapping", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 61
-  testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 62
-  testRunner.And("Different workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Given("I Load workflow \"WorkFlowWithOneObject\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 63
-  testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I Load workflow version of WorkFlowWithOneObject", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 64
-  testRunner.And("Merge conflicts count is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.When("Merge Window is opened with local \"WorkFlowWithOneObject\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 65
-  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 66
+  testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 67
+  testRunner.And("Different workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 68
+  testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 69
+  testRunner.And("Merge conflicts count is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 70
+  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 71
   testRunner.And("Merge window has \"2\" Conflicting tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -254,29 +269,32 @@ this.ScenarioSetup(scenarioInfo);
             "")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkflowWithAssignToolAsFirstToolAndSplitToolAsSecondToolCount()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow with Assign tool As First Tool And Split tool as Second tool count" +
-                    "", ((string[])(null)));
-#line 68
-this.ScenarioSetup(scenarioInfo);
-#line 69
-  testRunner.Given("I Load workflow \"WorkflowWithDifferentToolSequence\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 70
-  testRunner.And("I Load workflow \"WorkflowWithDifferentToolSequence\" from \"Remote Container\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 71
-  testRunner.When("Merge Window is opened with remote \"WorkflowWithDifferentToolSequence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 72
-  testRunner.Then("Current workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 73
-  testRunner.Then("Current workflow contains \"2\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                    "", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 74
-  testRunner.And("Different workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 75
-  testRunner.And("Different workflow contains \"2\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Given("I Load workflow \"WorkflowWithDifferentToolSequence\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 76
-  testRunner.And("Merge conflicts count is \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I Load workflow \"WorkflowWithDifferentToolSequence\" from \"Remote Container\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 77
+  testRunner.When("Merge Window is opened with remote \"WorkflowWithDifferentToolSequence\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 78
+  testRunner.Then("Current workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 79
+  testRunner.Then("Current workflow contains \"2\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 80
+  testRunner.And("Different workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 81
+  testRunner.And("Different workflow contains \"2\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 82
+  testRunner.And("Merge conflicts count is \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 83
   testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -286,30 +304,33 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge Workflow Containing SequenceTool With Different Children Counts Equals One")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkflowContainingSequenceToolWithDifferentChildrenCountsEqualsOne()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing SequenceTool With Different Children Counts Equals One", ((string[])(null)));
-#line 79
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing SequenceTool With Different Children Counts Equals One", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 86
 this.ScenarioSetup(scenarioInfo);
-#line 80
+#line 87
   testRunner.Given("I Load workflow \"WorkflowWithSequenceToolWithDifferentChildren\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 81
+#line 88
   testRunner.And("I Load workflow version \"1\" of \"WorkflowWithSequenceToolWithDifferentChildren\" fr" +
                     "om \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 82
+#line 89
   testRunner.When("Merge Window is opened with local \"WorkflowWithSequenceToolWithDifferentChildren\"" +
                     "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 83
+#line 90
   testRunner.Then("Current workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 84
+#line 91
   testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 85
+#line 92
   testRunner.And("Different workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 86
+#line 93
   testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 87
+#line 94
   testRunner.And("Merge conflicts count is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 88
+#line 95
   testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -319,31 +340,34 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge Workflow Containing SequenceTool With Different Children Sequence")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkflowContainingSequenceToolWithDifferentChildrenSequence()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing SequenceTool With Different Children Sequence", ((string[])(null)));
-#line 90
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing SequenceTool With Different Children Sequence", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 98
 this.ScenarioSetup(scenarioInfo);
-#line 91
+#line 99
   testRunner.Given("I Load workflow \"WorkflowWithSequenceToolWithChildrenInDifferentOrder\" from \"loca" +
                     "lhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 92
+#line 100
   testRunner.And("I Load workflow version \"1\" of \"WorkflowWithSequenceToolWithChildrenInDifferentOr" +
                     "der\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 93
+#line 101
   testRunner.When("Merge Window is opened with local \"WorkflowWithSequenceToolWithChildrenInDifferen" +
                     "tOrder\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 94
+#line 102
   testRunner.Then("Current workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 95
+#line 103
   testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 96
+#line 104
   testRunner.And("Different workflow contains \"2\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 97
+#line 105
   testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 98
+#line 106
   testRunner.And("Merge conflicts count is \"3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 99
+#line 107
   testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -353,29 +377,32 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge Workflow Containing Same tools But disconnected Arms")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkflowContainingSameToolsButDisconnectedArms()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing Same tools But disconnected Arms", ((string[])(null)));
-#line 101
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing Same tools But disconnected Arms", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 110
 this.ScenarioSetup(scenarioInfo);
-#line 102
+#line 111
   testRunner.Given("I Load workflow \"WorkflowWithAssignToolsWithDisconnectedArms\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 103
+#line 112
   testRunner.And("I Load workflow \"WorkflowWithAssignToolsWithDisconnectedArms\" from \"Remote Contai" +
                     "ner\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 104
+#line 113
   testRunner.When("Merge Window is opened with remote \"WorkflowWithAssignToolsWithDisconnectedArms\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 105
+#line 114
   testRunner.Then("Current workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 106
+#line 115
   testRunner.Then("Current workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 107
+#line 116
   testRunner.And("Different workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 108
+#line 117
   testRunner.And("Different workflow contains \"1\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 109
+#line 118
   testRunner.And("Merge conflicts count is \"4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 110
+#line 119
   testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -385,36 +412,39 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge Workflow Containing Removed tool with same Variable List")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkflowContainingRemovedToolWithSameVariableList()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing Removed tool with same Variable List", ((string[])(null)));
-#line 112
-this.ScenarioSetup(scenarioInfo);
-#line 113
-  testRunner.Given("I Load workflow \"MergeRemovedTool\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 114
-  testRunner.And("I Load workflow version of MergeRemovedTool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 115
-  testRunner.When("Merge Window is opened with local \"MergeRemovedTool\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 116
-  testRunner.Then("Current workflow contains \"4\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 117
-  testRunner.Then("Current workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 118
-  testRunner.And("Different workflow contains \"4\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 119
-  testRunner.And("Different workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 120
-  testRunner.And("Merge conflicts count is \"7\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 121
-  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing Removed tool with same Variable List", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 122
-  testRunner.And("I select Current Tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 123
-  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Given("I Load workflow \"MergeRemovedTool\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 124
-  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I Load workflow version of MergeRemovedTool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 125
+  testRunner.When("Merge Window is opened with local \"MergeRemovedTool\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 126
+  testRunner.Then("Current workflow contains \"4\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 127
+  testRunner.Then("Current workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 128
+  testRunner.And("Different workflow contains \"4\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 129
+  testRunner.And("Different workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 130
+  testRunner.And("Merge conflicts count is \"7\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 131
+  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 132
+  testRunner.And("I select Current Tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 133
+  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 134
+  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 135
   testRunner.Then("Save is enabled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -424,54 +454,57 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge Workflow Containing Switch tool")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkflowContainingSwitchTool()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing Switch tool", ((string[])(null)));
-#line 127
-this.ScenarioSetup(scenarioInfo);
-#line 128
-  testRunner.Given("I Load workflow \"MergeSwitchTool\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 129
-  testRunner.And("I Load workflow version of MergeSwitchTool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 130
-  testRunner.When("Merge Window is opened with local \"MergeSwitchTool\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 131
-  testRunner.Then("Current workflow contains \"4\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 132
-  testRunner.Then("Current workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 133
-  testRunner.And("Different workflow contains \"4\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 134
-  testRunner.And("Different workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 135
-  testRunner.And("Merge conflicts count is \"7\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 136
-  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 137
-  testRunner.And("conflict \"2\" Current matches tool \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing Switch tool", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 138
-  testRunner.And("conflict \"2\" Different matches tool \"Switch\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 139
-  testRunner.And("conflict \"3\" Current Connector matches tool \"Switch : 1 -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Given("I Load workflow \"MergeSwitchTool\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 140
-  testRunner.And("conflict \"3\" Different Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I Load workflow version of MergeSwitchTool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 141
-  testRunner.And("conflict \"4\" Current Connector matches tool \"Switch : Default -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.When("Merge Window is opened with local \"MergeSwitchTool\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 142
-  testRunner.And("conflict \"4\" Different Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"4\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 143
-  testRunner.And("conflict \"5\" Current matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 144
-  testRunner.And("conflict \"6\" Current matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"4\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 145
-  testRunner.And("I select Current Tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 146
-  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Merge conflicts count is \"7\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 147
-  testRunner.And("I select Current Tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 148
-  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("conflict \"2\" Current matches tool \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 149
+  testRunner.And("conflict \"2\" Different matches tool \"Switch\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 150
+  testRunner.And("conflict \"3\" Current Connector matches tool \"Switch : 1 -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 151
+  testRunner.And("conflict \"3\" Different Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 152
+  testRunner.And("conflict \"4\" Current Connector matches tool \"Switch : Default -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 153
+  testRunner.And("conflict \"4\" Different Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 154
+  testRunner.And("conflict \"5\" Current matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 155
+  testRunner.And("conflict \"6\" Current matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 156
+  testRunner.And("I select Current Tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 157
+  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 158
+  testRunner.And("I select Current Tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 159
+  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 160
   testRunner.Then("Save is enabled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -481,68 +514,71 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge Workflow Containing Position Change tools")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkflowContainingPositionChangeTools()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing Position Change tools", ((string[])(null)));
-#line 151
-this.ScenarioSetup(scenarioInfo);
-#line 152
-  testRunner.Given("I Load workflow \"MergeToolPositionChange\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 153
-  testRunner.And("I Load workflow version conflict MergeToolPositionChange", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 154
-  testRunner.When("Merge Window is opened with local \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 155
-  testRunner.Then("Current workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 156
-  testRunner.Then("Current workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 157
-  testRunner.And("Different workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 158
-  testRunner.And("Different workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 159
-  testRunner.And("Current workflow header is \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 160
-  testRunner.And("Current workflow header version is \"[Current]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 161
-  testRunner.And("Different workflow header is \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 162
-  testRunner.And("Different workflow header version is \"[v.2]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Containing Position Change tools", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 163
-  testRunner.And("Merge conflicts count is \"6\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 164
-  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Given("I Load workflow \"MergeToolPositionChange\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 165
-  testRunner.And("conflict \"0\" Current matches tool \"Start\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I Load workflow version conflict MergeToolPositionChange", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 166
-  testRunner.And("conflict \"0\" Different matches tool \"Start\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.When("Merge Window is opened with local \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 167
-  testRunner.And("conflict \"1\" Current Connector matches tool \"Start -> Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 168
-  testRunner.And("conflict \"1\" Different Connector matches tool \"Start -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 169
-  testRunner.And("conflict \"2\" Current matches tool \"Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 170
-  testRunner.And("conflict \"2\" Different matches tool \"Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 171
-  testRunner.And("conflict \"3\" Current Connector matches tool \"Data Merge (0) -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Current workflow header is \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 172
-  testRunner.And("conflict \"3\" Different Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Current workflow header version is \"[Current]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 173
-  testRunner.And("conflict \"4\" Current matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow header is \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 174
-  testRunner.And("conflict \"4\" Different matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow header version is \"[v.2]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 175
-  testRunner.And("conflict \"5\" Current Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Merge conflicts count is \"6\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 176
-  testRunner.And("conflict \"5\" Different Connector matches tool \"Assign (0) -> Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 177
-  testRunner.And("I select Current Tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("conflict \"0\" Current matches tool \"Start\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 178
-  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("conflict \"0\" Different matches tool \"Start\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 179
-  testRunner.And("I select Different Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("conflict \"1\" Current Connector matches tool \"Start -> Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 180
+  testRunner.And("conflict \"1\" Different Connector matches tool \"Start -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 181
+  testRunner.And("conflict \"2\" Current matches tool \"Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 182
+  testRunner.And("conflict \"2\" Different matches tool \"Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 183
+  testRunner.And("conflict \"3\" Current Connector matches tool \"Data Merge (0) -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 184
+  testRunner.And("conflict \"3\" Different Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 185
+  testRunner.And("conflict \"4\" Current matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 186
+  testRunner.And("conflict \"4\" Different matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 187
+  testRunner.And("conflict \"5\" Current Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 188
+  testRunner.And("conflict \"5\" Different Connector matches tool \"Assign (0) -> Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 189
+  testRunner.And("I select Current Tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 190
+  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 191
+  testRunner.And("I select Different Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 192
   testRunner.Then("Save is enabled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -552,68 +588,71 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Merge Workflow Version Containing Position Change tools")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MergeExecution")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WorkflowMerging")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void MergeWorkflowVersionContainingPositionChangeTools()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Version Containing Position Change tools", ((string[])(null)));
-#line 182
-this.ScenarioSetup(scenarioInfo);
-#line 183
-  testRunner.Given("I Load workflow \"MergeToolPositionChange\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 184
-  testRunner.And("I Load workflow version conflict MergeToolPositionChange", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 185
-  testRunner.When("Merge Window is opened with local version \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 186
-  testRunner.Then("Current workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 187
-  testRunner.Then("Current workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 188
-  testRunner.And("Different workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 189
-  testRunner.And("Different workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 190
-  testRunner.And("Current workflow header is \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 191
-  testRunner.And("Current workflow header version is \"[v.2]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 192
-  testRunner.And("Different workflow header is \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 193
-  testRunner.And("Different workflow header version is \"[Current]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 194
-  testRunner.And("Merge conflicts count is \"6\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Workflow Version Containing Position Change tools", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 195
-  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 196
-  testRunner.And("conflict \"0\" Current matches tool \"Start\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Given("I Load workflow \"MergeToolPositionChange\" from \"localhost\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 197
-  testRunner.And("conflict \"0\" Different matches tool \"Start\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I Load workflow version conflict MergeToolPositionChange", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 198
-  testRunner.And("conflict \"1\" Current Connector matches tool \"Start -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.When("Merge Window is opened with local version \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 199
-  testRunner.And("conflict \"1\" Different Connector matches tool \"Start -> Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 200
-  testRunner.And("conflict \"2\" Current matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("Current workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 201
-  testRunner.And("conflict \"2\" Different matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"3\" tools", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 202
-  testRunner.And("conflict \"3\" Current Connector matches tool \"Assign (0) -> Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow contains \"3\" connectors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 203
-  testRunner.And("conflict \"3\" Different Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Current workflow header is \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 204
-  testRunner.And("conflict \"4\" Current matches tool \"Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Current workflow header version is \"[v.2]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 205
-  testRunner.And("conflict \"4\" Different matches tool \"Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow header is \"MergeToolPositionChange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 206
-  testRunner.And("conflict \"5\" Current Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Different workflow header version is \"[Current]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 207
-  testRunner.And("conflict \"5\" Different Connector matches tool \"Data Merge (0) -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Merge conflicts count is \"6\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 208
-  testRunner.And("I select Different Tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("Merge variable conflicts is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 209
-  testRunner.And("I select Different Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("conflict \"0\" Current matches tool \"Start\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 210
-  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("conflict \"0\" Different matches tool \"Start\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 211
+  testRunner.And("conflict \"1\" Current Connector matches tool \"Start -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 212
+  testRunner.And("conflict \"1\" Different Connector matches tool \"Start -> Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 213
+  testRunner.And("conflict \"2\" Current matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 214
+  testRunner.And("conflict \"2\" Different matches tool \"Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 215
+  testRunner.And("conflict \"3\" Current Connector matches tool \"Assign (0) -> Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 216
+  testRunner.And("conflict \"3\" Different Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 217
+  testRunner.And("conflict \"4\" Current matches tool \"Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 218
+  testRunner.And("conflict \"4\" Different matches tool \"Data Merge (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 219
+  testRunner.And("conflict \"5\" Current Connector matches tool is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 220
+  testRunner.And("conflict \"5\" Different Connector matches tool \"Data Merge (0) -> Assign (0)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 221
+  testRunner.And("I select Different Tool", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 222
+  testRunner.And("I select Different Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 223
+  testRunner.And("I select Current Arm", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 224
   testRunner.Then("Save is enabled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -626,9 +665,9 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void MergeValidateAllToolsAreMapped()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Merge Validate All tools are mapped", ((string[])(null)));
-#line 214
+#line 227
 this.ScenarioSetup(scenarioInfo);
-#line 215
+#line 228
   testRunner.Given("I Load All tools and expect all tools to be mapped", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             this.ScenarioCleanup();

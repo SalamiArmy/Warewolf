@@ -124,6 +124,7 @@ Scenario: Format number single digit to negative decimals
 	And the execution has "NO" error
 	
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Format number rounding up to a character
 	Given I have a number 34.2
 	And I selected rounding "Up" to "c"
@@ -139,6 +140,7 @@ Scenario: Format number rounding up to a character
 	| [[result]] = |
 	
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Format number that is blank
 	Given I have a number ""
 	When the format number is executed
@@ -146,6 +148,7 @@ Scenario: Format number that is blank
    And the execution has "AN" error
    
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Format non numeric
 	Given I have a number "asdf"
 	And I selected rounding "None" to 0
@@ -155,6 +158,7 @@ Scenario: Format non numeric
    And the execution has "AN" error
    
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Format number to charater decimals
 	Given I have a number 34.2
 	And I selected rounding "Up" to "1"
@@ -164,6 +168,7 @@ Scenario: Format number to charater decimals
    And the execution has "AN" error
    
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Format number with multipart variables and numbers for number rounding and decimals to show
 	Given I have a formatnumber variable "[[int]]" equal to 788
 	And I have a number "[[int]].894564545645"
@@ -182,6 +187,7 @@ Scenario: Format number with multipart variables and numbers for number rounding
 	| [[result]] = 80 |
 	
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Format number with negative recordset index for number
 	Given I have a number "[[my(-1).int]]"
 	When the format number is executed
@@ -196,6 +202,7 @@ Scenario: Format number with negative recordset index for rounding
 	Then the execution has "AN" error
 	
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Format number with negative recordset index for decimals to show
 	Given I have a formatnumber variable "[[int]]" equal to 788
 	And I have a number "[[int]].894564545645"
@@ -204,6 +211,7 @@ Scenario: Format number with negative recordset index for decimals to show
 	Then the execution has "AN" error
 	
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Format number with unknown scalar for rounding
 	Given I have a formatnumber variable "[[int]]" equal to ""
 	And I have a number ""
@@ -213,6 +221,7 @@ Scenario: Format number with unknown scalar for rounding
 	Then the execution has "AN" error
 	
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Format number rounding with unknown scalar decimals value to show 
 	Given I have a number 788.894564545645
 	And I selected rounding "Normal" to 0 
@@ -243,6 +252,7 @@ Scenario: Format a variable with a non existent value
 	Then the execution has "AN" error
 	
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Format number with record star notation
 	Given I have a formatnumber variable "[[format().num]]" equal to 788
 	Given I have a formatnumber variable "[[format().num]]" equal to "9.894564545645"
@@ -263,6 +273,7 @@ Scenario: Format number with record star notation
 	| [[res(2).val]] = 9.8950   |
 	
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Number Format tool with complext object multi array
 	Given There is a complexobject in the datalist with this shape
 	| rs                    | value |
@@ -281,6 +292,7 @@ Scenario: Number Format tool with complext object multi array
 	And "[[@Person(3).Score(1)]]" has a value of "0.120"
 	
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Number Format tool with complex object multi array and field
 	Given There is a complexobject in the datalist with this shape
 	| rs                                | value |
@@ -299,6 +311,7 @@ Scenario: Number Format tool with complex object multi array and field
 	And "[[@Person.Member(3).Team(1).Score]]" has a value of "0.120"
 	
 @Utility
+@MSTest:DoNotParallelize
 Scenario: Number Format tool with complex object multi array and field and multi values
 	Given There is a complexobject in the datalist with this shape
 	| rs                                  | value |
@@ -322,6 +335,7 @@ Scenario: Number Format tool with complex object multi array and field and multi
 	And "[[@Person.Member(2).Team(3).Score]]" has a value of "0.130"
 	And "[[@Person.Member(3).Team(1).Score]]" has a value of "0.140"
 
+@MSTest:DoNotParallelize
 Scenario: Number Format tool with complex non array
 	Given There is a complexobject in the datalist with this shape
 	| rs                            | value |

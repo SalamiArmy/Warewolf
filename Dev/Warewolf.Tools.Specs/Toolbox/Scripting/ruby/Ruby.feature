@@ -5,6 +5,7 @@ Feature: Ruby
 	As a Warewolf user
 	I want a tool that allows me to execute Ruby
 
+@MSTest:DoNotParallelize
 Scenario: Execute Ruby Variable is 1
 	Given I have a script variable "[[val]]" with this value "1"
 	And I have this script to execute "ruby_one_variable.txt"
@@ -19,6 +20,7 @@ Scenario: Execute Ruby Variable is 1
 	|                   |
 	| [[result]] = one |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Ruby blank script	
 	Given I have this script to execute ""
 	And I have selected the language as "Ruby"
@@ -32,6 +34,7 @@ Scenario: Execute Ruby blank script
 	|               |
 	| [[result]] = |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Ruby Variable is 2
 	Given I have a script variable "[[val]]" with this value "2"
 	And I have this script to execute "ruby_one_variable.txt"
@@ -46,6 +49,7 @@ Scenario: Execute Ruby Variable is 2
 	|                   |
 	| [[result]] = two |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Ruby Variable is 3
 	Given I have a script variable "[[val]]" with this value "3"
 	And I have this script to execute "ruby_one_variable.txt"
@@ -60,6 +64,7 @@ Scenario: Execute Ruby Variable is 3
 	|                              |
 	| [[result]] = not one or two |
 
+@MSTest:DoNotParallelize
 Scenario: Execute Ruby Variable is 100
 	Given I have a script variable "[[val]]" with this value "100"
 	And I have this script to execute "ruby_one_variable.txt"
@@ -74,6 +79,7 @@ Scenario: Execute Ruby Variable is 100
 	|                              |
 	| [[result]] = not one or two |
 
+@MSTest:DoNotParallelize
 Scenario: Execute badly formed Ruby
 	Given I have a script variable "[[val]]" with this value "1"
 	And I have this script to execute "ruby_badly_formatted.txt"
@@ -87,6 +93,7 @@ Scenario: Execute badly formed Ruby
 	|               |
 	| [[result]] = |
 	
+@MSTest:DoNotParallelize
 Scenario: Execute Ruby with 2 variables
 	Given I have a script variable "[[val1]]" with this value "1"
 	Given I have a script variable "[[val2]]" with this value "1"

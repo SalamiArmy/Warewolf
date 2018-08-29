@@ -404,6 +404,7 @@ Scenario: Convert negative recordset index from text to base64
 	And the debug output as  
 	| # |           |	
 
+@MSTest:DoNotParallelize
 Scenario: Convert negative recordset index from binary to text 
 	Given I have a convert variable "[[my(-1).var]]" with a value of "0100000101000001"
 	And I convert a variable "[[my(-1).var]]" from type "Binary" to type "Text" 
@@ -428,6 +429,7 @@ Scenario: Convert negative recordset index from binary to hexadecimal
 	And the debug output as  
 	| # |                  |	
 
+@MSTest:DoNotParallelize
 Scenario: Convert negative recordset index from binary to base64 
 	Given I have a convert variable "[[my(-1).var]]" with a value of "0100000101000001"
 	And I convert a variable "[[my(-1).var]]" from type "Binary" to type "Base 64" 
@@ -452,6 +454,7 @@ Scenario: Convert negative recordset index from hexadecimal to text
 	And the debug output as  
 	| # |           |	
 
+@MSTest:DoNotParallelize
 Scenario: Convert negative recordset index from hexadecimal to binary 
 	Given I have a convert variable "[[my(-1).var]]" with a value of "0x4141"
 	And I convert a variable "[[my(-1).var]]" from type "Hex" to type "Binary" 
@@ -476,6 +479,7 @@ Scenario: Convert negative recordset index from hexadecimal to base64
 	And the debug output as  
 	| # |                  |	
 
+@MSTest:DoNotParallelize
 Scenario: Convert negative recordset index from base64 to hexadecimal 
 	Given I have a convert variable "[[my(-1).var]]" with a value of "QUE="
 	And I convert a variable "[[my(-1).var]]" from type "Base 64" to type "Hex" 
@@ -488,6 +492,7 @@ Scenario: Convert negative recordset index from base64 to hexadecimal
 	And the debug output as  
 	| # |                  |	
 
+@MSTest:DoNotParallelize
 Scenario: Convert negative recordset index from base64 to text 
 	Given I have a convert variable "[[my(-1).var]]" with a value of "QUE="
 	And I convert a variable "[[my(-1).var]]" from type "Base 64" to type "Text" 
@@ -513,6 +518,7 @@ Scenario: Convert negative recordset index from base64 to binary
 	|   |              |
 
 
+@MSTest:DoNotParallelize
 Scenario Outline: Converting two varibles on one row 
 	Given I have a convert variable "[[a]]" with a value of "QUE="
 	And I have a convert variable "[[b]]" with a value of "QUE="
@@ -538,6 +544,7 @@ Examples:
 	| 12 | Hex          | Base 64 |
 
 #Bug 12177
+@MSTest:DoNotParallelize
 Scenario Outline: Converting varibles with data  
 	Given I have a convert variable "[[a]]" with a value of "QUE="
 	And I convert a variable "[[a]]test" from type "<From>" to type "<To>" 
@@ -564,6 +571,7 @@ Examples:
 
 
 
+@MSTest:DoNotParallelize
 Scenario Outline: Validation messages when Convert Invalid Variables  
 	Given I have a convert variable "<Variable>" with a value of "<Value>"
 	And I convert a variable "<Variable>" from type "<From>" to type "<To>" 	

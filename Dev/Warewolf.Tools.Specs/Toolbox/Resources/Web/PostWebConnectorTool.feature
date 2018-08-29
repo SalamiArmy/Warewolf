@@ -4,8 +4,7 @@ Feature: Post Web Connector Tool
 	As a Warewolf User
 	I want to Create or Edit Warewolf Web Post Request.
 
-# layout of tool not ready
-
+@MSTest:DoNotParallelize
 Scenario: Open new Post Web Tool
 	And I drag Web Post Request Connector Tool onto the design surface
     And Post New is Enabled
@@ -22,6 +21,7 @@ Scenario: Open new Post Web Tool
 	And Post mapped outputs are
 	| Output | Output Alias |
 
+@MSTest:DoNotParallelize
 Scenario: Create Web Service with different methods
 	And I drag Web Post Request Connector Tool onto the design surface
     And Post New is Enabled
@@ -47,8 +47,7 @@ Scenario: Create Web Service with different methods
 	| CountryID   | [[CountryID]]   |
 	| Description | [[Description]] |
 	
-
-
+@MSTest:DoNotParallelize
 Scenario: Adding parameters in Post Post Web Connector Tool request headers is updating variables
 	And I drag Web Post Request Connector Tool onto the design surface
     And Post New is Enabled
@@ -80,7 +79,8 @@ Scenario: Adding parameters in Post Post Web Connector Tool request headers is u
 	| CountryID   | [[CountryID]]   |
 	| Description | [[Description]] |
 
- Scenario: Editing Post Web Service
+ @MSTest:DoNotParallelize
+Scenario: Editing Post Web Service
 	And I drag Web Post Request Connector Tool onto the design surface
     And Post New is Enabled
 	When I Select "Dev2CountriesWebService" as a Post web Source
@@ -89,6 +89,7 @@ Scenario: Adding parameters in Post Post Web Connector Tool request headers is u
 	When I click Post Edit
 	Then the "Dev2CountriesWebService" Post Source tab is opened
 
+@MSTest:DoNotParallelize
 Scenario: Changing Post Post Web Connector Tool Sources
 	And I drag Web Post Request Connector Tool onto the design surface
     And Post New is Enabled
@@ -116,8 +117,7 @@ Scenario: Changing Post Post Web Connector Tool Sources
 	And Post Generate Outputs is Enabled
 	And Post Mappings is Disabled
 
-
-#wolf-1034 re-opened worked as a connector not as a tool
+@MSTest:DoNotParallelize
 Scenario: Post Web Connector Tool returns text
 	And I drag Web Post Request Connector Tool onto the design surface
     And Post New is Enabled	

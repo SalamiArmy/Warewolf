@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Utility.Random
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Random", "\tIn order to generate random values\r\n\tAs a Warewolf user\r\n\tI want a tool that can" +
                     " generate, numbers, guids and letters", ProgrammingLanguage.CSharp, new string[] {
                         "Utility"});
@@ -91,18 +91,18 @@ namespace Warewolf.Tools.Specs.Toolbox.Utility.Random
         public virtual void GenerateLetters()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters", ((string[])(null)));
-#line 8
+#line 7
 this.ScenarioSetup(scenarioInfo);
-#line 9
+#line 8
  testRunner.Given("I have a type as \"Letters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 10
+#line 9
  testRunner.And("I have a length as \"10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 11
+#line 10
  testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 12
+#line 11
  testRunner.Then("the result from the random tool should be of type \"System.String\" with a length o" +
                     "f \"10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 13
+#line 12
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -111,14 +111,14 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "Letters",
                         "10"});
-#line 14
+#line 13
  testRunner.And("the debug inputs as", ((string)(null)), table1, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table2.AddRow(new string[] {
                         "[[result]] = String"});
-#line 17
+#line 16
  testRunner.And("the debug output as", ((string)(null)), table2, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -128,9 +128,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate Letters and Numbers")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateLettersAndNumbers()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters and Numbers", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters and Numbers", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 21
 this.ScenarioSetup(scenarioInfo);
 #line 22
@@ -168,21 +171,24 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate Numbers one digit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateNumbersOneDigit()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Numbers one digit", ((string[])(null)));
-#line 34
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Numbers one digit", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 35
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 36
- testRunner.And("I have a range from \"0\" to \"9\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 37
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I have a range from \"0\" to \"9\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 38
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 39
  testRunner.Then("the result from the random tool should be of type \"System.Int32\" with a length of" +
                     " \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 39
+#line 40
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -193,14 +199,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "0",
                         "9"});
-#line 40
+#line 41
  testRunner.And("the debug inputs as", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table6.AddRow(new string[] {
                         "[[result]] = Int32"});
-#line 43
+#line 44
  testRunner.And("the debug output as", ((string)(null)), table6, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -213,18 +219,18 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateNumbersTwoDigits()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Numbers two digits", ((string[])(null)));
-#line 47
-this.ScenarioSetup(scenarioInfo);
 #line 48
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 49
- testRunner.And("I have a range from \"10\" to \"99\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 50
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I have a range from \"10\" to \"99\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 51
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 52
  testRunner.Then("the result from the random tool should be of type \"System.Int32\" with a length of" +
                     " \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 52
+#line 53
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -235,14 +241,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "10",
                         "99"});
-#line 53
+#line 54
  testRunner.And("the debug inputs as", ((string)(null)), table7, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table8.AddRow(new string[] {
                         "[[result]] = Int32"});
-#line 56
+#line 57
  testRunner.And("the debug output as", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -252,33 +258,36 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate Guid")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateGuid()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Guid", ((string[])(null)));
-#line 60
-this.ScenarioSetup(scenarioInfo);
-#line 61
- testRunner.Given("I have a type as \"Guid\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Guid", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 62
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 63
+ testRunner.Given("I have a type as \"Guid\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 64
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 65
  testRunner.Then("the result from the random tool should be of type \"System.Guid\" with a length of " +
                     "\"36\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 64
+#line 66
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Random"});
             table9.AddRow(new string[] {
                         "GUID"});
-#line 65
+#line 67
  testRunner.And("the debug inputs as", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table10.AddRow(new string[] {
                         "[[result]] = Guid"});
-#line 68
+#line 70
  testRunner.And("the debug output as", ((string)(null)), table10, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -288,21 +297,24 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate Numbers with blank range")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateNumbersWithBlankRange()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Numbers with blank range", ((string[])(null)));
-#line 73
-this.ScenarioSetup(scenarioInfo);
-#line 74
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Numbers with blank range", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 75
- testRunner.And("I have a range from \"\" to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 76
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 77
+ testRunner.And("I have a range from \"\" to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 78
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 79
  testRunner.Then("the result from the random tool should be of type \"System.String\" with a length o" +
                     "f \"0\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 78
+#line 80
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -313,14 +325,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "\"\"",
                         "\"\""});
-#line 79
+#line 81
  testRunner.And("the debug inputs as", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table12.AddRow(new string[] {
                         "[[result]] ="});
-#line 82
+#line 84
  testRunner.And("the debug output as", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -333,18 +345,18 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateNumbersWithOneBlankRange()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Numbers with one blank range", ((string[])(null)));
-#line 86
-this.ScenarioSetup(scenarioInfo);
-#line 87
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 88
- testRunner.And("I have a range from \"1\" to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 89
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 90
+ testRunner.And("I have a range from \"1\" to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 91
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 92
  testRunner.Then("the result from the random tool should be of type \"System.String\" with a length o" +
                     "f \"0\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 91
+#line 93
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -355,14 +367,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "1",
                         "\"\""});
-#line 92
+#line 94
  testRunner.And("the debug inputs as", ((string)(null)), table13, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table14.AddRow(new string[] {
                         "[[result]] ="});
-#line 95
+#line 97
  testRunner.And("the debug output as", ((string)(null)), table14, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -372,21 +384,24 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate Numbers with a negative range")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateNumbersWithANegativeRange()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Numbers with a negative range", ((string[])(null)));
-#line 99
-this.ScenarioSetup(scenarioInfo);
-#line 100
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 101
- testRunner.And("I have a range from \"-1\" to \"-9\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Numbers with a negative range", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 102
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 103
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 104
+ testRunner.And("I have a range from \"-1\" to \"-9\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 105
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 106
  testRunner.Then("the result from the random tool should be of type \"System.Int32\" with a length of" +
                     " \"2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 104
+#line 107
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -397,14 +412,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "-1",
                         "-9"});
-#line 105
+#line 108
  testRunner.And("the debug inputs as", ((string)(null)), table15, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table16.AddRow(new string[] {
                         "[[result]] = Int32"});
-#line 108
+#line 111
  testRunner.And("the debug output as", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -417,15 +432,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateLettersWithBlankLength()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters with blank length", ((string[])(null)));
-#line 112
-this.ScenarioSetup(scenarioInfo);
-#line 113
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 114
- testRunner.And("I have a range from \"\" to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 115
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 116
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 117
+ testRunner.And("I have a range from \"\" to \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 118
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 119
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -436,14 +451,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "\"\"",
                         "\"\""});
-#line 117
+#line 120
  testRunner.And("the debug inputs as", ((string)(null)), table17, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table18.AddRow(new string[] {
                         "[[result]] ="});
-#line 120
+#line 123
  testRunner.And("the debug output as", ((string)(null)), table18, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -453,21 +468,24 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate Letters with a negative length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateLettersWithANegativeLength()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters with a negative length", ((string[])(null)));
-#line 124
-this.ScenarioSetup(scenarioInfo);
-#line 125
- testRunner.Given("I have a type as \"Letters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 126
- testRunner.And("I have a length as \"-1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 127
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters with a negative length", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 128
+this.ScenarioSetup(scenarioInfo);
+#line 129
+ testRunner.Given("I have a type as \"Letters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 130
+ testRunner.And("I have a length as \"-1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 131
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 132
  testRunner.Then("the result from the random tool should be of type \"System.String\" with a length o" +
                     "f \"0\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 129
+#line 133
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -476,14 +494,14 @@ this.ScenarioSetup(scenarioInfo);
             table19.AddRow(new string[] {
                         "Letters",
                         "-1"});
-#line 130
+#line 134
  testRunner.And("the debug inputs as", ((string)(null)), table19, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table20.AddRow(new string[] {
                         "[[result]] ="});
-#line 133
+#line 137
  testRunner.And("the debug output as", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -493,21 +511,24 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate Letters and Numbers with blank length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateLettersAndNumbersWithBlankLength()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters and Numbers with blank length", ((string[])(null)));
-#line 137
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters and Numbers with blank length", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 142
 this.ScenarioSetup(scenarioInfo);
-#line 138
+#line 143
  testRunner.Given("I have a type as \"LetterAndNumbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 139
+#line 144
  testRunner.And("I have a length as \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 140
+#line 145
  testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 141
+#line 146
  testRunner.Then("the result from the random tool should be of type \"System.String\" with a length o" +
                     "f \"0\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 142
+#line 147
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -516,14 +537,14 @@ this.ScenarioSetup(scenarioInfo);
             table21.AddRow(new string[] {
                         "Letters & Numbers",
                         "\"\""});
-#line 143
+#line 148
  testRunner.And("the debug inputs as", ((string)(null)), table21, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table22.AddRow(new string[] {
                         "[[result]] ="});
-#line 146
+#line 151
  testRunner.And("the debug output as", ((string)(null)), table22, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -536,18 +557,18 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateLettersAndNumbersWithANegativeLength()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters and Numbers with a negative length", ((string[])(null)));
-#line 150
+#line 155
 this.ScenarioSetup(scenarioInfo);
-#line 151
+#line 156
  testRunner.Given("I have a type as \"LetterAndNumbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 152
+#line 157
  testRunner.And("I have a length as \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 153
+#line 158
  testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 154
+#line 159
  testRunner.Then("the result from the random tool should be of type \"System.String\" with a length o" +
                     "f \"0\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 155
+#line 160
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -556,14 +577,14 @@ this.ScenarioSetup(scenarioInfo);
             table23.AddRow(new string[] {
                         "Letters & Numbers",
                         "\"\""});
-#line 156
+#line 161
  testRunner.And("the debug inputs as", ((string)(null)), table23, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table24.AddRow(new string[] {
                         "[[result]] ="});
-#line 159
+#line 164
  testRunner.And("the debug output as", ((string)(null)), table24, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -573,23 +594,26 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate a Number between 5 and 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateANumberBetween5And5()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number between 5 and 5", ((string[])(null)));
-#line 164
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number between 5 and 5", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 169
 this.ScenarioSetup(scenarioInfo);
-#line 165
+#line 170
  testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 166
+#line 171
  testRunner.And("I have a range from \"5\" to \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 167
+#line 172
  testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 168
+#line 173
  testRunner.Then("the result from the random tool should be of type \"System.Int32\" with a length of" +
                     " \"1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 169
+#line 174
  testRunner.And("the random value will be \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 170
+#line 175
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -600,14 +624,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "5",
                         "5"});
-#line 171
+#line 176
  testRunner.And("the debug inputs as", ((string)(null)), table25, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table26.AddRow(new string[] {
                         "[[result]] = Int32"});
-#line 174
+#line 179
  testRunner.And("the debug output as", ((string)(null)), table26, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -620,15 +644,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateANumberBetweenANegativeIndexInARecordsetAnd5()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number between a negative index in a recordset and 5", ((string[])(null)));
-#line 178
+#line 183
 this.ScenarioSetup(scenarioInfo);
-#line 179
+#line 184
  testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 180
+#line 185
  testRunner.And("I have a range from \"[[rec(-1).set]]\" to \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 181
+#line 186
  testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 182
+#line 187
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -639,7 +663,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "[[rec(-1).set]] =",
                         "5"});
-#line 183
+#line 188
  testRunner.And("the debug inputs as", ((string)(null)), table27, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -649,18 +673,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate a Number between 5 and a negative index in a recordset")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateANumberBetween5AndANegativeIndexInARecordset()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number between 5 and a negative index in a recordset", ((string[])(null)));
-#line 188
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number between 5 and a negative index in a recordset", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 193
 this.ScenarioSetup(scenarioInfo);
-#line 189
+#line 194
  testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 190
+#line 195
  testRunner.And("I have a range from \"5\" to \"[[rec(-1).set]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 191
+#line 196
  testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 192
+#line 197
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -671,7 +698,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "5",
                         "[[rec(-1).set]]  ="});
-#line 193
+#line 198
  testRunner.And("the debug inputs as", ((string)(null)), table28, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -681,18 +708,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate Letters with a negative recordset index for length")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateLettersWithANegativeRecordsetIndexForLength()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters with a negative recordset index for length", ((string[])(null)));
-#line 197
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters with a negative recordset index for length", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 203
 this.ScenarioSetup(scenarioInfo);
-#line 198
+#line 204
  testRunner.Given("I have a type as \"Letters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 199
+#line 205
  testRunner.And("I have a length as \"[[rec(-1).set]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 200
+#line 206
  testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 201
+#line 207
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -701,7 +731,7 @@ this.ScenarioSetup(scenarioInfo);
             table29.AddRow(new string[] {
                         "Letters",
                         "[[rec(-1).set]]  ="});
-#line 202
+#line 208
  testRunner.And("the debug inputs as", ((string)(null)), table29, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -714,15 +744,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateLettersAndNumbersWithANegativeRecordsetIndexForLength()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate Letters and Numbers with a negative recordset index for length", ((string[])(null)));
-#line 207
+#line 213
 this.ScenarioSetup(scenarioInfo);
-#line 208
+#line 214
  testRunner.Given("I have a type as \"LetterAndNumbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 209
+#line 215
  testRunner.And("I have a length as \"[[rec(-1).set]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 210
+#line 216
  testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 211
+#line 217
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
@@ -731,7 +761,7 @@ this.ScenarioSetup(scenarioInfo);
             table30.AddRow(new string[] {
                         "Letters & Numbers",
                         "[[rec(-1).set]] ="});
-#line 212
+#line 218
  testRunner.And("the debug inputs as", ((string)(null)), table30, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -741,20 +771,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate decimal Numbers one digit")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateDecimalNumbersOneDigit()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate decimal Numbers one digit", ((string[])(null)));
-#line 218
-this.ScenarioSetup(scenarioInfo);
-#line 219
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 220
- testRunner.And("I have a range from \"0.1\" to \"0.9\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 221
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 222
- testRunner.Then("the result from the random tool should be of the same type as \"System.Double\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate decimal Numbers one digit", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 223
+this.ScenarioSetup(scenarioInfo);
+#line 224
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 225
+ testRunner.And("I have a range from \"0.1\" to \"0.9\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 226
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 227
+ testRunner.Then("the result from the random tool should be of the same type as \"System.Double\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 228
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -765,14 +798,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "0.1",
                         "0.9"});
-#line 224
+#line 229
  testRunner.And("the debug inputs as", ((string)(null)), table31, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table32.AddRow(new string[] {
                         "[[result]] = Double"});
-#line 227
+#line 232
  testRunner.And("the debug output as", ((string)(null)), table32, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -782,20 +815,23 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate decimal Numbers many digits")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateDecimalNumbersManyDigits()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate decimal Numbers many digits", ((string[])(null)));
-#line 232
-this.ScenarioSetup(scenarioInfo);
-#line 233
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 234
- testRunner.And("I have a range from \"0.000000001\" to \"0.9\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 235
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 236
- testRunner.Then("the result from the random tool should be of the same type as \"System.Double\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate decimal Numbers many digits", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 237
+this.ScenarioSetup(scenarioInfo);
+#line 238
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 239
+ testRunner.And("I have a range from \"0.000000001\" to \"0.9\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 240
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 241
+ testRunner.Then("the result from the random tool should be of the same type as \"System.Double\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 242
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -806,14 +842,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "0.000000001",
                         "0.9"});
-#line 238
+#line 243
  testRunner.And("the debug inputs as", ((string)(null)), table33, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table34.AddRow(new string[] {
                         "[[result]] = Double"});
-#line 241
+#line 246
  testRunner.And("the debug output as", ((string)(null)), table34, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -826,19 +862,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateANumberBetween5_5And5_5()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number between 5.5 and 5.5", ((string[])(null)));
-#line 246
-this.ScenarioSetup(scenarioInfo);
-#line 247
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 248
- testRunner.And("I have a range from \"5.5\" to \"5.5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 249
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 250
- testRunner.Then("the result from the random tool should be of the same type as \"System.Double\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 251
- testRunner.And("the random value will be between \"5.5\" and \"5.5\" inclusive", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 252
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 253
+ testRunner.And("I have a range from \"5.5\" to \"5.5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 254
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 255
+ testRunner.Then("the result from the random tool should be of the same type as \"System.Double\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 256
+ testRunner.And("the random value will be between \"5.5\" and \"5.5\" inclusive", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 257
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
@@ -849,14 +885,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "5.5",
                         "5.5"});
-#line 253
+#line 258
  testRunner.And("the debug inputs as", ((string)(null)), table35, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table36.AddRow(new string[] {
                         "[[result]] = Double"});
-#line 256
+#line 261
  testRunner.And("the debug output as", ((string)(null)), table36, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -869,20 +905,20 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateANumberBetweenDoubleMinAndDoubleMax()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number between double min and double max", ((string[])(null)));
-#line 261
-this.ScenarioSetup(scenarioInfo);
-#line 262
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 263
- testRunner.And("I have a range from \"-0.000000000000005\" to \"170000000000000\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 264
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 265
- testRunner.Then("the result from the random tool should be of the same type as \"System.Double\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 266
+this.ScenarioSetup(scenarioInfo);
+#line 267
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 268
+ testRunner.And("I have a range from \"-0.000000000000005\" to \"170000000000000\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 269
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 270
+ testRunner.Then("the result from the random tool should be of the same type as \"System.Double\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 271
  testRunner.And("the random value will be between \"-0.000000000000005\" and \"170000000000000\" inclu" +
                     "sive", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 267
+#line 272
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -893,14 +929,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "-0.000000000000005",
                         "170000000000000"});
-#line 268
+#line 273
  testRunner.And("the debug inputs as", ((string)(null)), table37, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table38.AddRow(new string[] {
                         "[[result]] = Double"});
-#line 271
+#line 276
  testRunner.And("the debug output as", ((string)(null)), table38, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -910,22 +946,25 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate a Number between double min and double max with no decimals")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateANumberBetweenDoubleMinAndDoubleMaxWithNoDecimals()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number between double min and double max with no decimals", ((string[])(null)));
-#line 276
-this.ScenarioSetup(scenarioInfo);
-#line 277
- testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 278
- testRunner.And("I have a range from \"0\" to \"170000000000000\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 279
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 280
- testRunner.Then("the result from the random tool should be of the same type as \"System.Double\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number between double min and double max with no decimals", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 281
- testRunner.And("the random value will be between \"0\" and \"170000000000000\" inclusive", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 282
+ testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 283
+ testRunner.And("I have a range from \"0\" to \"170000000000000\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 284
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 285
+ testRunner.Then("the result from the random tool should be of the same type as \"System.Double\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 286
+ testRunner.And("the random value will be between \"0\" and \"170000000000000\" inclusive", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 287
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
@@ -936,14 +975,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Numbers",
                         "0",
                         "170000000000000"});
-#line 283
+#line 288
  testRunner.And("the debug inputs as", ((string)(null)), table39, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table40.AddRow(new string[] {
                         "[[result]] = Double"});
-#line 286
+#line 291
  testRunner.And("the debug output as", ((string)(null)), table40, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -953,26 +992,29 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate random using star notation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Random")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void GenerateRandomUsingStarNotation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate random using star notation", ((string[])(null)));
-#line 291
-this.ScenarioSetup(scenarioInfo);
-#line 292
- testRunner.Given("I have a type as \"Letters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 293
- testRunner.And("I have a a random variable \"[[rand().num]]\" equal to \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 294
- testRunner.And("I have a a random variable \"[[rand().num]]\" equal to \"10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 295
- testRunner.And("I have a a random variable \"[[res().val]]\" equal to \"bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate random using star notation", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 296
- testRunner.And("I have a length as \"[[rand(*).num]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 297
- testRunner.And("I have a random result variable as \"[[res(*).val]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I have a type as \"Letters\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 298
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I have a a random variable \"[[rand().num]]\" equal to \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 299
+ testRunner.And("I have a a random variable \"[[rand().num]]\" equal to \"10\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 300
+ testRunner.And("I have a a random variable \"[[res().val]]\" equal to \"bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 301
+ testRunner.And("I have a length as \"[[rand(*).num]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 302
+ testRunner.And("I have a random result variable as \"[[res(*).val]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 303
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 304
  testRunner.Then("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
@@ -984,7 +1026,7 @@ this.ScenarioSetup(scenarioInfo);
             table41.AddRow(new string[] {
                         "",
                         "[[rand(2).num]] = 10"});
-#line 300
+#line 305
  testRunner.And("the debug inputs as", ((string)(null)), table41, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
@@ -993,7 +1035,7 @@ this.ScenarioSetup(scenarioInfo);
                         "[[res(1).val]] = String"});
             table42.AddRow(new string[] {
                         "[[res(2).val]] = String"});
-#line 304
+#line 309
  testRunner.And("the debug output as", ((string)(null)), table42, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1006,17 +1048,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateANumberUsingANullVariable()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number using a null variable", ((string[])(null)));
-#line 309
-this.ScenarioSetup(scenarioInfo);
-#line 310
- testRunner.Given("I have a formatnumber variable \"[[int]]\" equal to NULL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 311
- testRunner.And("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 312
- testRunner.And("I have a range from \"[[int]]\" to \"170000000000000\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 313
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 314
+this.ScenarioSetup(scenarioInfo);
+#line 315
+ testRunner.Given("I have a formatnumber variable \"[[int]]\" equal to NULL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 316
+ testRunner.And("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 317
+ testRunner.And("I have a range from \"[[int]]\" to \"170000000000000\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 318
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 319
  testRunner.Then("the execution has \"An\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1029,17 +1071,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateANumberUsingANullVariableTo()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number using a null variable to", ((string[])(null)));
-#line 317
-this.ScenarioSetup(scenarioInfo);
-#line 318
- testRunner.Given("I have a formatnumber variable \"[[int]]\" equal to NULL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 319
- testRunner.And("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 320
- testRunner.And("I have a range from \"170000000000000\" to \"[[int]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 321
- testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 322
+this.ScenarioSetup(scenarioInfo);
+#line 323
+ testRunner.Given("I have a formatnumber variable \"[[int]]\" equal to NULL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 324
+ testRunner.And("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 325
+ testRunner.And("I have a range from \"170000000000000\" to \"[[int]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 326
+ testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 327
  testRunner.Then("the execution has \"An\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1052,15 +1094,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GenerateANumberUsingANonExistentVariable()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate a Number using a non existent variable", ((string[])(null)));
-#line 325
+#line 330
 this.ScenarioSetup(scenarioInfo);
-#line 326
+#line 331
  testRunner.Given("I have a type as \"Numbers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 327
+#line 332
  testRunner.And("I have a range from \"[[int]]\" to \"170000000000000\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 328
+#line 333
  testRunner.When("the random tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 329
+#line 334
  testRunner.Then("the execution has \"An\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

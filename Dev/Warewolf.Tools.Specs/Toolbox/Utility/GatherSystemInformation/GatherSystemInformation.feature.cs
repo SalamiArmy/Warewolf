@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Utility.GatherSystemInformation
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "GatherSystemInformation", "\tIn order to use system information\r\n\tAs a warewolf user\r\n\tI want a tool that I r" +
                     "etrieve system info", ProgrammingLanguage.CSharp, new string[] {
                         "Utility"});
@@ -88,9 +88,12 @@ namespace Warewolf.Tools.Specs.Toolbox.Utility.GatherSystemInformation
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system operating system into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemOperatingSystemIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system operating system into a scalar", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system operating system into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 9
@@ -118,18 +121,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system service pack into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemServicePackIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system service pack into a scalar", ((string[])(null)));
-#line 17
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system service pack into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 18
- testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"ServicePack\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 19
- testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"ServicePack\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 20
- testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 21
+ testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 22
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -138,7 +144,7 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 22
+#line 23
  testRunner.And("the debug output as", ((string)(null)), table2, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -151,15 +157,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignASystemOSBitValueIntoAScalar()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system OS Bit Value into a scalar", ((string[])(null)));
-#line 26
-this.ScenarioSetup(scenarioInfo);
 #line 27
- testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"OSBitValue\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 28
- testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"OSBitValue\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 29
- testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"Int32\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 30
+ testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"Int32\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 31
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -168,7 +174,7 @@ this.ScenarioSetup(scenarioInfo);
             table3.AddRow(new string[] {
                         "1",
                         "[[testvar]] = Int32"});
-#line 31
+#line 32
  testRunner.And("the debug output as", ((string)(null)), table3, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -178,18 +184,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system date time into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemDateTimeIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system date time into a scalar", ((string[])(null)));
-#line 35
-this.ScenarioSetup(scenarioInfo);
-#line 36
- testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"FullDateTime\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system date time into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 37
- testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 38
- testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"DateTime\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"FullDateTime\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 39
+ testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 40
+ testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"DateTime\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 41
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -198,7 +207,7 @@ this.ScenarioSetup(scenarioInfo);
             table4.AddRow(new string[] {
                         "1",
                         "[[testvar]] = DateTime"});
-#line 40
+#line 42
  testRunner.And("the debug output as", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -208,18 +217,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system Date Time Format into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemDateTimeFormatIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Date Time Format into a scalar", ((string[])(null)));
-#line 44
-this.ScenarioSetup(scenarioInfo);
-#line 45
- testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"DateTimeFormat\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 46
- testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Date Time Format into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 47
- testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioSetup(scenarioInfo);
 #line 48
+ testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"DateTimeFormat\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 49
+ testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 50
+ testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 51
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -228,7 +240,7 @@ this.ScenarioSetup(scenarioInfo);
             table5.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 49
+#line 52
  testRunner.And("the debug output as", ((string)(null)), table5, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -238,18 +250,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system Disk Available into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemDiskAvailableIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Disk Available into a scalar", ((string[])(null)));
-#line 53
-this.ScenarioSetup(scenarioInfo);
-#line 54
- testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"DiskAvailable\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 55
- testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 56
- testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Disk Available into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
 #line 57
+this.ScenarioSetup(scenarioInfo);
+#line 58
+ testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"DiskAvailable\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 59
+ testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 60
+ testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 61
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -258,7 +273,7 @@ this.ScenarioSetup(scenarioInfo);
             table6.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 58
+#line 62
  testRunner.And("the debug output as", ((string)(null)), table6, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -268,18 +283,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system Disk Total into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemDiskTotalIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Disk Total into a scalar", ((string[])(null)));
-#line 62
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Disk Total into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 67
 this.ScenarioSetup(scenarioInfo);
-#line 63
+#line 68
  testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"DiskTotal\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 64
+#line 69
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 65
+#line 70
  testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 66
+#line 71
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -288,7 +306,7 @@ this.ScenarioSetup(scenarioInfo);
             table7.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 67
+#line 72
  testRunner.And("the debug output as", ((string)(null)), table7, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -301,15 +319,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignASystemPhysicalMemoryAvailableIntoAScalar()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Physical Memory Available into a scalar", ((string[])(null)));
-#line 71
+#line 76
 this.ScenarioSetup(scenarioInfo);
-#line 72
+#line 77
  testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"PhysicalMemoryAvailable\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 73
+#line 78
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 74
+#line 79
  testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"Int32\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 75
+#line 80
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -318,7 +336,7 @@ this.ScenarioSetup(scenarioInfo);
             table8.AddRow(new string[] {
                         "1",
                         "[[testvar]] = Int32"});
-#line 76
+#line 81
  testRunner.And("the debug output as", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -328,18 +346,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system Physical Memory Total into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemPhysicalMemoryTotalIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Physical Memory Total into a scalar", ((string[])(null)));
-#line 80
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Physical Memory Total into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 86
 this.ScenarioSetup(scenarioInfo);
-#line 81
+#line 87
  testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"PhysicalMemoryTotal\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 82
+#line 88
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 83
+#line 89
  testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"Int32\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 84
+#line 90
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -348,7 +369,7 @@ this.ScenarioSetup(scenarioInfo);
             table9.AddRow(new string[] {
                         "1",
                         "[[testvar]] = Int32"});
-#line 85
+#line 91
  testRunner.And("the debug output as", ((string)(null)), table9, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -358,18 +379,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system CPU Available into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemCPUAvailableIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system CPU Available into a scalar", ((string[])(null)));
-#line 89
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system CPU Available into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 96
 this.ScenarioSetup(scenarioInfo);
-#line 90
+#line 97
  testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"CPUAvailable\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 91
+#line 98
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 92
+#line 99
  testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 93
+#line 100
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -378,7 +402,7 @@ this.ScenarioSetup(scenarioInfo);
             table10.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 94
+#line 101
  testRunner.And("the debug output as", ((string)(null)), table10, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -391,15 +415,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignASystemCPUTotalIntoAScalar()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system CPU Total into a scalar", ((string[])(null)));
-#line 98
+#line 105
 this.ScenarioSetup(scenarioInfo);
-#line 99
+#line 106
  testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"CPUTotal\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 100
+#line 107
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 101
+#line 108
  testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 102
+#line 109
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -408,7 +432,7 @@ this.ScenarioSetup(scenarioInfo);
             table11.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 103
+#line 110
  testRunner.And("the debug output as", ((string)(null)), table11, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -418,18 +442,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system Language into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemLanguageIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Language into a scalar", ((string[])(null)));
-#line 107
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Language into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 115
 this.ScenarioSetup(scenarioInfo);
-#line 108
+#line 116
  testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"Language\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 109
+#line 117
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 110
+#line 118
  testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 111
+#line 119
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -438,7 +465,7 @@ this.ScenarioSetup(scenarioInfo);
             table12.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 112
+#line 120
  testRunner.And("the debug output as", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -448,18 +475,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system Region into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemRegionIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Region into a scalar", ((string[])(null)));
-#line 116
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Region into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 125
 this.ScenarioSetup(scenarioInfo);
-#line 117
+#line 126
  testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"Region\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 118
+#line 127
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 119
+#line 128
  testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 120
+#line 129
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -468,7 +498,7 @@ this.ScenarioSetup(scenarioInfo);
             table13.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 121
+#line 130
  testRunner.And("the debug output as", ((string)(null)), table13, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -481,15 +511,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignASystemUserRolesIntoAScalar()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system User Roles into a scalar", ((string[])(null)));
-#line 125
+#line 134
 this.ScenarioSetup(scenarioInfo);
-#line 126
+#line 135
  testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"UserRoles\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 127
+#line 136
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 128
+#line 137
  testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 129
+#line 138
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -498,7 +528,7 @@ this.ScenarioSetup(scenarioInfo);
             table14.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 130
+#line 139
  testRunner.And("the debug output as", ((string)(null)), table14, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -508,18 +538,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system User Name into a scalar")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemUserNameIntoAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system User Name into a scalar", ((string[])(null)));
-#line 134
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system User Name into a scalar", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 144
 this.ScenarioSetup(scenarioInfo);
-#line 135
+#line 145
  testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"UserName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 136
+#line 146
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 137
+#line 147
  testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 138
+#line 148
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -528,7 +561,7 @@ this.ScenarioSetup(scenarioInfo);
             table15.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 139
+#line 149
  testRunner.And("the debug output as", ((string)(null)), table15, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -541,15 +574,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignASystemDomainIntoAScalar()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Domain into a scalar", ((string[])(null)));
-#line 143
+#line 153
 this.ScenarioSetup(scenarioInfo);
-#line 144
+#line 154
  testRunner.Given("I have a variable \"[[testvar]]\" and I selected \"Domain\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 145
+#line 155
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 146
+#line 156
  testRunner.Then("the value of the variable \"[[testvar]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 147
+#line 157
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -558,7 +591,7 @@ this.ScenarioSetup(scenarioInfo);
             table16.AddRow(new string[] {
                         "1",
                         "[[testvar]] = String"});
-#line 148
+#line 158
  testRunner.And("the debug output as", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -568,18 +601,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign User Roles into a recordset")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignUserRolesIntoARecordset()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign User Roles into a recordset", ((string[])(null)));
-#line 152
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign User Roles into a recordset", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 163
 this.ScenarioSetup(scenarioInfo);
-#line 153
+#line 164
  testRunner.Given("I have a variable \"[[my(2).roles]]\" and I selected \"UserRoles\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 154
+#line 165
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 155
+#line 166
  testRunner.Then("the value of the variable \"[[my(2).roles]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 156
+#line 167
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -588,7 +624,7 @@ this.ScenarioSetup(scenarioInfo);
             table17.AddRow(new string[] {
                         "1",
                         "[[my(2).roles]] = String"});
-#line 157
+#line 168
  testRunner.And("the debug output as", ((string)(null)), table17, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -598,26 +634,29 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign User Roles into a multiple fields in recordset")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignUserRolesIntoAMultipleFieldsInRecordset()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign User Roles into a multiple fields in recordset", ((string[])(null)));
-#line 161
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign User Roles into a multiple fields in recordset", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 173
 this.ScenarioSetup(scenarioInfo);
-#line 162
+#line 174
  testRunner.Given("I have a variable \"[[my().roles]]\" and I selected \"UserRoles\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 163
+#line 175
  testRunner.And("I have a variable \"[[my().ram]]\" and I selected \"PhysicalMemoryAvailable\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 164
+#line 176
  testRunner.And("I have a variable \"[[my().ramtot]]\" and I selected \"PhysicalMemoryTotal\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 165
+#line 177
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 166
+#line 178
  testRunner.Then("the value of the variable \"[[my(1).roles]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 167
+#line 179
  testRunner.Then("the value of the variable \"[[my(1).ram]]\" is a valid \"Int32\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 168
+#line 180
  testRunner.Then("the value of the variable \"[[my(1).ramtot]]\" is a valid \"Int32\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 169
+#line 181
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -632,7 +671,7 @@ this.ScenarioSetup(scenarioInfo);
             table18.AddRow(new string[] {
                         "3",
                         "[[my(1).ramtot]] = Int32"});
-#line 170
+#line 182
  testRunner.And("the debug output as", ((string)(null)), table18, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -642,16 +681,19 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign a system Domain into a negative recordset index")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignASystemDomainIntoANegativeRecordsetIndex()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Domain into a negative recordset index", ((string[])(null)));
-#line 177
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign a system Domain into a negative recordset index", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 189
 this.ScenarioSetup(scenarioInfo);
-#line 178
+#line 190
  testRunner.Given("I have a variable \"[[rec(-1).set]]\" and I selected \"Domain\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 179
+#line 191
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 180
+#line 192
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -660,7 +702,7 @@ this.ScenarioSetup(scenarioInfo);
             table19.AddRow(new string[] {
                         "1",
                         "[[rec(-1).set]] ="});
-#line 181
+#line 193
  testRunner.And("the debug output as", ((string)(null)), table19, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -670,18 +712,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign Disk Total into a recordset")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignDiskTotalIntoARecordset()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign Disk Total into a recordset", ((string[])(null)));
-#line 186
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign Disk Total into a recordset", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 199
 this.ScenarioSetup(scenarioInfo);
-#line 187
+#line 200
  testRunner.Given("I have a variable \"[[my().disks]]\" and I selected \"DiskTotal\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 188
+#line 201
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 189
+#line 202
  testRunner.Then("the value of the variable \"[[my(1).disks]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 190
+#line 203
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -690,7 +735,7 @@ this.ScenarioSetup(scenarioInfo);
             table20.AddRow(new string[] {
                         "1",
                         "[[my(1).disks]] = String"});
-#line 191
+#line 204
  testRunner.And("the debug output as", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -700,18 +745,21 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Assign Disk Available into a recordset")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         public virtual void AssignDiskAvailableIntoARecordset()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign Disk Available into a recordset", ((string[])(null)));
-#line 196
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign Disk Available into a recordset", new string[] {
+                        "MSTest:DoNotParallelize"});
+#line 210
 this.ScenarioSetup(scenarioInfo);
-#line 197
+#line 211
  testRunner.Given("I have a variable \"[[my().disks]]\" and I selected \"DiskAvailable\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 198
+#line 212
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 199
+#line 213
  testRunner.Then("the value of the variable \"[[my(1).disks]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 200
+#line 214
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -720,7 +768,7 @@ this.ScenarioSetup(scenarioInfo);
             table21.AddRow(new string[] {
                         "1",
                         "[[my(1).disks]] =  String"});
-#line 201
+#line 215
  testRunner.And("the debug output as", ((string)(null)), table21, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -728,16 +776,22 @@ this.ScenarioSetup(scenarioInfo);
         
         public virtual void ExecutingWithIncorrectRecordsets(string input, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Executing with Incorrect Recordsets", exampleTags);
-#line 205
+            string[] @__tags = new string[] {
+                    "MSTest:DoNotParallelize"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Executing with Incorrect Recordsets", @__tags);
+#line 220
 this.ScenarioSetup(scenarioInfo);
-#line 206
+#line 221
  testRunner.Given(string.Format("I have a variable \"{0}\" and I selected \"DiskAvailable\"", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 207
+#line 222
  testRunner.When("the gather system infomartion tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 208
+#line 223
  testRunner.Then("the value of the variable \"[[my(2).roles]]\" is a valid \"String\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 209
+#line 224
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -747,11 +801,13 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Executing with Incorrect Recordsets: [[rec&^[a]]().a]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[rec&^[a]]().a]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "[[rec&^[a]]().a]]")]
         public virtual void ExecutingWithIncorrectRecordsets_RecA_A()
         {
-#line 205
+#line 220
 this.ExecutingWithIncorrectRecordsets("[[rec&^[a]]().a]]", ((string[])(null)));
 #line hidden
         }
@@ -760,11 +816,13 @@ this.ExecutingWithIncorrectRecordsets("[[rec&^[a]]().a]]", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Executing with Incorrect Recordsets: [[]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[]]")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "[[]]")]
         public virtual void ExecutingWithIncorrectRecordsets_()
         {
-#line 205
+#line 220
 this.ExecutingWithIncorrectRecordsets("[[]]", ((string[])(null)));
 #line hidden
         }
@@ -773,11 +831,13 @@ this.ExecutingWithIncorrectRecordsets("[[]]", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Executing with Incorrect Recordsets: [[rec&^]][[rec&^]] is not a valid variable")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GatherSystemInformation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Utility")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("MSTest:DoNotParallelize")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "[[rec&^]][[rec&^]] is not a valid variable")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:input", "[[rec&^]][[rec&^]] is not a valid variable")]
         public virtual void ExecutingWithIncorrectRecordsets_RecRecIsNotAValidVariable()
         {
-#line 205
+#line 220
 this.ExecutingWithIncorrectRecordsets("[[rec&^]][[rec&^]] is not a valid variable", ((string[])(null)));
 #line hidden
         }
