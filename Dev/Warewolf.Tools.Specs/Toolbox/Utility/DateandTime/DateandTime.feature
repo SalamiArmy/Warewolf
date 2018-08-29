@@ -19,7 +19,6 @@ Scenario: Add weeks to a given date
 	|                          |  
 	| [[result]] = 2014-11-28 |
 
-
 Scenario: Date and Time with Everything blank
 	Given I have a date ""
 	And the input format as ""

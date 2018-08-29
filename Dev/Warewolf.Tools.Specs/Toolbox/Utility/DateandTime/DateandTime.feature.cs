@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Utility.DateandTime
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "DateandTime", "\tIn order to work with date and time\r\n\tAs a Warewolf user\r\n\tI want a tool that wi" +
                     "ll allow me to do date time calcuations", ProgrammingLanguage.CSharp, new string[] {
                         "Utility"});
@@ -140,21 +140,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeWithEverythingBlank()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time with Everything blank", ((string[])(null)));
-#line 23
+#line 22
 this.ScenarioSetup(scenarioInfo);
-#line 24
+#line 23
  testRunner.Given("I have a date \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 25
+#line 24
  testRunner.And("the input format as \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 26
+#line 25
  testRunner.And("I selected Add time as \"None\" with a value of 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 27
+#line 26
  testRunner.And("the output format as \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 28
+#line 27
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 29
+#line 28
  testRunner.Then("the datetime result should be a \"System.DateTime\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 30
+#line 29
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -175,14 +175,14 @@ this.ScenarioSetup(scenarioInfo);
                         "0",
                         "System Date Time Format",
                         "yyyy/MM/dd hh:mm:ss tt"});
-#line 31
+#line 30
  testRunner.And("the debug inputs as", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table4.AddRow(new string[] {
                         "[[result]] = DateTime"});
-#line 34
+#line 33
  testRunner.And("the debug output as", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -195,21 +195,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeWithInputBlankAndIncorrectFormat()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time with input blank and incorrect format", ((string[])(null)));
-#line 38
+#line 37
 this.ScenarioSetup(scenarioInfo);
-#line 39
+#line 38
  testRunner.Given("I have a date \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 40
+#line 39
  testRunner.And("the input format as \"asdf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 41
+#line 40
  testRunner.And("I selected Add time as \"None\" with a value of 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 42
+#line 41
  testRunner.And("the output format as \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 43
+#line 42
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 44
+#line 43
  testRunner.Then("the datetime result should be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 45
+#line 44
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -228,14 +228,14 @@ this.ScenarioSetup(scenarioInfo);
                         "0",
                         "System Date Time Format",
                         "yyyy/MM/dd hh:mm:ss tt"});
-#line 46
+#line 45
  testRunner.And("the debug inputs as", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table6.AddRow(new string[] {
                         "[[result]] ="});
-#line 49
+#line 48
  testRunner.And("the debug output as", ((string)(null)), table6, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -248,21 +248,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeWithNoSecondsAndAdd1Second()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time with no seconds and add 1 second", ((string[])(null)));
-#line 53
+#line 52
 this.ScenarioSetup(scenarioInfo);
-#line 54
+#line 53
  testRunner.Given("I have a date \"12:30\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 55
+#line 54
  testRunner.And("the input format as \"24h:min\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 56
+#line 55
  testRunner.And("I selected Add time as \"Seconds\" with a value of 61", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 57
+#line 56
  testRunner.And("the output format as \"24h:min\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 58
+#line 57
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 59
+#line 58
  testRunner.Then("the datetime result should be \"12:31\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 60
+#line 59
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -279,14 +279,14 @@ this.ScenarioSetup(scenarioInfo);
                         "61",
                         "System Date Time Format",
                         "yyyy/MM/dd hh:mm:ss tt"});
-#line 61
+#line 60
  testRunner.And("the debug inputs as", ((string)(null)), table7, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table8.AddRow(new string[] {
                         "[[result]] = 12:31"});
-#line 64
+#line 63
  testRunner.And("the debug output as", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -299,21 +299,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeWithBadlyFormedInputs()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time with badly formed inputs", ((string[])(null)));
-#line 68
+#line 67
 this.ScenarioSetup(scenarioInfo);
-#line 69
+#line 68
  testRunner.Given("I have a date \"asdf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 70
+#line 69
  testRunner.And("the input format as \"asdf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 71
+#line 70
  testRunner.And("I selected Add time as \"None\" with a value of 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 72
+#line 71
  testRunner.And("the output format as \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 73
+#line 72
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 74
+#line 73
  testRunner.Then("the datetime result should be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 75
+#line 74
  testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -330,14 +330,14 @@ this.ScenarioSetup(scenarioInfo);
                         "0",
                         "System Date Time Format",
                         "yyyy/MM/dd hh:mm:ss tt"});
-#line 76
+#line 75
  testRunner.And("the debug inputs as", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table10.AddRow(new string[] {
                         "[[result]] ="});
-#line 79
+#line 78
  testRunner.And("the debug output as", ((string)(null)), table10, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -350,21 +350,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeWithBadlyFormedOutputFormat()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time with badly formed output format", ((string[])(null)));
-#line 83
+#line 82
 this.ScenarioSetup(scenarioInfo);
-#line 84
+#line 83
  testRunner.Given("I have a date \"12:30\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 85
+#line 84
  testRunner.And("the input format as \"24h:min\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 86
+#line 85
  testRunner.And("I selected Add time as \"Seconds\" with a value of 61", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 87
+#line 86
  testRunner.And("the output format as \"asdf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 88
+#line 87
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 89
+#line 88
  testRunner.Then("the datetime result should be \"as1f\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 90
+#line 89
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -379,14 +379,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Seconds",
                         "61",
                         "asdf"});
-#line 91
+#line 90
  testRunner.And("the debug inputs as", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table12.AddRow(new string[] {
                         "[[result]] = as1f"});
-#line 94
+#line 93
  testRunner.And("the debug output as", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -399,21 +399,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeWithCharactersForTimeToAdd()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time with characters for time to add", ((string[])(null)));
-#line 98
+#line 97
 this.ScenarioSetup(scenarioInfo);
-#line 99
+#line 98
  testRunner.Given("I have a date \"12:30\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 100
+#line 99
  testRunner.And("the input format as \"24h:min\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 101
+#line 100
  testRunner.And("I selected Add time as \"Seconds\" with a value of \"asdf\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 102
+#line 101
  testRunner.And("the output format as \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 103
+#line 102
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 104
+#line 103
  testRunner.Then("the datetime result should be \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 105
+#line 104
    testRunner.And("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -430,14 +430,14 @@ this.ScenarioSetup(scenarioInfo);
                         "asdf",
                         "System Date Time Format",
                         "yyyy/MM/dd hh:mm:ss tt"});
-#line 106
+#line 105
    testRunner.And("the debug inputs as", ((string)(null)), table13, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table14.AddRow(new string[] {
                         "[[result]] ="});
-#line 109
+#line 108
  testRunner.And("the debug output as", ((string)(null)), table14, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -452,24 +452,24 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time with output format - 12h:dd:DW:mm:MM:min:ss:sp:yyyy:yy:Z:am/pm:24h:" +
                     "d:dw:DW:dy:m:M:w:ZZ:w:ZZZ:Era", ((string[])(null)));
-#line 113
+#line 112
 this.ScenarioSetup(scenarioInfo);
-#line 114
+#line 113
  testRunner.Given("I have a date \"2013/12/05 04:18:51 PM\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 115
+#line 114
  testRunner.And("the input format as \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 116
+#line 115
  testRunner.And("I selected Add time as \"None\" with a value of 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 117
+#line 116
  testRunner.And("the output format as \"12h:dd:DW:mm:MM:min:ss:sp:yyyy:yy:Z:am/pm:24h:d:dw:DW:dy:m:" +
                     "M:w:ZZ:w:ZZZ:Era\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 118
+#line 117
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 119
+#line 118
  testRunner.Then("the datetime result should be \"04:05:Thursday:12:December:18:51:0:2013:13:South A" +
                     "frica Standard Time:PM:16:5:4:Thursday:339:12:Dec:49:South Africa Standard Time:" +
                     "49:(UTC+02:00) Harare, Pretoria:A.D.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 120
+#line 119
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -486,7 +486,7 @@ this.ScenarioSetup(scenarioInfo);
                         "None",
                         "0",
                         "12h:dd:DW:mm:MM:min:ss:sp:yyyy:yy:Z:am/pm:24h:d:dw:DW:dy:m:M:w:ZZ:w:ZZZ:Era"});
-#line 121
+#line 120
   testRunner.And("the debug inputs as", ((string)(null)), table15, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -494,7 +494,7 @@ this.ScenarioSetup(scenarioInfo);
             table16.AddRow(new string[] {
                         "[[result]] = 04:05:Thursday:12:December:18:51:0:2013:13:South Africa Standard Tim" +
                             "e:PM:16:5:4:Thursday:339:12:Dec:"});
-#line 124
+#line 123
  testRunner.And("the debug output as", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -509,24 +509,24 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time with input format - 12h:dd:DW:ERA:mm:MM:min:ss:sp:yyyy:yy:Z:am/pm:2" +
                     "4h:d:dw:DW:dy:m:M:w:ZZ:w:ZZZ with A.D.", ((string[])(null)));
-#line 128
+#line 127
 this.ScenarioSetup(scenarioInfo);
-#line 129
+#line 128
  testRunner.Given("I have a date \"04:05:Thursday:A.D.:12:December:18:51:0:2013:13:South Africa Stand" +
                     "ard Time:PM:16:5:4:Thursday:339:12:Dec:49:South Africa Standard Time:49:(UTC+02:" +
                     "00) Harare, Pretoria\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 130
+#line 129
  testRunner.And("the input format as \"12h:dd:DW:ERA:mm:MM:min:ss:sp:yyyy:yy:Z:am/pm:24h:d:dw:DW:dy" +
                     ":m:M:w:ZZ:w:ZZZ\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 131
+#line 130
  testRunner.And("I selected Add time as \"None\" with a value of 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 132
+#line 131
  testRunner.And("the output format as \"yyyy/mm/dd 12h:min:ss am/pm\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 133
+#line 132
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 134
+#line 133
  testRunner.Then("the datetime result should be \"2013/12/05 04:18:51 PM\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 135
+#line 134
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -542,14 +542,14 @@ this.ScenarioSetup(scenarioInfo);
                         "None",
                         "0",
                         "yyyy/mm/dd 12h:min:ss am/pm"});
-#line 136
+#line 135
  testRunner.And("the debug inputs as", ((string)(null)), table17, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table18.AddRow(new string[] {
                         "[[result]] = 2013/12/05 04:18:51 PM"});
-#line 139
+#line 138
  testRunner.And("the debug output as", ((string)(null)), table18, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -564,24 +564,24 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time with input format - 12h:dd:DW:era:mm:MM:min:ss:sp:yyyy:yy:Z:am/pm:2" +
                     "4h:d:dw:DW:dy:m:M:w:ZZ:w:ZZZ with AD", ((string[])(null)));
-#line 143
+#line 142
 this.ScenarioSetup(scenarioInfo);
-#line 144
+#line 143
  testRunner.Given("I have a date \"04:05:Thursday:AD:12:December:18:51:0:2013:13:South Africa Standar" +
                     "d Time:PM:16:5:4:Thursday:339:12:Dec:49:South Africa Standard Time:49:(UTC+02:00" +
                     ") Harare, Pretoria\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 145
+#line 144
  testRunner.And("the input format as \"12h:dd:DW:era:mm:MM:min:ss:sp:yyyy:yy:Z:am/pm:24h:d:dw:DW:dy" +
                     ":m:M:w:ZZ:w:ZZZ\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 146
+#line 145
  testRunner.And("I selected Add time as \"None\" with a value of 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 147
+#line 146
  testRunner.And("the output format as \"yyyy/mm/dd 12h:min:ss am/pm\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 148
+#line 147
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 149
+#line 148
  testRunner.Then("the datetime result should be \"2013/12/05 04:18:51 PM\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 150
+#line 149
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -597,14 +597,14 @@ this.ScenarioSetup(scenarioInfo);
                         "None",
                         "0",
                         "yyyy/mm/dd 12h:min:ss am/pm"});
-#line 151
+#line 150
   testRunner.And("the debug inputs as", ((string)(null)), table19, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table20.AddRow(new string[] {
                         "[[result]] = 2013/12/05 04:18:51 PM"});
-#line 154
+#line 153
  testRunner.And("the debug output as", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -619,24 +619,24 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time with input format - 12h:dd:DW:Era:mm:MM:min:ss:sp:yyyy:yy:Z:am/pm:2" +
                     "4h:d:dw:DW:dy:m:M:w:ZZ:w:ZZZ with A.D", ((string[])(null)));
-#line 159
+#line 158
 this.ScenarioSetup(scenarioInfo);
-#line 160
+#line 159
  testRunner.Given("I have a date \"04:05:Thursday:A.D:12:December:18:51:0:2013:13:South Africa Standa" +
                     "rd Time:PM:16:5:4:Thursday:339:12:Dec:49:South Africa Standard Time:49:(UTC+02:0" +
                     "0) Harare, Pretoria\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 161
+#line 160
  testRunner.And("the input format as \"12h:dd:DW:Era:mm:MM:min:ss:sp:yyyy:yy:Z:am/pm:24h:d:dw:DW:dy" +
                     ":m:M:w:ZZ:w:ZZZ\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 162
+#line 161
  testRunner.And("I selected Add time as \"None\" with a value of 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 163
+#line 162
  testRunner.And("the output format as \"yyyy/mm/dd 12h:min:ss am/pm\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 164
+#line 163
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 165
+#line 164
  testRunner.Then("the datetime result should be \"2013/12/05 04:18:51 PM\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 166
+#line 165
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -652,14 +652,14 @@ this.ScenarioSetup(scenarioInfo);
                         "None",
                         "0",
                         "yyyy/mm/dd 12h:min:ss am/pm"});
-#line 167
+#line 166
   testRunner.And("the debug inputs as", ((string)(null)), table21, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table22.AddRow(new string[] {
                         "[[result]] = 2013/12/05 04:18:51 PM"});
-#line 170
+#line 169
  testRunner.And("the debug output as", ((string)(null)), table22, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -672,19 +672,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeInputDateWithANegativeIndex()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and time input date with a negative index", ((string[])(null)));
-#line 174
+#line 173
 this.ScenarioSetup(scenarioInfo);
-#line 175
+#line 174
  testRunner.Given("I have a date \"[[my(-1).date]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 176
+#line 175
  testRunner.And("the input format as \"yyyy-mm-dd\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 177
+#line 176
  testRunner.And("I selected Add time as \"Weeks\" with a value of 52", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 178
+#line 177
  testRunner.And("the output format as \"yyyy-mm-dd\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 179
+#line 178
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 180
+#line 179
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -699,14 +699,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Weeks",
                         "52",
                         "yyyy-mm-dd"});
-#line 181
+#line 180
   testRunner.And("the debug inputs as", ((string)(null)), table23, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table24.AddRow(new string[] {
                         "[[result]] ="});
-#line 184
+#line 183
  testRunner.And("the debug output as", ((string)(null)), table24, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -719,19 +719,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeInputFormatWithANegativeIndex()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and time input format with a negative index", ((string[])(null)));
-#line 188
+#line 187
 this.ScenarioSetup(scenarioInfo);
-#line 189
+#line 188
  testRunner.Given("I have a date \"2013-11-29\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 190
+#line 189
  testRunner.And("the input format as \"[[my(-1).format]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 191
+#line 190
  testRunner.And("I selected Add time as \"Weeks\" with a value of 52", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 192
+#line 191
  testRunner.And("the output format as \"yyyy-mm-dd\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 193
+#line 192
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 194
+#line 193
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -746,14 +746,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Weeks",
                         "52",
                         "yyyy-mm-dd"});
-#line 195
+#line 194
  testRunner.And("the debug inputs as", ((string)(null)), table25, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table26.AddRow(new string[] {
                         "[[result]] ="});
-#line 198
+#line 197
  testRunner.And("the debug output as", ((string)(null)), table26, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -766,19 +766,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeAddWeeksWithANegativeIndex()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time add weeks with a negative index", ((string[])(null)));
-#line 202
+#line 201
 this.ScenarioSetup(scenarioInfo);
-#line 203
+#line 202
  testRunner.Given("I have a date \"2013-11-29\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 204
+#line 203
  testRunner.And("the input format as \"yyyy-mm-dd\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 205
+#line 204
  testRunner.And("I selected Add time as \"Weeks\" with a value of \"[[my(-1).int]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 206
+#line 205
  testRunner.And("the output format as \"yyyy-mm-dd\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 207
+#line 206
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 208
+#line 207
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -793,14 +793,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Weeks",
                         "[[my(-1).int]] =",
                         "yyyy-mm-dd"});
-#line 209
+#line 208
  testRunner.And("the debug inputs as", ((string)(null)), table27, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table28.AddRow(new string[] {
                         "[[result]] ="});
-#line 212
+#line 211
  testRunner.And("the debug output as", ((string)(null)), table28, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -813,19 +813,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeOutputFormatWithANegativeIndex()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time output format with a negative index", ((string[])(null)));
-#line 216
+#line 215
 this.ScenarioSetup(scenarioInfo);
-#line 217
+#line 216
  testRunner.Given("I have a date \"2013-11-29\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 218
+#line 217
  testRunner.And("the input format as \"yyyy-mm-dd\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 219
+#line 218
  testRunner.And("I selected Add time as \"Weeks\" with a value of 52", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 220
+#line 219
  testRunner.And("the output format as \"[[my(-1).format]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 221
+#line 220
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 222
+#line 221
  testRunner.Then("the execution has \"AN\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -840,14 +840,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Weeks",
                         "52",
                         "[[my(-1).format]] ="});
-#line 223
+#line 222
  testRunner.And("the debug inputs as", ((string)(null)), table29, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table30.AddRow(new string[] {
                         "[[result]] ="});
-#line 226
+#line 225
  testRunner.And("the debug output as", ((string)(null)), table30, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -860,21 +860,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DefaultOutputsForDatepartsNotPresent()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Default outputs for dateparts not present", ((string[])(null)));
-#line 231
+#line 230
 this.ScenarioSetup(scenarioInfo);
-#line 232
+#line 231
  testRunner.Given("I have a date \"0\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 233
+#line 232
  testRunner.And("the input format as \"sp\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 234
+#line 233
  testRunner.And("I selected Add time as \"None\" with a value of 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 235
+#line 234
  testRunner.And("the output format as \"yyyy-mm-dd 24hr:min:ss am/pm Era\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 236
+#line 235
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 237
+#line 236
  testRunner.Then("the datetime result should be \"0001-01-01 00r:00:00 AM AD\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 238
+#line 237
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -889,14 +889,14 @@ this.ScenarioSetup(scenarioInfo);
                         "None",
                         "0",
                         "yyyy-mm-dd 24hr:min:ss am/pm Era"});
-#line 239
+#line 238
  testRunner.And("the debug inputs as", ((string)(null)), table31, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table32.AddRow(new string[] {
                         "[[result]] = 0001-01-01 00r:00:00 AM A.D."});
-#line 242
+#line 241
  testRunner.And("the debug output as", ((string)(null)), table32, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -909,21 +909,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeOutputFormatWithQuotedStrings()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time output format with quoted strings", ((string[])(null)));
-#line 246
+#line 245
 this.ScenarioSetup(scenarioInfo);
-#line 247
+#line 246
        testRunner.Given("I have a date \" 2013 March 29\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 248
+#line 247
        testRunner.And("the input format as \" yyyy MM dd\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 249
+#line 248
        testRunner.And("I selected Add time as \"Years\" with a value of 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 250
+#line 249
        testRunner.And("the output format as \"yyyy-mm-dd \"wrong date\"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 251
+#line 250
        testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 252
+#line 251
        testRunner.Then("the datetime result should be \"2014-03-29 \"13rong 29ate\"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 253
+#line 252
        testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -938,14 +938,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Years",
                         "1",
                         "yyyy-mm-dd \"wrong date\""});
-#line 254
+#line 253
        testRunner.And("the debug inputs as", ((string)(null)), table33, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
                         ""});
             table34.AddRow(new string[] {
                         "[[result]] = 2014-03-29 \"13rong 29ate\""});
-#line 257
+#line 256
        testRunner.And("the debug output as", ((string)(null)), table34, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -958,21 +958,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeOutputFormatWithoutInputsMustReturnCorrectFormat()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time output format without inputs must return correct format", ((string[])(null)));
-#line 261
+#line 260
 this.ScenarioSetup(scenarioInfo);
-#line 262
+#line 261
  testRunner.Given("I have a date \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 263
+#line 262
  testRunner.And("the input format as \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 264
+#line 263
  testRunner.And("the output format as \"\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 265
+#line 264
  testRunner.And("I selected Add time as \"Years\" with a value of 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 266
+#line 265
  testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 267
+#line 266
  testRunner.Then("the datetime result should contain milliseconds Standard Format", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 268
+#line 267
  testRunner.And("the execution has \"NO\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -985,21 +985,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DateAndTimeOutputFormatWithNULLInputs()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Date and Time output format with NULL inputs", ((string[])(null)));
-#line 271
+#line 270
 this.ScenarioSetup(scenarioInfo);
-#line 272
+#line 271
        testRunner.Given("I have a Date time variable \"[[a]]\" with value \"NULL\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 273
+#line 272
     testRunner.And("I have a date \"[[a]]\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 274
+#line 273
        testRunner.And("the input format as \"dd-MM-yy\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 275
+#line 274
        testRunner.And("the output format as \"dd-MM-yy\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 276
+#line 275
    testRunner.And("I selected Add time as \"Years\" with a value of 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 277
+#line 276
        testRunner.When("the datetime tool is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 278
+#line 277
        testRunner.Then("the execution has \"An\" error", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
