@@ -233,7 +233,10 @@ namespace Dev2.Activities.Specs.TestFramework
             }
             var shellViewModel = new Mock<IShellViewModel>();
             shellViewModel.Setup(model => model.CloseResourceTestView(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<Guid>()));
-            CustomContainer.Register(shellViewModel.Object);
+            if (CustomContainer.Get<IShellViewModel>() == null)
+            {
+                CustomContainer.Register(shellViewModel.Object);
+            }
             MyContext["shellViewModel"] = shellViewModel;
         }
 
