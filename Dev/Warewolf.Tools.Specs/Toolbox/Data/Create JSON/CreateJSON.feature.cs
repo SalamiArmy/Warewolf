@@ -43,7 +43,7 @@ namespace Warewolf.Tools.Specs.Toolbox.Data.CreateJSON
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CreateJSON", "\tIn order to create a json payload\r\n\tAs a warewolf user\r\n\tI want to be given the " +
                     "JSON representation of my variables", ProgrammingLanguage.CSharp, new string[] {
                         "Data"});
