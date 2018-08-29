@@ -1433,7 +1433,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 126
  testRunner.Given(string.Format("I have the following intellisense options \'{0}\'", varlist), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 127
-  testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the filter type is \'{0}\'", filterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 128
  testRunner.And(string.Format("the current text in the textbox is \'{0}\'", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 129

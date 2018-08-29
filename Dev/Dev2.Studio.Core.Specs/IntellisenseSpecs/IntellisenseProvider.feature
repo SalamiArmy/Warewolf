@@ -124,7 +124,7 @@ Examples:
 @MSTest:DoNotParallelize
 Scenario Outline: Insert for RecordsetsOnly FilterType and Default Provider
 	Given I have the following intellisense options '<varlist>'
-		And the filter type is '<filterType>'
+	And the filter type is '<filterType>'
 	And the current text in the textbox is '<input>'
 	And the cursor is at index '<index>'		
 	And the provider used is '<provider>'	
