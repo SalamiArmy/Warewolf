@@ -260,6 +260,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsStringMapping_HasDataTableToInsertWithStringColumnHavingMaxLength()
         {
             //------------Setup for test--------------------------
@@ -755,6 +756,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsAndDataFromDataListStarWithOneScalar_HasDataTableWithData()
         {
             //------------Setup for test--------------------------

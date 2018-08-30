@@ -349,6 +349,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SendEmail_Execute")]
+        [DoNotParallelize]
         public void SendEmail_Execute_FromAccount_EmailSourceIsCorrect()
         {
             Verify_Execute_FromAccount_EmailSourceIsCorrect(true);
