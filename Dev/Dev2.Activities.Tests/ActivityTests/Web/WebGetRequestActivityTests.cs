@@ -109,6 +109,7 @@ namespace ActivityUnitTests.ActivityTest
 
 
         [TestMethod]
+        [DoNotParallelize]
         public void WebGetRequestExecuteWhereStaticValuesExpectCorrectResults()
         {
             //------------Setup for test--------------------------

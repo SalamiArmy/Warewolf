@@ -204,6 +204,7 @@
     <AdditionalFiles Include="..\SonarQube\SonarLint.xml">
       <Visible>False</Visible>
     </AdditionalFiles>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\Services\DesignerManagementServiceTests.cs" />
     <Compile Include="Activities\WorkerServicePropertyInterigatorTest.cs" />
     <Compile Include="Activities\WorkflowPropertyInterigatorTest.cs" />

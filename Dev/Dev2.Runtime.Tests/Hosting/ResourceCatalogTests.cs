@@ -82,6 +82,7 @@ namespace Dev2.Tests.Runtime.Hosting
         #region Instance
 
         [TestMethod]
+        [DoNotParallelize]
         public void InstanceExpectedIsSingleton()
         {
             var instance1 = ResourceCatalog.Instance;
@@ -100,6 +101,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void LoadWorkspaceAsyncWithNullWorkspaceArgumentExpectedThrowsArgumentNullException()
         {
             var rc = new ResourceCatalog(null, new Mock<IServerVersionRepository>().Object);
@@ -108,6 +110,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void LoadWorkspaceAsyncWithEmptyFoldersArgumentExpectedReturnsEmptyCatalog()
         {
             var rc = new ResourceCatalog(null, new Mock<IServerVersionRepository>().Object);
@@ -117,6 +120,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
 
         [TestMethod]
+        [DoNotParallelize]
         public void LoadWorkspaceAsyncWithExistingSourcesPathAndNonExistingServicesPathExpectedReturnsCatalogForSources()
         {
             var workspaceID = Guid.NewGuid();
@@ -139,9 +143,9 @@ namespace Dev2.Tests.Runtime.Hosting
                 Assert.AreEqual(expected.FilePath, resource.FilePath);
             }
         }
-
-
+        
         [TestMethod]
+        [DoNotParallelize]
         public void LoadWorkspaceAsyncWithValidWorkspaceIDExpectedReturnsCatalogForWorkspace()
         {
             var workspaceID = Guid.NewGuid();
@@ -160,9 +164,9 @@ namespace Dev2.Tests.Runtime.Hosting
                 Assert.AreEqual(expected.FilePath, resource.FilePath);
             }
         }
-
-
+        
         [TestMethod]
+        [DoNotParallelize]
         public void GetResourceCount_ExpectedReturnsCount()
         {
             var workspaceID = Guid.NewGuid();
@@ -175,6 +179,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Reload_ExpectedReturnsCount()
         {
             var workspaceID = GlobalConstants.ServerWorkspaceID;
@@ -188,6 +193,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
 
         [TestMethod]
+        [DoNotParallelize]
         public void LoadWorkspaceAsyncWithWithOneSignedAndOneUnsignedServiceExpectedLoadsSignedService()
         {
             var workspaceID = GlobalConstants.ServerWorkspaceID;
@@ -213,6 +219,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
 
         [TestMethod]
+        [DoNotParallelize]
         public void LoadWorkspaceAsyncWithSourceWithoutIDExpectedInjectsID()
         {
             var workspaceID = GlobalConstants.ServerWorkspaceID;
@@ -246,6 +253,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void SaveResourceWithNullResourceArgumentExpectedThrowsArgumentNullException()
         {
             var workspaceID = Guid.NewGuid();
@@ -255,6 +263,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void SaveResourceWithNullResourceXmlArgumentExpectedThrowsArgumentNullException()
         {
             var workspaceID = Guid.NewGuid();
@@ -265,6 +274,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_WithNoResourcePath_ExpectedSavedAtRootLevel()
         {
             //------------Setup for test--------------------------
@@ -290,6 +300,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_Expects_A_VersionToBeSaved()
         {
             //------------Setup for test--------------------------
@@ -307,6 +318,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_Expects_A_VersionToBeSaved_Xml()
         {
             //------------Setup for test--------------------------
@@ -329,6 +341,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_Expects_A_RollbackOnError()
         {
             //------------Setup for test--------------------------
@@ -361,6 +374,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_WithNoResourcePath_ServerWorkspace_ExpectedResourceSavedEventFired()
         {
             //------------Setup for test--------------------------
@@ -387,6 +401,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_WithNullResourcePath_ExpectedSavedAtRootLevel()
         {
             //------------Setup for test--------------------------
@@ -412,6 +427,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_WithResourcePath_ExpectedSavedInCorrectFolder()
         {
             //------------Setup for test--------------------------
@@ -438,6 +454,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_WithDifferentResourcePath_ExpectedDeleteOfExisting()
         {
             //------------Setup for test--------------------------
@@ -462,6 +479,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_WithSameResourcePath_ExpectedNotDeleteOfExisting()
         {
             //------------Setup for test--------------------------
@@ -486,6 +504,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_WithSameResourcePath_ExpectedNotDeleteOfExisting_ReasonDeploy()
         {
             //------------Setup for test--------------------------
@@ -510,6 +529,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_WithSameResourceNameDifferentResourcePath_ExpectedSavedInCorrectFolder()
         {
             //------------Setup for test--------------------------
@@ -540,6 +560,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void SaveResource_WithSameResourceNameSameResourcePath_ExpectedSavedInCorrectFolder()
         {
             //------------Setup for test--------------------------
@@ -565,9 +586,9 @@ namespace Dev2.Tests.Runtime.Hosting
             Assert.IsNotNull(nameAttribute);
             Assert.AreEqual(resourceName, nameAttribute.Value);
         }
-
-
+        
         [TestMethod]
+        [DoNotParallelize]
         public void SaveResourceWithSourceWithoutIDExpectedSourceSavedWithID()
         {
             var workspaceID = Guid.NewGuid();
@@ -587,6 +608,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void SaveResourceWithExistingResourceExpectedResourceOverwritten()
         {
             var workspaceID = Guid.NewGuid();
@@ -609,6 +631,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void SaveResourceWithExistingResourceAndReadonlyExpectedResourceOverwritten()
         {
             var workspaceID = Guid.NewGuid();
@@ -639,6 +662,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void SaveResourceWithNewResourceExpectedResourceWritten()
         {
             var workspaceID = Guid.NewGuid();
@@ -658,6 +682,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(DirectoryNotFoundException))]
+        [DoNotParallelize]
         public void SaveResourceWithSlashesInResourceNameExpectedThrowsDirectoryNotFoundException()
         {
             var workspaceID = Guid.NewGuid();
@@ -668,6 +693,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void SaveResourceWithNewResourceXmlExpectedResourceWritten()
         {
             var workspaceID = Guid.NewGuid();
@@ -691,6 +717,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void GetResourceWithNullResourceNameExpectedThrowsArgumentNullException()
         {
             var workspaceID = Guid.NewGuid();
@@ -699,6 +726,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetResourceWithResourceNameExpectedReturnsResource()
         {
             var workspaceID = Guid.NewGuid();
@@ -718,6 +746,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
+        [DoNotParallelize]
         public void GetResource_WithResourceContainsResourcePath_ExpectedCorrectResource()
         {
             //------------Setup for test--------------------------
@@ -741,6 +770,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void GetResourcepath_WithResourceContainsResourcePath_ExpectedCorrectResourcePath()
         {
             //------------Setup for test--------------------------
@@ -762,6 +792,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void GetResourceList_WithGivenWorkspaceWith1Resource_ShouldReturn1Resource()
         {
             //------------Setup for test--------------------------
@@ -783,6 +814,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void GetResourceListGeneric_GivenWorkspaceWith1Resource_ShouldReturn1Resource()
         {
             //------------Setup for test--------------------------
@@ -804,6 +836,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void GetResourceListGeneric_GivenWorkspaceWith1ResourceAndWrongTypr_ShouldReturnNothing()
         {
             //------------Setup for test--------------------------
@@ -826,6 +859,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void LoadResourceActivityCache_GivenServerId_ShouldNotThrowException()
         {
             //---------------Set up test pack-------------------
@@ -847,6 +881,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetResource_UnitTest_WhereTypeIsProvided_ExpectTypedResourceWorkflow()
         {
             //------------Setup for test--------------------------
@@ -867,6 +902,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetResource_UnitTest_WhereTypeIsProvided_ExpectTypedResourceWebSource()
         {
             //------------Setup for test--------------------------
@@ -894,6 +930,7 @@ namespace Dev2.Tests.Runtime.Hosting
         #region GetResourceContents
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetResourceContentsWithNullResourceExpectedReturnsEmptyString()
         {
             var catalog = new ResourceCatalog(null, new Mock<IServerVersionRepository>().Object);
@@ -902,6 +939,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetResourceContentsWithNullResourceFilePathExpectedReturnsEmptyString()
         {
             var catalog = new ResourceCatalog(null, new Mock<IServerVersionRepository>().Object);
@@ -910,6 +948,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetResourceContentsWithExistingResourceExpectedReturnsResourceContents()
         {
             var workspaceID = Guid.NewGuid();
@@ -926,6 +965,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_GetResourceContents")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetResourceContents_WhenHasNewLine_ShouldReturnWithNewLine()
         {
             //------------Setup for test--------------------------
@@ -955,6 +995,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetResourceContentsWithNonExistentResourceExpectedReturnsEmptyString()
         {
             var workspaceID = Guid.NewGuid();
@@ -966,6 +1007,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetResourceContentsWithNonExistentResourceIDExpectedReturnsEmptyString()
         {
             var workspaceID = Guid.NewGuid();
@@ -981,6 +1023,7 @@ namespace Dev2.Tests.Runtime.Hosting
         #region SyncTo
 
         [TestMethod]
+        [DoNotParallelize]
         public void SyncToWithDeleteIsFalseAndFileDeletedFromSourceExpectedFileNotDeletedInDestination()
         {
             var sourceWorkspaceID = Guid.NewGuid();
@@ -1001,6 +1044,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void SyncToWithOverwriteIsTrueExpectedFileInDestinationOverwritten()
         {
             var sourceWorkspaceID = Guid.NewGuid();
@@ -1033,6 +1077,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void SyncToWithOverwriteIsFalseExpectedFileInDestinationUnchanged()
         {
             var sourceWorkspaceID = Guid.NewGuid();
@@ -1066,6 +1111,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void SyncToWithFilesToIgnoreSpecifiedExpectedIgnoredFilesAreNotCopied()
         {
             var sourceWorkspaceID = Guid.NewGuid();
@@ -1085,6 +1131,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void SyncToWithFilesToIgnoreSpecifiedExpectedIgnoredFilesAreNotDeleted()
         {
             var sourceWorkspaceID = Guid.NewGuid();
@@ -1105,6 +1152,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void SyncToWithNonExistingDestinationDirectoryExpectedDestinationDirectoryCreated()
         {
             var sourceWorkspaceID = Guid.NewGuid();
@@ -1128,6 +1176,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("ResourceCatalog_ToPayload")]
+        [DoNotParallelize]
         public void ResourceCatalog_ToPayload_GetServiceNormalPayload_ConnectionStringAsAttributeOfRootTag()
         {
             //------------Setup for test--------------------------
@@ -1158,6 +1207,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalogResultBuilder_GivenMessage_ShouldReturnCorrectResults()
         {
             var accessViolationResult = ResourceCatalogResultBuilder.CreateAccessViolationResult("a");
@@ -1188,6 +1238,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(InvalidDataContractException))]
+        [DoNotParallelize]
         public void DeleteResourceWithNullResourceNameExpectedThrowsInvalidDataContractException()
         {
             var workspaceID = Guid.NewGuid();
@@ -1197,6 +1248,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(InvalidDataContractException))]
+        [DoNotParallelize]
         public void DeleteResourceWithNullTypeExpectedThrowsInvalidDataContractException()
         {
             var workspaceID = Guid.NewGuid();
@@ -1205,6 +1257,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void DeleteResourceWithWildcardResourceNameExpectedReturnsNoWildcardsAllowed()
         {
             var workspaceID = Guid.NewGuid();
@@ -1214,6 +1267,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void DeleteResourceWithNonExistingResourceNameExpectedReturnsNoMatch()
         {
             var workspaceID = Guid.NewGuid();
@@ -1225,6 +1279,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void DeleteResourceWithManyExistingResourceNamesExpectedReturnsDuplicateMatch()
         {
             const string ResourceName = "Test";
@@ -1247,6 +1302,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void GetDynamicObjectsWithNullResourceNameExpectedThrowsArgumentNullException()
         {
             var workspaceID = Guid.NewGuid();
@@ -1256,6 +1312,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void GetDynamicObjectsWithNullResourceNameAndContainsTrueExpectedThrowsArgumentNullException()
         {
             var workspaceID = Guid.NewGuid();
@@ -1265,6 +1322,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void GetDynamicObjectsWithNullResourceExpectedThrowsArgumentNullException()
         {
             var catalog = new ResourceCatalog(null, new Mock<IServerVersionRepository>().Object);
@@ -1273,6 +1331,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void GetDynamicObjectsWithNullResourcesExpectedThrowsArgumentNullException()
         {
             var catalog = new ResourceCatalog(null, new Mock<IServerVersionRepository>().Object);
@@ -1280,6 +1339,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetDynamicObjectsWithResourceNameExpectedReturnsObjectGraph()
         {
             var workspaceID = Guid.NewGuid();
@@ -1295,6 +1355,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetDynamicObjectsWithResourceExpectedReturnsObjectGraph()
         {
             var workspaceID = Guid.NewGuid();
@@ -1310,6 +1371,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetDynamicObjectsWithResourcesExpectedReturnsObjectGraphs()
         {
             var workspaceID = Guid.NewGuid();
@@ -1333,6 +1395,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumDev2Server_ExpectConnectionObjects()
         {
             //------------Setup for test--------------------------
@@ -1366,6 +1429,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumEmailSource_ExpectEmailSourceObjects()
         {
             //------------Setup for test--------------------------
@@ -1398,6 +1462,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_GetModels")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumDropBoxSource_ExpectDropBoxSourceSourceObjects()
         {
             //------------Setup for test--------------------------
@@ -1461,6 +1526,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumPlugin_ExpectPluginSourceObjects()
         {
             //------------Setup for test--------------------------
@@ -1493,6 +1559,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumWebSource_ExpectWebSourceObjects()
         {
             //------------Setup for test--------------------------
@@ -1525,6 +1592,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumWebService_ExpectNull()
         {
             //------------Setup for test--------------------------
@@ -1546,6 +1614,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumDynamicService_ExpectNull()
         {
             //------------Setup for test--------------------------
@@ -1567,6 +1636,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumMySqlDatabase_ExpectNull()
         {
             //------------Setup for test--------------------------
@@ -1588,6 +1658,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumManagementDynamicService_ExpectNull()
         {
             //------------Setup for test--------------------------
@@ -1609,6 +1680,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumUnknown_ExpectNullModels()
         {
             //------------Setup for test--------------------------
@@ -1639,6 +1711,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Description("Requires Valid arguments")]
         [Owner("Ashley Lewis")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateResourceNameWithNullOldName_ExpectRename()
         {
             //------------Setup for test--------------------------
@@ -1680,6 +1753,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [Description("Needs valid arguments")]
         [Owner("Ashley Lewis")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateResourceWithNullNewName_ExpectArgumentNullException()
         {
             //------------Setup for test--------------------------
@@ -1713,6 +1787,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [Description("Needs valid arguments")]
         [Owner("Ashley Lewis")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateResourceNameWithEmptyNewName_ExpectArgumentNullException()
         {
             //------------Setup for test--------------------------
@@ -1748,6 +1823,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Description("Updates the Category of the resource")]
         [Owner("Huggs")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateResourceCategoryValidArguments_ExpectFileContentsUpdated()
         {
             //------------Setup for test--------------------------
@@ -1775,6 +1851,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void RenameCategory_GivenValidParams_ShouldReturnSucces()
         {
             //---------------Set up test pack-------------------
@@ -1809,6 +1886,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Description("Updates the Category of the resource")]
         [Owner("Huggs")]
+        [DoNotParallelize]
         public void ResourceCatalog_RenameCategory_NoResources_ExpectErrorNoMatching()
         {
             //------------Setup for test--------------------------
@@ -1840,6 +1918,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Description("Updates the Category of the resource")]
         [Owner("Huggs")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateResourceCategoryValidArgumentsDifferentCasing_ExpectFileContentsUpdated()
         {
             //------------Setup for test--------------------------
@@ -1868,6 +1947,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Huggs")]
         [ExpectedException(typeof(InvalidDataContractException))]
+        [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_ResourceIDEmptyGuid_ExpectException()
         {
             //------------Setup for test--------------------------
@@ -1893,6 +1973,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Huggs")]
         [ExpectedException(typeof(InvalidDataContractException))]
+        [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_TypeEmptyString_ExpectException()
         {
             //------------Setup for test--------------------------
@@ -1918,6 +1999,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Huggs")]
         [ExpectedException(typeof(InvalidDataContractException))]
+        [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_TypeNull_ExpectException()
         {
             //------------Setup for test--------------------------
@@ -1967,6 +2049,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Huggs")]
+        [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_FoundMultipleResources_ExpectDuplicateMatchResult()
         {
             //------------Setup for test--------------------------
@@ -1995,6 +2078,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Huggs")]
+        [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_FoundResource_ExpectResourceDeleted()
         {
             //------------Setup for test--------------------------
@@ -2057,6 +2141,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Huggs")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetResource_Workflow_ExpectResource()
         {
             //------------Setup for test--------------------------
@@ -2083,6 +2168,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Huggs")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetResource_DbSource_ExpectResource()
         {
             //------------Setup for test--------------------------
@@ -2388,6 +2474,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetDependantsWhereResourceHasNoDependedOnExpectNonEmptyList()
         {
             //------------Setup for test--------------------------
@@ -2414,6 +2501,7 @@ namespace Dev2.Tests.Runtime.Hosting
         #region GetDependantsAsResourceForTrees
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetDependantsAsResourceForTreesWhereResourceIsDependedOnExpectNonEmptyList()
         {
             //------------Setup for test--------------------------
@@ -2437,6 +2525,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetDependantsAsResourceForTreesWhereNoResourcesExpectEmptyList()
         {
             //------------Setup for test--------------------------
@@ -2453,6 +2542,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetDependantsAsResourceForTreesWhereResourceHasNoDependedOnExpectNonEmptyList()
         {
             //------------Setup for test--------------------------
@@ -2509,6 +2599,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenUsingNameAndResourcesNotPresent_ExpectEmptyList()
         {
             //------------Setup for test--------------------------
@@ -2537,6 +2628,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
         [ExpectedException(typeof(InvalidDataContractException))]
+        [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenNameAndResourceNameAndTypeNull_ExpectException()
         {
             //------------Setup for test--------------------------
@@ -2563,6 +2655,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenUsingIdAndResourcesPresent_ExpectResourceList()
         {
             //------------Setup for test--------------------------
@@ -2600,6 +2693,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenUsingIdAndResourcesNotPresent_ExpectEmptyList()
         {
             //------------Setup for test--------------------------
@@ -2632,6 +2726,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenUsingIdAndTypeNull_ShouldStillReturn()
         {
             //------------Setup for test--------------------------
@@ -2662,6 +2757,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenUsingIdAndGuidCsvNull_ExpectEmptyList()
         {
             //------------Setup for test--------------------------
@@ -2691,6 +2787,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalogPluginContainer_GivenVersion_ShouldCreateInstancesWithVersion()
         {
             //---------------Set up test pack-------------------
@@ -2711,6 +2808,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalogPluginContainer_GivenVersionAndManagementServices_ShouldCreateInstances()
         {
             //---------------Set up test pack-------------------
@@ -2732,6 +2830,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Dispose_GivenInstance_ShouldCleaup()
         {
             //---------------Set up test pack-------------------
@@ -2746,6 +2845,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ToPayload_GivenIsReservedService_ShouldAppendTypeAndName()
         {
             //---------------Set up test pack-------------------
@@ -2765,6 +2865,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void MapServiceActionDependencies_GivenServiceName_ShouldNotThrowException()
         {
             //---------------Set up test pack-------------------
@@ -2794,6 +2895,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void LoadResourceActivityCache_GivenServiceName_ShouldNotThrowException()
         {
             //---------------Set up test pack-------------------
@@ -2833,6 +2935,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
+        [DoNotParallelize]
         public void LoadResourceActivityCache_GivenServiceName_ShouldAddActivityToParserCache()
         {
             //---------------Set up test pack-------------------
@@ -2870,6 +2973,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
+        [DoNotParallelize]
         public void LoadResourceActivityCache_GivenServiceNameWithActivityInCache_ShouldReturnFromCache()
         {
             //---------------Set up test pack-------------------
@@ -2901,6 +3005,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
+        [DoNotParallelize]
         public void LoadResourceActivityCache_GivenServiceName_ShouldPopulateServiceActionRepo()
         {
             //---------------Set up test pack-------------------
@@ -2934,6 +3039,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void DeleteResourceWithSingleExistingResourceName_ShouldRemoveFromCache()
         {
             //---------------Set up test pack-------------------
@@ -2969,6 +3075,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Sanele Mthembu")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetResourceDuplicate_Give2SameFilesInDifferentFolders_ShouldReturnPaths()
         {
             var path = EnvironmentVariables.ResourcePath;
@@ -3010,6 +3117,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_DuplicateResourceResourceWithNullDestination_ExpectArgumentNullException()
         {
             //------------Setup for test--------------------------
@@ -3031,6 +3139,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_DuplicateResourceResourceWithValidArgs_ExpectSuccesResult()
         {
             //------------Setup for test--------------------------
@@ -3052,6 +3161,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_DuplicateResourceResourceWithValidArgs_ExpectNewDisplayName()
         {
             //------------Setup for test--------------------------
@@ -3092,6 +3202,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_DuplicateFolderResourceWithValidArgs_ExpectSuccesResult()
         {
             //------------Setup for test--------------------------
@@ -3118,6 +3229,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_DuplicateFolderResourceWithInvalidArgs_ExpectExceptions()
         {
             //------------Setup for test--------------------------
@@ -3140,6 +3252,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GetResourceListGivenWorkspace_ExpectResources()
         {
             //------------Setup for test--------------------------
@@ -3163,6 +3276,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GetResourceCountGivenWorkspace_ExpectCorrectResources()
         {
             //------------Setup for test--------------------------
@@ -3185,6 +3299,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GetResourceOfTNotExist_ExpectNull()
         {
             //------------Setup for test--------------------------
@@ -3204,6 +3319,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GetDependantsInvalidArgs_ExpectExceptions()
         {
             //------------Setup for test--------------------------
@@ -3222,6 +3338,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GivenFixRefsTrue_ExpectResourceContentsChanges()
         {
             //------------Setup for test--------------------------
@@ -3247,6 +3364,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Sanele Mthembu")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GetXmlResource_UpdatesResource_To_Bite()
         {
             //------------Setup for test--------------------------
@@ -3270,6 +3388,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Sanele Mthembu")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_IsWarewolfResource_Given_NonWarewolf_Resource_Retunrs_False()
         {
             //------------Setup for test--------------------------
@@ -3286,6 +3405,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Sanele Mthembu")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_Save_Resource_Saves_In_Bite_Extension()
         {
             //------------Setup for test--------------------------
@@ -3307,6 +3427,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Sanele Mthembu")]
+        [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateExtensions_Given_WW_Resource_Updates_The_Extension()
         {
             //------------Setup for test--------------------------
@@ -3327,6 +3448,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_Load")]
+        [DoNotParallelize]
         public void ResourceCatalog_Load_WhenFileIsReadOnly_ShouldUpdateToNormal()
         {
             //------------Setup for test--------------------------
@@ -3351,6 +3473,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void ResourceCatalog_TryBuildCatalogFromWorkspace_WithNullFolders_ThrowsException()
         {
             //------------Setup for test--------------------------

@@ -112,6 +112,7 @@
     <AdditionalFiles Include="..\SonarQube\SonarLint.xml">
       <Visible>False</Visible>
     </AdditionalFiles>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Collections\ObservableReadOnlyListTests.cs" />
     <Compile Include="Communication\FutureRecieptTest.cs" />
     <Compile Include="Communication\JsonSerializerTest.cs" />

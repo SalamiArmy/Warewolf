@@ -82,6 +82,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsDebug_ShouldSetDataObjectAsDebug()
         {
             //---------------Set up test pack-------------------
@@ -169,6 +170,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceSwagger_ShouldSetDataObjectAsSwagger()
         {
             //---------------Set up test pack-------------------
@@ -212,6 +214,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceJson_ShouldSetDataObjectAsJson()
         {
             //---------------Set up test pack-------------------
@@ -256,6 +259,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceXMl_ShouldSetDataObjectAsXml()
         {
             //---------------Set up test pack-------------------
@@ -298,6 +302,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceXMlWithErrors_ShouldCheckReturnTypeOfError()
         {
             //---------------Set up test pack-------------------
@@ -342,6 +347,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceJsonWithErrors_ShouldCheckReturnTypeOfError()
         {
             //---------------Set up test pack-------------------
@@ -667,6 +673,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CreateForm_GivenEmitionTypeTESTAndIsRunAllTestsRequestTrue_ShouldFetchTests()
         {
             //---------------Set up test pack-------------------

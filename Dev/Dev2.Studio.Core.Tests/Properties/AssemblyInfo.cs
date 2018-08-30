@@ -1,4 +1,4 @@
-﻿/*
+/*
 *  Warewolf - Once bitten, there's no going back
 *  Copyright 2018 by Warewolf Ltd <alpha@warewolf.io>
 *  Licensed under GNU Affero General Public License 3.0 or later.
@@ -10,4 +10,4 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-[assembly: Parallelize(Workers = 0, Scope = ExecutionScope.ClassLevel)]
+[assembly: Parallelize(Workers = 0, Scope = ExecutionScope.MethodLevel)]

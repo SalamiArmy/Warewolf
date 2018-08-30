@@ -173,6 +173,7 @@ namespace Dev2.Tests.Runtime.Search
 
 
         [TestMethod]
+        [DoNotParallelize]
         public void GetSearchResults_WhenMatchInTwoResources_ShouldReturnResult()
         {
             var mockResourceCatalog = new Mock<IResourceCatalog>();

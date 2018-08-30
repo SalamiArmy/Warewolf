@@ -439,6 +439,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void IsObject_GivenIsSet_ShouldPropertyChangesChanges()
         {
             //------------Setup for test--------------------------

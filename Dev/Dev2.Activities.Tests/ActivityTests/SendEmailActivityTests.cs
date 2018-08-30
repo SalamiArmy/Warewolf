@@ -202,6 +202,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [TestCategory("SendEmail_Execute")]
+        [DoNotParallelize]
         public void SendEmail_Execute_ScalarValuesHasToList_CorrectResults()
         {
             //------------Setup for test--------------------------

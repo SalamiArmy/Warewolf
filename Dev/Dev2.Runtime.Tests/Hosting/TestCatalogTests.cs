@@ -64,6 +64,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_SaveTests")]
+        [DoNotParallelize]
         public void TestCatalog_SaveTests_WhenEmptyList_ShouldDoNothing()
         {
             //------------Setup for test--------------------------
@@ -155,6 +156,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_SaveTest")]
+        [DoNotParallelize]
         public void TestCatalog_SaveTests_WhenResourceIdList_ShouldSaveTestAsAddToList()
         {
             //------------Setup for test--------------------------
@@ -200,6 +202,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_SaveTest")]
+        [DoNotParallelize]
         public void TestCatalog_SaveTests_WhenResourceIdListHasTest_ShouldSaveTestUpdateToList()
         {
             //------------Setup for test--------------------------
@@ -263,6 +266,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_DeleteTest")]
+        [DoNotParallelize]
         public void TestCatalog_DeleteTest_WhenResourceIdTestName_ShouldDeleteTest()
         {
             //------------Setup for test--------------------------
@@ -314,6 +318,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_DeleteTest")]
+        [DoNotParallelize]
         public void TestCatalog_DeleteAllTests_WhenResourceIdTestName_ShouldDeleteTestFolder()
         {
             //------------Setup for test--------------------------
@@ -366,6 +371,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_Load")]
+        [DoNotParallelize]
         public void TestCatalog_Load_WhenTests_ShouldLoadDictionaryWithResourceIdAndTests()
         {
             //------------Setup for test--------------------------
@@ -419,6 +425,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_Load")]
+        [DoNotParallelize]
         public void TestCatalog_Reload_ShouldLoadDictionaryWithResourceIdAndTests()
         {
             //------------Setup for test--------------------------
@@ -527,6 +534,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("TestCatalog_Fetch")]
+        [DoNotParallelize]
         public void TestCatalog_Fetch_WhenPassResult_ShouldReturnListOfTestsForResourceIdWithCorrectPassResult()
         {
             //------------Setup for test--------------------------
@@ -598,6 +606,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_Fetch")]
+        [DoNotParallelize]
         public void TestCatalog_Fetch_WhenResourceIdNotLoaded_ShouldReturnListOfTestsForResourceId()
         {
             //------------Setup for test--------------------------
@@ -646,6 +655,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_Fetch")]
+        [DoNotParallelize]
         public void TestCatalog_Fetch_WhenResourceIdNotValid_ShouldReturnListOfTestsForResourceId()
         {
             //------------Setup for test--------------------------
@@ -693,6 +703,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_FetchTest")]
+        [DoNotParallelize]
         public void TestCatalog_FetchTest_WhenResourceIdTestName_ShouldReturnTest()
         {
             //------------Setup for test--------------------------
@@ -723,6 +734,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_FetchTest")]
+        [DoNotParallelize]
         public void TestCatalog_FetchTest_WhenResourceIdInvalidTestName_ShouldReturnNull()
         {
             //------------Setup for test--------------------------
@@ -783,6 +795,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_UpdateTestsBasedOnIOChange")]
+        [DoNotParallelize]
         public void TestCatalog_UpdateTestsBasedOnIOChange_WhenTestsFound_ShouldUpdateBasedOnChange_Scalars()
         {
             //------------Setup for test--------------------------
@@ -886,6 +899,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_UpdateTestsBasedOnIOChange")]
+        [DoNotParallelize]
         public void TestCatalog_UpdateTestsBasedOnIOChange_WhenTestsFound_ShouldUpdateBasedOnChange_RecordSets()
         {
             //------------Setup for test--------------------------
@@ -1018,6 +1032,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_UpdateTestsBasedOnIOChange")]
+        [DoNotParallelize]
         public void TestCatalog_UpdateTestsBasedOnIOChange_WhenTestsFound_ShouldUpdateStepsToInvalid()
         {
             //------------Setup for test--------------------------

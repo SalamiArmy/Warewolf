@@ -89,6 +89,7 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
+        [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_RequestWhenNotAllowedButResultsPendingAndHubConnect_AuthorizationCalculatedAndNotCachedIsTrue()
         {
             //------------Setup for test--------------------------
@@ -124,6 +125,7 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
+        [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_RequestWhenNotAllowedButResultsPendingAndPayloadFetch_AuthorizationCalculatedAndNotCachedIsTrue()
         {
             //------------Setup for test--------------------------
@@ -159,6 +161,7 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
+        [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_RequestWhenNotAllowedNoResultsPendingAndHubConnect_AuthorizationCalculatedAndNotCachedIsFalse()
         {
             //------------Setup for test--------------------------
@@ -279,6 +282,7 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
+        [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_TimedOutPeriodExpired_ShouldNotGetFromCache()
         {
             //------------Setup for test--------------------------
@@ -307,6 +311,7 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
+        [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_WithinTimedOutPeriod_ShouldGetFromCache()
         {
             //------------Setup for test--------------------------

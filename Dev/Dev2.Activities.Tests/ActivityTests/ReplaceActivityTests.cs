@@ -166,6 +166,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Replace_Recordset_Fields_With_CaseMatch_On_Expected_One_Replace_Success()
         {
             SetupArguments(ActivityStrings.ReplaceDataListWithData, ActivityStrings.ReplaceDataListShape, "[[recset1(*).field1]],[[Customers(*).FirstName]]", "Barney", "Wallis", "[[res]]", true);

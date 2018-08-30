@@ -134,6 +134,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("MSSql")]
+        [DoNotParallelize]
         public void GetDatabaseTables_Execute_ValidDatabaseSource()
         {
             var parser = new Mock<IActivityParser>();

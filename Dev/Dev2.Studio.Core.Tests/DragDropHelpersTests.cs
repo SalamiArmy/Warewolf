@@ -146,6 +146,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DragDropHelpers_PreventDrop")]
+        [DoNotParallelize]
         public void DragDropHelpers_PreventDrop_EmptyService_ReturnsFalse()
         {
             //------------Setup for test--------------------------

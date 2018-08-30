@@ -17,10 +17,10 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
     [TestClass]
     public class WarewolfSecurityOperationsTest
     {
-        
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_AddWarewolfGroup")]
+        [DoNotParallelize]
         public void WarewolfSecurityOperations_AddWarewolfGroup_ExpectGroupAdded()
         {
             var grpOps = MoqInstallerActionFactory.CreateSecurityOperationsObject();
@@ -34,6 +34,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_DoesWarewolfGroupExist")]
+        [DoNotParallelize]
         public void WarewolfSecurityOperationsDoesWarewolfGroupExistWhenGroupDoesNotExistExpectFalse()
         {
             //------------Setup for test--------------------------
@@ -50,6 +51,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_DoesWarewolfGroupExist")]
+        [DoNotParallelize]
         public void WarewolfSecurityOperations_DoesWarewolfGroupExist_WhenGroupDoesExist_ExpectTrue()
         {
             //------------Setup for test--------------------------
@@ -85,6 +87,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_AddWarewolfGroupToAdministrators")]
+        [DoNotParallelize]
         public void WarewolfSecurityOperations_AddWarewolfGroupToAdministrators_WhenNotAMember_ExpectNotAdded()
         {
             //------------Setup for test--------------------------
@@ -104,6 +107,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_AddWarewolfGroupToAdministrators")]
+        [DoNotParallelize]
         public void WarewolfSecurityOperations_AddWarewolfGroupToAdministrators_WhenNotAlreadyMember_ExpectAdministratorsMemberOfWarewolf()
         {
             //------------Setup for test--------------------------
