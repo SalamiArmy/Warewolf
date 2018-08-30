@@ -9,7 +9,7 @@ namespace Dev2.Diagnostics.Test
     {
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        public void Constructor_GivenIsNew_ShouldInitiase()
+        public void DebugMessageRepo_Constructor_GivenIsNew_ShouldInitiase()
         {
             //---------------Set up test pack-------------------
             var webDebugMessageRepo = DebugMessageRepo.Instance;
@@ -24,7 +24,7 @@ namespace Dev2.Diagnostics.Test
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        public void AddDebugItem_GivenValidArgs_ShouldAdd1Item()
+        public void DebugMessageRepo_AddDebugItem_GivenValidArgs_ShouldAdd1Item()
         {
             //---------------Set up test pack-------------------
             var webDebugMessageRepo = DebugMessageRepo.Instance;
@@ -42,7 +42,7 @@ namespace Dev2.Diagnostics.Test
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        public void AddDebugItem_GivenValidArgsAndSessions_ShouldNotMixUpDebugStates()
+        public void DebugMessageRepo_AddDebugItem_GivenValidArgsAndSessions_ShouldNotMixUpDebugStates()
         {
             //---------------Set up test pack-------------------
             var webDebugMessageRepo = DebugMessageRepo.Instance;
@@ -68,7 +68,7 @@ namespace Dev2.Diagnostics.Test
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        public void AddDebugItem_GivenKeyExists_ShouldNotMixUpDebugStates()
+        public void DebugMessageRepo_AddDebugItem_GivenKeyExists_ShouldNotMixUpDebugStates()
         {
             //---------------Set up test pack-------------------
             var webDebugMessageRepo = DebugMessageRepo.Instance;

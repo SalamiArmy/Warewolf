@@ -66,6 +66,7 @@ namespace Dev2.Diagnostics.Test
 
 
         [TestMethod]
+        [DoNotParallelize]
         public void TestLocater()
         {
             var counter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter(WarewolfPerfCounterType.ConcurrentRequests).FromSafe(); ;
@@ -75,6 +76,7 @@ namespace Dev2.Diagnostics.Test
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void ConcurrentCounterTest()
         {
             var counter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter(WarewolfPerfCounterType.ConcurrentRequests).FromSafe();
@@ -92,7 +94,9 @@ namespace Dev2.Diagnostics.Test
             counter.IncrementBy(3);
             Assert.AreEqual(innerCounter.RawValue, 3);
         }
+
         [TestMethod]
+        [DoNotParallelize]
         public void ConcurrentCounterTestByResource()
         {
             var counter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter(guid,WarewolfPerfCounterType.ConcurrentRequests).FromSafe();
@@ -124,6 +128,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfErrorCounter_TestOps")]
+        [DoNotParallelize]
         public void WarewolfErrorCounter_TestOps_Valid_ExpectValidValues()
         {
             var counter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter(WarewolfPerfCounterType.ExecutionErrors).FromSafe(); ;
@@ -145,6 +150,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfErrorCounter_TestOps")]
+        [DoNotParallelize]
         public void WarewolfErrorCounterResource_TestOps_Valid_ExpectValidValues()
         {
             var counter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter(guid,WarewolfPerfCounterType.ExecutionErrors).FromSafe(); ;
@@ -198,6 +204,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfRequestsPerSecondCounter_TestOps")]
+        [DoNotParallelize]
         public void WarewolfRequestPerSecondCounter_TestOps_Valid_ExpectValidValues()
         {
             var counter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter(WarewolfPerfCounterType.RequestsPerSecond).FromSafe(); ;
@@ -219,6 +226,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfRequestsPerSecondCounter_TestOps")]
+        [DoNotParallelize]
         public void WarewolfRequestPerSecondCounterResource_TestOps_Valid_ExpectValidValues()
         {
             var counter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter(guid, WarewolfPerfCounterType.RequestsPerSecond).FromSafe(); ;
@@ -248,6 +256,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
+        [DoNotParallelize]
         public void WarewolfServicesNotFound_TestOps_Valid_ExpectValidValues()
         {
             var counter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter(WarewolfPerfCounterType.ServicesNotFound).FromSafe(); ;
@@ -279,6 +288,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
+        [DoNotParallelize]
         public void WarewolfAuthErrors_TestOps_Valid_ExpectValidValues()
         {
             var counter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter(WarewolfPerfCounterType.NotAuthorisedErrors).FromSafe(); ;
@@ -300,6 +310,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
+        [DoNotParallelize]
         public void WarewolfAverageExectionTimeCounter_TestOps_Valid_ExpectValidValues()
         {
             //------------Setup for test--------------------------
@@ -333,6 +344,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
+        [DoNotParallelize]
         public void WarewolfAverageExectionTimeCounterResource_TestOps_Valid_ExpectValidValues()
         {
             //------------Setup for test--------------------------

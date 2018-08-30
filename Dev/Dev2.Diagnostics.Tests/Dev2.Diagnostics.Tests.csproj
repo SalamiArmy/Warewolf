@@ -57,9 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\AssemblyCommonInfo.cs">
-      <Link>Properties\AssemblyCommonInfo.cs</Link>
-    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dev2LoggerTests.cs" />
     <Compile Include="DebugMessageRepoTests.cs" />
     <Compile Include="WebDebugMessageRepoTests.cs" />

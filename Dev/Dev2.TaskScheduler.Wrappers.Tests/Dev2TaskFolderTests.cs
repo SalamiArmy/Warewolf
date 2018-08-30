@@ -51,6 +51,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Construct")]
+        [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Construct()
         {
             var service = new TaskService();
@@ -66,6 +67,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Create")]
+        [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Create()
         {
             var folder = new Dev2TaskFolder(new TaskServiceConvertorFactory(), _folder);
@@ -78,6 +80,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Delete")]
+        [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Delete()
         {
             var folder = new Dev2TaskFolder(new TaskServiceConvertorFactory(), _folder);
@@ -89,6 +92,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Valid")]
+        [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Valid()
         {
             var folder = new Dev2TaskFolder(new TaskServiceConvertorFactory(), _folder);
@@ -98,6 +102,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Exists")]
+        [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Exists()
         {
             var folder = new Dev2TaskFolder(new TaskServiceConvertorFactory(), _folder);
@@ -107,6 +112,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Register")]
+        [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Register()
         {
             var folder = new Dev2TaskFolder(new TaskServiceConvertorFactory(), _folder);

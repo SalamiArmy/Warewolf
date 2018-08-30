@@ -43,11 +43,10 @@ namespace Dev2.Common.Tests
 
     [TestClass]
     public class MapperTests
-    {
-
-        
+    {        
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Map_GivenObjects_ShouldMapCorrectly()
         {
             //---------------Set up test pack-------------------
@@ -76,6 +75,7 @@ namespace Dev2.Common.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Map_GivenObjectsNoActions_ShouldMapCorrectly()
         {
             //---------------Set up test pack-------------------
@@ -104,6 +104,7 @@ namespace Dev2.Common.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void Map_GivenNullFrom_ShouldThrowException()
         {
             //---------------Set up test pack-------------------
@@ -127,10 +128,6 @@ namespace Dev2.Common.Tests
             Assert.AreEqual(parent.Id, child.Id);
             Assert.AreEqual(parent.Name, child.Name);
             Assert.AreEqual(parent.Surname, child.Surname);
-        }
-
-       
-
-        
+        }        
     }
 }

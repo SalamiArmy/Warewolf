@@ -28,21 +28,19 @@ namespace Dev2.Diagnostics.Test
                 {
                     PerformanceCounterCategory.Delete("Warewolf");
                 }
-                
                 catch
                 {
                     //Do Nothing
                 }
-
                 var register = new WarewolfPerformanceCounterRegister(new List<IPerformanceCounter>
-                                                            {
-                                                                new WarewolfCurrentExecutionsPerformanceCounter(),
-                                                                new WarewolfNumberOfErrors(),   
-                                                                new WarewolfRequestsPerSecondPerformanceCounter(),
-                                                                new WarewolfAverageExecutionTimePerformanceCounter(),
-                                                                new WarewolfNumberOfAuthErrors(),
-                                                                new WarewolfServicesNotFoundCounter()
-                                                            }, new List<IResourcePerformanceCounter>());
+                {
+                    new WarewolfCurrentExecutionsPerformanceCounter(),
+                    new WarewolfNumberOfErrors(),   
+                    new WarewolfRequestsPerSecondPerformanceCounter(),
+                    new WarewolfAverageExecutionTimePerformanceCounter(),
+                    new WarewolfNumberOfAuthErrors(),
+                    new WarewolfServicesNotFoundCounter()
+                }, new List<IResourcePerformanceCounter>());
 
                 CustomContainer.Register<IWarewolfPerformanceCounterLocater>(new WarewolfPerformanceCounterManager(register.Counters, new List<IResourcePerformanceCounter>(),  register, new Mock<IPerformanceCounterPersistence>().Object));
             }
@@ -81,6 +79,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("PerfmonContainer_Ctor")]
+        [DoNotParallelize]
         public void PerfmonContainer_Ctor_WrappedMethods()
         {
             var cont = new Cont();

@@ -14,6 +14,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_SetMinimumPrefixLength")]
+        [DoNotParallelize]
         public void AutoCompleteBox_SetMinimumPrefixLength_WhenTextLengthGreaterThanOrEqual_ShouldFilter()
         {
             //------------Setup for test--------------------------
@@ -33,6 +34,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_SetMinimumPrefixLength")]
+        [DoNotParallelize]
         public void AutoCompleteBox_SetMinimumPrefixLength_WhenTextLengthLessThan_ShouldNotFilter()
         {
             //------------Setup for test--------------------------
@@ -51,6 +53,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_DefaultText")]
+        [DoNotParallelize]
         public void AutoCompleteBox_DefaultText_Set_ShouldSetValue()
         {
             //------------Setup for test--------------------------
@@ -65,6 +68,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [DoNotParallelize]
         public void AutoCompleteBox_WhenText_ShouldFilter()
         {
             //------------Setup for test--------------------------
@@ -84,6 +88,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [DoNotParallelize]
         public void AutoCompleteBox_WhenSetSelectedItem_ShouldUpdateText()
         {
             //------------Setup for test--------------------------
@@ -106,6 +111,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [DoNotParallelize]
         public void AutoCompleteBox_WhenCustomSelection_ShouldNotUpdateText()
         {
             //------------Setup for test--------------------------
@@ -129,6 +135,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [DoNotParallelize]
         public void AutoCompleteBox_WhenTextFilterSet_ShouldUseFilterGetItems()
         {
             //------------Setup for test--------------------------
@@ -157,6 +164,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [DoNotParallelize]
         public void AutoCompleteBox_WhenTextFilterSet_ShouldUseFilterNoItes()
         {
             //------------Setup for test--------------------------
@@ -182,6 +190,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [DoNotParallelize]
         public void AutoCompleteBox_WhenItemFilterSet_ShouldUseFilterGetItems()
         {
             //------------Setup for test--------------------------
@@ -210,6 +219,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [DoNotParallelize]
         public void AutoCompleteBox_WhenItemFilterSet_ShouldUseFilterNoItes()
         {
             //------------Setup for test--------------------------
@@ -236,6 +246,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_PopulateComplete")]
+        [DoNotParallelize]
         public void AutoCompleteBox_WhenPopulateComplete_ShouldUpdateTextCompletion()
         {
             //------------Setup for test--------------------------
@@ -271,6 +282,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_PopulateComplete")]
+        [DoNotParallelize]
         public void AutoCompleteBox_WhenRefreshView_ShouldInsertResults()
         {
             //------------Setup for test--------------------------
