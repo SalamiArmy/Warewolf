@@ -161,6 +161,7 @@ namespace Dev2.Core.Tests.Workflows
 
         }
         [TestMethod]
+        [DoNotParallelize]
         public void MissingPartsMessageOnlySentWhenThereWorkToDoExpect1Call()
         {
             // Set up event agg
@@ -297,6 +298,7 @@ namespace Dev2.Core.Tests.Workflows
         #region Set Unused DataList Items
 
         [TestMethod]
+        [DoNotParallelize]
         public void FindUnusedDataListItemsWithUnusedDataListItemsExpectedItemsToBeSetToNotUsed()
         {
             var eventAggregator = new EventAggregator();
@@ -1126,6 +1128,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WorkflowDesigner_Initialize")]
+        [DoNotParallelize]
         public void WorkflowDesigner_Initialize_WhenWorkflowXamlNull_ExpectWorkflowXamlFetch()
         {
 
@@ -1164,6 +1167,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WorkflowDesigner_Initialize")]
+        [DoNotParallelize]
         public void WorkflowDesigner_Initialize_WhenWorkflowXamlNullAndFetchFails_ExpectNewWorkflow()
         {
             var serverRepo = new Mock<IServerRepository>();
@@ -1241,6 +1245,7 @@ namespace Dev2.Core.Tests.Workflows
         }
         
         [TestMethod]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModelInitializeDesignerExpectedInitializesFramework45Properties()
         {
             var repo = new Mock<IResourceRepository>();
@@ -1285,6 +1290,7 @@ namespace Dev2.Core.Tests.Workflows
 
         // BUG 9304 - 2013.05.08 - TWR - .NET 4.5 upgrade
         [TestMethod]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModelInitializeDesignerExpectedInvokesWorkflowHelper()
         {
             var repo = new Mock<IResourceRepository>();
@@ -1336,6 +1342,7 @@ namespace Dev2.Core.Tests.Workflows
         #region ServiceDefinition
 
         [TestMethod]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModelServiceDefinitionExpectedInvokesWorkflowHelperSerializeWorkflow()
         {
             var serverRepo = new Mock<IServerRepository>();
@@ -1368,6 +1375,7 @@ namespace Dev2.Core.Tests.Workflows
         #region CheckIfRemoteWorkflowTests
 
         [TestMethod]
+        [DoNotParallelize]
         public void CheckIfRemoteWorkflowAndSetPropertiesExpectedServiceUriToBeNull()
         {
             const string ServiceUri = "http://localhost:1234/";
@@ -1427,6 +1435,7 @@ namespace Dev2.Core.Tests.Workflows
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void CheckIfRemoteWorkflowAndSetPropertiesExpectedServiceUriToBeLocalHost()
         {
             const string ServiceUri = "http://localhost:1234/";
@@ -1488,6 +1497,7 @@ namespace Dev2.Core.Tests.Workflows
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void CheckIfRemoteWorkflowAndSetPropertiesExpectedResourceTypeToBeUnknown()
         {
             var explorerTooltips = new Mock<IExplorerTooltips>();
@@ -1516,18 +1526,15 @@ namespace Dev2.Core.Tests.Workflows
         #region ModelServiceModelChanged
 
         [TestMethod]
-        public void WorkflowDesignerViewModelModelServiceModelChangedWithNextReferencingSelfExpectedClearsNext()
-        {
-            TestModelServiceModelChangedSelfReference(true);
-        }
+        [DoNotParallelize]
+        public void WorkflowDesignerViewModelModelServiceModelChangedWithNextReferencingSelfExpectedClearsNext() => TestModelServiceModelChangedSelfReference(true);
 
         [TestMethod]
-        public void WorkflowDesignerViewModelModelServiceModelChangedWithNextReferencingOtherExpectedDoesNotClearNext()
-        {
-            TestModelServiceModelChangedSelfReference(false);
-        }
+        [DoNotParallelize]
+        public void WorkflowDesignerViewModelModelServiceModelChangedWithNextReferencingOtherExpectedDoesNotClearNext() => TestModelServiceModelChangedSelfReference(false);
 
         [TestMethod]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModelTestStartNodeNotDoubleConnect()
         {
             #region Setup view model constructor parameters
@@ -1590,7 +1597,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_DragOnToForEach")]
         [Owner("Hagashen Naidu")]
-
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ForEachActivity_DragOnRemoteWorkflow()
 
         {
@@ -1676,6 +1683,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkflowDesignerViewModel_HandleSaveUnsavedWorkflow")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_HandleSaveUnsavedWorkflow_MessageWithArgs_Saves()
         {
             //------------Setup for test--------------------------
@@ -1767,6 +1775,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkflowDesignerViewModel_HandleSaveUnsavedWorkflow")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_HandleSaveUnsavedWorkflow_MessageWithArgs_OpenTab_Saves()
         {
             //------------Setup for test--------------------------
@@ -1854,6 +1863,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Description("WorkflowDesigner assigns new unique id on copy paste of an activity/tool")]
         [Owner("Ashley Lewis")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithUniqueID_NewIDAssigned()
         {
             var notExpected = Guid.NewGuid().ToString();
@@ -1917,6 +1927,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Description("WorkflowDesigner assigns new unique id on copy paste of an activity/tool")]
         [Owner("Ashley Lewis")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithUniqueID_NotPaste_ShouldKeepID()
         {
             var expectedId = Guid.NewGuid().ToString();
@@ -1981,6 +1992,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Description("WorkflowDesigner assigns new unique id on copy paste of an activity/tool")]
         [Owner("Ashley Lewis")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithUniqueID_Paste_ShouldNotKeepID()
         {
             var expectedId = Guid.NewGuid().ToString();
@@ -2044,6 +2056,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Owner("Pieter Terblanche")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithDsfDecision_DecisionHandled()
 
         {
@@ -2113,6 +2126,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Owner("Pieter Terblanche")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithDsfSwitch_SwitchHandled()
 
         {
@@ -2180,6 +2194,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Owner("Pieter Terblanche")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithFlowStepWithServiceName_FlowStepHandled()
         {
             CustomContainer.DeRegister<IApplicationTracker>();
@@ -2247,6 +2262,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Owner("Pieter Terblanche")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithFlowStepWithoutServiceName_FlowStepHandled()
 
         {
@@ -2322,6 +2338,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Owner("Pieter Terblanche")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ApplyForDrop_DropNotHandled()
 
         {
@@ -2396,6 +2413,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_UpdateWorkflowLink")]
         [Owner("Pieter Terblanche")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_UpdateWorkflowLink_ChangeDisplayWorkflowLink_DisplayWorkflowLinkChanged()
         {
             #region Setup viewModel
@@ -2527,6 +2545,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Description("When the model changes we mark the resource as unsaved")]
         [Timeout(60000)]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_ViewModelModelChanged_ExpectMarksResourceIsWorkflowSavedFalse()
         {
             #region Setup viewModel
@@ -2595,6 +2614,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Travis Frisinger")]
         [Timeout(60000)]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_ViewModelModelChanged_ExpectLoadFromServerDoesNotReflectEdit()
         {
             #region Setup viewModel
@@ -2669,6 +2689,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Travis Frisinger")]
         [Timeout(60000)]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_ViewModelModelChanged_ExpectFirstFocusDoesNotReflectEdit()
         {
             #region Setup viewModel
@@ -2740,6 +2761,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Timeout(60000)]
         [Owner("Travis Frisinger")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_ViewModelModelChanged_DataListNotNull_ExpectFirstFocusDoesNotReflectEdit()
         {
             #region Setup viewModel
@@ -2811,6 +2833,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Timeout(60000)]
         [Owner("Travis Frisinger")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_ViewModelModelChanged_DataListDifferent_ExpectFirstFocusDoesNotReflectEdit()
         {
             #region Setup viewModel
@@ -2882,6 +2905,7 @@ namespace Dev2.Core.Tests.Workflows
 
         [TestMethod]
         [Description("When the xaml changes after a redo we mark the resource as unsaved")]
+        [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_RedoWithXAMLDifferent_ExpectMarksResourceIsWorkflowSavedFalse()
         {
             #region Setup viewModel
