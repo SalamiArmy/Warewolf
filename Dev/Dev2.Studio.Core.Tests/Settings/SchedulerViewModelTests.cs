@@ -83,6 +83,7 @@ namespace Dev2.Core.Tests.Settings
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_EmptyConstructor")]
         [ExpectedException(typeof(Exception))]
+        [DoNotParallelize]
         public void SchedulerViewModel_EmptyConstructor_Nothing_Happens()
         {
             //------------Setup for test--------------------------
@@ -137,6 +138,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_Constructor")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Constructor_ValidConstruction_ShouldSetProperties()
         {
             //------------Setup for test--------------------------
@@ -151,6 +153,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_Constructor")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Constructor_ValidConstruction_ShouldSetErrors()
         {
             //------------Setup for test--------------------------
@@ -168,6 +171,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_HasDebugOutput")]
+        [DoNotParallelize]
         public void SchedulerViewModel_HasDebugOutput_ExpectedTrue()
         {
             //------------Setup for test--------------------------
@@ -185,6 +189,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_Constructor")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Constructor_SetDisplayName_OnlyForCoverage()
         {
             //------------Setup for test--------------------------
@@ -199,6 +204,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_Constructor")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Constructor_ServerNotNull_ShouldSetDisplayName()
         {
             //------------Setup for test--------------------------
@@ -214,6 +220,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_Constructor")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Constructor_ValidConstruction_ShouldSetHelpText()
         {
             //------------Setup for test--------------------------
@@ -233,6 +240,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_ShowError")]
+        [DoNotParallelize]
         public void SchedulerViewModel_ShowError_WithSaveError_HasErrorsTrue()
         {
             //------------Setup for test--------------------------
@@ -248,6 +256,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_ShowError")]
+        [DoNotParallelize]
         public void SchedulerViewModel_ShowError_WithNormalError_HasErrorsTrue()
         {
             //------------Setup for test--------------------------
@@ -281,6 +290,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_ClearError")]
+        [DoNotParallelize]
         public void SchedulerViewModel_ClearError_WithNormalError_HasErrorsSet()
         {
             //------------Setup for test--------------------------
@@ -318,6 +328,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_Trigger")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Trigger_SetTrigger_IsDirtyTrue()
         {
             //------------Setup for test--------------------------
@@ -340,6 +351,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_Trigger")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_AfterSave_IsDirtyFalse()
         {
             var explorerTooltips = new Mock<IExplorerTooltips>();
@@ -389,6 +401,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_Trigger")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Trigger_SetTrigger_IsDirtyFalse()
         {
             //------------Setup for test--------------------------
@@ -414,6 +427,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_RunAsapIfScheduleMissed")]
+        [DoNotParallelize]
         public void SchedulerViewModel_RunAsapIfScheduleMissed_SetRunAsapIfScheduleMissed_IsDirtyTrue()
         {
             //------------Setup for test--------------------------
@@ -432,6 +446,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_Status")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Status_SetStatus_IsDirtyTrue()
         {
             //------------Setup for test--------------------------
@@ -451,6 +466,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_NumberOfRecordsToKeep")]
+        [DoNotParallelize]
         public void SchedulerViewModel_NumberOfRecordsToKeep_SetNumberOfRecordsToKeepToBlank_ValueIsZero()
         {
             //------------Setup for test--------------------------
@@ -466,6 +482,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_NumberOfRecordsToKeep")]
+        [DoNotParallelize]
         public void SchedulerViewModel_NumberOfRecordsToKeep_SetNumberOfRecordsToKeepToNoNumeric_ValueIsZero()
         {
             //------------Setup for test--------------------------
@@ -481,6 +498,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SelectedHistory")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SelectedHistory_SetSelectedHistory_DebugMessageFiredTwice()
         {
             //------------Setup for test--------------------------
@@ -503,6 +521,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_AccountName")]
+        [DoNotParallelize]
         public void SchedulerViewModel_AccountName_SetAccountName_IsDirty()
         {
             //------------Setup for test--------------------------
@@ -537,6 +556,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_AccountName")]
+        [DoNotParallelize]
         public void SchedulerViewModel_AccountName_SetAccountName_SelectedTaskNull_NothingChangedOnTask()
         {
             //------------Setup for test--------------------------
@@ -572,6 +592,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_Password")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Password_SetPassword_IsDirty()
         {
             //------------Setup for test--------------------------
@@ -594,6 +615,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_ConnectionError")]
+        [DoNotParallelize]
         public void SchedulerViewModel_ConnectionError_SetAndClearError_ValidErrorSetAndClear()
         {
             //------------Setup for test--------------------------
@@ -616,6 +638,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_UserNamePasswordNotSet_CallsGetCredentials()
         {
             //------------Setup for test--------------------------
@@ -647,6 +670,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_Constructor")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Constructor_SetupServer_Validate()
         {
             //------------Setup for test--------------------------
@@ -687,6 +711,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameYesDialogResponse_DialogShowsConflict()
         {
             //------------Setup for test--------------------------
@@ -725,6 +750,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameYesDialogResponse_OldNameChanges()
         {
             //------------Setup for test--------------------------
@@ -795,6 +821,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameYesDialogResponse_OldNameChangesNewTask()
         {
             //------------Setup for test--------------------------
@@ -834,6 +861,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_ServerNotConnected_ErrorMessageSet()
         {
             //------------Setup for test--------------------------
@@ -869,6 +897,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_AuthorizationFails()
         {
             //------------Setup for test--------------------------
@@ -904,6 +933,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameNoDialogResponse_DialogShowsConflict()
         {
             //------------Setup for test--------------------------
@@ -956,6 +986,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameCancelDialogResponse_DialogShowsConflict()
         {
             //------------Setup for test--------------------------
@@ -992,6 +1023,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameCancelDialogResponse_IsNewTrue_ShouldNotShowDialog()
         {
             //------------Setup for test--------------------------
@@ -1025,6 +1057,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameCancelDialogResponse_IsNewFalse_ShouldShowDialog()
         {
             //------------Setup for test--------------------------
@@ -1063,6 +1096,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_UserNamePasswordSet_CallsScheduledResourceModelSave()
         {
             //------------Setup for test--------------------------
@@ -1097,6 +1131,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_UserNamePasswordSet_CallsIsAuthorised()
         {
             //------------Setup for test--------------------------
@@ -1129,6 +1164,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SelectedTask")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SelectedTask_SetValue_ShouldFirePropertyChangedNotifications()
         {
             //------------Setup for test--------------------------
@@ -1225,6 +1261,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SelectedTask")]
+        [DoNotParallelize]
         public void SchedulerViewModel_SelectedTask_SetValueWithHistoryTab_ShouldFirePropertyChangedNotifications()
         {
             //------------Setup for test--------------------------
@@ -1318,6 +1355,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_Name")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Name_EmptyString_AddsErrorMessage()
         {
             //------------Setup for test--------------------------
@@ -1342,6 +1380,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_Name")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Name_WasEmptyStringValidString_ClearsErrorMessage()
         {
             //------------Setup for test--------------------------
@@ -1369,6 +1408,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_WorkflowName")]
+        [DoNotParallelize]
         public void SchedulerViewModel_WorkflowName_BlankName_SetsError()
         {
             //------------Setup for test--------------------------
@@ -1389,6 +1429,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_Name")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Name_DuplicateName_SetsError()
         {
             //------------Setup for test--------------------------
@@ -1417,6 +1458,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_Name")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Name_NonDuplicateName_ClearsError()
         {
             //------------Setup for test--------------------------
@@ -1453,6 +1495,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_NumberOfRecordsToKeep")]
+        [DoNotParallelize]
         public void SchedulerViewModel_NumberOfRecordsToKeep_NotWholeNumber_KeepsOldNumber()
         {
             //------------Setup for test--------------------------
@@ -1479,6 +1522,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_History")]
+        [DoNotParallelize]
         public void SchedulerViewModel_History_Get_ShouldCallCreateHistoryOnScheduledResourceModel()
         {
             //------------Setup for test--------------------------
@@ -1505,6 +1549,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_ActiveItem")]
+        [DoNotParallelize]
         public void SchedulerViewModel_ActiveItem_HeaderNotHistory_ShouldNotFirePropertyChangeOnHistory()
         {
             //------------Setup for test--------------------------
@@ -1530,6 +1575,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_ActiveItem")]
+        [DoNotParallelize]
         public void SchedulerViewModel_ActiveItem_HeaderHistory_ShouldFirePropertyChangeOnHistory()
         {
             //------------Setup for test--------------------------
@@ -1558,6 +1604,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_Validation")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Validation_NoErrorsWhenNothingSelected()
         {
             var resourceModel = new Mock<IScheduledResourceModel>();
@@ -1574,6 +1621,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_Validation")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Validation_NoErrorOnSelected()
         {
             var resourceModel = new Mock<IScheduledResourceModel>();
@@ -1594,6 +1642,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_Validation")]
+        [DoNotParallelize]
         public void SchedulerViewModel_Validation_IfDuplicateNames()
         {
             var resourceModel = new Mock<IScheduledResourceModel>();
@@ -1618,6 +1667,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_DeleteTask")]
+        [DoNotParallelize]
         public void SchedulerViewModel_DeleteTask_DeleteSecondTask_ShouldDeleteTaskFromList()
         {
             //------------Setup for test--------------------------
@@ -1673,6 +1723,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_DeleteTask")]
+        [DoNotParallelize]
         public void SchedulerViewModel_DeleteTask_DeleteFirstTask_ShouldDeleteTaskFromList()
         {
             //------------Setup for test--------------------------
@@ -1708,6 +1759,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_DeleteTask")]
+        [DoNotParallelize]
         public void SchedulerViewModel_DeleteTask_DeleteWithNoAdminRights_ShouldShowError()
         {
             //------------Setup for test--------------------------
@@ -1739,6 +1791,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_DeleteTask")]
+        [DoNotParallelize]
         public void SchedulerViewModel_DeleteTask_DeleteWhenEnvironmentIsntConnected_ShouldShowError()
         {
             //------------Setup for test--------------------------
@@ -1770,6 +1823,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_EditTrigger")]
+        [DoNotParallelize]
         public void SchedulerViewModel_EditTrigger_ShouldEditTheTrigger()
         {
             //------------Setup for test--------------------------
@@ -1821,6 +1875,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_AddWorkflow")]
+        [DoNotParallelize]
         public void SchedulerViewModel_AddWorkflow_WithNewTaskNameSet_WorkflowNameChangedAndNameChanged()
         {
             //------------Setup for test--------------------------
@@ -1902,6 +1957,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_DeActivate")]
+        [DoNotParallelize]
         public void SchedulerViewModel_DeActivateDiscard_ReturnsTrue()
         {
             //------------Setup for test--------------------------
@@ -1976,6 +2032,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_DeActivate")]
+        [DoNotParallelize]
         public void SchedulerViewModel_DeActivateCancel_ReturnsFalse()
         {
             //------------Setup for test--------------------------
@@ -2010,6 +2067,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_HandleServerSelectionChangedMessage")]
+        [DoNotParallelize]
         public void SchedulerViewModel_DeActivateSave_AttemptsSave()
         {
             //------------Setup for test--------------------------
@@ -2052,6 +2110,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_HandleServerSelectionChangedMessage")]
+        [DoNotParallelize]
         public void SchedulerViewModel_FalseDeActivateSave_AttemptsSave()
         {
             //------------Setup for test--------------------------
@@ -2096,6 +2155,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_ShowSaveErrorDialog")]
+        [DoNotParallelize]
         public void SchedulerViewModel_ShowSaveErrorDialog_GivenMessage_Result()
         {
             //------------Setup for test--------------------------

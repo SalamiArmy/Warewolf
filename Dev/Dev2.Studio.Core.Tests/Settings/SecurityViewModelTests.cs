@@ -94,6 +94,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_Constructor")]
+        [DoNotParallelize]
         public void SecurityViewModel_Constructor_SecuritySettingsIsNull_PropertiesInitialized()
         {
             Verify_Constructor_InitializesProperties(null);
@@ -102,6 +103,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_Constructor")]
+        [DoNotParallelize]
         public void SecurityViewModel_Constructor_AllParametersValid_PropertiesInitialized()
         {
             //------------Setup for test--------------------------
@@ -161,6 +163,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_PermissionChanged_IsDirtyIsTrue()
         {
             //------------Setup for test--------------------------
@@ -189,6 +192,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeContributeTrue_MakesViewExecuteTrue()
         {
             //------------Setup for test--------------------------
@@ -216,6 +220,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_WithContributeTrue_MakeViewFalse_MakesContributeFalse()
         {
             //------------Setup for test--------------------------
@@ -243,6 +248,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_WithContributeTrue_MakeExecuteFalse_MakesContributeFalse()
         {
             //------------Setup for test--------------------------
@@ -270,6 +276,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeAdministratorTrue_MakesAllOtherPermissionsTrue()
         {
             //------------Setup for test--------------------------
@@ -303,6 +310,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeDeployFromFalse_MakesAdministratorPermissionFalse()
         {
             //------------Setup for test--------------------------
@@ -336,6 +344,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeDeployToFalse_MakesAdministratorPermissionFalse()
         {
             //------------Setup for test--------------------------
@@ -369,6 +378,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeContributeFalse_MakesAdministratorPermissionFalse()
         {
             //------------Setup for test--------------------------
@@ -402,6 +412,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeViewFalse_MakesAdministratorPermissionFalse()
         {
             //------------Setup for test--------------------------
@@ -435,6 +446,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeExecuteFalse_MakesAdministratorPermissionFalse()
         {
             //------------Setup for test--------------------------
@@ -468,6 +480,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_ServerPermissionWindowsGroupChangedToNonEmptyAndIsNew_NewServerPermissionIsAdded()
         {
             //------------Setup for test--------------------------
@@ -489,6 +502,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_ServerPermissionWindowsGroupChangedToEmptyAndIsNotNew_ServerPermissionIsRemoved()
         {
             //------------Setup for test--------------------------
@@ -523,6 +537,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_ResourcePermissionWindowsGroupAndResourceNameChangedToNonEmptyAndIsNew_NewResourcePermissionIsAdded()
         {
             //------------Setup for test--------------------------
@@ -545,6 +560,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_ResourcePermissionWindowsGroupChangedToEmptyAndIsNotNew_ResourcePermissionIsRemoved()
         {
             //------------Setup for test--------------------------
@@ -579,6 +595,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_DialogResultIsNotOK_DoesNothing()
         {
             //------------Setup for test--------------------------
@@ -609,6 +626,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_DialogResultIsOKAndNothingSelected_DoesNothing()
         {
             //------------Setup for test--------------------------
@@ -639,6 +657,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_PermissionIsNull_DoesNothing()
         {
             //------------Setup for test--------------------------
@@ -669,6 +688,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_ResultIsNull_PermissionWindowsGroupIsNotUpdated()
         {
             //------------Setup for test--------------------------
@@ -700,6 +720,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_ResultIsNotNull_PermissionWindowsGroupIsUpdated()
         {
             //------------Setup for test--------------------------
@@ -734,6 +755,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_ResultIsEmptyArray_DoesNothing()
         {
             //------------Setup for test--------------------------
@@ -766,6 +788,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickResourceCommand")]
+        [DoNotParallelize]
         public void SecurityViewModel_PickResourceCommand_PermissionIsNull_DoesNothing()
         {
             //------------Setup for test--------------------------
@@ -796,12 +819,11 @@ namespace Dev2.Core.Tests.Settings
             Assert.AreEqual(resourceID, viewModel.ResourcePermissions[0].ResourceID);
             Assert.AreEqual(ResourceName, viewModel.ResourcePermissions[0].ResourceName);
         }
-
-
-
+        
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_HelpText")]
+        [DoNotParallelize]
         public void SecurityViewModel_HelpText_IsResourceHelpVisibleIsTrue_ContainsResourceHelpText()
         {
             //------------Setup for test--------------------------          
@@ -816,6 +838,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_IsServerHelpVisible")]
+        [DoNotParallelize]
         public void SecurityViewModel_IsServerHelpVisible_ChangedToTrueAndIsResourceHelpVisibleIsTrue_IsResourceHelpVisibleIsFalse()
         {
             //------------Setup for test--------------------------          
@@ -831,6 +854,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_IsResourceHelpVisible")]
+        [DoNotParallelize]
         public void SecurityViewModel_IsResourceHelpVisible_ChangedToTrueAndIsServerHelpVisibleIsTrue_IsServerHelpVisibleIsFalse()
         {
             //------------Setup for test--------------------------          
@@ -846,6 +870,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_CloseHelpCommand")]
+        [DoNotParallelize]
         public void SecurityViewModel_CloseHelpCommand_IsServerHelpVisibleIsTrue_IsServerHelpVisibleIsFalse()
         {
             //------------Setup for test--------------------------          
@@ -862,6 +887,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_CloseHelpCommand")]
+        [DoNotParallelize]
         public void SecurityViewModel_CloseHelpCommand_IsResourceHelpVisibleIsTrue_IsResourceHelpVisibleIsFalse()
         {
             //------------Setup for test--------------------------          
@@ -879,6 +905,7 @@ namespace Dev2.Core.Tests.Settings
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_Save")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void SecurityViewModel_Save_NullPermissions_ThrowsArgumentNullException()
         {
             //------------Setup for test--------------------------          
@@ -893,6 +920,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_Save")]
+        [DoNotParallelize]
         public void SecurityViewModel_Save_InvalidPermissions_InvalidPermissionsAreRemoved()
         {
             //------------Setup for test--------------------------          
@@ -926,6 +954,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_Save")]
+        [DoNotParallelize]
         public void SecurityViewModel_Save_DeletedPermissions_DeletedPermissionsAreRemoved()
         {
             //------------Setup for test--------------------------          
@@ -959,6 +988,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [DoNotParallelize]
         public void SecurityViewModel_HasInvalidResourcePermission_Given_Invalid_Resource_That_Is_Being_Deleted_ReturnsFalse()
         {
             //------------Setup for test--------------------------
@@ -980,6 +1010,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [DoNotParallelize]
         public void SecurityViewModel_HasInvalidResourcePermission_Given_Resource_And_No_Group_ReturnsTrue()
         {
             //------------Setup for test--------------------------
@@ -999,6 +1030,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [DoNotParallelize]
         public void SecurityViewModel_HasInvalidResourcePermission_Given_Group_And_No_Resource_ReturnsTrue()
         {
             //------------Setup for test--------------------------
@@ -1018,6 +1050,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [DoNotParallelize]
         public void SecurityViewModel_ServerDuplicates_NoDuplicates_ReturnsFalse()
         {
             //------------Setup for test--------------------------
@@ -1044,6 +1077,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [DoNotParallelize]
         public void SecurityViewModel_ServerDuplicates_HasDuplicatesDeleted_ReturnsFalse()
         {
             //------------Setup for test--------------------------
@@ -1072,6 +1106,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [DoNotParallelize]
         public void SecurityViewModel_ServerDuplicates_Duplicates_ReturnsTrue()
         {
             //------------Setup for test--------------------------
@@ -1098,6 +1133,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [DoNotParallelize]
         public void SecurityViewModel_HasDuplicateResourcePermissions_NoDuplicatesResourceID_ReturnsFalse()
         {
             //------------Setup for test--------------------------
@@ -1124,6 +1160,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [DoNotParallelize]
         public void SecurityViewModel_HasDuplicateResourcePermissions_NoDuplicatesWindowsGroup_ReturnsFalse()
         {
             //------------Setup for test--------------------------
@@ -1151,6 +1188,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [DoNotParallelize]
         public void SecurityViewModel_HasDuplicateResourcePermissions_DuplicateDeleted_ReturnsFalse()
         {
             //------------Setup for test--------------------------
@@ -1179,6 +1217,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [DoNotParallelize]
         public void SecurityViewModel_ResourcePermissionsCompare_IsDeleted_ReturnsTrue()
         {
             //------------Setup for test--------------------------
@@ -1218,6 +1257,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [DoNotParallelize]
         public void SecurityViewModel_ServerPermissionsCompare_IsDeleted_ReturnsTrue()
         {
             //------------Setup for test--------------------------
@@ -1256,6 +1296,7 @@ namespace Dev2.Core.Tests.Settings
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void IsInDomain_GivenNotInDomaint_ShouldReturnCollapsed()
         {
             //---------------Set up test pack-------------------
@@ -1276,6 +1317,7 @@ namespace Dev2.Core.Tests.Settings
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void IsInDomain_GivenInDomaint_ShouldReturnVisible()
         {
             //---------------Set up test pack-------------------
@@ -1297,6 +1339,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [DoNotParallelize]
         public void SecurityViewModel_HasDuplicateResourcePermissions_DuplicateNotDeleted_ReturnsTrue()
         {
             //------------Setup for test--------------------------

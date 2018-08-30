@@ -909,6 +909,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Description("Makes sure that new workflow only calls TempSave, not save on the resource repository")]
         [Owner("Jurie Smit")]
+        [DoNotParallelize]
         public void MainViewModel_Regression_NewWorkFlowCommand_DoesNotSaveRepository()
         {
             //Setup
@@ -2000,6 +2001,7 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_EditSqlServerSource")]
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
+        [DoNotParallelize]
         public void MainViewModel_EditSqlServerSource_Handle_Result()
         {
             //------------Setup for test--------------------------
@@ -2031,6 +2033,7 @@ namespace Dev2.Core.Tests
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.Controls.Interactions.XamDialogWindow.v15.1.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
+        [DoNotParallelize]
         public void MainViewModel_EditMySqlSource_Handle_Result()
         {
             //------------Setup for test--------------------------
@@ -2061,6 +2064,7 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_EditPostgreSqlSource")]
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
+        [DoNotParallelize]
         public void MainViewModel_EditPostgreSqlSource_Handle_Result()
         {
             //------------Setup for test--------------------------
@@ -2091,6 +2095,7 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_EditOracleSource")]
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
+        [DoNotParallelize]
         public void MainViewModel_EditOracleSource_Handle_Result()
         {
             //------------Setup for test--------------------------
@@ -2121,6 +2126,7 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_EditOdbcSource")]
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
+        [DoNotParallelize]
         public void MainViewModel_EditOdbcSource_Handle_Result()
         {
             //------------Setup for test--------------------------
@@ -2854,6 +2860,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Leon Rajindrapersadh")]
+        [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsSchedulerOnClosing()
         {
             var eventPublisher = new Mock<IEventAggregator>();
@@ -2908,6 +2915,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Leon Rajindrapersadh")]
+        [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_ClosesRemoteEnvironmants()
         {
             var viewModel = new Mock<IShellViewModel>();
@@ -3079,6 +3087,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Leon Rajindrapersadh")]
+        [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsSchedulerOnClosingClosesSuccessfully()
         {
             var viewModel = new Mock<IShellViewModel>();
