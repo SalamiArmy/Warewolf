@@ -47,6 +47,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DotNetDllEnhancedViewModel_Constructor")]
+        [DoNotParallelize]
         public void DotNetDllEnhancedViewModel_Constructor_Valid_ShouldSetupViewModel()
         {
             //------------Setup for test--------------------------
@@ -85,6 +86,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DotNetDllEnhancedViewModel_ToModel")]
+        [DoNotParallelize]
         public void DotNetDllEnhancedViewModel_ToModel()
         {
             //------------Setup for test--------------------------
@@ -146,6 +148,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DotNetDllEnhancedViewModel_Handle")]
+        [DoNotParallelize]
         public void DotNetDllEnhancedViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

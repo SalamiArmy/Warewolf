@@ -238,6 +238,7 @@ namespace Dev2.Core.Tests.Activities
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]
+        [DoNotParallelize]
         public void ForeachActivityDesignerUtils_LimitDragDropOptions_ModelItemFormat_DecisionModelItem_DropPrevented()
         {
             //------------Setup for test--------------------------
@@ -255,6 +256,7 @@ namespace Dev2.Core.Tests.Activities
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]
+        [DoNotParallelize]
         public void ForeachActivityDesignerUtils_LimitDragDropOptions_ModelItemFormat_SwitchModelItem_DropPrevented()
         {
             //------------Setup for test--------------------------
@@ -290,6 +292,7 @@ namespace Dev2.Core.Tests.Activities
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]
+        [DoNotParallelize]
         public void ForeachActivityDesignerUtils_LimitDragDropOptions_WorkflowItemTypeNameFormat_DecisionModelItem_DropPrevented()
         {
             //------------Setup for test--------------------------
@@ -307,6 +310,7 @@ namespace Dev2.Core.Tests.Activities
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]
+        [DoNotParallelize]
         public void ForeachActivityDesignerUtils_LimitDragDropOptions_WorkflowItemTypeNameFormat_SwitchModelItem_DropPrevented()
         {
             //------------Setup for test--------------------------

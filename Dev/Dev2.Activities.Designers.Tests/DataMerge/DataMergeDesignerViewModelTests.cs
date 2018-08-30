@@ -28,6 +28,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_Constructor__ModelItemIsValid_ListHasFourItems()
         {
             var items = new List<DataMergeDTO> { new DataMergeDTO("", "None", "", 0, "", "Left") };
@@ -40,6 +41,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_Constructor__ModelItemIsValid_AlignmentTypesHasTwoItems()
         {
             var items = new List<DataMergeDTO> { new DataMergeDTO("", "None", "", 0, "", "Left") };
@@ -52,6 +54,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_Constructor__ModelItemIsValid_CollectionNameIsSetToMergeCollection()
         {
             var items = new List<DataMergeDTO> { new DataMergeDTO() };
@@ -62,6 +65,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DataMergeDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -81,6 +85,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_Constructor_ModelItemIsValid_MergeCollectionHasTwoItems()
         {
             var modelItem = ModelItemUtils.CreateModelItem(new DsfDataMergeActivity());
@@ -92,6 +97,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_Constructor_ModelItemIsInitializedWith4Items_MergeCollectionHasFourItems()
         {
             var items = new List<DataMergeDTO>
@@ -110,6 +116,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_EnablePadding_IsTrue_ForIndex()
         {
             var items = new List<DataMergeDTO>
@@ -128,6 +135,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_New()
         {
             var items = new List<DataMergeDTO>
@@ -146,6 +154,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetIndexToMergeTypeToNone_EnableAtIsSetToFalse()
         {
             VerifyMergeTypeAgaintsEnabledAt("None", false);
@@ -154,6 +163,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetIndexToMergeTypeToTab_EnableAtIsSetToFalse()
         {
             VerifyMergeTypeAgaintsEnabledAt("Tab", false);
@@ -162,6 +172,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetIndexToMergeTypeToNewLine_EnableAtIsSetToFalse()
         {
             VerifyMergeTypeAgaintsEnabledAt("New Line", false);
@@ -170,6 +181,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetIndexToMergeTypeToIndex_EnableAtIsSetToTrue()
         {
             VerifyMergeTypeAgaintsEnabledAt("Index", true);
@@ -178,6 +190,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetIndexToMergeTypeToChars_EnableAtIsSetToTrue()
         {
             VerifyMergeTypeAgaintsEnabledAt("Chars", true);
@@ -186,6 +199,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetMergeTypeToChars_EnablePaddingIsSetToFalse()
         {
             VerifyMergeTypeAgaintsEnabledApdding("Chars", false);
@@ -194,6 +208,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetMergeTypeToIndex_EnablePaddingIsSetToTrue()
         {
             VerifyMergeTypeAgaintsEnabledApdding("Index", true);
@@ -244,6 +259,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataMergeDesignerViewModel_ValidateCollectionItem")]
+        [DoNotParallelize]
         public void DataMergeDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {
             //------------Setup for test--------------------------

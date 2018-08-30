@@ -21,6 +21,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SwitchDesignerViewModel_Initialize")]
+        [DoNotParallelize]
         public void SwitchDesignerViewModel_Initialize_Setup_NotNull()
         {
             //------------Setup for test--------------------------
@@ -85,6 +86,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SwitchDesignerViewModel_DisplayName")]
+        [DoNotParallelize]
         public void SwitchDesignerViewModel_DisplayName_Setup_HasValue()
         {
             //------------Setup for test--------------------------
@@ -150,6 +152,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SwitchDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void SwitchDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -221,6 +224,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SwitchDesignerViewModel_Switch")]
+        [DoNotParallelize]
         public void SwitchDesignerViewModel_Switch_SetSwitchVariable()
         {
             //------------Setup for test--------------------------      
@@ -290,6 +294,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SwitchDesignerViewModel_Switch")]
+        [DoNotParallelize]
         public void SwitchDesignerViewModel_Switch_Dev2Switch()
         {
             //------------Setup for test--------------------------      

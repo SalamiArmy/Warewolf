@@ -24,6 +24,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Controls
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("Dev2DataGrid_SetFocusToInserted")]
+        [DoNotParallelize]
         public void Dev2DataGrid_SetFocusToInserted_ItemIsInserted_InvokesFocusOnGridRowChild()
         {
             //------------Setup for test--------------------------      
@@ -43,6 +44,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Controls
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("Dev2DataGrid_SetFocusToInserted")]
+        [DoNotParallelize]
         public void Dev2DataGrid_SetFocusToInserted_ItemIsNotInserted_DoesNotInvokeFocusOnGridRowChild()
         {
             //------------Setup for test--------------------------      
@@ -62,6 +64,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Controls
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("Dev2DataGrid_GetFocusElement")]
+        [DoNotParallelize]
         public void Dev2DataGrid_GetFocusElement_RowIsNotNull_GetVisualChildResult()
         {
             //------------Setup for test--------------------------      
@@ -79,6 +82,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Controls
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("Dev2DataGrid_GetFocusElement")]
+        [DoNotParallelize]
         public void Dev2DataGrid_GetFocusElement_RowIsNull_Null()
         {
             //------------Setup for test--------------------------      
@@ -95,6 +99,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Controls
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("Dev2DataGrid_Init")]
+        [DoNotParallelize]
         public void Dev2DataGrid_Init_VirtulizationIsOn()
         {
             //------------Setup for test--------------------------      

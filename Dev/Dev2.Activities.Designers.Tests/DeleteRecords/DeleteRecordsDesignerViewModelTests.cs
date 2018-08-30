@@ -39,6 +39,7 @@ namespace Dev2.Activities.Designers.Tests.DeleteRecords
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DeleteRecordsDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void DeleteRecordsDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

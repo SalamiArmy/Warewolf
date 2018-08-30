@@ -28,6 +28,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataSplitDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_Constructor__ModelItemIsValid_ListHasFourItems()
         {
             var items = new List<DataSplitDTO> { new DataSplitDTO() };
@@ -38,6 +39,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataSplitDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_Constructor__ModelItemIsValid_CollectionNameIsSetToResultsCollection()
         {
             var items = new List<DataSplitDTO> { new DataSplitDTO() };
@@ -48,6 +50,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataSplitDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_Constructor_ModelItemIsValid_ResultsCollectionHasTwoItems()
         {
             var modelItem = ModelItemUtils.CreateModelItem(new DsfDataSplitActivity());
@@ -59,6 +62,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DataSplitDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -78,6 +82,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataSplitDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_Constructor_ModelItemIsInitializedWith4Items_ResultsCollectionHasFourItems()
         {
             var items = new List<DataSplitDTO>
@@ -95,6 +100,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataSplitDesignerViewModel_OnSplitTypeChanged")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_OnSplitTypeChanged_EnableAt_SetCorrectly()
         {
             VerifySplitTypeAgainstEnabledAt(DataSplitDTO.SplitTypeIndex, true);
@@ -120,6 +126,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataSplitDesignerViewModel_OnSplitTypeChanged")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_OnSplitTypeChanged_IsEscapeCharEnabled_SetCorrectly()
         {
             VerifySplitTypeAgainstIsEscapeCharEnabled(DataSplitDTO.SplitTypeIndex, false);
@@ -161,6 +168,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataSplitDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_ValidateThis_SourceStringIsNotEmpty_DoesNotHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -186,6 +194,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataSplitDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_ValidateThis_SourceStringIsEmptyOrWhiteSpace_DoesHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -212,6 +221,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataSplitDesignerViewModel_ValidateCollectionItem")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {
             //------------Setup for test--------------------------
@@ -258,6 +268,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataSplitDesignerViewModel_ProcessDirectionGroup")]
+        [DoNotParallelize]
         public void DataSplitDesignerViewModel_ProcessDirectionGroup_IsUnique()
         {
             //------------Setup for test--------------------------

@@ -23,6 +23,7 @@ using Dev2.TO;
 namespace Dev2.Activities.Designers.Tests.CaseConvert
 {
     [TestClass]
+    [DoNotParallelize]
     public class CaseConvertDesignerViewModelTests
     {
         [TestMethod]

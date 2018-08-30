@@ -59,6 +59,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_WhenRemoteActiveEnvironmentAndActivityHasEmptyGuidEnviromentID_ExpectNoValidationErrorsForMissingResource()
         {
             //------------Setup for test--------------------------
@@ -76,6 +77,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_ErrorMemoDataIsNull_NoNullXmlException()
         {
 
@@ -108,6 +110,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_ConstructorWithEmptyGuid_PropertiesInitialized()
         {
             //------------Setup for test--------------------------
@@ -131,6 +134,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_PropertiesInitialized()
         {
             //------------Setup for test--------------------------
@@ -153,6 +157,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_WhenIsItemDraggedTrue_ShouldBeExpandedAndSetIsItemDraggedFalse()
         {
             //------------Setup for test--------------------------
@@ -167,6 +172,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_WhenIsItemDraggedFalse_ShouldNotBeExpandedAndSetIsItemDraggedFalse()
         {
             //------------Setup for test--------------------------
@@ -195,6 +201,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("ServiceDesignerViewModel constructor throws null argument exception when root model is null.")]
         [Owner("Trevor Williams-Ros")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_NullRootModel_ThrowsArgumentNullException()
         {
             
@@ -207,6 +214,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("ServiceDesignerViewModel constructor throws null argument exception when environment repository is null.")]
         [Owner("Trevor Williams-Ros")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_NullEnvironmentRepository_ThrowsArgumentNullException()
         {
             
@@ -219,6 +227,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("ServiceDesignerViewModel constructor throws null argument exception when environment repository is null.")]
         [Owner("Leon Rajindrapersadh")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_NullAsyncWorker_ThrowsArgumentNullException()
         {
             
@@ -232,6 +241,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Owner("Trevor Williams-Ros")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_NullEventPublisher_ThrowsArgumentNullException()
         {
             
@@ -243,6 +253,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Description("ServiceDesignerViewModel constructor with any args and no errors in resource model must add default NoError instance.")]
         [Owner("Trevor Williams-Ros")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_AnyArgs_AddsNoError()
         {
             var model = CreateServiceDesignerViewModel(Guid.NewGuid());
@@ -255,6 +266,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Description("ServiceDesignerViewModel constructor must set the LastValidationMemo.")]
         [Owner("Trevor Williams-Ros")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_AnyArgs_SetsLastValidationMemo()
         {
             var instanceID = Guid.NewGuid();
@@ -275,7 +287,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Description("ServiceDesignerViewModel constructor sets IsDeleted to true and removes other errors when the resource model has an error where the FixType is Delete.")]
         [Owner("Trevor Williams-Ros")]
-        
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_ResourceContainingDeletedError_InitializesPropertiesCorrectly()
 
         {
@@ -297,6 +309,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Owner("Huggs")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_EnvironmentIDEmpty_ShouldLoadResourceFromRootModelEnvironment()
         {
             //------------Setup for test--------------------------
@@ -317,6 +330,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Owner("Huggs")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_EnvironmentID_ShouldLoadResourceFromResourceModelEnvironment()
         {
             //------------Setup for test--------------------------
@@ -336,6 +350,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_ModelItemHasProperties_PropertiesPopulated()
         {
             var friendlySourceName = CreateModelProperty("FriendlySourceName", "Hello");
@@ -353,6 +368,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_InitializeResourceModel")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_InitializeResourceModel_ServiceTypeHasSourceAndIsInvalidXml_NoErrorMessageAdded()
         {
             var mockRepo = SetupForSourceCheck(out Guid instanceID, out Mock<IServer> environment, out Mock<IContextualResourceModel> resourceModel, out Guid sourceID, true);
@@ -374,6 +390,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void InitializeDisplayName_GivenhasDisplayName_ShouldUseDisplayName()
         {
 
@@ -419,6 +436,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void InitializeDisplayName_GivenhasDisplayNameTypeName_ShouldUseServiceName()
         {
 
@@ -466,6 +484,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CanViewComplexObjects_GivenIsComplexObject_ShouldReturnTrue()
         {
 
@@ -513,6 +532,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CanViewComplexObjects_GivenIsScalarItemModel_ShouldReturnTrue()
         {
 
@@ -560,6 +580,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CanViewComplexObjects_GivenIsRecordSet_ShouldReturnTrue()
         {
 
@@ -607,6 +628,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ViewJsonObjects_GivenComplexObjectItemModel_ShouldReadJsonFromComplexObject()
         {
 
@@ -653,6 +675,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Done_GivenHasWorstErrors_ShouldFixErrors()
         {
 
@@ -703,6 +726,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Validate_GivenHasNoPersmission_ShouldFixErrors()
         {
 
@@ -750,6 +774,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Dispose_GivenPassThrough()
         {
             //---------------Set up test pack-------------------
@@ -794,6 +819,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Validate_GivenHasPersmission_ShouldFixErrors()
         {
 
@@ -841,6 +867,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Handle_GivenUpdateResourceMessage()
         {
 
@@ -896,6 +923,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void InitializeDisplayName_GivenEmptyDisplayName_ShouldUseServiceName()
         {
 
@@ -942,6 +970,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void FriendlySourceName_GivenEnvDisplayTheSame_ShouldReturnCorrectly()
         {
             //------------Setup for test--------------------------
@@ -987,6 +1016,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServiceDesignerViewModel_InitializeResourceModel")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_InitializeResourceModel_ServiceTypeHasSource_NoErrorMessageAdded()
         {
             var mockRepo = SetupForSourceCheck(out Guid instanceID, out Mock<IServer> environment, out Mock<IContextualResourceModel> resourceModel, out Guid sourceID);
@@ -1010,7 +1040,8 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_OpenParent")]
         [Description("ServiceDesignerViewModel OpenParent must not do anything if IsDeleted is true.")]
         [Owner("Trevor Williams-Ros")]
-        
+
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_OpenParent_WhenDeleted_DoesNothing()
 
         {
@@ -1037,6 +1068,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_FixErrorsCommand")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrorsCommand_ErrorMemoDataIsNull_NoNullXmlException()
         {
             //------------Setup for test--------------------------
@@ -1069,6 +1101,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrorsCommand_ErrorMemoDataIsInvalidXml_NoInputsOrOutputsPresent()
         {
             //------------Setup for test--------------------------
@@ -1102,6 +1135,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrorsCommand_InputDefinitionsMalformed_NoInputsOneOutputPresent()
         {
             //------------Setup for test--------------------------
@@ -1145,7 +1179,8 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
         [Description("FixErrors when WorstError is None must do nothing.")]
         [Owner("Trevor Williams-Ros")]
-        
+
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_FixNoError_DoesNothing()
 
         {
@@ -1161,7 +1196,8 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
         [Description("FixErrors when FixType is ReloadMapping must reload mapping.")]
         [Owner("Trevor Williams-Ros")]
-        
+
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_FixReloadMapping_Done()
 
         {
@@ -1232,7 +1268,8 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
         [Owner("Hagashen Naidu")]
-        
+
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_DoesNotSetResourceModelValidWhenResourceStillHasErrors()
 
         {
@@ -1279,7 +1316,8 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
         [Owner("Travis Frisinger")]
-        
+
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_RequiredMapping_Done()
 
         {
@@ -1323,7 +1361,8 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
         [Description("FixErrors when FixType is MappingRequired must get a value for mapping to be fixed.")]
         [Owner("Trevor Williams-Ros")]
-        
+
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_Required_Done()
 
         {
@@ -1373,7 +1412,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
         [Description("FixErrors when FixType is MappingRequired must get a value for mapping to be fixed.")]
         [Owner("Trevor Williams-Ros")]
-        
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_RequiredWhenMappingValid_ShouldRemoveError()
 
         {
@@ -1412,7 +1451,8 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
         [Description("FixErrors when FixType is MappingRequired must get a value for mapping to be fixed.")]
         [Owner("Trevor Williams-Ros")]
-        
+
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_MulitpleRequiredWhenMappingValid_ShouldRemoveRequiredMappingErrors()
 
         {
@@ -1458,6 +1498,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_UpdateMappings_SetsInputsAndOutputs()
         {
             //------------Setup for test--------------------------
@@ -1506,6 +1547,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteResource_ShouldSetupResourceModelFromModelItem()
         {
             //------------Setup for test--------------------------
@@ -1580,6 +1622,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenResourceHasSource_ShouldGetSourceName()
         {
             //------------Setup for test--------------------------
@@ -1652,6 +1695,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenSourceIsTheSameAsCurrentLocation_ShouldNotSetFriendlySourceName()
         {
             //------------Setup for test--------------------------
@@ -1734,6 +1778,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenSourceIsNotTheSameAsCurrentLocation_ShouldSetFriendlySourceName()
         {
             //------------Setup for test--------------------------
@@ -1808,6 +1853,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteResource_ShouldSubscibeToResourcesLoaded()
         {
             //------------Setup for test--------------------------
@@ -1893,6 +1939,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteEnvironmentLoads_ShouldSetVersionMemoIfIncorrect()
         {
             //------------Setup for test--------------------------
@@ -1991,6 +2038,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_FixErrorss")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenUserFixesErrors_ShouldRemoveVersionError()
         {
             //------------Setup for test--------------------------
@@ -2091,6 +2139,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteEnvironmentLoads_ShouldSetVersionMemoIfIncorrectWhen_OutPutDifferent()
         {
             //------------Setup for test--------------------------
@@ -2189,6 +2238,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteEnvironmentLoads_ShouldNotSetVersionMemoIfCorrect()
         {
             //------------Setup for test--------------------------
@@ -2278,6 +2328,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteEnvironmentLoads_ShouldUseNameToFindEnvironment()
         {
             //------------Setup for test--------------------------
@@ -2392,6 +2443,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_InitializeResourceIDNull_StillCorrectlySetsUp()
         {
             //------------Setup for test--------------------------
@@ -2430,6 +2482,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void ServiceDesignerViewModel_InitializeWhenEnvironmentModelOnOtherServer_StillCorrectlySetsUp()
         {
             //------------Setup for test--------------------------
@@ -2462,6 +2515,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ServiceDesingerViewModel_RunWorkflowAsync")]
+        [DoNotParallelize]
         public void ServiceDesingerViewModel_RunWorkflowAsync_Constructor_False()
         {
 
@@ -2494,6 +2548,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ServiceDesingerViewModel_RunWorkflowAsync")]
+        [DoNotParallelize]
         public void ServiceDesingerViewModel_SetRunWorkflowAsync_True_OutputMappingEnabledFalse()
         {
             //------------Setup for test--------------------------
@@ -2525,6 +2580,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ServiceDesingerViewModel_IsAsyncVisible")]
+        [DoNotParallelize]
         public void ServiceDesingerViewModel_IsAsyncVisible_WorkflowResource_True()
         {
             //------------Setup for test--------------------------
@@ -2557,6 +2613,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ServiceDesingerViewModel_IsAsyncVisible")]
+        [DoNotParallelize]
         public void ServiceDesingerViewModel_IsAsyncVisible_NotWorkflowResource_False()
         {
             //------------Setup for test--------------------------

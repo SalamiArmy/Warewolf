@@ -13,6 +13,7 @@ namespace Dev2.Activities.Designers.Tests.Service
     public class ValidationMemoManagerTests
     {
         [TestMethod]
+        [DoNotParallelize]
         public void ValidationMemoManager_UpdateWorstError_WorstErrorIsFirstCriticalError()
         {
             //------------Setup for test-------------------------
@@ -24,6 +25,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void ValidationMemoManager_UpdateLastValidationMemoWithSourceNotFoundError_UpdatesToSourceNotFoundError()
         {
             //------------Setup for test-------------------------

@@ -27,6 +27,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GatherSystemInformationDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void GatherSystemInformationDesignerViewModel_Constructor_ModelItemIsValid_ListHasFourItems()
         {
             var items = new List<GatherSystemInformationTO> { new GatherSystemInformationTO() };
@@ -38,6 +39,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("GatherSystemInformationDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void GatherSystemInformationDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -58,6 +60,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GatherSystemInformationDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void GatherSystemInformationDesignerViewModel_Constructor_ModelItemIsValid_CollectionNameIsSetToSystemInformationCollection()
         {
             var items = new List<GatherSystemInformationTO> { new GatherSystemInformationTO() };
@@ -68,6 +71,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GatherSystemInformationDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void GatherSystemInformationDesignerViewModel_Constructor_ModelItemIsValid_SystemInformationCollectionHasTwoItems()
         {
             var modelItem = ModelItemUtils.CreateModelItem(new DsfGatherSystemInformationActivity());
@@ -79,6 +83,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GatherSystemInformationDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void GatherSystemInformationDesignerViewModel_Constructor_ModelItemIsInitializedWith4Items_SystemInformationCollectionHasFourItems()
         {
             var items = new List<GatherSystemInformationTO>
@@ -97,6 +102,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("GatherSysInfoDesignerViewModel_ValidateCollectionItem")]
+        [DoNotParallelize]
         public void GatherSysInfoDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {
             //------------Setup for test--------------------------

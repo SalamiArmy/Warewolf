@@ -172,6 +172,7 @@ namespace Dev2.Activities.Designers.Tests.Core
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void UpdateOnActionSelection_GivenHasInputs_ShouldWriteToActiveDatalist()
         {
             //---------------Set up test pack-------------------
@@ -214,6 +215,7 @@ namespace Dev2.Activities.Designers.Tests.Core
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void UpdateOnActionSelection_GivenHasInputs_ShouldWriteToActiveDatalistAndPopulatesInputValues()
         {
             //---------------Set up test pack-------------------
@@ -259,6 +261,7 @@ namespace Dev2.Activities.Designers.Tests.Core
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void UpdateOnActionSelection_GivenHasInputsWithDataTypes_ShouldWriteToActiveDatalistAndPopulatesInputValues()
         {
             //---------------Set up test pack-------------------

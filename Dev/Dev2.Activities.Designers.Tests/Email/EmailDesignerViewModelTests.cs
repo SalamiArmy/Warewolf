@@ -135,6 +135,7 @@ namespace Dev2.Activities.Designers.Tests.Email
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("EmailDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void EmailDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -237,6 +238,7 @@ namespace Dev2.Activities.Designers.Tests.Email
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("EmailDesignerViewModel_EditEmailSource")]
+        [DoNotParallelize]
         public void EmailDesignerViewModel_EditEmailSource_PublishesShowEditResourceWizardMessage()
         {
             //------------Setup for test--------------------------

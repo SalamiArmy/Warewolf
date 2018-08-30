@@ -30,6 +30,7 @@ namespace Dev2.Activities.Designers.Tests.BaseConvert
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("BaseConvertViewModel_Constructor")]
+        [DoNotParallelize]
         public void BaseConvertViewModel_Constructor_PropertiesInitialized()
         {
             //------------Setup for test--------------------------
@@ -56,6 +57,7 @@ namespace Dev2.Activities.Designers.Tests.BaseConvert
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("BaseConvertViewModel_Handle")]
+        [DoNotParallelize]
         public void BaseConvertViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -79,6 +81,7 @@ namespace Dev2.Activities.Designers.Tests.BaseConvert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("BaseConvertDesignerViewModel_ValidateCollectionItem")]
+        [DoNotParallelize]
         public void BaseConvertDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {
             //------------Setup for test--------------------------

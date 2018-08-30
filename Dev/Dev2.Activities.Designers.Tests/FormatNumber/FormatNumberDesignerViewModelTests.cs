@@ -47,6 +47,7 @@ namespace Dev2.Activities.Designers.Tests.FormatNumber
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("FormatNumberDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void FormatNumberDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

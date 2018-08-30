@@ -90,6 +90,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_Collapse")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_Collapse_SmallViewActive()
         {
             //------------Setup for test--------------------------
@@ -106,6 +107,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("ActivityDesignerViewModel_Collapse")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_Collapse_HelpButtonGetsRemovedOnCollapse()
         {
             //------------Setup for test--------------------------
@@ -137,6 +139,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_Restore")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_RestoreFromPreviouslyViewedLargeView_LargeViewActive()
         {
             //------------Setup for test--------------------------
@@ -153,6 +156,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_Expand")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_Expand_LargeViewActive()
         {
             //------------Setup for test--------------------------
@@ -169,6 +173,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ThumbVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ThumbVisibility_IsSelectedAndSmallViewNotActive_Visible()
         {
             //------------Setup for test--------------------------
@@ -184,6 +189,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ThumbVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ThumbVisibility_IsSelectedAndSmallViewActive_Collapsed()
         {
             //------------Setup for test--------------------------
@@ -200,6 +206,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ConnectorVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ConnectorVisibility_IsSelectedAndSmallViewNotActive_Collapsed()
         {
             //------------Setup for test--------------------------
@@ -215,6 +222,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ConnectorVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ConnectorVisibility_IsSelectedAndSmallViewActive_Visible()
         {
             //------------Setup for test--------------------------
@@ -231,6 +239,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_TitleBarTogglesVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_TitleBarTogglesVisibility_IsSelected_Visible()
         {
             //------------Setup for test--------------------------
@@ -246,6 +255,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_TitleBarTogglesVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_TitleBarTogglesVisibility_NotIsSelected_Collapsed()
         {
             //------------Setup for test--------------------------
@@ -261,6 +271,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ZIndexPosition")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ZIndexPosition_IsSelected_Front()
         {
             //------------Setup for test--------------------------
@@ -276,6 +287,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ZIndexPosition")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ZIndexPosition_NotIsSelected_Back()
         {
             //------------Setup for test--------------------------
@@ -291,6 +303,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ThumbVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ThumbVisibility_IsMouseOverAndSmallViewNotActive_Visible()
         {
             //------------Setup for test--------------------------
@@ -306,6 +319,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ThumbVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ThumbVisibility_IsMouseOverAndSmallViewActive_Collapsed()
         {
             //------------Setup for test--------------------------
@@ -322,6 +336,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ConnectorVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ConnectorVisibility_IsMouseOverAndSmallViewNotActive_Collapsed()
         {
             //------------Setup for test--------------------------
@@ -337,6 +352,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ConnectorVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ConnectorVisibility_IsMouseOverAndSmallViewActive_Visible()
         {
             //------------Setup for test--------------------------
@@ -353,6 +369,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_TitleBarTogglesVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_TitleBarTogglesVisibility_IsMouseOver_Visible()
         {
             //------------Setup for test--------------------------
@@ -368,6 +385,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_TitleBarTogglesVisibility")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_TitleBarTogglesVisibility_NotIsMouseOver_Collapsed()
         {
             //------------Setup for test--------------------------
@@ -383,6 +401,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ZIndexPosition")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ZIndexPosition_IsMouseOver_Front()
         {
             //------------Setup for test--------------------------
@@ -398,6 +417,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ZIndexPosition")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ZIndexPosition_NotIsMouseOver_Back()
         {
             //------------Setup for test--------------------------

@@ -28,6 +28,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Construct")]
         [Owner("Tshepo Ntlhokoa")]
+        [DoNotParallelize]
         public void ActivityDesignerButton_Construct_CommandObjectIsInstantiatedAndIsValidIsSetToTrue()
         {
             var button = new ActivityDesignerButton();
@@ -40,6 +41,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforeIsSetToFalse_ValidationErrorsIsNotCalled()
         {
             VerifyExecution(false, false, true, 0, null);
@@ -48,6 +50,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsClosedAfterIsSetToFalse_HideContentIsNotCalled()
         {
             VerifyExecution(false, false, true, 0, null);
@@ -56,6 +59,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsClosedAfterIsSetToTrue_HideContentIsCalledOnce()
         {
             VerifyExecution(false, true, true, 0, null);
@@ -64,6 +68,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforeAndIsClosedAfterAreSetToTrueAndThereAreNoValidationErrors_ValidationErrorsAndHideContentAreCalledOnce()
         {
             VerifyExecution(true, true, true, 0, null);
@@ -72,6 +77,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforIsSetToTrueAndIsClosedAfterAreSetToFalseAndThereAreNoValidationErrors_ValidationErrorsIsCalledOnceAndHideContentIsNotCalled()
         {
             VerifyExecution(true, false, true, 0, null);
@@ -80,6 +86,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforeIsToTrueAndThereAreNoValidationErrors_CustomCommandIsExecuted()
         {
             var customCommandExecuted = false;
@@ -91,6 +98,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforeIsToTrueAndThereAreValidationErrors_CustomCommandIsNotExecuted()
         {
             var customCommandExecuted = false;
@@ -102,6 +110,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforeAndIsClosedAfterAreSetToFalse_CustomCommandIsExecuted()
         {
             var customCommandExecuted = false;
@@ -113,6 +122,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsClosedAfterIsSetToTrueAndCustomCommandIsNotSet_HideContentIsCalled()
         {
             VerifyExecution(false, true, true, 0, null);

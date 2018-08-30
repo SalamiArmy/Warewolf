@@ -23,6 +23,7 @@ using System.Collections.ObjectModel;
 namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 {
     [TestClass]
+    [DoNotParallelize]
     public class AdvancedRecordsetViewModelTests
     {
 
@@ -67,6 +68,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Pieter Terblanche")]
         [TestCategory("AdvancedRecordset_MethodName")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void ValidateSql_ReturnCorrectFormat()
         {
             CustomContainer.LoadedTypes = new List<Type>
@@ -116,6 +118,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Pieter Terblanche")]
         [TestCategory("AdvancedRecordset_MethodName")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void ValidateSql_ShowsCorrectErrorFormat()
         {
             CustomContainer.LoadedTypes = new List<Type>
@@ -414,6 +417,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void ParseTSQL_SelectStatementWithAllias_6_ReturnOutputs()
         {
             //------------Setup for test--------------------------

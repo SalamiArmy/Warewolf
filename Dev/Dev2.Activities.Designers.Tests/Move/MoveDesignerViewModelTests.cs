@@ -43,6 +43,7 @@ namespace Dev2.Activities.Designers.Tests.Move
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MoveDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void MoveDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

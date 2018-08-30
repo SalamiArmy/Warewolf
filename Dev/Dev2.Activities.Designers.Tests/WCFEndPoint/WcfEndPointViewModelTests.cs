@@ -76,6 +76,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [DoNotParallelize]
         public void WcfEndPointViewModel_CreateNewInstance_ReturnsSuccess()
         {
             var model = GetViewModel();
@@ -86,6 +87,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WcfEndPointViewModel_Handle")]
+        [DoNotParallelize]
         public void WcfEndPointViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -104,6 +106,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [DoNotParallelize]
         public void WcfEndPointViewModel_ClearValidation_Success()
         {
             var model = GetViewModel();
@@ -124,6 +127,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [DoNotParallelize]
         public void WcfEndPointViewModel_SetException_Success()
         {
             var model = GetViewModel();
@@ -145,6 +149,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [DoNotParallelize]
         public void WcfEndPointViewModel_ToModel_Success()
         {
             var model = GetViewModel();
@@ -173,6 +178,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [DoNotParallelize]
         public void WcfEndPointViewModel_GenerateOutputsFalse_Success()
         {
             var model = GetViewModel();
@@ -185,6 +191,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [DoNotParallelize]
         public void WcfEndPointViewModel_InitialiseProperties_Success()
         {
             var model = GetViewModel();
@@ -215,6 +222,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [DoNotParallelize]
         public void WcfEndPointViewModel_TestProcedure_Success()
         {
             var model = GetViewModel();

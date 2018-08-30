@@ -221,8 +221,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
             //---------------Test Result -----------------------
             Assert.IsFalse(dropBoxFileListViewModel.IsFilesAndFoldersSelected);
         }
-
-
+        
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         public void DropboxFileList_SelectedSourceName_GivenActivityIsNewAndNoSourceSelected_ShouldBeNullOrEmpty()
@@ -235,13 +234,11 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
             //---------------Test Result -----------------------
             Assert.IsNull(dropBoxFileListViewModel.SelectedSource);
         }
-
-
-
-
+        
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectedOperation_EditSource")]
+        [DoNotParallelize]
         public void DropboxFileList_dropBoxFileListViewModel_EditSourcePublishesMessage()
         {
             var agg = new Mock<IEventAggregator>();
@@ -259,9 +256,11 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
             mockShellViewModel.Verify(viewModel => viewModel.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<IServer>()));
             CustomContainer.DeRegister<IShellViewModel>();
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectedOperation_EditSource")]
+        [DoNotParallelize]
         public void DropboxFileList_dropBoxFileListViewModel_NewSourcePublishesMessage()
         {
             var agg = new Mock<IEventAggregator>();
@@ -278,6 +277,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
             shellViewModelMock.Verify(viewModel => viewModel.NewDropboxSource(It.IsAny<string>()), Times.Once);
             CustomContainer.DeRegister<IShellViewModel>();
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectedOperation_EditSource")]
@@ -512,6 +512,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void DropboxFileList_CreateOAuthSource_GivenCanPublish_ShouldPublish()
         {
             var agg = new Mock<IEventAggregator>();

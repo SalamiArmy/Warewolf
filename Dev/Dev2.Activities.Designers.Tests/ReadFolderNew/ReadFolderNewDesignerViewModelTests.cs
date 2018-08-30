@@ -33,6 +33,7 @@ namespace Dev2.Activities.Designers.Tests.ReadFolderNew
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("ReadFolderDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void ReadFolderDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
