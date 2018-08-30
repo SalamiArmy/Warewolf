@@ -222,6 +222,7 @@ namespace Dev2.Tests.Activities.ActivityTests.Scripting
         #region Should execute valid javascript
 
         [TestMethod]
+        [DoNotParallelize]
         public void GivenExternalFile_Execute_Javascript_ShouldExecuteExternalFunction()
         {
             var activity = new DsfScriptingActivity();

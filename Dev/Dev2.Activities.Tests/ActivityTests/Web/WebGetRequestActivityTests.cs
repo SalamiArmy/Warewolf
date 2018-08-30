@@ -229,6 +229,7 @@ namespace ActivityUnitTests.ActivityTest
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetOutputs")]
+        [DoNotParallelize]
         public void GetOutputs_Called_ShouldReturnListWithResultValueInIt()
         {
             //------------Setup for test--------------------------

@@ -212,6 +212,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void AdvancedRecordset_Converter_CanRunWhereQuery_ExpectNoResults()
         {
             string query = "select * from person p join address a on p.address_id=a.id where p.Name=\"zak\"";

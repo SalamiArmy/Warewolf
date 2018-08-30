@@ -37,6 +37,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         #region Index Positive Tests
 
         [TestMethod]
+        [DoNotParallelize]
         public void Index_Recordset_With_Index_Expected_Index_Of_Four_Returned()
         {
             SetupArguments(ActivityStrings.IndexDataListShape, ActivityStrings.IndexDataListWithData,
@@ -52,6 +53,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Index_Recordset_With_Star_And_Star_Search_Criteria_Expected_Index_Of_Four_Returned()
         {
             SetupArguments(ActivityStrings.IndexDataListShapeWithThreeRecordsets, ActivityStrings.IndexDataListWithDataAndThreeRecordsets,

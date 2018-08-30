@@ -81,6 +81,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [DeploymentItem(CommandLineToolName)]
+        [DeploymentItem("SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void OnExecuteWhereConsoleDoesNothingExpectNothingForResult()
         {
             //------------Setup for test--------------------------
@@ -134,6 +136,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [DeploymentItem("SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void OnExecuteWhereConsolePathHasNoSpacesIsNotWrappedInQuotesExpectSuccess()
         {
             //------------Setup for test--------------------------
@@ -212,6 +216,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
 
         [TestMethod]
+        [DeploymentItem("SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void OnExecuteWhereConsoleOutputsWithArgsWrappedInQuotesExpectSuccess()
         {
             //------------Setup for test--------------------------
@@ -246,6 +252,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [DeploymentItem("SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void OnExecuteWhereConsoleOutputsExpectOutputForResult()
         {
             //------------Setup for test--------------------------
@@ -328,6 +336,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
 
         [TestMethod]
+        [DeploymentItem("SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void OnExecuteWhereConsoleErrorsExpectErrorInDatalist()
         {
             // ------------Setup for test--------------------------
@@ -358,6 +368,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [DeploymentItem("SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void OnExecuteWhereOutputToRecordWithNoIndexWithConsoleOutputsExpectOutputForResultAppendedToRecordsets()
         {
             //------------Setup for test--------------------------
@@ -393,6 +405,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void OnExecuteWhereOutputToRecordWithStarIndexWithConsoleOutputsExpectOutputForResultOverwriteToRecordsets()
         {
             //------------Setup for test--------------------------
@@ -429,6 +442,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [DeploymentItem("SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void OnExecuteWhereOutputToRecordWithSpecificIndexWithConsoleOutputsExpectOutputForResultInsertsToRecordsets()
         {
             //------------Setup for test--------------------------
@@ -461,6 +476,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [DeploymentItem("SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void OnExecuteWhereMultipleInputFromRecordSetWithOutputToRecordSetExpectOutputResultsToMultipleRowsInRecordSet()
         {
             //------------Setup for test--------------------------
@@ -489,6 +506,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [DeploymentItem("SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void OnExecuteWhereMultipleInputFromRecordSetWithOutputToScalarExpectOutputResultOfLastCommandinScalar()
         {
             //------------Setup for test--------------------------

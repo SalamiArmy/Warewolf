@@ -26,6 +26,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.CountRecordset
         [TestMethod]
         [TestCategory("DsfRecordsetNullhandlerLength")]
         [Owner("Candice Daniel")]
+        [DoNotParallelize]
         public void RecordsetNullhandlerLength_BlankResultVariable()
         {
             //---------------Set up test pack-------------------

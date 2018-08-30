@@ -243,6 +243,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
         
         [TestMethod]
+        [DeploymentItem("SQLite.Interop.dll")]
+        [DoNotParallelize]
         public void ReplaceInAllRecordsetFieldsExpectedTwoReplacesSuccess()
         {
             SetupArguments(ActivityStrings.ReplaceDataListWithData.Replace("f2r2", "barney"), ActivityStrings.ReplaceDataListShape, "[[recset1(*)]]", "Barney", "Wallis", "[[res]]", false);

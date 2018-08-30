@@ -89,6 +89,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod] // - OK
+        [DoNotParallelize]
         public void EmptySourceStringExpectedNoData()
         {
             _resultsCollection.Add(new XPathDTO("[[OutVar1]]", "//type/method", 1));

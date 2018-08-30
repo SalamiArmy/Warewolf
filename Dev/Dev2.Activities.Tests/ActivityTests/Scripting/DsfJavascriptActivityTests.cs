@@ -144,6 +144,7 @@ namespace Dev2.Tests.Activities.ActivityTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void GivenExternalFile_Execute_Javascript_ShouldExecuteExternalFunction()
         {
             var activity = new DsfJavascriptActivity();

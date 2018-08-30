@@ -21,16 +21,9 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 
 namespace Dev2.Tests.Activities.ActivityTests
 {
-    /// <summary>
-    /// Summary description for RecordsetLengthTestNullhandler
-    /// </summary>
     [TestClass]
     public class RecordsetLengthTestNullhandler : BaseActivityUnitTest
     {
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
         public TestContext TestContext { get; set; }
 
         #region Store To Scalar Tests
@@ -56,6 +49,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         #region Store To RecordSet Tests
 
         [TestMethod]
+        [DoNotParallelize]
         public void RecordsetLengthOutputToRecset()
         {
             SetupArguments("<root>" + ActivityStrings.CountRecordsDataListShape + "</root>", "<root><recset1><field1/></recset1><TestCountvar/></root>", "[[recset1()]]", "[[recset1().field1]]");
