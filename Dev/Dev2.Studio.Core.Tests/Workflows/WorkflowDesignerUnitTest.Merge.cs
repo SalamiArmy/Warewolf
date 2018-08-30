@@ -27,6 +27,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkflowDesignerViewModel_AddItem")]
+        [DoNotParallelize]
         public void AddItem_Given_MergeToolModel_VerifyCalls()
         {
             //------------Setup for test--------------------------
