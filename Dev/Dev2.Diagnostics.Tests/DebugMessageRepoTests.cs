@@ -9,6 +9,7 @@ namespace Dev2.Diagnostics.Test
     {
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void DebugMessageRepo_Constructor_GivenIsNew_ShouldInitiase()
         {
             //---------------Set up test pack-------------------
@@ -24,6 +25,7 @@ namespace Dev2.Diagnostics.Test
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void DebugMessageRepo_AddDebugItem_GivenValidArgs_ShouldAdd1Item()
         {
             //---------------Set up test pack-------------------
@@ -42,6 +44,7 @@ namespace Dev2.Diagnostics.Test
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void DebugMessageRepo_AddDebugItem_GivenValidArgsAndSessions_ShouldNotMixUpDebugStates()
         {
             //---------------Set up test pack-------------------
@@ -68,6 +71,7 @@ namespace Dev2.Diagnostics.Test
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void DebugMessageRepo_AddDebugItem_GivenKeyExists_ShouldNotMixUpDebugStates()
         {
             //---------------Set up test pack-------------------
