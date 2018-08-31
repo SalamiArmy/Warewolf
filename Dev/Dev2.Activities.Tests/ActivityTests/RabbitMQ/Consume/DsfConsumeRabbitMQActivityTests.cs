@@ -173,6 +173,8 @@ namespace Dev2.Tests.Activities.ActivityTests.RabbitMQ.Consume
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void AssignResult_GivenIsObjectOneMessages_ShouldSetResponsemanagerPushResponeToEnvironment()
         {
             //---------------Set up test pack-------------------
@@ -201,6 +203,8 @@ namespace Dev2.Tests.Activities.ActivityTests.RabbitMQ.Consume
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void AssignResult_GivenIsObjectManyMessages_ShouldSetResponsemanagerPushResponeToEnvironment()
         {
             //---------------Set up test pack-------------------

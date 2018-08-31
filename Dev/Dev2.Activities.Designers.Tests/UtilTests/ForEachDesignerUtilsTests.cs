@@ -68,6 +68,8 @@ namespace Dev2.Core.Tests.Activities
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ForeachActivityDesignerUtils_LimitDragDropOptions_ModelItemFormat_Decision_DropPrevented()
         {
             //------------Setup for test--------------------------
@@ -120,6 +122,8 @@ namespace Dev2.Core.Tests.Activities
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ForeachActivityDesignerUtils_LimitDragDropOptions_ModelItemFormat_Switch_DropPrevented()
         {
             //------------Setup for test--------------------------
@@ -134,6 +138,7 @@ namespace Dev2.Core.Tests.Activities
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
+
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]

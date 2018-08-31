@@ -267,6 +267,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("QueryManagerProxy_Fetch_DBActions")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void QueryManagerProxy_Fetch_DBActions()
         {
             var ser = new Dev2JsonSerializer();

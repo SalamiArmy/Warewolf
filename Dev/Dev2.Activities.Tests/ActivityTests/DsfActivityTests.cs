@@ -32,23 +32,16 @@ using WarewolfParserInterop;
 
 namespace Dev2.Tests.Activities.ActivityTests
 {
-    /// <summary>
-    /// Summary description for DateTimeDifferenceTests
-    /// </summary>
-
     [TestClass]
     public class DsfActivityTests : BaseActivityUnitTest
     {
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
         public TestContext TestContext { get; set; }
-
-
+        
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfActivity_BeforeExecutionStart")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void DsfActivity_BeforeExecutionStart_NullResourceID_DoesNothing()
         {
             //------------Setup for test--------------------------

@@ -82,6 +82,8 @@ namespace ActivityUnitTests.ActivityTest
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void WebGetRequestWhereGivenAnIWebRequestInvokerExpectGetGivenValue()
         {
             //------------Setup for test--------------------------
@@ -186,6 +188,8 @@ namespace ActivityUnitTests.ActivityTest
 
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void WebGetRequestExecuteWhereScalarValuesExpectCorrectResults()
         {
             //------------Setup for test--------------------------

@@ -330,6 +330,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void GatherSystemInformationWhereGetCPUTotalInformationExpectProcessorInformation()
         {
             //------------Setup for test--------------------------
@@ -386,6 +388,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void GatherSystemInformationWhereGetUserNameInformationExpectUserNameInformation()
         {
             //------------Setup for test--------------------------
@@ -444,6 +448,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void GatherSystemInformationWhereGetIPv4AdressesExpectIPInformation()
         {
             //------------Setup for test--------------------------
@@ -498,6 +504,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void GatherSystemInformationWhereExecuteExpectCorrectResultsWithScalar()
         {
             IList<GatherSystemInformationTO> systemInformationCollection = new List<GatherSystemInformationTO> { new GatherSystemInformationTO(enTypeOfSystemInformationToGather.OperatingSystem, "[[testVar]]", 1) };

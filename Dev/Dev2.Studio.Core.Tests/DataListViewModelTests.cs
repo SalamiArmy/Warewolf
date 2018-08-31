@@ -842,10 +842,7 @@ namespace Dev2.Core.Tests
         #endregion RemoveRowIfEmpty Tests
 
         #region AddRowIfAllCellsHaveData Tests
-
-        /// <summary>
-        ///     Testing that there is always a blank row in the data list
-        /// </summary>
+        
         [TestMethod]
         public void AddRowIfAllCellsHaveData_AllDataListRowsContainingData_Expected_RowAdded()
         {
@@ -855,11 +852,10 @@ namespace Dev2.Core.Tests
             var afterCount = _dataListViewModel.DataList.Count;
             Assert.IsTrue(afterCount >= beforeCount);
         }
-
-        /// <summary>
-        ///     Tests that no rows are added to the datalistItem collection if there is already a blank row
-        /// </summary>
+        
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void AddRowIfAllCellsHaveData_BlankRowAlreadyExists_Expected_NoRowsAdded()
         {
             Setup();

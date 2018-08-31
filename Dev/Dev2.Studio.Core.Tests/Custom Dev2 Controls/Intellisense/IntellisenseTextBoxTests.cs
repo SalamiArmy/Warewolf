@@ -52,11 +52,9 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         #region Test Initialization
-
-     
-
-
+        
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBoxDoesntCrashWhenGettingResultsGivenAProviderThatThrowsAnException()
         {
@@ -73,9 +71,9 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
             Assert.AreEqual(0, textBox.View.Count);
             
         }
-
-        //BUG 8761
+        
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBoxDoesntCrashWhenInsertingResultsGivenAProviderThatThrowsAnException()
         {
@@ -97,6 +95,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void TextContaningTabIsPasedIntoAnIntellisenseTextBoxExpectedTabInsertedEventIsRaised()
         {
@@ -137,6 +136,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void TextContaningNoTabIsPasedIntoAnIntellisenseTextBoxExpectedTabInsertedEventNotRaised()
         {
@@ -176,6 +176,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         #endregion Test Initialization
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void InsertItemExpectedTextboxTextChangedAndErrorStatusUpdated()
         {
@@ -205,6 +206,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("IntellisenseTextBoxTests_SetText")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBoxTests_SetText_FilterTypeIsRecordsetFieldsButTextIsScalar_ToolTipHasErrorMessage()
         {
@@ -225,6 +227,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("IntellisenseTextBoxTests_SetText")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBoxTests_SetText_FilterTypeIsRecordsetFieldsAndTextIsRecordset_ToolTipHasNoErrorMessage()
         {
@@ -236,6 +239,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("IntellisenseTextBox_KeyDown")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBox_KeyDown_CannotWrapInBracketsWhenNotFSix()
         {
@@ -251,6 +255,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("IntellisenseTextBox_OnPreviewKeyDown")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void GivenAnExpression_IntellisenseTextBox_AddBracketsToExpression_ShouldAddBrackets()
         {
@@ -272,6 +277,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("IntellisenseTextBox_OnPreviewKeyDown")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void GivenAnExpression_IntellisenseTextBox_SetAppendTextBasedOnSelection()
         {
@@ -290,6 +296,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("IntellisenseTextBox_OnPreviewKeyDown")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void GivenJsonExpression_IntellisenseTextBox_AddBracketsToExpression_ShouldAddBrackets()
         {
@@ -311,6 +318,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("IntellisenseTextBox_KeyDown")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBox_KeyDown_CannotCauseWrapInBrackets_WhenWrapInBrackets()
         {
@@ -332,6 +340,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("IntellisenseTextBox_KeyDown")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBox_KeyDown_CannotCauseWrapInBrackets_WhenNotWrapInBrackets()
         {
@@ -345,6 +354,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
 
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void InsertItemExpectedTextboxTextChanged_InvalidSyntax_ErrorStatusUpdated()
         {
@@ -375,6 +385,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void InsertItemExpectedTextboxTextChanged_SpaceInFieldName_ErrorStatusUpdated()
         {
@@ -404,9 +415,10 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
             Assert.IsTrue(textBox.HasError, "Expected [ True ] But got [ " + textBox.HasError + " ]");
         }
 
-         [TestMethod]
+        [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("IntellisenseTextBoxTests_SetText")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBoxTests_SetText_FilterTypeIsScalarsOnlyAndTextIsScalar_ToolTipHasNoErrorMessage()
         {
@@ -419,6 +431,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("IntellisenseTextBoxTests_SetText")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBoxTests_SetText_FilterTypeIsScalarsOnlyButTextIsRecordset_ToolTipHaErrorMessage()
         {
@@ -441,6 +454,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("IntellisenseTextBox_InsertItem")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBox_InsertItem_InsertDateTimeParts_InsertsCorrectly()
         {
@@ -465,6 +479,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("IntellisenseTextBox_InsertItem")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBox_InsertItem_AppendDateTimePartsWithSpace_InsertsCorrectly()
         {
@@ -489,6 +504,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("IntellisenseTextBox_InsertItem")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBox_InsertItem_AppendDateTimePartsWithDifferentCase_InsertsCorrectly()
         {
@@ -513,6 +529,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("IntellisenseTextBox_Text")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBox_Text_NotLatinCharacter_ShowMessageBox_TextMadeEmpty()
         {
@@ -536,6 +553,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("IntellisenseTextBox_InsertItem")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBox_InsertItem_InsertDateTimePartsIn_InsertsCorrectly()
         {
@@ -561,6 +579,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("IntellisenseTextBox_KeyDown")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBox_Properties_Not_SetTo_Null()
         {
@@ -586,6 +605,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBox_GivenWrappedInBrackets_AStringWithNoBrackets_Should_AddBrackets()
         {
@@ -597,6 +617,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBox_OnPreviewKeyDown_GivenI_Hit_Enter_Key_And_AlloInsertLine_Is_True_Should_AddLine()
         {
@@ -615,6 +636,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBox_OnPreviewKeyDown_Given_EnterKey_And_AllowInsertLineIsTrueButLineCountIsEqualToMaximumLine_ShouldNotAddLine()
         {
@@ -634,7 +656,9 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
             Assert.IsFalse(testHelper.HasError);
             Assert.IsFalse(testHelper.TextBox.Text.Contains("\r\n"));
         }
+
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBox_OnPreviewKeyDown_GivenI_Hit_Tab_Key_Should_AppendText()
         {
@@ -655,6 +679,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }        
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBox_GivenMultipleValidVariables_HasNoError()
         {
@@ -667,6 +692,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBox_GivenInvalidVariables_ScalarHasError_LogsTracking()
         {
@@ -689,6 +715,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBox_GivenInvalidVariables_RecordsetHasError_LogsTracking()
         {
@@ -711,6 +738,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBox_GivenInvalidVariables_JsonObjectHasError_LogsTracking()
         {
@@ -733,6 +761,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseBox_Function_HasIsCalcMode_SetTo_True()
         {
@@ -747,6 +776,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("IntellisenseTextBoxTests_SetText")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBoxTests_SetText_FilterTypeIsAllAndTextIsRecordset_ToolTipHasNoErrorMessage()
         {
@@ -758,6 +788,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("IntellisenseTextBoxTests_SetText")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBoxTests_SetText_FilterTypeIsRecodsetFieldsAndTextMultipleRecordSetFields_ToolTipHasNoErrorMessage()
         {
@@ -774,6 +805,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("IntellisenseTextBoxTests_ValidateText")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBoxTests_ValidateText_FilterTypeIsJsonObjectAndTextIsJson_ToolTipHasNoErrorMessage()
         {
@@ -786,6 +818,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("IntellisenseTextBoxTests_ValidateText")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBoxTests_ValidateText_FilterTypeIsJsonObjectAndTextIsScalar_ToolTipHasNoErrorMessage()
         {
@@ -799,6 +832,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("IntellisenseTextBoxTests_SetText")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void IntellisenseTextBoxTests_SetText_InvalidJsonArrayIndex_ShouldError()
         {

@@ -482,6 +482,8 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("PerfcounterViewModel_PickResource")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void PerfcounterViewModel_PickResource_WhenCounterNull_DoesNothing()
         {
             //------------Setup for test--------------------------
@@ -581,6 +583,8 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("PerfcounterViewModel_UpdateHelpDescriptor")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void PerfcounterViewModel_UpdateHelpDescriptor_HelpText_ShouldCallUpdateHelpText()
         {
             //------------Setup for test--------------------------
