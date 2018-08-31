@@ -353,7 +353,7 @@ namespace Dev2.Activities.Designers.Tests.QuickVariableInput
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("QuickVariableInputViewModel_AddCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void QuickVariableInputViewModel_AddCommand_PublishesAAddStringListToDataListMessage()
         {

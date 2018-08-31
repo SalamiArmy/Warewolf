@@ -45,6 +45,8 @@ namespace Dev2.Activities.Designers.Tests.Rename
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("RenameDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void RenameDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

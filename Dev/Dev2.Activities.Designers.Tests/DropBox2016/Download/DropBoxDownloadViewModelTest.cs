@@ -55,7 +55,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Download
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DropBoxDownloadViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DropBoxDownloadViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -309,7 +309,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Download
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DropboxDownload_CreateOAuthSource_GivenCanPublish_ShouldPublish()
         {

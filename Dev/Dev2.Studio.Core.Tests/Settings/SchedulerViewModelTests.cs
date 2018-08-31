@@ -83,7 +83,7 @@ namespace Dev2.Core.Tests.Settings
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_EmptyConstructor")]
         [ExpectedException(typeof(Exception))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_EmptyConstructor_Nothing_Happens()
         {
@@ -139,7 +139,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Constructor_ValidConstruction_ShouldSetProperties()
         {
@@ -155,7 +155,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Constructor_ValidConstruction_ShouldSetErrors()
         {
@@ -174,7 +174,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_HasDebugOutput")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_HasDebugOutput_ExpectedTrue()
         {
@@ -193,7 +193,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Constructor_SetDisplayName_OnlyForCoverage()
         {
@@ -209,7 +209,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Constructor_ServerNotNull_ShouldSetDisplayName()
         {
@@ -226,7 +226,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Constructor_ValidConstruction_ShouldSetHelpText()
         {
@@ -247,7 +247,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_ShowError")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_ShowError_WithSaveError_HasErrorsTrue()
         {
@@ -264,7 +264,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_ShowError")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_ShowError_WithNormalError_HasErrorsTrue()
         {
@@ -299,7 +299,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_ClearError")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_ClearError_WithNormalError_HasErrorsSet()
         {
@@ -338,7 +338,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_Trigger")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Trigger_SetTrigger_IsDirtyTrue()
         {
@@ -362,7 +362,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_Trigger")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_AfterSave_IsDirtyFalse()
         {
@@ -413,7 +413,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_Trigger")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Trigger_SetTrigger_IsDirtyFalse()
         {
@@ -440,7 +440,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_RunAsapIfScheduleMissed")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_RunAsapIfScheduleMissed_SetRunAsapIfScheduleMissed_IsDirtyTrue()
         {
@@ -460,7 +460,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_Status")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Status_SetStatus_IsDirtyTrue()
         {
@@ -481,7 +481,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_NumberOfRecordsToKeep")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_NumberOfRecordsToKeep_SetNumberOfRecordsToKeepToBlank_ValueIsZero()
         {
@@ -498,7 +498,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_NumberOfRecordsToKeep")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_NumberOfRecordsToKeep_SetNumberOfRecordsToKeepToNoNumeric_ValueIsZero()
         {
@@ -515,7 +515,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SelectedHistory")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SelectedHistory_SetSelectedHistory_DebugMessageFiredTwice()
         {
@@ -539,7 +539,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_AccountName")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_AccountName_SetAccountName_IsDirty()
         {
@@ -575,7 +575,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_AccountName")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_AccountName_SetAccountName_SelectedTaskNull_NothingChangedOnTask()
         {
@@ -612,7 +612,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_Password")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Password_SetPassword_IsDirty()
         {
@@ -636,7 +636,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_ConnectionError")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_ConnectionError_SetAndClearError_ValidErrorSetAndClear()
         {
@@ -660,7 +660,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_UserNamePasswordNotSet_CallsGetCredentials()
         {
@@ -693,7 +693,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Constructor_SetupServer_Validate()
         {
@@ -735,7 +735,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameYesDialogResponse_DialogShowsConflict()
         {
@@ -775,7 +775,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameYesDialogResponse_OldNameChanges()
         {
@@ -847,7 +847,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameYesDialogResponse_OldNameChangesNewTask()
         {
@@ -888,7 +888,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_ServerNotConnected_ErrorMessageSet()
         {
@@ -925,7 +925,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_AuthorizationFails()
         {
@@ -962,7 +962,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameNoDialogResponse_DialogShowsConflict()
         {
@@ -1016,7 +1016,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameCancelDialogResponse_DialogShowsConflict()
         {
@@ -1054,7 +1054,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameCancelDialogResponse_IsNewTrue_ShouldNotShowDialog()
         {
@@ -1089,7 +1089,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_WithNewNameDiffToOldNameCancelDialogResponse_IsNewFalse_ShouldShowDialog()
         {
@@ -1129,7 +1129,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_UserNamePasswordSet_CallsScheduledResourceModelSave()
         {
@@ -1165,7 +1165,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SaveCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SaveCommand_UserNamePasswordSet_CallsIsAuthorised()
         {
@@ -1199,7 +1199,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SelectedTask")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SelectedTask_SetValue_ShouldFirePropertyChangedNotifications()
         {
@@ -1297,7 +1297,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_SelectedTask")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_SelectedTask_SetValueWithHistoryTab_ShouldFirePropertyChangedNotifications()
         {
@@ -1392,7 +1392,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_Name")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Name_EmptyString_AddsErrorMessage()
         {
@@ -1418,7 +1418,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_Name")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Name_WasEmptyStringValidString_ClearsErrorMessage()
         {
@@ -1447,7 +1447,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_WorkflowName")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_WorkflowName_BlankName_SetsError()
         {
@@ -1469,7 +1469,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_Name")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Name_DuplicateName_SetsError()
         {
@@ -1499,7 +1499,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_Name")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Name_NonDuplicateName_ClearsError()
         {
@@ -1537,7 +1537,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_NumberOfRecordsToKeep")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_NumberOfRecordsToKeep_NotWholeNumber_KeepsOldNumber()
         {
@@ -1565,7 +1565,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_History")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_History_Get_ShouldCallCreateHistoryOnScheduledResourceModel()
         {
@@ -1593,7 +1593,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_ActiveItem")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_ActiveItem_HeaderNotHistory_ShouldNotFirePropertyChangeOnHistory()
         {
@@ -1620,7 +1620,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_ActiveItem")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_ActiveItem_HeaderHistory_ShouldFirePropertyChangeOnHistory()
         {
@@ -1650,7 +1650,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_Validation")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Validation_NoErrorsWhenNothingSelected()
         {
@@ -1668,7 +1668,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_Validation")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Validation_NoErrorOnSelected()
         {
@@ -1690,7 +1690,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_Validation")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_Validation_IfDuplicateNames()
         {
@@ -1716,7 +1716,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_DeleteTask")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_DeleteTask_DeleteSecondTask_ShouldDeleteTaskFromList()
         {
@@ -1773,7 +1773,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_DeleteTask")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_DeleteTask_DeleteFirstTask_ShouldDeleteTaskFromList()
         {
@@ -1810,7 +1810,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_DeleteTask")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_DeleteTask_DeleteWithNoAdminRights_ShouldShowError()
         {
@@ -1843,7 +1843,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_DeleteTask")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_DeleteTask_DeleteWhenEnvironmentIsntConnected_ShouldShowError()
         {
@@ -1876,7 +1876,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SchedulerViewModel_EditTrigger")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_EditTrigger_ShouldEditTheTrigger()
         {
@@ -1929,7 +1929,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SchedulerViewModel_AddWorkflow")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_AddWorkflow_WithNewTaskNameSet_WorkflowNameChangedAndNameChanged()
         {
@@ -2012,7 +2012,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_DeActivate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_DeActivateDiscard_ReturnsTrue()
         {
@@ -2088,7 +2088,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_DeActivate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_DeActivateCancel_ReturnsFalse()
         {
@@ -2124,7 +2124,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SchedulerViewModel_HandleServerSelectionChangedMessage")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_DeActivateSave_AttemptsSave()
         {
@@ -2168,7 +2168,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_HandleServerSelectionChangedMessage")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_FalseDeActivateSave_AttemptsSave()
         {
@@ -2214,7 +2214,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SchedulerViewModel_ShowSaveErrorDialog")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void SchedulerViewModel_ShowSaveErrorDialog_GivenMessage_Result()
         {

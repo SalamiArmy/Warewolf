@@ -89,7 +89,7 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_RequestWhenNotAllowedButResultsPendingAndHubConnect_AuthorizationCalculatedAndNotCachedIsTrue()
         {
@@ -126,7 +126,7 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_RequestWhenNotAllowedButResultsPendingAndPayloadFetch_AuthorizationCalculatedAndNotCachedIsTrue()
         {
@@ -163,7 +163,7 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_RequestWhenNotAllowedNoResultsPendingAndHubConnect_AuthorizationCalculatedAndNotCachedIsFalse()
         {
@@ -285,7 +285,7 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_TimedOutPeriodExpired_ShouldNotGetFromCache()
         {
@@ -315,7 +315,7 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_WithinTimedOutPeriod_ShouldGetFromCache()
         {

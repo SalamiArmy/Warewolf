@@ -59,7 +59,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_WhenRemoteActiveEnvironmentAndActivityHasEmptyGuidEnviromentID_ExpectNoValidationErrorsForMissingResource()
         {
@@ -78,7 +78,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_ErrorMemoDataIsNull_NoNullXmlException()
         {
@@ -112,7 +112,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_ConstructorWithEmptyGuid_PropertiesInitialized()
         {
@@ -137,7 +137,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_PropertiesInitialized()
         {
@@ -161,7 +161,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_WhenIsItemDraggedTrue_ShouldBeExpandedAndSetIsItemDraggedFalse()
         {
@@ -177,7 +177,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_WhenIsItemDraggedFalse_ShouldNotBeExpandedAndSetIsItemDraggedFalse()
         {
@@ -207,7 +207,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("ServiceDesignerViewModel constructor throws null argument exception when root model is null.")]
         [Owner("Trevor Williams-Ros")]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_NullRootModel_ThrowsArgumentNullException()
         {
@@ -221,7 +221,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("ServiceDesignerViewModel constructor throws null argument exception when environment repository is null.")]
         [Owner("Trevor Williams-Ros")]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_NullEnvironmentRepository_ThrowsArgumentNullException()
         {
@@ -235,7 +235,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("ServiceDesignerViewModel constructor throws null argument exception when environment repository is null.")]
         [Owner("Leon Rajindrapersadh")]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_NullAsyncWorker_ThrowsArgumentNullException()
         {
@@ -250,7 +250,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Owner("Trevor Williams-Ros")]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_NullEventPublisher_ThrowsArgumentNullException()
         {
@@ -263,7 +263,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Description("ServiceDesignerViewModel constructor with any args and no errors in resource model must add default NoError instance.")]
         [Owner("Trevor Williams-Ros")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_AnyArgs_AddsNoError()
         {
@@ -277,7 +277,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Description("ServiceDesignerViewModel constructor must set the LastValidationMemo.")]
         [Owner("Trevor Williams-Ros")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_AnyArgs_SetsLastValidationMemo()
         {
@@ -299,7 +299,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Description("ServiceDesignerViewModel constructor sets IsDeleted to true and removes other errors when the resource model has an error where the FixType is Delete.")]
         [Owner("Trevor Williams-Ros")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_ResourceContainingDeletedError_InitializesPropertiesCorrectly()
 
@@ -322,7 +322,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Owner("Huggs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_EnvironmentIDEmpty_ShouldLoadResourceFromRootModelEnvironment()
         {
@@ -344,7 +344,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
         [Owner("Huggs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_EnvironmentID_ShouldLoadResourceFromResourceModelEnvironment()
         {
@@ -365,7 +365,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_Constructor_ModelItemHasProperties_PropertiesPopulated()
         {
@@ -384,7 +384,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_InitializeResourceModel")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_InitializeResourceModel_ServiceTypeHasSourceAndIsInvalidXml_NoErrorMessageAdded()
         {
@@ -407,7 +407,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void InitializeDisplayName_GivenhasDisplayName_ShouldUseDisplayName()
         {
@@ -454,7 +454,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void InitializeDisplayName_GivenhasDisplayNameTypeName_ShouldUseServiceName()
         {
@@ -503,7 +503,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CanViewComplexObjects_GivenIsComplexObject_ShouldReturnTrue()
         {
@@ -552,7 +552,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CanViewComplexObjects_GivenIsScalarItemModel_ShouldReturnTrue()
         {
@@ -601,7 +601,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CanViewComplexObjects_GivenIsRecordSet_ShouldReturnTrue()
         {
@@ -650,7 +650,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ViewJsonObjects_GivenComplexObjectItemModel_ShouldReadJsonFromComplexObject()
         {
@@ -698,7 +698,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Done_GivenHasWorstErrors_ShouldFixErrors()
         {
@@ -750,7 +750,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Validate_GivenHasNoPersmission_ShouldFixErrors()
         {
@@ -799,7 +799,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Dispose_GivenPassThrough()
         {
@@ -845,7 +845,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Validate_GivenHasPersmission_ShouldFixErrors()
         {
@@ -894,7 +894,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Handle_GivenUpdateResourceMessage()
         {
@@ -951,7 +951,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void InitializeDisplayName_GivenEmptyDisplayName_ShouldUseServiceName()
         {
@@ -999,7 +999,7 @@ namespace Dev2.Activities.Designers.Tests.Service
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void FriendlySourceName_GivenEnvDisplayTheSame_ShouldReturnCorrectly()
         {
@@ -1046,7 +1046,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServiceDesignerViewModel_InitializeResourceModel")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_InitializeResourceModel_ServiceTypeHasSource_NoErrorMessageAdded()
         {
@@ -1072,7 +1072,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("ServiceDesignerViewModel OpenParent must not do anything if IsDeleted is true.")]
         [Owner("Trevor Williams-Ros")]
 
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_OpenParent_WhenDeleted_DoesNothing()
 
@@ -1100,7 +1100,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_FixErrorsCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrorsCommand_ErrorMemoDataIsNull_NoNullXmlException()
         {
@@ -1134,7 +1134,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrorsCommand_ErrorMemoDataIsInvalidXml_NoInputsOrOutputsPresent()
         {
@@ -1169,7 +1169,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrorsCommand_InputDefinitionsMalformed_NoInputsOneOutputPresent()
         {
@@ -1215,7 +1215,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("FixErrors when WorstError is None must do nothing.")]
         [Owner("Trevor Williams-Ros")]
 
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_FixNoError_DoesNothing()
 
@@ -1233,7 +1233,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("FixErrors when FixType is ReloadMapping must reload mapping.")]
         [Owner("Trevor Williams-Ros")]
 
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_FixReloadMapping_Done()
 
@@ -1306,7 +1306,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
         [Owner("Hagashen Naidu")]
 
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_DoesNotSetResourceModelValidWhenResourceStillHasErrors()
 
@@ -1355,7 +1355,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
         [Owner("Travis Frisinger")]
 
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_RequiredMapping_Done()
 
@@ -1401,7 +1401,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("FixErrors when FixType is MappingRequired must get a value for mapping to be fixed.")]
         [Owner("Trevor Williams-Ros")]
 
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_Required_Done()
 
@@ -1452,7 +1452,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestCategory("ServiceDesignerViewModel_FixErrors")]
         [Description("FixErrors when FixType is MappingRequired must get a value for mapping to be fixed.")]
         [Owner("Trevor Williams-Ros")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_RequiredWhenMappingValid_ShouldRemoveError()
 
@@ -1493,7 +1493,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [Description("FixErrors when FixType is MappingRequired must get a value for mapping to be fixed.")]
         [Owner("Trevor Williams-Ros")]
 
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_FixErrors_MulitpleRequiredWhenMappingValid_ShouldRemoveRequiredMappingErrors()
 
@@ -1540,7 +1540,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_UpdateMappings_SetsInputsAndOutputs()
         {
@@ -1590,7 +1590,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteResource_ShouldSetupResourceModelFromModelItem()
         {
@@ -1666,7 +1666,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenResourceHasSource_ShouldGetSourceName()
         {
@@ -1740,7 +1740,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenSourceIsTheSameAsCurrentLocation_ShouldNotSetFriendlySourceName()
         {
@@ -1824,7 +1824,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenSourceIsNotTheSameAsCurrentLocation_ShouldSetFriendlySourceName()
         {
@@ -1900,7 +1900,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteResource_ShouldSubscibeToResourcesLoaded()
         {
@@ -1987,7 +1987,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteEnvironmentLoads_ShouldSetVersionMemoIfIncorrect()
         {
@@ -2087,7 +2087,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_FixErrorss")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenUserFixesErrors_ShouldRemoveVersionError()
         {
@@ -2189,7 +2189,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteEnvironmentLoads_ShouldSetVersionMemoIfIncorrectWhen_OutPutDifferent()
         {
@@ -2289,7 +2289,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteEnvironmentLoads_ShouldNotSetVersionMemoIfCorrect()
         {
@@ -2380,7 +2380,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_WhenRemoteEnvironmentLoads_ShouldUseNameToFindEnvironment()
         {
@@ -2496,7 +2496,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServiceDesignerViewModel_UpdateMappings")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_InitializeResourceIDNull_StillCorrectlySetsUp()
         {
@@ -2536,7 +2536,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServiceDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesignerViewModel_InitializeWhenEnvironmentModelOnOtherServer_StillCorrectlySetsUp()
         {
@@ -2570,7 +2570,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ServiceDesingerViewModel_RunWorkflowAsync")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesingerViewModel_RunWorkflowAsync_Constructor_False()
         {
@@ -2604,7 +2604,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ServiceDesingerViewModel_RunWorkflowAsync")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesingerViewModel_SetRunWorkflowAsync_True_OutputMappingEnabledFalse()
         {
@@ -2637,7 +2637,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ServiceDesingerViewModel_IsAsyncVisible")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesingerViewModel_IsAsyncVisible_WorkflowResource_True()
         {
@@ -2671,7 +2671,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ServiceDesingerViewModel_IsAsyncVisible")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ServiceDesingerViewModel_IsAsyncVisible_NotWorkflowResource_False()
         {

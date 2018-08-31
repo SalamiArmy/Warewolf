@@ -22,6 +22,8 @@ namespace Dev2.Core.Tests.Controller
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ExecuteCommand_GivenReturnAuthorizationError_ShouldShowCorrectPopup()
         {
             //---------------Set up test pack-------------------
@@ -49,7 +51,7 @@ namespace Dev2.Core.Tests.Controller
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void ExecuteCommand_GivenReturnExploreAuthorizationError_ShouldShowCorrectPopup()
         {
@@ -81,7 +83,7 @@ namespace Dev2.Core.Tests.Controller
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void ExecuteCommandAsync_GivenReturnExploreAuthorizationError_ShouldShowCorrectPopup()
         {

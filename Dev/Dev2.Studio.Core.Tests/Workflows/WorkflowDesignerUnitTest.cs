@@ -161,7 +161,7 @@ namespace Dev2.Core.Tests.Workflows
 
         }
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MissingPartsMessageOnlySentWhenThereWorkToDoExpect1Call()
         {
@@ -299,7 +299,7 @@ namespace Dev2.Core.Tests.Workflows
         #region Set Unused DataList Items
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void FindUnusedDataListItemsWithUnusedDataListItemsExpectedItemsToBeSetToNotUsed()
         {
@@ -1130,7 +1130,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WorkflowDesigner_Initialize")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesigner_Initialize_WhenWorkflowXamlNull_ExpectWorkflowXamlFetch()
         {
@@ -1170,7 +1170,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WorkflowDesigner_Initialize")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesigner_Initialize_WhenWorkflowXamlNullAndFetchFails_ExpectNewWorkflow()
         {
@@ -1249,7 +1249,7 @@ namespace Dev2.Core.Tests.Workflows
         }
         
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModelInitializeDesignerExpectedInitializesFramework45Properties()
         {
@@ -1295,7 +1295,7 @@ namespace Dev2.Core.Tests.Workflows
 
         // BUG 9304 - 2013.05.08 - TWR - .NET 4.5 upgrade
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModelInitializeDesignerExpectedInvokesWorkflowHelper()
         {
@@ -1348,7 +1348,7 @@ namespace Dev2.Core.Tests.Workflows
         #region ServiceDefinition
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModelServiceDefinitionExpectedInvokesWorkflowHelperSerializeWorkflow()
         {
@@ -1382,7 +1382,7 @@ namespace Dev2.Core.Tests.Workflows
         #region CheckIfRemoteWorkflowTests
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void CheckIfRemoteWorkflowAndSetPropertiesExpectedServiceUriToBeNull()
         {
@@ -1443,7 +1443,7 @@ namespace Dev2.Core.Tests.Workflows
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void CheckIfRemoteWorkflowAndSetPropertiesExpectedServiceUriToBeLocalHost()
         {
@@ -1506,7 +1506,7 @@ namespace Dev2.Core.Tests.Workflows
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void CheckIfRemoteWorkflowAndSetPropertiesExpectedResourceTypeToBeUnknown()
         {
@@ -1536,17 +1536,17 @@ namespace Dev2.Core.Tests.Workflows
         #region ModelServiceModelChanged
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModelModelServiceModelChangedWithNextReferencingSelfExpectedClearsNext() => TestModelServiceModelChangedSelfReference(true);
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModelModelServiceModelChangedWithNextReferencingOtherExpectedDoesNotClearNext() => TestModelServiceModelChangedSelfReference(false);
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModelTestStartNodeNotDoubleConnect()
         {
@@ -1610,7 +1610,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_DragOnToForEach")]
         [Owner("Hagashen Naidu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ForEachActivity_DragOnRemoteWorkflow()
 
@@ -1697,7 +1697,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkflowDesignerViewModel_HandleSaveUnsavedWorkflow")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_HandleSaveUnsavedWorkflow_MessageWithArgs_Saves()
         {
@@ -1790,7 +1790,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkflowDesignerViewModel_HandleSaveUnsavedWorkflow")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_HandleSaveUnsavedWorkflow_MessageWithArgs_OpenTab_Saves()
         {
@@ -1879,7 +1879,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Description("WorkflowDesigner assigns new unique id on copy paste of an activity/tool")]
         [Owner("Ashley Lewis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithUniqueID_NewIDAssigned()
         {
@@ -1944,7 +1944,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Description("WorkflowDesigner assigns new unique id on copy paste of an activity/tool")]
         [Owner("Ashley Lewis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithUniqueID_NotPaste_ShouldKeepID()
         {
@@ -2010,7 +2010,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Description("WorkflowDesigner assigns new unique id on copy paste of an activity/tool")]
         [Owner("Ashley Lewis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithUniqueID_Paste_ShouldNotKeepID()
         {
@@ -2075,7 +2075,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Owner("Pieter Terblanche")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithDsfDecision_DecisionHandled()
 
@@ -2146,7 +2146,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Owner("Pieter Terblanche")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithDsfSwitch_SwitchHandled()
 
@@ -2215,7 +2215,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Owner("Pieter Terblanche")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithFlowStepWithServiceName_FlowStepHandled()
         {
@@ -2284,7 +2284,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Owner("Pieter Terblanche")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ModelItemWithFlowStepWithoutServiceName_FlowStepHandled()
 
@@ -2361,7 +2361,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_PerformAddItems")]
         [Owner("Pieter Terblanche")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_PerformAddItems_ApplyForDrop_DropNotHandled()
 
@@ -2437,7 +2437,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [TestCategory("WorkflowDesignerViewModel_UpdateWorkflowLink")]
         [Owner("Pieter Terblanche")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_UpdateWorkflowLink_ChangeDisplayWorkflowLink_DisplayWorkflowLinkChanged()
         {
@@ -2570,7 +2570,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Description("When the model changes we mark the resource as unsaved")]
         [Timeout(60000)]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_ViewModelModelChanged_ExpectMarksResourceIsWorkflowSavedFalse()
         {
@@ -2640,7 +2640,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Travis Frisinger")]
         [Timeout(60000)]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_ViewModelModelChanged_ExpectLoadFromServerDoesNotReflectEdit()
         {
@@ -2716,7 +2716,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Travis Frisinger")]
         [Timeout(60000)]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_ViewModelModelChanged_ExpectFirstFocusDoesNotReflectEdit()
         {
@@ -2789,7 +2789,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Timeout(60000)]
         [Owner("Travis Frisinger")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_ViewModelModelChanged_DataListNotNull_ExpectFirstFocusDoesNotReflectEdit()
         {
@@ -2862,7 +2862,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Timeout(60000)]
         [Owner("Travis Frisinger")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_ViewModelModelChanged_DataListDifferent_ExpectFirstFocusDoesNotReflectEdit()
         {
@@ -2935,7 +2935,7 @@ namespace Dev2.Core.Tests.Workflows
 
         [TestMethod]
         [Description("When the xaml changes after a redo we mark the resource as unsaved")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void WorkflowDesignerViewModel_UnitTest_RedoWithXAMLDifferent_ExpectMarksResourceIsWorkflowSavedFalse()
         {

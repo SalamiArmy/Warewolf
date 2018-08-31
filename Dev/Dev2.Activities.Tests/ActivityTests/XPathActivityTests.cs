@@ -72,7 +72,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("XPath_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void XPath_Execute_WhenLoadingTestResultsFile_ExpectParsableXML()
         {
@@ -91,7 +91,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod] // - OK
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void EmptySourceStringExpectedNoData()
         {
@@ -151,7 +151,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("XPathActivity_OnExecute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void XPathActivity_Execute_MultipleScalars_XPathExecuteAndInsertMutipleScalars()
         {

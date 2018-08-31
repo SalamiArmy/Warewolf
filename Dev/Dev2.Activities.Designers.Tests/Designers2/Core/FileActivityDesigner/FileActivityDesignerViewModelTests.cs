@@ -329,7 +329,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.FileActivityDesigner
         [TestMethod]
         [Owner("Robin van den Heever")]
         [TestCategory("FileActivityDesignerViewModel_ValidateFileContent")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void FileActivityDesignerViewModelVerifyValidateFileContentValidExpressionPass()
         {
@@ -384,7 +384,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.FileActivityDesigner
         [TestMethod]
         [Owner("Robin van den Heever")]
         [TestCategory("FileActivityDesignerViewModel_ValidateArchivePassword")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void FileActivityDesignerViewModelValidateArchiveVariablePasswordPass()
         {

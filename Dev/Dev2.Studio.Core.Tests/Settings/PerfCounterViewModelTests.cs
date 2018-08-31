@@ -416,7 +416,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("PerfcounterViewModel_ResetCounters")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void PerfcounterViewModel_ResetCounters_Command_NoError_ShouldCallCommunicationsController()
         {

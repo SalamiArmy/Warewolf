@@ -238,7 +238,7 @@ namespace Dev2.Core.Tests.Activities
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ForeachActivityDesignerUtils_LimitDragDropOptions_ModelItemFormat_DecisionModelItem_DropPrevented()
         {
@@ -257,7 +257,7 @@ namespace Dev2.Core.Tests.Activities
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ForeachActivityDesignerUtils_LimitDragDropOptions_ModelItemFormat_SwitchModelItem_DropPrevented()
         {
@@ -294,7 +294,7 @@ namespace Dev2.Core.Tests.Activities
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ForeachActivityDesignerUtils_LimitDragDropOptions_WorkflowItemTypeNameFormat_DecisionModelItem_DropPrevented()
         {
@@ -313,7 +313,7 @@ namespace Dev2.Core.Tests.Activities
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ForeachActivityDesignerUtils_LimitDragDropOptions")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ForeachActivityDesignerUtils_LimitDragDropOptions_WorkflowItemTypeNameFormat_SwitchModelItem_DropPrevented()
         {

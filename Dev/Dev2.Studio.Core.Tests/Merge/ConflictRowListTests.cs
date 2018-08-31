@@ -8,7 +8,7 @@ namespace Dev2.Core.Tests.Merge
     public class ConflictRowListTests : MergeTestUtils
     {
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void ConflictRowList_Constructor()
         {

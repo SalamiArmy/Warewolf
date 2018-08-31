@@ -135,7 +135,7 @@ namespace Dev2.Activities.Designers.Tests.Email
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("EmailDesignerViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void EmailDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -239,7 +239,7 @@ namespace Dev2.Activities.Designers.Tests.Email
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("EmailDesignerViewModel_EditEmailSource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void EmailDesignerViewModel_EditEmailSource_PublishesShowEditResourceWizardMessage()
         {

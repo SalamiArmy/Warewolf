@@ -8,7 +8,7 @@ namespace Dev2.Core.Tests
     public class TabGroupPaneBindingBehaviorTests
     {
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void TabGroupPaneBindingBehavior_SetDocumentHost_CanSetDocumentHost()
         {

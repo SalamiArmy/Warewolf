@@ -205,7 +205,8 @@ namespace Dev2.Tests.Diagnostics
         }
 
         [TestMethod]
-
+        [TestCategory("Not Parallelizable Core Unit Tests")]
+        [DoNotParallelize]
         public void SaveFile_With_Contents_Expected_SavesFileToDisk()
 
         {

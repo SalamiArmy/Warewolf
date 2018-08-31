@@ -49,7 +49,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         #region Store To RecordSet Tests
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void RecordsetLengthOutputToRecset()
         {

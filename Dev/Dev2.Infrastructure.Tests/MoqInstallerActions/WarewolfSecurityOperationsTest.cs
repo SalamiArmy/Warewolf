@@ -20,7 +20,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_AddWarewolfGroup")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Infrastructure Unit Tests")]
         [DoNotParallelize]
         public void WarewolfSecurityOperations_AddWarewolfGroup_ExpectGroupAdded()
         {
@@ -35,7 +35,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_DoesWarewolfGroupExist")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Infrastructure Unit Tests")]
         [DoNotParallelize]
         public void WarewolfSecurityOperationsDoesWarewolfGroupExistWhenGroupDoesNotExistExpectFalse()
         {
@@ -53,7 +53,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_DoesWarewolfGroupExist")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Infrastructure Unit Tests")]
         [DoNotParallelize]
         public void WarewolfSecurityOperations_DoesWarewolfGroupExist_WhenGroupDoesExist_ExpectTrue()
         {
@@ -90,7 +90,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_AddWarewolfGroupToAdministrators")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Infrastructure Unit Tests")]
         [DoNotParallelize]
         public void WarewolfSecurityOperations_AddWarewolfGroupToAdministrators_WhenNotAMember_ExpectNotAdded()
         {
@@ -111,7 +111,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_AddWarewolfGroupToAdministrators")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Infrastructure Unit Tests")]
         [DoNotParallelize]
         public void WarewolfSecurityOperations_AddWarewolfGroupToAdministrators_WhenNotAlreadyMember_ExpectAdministratorsMemberOfWarewolf()
         {
@@ -148,6 +148,8 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WarewolfSecurityOperations_DeleteGroup")]
+        [TestCategory("Not Parallelizable Infrastructure Unit Tests")]
+        [DoNotParallelize]
         public void WarewolfSecurityOperations_AddLocalUserToWarewolfGroup_WhenUserNotPresent_ExpectUserAdded()
         {
             //------------Setup for test--------------------------

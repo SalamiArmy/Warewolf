@@ -47,7 +47,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DotNetDllEnhancedViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DotNetDllEnhancedViewModel_Constructor_Valid_ShouldSetupViewModel()
         {
@@ -87,7 +87,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DotNetDllEnhancedViewModel_ToModel")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DotNetDllEnhancedViewModel_ToModel()
         {
@@ -150,7 +150,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DotNetDllEnhancedViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DotNetDllEnhancedViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

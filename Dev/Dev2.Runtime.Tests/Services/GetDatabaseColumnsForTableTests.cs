@@ -157,7 +157,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategory("MSSql")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDatabaseColumnsForTable_Execute_ValidDatabaseSource_WithSchema_OnlyReturnsForThatSchema()
         {
@@ -213,7 +213,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategory("MSSql")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDatabaseColumnsForTable_Execute_NullSchema_ValidDatabaseSource_ReturnsFromAllSchemas()
         {
@@ -264,7 +264,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategory("MSSql")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDatabaseColumnsForTable_Execute_EmptySchema_ValidDatabaseSource_ReturnsFromAllSchemas()
         {

@@ -160,7 +160,7 @@ namespace Dev2.Activities.Designers.Tests.RabbitMQ.Consume
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("RabbitMQConsumeDesignerViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void RabbitMQConsumeDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

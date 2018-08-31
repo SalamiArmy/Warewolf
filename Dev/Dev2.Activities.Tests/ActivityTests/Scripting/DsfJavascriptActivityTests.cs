@@ -144,7 +144,7 @@ namespace Dev2.Tests.Activities.ActivityTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void GivenExternalFile_Execute_Javascript_ShouldExecuteExternalFunction()
         {

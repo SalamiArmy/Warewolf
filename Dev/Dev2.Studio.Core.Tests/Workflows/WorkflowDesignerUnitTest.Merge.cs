@@ -27,7 +27,7 @@ namespace Dev2.Core.Tests.Workflows
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkflowDesignerViewModel_AddItem")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void AddItem_Given_MergeToolModel_VerifyCalls()
         {

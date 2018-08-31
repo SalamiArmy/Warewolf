@@ -127,7 +127,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategory("MSSql")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDatabaseTables_Execute_ValidDatabaseSource()
         {

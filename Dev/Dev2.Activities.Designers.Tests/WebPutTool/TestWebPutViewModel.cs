@@ -84,6 +84,8 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
 
         [TestMethod]
         [Owner("Pieter Terblanche")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void OnLoad_GivenHasModelAndId_ThumbVisibility_ExpectedTrue()
         {
             //---------------Set up test pack-------------------
@@ -378,7 +380,7 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void WebPut_BodyIsJSonNoHeaders_ExpectNewHeadersAdded()
         {

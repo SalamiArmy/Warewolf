@@ -169,7 +169,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MergeViewModel_DoDeactivate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MergeViewModel_DoDeactivate_CanSave_ExpectedFalse()
         {
@@ -259,7 +259,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MergeViewModel_PropertyChanged")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MergeViewModel_PropertyChanged_DisplayName_IsTrue()
         {
@@ -309,7 +309,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MergeViewModel_PropertyChanged")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MergeViewModel_PropertyChanged_DataListViewModel_IsTrue()
         {
@@ -360,7 +360,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MergeViewModel_DoDeactivate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MergeViewModel_DoDeactivate_CanSave_ExpectedTrue()
         {
@@ -423,7 +423,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MergeViewModel_DoDeactivate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MergeViewModel_DoDeactivate_CanSave_MessageBoxYes()
         {
@@ -482,7 +482,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MergeViewModel_DoDeactivate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MergeViewModel_DoDeactivate_CanSave_MessageBoxNo()
         {

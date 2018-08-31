@@ -26,20 +26,15 @@ namespace Dev2.Tests.Activities.ActivityTests
     
     public class PathDeleteTests : BaseActivityUnitTest
     {
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
         public TestContext TestContext { get; set; }
-
-
         
-
         #region GetDebugInputs/Outputs
 
         [TestMethod]
         [Owner("Ashley Lewis")]
         [TestCategory("DsfPathDelete_Execution")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void DsfPathDelete_Execution_FileNotFound_DebugOutputErrorMessageRelevant()
         {
             var dsfPathDelete = new DsfPathDelete { InputPath = TestContext.TestRunDirectory + "\\some file that doesnt exist.txt", Result = "[[res]]" };

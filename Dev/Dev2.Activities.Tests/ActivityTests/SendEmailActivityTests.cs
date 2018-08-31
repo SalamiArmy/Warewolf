@@ -121,7 +121,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [TestCategory("SendEmail_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void SendEmail_Execute_StaticValues_CorrectResults_IsHTML()
         {
@@ -203,7 +203,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [TestCategory("SendEmail_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void SendEmail_Execute_ScalarValuesHasToList_CorrectResults()
         {
@@ -244,7 +244,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [TestCategory("SendEmail_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void SendEmail_Execute_ScalarValuesHasBCCList_CorrectResults()
         {
@@ -353,7 +353,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SendEmail_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void SendEmail_Execute_FromAccount_EmailSourceIsCorrect()
         {

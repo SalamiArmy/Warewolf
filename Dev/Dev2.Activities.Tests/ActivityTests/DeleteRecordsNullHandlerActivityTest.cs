@@ -71,7 +71,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         #region Delete Using Blank Index
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void DeleteRecordsNullHandler_Using_Blank_Index_When_Record_Exists_Expected_LastRecordToBeRemoved_Success()
         {

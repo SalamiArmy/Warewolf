@@ -52,7 +52,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Delete
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DropBoxDeleteViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DropBoxDeleteViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -130,7 +130,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Delete
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DropBoxDeleteViewModel_Sources")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DropBoxDeleteViewModel_Sources_EditSource_PublishesMessage()
         {

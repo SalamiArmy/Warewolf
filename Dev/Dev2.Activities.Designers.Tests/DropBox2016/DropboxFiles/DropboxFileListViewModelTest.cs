@@ -59,6 +59,8 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DropBoxFileListViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void DropBoxFileListViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -238,7 +240,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectedOperation_EditSource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DropboxFileList_dropBoxFileListViewModel_EditSourcePublishesMessage()
         {
@@ -261,7 +263,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectedOperation_EditSource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DropboxFileList_dropBoxFileListViewModel_NewSourcePublishesMessage()
         {
@@ -514,7 +516,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DropboxFileList_CreateOAuthSource_GivenCanPublish_ShouldPublish()
         {

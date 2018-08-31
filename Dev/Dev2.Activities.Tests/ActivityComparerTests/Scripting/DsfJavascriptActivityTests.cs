@@ -16,7 +16,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
     {
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void UniqueIDEquals_EmptyJavascript_Object_IsEqual()
         {
@@ -34,7 +34,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void UniqueIDDifferent_EmptyCountRecordset_Object_Is_Equal()
         {
@@ -51,7 +51,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Equals_Given_Same_Object_IsEqual()
         {
@@ -69,7 +69,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal()
         {
@@ -87,7 +87,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal_CaseSensitive()
         {
@@ -105,7 +105,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Script_Same_Object_IsEqual()
         {
@@ -123,7 +123,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Script_Different_Object_Is_Not_Equal()
         {
@@ -141,7 +141,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Script_Different_Object_Is_Not_Equal_CaseSensitive()
         {
@@ -159,7 +159,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Result_Same_Object_IsEqual()
         {
@@ -177,7 +177,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Result_Different_Object_Is_Not_Equal()
         {
@@ -195,7 +195,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Result_Different_Object_Is_Not_Equal_CaseSensitive()
         {
@@ -213,7 +213,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void IncludeFile_Same_Object_IsEqual()
         {
@@ -231,7 +231,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void IncludeFile_Different_Object_Is_Not_Equal()
         {
@@ -249,7 +249,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void IncludeFile_Different_Object_Is_Not_Equal_CaseSensitive()
         {
@@ -267,7 +267,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void ScriptType_Same_Object_IsEqual()
         {
@@ -285,7 +285,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void ScriptType_Different_Object_Is_Not_Equal()
         {
@@ -304,7 +304,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void EscapeScript_Different_Object_Is_Not_Equal()
         {
@@ -324,7 +324,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void EscapeScript_Same_Object_Is_Equal()
         {

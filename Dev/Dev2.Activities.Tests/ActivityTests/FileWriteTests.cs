@@ -111,7 +111,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfFileWrite_UpdateForEachOutputs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void DsfFileWrite_UpdateForEachOutputs_1Updates_UpdateResult()
         {
@@ -131,7 +131,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfFileWrite_GetForEachInputs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void DsfFileWrite_GetForEachInputs_WhenHasExpression_ReturnsInputList()
         {

@@ -109,7 +109,7 @@ namespace ActivityUnitTests.ActivityTest
 
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void WebGetRequestExecuteWhereStaticValuesExpectCorrectResults()
         {
@@ -231,7 +231,7 @@ namespace ActivityUnitTests.ActivityTest
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetOutputs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void GetOutputs_Called_ShouldReturnListWithResultValueInIt()
         {
@@ -268,6 +268,8 @@ namespace ActivityUnitTests.ActivityTest
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfWebGetRequestActivity_UpdateForEachOutputs")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void DsfWebGetRequestActivity_UpdateForEachOutputs_NullUpdates_DoesNothing()
         {
             //------------Setup for test--------------------------

@@ -173,7 +173,7 @@ namespace Dev2.Tests.Runtime.Search
 
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetSearchResults_WhenMatchInTwoResources_ShouldReturnResult()
         {

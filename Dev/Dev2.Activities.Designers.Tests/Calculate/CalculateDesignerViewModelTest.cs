@@ -49,7 +49,7 @@ namespace Dev2.Activities.Designers.Tests.Calculate
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("CalculateDesignerViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CalculateDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

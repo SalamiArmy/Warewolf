@@ -69,6 +69,8 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("LogSettingsViewModel_Handle")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void LogSettingsViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

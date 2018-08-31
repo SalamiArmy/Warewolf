@@ -1127,6 +1127,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DefaultIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DefaultIntellisenseProvider_GetIntellisenseResults_ActiviDataListIsInErrorButInPutTextDoesNotMatchesVariable_ResultIsNotInError()
         {
             //------------Setup for test--------------------------

@@ -101,7 +101,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void ConflictModelFactory_GivenAssignConflictNode_ShouldReturnMergeToolModel()
         {
@@ -128,7 +128,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void GetDataList_GivenResourceModel_ShouldReturnMergeToolModel()
         {
@@ -162,7 +162,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void GetDataList_GivenEmptyResourceModel_ShouldReturnReturnEmpty()
         {
@@ -197,7 +197,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void ConflictModelFactory_GivenDsfDecisionConflictNode_ShouldReturnMergeToolModel()
         {
@@ -244,7 +244,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void ConflictModelFactory_GivenServiceConflictNode_ShouldReturnMergeToolModel()
         {
@@ -279,7 +279,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Candice Daniel")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void ConflictModelFactory_GivenServiceConflictNode_NullResourceID()
         {

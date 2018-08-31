@@ -466,7 +466,7 @@ namespace Dev2.Tests.Activities.ActivityTests.RabbitMQ.Consume
         [TestMethod]
         [Owner("Mthembu Sanele")]
         [TestCategory("DsfConsumeRabbitMQActivity_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void DsfConsumeRabbitMQActivity_Execute_Empty_Queue_Exception()
         {
@@ -543,7 +543,7 @@ namespace Dev2.Tests.Activities.ActivityTests.RabbitMQ.Consume
         [TestMethod]
         [Owner("Mthembu Sanele")]
         [TestCategory("DsfConsumeRabbitMQActivity_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void PerformExecution_Given_DsfBaseActivity_Inputs_ReturnsInputsInTheDebug()
         {
@@ -717,7 +717,7 @@ namespace Dev2.Tests.Activities.ActivityTests.RabbitMQ.Consume
         [TestMethod]
         [Owner("Mthembu Sanele")]
         [TestCategory("DsfConsumeRabbitMQActivity_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void PerformExecution_Given_UnExisting_Queue_Returns_QeueuNotFoundException_Timeout()
         {
@@ -807,7 +807,7 @@ namespace Dev2.Tests.Activities.ActivityTests.RabbitMQ.Consume
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfConsumeRabbitMQActivity_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void PerformExecution_Given_ItemsInQueue_ExecuteAndReqeue_WhenExecutedMultipleTimes_ShouldNotAppend_NoTimeout()
         {

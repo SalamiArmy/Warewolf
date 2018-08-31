@@ -24,7 +24,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Controls
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("Dev2DataGrid_SetFocusToInserted")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Dev2DataGrid_SetFocusToInserted_ItemIsInserted_InvokesFocusOnGridRowChild()
         {
@@ -45,7 +45,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Controls
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("Dev2DataGrid_SetFocusToInserted")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Dev2DataGrid_SetFocusToInserted_ItemIsNotInserted_DoesNotInvokeFocusOnGridRowChild()
         {
@@ -66,7 +66,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Controls
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("Dev2DataGrid_GetFocusElement")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Dev2DataGrid_GetFocusElement_RowIsNotNull_GetVisualChildResult()
         {
@@ -85,7 +85,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Controls
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("Dev2DataGrid_GetFocusElement")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Dev2DataGrid_GetFocusElement_RowIsNull_Null()
         {
@@ -103,7 +103,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Controls
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("Dev2DataGrid_Init")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Dev2DataGrid_Init_VirtulizationIsOn()
         {

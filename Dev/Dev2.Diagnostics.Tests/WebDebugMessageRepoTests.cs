@@ -9,6 +9,8 @@ namespace Dev2.Diagnostics.Test
     {
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
+        [DoNotParallelize]
         public void WebDebugMessageRepo_Constructor_GivenIsNew_ShouldInitiase()
         {
             //---------------Set up test pack-------------------

@@ -23,7 +23,7 @@ namespace Dev2.Activities.Designers.Tests
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("CEventHelper_RemoveAll")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CEventHelper_RemoveAll_RemoveAll_ExpectRemoved()
 

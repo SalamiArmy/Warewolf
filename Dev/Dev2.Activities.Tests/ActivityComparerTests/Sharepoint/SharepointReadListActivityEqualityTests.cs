@@ -43,7 +43,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Sharepoint
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Equals_Given_Same_Object_IsEqual()
         {
@@ -61,7 +61,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Sharepoint
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal()
         {
@@ -79,7 +79,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Sharepoint
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal_CaseSensitive()
         {

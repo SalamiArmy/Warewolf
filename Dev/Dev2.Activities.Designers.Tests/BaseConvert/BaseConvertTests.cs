@@ -30,7 +30,7 @@ namespace Dev2.Activities.Designers.Tests.BaseConvert
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("BaseConvertViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void BaseConvertViewModel_Constructor_PropertiesInitialized()
         {
@@ -58,7 +58,7 @@ namespace Dev2.Activities.Designers.Tests.BaseConvert
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("BaseConvertViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void BaseConvertViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -83,7 +83,7 @@ namespace Dev2.Activities.Designers.Tests.BaseConvert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("BaseConvertDesignerViewModel_ValidateCollectionItem")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void BaseConvertDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {

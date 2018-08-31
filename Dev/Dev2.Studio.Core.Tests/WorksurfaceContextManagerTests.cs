@@ -446,6 +446,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenSqlDatabaseResourceType_ShouldEditSqlDatabse()
         {
             //---------------Set up test pack-------------------
@@ -604,6 +606,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenWebSourceResourceType_ShouldEditWebSource()
         {
             //---------------Set up test pack-------------------
@@ -729,8 +733,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-
-
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenDropBoxSourceResourceType_ShouldEditDropBoxSource()
         {
             //---------------Set up test pack-------------------
@@ -888,6 +892,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenDev2ServerType_ShouldDev2Server()
         {
             //---------------Set up test pack-------------------

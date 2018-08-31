@@ -41,9 +41,10 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
             //---------------Test Result -----------------------
             Assert.IsFalse(equals);
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Equals_Given_Same_Object_IsEqual()
         {
@@ -61,7 +62,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal()
         {
@@ -79,7 +80,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal_CaseSensitive()
         {
@@ -94,9 +95,10 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
             //---------------Test Result -----------------------
             Assert.IsFalse(equals);
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Result_Same_Object_IsEqual()
         {
@@ -114,7 +116,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Result_Different_Object_Is_Not_Equal()
         {
@@ -132,7 +134,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void Result_Different_Object_Is_Not_Equal_CaseSensitive()
         {

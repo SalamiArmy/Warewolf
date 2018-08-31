@@ -27,7 +27,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_Constructor_ModelItemIsValid_CollectionNameIsSetToResultsCollection()
         {
@@ -39,7 +39,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("XPathDesignerViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -61,7 +61,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_Constructor_ModelItemIsValid_ResultsCollectionHasTwoItems()
         {
@@ -74,7 +74,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_Constructor_ModelItemIsInitializedWith4Items_ResultsCollectionHasFourItems()
         {
@@ -93,7 +93,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringIsNotEmpty_DoesNotHaveErrors()
         {
@@ -112,7 +112,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_XPathIsInvalid_DoesHaveErrors()
         {
@@ -131,7 +131,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_OutputVariableHasSpecialCharacter_DoesHaveErrors()
         {
@@ -150,7 +150,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_XPathIsValidButNoOuputVariable_DoesHaveErrors()
         {
@@ -170,7 +170,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringIsEmpty_DoesHaveErrors()
         {
@@ -189,7 +189,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringIsInValidXml_DoesHaveErrors()
         {
@@ -208,7 +208,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringIsValidRecordset_DoesNotHaveErrors()
         {
@@ -226,7 +226,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringRecordsetHasANegativeIndex_DoesHaveErrors()
         {
@@ -245,7 +245,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringRecordsetHasASpecialCharacter_DoesHaveErrors()
         {
@@ -265,7 +265,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateCollectionItem")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {

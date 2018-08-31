@@ -164,7 +164,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("QueryManagerProxy_FetchConstructors")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void QueryManagerProxy_FetchConstructors()
         {
@@ -185,7 +185,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("QueryManagerProxy_FetchConstructors")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void QueryManagerProxy_FetchConstructors_GivenEnvHasObjectVariablesAddsvariables()
         {
@@ -442,7 +442,7 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void QueryManagerProxy_LoadExplorer_WhenLongerThan30Sec_ShouldLoadExplorerItemsShowPopup()
         {
@@ -469,6 +469,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void QueryManagerProxy_LoadExplorer_WhenLongerThan30Sec__Localhost_ShouldLoadExplorerItemsNotShowPopup()
         {
             //------------Setup for test--------------------------

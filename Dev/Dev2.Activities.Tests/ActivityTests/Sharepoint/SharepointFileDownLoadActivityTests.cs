@@ -38,7 +38,7 @@ namespace Dev2.Tests.Activities.ActivityTests.Sharepoint
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SharepointFileDownLoad_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void SharepointDownloadSource_DoesNotExist_OnResourceCatalog_ShouldSetSharepointSource_ToGuidEmpty()
         {

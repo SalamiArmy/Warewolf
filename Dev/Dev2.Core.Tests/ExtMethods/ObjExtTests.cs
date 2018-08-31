@@ -15,8 +15,11 @@ namespace Dev2.Tests.ExtMethods
             public string name1 { get; set; }
             public string name2 { get; set; }
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
+        [DoNotParallelize]
         public void DeepCopy_GivenCallShould_ShouldCopyAll()
         {
             //---------------Set up test pack-------------------

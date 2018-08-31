@@ -405,6 +405,8 @@ namespace Dev2.Infrastructure.Tests.Services.Security
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("AuthorizationServiceBase_AdministratorsMembersOfWarewolfGroup_WhenAdministratorsMembersOfTheGroup")]
+        [TestCategory("Not Parallelizable Infrastructure Unit Tests")]
+        [DoNotParallelize]
         public void AuthorizationServiceBase_IsAuthorizedToConnect_ToLocalServer_AdministratorsMembersOfWarewolfGroup_WhenAdministratorsMembersOfTheGroup_ExpectTrue()
         {
             //------------Setup for test--------------------------
@@ -443,7 +445,7 @@ namespace Dev2.Infrastructure.Tests.Services.Security
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("AuthorizationServiceBase_AdministratorsMembersOfWarewolfGroup_WhenAdministratorsMembersOfTheGroup")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Infrastructure Unit Tests")]
         [DoNotParallelize]
         public void AuthorizationServiceBase_IsAuthorizedToConnect_ToLocalServer_AdministratorsMembersOfWarewolfGroup_WhenAdministratorsAreNotMembersOfTheGroup_ExpectFalse()
         {

@@ -40,6 +40,8 @@ namespace Dev2.Activities.Designers.Tests.Random
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("RandomDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void RandomDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

@@ -148,6 +148,8 @@ namespace Dev2.Core.Tests
 
         // PBI 9397 - 2013.06.09 - TWR: added
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModelConstructorWithWorkspaceItemsInRepositoryExpectedLoadsWorkspaceItems()
         {
             var workspaceID = Guid.NewGuid();
@@ -204,9 +206,10 @@ namespace Dev2.Core.Tests
             var expected = viewModel.Items.FirstOrDefault(i => i.WorkSurfaceKey.ResourceID == resourceID);
             Assert.IsNotNull(expected);
         }
-
-        // PBI 9397 - 2013.06.09 - TWR: added
+        
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModelConstructorWithWorkspaceItemsInRepositoryExpectedNotLoadsWorkspaceItemsWithDifferentEnvID()
         {
             var workspaceID = Guid.NewGuid();
@@ -255,6 +258,8 @@ namespace Dev2.Core.Tests
 
         // PBI 9397 - 2013.06.09 - TWR: added
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModelConstructorWithWorkspaceItemsInRepositoryExpectedNotLoadsWorkspaceItemsWithSameEnvID()
         {
             var workspaceID = Guid.NewGuid();
@@ -336,6 +341,8 @@ namespace Dev2.Core.Tests
         #region Close Context
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_CloseWorkSurfaceContext_CloseTrueAndResourceSaved_RemoveWorkspaceItemRemoveCalledAndTabClosedMessageAndContextRemoved()
         {
             CreateFullExportsAndVm();
@@ -355,6 +362,8 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_CloseWorkSurfaceContext_CloseTrueAndResourceNotSavedPopupOk_RemoveWorkspaceItemCalledAndContextRemovedAndSaveResourceEventAggregatorMessage()
         {
             CreateFullExportsAndVm();
@@ -397,6 +406,8 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_CloseWorkSurfaceContext_CloseTrueAndResourceNotSavedPopupNotOk_WorkspaceItemNotRemoved()
         {
             CreateFullExportsAndVm();
@@ -415,6 +426,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("MainViewModel_IsWorkFlowOpened")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_IsWorkFlowOpened_ResourceIsOpened_True()
         {
             //------------Setup for test--------------------------
@@ -445,6 +458,8 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_CloseWorkSurfaceContext_CloseFalse_PreviousItemActivatedAndAllItemsPResent()
         {
             CreateFullExportsAndVm();
@@ -596,6 +611,8 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_CreateTest")]
         [Description("An exisiting workflow with unsaved changes that is saved, must commit the resource model.")]
         [Owner("Pieter Terblanche")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_CreateTest()
         {
             CreateFullExportsAndVm();
@@ -668,6 +685,8 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_CloseResourceMergeView")]
         [Description("An exisiting workflow with unsaved changes that is saved, must commit the resource model.")]
         [Owner("Pieter Terblanche")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_CloseResourceMergeView()
         {
             CreateFullExportsAndVm();
@@ -731,6 +750,8 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void OnImportsSatisfiedExpectsContextsAddedForSavedWorkspaces()
         {
             CreateFullExportsAndVm();
@@ -909,7 +930,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Description("Makes sure that new workflow only calls TempSave, not save on the resource repository")]
         [Owner("Jurie Smit")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MainViewModel_Regression_NewWorkFlowCommand_DoesNotSaveRepository()
         {
@@ -1496,6 +1517,8 @@ namespace Dev2.Core.Tests
 
         // PBI 9397 - 2013.06.09 - TWR: added
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModelOnDeactivateWithTrueExpectedSavesWorkspaceItems()
         {
             var wsiRepo = new Mock<IWorkspaceItemRepository>();
@@ -2002,7 +2025,7 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_EditSqlServerSource")]
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MainViewModel_EditSqlServerSource_Handle_Result()
         {
@@ -2035,7 +2058,7 @@ namespace Dev2.Core.Tests
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.Controls.Interactions.XamDialogWindow.v15.1.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MainViewModel_EditMySqlSource_Handle_Result()
         {
@@ -2067,7 +2090,7 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_EditPostgreSqlSource")]
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MainViewModel_EditPostgreSqlSource_Handle_Result()
         {
@@ -2099,7 +2122,7 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_EditOracleSource")]
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MainViewModel_EditOracleSource_Handle_Result()
         {
@@ -2131,7 +2154,7 @@ namespace Dev2.Core.Tests
         [TestCategory("MainViewModel_EditOdbcSource")]
         [DeploymentItem("Warewolf.Studio.Themes.Luna.dll")]
         [DeploymentItem("InfragisticsWPF4.DataPresenter.v15.1.dll")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MainViewModel_EditOdbcSource_Handle_Result()
         {
@@ -2188,6 +2211,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MainViewModel_EditEmailSource")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_EditEmailSource_Handle_Result()
         {
             //------------Setup for test--------------------------
@@ -2277,6 +2302,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MainViewModel_EditComPluginSource")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_EditComPluginSource_Handle_Result()
         {
             //------------Setup for test--------------------------
@@ -2866,7 +2893,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Leon Rajindrapersadh")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsSchedulerOnClosing()
         {
@@ -2922,7 +2949,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Leon Rajindrapersadh")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_ClosesRemoteEnvironmants()
         {
@@ -2980,6 +3007,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Leon Rajindrapersadh")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsSettingsOnClosing()
         {
             var viewModel = new Mock<IShellViewModel>();
@@ -3042,6 +3071,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Leon Rajindrapersadh")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsSettingsOnClosingDirty()
         {
             var viewModel = new Mock<IShellViewModel>();
@@ -3095,7 +3126,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Leon Rajindrapersadh")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsSchedulerOnClosingClosesSuccessfully()
         {
@@ -3151,6 +3182,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Pieter Terblanche")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsWorkflowOnClosing()
         {
             var viewModel = new Mock<IShellViewModel>();
@@ -3268,6 +3301,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Pieter Terblanche")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsDatabaseOnClosing()
         {
             InitSourceViewModel(out Mock<IServer> environmentModel, out ShellViewModel mvm);
@@ -3302,6 +3337,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Pieter Terblanche")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsEmailOnClosing()
         {
             InitSourceViewModel(out Mock<IServer> environmentModel, out ShellViewModel mvm);
@@ -3333,6 +3370,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_OnStudioClosing")]
         [Owner("Pieter Terblanche")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsWebSourceOnClosing()
         {
             InitSourceViewModel(out Mock<IServer> environmentModel, out ShellViewModel mvm);
@@ -3778,6 +3817,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [TestCategory("MainViewModel_IsDownloading")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void MainViewModel_IsDownloading_IsBusyDownloadingInstallerReturnsFalse_False()
         {
             //------------Setup for test--------------------------
@@ -4055,6 +4096,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DuplicateResource_GivenNotConnected_ShouldPopup()
         {
             //---------------Set up test pack-------------------

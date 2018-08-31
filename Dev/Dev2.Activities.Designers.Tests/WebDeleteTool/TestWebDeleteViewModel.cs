@@ -103,7 +103,7 @@ namespace Dev2.Activities.Designers.Tests.WebDeleteTool
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WebDeleteDesignerViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void WebDeleteDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

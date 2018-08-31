@@ -258,6 +258,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void GatherSystemInformationWhereGetVirtualMemoryAvailableInformationExpectVirtualMemoryInformation()
         {
             //------------Setup for test--------------------------
@@ -412,6 +414,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void GatherSystemInformationWhereGetDefaultGatewayExpectIPInformation()
         {
             //------------Setup for test--------------------------
@@ -779,7 +783,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfGatherSystemInformationActivity_UpdateForEachInputs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void DsfGatherSystemInformationActivity_UpdateForEachOutputs_MoreThan1Updates_Collection()
         {

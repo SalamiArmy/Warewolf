@@ -97,7 +97,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityRead_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SecurityRead_Execute_WhenSecureConfigDoesExistWithNoGuestPermission_ShouldHaveExistingPermissionsAndGuest()
         {
@@ -156,7 +156,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityRead_Execute")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SecurityRead_Execute_WhenSecureConfigDoesExistWithGuestPermission_ShouldHaveExistingPermissions()
         {

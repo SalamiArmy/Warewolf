@@ -82,7 +82,7 @@ namespace Dev2.Tests.Runtime.Hosting
         #region Instance
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void InstanceExpectedIsSingleton()
         {
@@ -102,7 +102,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadWorkspaceAsyncWithNullWorkspaceArgumentExpectedThrowsArgumentNullException()
         {
@@ -112,7 +112,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadWorkspaceAsyncWithEmptyFoldersArgumentExpectedReturnsEmptyCatalog()
         {
@@ -123,7 +123,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadWorkspaceAsyncWithExistingSourcesPathAndNonExistingServicesPathExpectedReturnsCatalogForSources()
         {
@@ -149,7 +149,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
         
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadWorkspaceAsyncWithValidWorkspaceIDExpectedReturnsCatalogForWorkspace()
         {
@@ -171,7 +171,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
         
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceCount_ExpectedReturnsCount()
         {
@@ -185,7 +185,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void Reload_ExpectedReturnsCount()
         {
@@ -200,7 +200,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadWorkspaceAsyncWithWithOneSignedAndOneUnsignedServiceExpectedLoadsSignedService()
         {
@@ -227,7 +227,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadWorkspaceAsyncWithSourceWithoutIDExpectedInjectsID()
         {
@@ -262,7 +262,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResourceWithNullResourceArgumentExpectedThrowsArgumentNullException()
         {
@@ -273,7 +273,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResourceWithNullResourceXmlArgumentExpectedThrowsArgumentNullException()
         {
@@ -285,7 +285,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_WithNoResourcePath_ExpectedSavedAtRootLevel()
         {
@@ -312,7 +312,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_Expects_A_VersionToBeSaved()
         {
@@ -331,7 +331,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_Expects_A_VersionToBeSaved_Xml()
         {
@@ -355,7 +355,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_Expects_A_RollbackOnError()
         {
@@ -389,7 +389,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_WithNoResourcePath_ServerWorkspace_ExpectedResourceSavedEventFired()
         {
@@ -417,7 +417,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_WithNullResourcePath_ExpectedSavedAtRootLevel()
         {
@@ -444,7 +444,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_WithResourcePath_ExpectedSavedInCorrectFolder()
         {
@@ -472,7 +472,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_WithDifferentResourcePath_ExpectedDeleteOfExisting()
         {
@@ -498,7 +498,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_WithSameResourcePath_ExpectedNotDeleteOfExisting()
         {
@@ -524,7 +524,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_WithSameResourcePath_ExpectedNotDeleteOfExisting_ReasonDeploy()
         {
@@ -550,7 +550,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_WithSameResourceNameDifferentResourcePath_ExpectedSavedInCorrectFolder()
         {
@@ -582,7 +582,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResource_WithSameResourceNameSameResourcePath_ExpectedSavedInCorrectFolder()
         {
@@ -611,7 +611,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
         
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResourceWithSourceWithoutIDExpectedSourceSavedWithID()
         {
@@ -632,7 +632,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResourceWithExistingResourceExpectedResourceOverwritten()
         {
@@ -656,7 +656,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResourceWithExistingResourceAndReadonlyExpectedResourceOverwritten()
         {
@@ -688,7 +688,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResourceWithNewResourceExpectedResourceWritten()
         {
@@ -709,7 +709,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(DirectoryNotFoundException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResourceWithSlashesInResourceNameExpectedThrowsDirectoryNotFoundException()
         {
@@ -721,7 +721,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SaveResourceWithNewResourceXmlExpectedResourceWritten()
         {
@@ -746,7 +746,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceWithNullResourceNameExpectedThrowsArgumentNullException()
         {
@@ -756,7 +756,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceWithResourceNameExpectedReturnsResource()
         {
@@ -777,7 +777,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_SaveResource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResource_WithResourceContainsResourcePath_ExpectedCorrectResource()
         {
@@ -802,7 +802,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourcepath_WithResourceContainsResourcePath_ExpectedCorrectResourcePath()
         {
@@ -825,7 +825,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceList_WithGivenWorkspaceWith1Resource_ShouldReturn1Resource()
         {
@@ -848,7 +848,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceListGeneric_GivenWorkspaceWith1Resource_ShouldReturn1Resource()
         {
@@ -871,7 +871,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceListGeneric_GivenWorkspaceWith1ResourceAndWrongTypr_ShouldReturnNothing()
         {
@@ -895,7 +895,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadResourceActivityCache_GivenServerId_ShouldNotThrowException()
         {
@@ -918,7 +918,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResource_UnitTest_WhereTypeIsProvided_ExpectTypedResourceWorkflow()
         {
@@ -940,7 +940,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResource_UnitTest_WhereTypeIsProvided_ExpectTypedResourceWebSource()
         {
@@ -969,7 +969,7 @@ namespace Dev2.Tests.Runtime.Hosting
         #region GetResourceContents
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceContentsWithNullResourceExpectedReturnsEmptyString()
         {
@@ -979,7 +979,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceContentsWithNullResourceFilePathExpectedReturnsEmptyString()
         {
@@ -989,7 +989,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceContentsWithExistingResourceExpectedReturnsResourceContents()
         {
@@ -1007,7 +1007,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceCatalog_GetResourceContents")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetResourceContents_WhenHasNewLine_ShouldReturnWithNewLine()
         {
@@ -1038,7 +1038,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceContentsWithNonExistentResourceExpectedReturnsEmptyString()
         {
@@ -1051,7 +1051,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetResourceContentsWithNonExistentResourceIDExpectedReturnsEmptyString()
         {
@@ -1068,7 +1068,7 @@ namespace Dev2.Tests.Runtime.Hosting
         #region SyncTo
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SyncToWithDeleteIsFalseAndFileDeletedFromSourceExpectedFileNotDeletedInDestination()
         {
@@ -1090,7 +1090,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SyncToWithOverwriteIsTrueExpectedFileInDestinationOverwritten()
         {
@@ -1124,7 +1124,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SyncToWithOverwriteIsFalseExpectedFileInDestinationUnchanged()
         {
@@ -1159,7 +1159,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SyncToWithFilesToIgnoreSpecifiedExpectedIgnoredFilesAreNotCopied()
         {
@@ -1180,7 +1180,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SyncToWithFilesToIgnoreSpecifiedExpectedIgnoredFilesAreNotDeleted()
         {
@@ -1202,7 +1202,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void SyncToWithNonExistingDestinationDirectoryExpectedDestinationDirectoryCreated()
         {
@@ -1227,7 +1227,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("ResourceCatalog_ToPayload")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_ToPayload_GetServiceNormalPayload_ConnectionStringAsAttributeOfRootTag()
         {
@@ -1259,7 +1259,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalogResultBuilder_GivenMessage_ShouldReturnCorrectResults()
         {
@@ -1291,7 +1291,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(InvalidDataContractException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void DeleteResourceWithNullResourceNameExpectedThrowsInvalidDataContractException()
         {
@@ -1302,7 +1302,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(InvalidDataContractException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void DeleteResourceWithNullTypeExpectedThrowsInvalidDataContractException()
         {
@@ -1312,7 +1312,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void DeleteResourceWithWildcardResourceNameExpectedReturnsNoWildcardsAllowed()
         {
@@ -1323,7 +1323,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void DeleteResourceWithNonExistingResourceNameExpectedReturnsNoMatch()
         {
@@ -1336,7 +1336,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void DeleteResourceWithManyExistingResourceNamesExpectedReturnsDuplicateMatch()
         {
@@ -1360,7 +1360,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDynamicObjectsWithNullResourceNameExpectedThrowsArgumentNullException()
         {
@@ -1371,7 +1371,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDynamicObjectsWithNullResourceNameAndContainsTrueExpectedThrowsArgumentNullException()
         {
@@ -1382,7 +1382,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDynamicObjectsWithNullResourceExpectedThrowsArgumentNullException()
         {
@@ -1392,7 +1392,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDynamicObjectsWithNullResourcesExpectedThrowsArgumentNullException()
         {
@@ -1401,7 +1401,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDynamicObjectsWithResourceNameExpectedReturnsObjectGraph()
         {
@@ -1418,7 +1418,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDynamicObjectsWithResourceExpectedReturnsObjectGraph()
         {
@@ -1435,7 +1435,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDynamicObjectsWithResourcesExpectedReturnsObjectGraphs()
         {
@@ -1460,7 +1460,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumDev2Server_ExpectConnectionObjects()
         {
@@ -1495,7 +1495,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumEmailSource_ExpectEmailSourceObjects()
         {
@@ -1529,7 +1529,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ResourceCatalog_GetModels")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumDropBoxSource_ExpectDropBoxSourceSourceObjects()
         {
@@ -1593,7 +1593,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumPlugin_ExpectPluginSourceObjects()
         {
@@ -1627,7 +1627,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumWebSource_ExpectWebSourceObjects()
         {
@@ -1661,7 +1661,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumWebService_ExpectNull()
         {
@@ -1684,7 +1684,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumDynamicService_ExpectNull()
         {
@@ -1707,7 +1707,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumMySqlDatabase_ExpectNull()
         {
@@ -1730,7 +1730,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumManagementDynamicService_ExpectNull()
         {
@@ -1753,7 +1753,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetModels")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumUnknown_ExpectNullModels()
         {
@@ -1785,7 +1785,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Description("Requires Valid arguments")]
         [Owner("Ashley Lewis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateResourceNameWithNullOldName_ExpectRename()
         {
@@ -1828,7 +1828,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [Description("Needs valid arguments")]
         [Owner("Ashley Lewis")]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateResourceWithNullNewName_ExpectArgumentNullException()
         {
@@ -1863,7 +1863,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [Description("Needs valid arguments")]
         [Owner("Ashley Lewis")]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateResourceNameWithEmptyNewName_ExpectArgumentNullException()
         {
@@ -1900,7 +1900,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Description("Updates the Category of the resource")]
         [Owner("Huggs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateResourceCategoryValidArguments_ExpectFileContentsUpdated()
         {
@@ -1929,7 +1929,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void RenameCategory_GivenValidParams_ShouldReturnSucces()
         {
@@ -1965,7 +1965,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Description("Updates the Category of the resource")]
         [Owner("Huggs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_RenameCategory_NoResources_ExpectErrorNoMatching()
         {
@@ -1998,7 +1998,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Description("Updates the Category of the resource")]
         [Owner("Huggs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateResourceCategoryValidArgumentsDifferentCasing_ExpectFileContentsUpdated()
         {
@@ -2028,7 +2028,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Huggs")]
         [ExpectedException(typeof(InvalidDataContractException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_ResourceIDEmptyGuid_ExpectException()
         {
@@ -2055,7 +2055,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Huggs")]
         [ExpectedException(typeof(InvalidDataContractException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_TypeEmptyString_ExpectException()
         {
@@ -2082,7 +2082,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Huggs")]
         [ExpectedException(typeof(InvalidDataContractException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_TypeNull_ExpectException()
         {
@@ -2133,7 +2133,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Huggs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_FoundMultipleResources_ExpectDuplicateMatchResult()
         {
@@ -2163,7 +2163,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Huggs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_FoundResource_ExpectResourceDeleted()
         {
@@ -2227,7 +2227,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Huggs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetResource_Workflow_ExpectResource()
         {
@@ -2255,7 +2255,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Huggs")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetResource_DbSource_ExpectResource()
         {
@@ -2562,7 +2562,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDependantsWhereResourceHasNoDependedOnExpectNonEmptyList()
         {
@@ -2590,7 +2590,7 @@ namespace Dev2.Tests.Runtime.Hosting
         #region GetDependantsAsResourceForTrees
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDependantsAsResourceForTreesWhereResourceIsDependedOnExpectNonEmptyList()
         {
@@ -2615,7 +2615,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDependantsAsResourceForTreesWhereNoResourcesExpectEmptyList()
         {
@@ -2633,7 +2633,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void GetDependantsAsResourceForTreesWhereResourceHasNoDependedOnExpectNonEmptyList()
         {
@@ -2691,7 +2691,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenUsingNameAndResourcesNotPresent_ExpectEmptyList()
         {
@@ -2721,7 +2721,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
         [ExpectedException(typeof(InvalidDataContractException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenNameAndResourceNameAndTypeNull_ExpectException()
         {
@@ -2749,7 +2749,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenUsingIdAndResourcesPresent_ExpectResourceList()
         {
@@ -2788,7 +2788,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenUsingIdAndResourcesNotPresent_ExpectEmptyList()
         {
@@ -2822,7 +2822,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenUsingIdAndTypeNull_ShouldStillReturn()
         {
@@ -2854,7 +2854,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_GetResourceList")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetResourceList_WhenUsingIdAndGuidCsvNull_ExpectEmptyList()
         {
@@ -2885,7 +2885,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalogPluginContainer_GivenVersion_ShouldCreateInstancesWithVersion()
         {
@@ -2907,7 +2907,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalogPluginContainer_GivenVersionAndManagementServices_ShouldCreateInstances()
         {
@@ -2930,7 +2930,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void Dispose_GivenInstance_ShouldCleaup()
         {
@@ -2946,7 +2946,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ToPayload_GivenIsReservedService_ShouldAppendTypeAndName()
         {
@@ -2967,7 +2967,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void MapServiceActionDependencies_GivenServiceName_ShouldNotThrowException()
         {
@@ -2998,7 +2998,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadResourceActivityCache_GivenServiceName_ShouldNotThrowException()
         {
@@ -3039,7 +3039,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadResourceActivityCache_GivenServiceName_ShouldAddActivityToParserCache()
         {
@@ -3078,7 +3078,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadResourceActivityCache_GivenServiceNameWithActivityInCache_ShouldReturnFromCache()
         {
@@ -3111,7 +3111,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void LoadResourceActivityCache_GivenServiceName_ShouldPopulateServiceActionRepo()
         {
@@ -3146,7 +3146,7 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void DeleteResourceWithSingleExistingResourceName_ShouldRemoveFromCache()
         {
@@ -3183,7 +3183,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Sanele Mthembu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_GetResourceDuplicate_Give2SameFilesInDifferentFolders_ShouldReturnPaths()
         {
@@ -3226,7 +3226,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_DuplicateResourceResourceWithNullDestination_ExpectArgumentNullException()
         {
@@ -3249,7 +3249,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_DuplicateResourceResourceWithValidArgs_ExpectSuccesResult()
         {
@@ -3272,7 +3272,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_DuplicateResourceResourceWithValidArgs_ExpectNewDisplayName()
         {
@@ -3314,7 +3314,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_DuplicateFolderResourceWithValidArgs_ExpectSuccesResult()
         {
@@ -3342,7 +3342,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_DuplicateFolderResourceWithInvalidArgs_ExpectExceptions()
         {
@@ -3366,7 +3366,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GetResourceListGivenWorkspace_ExpectResources()
         {
@@ -3391,7 +3391,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GetResourceCountGivenWorkspace_ExpectCorrectResources()
         {
@@ -3415,7 +3415,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GetResourceOfTNotExist_ExpectNull()
         {
@@ -3436,7 +3436,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GetDependantsInvalidArgs_ExpectExceptions()
         {
@@ -3456,7 +3456,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GivenFixRefsTrue_ExpectResourceContentsChanges()
         {
@@ -3483,7 +3483,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Sanele Mthembu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_GetXmlResource_UpdatesResource_To_Bite()
         {
@@ -3508,7 +3508,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Sanele Mthembu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_IsWarewolfResource_Given_NonWarewolf_Resource_Retunrs_False()
         {
@@ -3526,7 +3526,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Sanele Mthembu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_Save_Resource_Saves_In_Bite_Extension()
         {
@@ -3549,7 +3549,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Sanele Mthembu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_UnitTest_UpdateExtensions_Given_WW_Resource_Updates_The_Extension()
         {
@@ -3571,7 +3571,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ResourceCatalog_Load")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_Load_WhenFileIsReadOnly_ShouldUpdateToNormal()
         {
@@ -3597,7 +3597,7 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
         [DoNotParallelize]
         public void ResourceCatalog_TryBuildCatalogFromWorkspace_WithNullFolders_ThrowsException()
         {

@@ -19,7 +19,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_Construct")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CreateJsonDesignerViewModel_Construct_IsInstanceOfActivityViewModelBase_True()
         {
@@ -33,7 +33,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_Construct")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CreateJsonDesignerViewModel_Construct_IsInstanceOfActivityCollectionViewModelBaseOfJsonMappingTo_True()
         {
@@ -47,7 +47,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [TestCategory("CreateJsonDesignerViewModel_Constructor")]
         [Owner("Hagashen Naidu")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CreateJsonDesignerViewModel_Constructor_CollectionNameInitialized()
         {
@@ -68,7 +68,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_ErrorsProperty")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CreateJsonDesignerViewModel_ErrorsProperty_Constructor_IsNull()
         {
@@ -83,7 +83,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_CustomAction")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CreateJsonDesignerViewModel_CustomAction_WhenSourceNameChangedToScalar_UpdatesDestinationNameScalarName()
         {
@@ -103,7 +103,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_CustomAction")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CreateJsonDesignerViewModel_CustomAction_WhenSourceNameChangedToRecsetWithField_UpdatesDestinationNameRecsetName()
         {
@@ -123,7 +123,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_CustomAction")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CreateJsonDesignerViewModel_CustomAction_WhenSourceNameChangedToRecsetNoField_UpdatesDestinationNameRecsetName()
         {
@@ -143,7 +143,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_CustomAction")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CreateJsonDesignerViewModel_CustomAction_WhenSourceNameChangedToNonVariable_DoesNotUpdatesDestinationName()
         {
@@ -163,7 +163,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_CustomAction")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CreateJsonDesignerViewModel_CustomAction_WhenSourceNameChangedToVariableButDestinationAlreadyPopulated_DoesNotUpdatesDestinationName()
         {
@@ -187,7 +187,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("CreateJsonDesignerViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void CreateJsonDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

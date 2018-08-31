@@ -28,7 +28,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataSplitDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_Constructor__ModelItemIsValid_ListHasFourItems()
         {
@@ -40,7 +40,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataSplitDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_Constructor__ModelItemIsValid_CollectionNameIsSetToResultsCollection()
         {
@@ -52,7 +52,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataSplitDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_Constructor_ModelItemIsValid_ResultsCollectionHasTwoItems()
         {
@@ -65,7 +65,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DataSplitDesignerViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -86,7 +86,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataSplitDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_Constructor_ModelItemIsInitializedWith4Items_ResultsCollectionHasFourItems()
         {
@@ -105,7 +105,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataSplitDesignerViewModel_OnSplitTypeChanged")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_OnSplitTypeChanged_EnableAt_SetCorrectly()
         {
@@ -132,7 +132,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataSplitDesignerViewModel_OnSplitTypeChanged")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_OnSplitTypeChanged_IsEscapeCharEnabled_SetCorrectly()
         {
@@ -175,7 +175,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataSplitDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_ValidateThis_SourceStringIsNotEmpty_DoesNotHaveErrors()
         {
@@ -202,7 +202,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataSplitDesignerViewModel_ValidateThis")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_ValidateThis_SourceStringIsEmptyOrWhiteSpace_DoesHaveErrors()
         {
@@ -230,7 +230,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataSplitDesignerViewModel_ValidateCollectionItem")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {
@@ -278,7 +278,7 @@ namespace Dev2.Activities.Designers.Tests.DataSplit
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataSplitDesignerViewModel_ProcessDirectionGroup")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DataSplitDesignerViewModel_ProcessDirectionGroup_IsUnique()
         {

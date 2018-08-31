@@ -34,6 +34,8 @@ namespace Dev2.Tests.Diagnostics
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
+        [DoNotParallelize]
         public void AddWithWriter()
         {
 
@@ -51,7 +53,7 @@ namespace Dev2.Tests.Diagnostics
         #region Remove
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void RemoveWithInvalidID()
         {
@@ -65,7 +67,7 @@ namespace Dev2.Tests.Diagnostics
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void RemoveWithValidID()
         {
@@ -98,6 +100,8 @@ namespace Dev2.Tests.Diagnostics
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
+        [DoNotParallelize]
         public void GetWithValidID()
         {
 

@@ -28,7 +28,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignObjectTests
         [TestMethod]
         [Owner("Clint Stedman")]
         [TestCategory("DsfMultiAssignObjectActivityViewModel_Construct")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DsfMultiAssignObjectActivityViewModel_Construct_IsInstanceOfActivityViewModelBase_True()
         {
@@ -42,7 +42,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignObjectTests
         [TestMethod]
         [Owner("Clint Stedman")]
         [TestCategory("DsfMultiAssignObjectActivityViewModel_Construct")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DsfMultiAssignObjectActivityViewModel_Construct_IsInstanceOfActivityCollectionViewModelBaseOfActivityDTO_True()
         {
@@ -56,7 +56,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignObjectTests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MultiAssignObjectActivityViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void MultiAssignObjectActivityViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -77,7 +77,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignObjectTests
         [Owner("Clint Stedman")]
         [TestCategory("MultiAssignObjectActivityViewModel_Constructor")]
 
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void MultiAssignObjectActivityViewModel_Constructor_CollectionNameInitialized()
 
@@ -100,7 +100,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignObjectTests
         [TestMethod]
         [Owner("Clint Stedman")]
         [TestCategory("MultiAssignObjectActivityViewModel_ErrorsProperty")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void MultiAssignObjectActivityViewModel_ErrorsProperty_Constructor_IsNull()
         {

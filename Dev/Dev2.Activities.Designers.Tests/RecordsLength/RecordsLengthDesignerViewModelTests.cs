@@ -39,6 +39,8 @@ namespace Dev2.Activities.Designers.Tests.RecordsLength
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("RecordsLengthDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void RecordsLengthDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

@@ -26,7 +26,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.CountRecordset
         [TestMethod]
         [TestCategory("DsfRecordsetNullhandlerLength")]
         [Owner("Candice Daniel")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
         [DoNotParallelize]
         public void RecordsetNullhandlerLength_BlankResultVariable()
         {

@@ -258,7 +258,7 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Oracle_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -436,7 +436,7 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_TestAction")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void Oracle_TestActionSetSourceHasRecSet()
         {

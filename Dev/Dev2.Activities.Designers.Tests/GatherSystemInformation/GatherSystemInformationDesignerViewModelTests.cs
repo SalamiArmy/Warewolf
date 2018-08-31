@@ -27,7 +27,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GatherSystemInformationDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void GatherSystemInformationDesignerViewModel_Constructor_ModelItemIsValid_ListHasFourItems()
         {
@@ -40,7 +40,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("GatherSystemInformationDesignerViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void GatherSystemInformationDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -62,7 +62,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GatherSystemInformationDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void GatherSystemInformationDesignerViewModel_Constructor_ModelItemIsValid_CollectionNameIsSetToSystemInformationCollection()
         {
@@ -74,7 +74,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GatherSystemInformationDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void GatherSystemInformationDesignerViewModel_Constructor_ModelItemIsValid_SystemInformationCollectionHasTwoItems()
         {
@@ -87,7 +87,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GatherSystemInformationDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void GatherSystemInformationDesignerViewModel_Constructor_ModelItemIsInitializedWith4Items_SystemInformationCollectionHasFourItems()
         {
@@ -107,7 +107,7 @@ namespace Dev2.Activities.Designers.Tests.GatherSystemInformation
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("GatherSysInfoDesignerViewModel_ValidateCollectionItem")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void GatherSysInfoDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {

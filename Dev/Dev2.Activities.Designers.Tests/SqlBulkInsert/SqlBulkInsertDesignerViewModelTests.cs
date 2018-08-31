@@ -74,7 +74,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -133,7 +133,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Constructor_ModelItemIsNew_InitializesProperties()
         {
@@ -185,7 +185,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Properties")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Properties()
         {
@@ -217,7 +217,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Constructor_ModelItemIsNotNew_InitializesProperties()
         {
@@ -270,7 +270,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_SelectedDatabase")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedDatabase_Changed_LoadsDatabaseTables()
         {
@@ -297,7 +297,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_SelectedDatabase")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedDatabase_ChangedAndTableNameExists_SelectsTableAndLoadsColumns()
         {
@@ -339,7 +339,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Database")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedDatabase_ChangedAndTableNameDoesNotExists_ClearsTableNameAndTableColumns()
         {
@@ -378,7 +378,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Database")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedDatabase_ChangedAndTableListHasErrors_ErrorsNotNull()
         {
@@ -423,7 +423,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_SelectedTable")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedTable_Changed_LoadsTableColumns()
         {
@@ -453,7 +453,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_SelectedTable")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedTable_ChangedAndColumnListHasErrors_ErrorsNotNull()
         {
@@ -488,7 +488,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_SelectedTable")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedTable_Changed_LoadsDefaultInputColumnMappings()
         {
@@ -517,7 +517,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_RefreshTablesCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_RefreshTablesCommand_ReloadsTableAndColumns()
         {
@@ -551,7 +551,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SqlBulkInsertDesignerViewModel_RefreshTablesCommand")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_RefreshTablesCommand_SecondTime_ReloadsTableAndColumns()
         {
@@ -585,7 +585,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_EditDbSource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_EditDbSource_PublishesShowEditResourceWizardMessage()
         {
@@ -618,7 +618,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_CreateDbSource")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_CreateDbSource_PublishesShowEditResourceWizardMessage()
         {
@@ -659,7 +659,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_NotNullableColumnWithNoValue_SetsErrors()
         {
@@ -691,7 +691,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_NullableColumnWithNoValue_SetsNoErrors()
         {
@@ -720,7 +720,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_IdentityColumnWithNoValueKeepIdentitySet_SetsErrors()
         {
@@ -752,7 +752,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_IdentityColumnWithNoValueKeepIdentityNotSet_SetsNoErrors()
         {
@@ -780,7 +780,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_IdentityColumnWithValueKeepIdentityNotSet_SetsErrors()
         {
@@ -812,7 +812,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_InvalidValues_SetsErrors()
         {
@@ -842,7 +842,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_ValidValues_DoesNotSetErrors()
         {
@@ -886,7 +886,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_InputMappingsHasAllEmptyInputColumns_SetsErrors()
         {
@@ -920,7 +920,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_InputMappingsHasOneNonEmptyInputColumn_DoesNotSetErrors()
         {
@@ -958,7 +958,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_InvalidVariables_SetsErrors()
         {
@@ -1004,7 +1004,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_ValidVariables_DoesNotSetErrors()
         {
@@ -1063,7 +1063,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_AddToCollection")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_AddToCollection_AlwaysUpdatesInputMappings()
         {
@@ -1107,7 +1107,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_ShowQuickVariableInputProperty")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_ShowQuickVariableInputProperty_IsFalse_DoesNothing()
         {
@@ -1137,7 +1137,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_ShowQuickVariableInputProperty")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_ShowQuickVariableInputProperty_IsTrue_InitializesQuickVariableInputViewModel()
         {

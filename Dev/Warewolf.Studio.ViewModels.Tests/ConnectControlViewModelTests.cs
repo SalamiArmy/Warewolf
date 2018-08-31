@@ -545,7 +545,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         [TestMethod,Timeout(60000)]
         [Owner("Pieter Terblanche")]
         [TestCategory("ConnectControlViewModel_EditServer")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio View Models Unit Tests")]
         [DoNotParallelize]
         public void ConnectControlViewModelEditServerServerIDMatchIsTrue()
         {

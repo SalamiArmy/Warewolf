@@ -56,7 +56,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("HelpViewModel_OnViewLoaded")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public async Task HelpViewModel_LoadBrowserUri_HasInternetConnection_NavigatesToUrl()
         {

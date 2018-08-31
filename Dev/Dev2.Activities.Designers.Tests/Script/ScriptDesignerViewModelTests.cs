@@ -80,7 +80,7 @@ namespace Dev2.Activities.Designers.Tests.Script
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_Constructor")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ScriptDesignerViewModel_Constructor_PropertiesInitialized()
         {
@@ -96,6 +96,8 @@ namespace Dev2.Activities.Designers.Tests.Script
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_SelectedScriptType")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ScriptDesignerViewModel_SelectedScriptType_JavaScript_PropertiesInitialized()
         {
             var modelItem = CreateModelItem();
@@ -110,7 +112,7 @@ namespace Dev2.Activities.Designers.Tests.Script
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_SelectedScriptType")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ScriptDesignerViewModel_ChooseDirectoryShould_ReturnFile()
         {
@@ -158,7 +160,7 @@ namespace Dev2.Activities.Designers.Tests.Script
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_SelectedScriptType")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void ScriptDesignerViewModel_SelectedScriptType_Ruby_PropertiesInitialized()
         {

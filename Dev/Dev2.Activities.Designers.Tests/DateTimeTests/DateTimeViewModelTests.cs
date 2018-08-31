@@ -86,7 +86,7 @@ namespace Dev2.Activities.Designers.Tests.DateTimeTests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DateTimeActivityViewModel_Handle")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
         public void DateTimeActivityViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

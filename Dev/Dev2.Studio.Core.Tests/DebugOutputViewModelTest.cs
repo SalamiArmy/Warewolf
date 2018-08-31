@@ -847,7 +847,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DebugOutputViewModel_DebugStatus")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void DebugOutputViewModel_DebugStatus_Executing_PublishesDebugSelectionChangedEventArgs()
         {
@@ -882,7 +882,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DebugOutputViewModel_SelectAll")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void DebugOutputViewModel_SelectAll_Execute_PublishesClearSelection()
         {

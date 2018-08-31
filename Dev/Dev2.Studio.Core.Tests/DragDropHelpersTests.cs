@@ -146,7 +146,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DragDropHelpers_PreventDrop")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
         [DoNotParallelize]
         public void DragDropHelpers_PreventDrop_EmptyService_ReturnsFalse()
         {
