@@ -43,7 +43,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void FetchExplorerDuplicateTests_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var fetchResourceDuplicates = new FetchResourceDuplicates();

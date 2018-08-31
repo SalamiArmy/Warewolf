@@ -27,13 +27,12 @@ using Moq;
 namespace Dev2.Tests.Runtime.Services
 {
     [TestClass]
-    
     public class MoveItemsServiceTest
     {
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void MoveItems_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var itemService = new MoveItemService();
@@ -47,7 +46,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void MoveItems_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var itemService = new MoveItemService();

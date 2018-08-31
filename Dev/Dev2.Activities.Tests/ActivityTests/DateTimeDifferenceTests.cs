@@ -26,6 +26,8 @@ namespace ActivityUnitTests.ActivityTests
         #region Positive Test Cases
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void Positive_With_Normal_Params_Expected_Positive()
         {
             SetupArguments(

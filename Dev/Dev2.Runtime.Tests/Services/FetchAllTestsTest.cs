@@ -53,7 +53,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void FetchAllTests_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var fetchAllTests = new FetchAllTests();

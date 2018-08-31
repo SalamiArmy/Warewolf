@@ -1563,6 +1563,8 @@ namespace Dev2.Tests.Runtime.Hosting
         
         [TestMethod]
         [Owner("Travis Frisinger")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void ResourceCatalog_GetModels_WhenEnumSqlDatabase_ExpectDbSourceObjects()
         {
             //------------Setup for test--------------------------
@@ -2108,6 +2110,8 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Huggs")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_ResourceNotFound_ExpectNoMatchResult()
         {
             //------------Setup for test--------------------------
@@ -2197,6 +2201,8 @@ namespace Dev2.Tests.Runtime.Hosting
 
         [TestMethod]
         [Owner("Huggs")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void ResourceCatalog_DeleteResource_FoundResource_ExpectResourceDeleted_VersionsNotDeleted()
         {
             //------------Setup for test--------------------------
@@ -2405,6 +2411,8 @@ namespace Dev2.Tests.Runtime.Hosting
         #region GetDependants
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void GetDependantsWhereResourceIsDependedOnExpectNonEmptyList()
         {
             //------------Setup for test--------------------------
@@ -2428,6 +2436,8 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void UpdateResourceWhereResourceIsDependedOnExpectNonEmptyList()
         {
             //------------Setup for test--------------------------
@@ -2486,6 +2496,8 @@ namespace Dev2.Tests.Runtime.Hosting
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void UpdateResourceWhereResourceIsDependedOnExpectNonEmptyListForResource()
         {
             //------------Setup for test--------------------------

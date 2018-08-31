@@ -23,7 +23,6 @@ using System.Collections.ObjectModel;
 namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
 {
     [TestClass]
-    [DoNotParallelize]
     public class AdvancedRecordsetViewModelTests
     {
 
@@ -207,10 +206,13 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
                 Assert.IsTrue(advancedRecordset.ErrorRegion.IsEnabled);
             }
         }
+
         [TestMethod]
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ParseTSQL_SelectStatementWithAllias_1_ReturnOutputs()
         {
             //------------Setup for test--------------------------
@@ -265,6 +267,8 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ParseTSQL_SelectStatementWithAllias_2_ReturnOutputs()
         {
             //------------Setup for test--------------------------
@@ -310,6 +314,8 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ParseTSQL_SelectStatementWithAllias_3_ReturnOutputs()
         {
             //------------Setup for test--------------------------
@@ -365,6 +371,8 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ParseTSQL_SelectStatementWithAllias_4_ReturnOutputs()
         {
             //------------Setup for test--------------------------
@@ -482,6 +490,8 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ParseTSQL_SelectStatementWithAllias_5_ReturnOutputs()
         {
             //------------Setup for test--------------------------
@@ -531,10 +541,13 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
                 Assert.AreEqual("records_affected", viewModel.OutputsRegion.Outputs.First().MappedFrom);
             }
         }
+
         [TestMethod]
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ParseTSQL_SelectStatementWithAllias_7_ReturnOutputs()
         {
             //------------Setup for test--------------------------
@@ -595,6 +608,8 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Candice Daniel")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
         [TestCategory("AdvancedRecordset_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

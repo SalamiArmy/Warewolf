@@ -187,6 +187,8 @@ namespace Dev2.Tests.Runtime.ESB.Control
         }
         [TestMethod]
         [Owner("Hagashen Naidu")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void FindService_GivenResourceID_ReturnsNull_ShouldUpdatePerfCounter()
         {
             //---------------Set up test pack-------------------

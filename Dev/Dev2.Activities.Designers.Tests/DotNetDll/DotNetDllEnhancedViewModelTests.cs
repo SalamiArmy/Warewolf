@@ -194,6 +194,8 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DotNetDllEnhancedViewModel_SetDisplayName")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void DotNetDllEnhancedViewModel_FixErrors()
         {
             //------------Setup for test--------------------------

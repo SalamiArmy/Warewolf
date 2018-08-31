@@ -27,13 +27,12 @@ using Moq;
 namespace Dev2.Tests.Runtime.Services
 {
     [TestClass]
-    
     public class RenameItemsTest
     {
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void RenameItems_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var renameItemService = new RenameItemService();
@@ -47,7 +46,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void RenameItems_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var renameItemService = new RenameItemService();

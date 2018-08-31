@@ -48,6 +48,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void Constructor_GivenIsCalled_ShouldPassThrough()
         {
             //---------------Set up test pack-------------------
@@ -63,6 +65,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditResource_GivenIsSharepointSource_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -85,6 +89,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditResource_GivenIsOAuthSource_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -106,6 +112,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditWcfSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -132,6 +140,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditRabbitMQSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -158,6 +168,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditDropBoxSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -184,6 +196,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditExchangeSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -210,6 +224,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditEmailSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -236,6 +252,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditSharePointSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -262,6 +280,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditWebSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -288,6 +308,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditComPluginSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -315,6 +337,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditOdbcSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -342,6 +366,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditOracleSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -368,6 +394,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditPostgreSqlSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -393,6 +421,8 @@ namespace Dev2.Core.Tests
         }
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditMySqlSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -419,6 +449,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void EditSqlServerSource_GivenResourceModel_ShouldPassThrouh()
         {
             //---------------Set up test pack-------------------
@@ -481,6 +513,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenODBCResourceType_ShouldEditODBC()
         {
             //---------------Set up test pack-------------------
@@ -508,10 +542,12 @@ namespace Dev2.Core.Tests
             //---------------Test Result -----------------------
             var workSurfaceViewModels = ShellViewModel.Items.Any(model => model.WorkSurfaceViewModel is ViewModels.SourceViewModel<Common.Interfaces.ServerProxyLayer.IDbSource>);
             Assert.IsTrue(workSurfaceViewModels);
-
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenOracleResourceType_ShouldEditODBC()
         {
             //---------------Set up test pack-------------------
@@ -544,6 +580,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenPostgreSQLResourceType_ShouldEditODBC()
         {
             //---------------Set up test pack-------------------
@@ -575,6 +613,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenMySqlDatabaseResourceType_ShouldEditODBC()
         {
             //---------------Set up test pack-------------------
@@ -639,8 +679,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-
-
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenWcfSourceResourceType_ShouldEditWcfSource()
         {
             //---------------Set up test pack-------------------
@@ -671,6 +711,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenEmailSourceResourceType_ShouldEditEmailSource()
         {
             //---------------Set up test pack-------------------
@@ -701,8 +743,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-
-
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenExchangeSourceResourceType_ShouldEditExchangeSource()
         {
             //---------------Set up test pack-------------------
@@ -765,8 +807,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-
-
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenSharepointServerSourceResourceType_ShouldEditSharepointServerSource()
         {
             //---------------Set up test pack-------------------
@@ -797,6 +839,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenOauthSourceResourceType_ShouldEditOauthSource()
         {
             //---------------Set up test pack-------------------
@@ -829,8 +873,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-
-
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenRabbitMQSourceResourceType_ShouldEditRabbitMQSource()
         {
             //---------------Set up test pack-------------------
@@ -861,8 +905,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-
-
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenServerType_ShouldEditServer()
         {
             //---------------Set up test pack-------------------
@@ -928,8 +972,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-
-
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DisplayResourceWizard_GivenServerSourceType_ShouldServerSource()
         {
             //---------------Set up test pack-------------------
@@ -956,6 +1000,8 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void OpenVersion_GivenVersionType_ShouldLoadResourceModel()
         {
             //---------------Set up test pack-------------------

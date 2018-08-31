@@ -16,7 +16,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void GetServiceExecutionResult_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var getLogDataService = new GetServiceExecutionResult();
@@ -30,7 +30,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void GetServiceExecutionResult_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var getLogDataService = new GetServiceExecutionResult();

@@ -96,7 +96,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void FetchResourceDefinition_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var mock = new Mock<IResourceDefinationCleaner>();

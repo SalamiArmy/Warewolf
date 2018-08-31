@@ -38,7 +38,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void FetchPluginCOnstructor_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var FetchPluginConstructors = new FetchPluginConstructors();

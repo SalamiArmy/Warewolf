@@ -198,6 +198,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_OptionsSetMixedUsingDataList_HasSqlBulkCopyWithOptionsWithValues()
         {
             //------------Setup for test--------------------------
@@ -1845,11 +1847,12 @@ namespace Dev2.Tests.Activities.ActivityTests
             Assert.AreEqual("Test3", act.TableName);
             Assert.AreEqual(Result, act.Result);
         }
-
-
+        
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_UpdateForEachOutputs")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_UpdateForEachOutputs_NullUpdates_DoesNothing()
         {
             //------------Setup for test--------------------------

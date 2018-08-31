@@ -34,7 +34,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void GetScheduledResourceHistory_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var scheduledResourceHistory = new GetScheduledResourceHistory();
@@ -48,7 +48,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void GetScheduledResourceHistory_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var scheduledResourceHistory = new GetScheduledResourceHistory();
@@ -63,7 +63,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestCategory("Services_ScheduledResource_GetHistory")]
         [TestMethod]
         
-        public void SaveScheduledResourceTest_ServiceName()
+        public void GetScheduledResourceHistory_SaveScheduledResourceTest_ServiceName()
         {
             SchedulerTestBaseStaticMethods.SaveScheduledResourceTest_ServiceName("GetScheduledResourceHistoryService", new GetScheduledResourceHistory());
         }
@@ -71,19 +71,17 @@ namespace Dev2.Tests.Runtime.Services
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("Services_ScheduledResource_GetHistory")]
         [TestMethod]
-        public void Services_ScheduledResource_ReturnsDynamicService()
+        public void GetScheduledResourceHistory_ScheduledResource_ReturnsDynamicService()
         {
             SchedulerTestBaseStaticMethods.GetScheduledResourcesReturnsDynamicService(new GetScheduledResourceHistory());
-
         }
+
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("Services_ScheduledResource_GetHistory")]
         [TestMethod]
-        public void Services_ScheduledResourceHistory_GetValid()
+        public void GetScheduledResourceHistory_ScheduledResourceHistory_GetValid()
         {
             var output = RunOutput(true);
-
-
             var lst = output;
             Assert.AreEqual(1, lst.Count);
             Assert.AreEqual(TimeSpan.MaxValue, lst.First().TaskHistoryOutput.Duration);
@@ -91,6 +89,7 @@ namespace Dev2.Tests.Runtime.Services
             Assert.AreEqual(DateTime.MaxValue, lst.First().TaskHistoryOutput.EndDate);
             Assert.IsNotNull(lst.First().DebugOutput);
         }
+
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("Services_ScheduledResource_GetHistory")]
         [TestMethod]

@@ -123,6 +123,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfPathDelete_UpdateForEachOutputs")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void DsfPathDelete_UpdateForEachOutputs_MoreThan1Updates_DoesNothing()
         {
             //------------Setup for test--------------------------

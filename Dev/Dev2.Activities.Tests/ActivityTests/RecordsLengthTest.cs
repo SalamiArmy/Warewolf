@@ -113,6 +113,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DsfRecordsetLengthActivity_UpdateForEachInputs")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void DsfRecordsetLengthActivity_UpdateForEachInputs_MoreThan1Updates_DoesNothing()
         {
             //------------Setup for test--------------------------

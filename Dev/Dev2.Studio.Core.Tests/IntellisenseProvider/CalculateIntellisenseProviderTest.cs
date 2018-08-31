@@ -20,13 +20,14 @@ namespace Dev2.Core.Tests.IntellisenseProvider
 {
     [TestClass]
     public class CalculateIntellisenseProviderTest
-    {
-        
+    {        
         #region CalculateIntellisenseProvider Tests
 
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_Construct")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_Construct_DefaultPropertiesAreSet()
         {
             var calculateIntellisenseProvider = GetCalculateProvider(false);
@@ -41,6 +42,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_InputBeginsCaretPositonedAfterTwoCharacters_ResultsFilteredBasedOnCharacters()
         {
             var context = new IntellisenseProviderContext
@@ -64,6 +67,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_DesiredIsEntireSet_ResultAllResult()
         {
             var context = new IntellisenseProviderContext
@@ -83,6 +88,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_CalculateModeIsFalse_ResultCountIsZero()
         {
             var context = new IntellisenseProviderContext
@@ -101,6 +108,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_ProviderContextIsNull_ResultsCountIsZero()
         {
             var calculateIntellisenseProvider = new CalculateIntellisenseProvider();
@@ -111,6 +120,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_InputStringIsEmpty_ResultsCountIsZero()
         {
             var context = new IntellisenseProviderContext
@@ -129,6 +140,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_InputStringIsNull_ResultsCountIsZero()
         {
             var context = new IntellisenseProviderContext
@@ -147,6 +160,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_CaretPositionIsZero_ResultsCountIsZero()
         {
             var context = new IntellisenseProviderContext
@@ -165,6 +180,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_DesiredResultSetIsEntiresetAndInputIsInvalidText_EntiresetPlusAndError()
         {
             var context = new IntellisenseProviderContext
@@ -185,6 +202,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_DesiredResultsetIsClosestMatchAndInputTextIsNotFound_AnError()
         {
             var context = new IntellisenseProviderContext
@@ -204,6 +223,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_DesiredResultsetIsClosestMatchAndInputTextIsFound_ResultPlusAnError()
         {
             var context = new IntellisenseProviderContext
@@ -225,6 +246,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_GetIntellisenseResults")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_GetIntellisenseResults_DesiredResultsetIsDefaultExpressionIsIncomplete_AnError()
         {
             var context = new IntellisenseProviderContext
@@ -246,6 +269,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_PerformResultInsertion")]
         [ExpectedException(typeof(NotSupportedException))]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_PerformResultInsertion_ValidContext_ThrowsException()
         {
             var context = new IntellisenseProviderContext
@@ -263,6 +288,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_Dispose")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_Dispose_IntellisenseResultIsNullified()
         {
             var calculateIntellisenseProvider = new CalculateIntellisenseProvider();
@@ -275,6 +302,8 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_Optional")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_IsOptional_False()
         {
             var calculateIntellisenseProvider = new CalculateIntellisenseProvider();
@@ -284,13 +313,14 @@ namespace Dev2.Core.Tests.IntellisenseProvider
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CalculateIntellisenseProvider_HandlesResultInsertion")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CalculateIntellisenseProvider_HandlesResultInsertion_False()
         {
             var calculateIntellisenseProvider = new CalculateIntellisenseProvider();
             Assert.AreEqual(false, calculateIntellisenseProvider.HandlesResultInsertion);
         }
-
-
+        
         CalculateIntellisenseProvider GetCalculateProvider(bool hasEventLogs)
         {
             var syntaxBuilderMock = new Mock<ISyntaxTreeBuilderHelper>();

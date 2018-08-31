@@ -45,6 +45,8 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServerAuthorizationService_Constructor")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void ServerAuthorizationService_Constructor_PermissionsChangedEvent_ClearsCachedRequests()
         {
             //------------Setup for test--------------------------
@@ -194,6 +196,8 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_RequestWhenNotAllowedButResultsPendingAndNotHubConnect_AuthorizationCalculatedAndNotCachedIsFalse()
         {
             //------------Setup for test--------------------------
@@ -229,6 +233,8 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_RequestIsFirstTime_AuthorizationCalculatedAndCached()
         {
             //------------Setup for test--------------------------
@@ -256,6 +262,8 @@ namespace Dev2.Tests.Runtime.Security
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ServerAuthorizationService_IsAuthorized")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void ServerAuthorizationService_IsAuthorized_RequestIsSecondTime_CachedAuthorizationUsed()
         {
             //------------Setup for test--------------------------

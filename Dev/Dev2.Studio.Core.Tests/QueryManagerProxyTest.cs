@@ -47,6 +47,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("QueryManagerProxy_Fetch_DBSources_ShowServerDisconnected")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void QueryManagerProxy_Fetch_DBSources_ShowServerDisconnected()
         {
             var ser = new Dev2JsonSerializer();

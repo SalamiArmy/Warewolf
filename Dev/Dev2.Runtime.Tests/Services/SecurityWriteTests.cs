@@ -72,6 +72,8 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityWrite_Execute")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void SecurityWrite_Execute_SecuritySettingsValuePassedValidJSON_ShouldWriteFile()
         {
             //------------Setup for test--------------------------
@@ -142,6 +144,8 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityWrite_Write")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void SecurityWrite_Write_SecuritySettingsIsNotNull_PersistsSecuritySettings()
         {
             //------------Setup for test--------------------------
@@ -163,7 +167,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void SecurityWriteTests_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var securityWrite = new SecurityWrite();
@@ -177,7 +181,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void SecurityWriteTests_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var securityWrite = new SecurityWrite();

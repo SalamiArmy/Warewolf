@@ -9,8 +9,6 @@ using Dev2.Runtime.ESB.Management.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
-// ReSharper disable InconsistentNaming
-
 namespace Dev2.Tests.Runtime.Services
 {
     [TestClass]
@@ -19,7 +17,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void GetLogDataService_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var getLogDataService = new GetLogDataService();
@@ -33,7 +31,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void GetLogDataService_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var getLogDataService = new GetLogDataService();

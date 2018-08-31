@@ -12,6 +12,8 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServiceActionRepo_AddToCache")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void ServiceActionRepo_AddToCache_WhenNotExisting_ShouldAdd()
         {
             //------------Setup for test--------------------------
@@ -28,6 +30,8 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServiceActionRepo_AddToCache")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void ServiceActionRepo_AddToCache_WhenIdExists_ShouldReplace()
         {
             //------------Setup for test--------------------------
@@ -62,6 +66,8 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ServiceActionRepo_AddToCache")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void ServiceActionRepo_ReadFromCache_WhenExisting_ShouldReturnDynamicService()
         {
             //------------Setup for test--------------------------

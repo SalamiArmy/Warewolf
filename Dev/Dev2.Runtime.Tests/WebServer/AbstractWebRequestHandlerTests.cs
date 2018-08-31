@@ -50,6 +50,8 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void CreateFormGivenValidArgsShouldreturnWriter()
         {
             //---------------Set up test pack-------------------
@@ -131,6 +133,8 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceTes_ShouldSetDataObjectAsTest()
         {
             //---------------Set up test pack-------------------
@@ -397,6 +401,8 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void CreateForm_GivenWebRequestHasStartServiceNameRequestEndsWithTests_ShouldSetDataobjectsTestsOptions()
         {
             //---------------Set up test pack-------------------
@@ -436,6 +442,8 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void CreateForm_GivenWebRequestHasStartServiceNameRequestEndsWithTestsTRX_ShouldSetDataobjectsTRXOptions()
         {
             //---------------Set up test pack-------------------
@@ -474,6 +482,8 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void CreateForm_GivenServiceNameIsGuid_ShouldLoadresourceAndSetDataobjectPropertiesFromResource()
         {
             //---------------Set up test pack-------------------
@@ -520,6 +530,8 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void CreateForm_GivenServiceNameIsText_ShouldLoadresourceAndSetDataobjectPropertiesFromResource()
         {
             //---------------Set up test pack-------------------
@@ -565,6 +577,8 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void CreateForm_GivenHasTestResourcesIds_ShouldRunAllTests()
         {
             //---------------Set up test pack-------------------
@@ -631,6 +645,8 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void CreateForm_GivenEmitionTypeTEST_ShouldFetchTest()
         {
             //---------------Set up test pack-------------------

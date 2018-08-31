@@ -30,7 +30,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void RollBackTo_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var rollbackTo = new RollbackTo();
@@ -44,7 +44,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void RollBackTo_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var rollbackTo = new RollbackTo();

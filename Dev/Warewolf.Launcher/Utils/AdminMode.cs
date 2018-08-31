@@ -68,7 +68,7 @@ namespace Warewolf.Launcher.Utils
                     Console.ForegroundColor = originalColour;
                     Console.Write(option);
                 }
-                Console.WriteLine("\n\nType the name or number of the job (or comma seperated list of jobs). Leave blank to use default (Other Unit Tests)...");
+                Console.WriteLine("\n\nType the name or number of the job (or comma seperated list of jobs). Leave blank to use default (Acceptance Testing)...");
 
                 string selectedOption = WindowUtils.PromptForUserInput();
                 if (string.IsNullOrEmpty(selectedOption))

@@ -50,6 +50,8 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_SaveTests")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void TestCatalog_SaveTests_WhenNullList_ShouldDoNothing()
         {
             //------------Setup for test--------------------------
@@ -80,6 +82,8 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_SaveTests")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void TestCatalog_SaveTests_WhenNotEmptyList_ShouldSaveTestsAsFiles()
         {
             //------------Setup for test--------------------------
@@ -125,6 +129,8 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_SaveTest")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void TestCatalog_SaveTests_WhenNoResourceIdList_ShouldSaveTestAsFiles()
         {
             //------------Setup for test--------------------------
@@ -492,6 +498,8 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_Fetch")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void TestCatalog_Fetch_WhenResourceIdValid_ShouldReturnListOfTestsForResourceId()
         {
             //------------Setup for test--------------------------
@@ -776,6 +784,8 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_FetchTest")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void TestCatalog_FetchTest_WhenInvalidResourceIdTestName_ShouldReturnNull()
         {
             //------------Setup for test--------------------------

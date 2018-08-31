@@ -56,6 +56,8 @@ namespace Dev2.Core.Tests.Settings
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SettingsViewModel_Constructor")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void SettingsViewModel_Constructor_NullPopupController_ThrowsArgumentNullException()
         {
             //------------Setup for test--------------------------
@@ -150,6 +152,8 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SettingsViewModel_ShowLogging")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void SettingsViewModel_ShowLogging_DifferentValue_DoesRaisePropertyChanged()
         {
             //------------Setup for test--------------------------
@@ -183,6 +187,8 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SettingsViewModel_ShowSecurity")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void SettingsViewModel_ShowSecurity_SameValue_DoesNotRaisePropertyChanged()
         {
             //------------Setup for test--------------------------

@@ -46,7 +46,7 @@ namespace Dev2.Tests.Runtime.Services
         }
 
         [TestMethod]
-        public void CreateServiceEntryExpectsDynamicService()
+        public void TerminateExecution_CreateServiceEntryExpectsDynamicService()
         {
             var terminateExecution = new TerminateExecution();
             var ds = terminateExecution.CreateServiceEntry();
@@ -56,7 +56,7 @@ namespace Dev2.Tests.Runtime.Services
         }
 
         [TestMethod]
-        public void ExecuteExpectSuccessResult()
+        public void TerminateExecution_ExecuteExpectSuccessResult()
         {
             var service = GetExecutableService();
             ExecutableServiceRepository.Instance.Add(service.Object);
@@ -71,7 +71,7 @@ namespace Dev2.Tests.Runtime.Services
         }
 
         [TestMethod]
-        public void ExecuteExpectFailResultIfNoServiceExist()
+        public void TerminateExecution_ExecuteExpectFailResultIfNoServiceExist()
         {
             const string Expected = "Message: Failed to stop the workflow execution. It may have completed already.";
             ExecutableServiceRepository.Instance.Clear();
@@ -84,7 +84,7 @@ namespace Dev2.Tests.Runtime.Services
         }
 
         [TestMethod]
-        public void TwoServicesAddedExpectServiceWithOneAssociatedServiceFromRepository()
+        public void TerminateExecution_TwoServicesAddedExpectServiceWithOneAssociatedServiceFromRepository()
         {
             var service1 = GetExecutableService();
             var service2 = GetExecutableService();
@@ -96,7 +96,7 @@ namespace Dev2.Tests.Runtime.Services
         }
 
         [TestMethod]
-        public void ThreeServicesAddedOneRemovedExpectsTwoInRepository()
+        public void TerminateExecution_ThreeServicesAddedOneRemovedExpectsTwoInRepository()
         {
             var guid = Guid.NewGuid();
             ExecutableServiceRepository.Instance.Clear();
@@ -119,7 +119,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void TerminateExecution_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var terminateExecution = new TerminateExecution();
@@ -133,7 +133,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void TerminateExecution_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var terminateExecution = new TerminateExecution();

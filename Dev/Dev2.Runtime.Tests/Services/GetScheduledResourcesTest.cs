@@ -31,13 +31,11 @@ namespace Dev2.Tests.Runtime.Services
     [TestClass]
     public class GetScheduledResourcesTest
     {
-
-
         Mock<IServerSchedulerFactory> _factory;
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void GetScheduledResources_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var getScheduledResources = new GetScheduledResources();
@@ -51,7 +49,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void GetScheduledResources_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var getScheduledResources = new GetScheduledResources();

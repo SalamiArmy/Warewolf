@@ -47,6 +47,8 @@ namespace Dev2.Core.Tests.Settings
 
         [TestMethod]
         [TestCategory("PerfcounterViewModel_Constructor")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void PerfcounterViewModel_ServerCountersCompare_Given_Null_Server_Counters_Returns_False()
         {
             CommonSetupHelper.RegisterServerRepository();
@@ -70,6 +72,8 @@ namespace Dev2.Core.Tests.Settings
 
         [TestMethod]
         [TestCategory("PerfcounterViewModel_Constructor")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void PerfcounterViewModel_Equals_Given_Null_Server_Counters_Returns_False()
         {
             CommonSetupHelper.RegisterServerRepository();
@@ -447,6 +451,8 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("PerfcounterViewModel_ResetCounters")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void PerfcounterViewModel_ResetCounters_Command_Error_ShouldCallCommunicationsController()
         {
             //------------Setup for test--------------------------
@@ -544,6 +550,8 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("PerfcounterViewModel_PickResource")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void PerfcounterViewModel_PickResource_WhenNoResource_DoesNothing()
         {
             //------------Setup for test--------------------------

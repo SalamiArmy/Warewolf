@@ -146,7 +146,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void SettingsWrite_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var settingsWrite = new SettingsWrite();
@@ -160,7 +160,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void SettingsWrite_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var settingsWrite = new SettingsWrite();

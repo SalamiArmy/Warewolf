@@ -20,22 +20,11 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 
 namespace Dev2.Tests.Activities.ActivityTests
 {
-    /// <summary>
-    /// Summary description for DateTimeDifferenceTests
-    /// </summary>
-    [TestClass]
-    
+    [TestClass]    
     public class UnZipTests : BaseActivityUnitTest
     {
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
         public TestContext TestContext { get; set; }
-
         
-
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DsfUnZip_Constructor")]
@@ -53,6 +42,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DsfUnZip_Execute")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void Unzip_Execute_Workflow_SourceFile_And_DestinationFile_Has_Separate_Passwords_Both_Passwords_Are_Sent_To_OperationBroker()
         {
             var fileNames = new List<string>();

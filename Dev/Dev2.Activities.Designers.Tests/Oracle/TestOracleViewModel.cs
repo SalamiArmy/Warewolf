@@ -92,6 +92,8 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_MethodName")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void Oracle_Ctor_EmptyModelItem()
         {
             //------------Setup for test--------------------------

@@ -38,6 +38,8 @@ namespace Dev2.Activities.Designers.Tests.SortRecords
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SortRecordsDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void SortRecordsDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

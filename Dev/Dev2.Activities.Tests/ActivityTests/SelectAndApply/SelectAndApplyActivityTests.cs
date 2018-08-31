@@ -78,6 +78,8 @@ namespace Dev2.Tests.Activities.ActivityTests.SelectAndApply
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SelectAndApplyActivity_SetupExecute")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void SelectAndApplyActivity_SetupExecute_GivenCaseConvertActivityApplied_ToUpperApplied()
         {
             //------------Setup for test--------------------------

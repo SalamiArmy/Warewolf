@@ -65,7 +65,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Peter Bezuidenhout")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void DirectDeploy_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var directDeploy = new DirectDeploy();

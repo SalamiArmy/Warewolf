@@ -12,9 +12,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Dev2.Core.Tests
 {
-    /// <summary>
-    /// Summary description for CustomContainerTests
-    /// </summary>
     [TestClass]
     
     public class CustomContainerTests
@@ -28,6 +25,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CustomContainer_Register")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CustomContainer_Register_TypeOnce_OneEntryIsRegistered()
         {
             //------------Setup for test--------------------------
@@ -73,6 +72,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CustomContainer_Get")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CustomContainer_Get_NoTypeIsRegisted_Null()
         {
             //------------Execute Test---------------------------

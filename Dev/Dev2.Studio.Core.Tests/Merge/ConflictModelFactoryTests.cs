@@ -314,6 +314,8 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ConflictModelFactory_GivenDsfSwitchConflictNode_ShouldReturnMergeToolModel()
         {
             //------------Setup for test--------------------------
@@ -362,6 +364,8 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ConflictModelFactory_GivenNullConflictNodeActivity_ShouldReturnNull()
         {
             //------------Setup for test--------------------------

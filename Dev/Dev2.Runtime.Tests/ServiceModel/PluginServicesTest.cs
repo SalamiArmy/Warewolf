@@ -240,6 +240,8 @@ namespace Dev2.Tests.Runtime.ServiceModel
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("PluginServices_Test")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void PluginServices_Test_WhenTestingPluginReturningBool_ExpectValidPaths()
         {
             //------------Setup for test--------------------------
@@ -292,6 +294,8 @@ namespace Dev2.Tests.Runtime.ServiceModel
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("PluginServices_Test")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void PluginServices_Test_WhenTestingPluginReturningPlainString_ExpectValidPaths()
         {
             //------------Setup for test--------------------------

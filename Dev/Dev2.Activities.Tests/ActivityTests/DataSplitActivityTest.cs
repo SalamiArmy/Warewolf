@@ -24,20 +24,12 @@ using Unlimited.Applications.BusinessDesignStudio.Activities;
 
 namespace Dev2.Tests.Activities.ActivityTests
 {
-    /// <summary>
-    /// Summary description for DataSplitActivityTest
-    /// </summary>
     [TestClass]
-
     public class DataSplitActivityTest : BaseActivityUnitTest
     {
         IList<DataSplitDTO> _resultsCollection = new List<DataSplitDTO>();
         readonly string _source = ActivityStrings.DataSplit_SourceString;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
+        
         public TestContext TestContext { get; set; }
 
         #region Additional test attributes
@@ -53,19 +45,17 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         #endregion
-
-
-
+        
         #region Funky Language
 
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfDataMergeActivity_Execute")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void DsfDataSplitActivity_Execute_WhenUsingAppendAndMixedSplitType_ExpectCorrectSplit()
         {
-
             //------------Setup for test--------------------------
-
             _resultsCollection.Add(new DataSplitDTO("[[rs().col1]]", "Chars", "|", 1));
             _resultsCollection.Add(new DataSplitDTO("[[rs().col2]]", "Chars", "|", 2));
             _resultsCollection.Add(new DataSplitDTO("[[rs().col3]]", "New Line", "", 3));
@@ -102,16 +92,13 @@ namespace Dev2.Tests.Activities.ActivityTests
             CollectionAssert.AreEqual(col3Expected, col3List, comparer);
             CollectionAssert.AreEqual(dataExpected, dataList, comparer);
         }
-
-
+        
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfDataMergeActivity_Execute")]
         public void DsfDataSplitActivity_Execute_WhenUsingStarAndMixedSplitType_ExpectCorrectSplit()
         {
-
             //------------Setup for test--------------------------
-
             _resultsCollection.Add(new DataSplitDTO("[[rs().col1]]", "Chars", "|", 1));
             _resultsCollection.Add(new DataSplitDTO("[[rs().col2]]", "Chars", "|", 2));
             _resultsCollection.Add(new DataSplitDTO("[[rs().col3]]", "New Line", "", 3));
@@ -136,7 +123,6 @@ namespace Dev2.Tests.Activities.ActivityTests
             // remove test datalist ;)
 
             //------------Assert Results-------------------------
-
             var col1Expected = new List<string> { "RSA ID" };
             var col2Expected = new List<string> { "FirstName" };
             var col3Expected = new List<string> { "LastName" };
@@ -154,9 +140,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestCategory("DsfDataMergeActivity_Execute")]
         public void DsfDataSplitActivity_Execute_WhenUsingStarAndMixedSplitType_WithEmptyLine_ExpectCorrectSplit()
         {
-
             //------------Setup for test--------------------------
-
             _resultsCollection.Add(new DataSplitDTO("[[rs().col1]]", "Chars", "|", 1));
             _resultsCollection.Add(new DataSplitDTO("[[rs().col2]]", "Chars", "|", 2));
             _resultsCollection.Add(new DataSplitDTO("[[rs().col3]]", "New Line", "", 3));
@@ -197,7 +181,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         #endregion
 
-        [TestMethod] // - OK
+        [TestMethod]
         public void EmptySourceString_Expected_No_Splits()
         {
             _resultsCollection.Add(new DataSplitDTO("[[OutVar1]]", "Index", "15", 1));
@@ -205,7 +189,6 @@ namespace Dev2.Tests.Activities.ActivityTests
             var result = ExecuteProcess();
             GetScalarValueFromEnvironment(result.Environment, "OutVar1", out string actual, out string error);
             // remove test datalist ;)
-
             Assert.AreEqual(string.Empty, actual);
         }
 
@@ -222,13 +205,11 @@ namespace Dev2.Tests.Activities.ActivityTests
             // remove test datalist ;)
 
             Assert.AreEqual(expected, actual, "Got " + actual + " expected " + expected);
-
         }
 
         [TestMethod]
         public void MultipleScalars_Expected_Split_And_Insert_Mutiple_Scalars()
         {
-
             _resultsCollection.Add(new DataSplitDTO("[[OutVar1]]", "Index", "15", 1));
             _resultsCollection.Add(new DataSplitDTO("[[OutVar2]]", "Index", "10", 2));
             _resultsCollection.Add(new DataSplitDTO("[[OutVar3]]", "Index", "5", 3));

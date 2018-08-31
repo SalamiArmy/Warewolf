@@ -46,6 +46,8 @@ namespace Dev2.Tests.Runtime.WebServer
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("WebPostRequestHandler_ProcessRequest")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void WebPostRequestHandler_ProcessRequest_WhenValidUserContext_ExpectExecution()
         {
             //------------Setup for test--------------------------

@@ -24,7 +24,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void SavePluginService_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var SavePluginService = new SavePluginService();
@@ -38,7 +38,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void SavePluginService_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var SavePluginService = new SavePluginService();

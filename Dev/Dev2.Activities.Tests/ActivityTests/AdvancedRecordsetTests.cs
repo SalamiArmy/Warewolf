@@ -166,10 +166,13 @@ namespace Dev2.Tests.Activities.ActivityTests
             Assert.IsInstanceOfType(results, typeof(DataSet));
             Assert.AreEqual(3, results.Tables[0].Rows.Count);
         }
+
         [TestMethod]
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void AdvancedRecordset_SelectStatementWithAllias_Join_ReturnOutputs()
         {
             //------------Setup for test--------------------------

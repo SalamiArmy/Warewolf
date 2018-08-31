@@ -14,7 +14,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Peter Bezuidenhout")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void GetServerInformation_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var serverInformation = new GetServerInformation();
@@ -28,7 +28,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Peter Bezuidenhout")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void GetServerInformation_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var serverInformation = new GetServerInformation();
@@ -42,13 +42,11 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Peter Bezuidenhout")]
         [TestCategory("GetServerInformation_HandlesType")]
-        
-        public void GetServerInformation_HandlesType_ExpectName()
+        public void GetServerInformation_GetServerInformation_HandlesType_ExpectName()
 
         {
             //------------Setup for test--------------------------
             var getInformation = new GetServerInformation();
-
 
             //------------Execute Test---------------------------
 

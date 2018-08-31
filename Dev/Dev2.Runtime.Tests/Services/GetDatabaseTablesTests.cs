@@ -46,7 +46,7 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void GetDatabaseTables_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var getDatabaseTables = new GetDatabaseTables();

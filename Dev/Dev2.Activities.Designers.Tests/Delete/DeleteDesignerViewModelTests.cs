@@ -46,6 +46,8 @@ namespace Dev2.Activities.Designers.Tests.Delete
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DeleteDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void DeleteDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

@@ -12,14 +12,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Warewolf.Resource.Errors;
 
-
-
 namespace Dev2.Core.Tests.Controller
 {
     [TestClass]
     public class CommunicationControllerTests
     {
-
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Not Parallelizable Studio Core Unit Tests")]
@@ -115,6 +112,8 @@ namespace Dev2.Core.Tests.Controller
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ExecuteCommandAsync_GivenHasAuthorizationError_ShouldShowCorrectPopup()
         {
             //---------------Set up test pack-------------------
@@ -134,12 +133,13 @@ namespace Dev2.Core.Tests.Controller
                 //---------------Test Result -----------------------
                 Assert.IsNotNull(d);
                 mock.Verify(c => c.Show(ErrorResource.NotAuthorizedToCreateException, "ServiceNotAuthorizedException", MessageBoxButton.OK, MessageBoxImage.Error, "", false, false, true, false, false, false), Times.Once);
-            });
-            
+            });            
         }
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ExecuteCommandAsync_GivenHasAuthorizationError_ShouldShowCorrectPopup_Aggregation()
         {
             //---------------Set up test pack-------------------
@@ -161,8 +161,7 @@ namespace Dev2.Core.Tests.Controller
                 //---------------Test Result -----------------------
                 Assert.IsNotNull(d);
                 mock.Verify(c => c.Show(ErrorResource.NotAuthorizedToCreateException, "ServiceNotAuthorizedException", MessageBoxButton.OK, MessageBoxImage.Error, "", false, false, true, false, false, false), Times.Never);
-            });
-            
+            });            
         }
     }
 }

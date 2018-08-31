@@ -20,24 +20,17 @@ using System.Linq;
 using Dev2.Common.State;
 
 namespace ActivityUnitTests.ActivityTests
-
 {
-    /// <summary>
-    /// Summary description for DateTimeDifferenceTests
-    /// </summary>
     [TestClass]
-
     public class DotNetDateTimeDifferenceTests : BaseActivityUnitTest
     {
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
         public TestContext TestContext { get; set; }
 
         #region Positive Test Cases
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void Positive_With_Normal_Params_Expected_Positive()
         {
             SetupArguments(

@@ -76,6 +76,8 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void SharePointCopyFileDesignerViewModel_InitilizeProperties_ReturnsSuccess()
         {
             //------------Setup for test--------------------------
@@ -170,6 +172,8 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void SharePointFileUploadDesignerViewModel_SetPropertiesNullLocalPathTo_ReturnsSuccess()
         {
             //------------Setup for test--------------------------

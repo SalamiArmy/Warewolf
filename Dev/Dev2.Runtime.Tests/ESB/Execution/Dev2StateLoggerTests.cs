@@ -174,6 +174,8 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void Dev2StateLogger_Given_LogFile_AlreadyExists()
         {
             var streamWriter = TextWriter.Synchronized(new StreamWriter(new MemoryStream()));
@@ -218,6 +220,8 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void Dev2StateLogger_Given_LogFile_AlreadyExists_And_Is_More_Than_30_Days_Old()
         {            
             var streamWriter = TextWriter.Synchronized(new StreamWriter(new MemoryStream()));

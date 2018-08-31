@@ -120,6 +120,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("DragDropHelpers_PreventDrop")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DragDropHelpers_PreventDrop_LocalResourceOnRemoteDesignSurface_ReturnsFalse()
         {
             //------------Setup for test--------------------------
@@ -185,6 +187,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DragDropHelpers_PreventDrop")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DragDropHelpers_PreventDrop_DropResourceOntoItself_ReturnsFalse()
         {
             //------------Setup for test--------------------------
@@ -220,6 +224,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DragDropHelpers_PreventDrop")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DragDropHelpers_PreventDrop_UserIsNotAuthorized_True()
         {
             //------------Setup for test--------------------------

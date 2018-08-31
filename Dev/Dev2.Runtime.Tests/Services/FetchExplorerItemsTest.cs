@@ -54,7 +54,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void FetchExplorerItems_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var fetchExplorerItems = new FetchExplorerItems();
@@ -147,6 +147,8 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("FetchExplorerItems_HandlesType")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void FetchExplorerItems_ExecuteReloadTrueWithExecutionManager_ExpectCallsStartAndStopRefresh()
         {
             //------------Setup for test--------------------------

@@ -43,6 +43,8 @@ namespace Dev2.Activities.Designers.Tests.ReadFile
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("ReadFileDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ReadFileDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

@@ -141,6 +141,8 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void WebPost_BodyIsXmlNoHeaders_ExpectNewHeadersAdded()
         {
             //---------------Set up test pack-------------------
@@ -213,6 +215,8 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WebPostDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void WebPostDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

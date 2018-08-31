@@ -78,6 +78,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void SelectedMethod_GivenIsSet_ShouldFireIsVoidChanges()
         {
             //------------Setup for test--------------------------
@@ -187,6 +189,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void SelectedMethod_GivenIsSet_ShouldFireIsRecordsetIsObjectChanges()
         {
             //------------Setup for test--------------------------
@@ -333,6 +337,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void SelectedMethod_GivenIsSet_ShouldFireIsRecordsetIsInputsEmptyRowsChanges()
         {
             //------------Setup for test--------------------------
@@ -534,6 +540,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ObjectName_GivenIsSetToEmpty_ShouldPropertyChangesChangesNoUpdatesToDatalist()
         {
             //------------Setup for test--------------------------
@@ -628,6 +636,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ObjectResult_GivenIsSet_ShouldPropertyChangesChanges()
         {
             //------------Setup for test--------------------------
@@ -666,6 +676,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void IsMethodExpanded_GivenIsSet_ShouldPropertyChangesChanges()
         {
             //------------Setup for test--------------------------
@@ -702,6 +714,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void IsRefreshing_GivenIsSet_ShouldPropertyChangesChanges()
         {
             //------------Setup for test--------------------------
@@ -740,6 +754,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CloneRegion_GivenRegion_ShouldCopyInputs()
         {
             //------------Setup for test--------------------------
@@ -807,6 +823,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CloneRegion_GivenRegion_ShouldCopyFullName()
         {
             //------------Setup for test--------------------------
@@ -840,6 +858,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CloneRegion_GivenRegion_ShouldCopyMethod()
         {
             //------------Setup for test--------------------------
@@ -873,6 +893,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void RestoreRegion_GivenDotnetRegion_ShouldFireSelectedMethodChanged()
         {
             //---------------Set up test pack-------------------
@@ -911,6 +933,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void RestoreRegion_GivenDotnetRegion_ShouldSetSelectedMethod()
         {
             //---------------Set up test pack-------------------
@@ -941,6 +965,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CanRefresh_GivenSourceSelected_ShouldreturnTrue()
         {
             //---------------Set up test pack-------------------
@@ -968,6 +994,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CanRefresh_GivenSourceNotSelected_ShouldreturnFalse()
         {
             //---------------Set up test pack-------------------
@@ -995,6 +1023,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CanRefresh_GivenNamespaceNotSelected_ShouldreturnFalse()
         {
             //---------------Set up test pack-------------------
@@ -1022,6 +1052,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void UpdateBasedOnNamespace_GivenSource_ShouldLoadMethodsToRun()
         {
             //---------------Set up test pack-------------------
@@ -1053,6 +1085,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void RefreshMethodsCommand_GivenSource_ShouldLoadMethodsToRun()
         {
             //---------------Set up test pack-------------------
@@ -1083,6 +1117,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void SourceOnSomethingChanged_GivenSource_ShouldLoadMethodsToRun()
         {
             //---------------Set up test pack-------------------
@@ -1135,6 +1171,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ViewObjectResult_GivenObjectResult_ShouldObjectPopup()
         {
             //---------------Set up test pack-------------------
@@ -1203,6 +1241,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void RefreshMethodsCommand_GivenThrowsError_ShouldAddErrors()
         {
             //---------------Set up test pack-------------------
@@ -1228,6 +1268,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void IsObjectEnabled_GivenIsNotObject_ShouldReturnTrue()
         {
             //---------------Set up test pack-------------------
@@ -1250,6 +1292,8 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void IsInputsEmptyRows_GivenNoInputs_ShouldReturnTrue()
         {
             //---------------Set up test pack-------------------

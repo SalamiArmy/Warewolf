@@ -230,6 +230,8 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ConvertDataListStringToCollections_DataListWithComplexObject_ShouldPopulateComplexObject()
         {
             Setup();
@@ -249,6 +251,8 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ConvertDataListStringToCollections_DataListWithComplexObjectHasArray_ShouldPopulateComplexObjectSetNameWithBrackets()
         {
             Setup();
@@ -429,6 +433,8 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void SetUnusedDataListItemsWhenTwoScalarsSameNameExpectedBothMarkedAsUnused()
         {
             //---------------------------Setup----------------------------------------------------------
@@ -536,6 +542,8 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void SetUnusedDataListItemsWhenTwoRecsetsSameNameExpectedBothMarkedAsUnused()
         {
             //---------------------------Setup----------------------------------------------------------
@@ -627,6 +635,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("DataListViewModel_HasUnusedDataListItems")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_HasOpenBracket_BeforeAnyClosing_ExpectedComplexObjectNotToBeAdded()
         {
             Setup();
@@ -814,6 +824,8 @@ namespace Dev2.Core.Tests
         #region RemoveRowIfEmpty Tests
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void RemoveRowIfEmpty_ExpectedCountofDataListItemsReduceByOne()
         {
             Setup();
@@ -864,6 +876,8 @@ namespace Dev2.Core.Tests
         #region AddRecordsetNamesIfMissing Tests
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void AddRecordSetNamesIfMissing_DataListContainingRecordSet_Expected_Positive()
         {
             Setup();
@@ -876,6 +890,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_AddRecordSetNamesIfMissing")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void AddRecordSetNamesIfMissing_DataListContainingRecordSet_WithDoubleBracketedRecsetName_Expected_Positive()
         {
 
@@ -1010,6 +1026,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_AddRecordSetNamesIfMissing")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void AddRecordSetNamesIfMissing_DataListContainingRecordSet_WithSingleBracketedScalar_Expected_Positive()
         {
 
@@ -1040,6 +1058,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_AddRecordSetNamesIfMissing")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void AddRecordSetNamesIfMissing_DataListContainingRecordSet_WithRoundBracketedScalar_Expected_Positive()
         {
 
@@ -1358,6 +1378,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ValidateNames_ItemToAddTrueWithScalarWhenDataListContainsScalarWithSameName_ShouldReturnError()
         {
             //------------Setup for test--------------------------
@@ -1399,6 +1421,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ValidateNames_WhenAddItemFalseAndScalarItemNotExist_ShouldNotCauseErrorToShow()
         {
             //------------Setup for test--------------------------
@@ -1414,6 +1438,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ValidateNames_WhenAddItemTrueAndScalarItemNotExist_ShouldNotCauseErrorToShow()
         {
             //------------Setup for test--------------------------
@@ -1529,6 +1555,8 @@ namespace Dev2.Core.Tests
         #region WriteDataToResourceModel Tests
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void WriteDataListToResourceModel_ScalarAnsrecset_Expected_Positive()
         {
             Setup();
@@ -1709,6 +1737,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_AddingAFieldToAEmptyRecordset_ErrorRemoved()
         {
             //------------Setup for test--------------------------            
@@ -1788,6 +1818,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_RecordSetWithNoItems_HasErrorTrue()
         {
             Setup();
@@ -1805,6 +1837,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_HasErrors")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_HasErrors_RecordSetWithNoItems_HasErrorTrue()
         {
             //------------Setup------------------------------------
@@ -1825,6 +1859,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_HasNoErrors")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_HasNoErrors_RecordSetWithNoItems_HasErrorFalse()
         {
             //------------Setup------------------------------------
@@ -1840,6 +1876,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_RecordSetWithItems_HasErrorFalse()
         {
             Setup();
@@ -1858,6 +1896,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_ItemHasInvalidChar_ErrorNotRemovedFromDuplicateCheck()
         {
             //------------Setup for test--------------------------
@@ -1874,6 +1914,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataListViewModel_HasErrors")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_HasErrors_ItemHasInvalidChar_ErrorNotRemovedFromDuplicateCheck()
         {
             //------------Setup for test--------------------------
@@ -1892,6 +1934,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_WithInvalidScalarName_ShouldHaveError()
         {
             //------------Setup for test--------------------------
@@ -1926,6 +1970,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_WithInvalidScalarNameContainsDotAndExtraText_ShouldHaveError()
         {
             //------------Setup for test--------------------------
@@ -1942,6 +1988,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_WithInvalidScalarNameWithBrackets_ShouldHaveError()
         {
             //------------Setup for test--------------------------
@@ -1958,6 +2006,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_WithInvalidScalarNameWithUnderScore_ShouldNotHaveError()
         {
             //------------Setup for test--------------------------
@@ -1990,6 +2040,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_ScalarsWithDuplicateName_ItemHasErrorTrue()
         {
             //------------Setup for test--------------------------
@@ -2011,6 +2063,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_HasErrors")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_HasErrors_ScalarsWithDuplicateName_ItemHasErrorTrue()
         {
             //------------Setup for test--------------------------
@@ -2033,6 +2087,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_RemoveScalarsWithDuplicateName_ItemHasErrorFalse()
         {
             //------------Setup for test--------------------------
@@ -2067,6 +2123,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_ScalarsWithUniqueName_ItemHasErrorFalse()
         {
             //------------Setup for test--------------------------
@@ -2139,6 +2197,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_AddScalarWithDuplicateRecordset_ScalarHasDuplicateRecordsetErrorMessage()
         {
             //------------Setup for test--------------------------

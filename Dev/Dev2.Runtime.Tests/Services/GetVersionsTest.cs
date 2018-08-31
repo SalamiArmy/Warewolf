@@ -33,7 +33,7 @@ using Moq;
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void GetVersions_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var getVersions = new GetVersions();
@@ -47,7 +47,7 @@ using Moq;
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void GetVersions_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var getVersions = new GetVersions();
@@ -59,73 +59,73 @@ using Moq;
         }
 
         [TestMethod]
-            [Owner("Leon Rajindrapersadh")]
-            [TestCategory("GetVersions_HandlesType")]
-            public void GetVersions_HandlesType_ExpectName()
-            {
-                //------------Setup for test--------------------------
-                var getVersions = new GetVersions();
+        [Owner("Leon Rajindrapersadh")]
+        [TestCategory("GetVersions_HandlesType")]
+        public void GetVersions_HandlesType_ExpectName()
+        {
+            //------------Setup for test--------------------------
+            var getVersions = new GetVersions();
 
 
-                //------------Execute Test---------------------------
+            //------------Execute Test---------------------------
 
-                //------------Assert Results-------------------------
-                Assert.AreEqual("GetVersions", getVersions.HandlesType());
-            }
-
-            [TestMethod]
-            [Owner("Leon Rajindrapersadh")]
-            [TestCategory("GetVersions_Execute")]
-            public void GetVersions_Execute_NullValuesParameter_ErrorResult()
-            {
-                //------------Setup for test--------------------------
-                var getVersions = new GetVersions();
-                var serializer = new Dev2JsonSerializer();
-                //------------Execute Test---------------------------
-                var jsonResult = getVersions.Execute(null, null);
-            var result = serializer.Deserialize<IExplorerRepositoryResult>(jsonResult);
             //------------Assert Results-------------------------
-            Assert.AreEqual(ExecStatus.Fail, result.Status);
-            }
+            Assert.AreEqual("GetVersions", getVersions.HandlesType());
+        }
 
-            [TestMethod]
-            [Owner("Leon Rajindrapersadh")]
-            [TestCategory("GetVersions_HandlesType")]
-            public void GetVersions_Execute_ExpectName()
-            {
-                //------------Setup for test--------------------------
-                var getVersions = new GetVersions();
-                var resourceId = Guid.NewGuid();
-                var item = new ServerExplorerItem("a", Guid.NewGuid(), "Folder", null, Permissions.DeployFrom, "");
-            var repo = new Mock<IServerVersionRepository>();
-                var ws = new Mock<IWorkspace>();
-                repo.Setup(a => a.GetVersions(resourceId)).Returns(new List<IExplorerItem> {item});
-                var serializer = new Dev2JsonSerializer();
-                ws.Setup(a => a.ID).Returns(Guid.Empty);
-                getVersions.ServerVersionRepo = repo.Object;
-                //------------Execute Test---------------------------
-                var ax = getVersions.Execute(new Dictionary<string, StringBuilder> {{"resourceId",new StringBuilder( resourceId.ToString())}}, ws.Object);
-                //------------Assert Results-------------------------
-                repo.Verify(a => a.GetVersions(It.IsAny<Guid>()));
-                Assert.AreEqual(serializer.Deserialize<IList<IExplorerItem>>(ax.ToString())[0].ResourceId, item.ResourceId);
-            }
+        [TestMethod]
+        [Owner("Leon Rajindrapersadh")]
+        [TestCategory("GetVersions_Execute")]
+        public void GetVersions_Execute_NullValuesParameter_ErrorResult()
+        {
+            //------------Setup for test--------------------------
+            var getVersions = new GetVersions();
+            var serializer = new Dev2JsonSerializer();
+            //------------Execute Test---------------------------
+            var jsonResult = getVersions.Execute(null, null);
+        var result = serializer.Deserialize<IExplorerRepositoryResult>(jsonResult);
+        //------------Assert Results-------------------------
+        Assert.AreEqual(ExecStatus.Fail, result.Status);
+        }
 
-            [TestMethod]
-            [Owner("Leon Rajindrapersadh")]
-            [TestCategory("GetVersions_HandlesType")]
-            public void GetVersions_CreateServiceEntry_ExpectProperlyFormedDynamicService()
-            {
-                //------------Setup for test--------------------------
-                var getVersions = new GetVersions();
+        [TestMethod]
+        [Owner("Leon Rajindrapersadh")]
+        [TestCategory("GetVersions_HandlesType")]
+        public void GetVersions_Execute_ExpectName()
+        {
+            //------------Setup for test--------------------------
+            var getVersions = new GetVersions();
+            var resourceId = Guid.NewGuid();
+            var item = new ServerExplorerItem("a", Guid.NewGuid(), "Folder", null, Permissions.DeployFrom, "");
+        var repo = new Mock<IServerVersionRepository>();
+            var ws = new Mock<IWorkspace>();
+            repo.Setup(a => a.GetVersions(resourceId)).Returns(new List<IExplorerItem> {item});
+            var serializer = new Dev2JsonSerializer();
+            ws.Setup(a => a.ID).Returns(Guid.Empty);
+            getVersions.ServerVersionRepo = repo.Object;
+            //------------Execute Test---------------------------
+            var ax = getVersions.Execute(new Dictionary<string, StringBuilder> {{"resourceId",new StringBuilder( resourceId.ToString())}}, ws.Object);
+            //------------Assert Results-------------------------
+            repo.Verify(a => a.GetVersions(It.IsAny<Guid>()));
+            Assert.AreEqual(serializer.Deserialize<IList<IExplorerItem>>(ax.ToString())[0].ResourceId, item.ResourceId);
+        }
+
+        [TestMethod]
+        [Owner("Leon Rajindrapersadh")]
+        [TestCategory("GetVersions_HandlesType")]
+        public void GetVersions_CreateServiceEntry_ExpectProperlyFormedDynamicService()
+        {
+            //------------Setup for test--------------------------
+            var getVersions = new GetVersions();
 
 
-                //------------Execute Test---------------------------
-                var a = getVersions.CreateServiceEntry();
-                //------------Assert Results-------------------------
-                var b = a.DataListSpecification.ToString();
-                Assert.AreEqual(@"<DataList><ResourceType ColumnIODirection=""Input""/><Roles ColumnIODirection=""Input""/><ResourceId ColumnIODirection=""Input""/><Dev2System.ManagmentServicePayload ColumnIODirection=""Both""></Dev2System.ManagmentServicePayload></DataList>", b);
-            }
+            //------------Execute Test---------------------------
+            var a = getVersions.CreateServiceEntry();
+            //------------Assert Results-------------------------
+            var b = a.DataListSpecification.ToString();
+            Assert.AreEqual(@"<DataList><ResourceType ColumnIODirection=""Input""/><Roles ColumnIODirection=""Input""/><ResourceId ColumnIODirection=""Input""/><Dev2System.ManagmentServicePayload ColumnIODirection=""Both""></Dev2System.ManagmentServicePayload></DataList>", b);
         }
     }
+}
 
 

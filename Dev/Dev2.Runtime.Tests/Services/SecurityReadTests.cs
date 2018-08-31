@@ -48,6 +48,8 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SecurityRead_Execute")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void SecurityRead_Execute_WhenOldSecureConfigExist_MigratesAdministratorsToWarewolfAdministrators_ExpectSuccessfulMigration()
         {
             //------------Setup for test--------------------------
@@ -322,7 +324,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void SecurityRead_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var securityRead = new SecurityRead();
@@ -336,7 +338,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void SecurityRead_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var securityRead = new SecurityRead();
@@ -350,6 +352,8 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SecurityRead_Execute")]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void SecurityRead_Execute_Given_Config_data()
         {
             //------------Setup for test--------------------------

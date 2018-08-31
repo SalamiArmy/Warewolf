@@ -32,7 +32,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void SaveScheduledResource_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var saveScheduledResource = new SaveScheduledResource();
@@ -46,7 +46,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void SaveScheduledResource_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var saveScheduledResource = new SaveScheduledResource();
@@ -60,7 +60,7 @@ namespace Dev2.Tests.Runtime.Services
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("Services_ScheduledResource_Save")]
         [TestMethod]
-        public void SaveScheduledResourceTest_ServiceName()
+        public void SaveScheduledResource_ServiceName()
         {
             SchedulerTestBaseStaticMethods.SaveScheduledResourceTest_ServiceName("SaveScheduledResourceService", new SaveScheduledResource());
         }
@@ -68,7 +68,7 @@ namespace Dev2.Tests.Runtime.Services
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("Services_ScheduledResource_Save")]
         [TestMethod]
-        public void GetScheduledResourcesReturnsDynamicService()
+        public void SaveScheduledResource_GetScheduledResourcesReturnsDynamicService()
         {
             SchedulerTestBaseStaticMethods.GetScheduledResourcesReturnsDynamicService(new SaveScheduledResource());
 

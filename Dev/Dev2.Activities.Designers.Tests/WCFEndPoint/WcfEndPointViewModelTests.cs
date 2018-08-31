@@ -142,6 +142,8 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void WcfEndPointViewModel_SetDisplayName_Success()
         {
             var model = GetViewModel();

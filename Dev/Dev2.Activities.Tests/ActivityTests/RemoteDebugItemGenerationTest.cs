@@ -81,6 +81,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void CanSerializeRemoteDebugItems()
         {
             var act = new DsfCountRecordsetNullHandlerActivity { RecordsetName = "[[Customers()]]", CountNumber = "[[res]]" };

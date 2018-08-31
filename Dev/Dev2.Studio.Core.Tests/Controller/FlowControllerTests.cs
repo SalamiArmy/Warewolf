@@ -30,6 +30,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("FlowController_ConfigureSwitch")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void FlowController_ConfigureSwitch_Handle_Switch()
         {
             //------------Setup for test--------------------------
@@ -97,6 +99,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("FlowController_ConfigureSwitch")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void FlowController_ConfigureSwitch_Handle_SwitchCase()
         {
             //------------Setup for test--------------------------
@@ -163,6 +167,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("FlowController_ConfigureSwitch")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void FlowController_ConfigureSwitch_Handle_EditSwitchCase()
         {
             //------------Setup for test--------------------------

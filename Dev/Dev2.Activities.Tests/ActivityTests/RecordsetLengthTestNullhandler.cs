@@ -14,7 +14,6 @@ using System.Collections.Generic;
 using System.Linq;
 using ActivityUnitTests;
 using Dev2.Common.State;
-using Dev2.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 
@@ -74,7 +73,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        public void DsfRecordsetLengthActivity_GivenIsNew_ShouldTreatNullAsZero()
+        public void DsfRecordsetLengthNullHandlerActivity_GivenIsNew_ShouldTreatNullAsZero()
         {
             //---------------Set up test pack-------------------
             var act = new DsfRecordsetNullhandlerLengthActivity();
@@ -118,8 +117,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
-        [TestCategory("DsfRecordsetLengthActivity_UpdateForEachInputs")]
-        public void DsfRecordsetLengthActivity_UpdateForEachInputs_NullUpdates_DoesNothing()
+        [TestCategory("DsfRecordsetLengthNullHandlerActivity_UpdateForEachInputs")]
+        public void DsfRecordsetLengthNullHandlerActivity_UpdateForEachInputs_NullUpdates_DoesNothing()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Customers()]]";
@@ -129,13 +128,11 @@ namespace Dev2.Tests.Activities.ActivityTests
             //------------Assert Results-------------------------
             Assert.AreEqual(recordsetName, act.RecordsetName);
         }
-
-
-
+        
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
-        [TestCategory("DsfRecordsetLengthActivity_UpdateForEachInputs")]
-        public void DsfRecordsetLengthActivity_UpdateForEachInputs_MoreThan1Updates_DoesNothing()
+        [TestCategory("DsfRecordsetLengthNullHandlerActivity_UpdateForEachInputs")]
+        public void DsfRecordsetLengthNullHandlerActivity_UpdateForEachInputs_MoreThan1Updates_DoesNothing()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Customers()]]";
@@ -150,8 +147,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
-        [TestCategory("DsfRecordsetLengthActivity_UpdateForEachInputs")]
-        public void DsfRecordsetLengthActivity_UpdateForEachInputs_1Updates_UpdateRecordsetName()
+        [TestCategory("DsfRecordsetLengthNullHandlerActivity_UpdateForEachInputs")]
+        public void DsfRecordsetLengthNullHandlerActivity_UpdateForEachInputs_1Updates_UpdateRecordsetName()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Customers()]]";
@@ -165,8 +162,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
-        [TestCategory("DsfRecordsetLengthActivity_UpdateForEachOutputs")]
-        public void DsfRecordsetLengthActivity_UpdateForEachOutputs_NullUpdates_DoesNothing()
+        [TestCategory("DsfRecordsetLengthNullHandlerActivity_UpdateForEachOutputs")]
+        public void DsfRecordsetLengthNullHandlerActivity_UpdateForEachOutputs_NullUpdates_DoesNothing()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Customers()]]";
@@ -179,8 +176,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
-        [TestCategory("DsfRecordsetLengthActivity_UpdateForEachOutputs")]
-        public void DsfRecordsetLengthActivity_UpdateForEachOutputs_MoreThan1Updates_DoesNothing()
+        [TestCategory("DsfRecordsetLengthNullHandlerActivity_UpdateForEachOutputs")]
+        public void DsfRecordsetLengthNullHandlerActivity_UpdateForEachOutputs_MoreThan1Updates_DoesNothing()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Customers()]]";
@@ -195,8 +192,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
-        [TestCategory("DsfRecordsetLengthActivity_UpdateForEachOutputs")]
-        public void DsfRecordsetLengthActivity_UpdateForEachOutputs_1Updates_UpdateRecordsLength()
+        [TestCategory("DsfRecordsetLengthNullHandlerActivity_UpdateForEachOutputs")]
+        public void DsfRecordsetLengthNullHandlerActivity_UpdateForEachOutputs_1Updates_UpdateRecordsLength()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Customers()]]";
@@ -211,7 +208,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DsfRecordsetLengthActivityGetForEachInputs")]
-        public void DsfRecordsetLengthActivity_GetForEachInputs_WhenHasExpression_ReturnsInputList()
+        public void DsfRecordsetLengthNullHandlerActivity_GetForEachInputs_WhenHasExpression_ReturnsInputList()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Customers()]]";
@@ -226,8 +223,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
-        [TestCategory("DsfRecordsetLengthActivity_GetForEachOutputs")]
-        public void DsfRecordsetLengthActivity_GetForEachOutputs_WhenHasResult_ReturnsInputList()
+        [TestCategory("DsfRecordsetLengthNullHandlerActivity_GetForEachOutputs")]
+        public void DsfRecordsetLengthNullHandlerActivity_GetForEachOutputs_WhenHasResult_ReturnsInputList()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Customers()]]";

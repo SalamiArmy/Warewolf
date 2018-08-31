@@ -579,6 +579,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Candice Daniel")]
         [TestCategory("DsfNativeActivity_ExecuteTool")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void DsfNativeActivity_ExecuteTool_TestErrors_TestExecution()
         {
             CurrentDl = "<ADL><result></result></ADL>";

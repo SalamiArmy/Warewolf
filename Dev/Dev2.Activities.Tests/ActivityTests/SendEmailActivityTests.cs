@@ -323,6 +323,8 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [TestCategory("SendEmail_Execute")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void SendEmail_Execute_MixedScalarsRecordsetData_CorrectExcecution()
         {
             var emailSourceForTesting = EmailSourceForTesting();

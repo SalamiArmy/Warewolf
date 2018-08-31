@@ -167,6 +167,8 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WebPutDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void WebPutDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -478,6 +480,8 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void WebPut_BodyIsXmlExistingHeaders_ExpectNoHeadersAdded()
         {
             //---------------Set up test pack-------------------

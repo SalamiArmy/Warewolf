@@ -52,6 +52,8 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestCategory("ActivityDesignerViewModel_UnitTest")]
         [Description("Base activity view model can initialize")]
         [Owner("Ashley Lewis")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_Constructor_EmptyModelItem_ViewModelConstructed()
         {
             //init
@@ -67,6 +69,8 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerViewModel_ShowHelp")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ActivityDesignerViewModel_ShowHelp_SetToTrue_SetInitialFocusIsCalled()
         {
             var mockModel = new Mock<ModelItem>();

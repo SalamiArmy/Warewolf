@@ -82,7 +82,7 @@ namespace Dev2.Activities.Designers.Tests.Script_Python
         [TestCategory("ScriptDesignerViewModel_Constructor")]
         [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
-        public void ScriptDesignerViewModel_Constructor_PropertiesInitialized()
+        public void PythonDesignerViewModel_Constructor_PropertiesInitialized()
         {
             var modelItem = CreateModelItem();
             var viewModel = new TestPythonDesignerViewModel(modelItem);
@@ -95,7 +95,7 @@ namespace Dev2.Activities.Designers.Tests.Script_Python
         [TestCategory("ScriptDesignerViewModel_SelectedScriptType")]
         [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
-        public void ScriptDesignerViewModel_ChooseDirectoryShould_ReturnFile()
+        public void PythonDesignerViewModel_ChooseDirectoryShould_ReturnFile()
         {
             var modelItem = CreateModelItem();
             var viewModel = new TestPythonDesignerViewModel(modelItem);
@@ -111,7 +111,7 @@ namespace Dev2.Activities.Designers.Tests.Script_Python
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_SelectedScriptType")]
-        public void ScriptDesignerViewModel_SelectedScriptType_Python_PropertiesInitialized()
+        public void PythonDesignerViewModel_SelectedScriptType_Python_PropertiesInitialized()
         {
             var modelItem = CreateModelItem();
             var viewModel = new TestPythonDesignerViewModel(modelItem);

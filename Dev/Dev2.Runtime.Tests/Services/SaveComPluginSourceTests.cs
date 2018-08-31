@@ -22,7 +22,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("GetResourceID")]
-        public void GetResourceID_ShouldReturnEmptyGuid()
+        public void SaveComPluginSource_GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
             var saveComPluginSource = new SaveComPluginSource();
@@ -36,7 +36,7 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("GetResourceID")]
-        public void GetAuthorizationContextForService_ShouldReturnContext()
+        public void SaveComPluginSource_GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
             var saveComPluginSource = new SaveComPluginSource();

@@ -146,6 +146,8 @@ namespace Dev2.Activities.Designers.Tests.Script
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_SelectedScriptType")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ScriptDesignerViewModel_SelectedScriptType_Python_PropertiesInitialized()
         {
             var modelItem = CreateModelItem();

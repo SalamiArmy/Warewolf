@@ -249,6 +249,8 @@ namespace ActivityUnitTests.ActivityTest
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfWebGetRequestActivity_UpdateForEachInputs")]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void DsfWebGetRequestActivity_UpdateForEachInputs_MoreThan1Updates_Updates()
         {
             //------------Setup for test--------------------------
