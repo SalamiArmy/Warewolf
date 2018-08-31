@@ -164,6 +164,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("QueryManagerProxy_FetchConstructors")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void QueryManagerProxy_FetchConstructors()
         {
@@ -184,6 +185,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("QueryManagerProxy_FetchConstructors")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void QueryManagerProxy_FetchConstructors_GivenEnvHasObjectVariablesAddsvariables()
         {
@@ -440,6 +442,7 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void QueryManagerProxy_LoadExplorer_WhenLongerThan30Sec_ShouldLoadExplorerItemsShowPopup()
         {

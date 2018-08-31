@@ -443,6 +443,7 @@ namespace Dev2.Infrastructure.Tests.Services.Security
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("AuthorizationServiceBase_AdministratorsMembersOfWarewolfGroup_WhenAdministratorsMembersOfTheGroup")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AuthorizationServiceBase_IsAuthorizedToConnect_ToLocalServer_AdministratorsMembersOfWarewolfGroup_WhenAdministratorsAreNotMembersOfTheGroup_ExpectFalse()
         {

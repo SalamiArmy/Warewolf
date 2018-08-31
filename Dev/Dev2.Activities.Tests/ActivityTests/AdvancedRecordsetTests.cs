@@ -212,6 +212,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AdvancedRecordset_Converter_CanRunWhereQuery_ExpectNoResults()
         {

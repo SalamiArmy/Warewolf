@@ -106,6 +106,7 @@ namespace Dev2.Tests.Activities.ActivityTests.SelectAndApply
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SelectAndApplyActivity_SetupExecute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SelectAndApplyActivity_SetupExecute_GivenCaseConvertActivityApplied_ToCorrectIndex()
         {
@@ -135,6 +136,7 @@ namespace Dev2.Tests.Activities.ActivityTests.SelectAndApply
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectAndApplyActivity_SetupExecute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SelectAndApplyActivity_SetupExecute_GivenCaseConvertActivityApplied_ToCorrectIndex_ComplexObjects()
         {

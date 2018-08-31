@@ -76,6 +76,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WcfEndPointViewModel_CreateNewInstance_ReturnsSuccess()
         {
@@ -87,6 +88,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WcfEndPointViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WcfEndPointViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -106,6 +108,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WcfEndPointViewModel_ClearValidation_Success()
         {
@@ -127,6 +130,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WcfEndPointViewModel_SetException_Success()
         {
@@ -149,6 +153,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WcfEndPointViewModel_ToModel_Success()
         {
@@ -178,6 +183,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WcfEndPointViewModel_GenerateOutputsFalse_Success()
         {
@@ -191,6 +197,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WcfEndPointViewModel_InitialiseProperties_Success()
         {
@@ -222,6 +229,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         [TestMethod]
         [Owner(TestOwner)]
         [TestCategory(Category)]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WcfEndPointViewModel_TestProcedure_Success()
         {

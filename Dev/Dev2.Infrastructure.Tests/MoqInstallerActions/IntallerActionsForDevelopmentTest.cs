@@ -20,6 +20,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("InstallerActionsForDevelopment_ExecuteInstallerActions")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void InstallerActionsForDevelopment_ExecuteInstallerActions_WhenNormalOperation_ExpectGroupCreatedAndUserAdded()
         {
@@ -42,6 +43,7 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("InstallerActionsForDevelopment_ExecuteInstallerActions")]        
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void InstallerActionsForDevelopment_ExecuteInstallerActions_WhenGroupExist_ExpectUserNotAdded()
         {

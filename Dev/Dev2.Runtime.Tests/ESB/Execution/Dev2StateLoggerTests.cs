@@ -72,6 +72,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Dev2StateLogger_LogPreExecuteState_Tests()
         {
@@ -91,6 +92,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Dev2StateLogger_LogPostExecuteState_Tests()
         {
@@ -112,6 +114,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Dev2StateLogger_LogExecuteException_Tests()
         {
@@ -135,6 +138,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Dev2StateLogger_LogExecuteCompleteState_Tests()
         {
@@ -152,6 +156,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Dev2StateLogger_LogStopExecutionState_Tests()
         {
@@ -235,6 +240,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Dev2StateAuditLogger_LogExecuteCompleteState_Tests()
         {
@@ -258,6 +264,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Dev2StateAuditLogger_LogExecuteException_Tests()
         {
@@ -282,6 +289,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Dev2StateAuditLogger_LogPostExecuteState_Tests()
         {

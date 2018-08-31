@@ -94,6 +94,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_Constructor_SecuritySettingsIsNull_PropertiesInitialized()
         {
@@ -103,6 +104,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_Constructor_AllParametersValid_PropertiesInitialized()
         {
@@ -163,6 +165,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_PermissionChanged_IsDirtyIsTrue()
         {
@@ -192,6 +195,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeContributeTrue_MakesViewExecuteTrue()
         {
@@ -220,6 +224,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_WithContributeTrue_MakeViewFalse_MakesContributeFalse()
         {
@@ -248,6 +253,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_WithContributeTrue_MakeExecuteFalse_MakesContributeFalse()
         {
@@ -276,6 +282,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeAdministratorTrue_MakesAllOtherPermissionsTrue()
         {
@@ -310,6 +317,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeDeployFromFalse_MakesAdministratorPermissionFalse()
         {
@@ -344,6 +352,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeDeployToFalse_MakesAdministratorPermissionFalse()
         {
@@ -378,6 +387,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeContributeFalse_MakesAdministratorPermissionFalse()
         {
@@ -412,6 +422,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeViewFalse_MakesAdministratorPermissionFalse()
         {
@@ -446,6 +457,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_MakeExecuteFalse_MakesAdministratorPermissionFalse()
         {
@@ -480,6 +492,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_ServerPermissionWindowsGroupChangedToNonEmptyAndIsNew_NewServerPermissionIsAdded()
         {
@@ -502,6 +515,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_ServerPermissionWindowsGroupChangedToEmptyAndIsNotNew_ServerPermissionIsRemoved()
         {
@@ -537,6 +551,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_ResourcePermissionWindowsGroupAndResourceNameChangedToNonEmptyAndIsNew_NewResourcePermissionIsAdded()
         {
@@ -560,6 +575,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_OnPermissionPropertyChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_OnPermissionPropertyChanged_ResourcePermissionWindowsGroupChangedToEmptyAndIsNotNew_ResourcePermissionIsRemoved()
         {
@@ -595,6 +611,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_DialogResultIsNotOK_DoesNothing()
         {
@@ -626,6 +643,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_DialogResultIsOKAndNothingSelected_DoesNothing()
         {
@@ -657,6 +675,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_PermissionIsNull_DoesNothing()
         {
@@ -688,6 +707,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_ResultIsNull_PermissionWindowsGroupIsNotUpdated()
         {
@@ -720,6 +740,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_ResultIsNotNull_PermissionWindowsGroupIsUpdated()
         {
@@ -755,6 +776,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickWindowsGroupCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_PickWindowsGroupCommand_ResultIsEmptyArray_DoesNothing()
         {
@@ -788,6 +810,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_PickResourceCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_PickResourceCommand_PermissionIsNull_DoesNothing()
         {
@@ -823,6 +846,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_HelpText")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_HelpText_IsResourceHelpVisibleIsTrue_ContainsResourceHelpText()
         {
@@ -838,6 +862,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_IsServerHelpVisible")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_IsServerHelpVisible_ChangedToTrueAndIsResourceHelpVisibleIsTrue_IsResourceHelpVisibleIsFalse()
         {
@@ -854,6 +879,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_IsResourceHelpVisible")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_IsResourceHelpVisible_ChangedToTrueAndIsServerHelpVisibleIsTrue_IsServerHelpVisibleIsFalse()
         {
@@ -870,6 +896,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_CloseHelpCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_CloseHelpCommand_IsServerHelpVisibleIsTrue_IsServerHelpVisibleIsFalse()
         {
@@ -887,6 +914,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_CloseHelpCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_CloseHelpCommand_IsResourceHelpVisibleIsTrue_IsResourceHelpVisibleIsFalse()
         {
@@ -905,6 +933,7 @@ namespace Dev2.Core.Tests.Settings
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_Save")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_Save_NullPermissions_ThrowsArgumentNullException()
         {
@@ -920,6 +949,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SecurityViewModel_Save")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_Save_InvalidPermissions_InvalidPermissionsAreRemoved()
         {
@@ -954,6 +984,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_Save")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_Save_DeletedPermissions_DeletedPermissionsAreRemoved()
         {
@@ -988,6 +1019,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_HasInvalidResourcePermission_Given_Invalid_Resource_That_Is_Being_Deleted_ReturnsFalse()
         {
@@ -1010,6 +1042,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_HasInvalidResourcePermission_Given_Resource_And_No_Group_ReturnsTrue()
         {
@@ -1030,6 +1063,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_HasInvalidResourcePermission_Given_Group_And_No_Resource_ReturnsTrue()
         {
@@ -1050,6 +1084,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_ServerDuplicates_NoDuplicates_ReturnsFalse()
         {
@@ -1077,6 +1112,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_ServerDuplicates_HasDuplicatesDeleted_ReturnsFalse()
         {
@@ -1106,6 +1142,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_ServerDuplicates")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_ServerDuplicates_Duplicates_ReturnsTrue()
         {
@@ -1133,6 +1170,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_HasDuplicateResourcePermissions_NoDuplicatesResourceID_ReturnsFalse()
         {
@@ -1160,6 +1198,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_HasDuplicateResourcePermissions_NoDuplicatesWindowsGroup_ReturnsFalse()
         {
@@ -1188,6 +1227,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_HasDuplicateResourcePermissions_DuplicateDeleted_ReturnsFalse()
         {
@@ -1217,6 +1257,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_ResourcePermissionsCompare_IsDeleted_ReturnsTrue()
         {
@@ -1257,6 +1298,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_ServerPermissionsCompare_IsDeleted_ReturnsTrue()
         {
@@ -1296,6 +1338,7 @@ namespace Dev2.Core.Tests.Settings
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void IsInDomain_GivenNotInDomaint_ShouldReturnCollapsed()
         {
@@ -1317,6 +1360,7 @@ namespace Dev2.Core.Tests.Settings
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void IsInDomain_GivenInDomaint_ShouldReturnVisible()
         {
@@ -1339,6 +1383,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SecurityViewModel_HasDuplicateResourcePermissions")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SecurityViewModel_HasDuplicateResourcePermissions_DuplicateNotDeleted_ReturnsTrue()
         {

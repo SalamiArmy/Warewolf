@@ -151,6 +151,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_OptionsSet_HasSqlBulkCopyWithOptionsWithValues()
         {
@@ -227,6 +228,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappings_HasDataTableToInsert()
         {
@@ -260,6 +262,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsStringMapping_HasDataTableToInsertWithStringColumnHavingMaxLength()
         {
@@ -293,6 +296,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithMultipleInputMappings_HasDataTableWithMultipleColumns()
         {
@@ -359,6 +363,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsAndDataFromDataListAppend_HasDataTableWithData()
         {
@@ -413,6 +418,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsAndDataFromDataListStar_HasDataTableWithData()
         {
@@ -477,6 +483,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithBlankRowsInData_HasDataTableWithDataExcludingBlankRows()
         {
@@ -541,6 +548,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithIgnoreBlankRowsFalse_HasDataTableWithDataIncludingBlankRows()
         {
@@ -615,6 +623,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsAndDataFromDataListStar_HasDataTableWithDataColumnHaveCorrectDataTypes()
         {
@@ -700,6 +709,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsAndDataFromDataListAppendMulitpleRows_HasDataTableWithDataOnlyLastRowFromDataList()
         {
@@ -756,6 +766,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsAndDataFromDataListStarWithOneScalar_HasDataTableWithData()
         {
@@ -830,6 +841,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsWithIdentityColumnWithDataMappedAndKeepIdentityOnWhenMultiTable_HasTableWithData()
         {
@@ -894,6 +906,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsWithIdentityColumnWithDataMappedAndKeepIdentityOffWhenMultiTable_HasErrorAboutColumn()
         {
@@ -947,6 +960,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsWithInvalidIndex_HasErrorAboutColumn()
         {
@@ -1000,6 +1014,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsWithInvalidEvaluatedIndex_HasErrorAboutColumn()
         {
@@ -1054,6 +1069,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsWithIdentityColumnWithNoDataMappedAndKeepIdentityOnWhenMultiTable_HasErrorAboutColumn()
         {
@@ -1107,6 +1123,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsWithIdentityColumnWithNoDataMappedAndKeepIdentityOffWhenMultiTable_HasDataTableWithData()
         {
@@ -1168,6 +1185,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsWithNullableColumnWithNoDataMappedWhenMultiTable_HasDataTableWithData()
         {
@@ -1229,6 +1247,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsWithNullableColumnWithDataMappedWhenMultiTable_HasDataTableWithData()
         {
@@ -1294,6 +1313,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [Owner("Travis Frisinger")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsWithNonNullableColumnWithDataMappedWhenMultiTable_HasDataTableWithData()
         {
@@ -1358,6 +1378,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsWithNonNullableColumnWithNoDataMappedWhenMultiTable_HasErrorAboutColumn()
         {
@@ -1411,6 +1432,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_IgnoreBlankRowsFalse_HasDataTableWithBlankRowData()
         {
@@ -1486,6 +1508,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_MixedData_IgnoreBlankRowsTrue_HasDataTableWithOutBlankRowData()
         {
@@ -1555,6 +1578,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsAndDataFromDataListStarWithOneScalarAndAppend_HasDataTableWithData()
         {
@@ -1629,6 +1653,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfSqlBulkInsertActivity_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfSqlBulkInsertActivity_Execute_WithInputMappingsAndDataFromDataListStarWithOneScalarAndAppendMixedRecsets_HasDataTableWithData()
         {

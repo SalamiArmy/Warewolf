@@ -28,6 +28,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_Constructor__ModelItemIsValid_ListHasFourItems()
         {
@@ -41,6 +42,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_Constructor__ModelItemIsValid_AlignmentTypesHasTwoItems()
         {
@@ -54,6 +56,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_Constructor__ModelItemIsValid_CollectionNameIsSetToMergeCollection()
         {
@@ -65,6 +68,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DataMergeDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -85,6 +89,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_Constructor_ModelItemIsValid_MergeCollectionHasTwoItems()
         {
@@ -97,6 +102,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_Constructor_ModelItemIsInitializedWith4Items_MergeCollectionHasFourItems()
         {
@@ -116,6 +122,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_EnablePadding_IsTrue_ForIndex()
         {
@@ -135,6 +142,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("DataMergeDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_New()
         {
@@ -154,6 +162,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetIndexToMergeTypeToNone_EnableAtIsSetToFalse()
         {
@@ -163,6 +172,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetIndexToMergeTypeToTab_EnableAtIsSetToFalse()
         {
@@ -172,6 +182,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetIndexToMergeTypeToNewLine_EnableAtIsSetToFalse()
         {
@@ -181,6 +192,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetIndexToMergeTypeToIndex_EnableAtIsSetToTrue()
         {
@@ -190,6 +202,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetIndexToMergeTypeToChars_EnableAtIsSetToTrue()
         {
@@ -199,6 +212,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetMergeTypeToChars_EnablePaddingIsSetToFalse()
         {
@@ -208,6 +222,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("DataMergeDesignerViewModel_OnMergeTypeChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_OnMergeTypeChanged_SetMergeTypeToIndex_EnablePaddingIsSetToTrue()
         {
@@ -259,6 +274,7 @@ namespace Dev2.Activities.Designers.Tests.DataMerge
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("DataMergeDesignerViewModel_ValidateCollectionItem")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DataMergeDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {

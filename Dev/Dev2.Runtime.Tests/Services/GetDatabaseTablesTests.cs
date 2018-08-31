@@ -33,7 +33,6 @@ namespace Dev2.Tests.Runtime.Services
     {
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("MSSql")]
         public void GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
@@ -47,7 +46,6 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("MSSql")]
         public void GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
@@ -65,7 +63,6 @@ namespace Dev2.Tests.Runtime.Services
         [Description("Service should never get null values")]
         [Owner("Huggs")]
         [ExpectedException(typeof(InvalidDataContractException))]
-        [TestCategory("MSSql")]
         public void GetDatabaseTables_UnitTest_ExecuteWithNullValues_ExpectedInvalidDataContractException()
         {
             var esb = new GetDatabaseTables();
@@ -76,7 +73,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseTables_UnitTest_ExecuteWithNoDatabaseInValues_ExpectedInvalidHasErrors()
         {
             var esb = new GetDatabaseTables();
@@ -91,7 +87,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseTables_UnitTest_ExecuteWithBlankDatabase_ExpectHasErrors()
         {
             var esb = new GetDatabaseTables();
@@ -105,7 +100,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseTables_UnitTest_ExecuteWithDatabaseNotValidJson_ExpectedHasErrors()
         {
             var esb = new GetDatabaseTables();
@@ -119,7 +113,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseTables_UnitTest_ExecuteWithNotDbSourceJson_ExpectedHasErrors()
         {
             const string someJsonData = "{Val:1}";
@@ -133,7 +126,8 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("MSSql")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategory("MSSql")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDatabaseTables_Execute_ValidDatabaseSource()
         {
@@ -167,7 +161,6 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
-        [TestCategory("MSSql")]
         public void GetDatabaseTables_Execute_InValidDatabaseName()
         {
             var parser = new Mock<IActivityParser>();
@@ -217,7 +210,6 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseTables_UnitTest_HandlesType_ExpectedReturnsGetDatabaseTablesService()
         {
             var esb = new GetDatabaseTables();
@@ -232,7 +224,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseTables_UnitTest_CreateServiceEntry_ExpectedReturnsDynamicService()
         {
             var esb = new GetDatabaseTables();

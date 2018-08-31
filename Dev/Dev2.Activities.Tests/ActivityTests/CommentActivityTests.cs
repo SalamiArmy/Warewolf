@@ -74,6 +74,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfCommentActivity_UpdateForEachInputs")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DsfCommentActivity_UpdateForEachInputs_DoesNothing()
         {

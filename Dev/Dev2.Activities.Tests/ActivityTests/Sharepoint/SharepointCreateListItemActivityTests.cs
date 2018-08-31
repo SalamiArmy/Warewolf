@@ -39,6 +39,7 @@ namespace Dev2.Tests.Activities.ActivityTests.Sharepoint
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SharepointCreateListItem_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SharepointCreateSource_DoesNotExist_OnResourceCatalog_ShouldSetSharepointSource_ToGuidEmpty()
         {

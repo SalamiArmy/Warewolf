@@ -21,6 +21,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SwitchDesignerViewModel_Initialize")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SwitchDesignerViewModel_Initialize_Setup_NotNull()
         {
@@ -86,6 +87,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SwitchDesignerViewModel_DisplayName")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SwitchDesignerViewModel_DisplayName_Setup_HasValue()
         {
@@ -152,6 +154,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SwitchDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SwitchDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -224,6 +227,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SwitchDesignerViewModel_Switch")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SwitchDesignerViewModel_Switch_SetSwitchVariable()
         {
@@ -294,6 +298,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SwitchDesignerViewModel_Switch")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SwitchDesignerViewModel_Switch_Dev2Switch()
         {

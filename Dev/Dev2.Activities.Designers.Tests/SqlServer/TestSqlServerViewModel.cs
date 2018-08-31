@@ -216,6 +216,7 @@ namespace Dev2.Activities.Designers.Tests.SqlServer
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SqlServer_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SqlServer_UpdateHelp_ShouldCallToHelpViewMode()
         {

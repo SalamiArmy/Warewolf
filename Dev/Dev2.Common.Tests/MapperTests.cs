@@ -46,6 +46,7 @@ namespace Dev2.Common.Tests
     {        
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Map_GivenObjects_ShouldMapCorrectly()
         {
@@ -75,6 +76,7 @@ namespace Dev2.Common.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Map_GivenObjectsNoActions_ShouldMapCorrectly()
         {
@@ -104,6 +106,7 @@ namespace Dev2.Common.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [ExpectedException(typeof(ArgumentNullException))]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Map_GivenNullFrom_ShouldThrowException()
         {

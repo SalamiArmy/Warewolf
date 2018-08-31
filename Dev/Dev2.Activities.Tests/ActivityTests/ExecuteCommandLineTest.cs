@@ -82,6 +82,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [DeploymentItem(CommandLineToolName)]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnExecuteWhereConsoleDoesNothingExpectNothingForResult()
         {
@@ -137,6 +138,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnExecuteWhereConsolePathHasNoSpacesIsNotWrappedInQuotesExpectSuccess()
         {
@@ -217,6 +219,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnExecuteWhereConsoleOutputsWithArgsWrappedInQuotesExpectSuccess()
         {
@@ -253,6 +256,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnExecuteWhereConsoleOutputsExpectOutputForResult()
         {
@@ -337,6 +341,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnExecuteWhereConsoleErrorsExpectErrorInDatalist()
         {
@@ -369,6 +374,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnExecuteWhereOutputToRecordWithNoIndexWithConsoleOutputsExpectOutputForResultAppendedToRecordsets()
         {
@@ -405,6 +411,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnExecuteWhereOutputToRecordWithStarIndexWithConsoleOutputsExpectOutputForResultOverwriteToRecordsets()
         {
@@ -443,6 +450,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnExecuteWhereOutputToRecordWithSpecificIndexWithConsoleOutputsExpectOutputForResultInsertsToRecordsets()
         {
@@ -477,6 +485,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnExecuteWhereMultipleInputFromRecordSetWithOutputToRecordSetExpectOutputResultsToMultipleRowsInRecordSet()
         {
@@ -507,6 +516,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnExecuteWhereMultipleInputFromRecordSetWithOutputToScalarExpectOutputResultOfLastCommandinScalar()
         {

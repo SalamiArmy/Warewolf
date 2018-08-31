@@ -71,6 +71,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         #region Store To RecordSet Tests
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void CountOutputToRecset()
         {

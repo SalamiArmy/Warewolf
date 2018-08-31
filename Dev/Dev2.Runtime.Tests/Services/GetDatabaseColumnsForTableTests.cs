@@ -35,7 +35,6 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("MSSql")]
         public void GetResourceID_ShouldReturnEmptyGuid()
         {
             //------------Setup for test--------------------------
@@ -49,7 +48,6 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("MSSql")]
         public void GetAuthorizationContextForService_ShouldReturnContext()
         {
             //------------Setup for test--------------------------
@@ -67,7 +65,6 @@ namespace Dev2.Tests.Runtime.Services
         [Description("Service should never get null values")]
         [Owner("Huggs")]
         [ExpectedException(typeof(InvalidDataContractException))]
-        [TestCategory("MSSql")]
         public void GetDatabaseColumnsForTable_UnitTest_ExecuteWithNullValues_ExpectedInvalidDataContractException()
         {
             var esb = new GetDatabaseColumnsForTable();
@@ -78,7 +75,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseColumnsForTable_UnitTest_ExecuteWithNoDatabaseInValues_ExpectedHasErrors()
         {
             var esb = new GetDatabaseColumnsForTable();
@@ -92,7 +88,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseColumnsForTable_UnitTest_ExecuteWithNullDatabase_ExpectedHasErrors()
         {
 
@@ -107,7 +102,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseColumnsForTable_UnitTest_ExecuteWithBlankDatabase_ExpectedHasErrors()
         {
             var esb = new GetDatabaseColumnsForTable();
@@ -121,7 +115,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseColumnsForTable_UnitTest_ExecuteWithNoTableNameInValues_ExpectedHasErrors()
         {
 
@@ -136,7 +129,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseColumnsForTable_UnitTest_ExecuteWithNullTableNameExpectedHasErrors()
         {
 
@@ -151,7 +143,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseColumnsForTable_UnitTest_ExecuteWithBlankTableName_ExpectedHasErrors()
         {
             var esb = new GetDatabaseColumnsForTable();
@@ -165,7 +156,8 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("MSSql")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategory("MSSql")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDatabaseColumnsForTable_Execute_ValidDatabaseSource_WithSchema_OnlyReturnsForThatSchema()
         {
@@ -220,7 +212,8 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("MSSql")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategory("MSSql")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDatabaseColumnsForTable_Execute_NullSchema_ValidDatabaseSource_ReturnsFromAllSchemas()
         {
@@ -270,7 +263,8 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
-        [TestCategory("MSSql")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategory("MSSql")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDatabaseColumnsForTable_Execute_EmptySchema_ValidDatabaseSource_ReturnsFromAllSchemas()
         {
@@ -345,7 +339,6 @@ namespace Dev2.Tests.Runtime.Services
 
         [TestMethod]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseColumnsForTable_UnitTest_HandlesType_ExpectedReturnsGetDatabaseColumnsForTableService()
         {
             var esb = new GetDatabaseColumnsForTable();
@@ -360,7 +353,6 @@ namespace Dev2.Tests.Runtime.Services
         [TestMethod]
         [Description("Service should never get null values")]
         [Owner("Huggs")]
-        [TestCategory("MSSql")]
         public void GetDatabaseColumnsForTable_UnitTest_CreateServiceEntry_ExpectedReturnsDynamicService()
         {
             var esb = new GetDatabaseColumnsForTable();

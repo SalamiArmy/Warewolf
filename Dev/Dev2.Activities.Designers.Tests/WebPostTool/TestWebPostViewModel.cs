@@ -102,6 +102,7 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WebPost_BodyIsJSonNoHeaders_ExpectNewHeadersAdded()
         {
@@ -176,6 +177,7 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WebPost_BodyIsXmlExistingHeaders_ExpectNoHeadersAdded()
         {

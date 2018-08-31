@@ -80,6 +80,7 @@ namespace Dev2.Activities.Designers.Tests.Script_Javascript
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ScriptDesignerViewModel_Constructor_PropertiesInitialized()
         {
@@ -105,6 +106,7 @@ namespace Dev2.Activities.Designers.Tests.Script_Javascript
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_SelectedScriptType")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ScriptDesignerViewModel_ChooseDirectoryShould_ReturnFile()
         {

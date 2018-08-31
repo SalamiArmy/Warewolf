@@ -40,6 +40,7 @@ namespace Dev2.Tests.Activities.ActivityTests.Sharepoint
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SharepointUpdateListItem_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SharepointUpdateListSource_DoesNotExist_OnResourceCatalog_ShouldSetSharepointSource_ToGuidEmpty()
         {

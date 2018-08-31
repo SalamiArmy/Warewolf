@@ -205,6 +205,7 @@ namespace Dev2.Activities.Designers.Tests.Exchange.Email
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("ExchangeEmailDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ExchangeEmailDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

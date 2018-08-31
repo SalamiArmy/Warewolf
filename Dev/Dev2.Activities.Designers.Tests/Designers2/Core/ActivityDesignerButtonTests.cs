@@ -28,6 +28,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Construct")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerButton_Construct_CommandObjectIsInstantiatedAndIsValidIsSetToTrue()
         {
@@ -41,6 +42,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforeIsSetToFalse_ValidationErrorsIsNotCalled()
         {
@@ -50,6 +52,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsClosedAfterIsSetToFalse_HideContentIsNotCalled()
         {
@@ -59,6 +62,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsClosedAfterIsSetToTrue_HideContentIsCalledOnce()
         {
@@ -68,6 +72,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforeAndIsClosedAfterAreSetToTrueAndThereAreNoValidationErrors_ValidationErrorsAndHideContentAreCalledOnce()
         {
@@ -77,6 +82,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforIsSetToTrueAndIsClosedAfterAreSetToFalseAndThereAreNoValidationErrors_ValidationErrorsIsCalledOnceAndHideContentIsNotCalled()
         {
@@ -86,6 +92,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforeIsToTrueAndThereAreNoValidationErrors_CustomCommandIsExecuted()
         {
@@ -98,6 +105,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforeIsToTrueAndThereAreValidationErrors_CustomCommandIsNotExecuted()
         {
@@ -110,6 +118,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsValidatedBeforeAndIsClosedAfterAreSetToFalse_CustomCommandIsExecuted()
         {
@@ -122,6 +131,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [TestCategory("ActivityDesignerButton_Execute")]
         [Owner("Tshepo Ntlhokoa")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerButton_Execute_IsClosedAfterIsSetToTrueAndCustomCommandIsNotSet_HideContentIsCalled()
         {

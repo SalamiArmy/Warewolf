@@ -53,6 +53,7 @@ namespace Dev2.Activities.Designers.Tests.RabbitMQ.Publish
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("RabbitMQPublishDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void RabbitMQPublishDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

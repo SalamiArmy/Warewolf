@@ -13,6 +13,7 @@ namespace Dev2.Activities.Designers.Tests.Service
     public class ValidationMemoManagerTests
     {
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ValidationMemoManager_UpdateWorstError_WorstErrorIsFirstCriticalError()
         {
@@ -25,6 +26,7 @@ namespace Dev2.Activities.Designers.Tests.Service
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ValidationMemoManager_UpdateLastValidationMemoWithSourceNotFoundError_UpdatesToSourceNotFoundError()
         {

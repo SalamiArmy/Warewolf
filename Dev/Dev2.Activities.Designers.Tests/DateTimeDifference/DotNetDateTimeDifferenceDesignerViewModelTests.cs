@@ -82,6 +82,7 @@ namespace Dev2.Activities.Designers.Tests.DateTimeDifference
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DateTimeDifferenceDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DotNetDateTimeDifferenceDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

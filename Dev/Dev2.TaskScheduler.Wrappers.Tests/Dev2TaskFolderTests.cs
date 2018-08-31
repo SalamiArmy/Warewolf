@@ -51,6 +51,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Construct")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Construct()
         {
@@ -67,6 +68,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Create")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Create()
         {
@@ -80,6 +82,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Delete")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Delete()
         {
@@ -92,6 +95,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Valid")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Valid()
         {
@@ -102,6 +106,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Exists")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Exists()
         {
@@ -112,6 +117,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_TaskFolder_Register")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TaskShedulerWrapper_TaskFolder_Register()
         {

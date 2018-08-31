@@ -52,6 +52,7 @@ namespace Dev2.Activities.Designers.Tests.AggregateCalculate
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("AggregateCalculateDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AggregateCalculateDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

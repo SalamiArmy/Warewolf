@@ -238,6 +238,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectedOperation_EditSource")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DropboxFileList_dropBoxFileListViewModel_EditSourcePublishesMessage()
         {
@@ -260,6 +261,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectedOperation_EditSource")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DropboxFileList_dropBoxFileListViewModel_NewSourcePublishesMessage()
         {
@@ -512,6 +514,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DropboxFileList_CreateOAuthSource_GivenCanPublish_ShouldPublish()
         {

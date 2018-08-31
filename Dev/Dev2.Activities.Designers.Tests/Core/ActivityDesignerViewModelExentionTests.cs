@@ -43,6 +43,7 @@ namespace Dev2.Activities.Designers.Tests.Core
     {
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnCreation_GivenIsDraggedTrue_ShouldShowLarge()
         {
@@ -60,6 +61,7 @@ namespace Dev2.Activities.Designers.Tests.Core
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnCreation_GivenIsDraggedTrue_ShouldShowLargeOnAllTools()
         {
@@ -104,6 +106,7 @@ namespace Dev2.Activities.Designers.Tests.Core
         
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OnCreation_GivenIsDraggedFalse_ShouldNotShowLarge()
         {

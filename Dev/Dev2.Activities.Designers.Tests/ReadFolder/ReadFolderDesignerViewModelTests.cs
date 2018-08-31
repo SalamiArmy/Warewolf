@@ -43,6 +43,7 @@ namespace Dev2.Activities.Designers.Tests.ReadFolder
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("ReadFolderDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ReadFolderDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

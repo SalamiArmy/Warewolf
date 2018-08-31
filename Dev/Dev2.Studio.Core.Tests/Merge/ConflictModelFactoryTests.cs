@@ -101,6 +101,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ConflictModelFactory_GivenAssignConflictNode_ShouldReturnMergeToolModel()
         {
@@ -127,6 +128,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDataList_GivenResourceModel_ShouldReturnMergeToolModel()
         {
@@ -160,6 +162,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDataList_GivenEmptyResourceModel_ShouldReturnReturnEmpty()
         {
@@ -194,6 +197,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ConflictModelFactory_GivenDsfDecisionConflictNode_ShouldReturnMergeToolModel()
         {
@@ -240,6 +244,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ConflictModelFactory_GivenServiceConflictNode_ShouldReturnMergeToolModel()
         {
@@ -274,6 +279,7 @@ namespace Dev2.Core.Tests.Merge
 
         [TestMethod]
         [Owner("Candice Daniel")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ConflictModelFactory_GivenServiceConflictNode_NullResourceID()
         {

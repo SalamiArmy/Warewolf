@@ -51,6 +51,7 @@ namespace Dev2.Tests.Diagnostics
         #region Remove
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void RemoveWithInvalidID()
         {
@@ -64,6 +65,7 @@ namespace Dev2.Tests.Diagnostics
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void RemoveWithValidID()
         {

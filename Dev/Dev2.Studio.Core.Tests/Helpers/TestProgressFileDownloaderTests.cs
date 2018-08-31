@@ -44,6 +44,7 @@ namespace Dev2.Core.Tests.Helpers
         [TestCategory("ProgressFileDownloaderUnitTest")]
         [Description("Test for ProgressFileDownloader's RehydrateDialog method, it is expected to rehydrate the progress dialogs label and progress values")]
         [Owner("Ashley Lewis")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ProgressFileDownloader_UnitTest_RehydrateDialog_ProgressDialogRehydrated()
         {

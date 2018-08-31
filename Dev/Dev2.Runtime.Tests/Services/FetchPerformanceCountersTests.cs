@@ -116,6 +116,7 @@ namespace Dev2.Tests.Runtime.Services
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("FetchPerformanceCounters_Manager")]
 
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void FetchPerformanceCounters_Manager_ExecuteReturnsAValidTo()
         {

@@ -19,6 +19,7 @@ namespace Warewolf.MergeParser.Tests
     public class ParseServiceForDifferencesTests
     {
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDifferences_WhenSame_ShouldReturnNohasConflictItems()
         {
@@ -112,6 +113,7 @@ namespace Warewolf.MergeParser.Tests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDifferences_WhenDifferent_ShouldReturnhasConflictItems()
         {
@@ -225,6 +227,7 @@ namespace Warewolf.MergeParser.Tests
         }
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDifferences_WhenFlatToolAddedOnRemote_ShouldNullOnLocalChart()
         {
@@ -331,6 +334,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDifferences_WhenFlatToolAddedOnLocal_ShouldNullOnRemoteChart()
         {
@@ -430,6 +434,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDifferences_WhenDecisionAddedOnLocal_ShouldNullOnRemoteChart()
         {
@@ -548,6 +553,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetDifferences_WhenToolModifiedOnBithSides_ShouldNullOnRemoteChart()
         {
@@ -630,6 +636,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void FlowDecision_GetDifferences_WhenFlowArmsModifiedOnBithSides_DecisionToolHasNoConflict()
         {
@@ -778,6 +785,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void FlowDecision_GetDifferences_WhenMainDecisionModified_DecisionToolHasConflict()
         {
@@ -922,6 +930,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void FlowDecision_GetDifferences_WhenArmToolsTheSame_DecisionHasNoConflict()
         {
@@ -1071,6 +1080,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void FlowSwitch_GetDifferences_WhenCasesTheSame_SwitchHasNoConflict()
         {

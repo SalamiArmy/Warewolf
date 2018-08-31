@@ -11,6 +11,7 @@ namespace Dev2.Tests.Runtime
         [TestMethod]
         [Owner("Candice Daniel")]
         [TestCategory("RevulyticsCollectUsageStats")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void RevulyticsCollectUsageStatsForServerIsFalseTest()
         {

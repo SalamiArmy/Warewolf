@@ -82,6 +82,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsDebug_ShouldSetDataObjectAsDebug()
         {
@@ -170,6 +171,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceSwagger_ShouldSetDataObjectAsSwagger()
         {
@@ -214,6 +216,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceJson_ShouldSetDataObjectAsJson()
         {
@@ -259,6 +262,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceXMl_ShouldSetDataObjectAsXml()
         {
@@ -302,6 +306,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceXMlWithErrors_ShouldCheckReturnTypeOfError()
         {
@@ -347,6 +352,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void CreateForm_GivenValidArgsContainsIsServiceJsonWithErrors_ShouldCheckReturnTypeOfError()
         {
@@ -673,6 +679,7 @@ namespace Dev2.Tests.Runtime.WebServer
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void CreateForm_GivenEmitionTypeTESTAndIsRunAllTestsRequestTrue_ShouldFetchTests()
         {

@@ -68,6 +68,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Pieter Terblanche")]
         [TestCategory("AdvancedRecordset_MethodName")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ValidateSql_ReturnCorrectFormat()
         {
@@ -118,6 +119,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Pieter Terblanche")]
         [TestCategory("AdvancedRecordset_MethodName")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ValidateSql_ShowsCorrectErrorFormat()
         {
@@ -417,6 +419,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [Owner("Candice Daniel")]
         [TestCategory("AdvancedRecordset_Operations")]
         [DeploymentItem(@"x86\SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ParseTSQL_SelectStatementWithAllias_6_ReturnOutputs()
         {

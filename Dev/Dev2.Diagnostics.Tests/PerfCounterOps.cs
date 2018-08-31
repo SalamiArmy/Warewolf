@@ -66,6 +66,7 @@ namespace Dev2.Diagnostics.Test
 
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestLocater()
         {
@@ -76,6 +77,7 @@ namespace Dev2.Diagnostics.Test
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ConcurrentCounterTest()
         {
@@ -96,6 +98,7 @@ namespace Dev2.Diagnostics.Test
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ConcurrentCounterTestByResource()
         {
@@ -128,6 +131,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfErrorCounter_TestOps")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WarewolfErrorCounter_TestOps_Valid_ExpectValidValues()
         {
@@ -150,6 +154,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfErrorCounter_TestOps")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WarewolfErrorCounterResource_TestOps_Valid_ExpectValidValues()
         {
@@ -204,6 +209,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfRequestsPerSecondCounter_TestOps")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WarewolfRequestPerSecondCounter_TestOps_Valid_ExpectValidValues()
         {
@@ -226,6 +232,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfRequestsPerSecondCounter_TestOps")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WarewolfRequestPerSecondCounterResource_TestOps_Valid_ExpectValidValues()
         {
@@ -256,6 +263,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WarewolfServicesNotFound_TestOps_Valid_ExpectValidValues()
         {
@@ -288,6 +296,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WarewolfAuthErrors_TestOps_Valid_ExpectValidValues()
         {
@@ -310,6 +319,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WarewolfAverageExectionTimeCounter_TestOps_Valid_ExpectValidValues()
         {
@@ -344,6 +354,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WarewolfAverageExectionTimeCounterResource_TestOps_Valid_ExpectValidValues()
         {

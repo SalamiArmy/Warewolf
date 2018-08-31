@@ -189,6 +189,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("ComDllViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ComDllViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

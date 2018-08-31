@@ -90,6 +90,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_Collapse")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_Collapse_SmallViewActive()
         {
@@ -107,6 +108,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("ActivityDesignerViewModel_Collapse")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_Collapse_HelpButtonGetsRemovedOnCollapse()
         {
@@ -139,6 +141,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_Restore")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_RestoreFromPreviouslyViewedLargeView_LargeViewActive()
         {
@@ -156,6 +159,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_Expand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_Expand_LargeViewActive()
         {
@@ -173,6 +177,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ThumbVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ThumbVisibility_IsSelectedAndSmallViewNotActive_Visible()
         {
@@ -189,6 +194,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ThumbVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ThumbVisibility_IsSelectedAndSmallViewActive_Collapsed()
         {
@@ -206,6 +212,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ConnectorVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ConnectorVisibility_IsSelectedAndSmallViewNotActive_Collapsed()
         {
@@ -222,6 +229,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ConnectorVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ConnectorVisibility_IsSelectedAndSmallViewActive_Visible()
         {
@@ -239,6 +247,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_TitleBarTogglesVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_TitleBarTogglesVisibility_IsSelected_Visible()
         {
@@ -255,6 +264,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_TitleBarTogglesVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_TitleBarTogglesVisibility_NotIsSelected_Collapsed()
         {
@@ -271,6 +281,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ZIndexPosition")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ZIndexPosition_IsSelected_Front()
         {
@@ -287,6 +298,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ZIndexPosition")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ZIndexPosition_NotIsSelected_Back()
         {
@@ -303,6 +315,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ThumbVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ThumbVisibility_IsMouseOverAndSmallViewNotActive_Visible()
         {
@@ -319,6 +332,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ThumbVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ThumbVisibility_IsMouseOverAndSmallViewActive_Collapsed()
         {
@@ -336,6 +350,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ConnectorVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ConnectorVisibility_IsMouseOverAndSmallViewNotActive_Collapsed()
         {
@@ -352,6 +367,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ConnectorVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ConnectorVisibility_IsMouseOverAndSmallViewActive_Visible()
         {
@@ -369,6 +385,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_TitleBarTogglesVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_TitleBarTogglesVisibility_IsMouseOver_Visible()
         {
@@ -385,6 +402,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_TitleBarTogglesVisibility")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_TitleBarTogglesVisibility_NotIsMouseOver_Collapsed()
         {
@@ -401,6 +419,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ZIndexPosition")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ZIndexPosition_IsMouseOver_Front()
         {
@@ -417,6 +436,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityDesignerViewModel_ZIndexPosition")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ActivityDesignerViewModel_ZIndexPosition_NotIsMouseOver_Back()
         {

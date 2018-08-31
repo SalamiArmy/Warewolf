@@ -125,6 +125,7 @@ namespace Dev2.Activities.Designers.Tests.Core
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("OutputsRegion_Ctor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void OutputsRegion_Restore()
         {

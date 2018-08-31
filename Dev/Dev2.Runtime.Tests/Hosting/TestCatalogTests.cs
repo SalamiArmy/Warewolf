@@ -64,6 +64,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_SaveTests")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_SaveTests_WhenEmptyList_ShouldDoNothing()
         {
@@ -156,6 +157,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_SaveTest")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_SaveTests_WhenResourceIdList_ShouldSaveTestAsAddToList()
         {
@@ -202,6 +204,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_SaveTest")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_SaveTests_WhenResourceIdListHasTest_ShouldSaveTestUpdateToList()
         {
@@ -266,6 +269,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_DeleteTest")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_DeleteTest_WhenResourceIdTestName_ShouldDeleteTest()
         {
@@ -318,6 +322,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_DeleteTest")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_DeleteAllTests_WhenResourceIdTestName_ShouldDeleteTestFolder()
         {
@@ -371,6 +376,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_Load")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_Load_WhenTests_ShouldLoadDictionaryWithResourceIdAndTests()
         {
@@ -425,6 +431,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_Load")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_Reload_ShouldLoadDictionaryWithResourceIdAndTests()
         {
@@ -534,6 +541,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("TestCatalog_Fetch")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_Fetch_WhenPassResult_ShouldReturnListOfTestsForResourceIdWithCorrectPassResult()
         {
@@ -606,6 +614,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_Fetch")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_Fetch_WhenResourceIdNotLoaded_ShouldReturnListOfTestsForResourceId()
         {
@@ -655,6 +664,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_Fetch")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_Fetch_WhenResourceIdNotValid_ShouldReturnListOfTestsForResourceId()
         {
@@ -703,6 +713,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_FetchTest")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_FetchTest_WhenResourceIdTestName_ShouldReturnTest()
         {
@@ -734,6 +745,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_FetchTest")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_FetchTest_WhenResourceIdInvalidTestName_ShouldReturnNull()
         {
@@ -795,6 +807,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_UpdateTestsBasedOnIOChange")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_UpdateTestsBasedOnIOChange_WhenTestsFound_ShouldUpdateBasedOnChange_Scalars()
         {
@@ -899,6 +912,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_UpdateTestsBasedOnIOChange")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_UpdateTestsBasedOnIOChange_WhenTestsFound_ShouldUpdateBasedOnChange_RecordSets()
         {
@@ -1032,6 +1046,7 @@ namespace Dev2.Tests.Runtime.Hosting
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("TestCatalog_UpdateTestsBasedOnIOChange")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TestCatalog_UpdateTestsBasedOnIOChange_WhenTestsFound_ShouldUpdateStepsToInvalid()
         {

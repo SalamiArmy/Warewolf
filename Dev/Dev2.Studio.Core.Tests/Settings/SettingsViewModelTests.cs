@@ -219,6 +219,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SettingsViewModel_SaveCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_SaveCommand_InvokesSaveOnSecurityViewModel_Done()
         {
@@ -250,6 +251,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_SaveCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_SaveCommand_ResultIsNull_HasErrorsIsTrue()
         {
@@ -283,6 +285,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SettingsViewModel_SaveCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_SaveCommand_NoAuth_HasErrorsIsTrueCorrectErrorMessage()
         {
@@ -316,6 +319,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_SaveCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_SaveCommand_DuplicateServerPermissions_HasErrorsIsTrueCorrectErrorMessage()
         {
@@ -375,6 +379,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_SaveCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_SaveCommand_DuplicateResourcePermissions_HasErrorsIsTrueCorrectErrorMessage()
         {
@@ -434,6 +439,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Massimo Guerrera")]
         [TestCategory("SettingsViewModel_SaveCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_SaveCommand_NotConnected_HasErrorsIsTrueCorrectErrorMessage()
         {
@@ -465,6 +471,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SettingsViewModel_SaveCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_SaveCommand_ResultIsError_HasErrorsIsTrue()
         {
@@ -500,6 +507,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_IsDirty_SecurityViewModelIsDirtyPropertyChanged_IsDirtyIsTrue()
         {
@@ -517,6 +525,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_IsDirty_TrueSecurityNameHasStar()
         {
@@ -534,6 +543,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_WhenIsDirtySecurityModelFiresPropertyChange_SetsSettingsViewModelIsDirty()
         {
@@ -558,6 +568,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_WhenIsDirtyPerfCounterModelFiresPropertyChange_SetsSettingsViewModelIsDirty()
         {
@@ -582,6 +593,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_IsSecurityDirty_FalseSecurityNameHasNoStar()
         {
@@ -599,6 +611,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_IsLoggingDirty_FalseLoggingNameHasNoStar()
         {
@@ -616,6 +629,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_IsLoggingDirty_TrueLoggingNameHasStar()
         {
@@ -632,6 +646,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_IsPerfCounterDirty_FalsePerfCounterNameHasNoStar()
         {
@@ -649,6 +664,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_IsPerfCounterDirty_TruePerfCounterNameHasStar()
         {
@@ -665,6 +681,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_OnDeactivate_DirtyFalse_ShouldShowPopup()
         {
@@ -683,6 +700,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_OnDeactivate_DirtyFalse_PopResultYes()
         {
@@ -703,6 +721,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_OnDeactivate_RequestCloseFalse_NoPopup()
         {
@@ -724,6 +743,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SettingsViewModel_HasVariables")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_HasVariables_ReturnsFalse()
         {
@@ -741,6 +761,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SettingsViewModel_HasDebugOutput")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_HasDebugOutput_ReturnsFalse()
         {
@@ -758,6 +779,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SettingsViewModel_IsDirty")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_OnDeactivate_DirtyFalse_PopResultNo()
         {
@@ -946,6 +968,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SettingsViewModel_DoDeactivate")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_DoDeactivate_YesSavesChanges()
         {
@@ -968,6 +991,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("SettingsViewModel_DoDeactivate")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_DoDeactivate_NoSavesChanges()
         {
@@ -1002,6 +1026,7 @@ You need Administrator permission.", viewModel.Errors);
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SettingsViewModel_DoDeactivate")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SettingsViewModel_DoDeactivate_CancelNoReturnsTrue()
         {

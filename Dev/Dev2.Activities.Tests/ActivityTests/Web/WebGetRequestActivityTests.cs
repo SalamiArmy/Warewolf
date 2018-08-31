@@ -109,6 +109,7 @@ namespace ActivityUnitTests.ActivityTest
 
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WebGetRequestExecuteWhereStaticValuesExpectCorrectResults()
         {
@@ -230,6 +231,7 @@ namespace ActivityUnitTests.ActivityTest
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetOutputs")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GetOutputs_Called_ShouldReturnListWithResultValueInIt()
         {

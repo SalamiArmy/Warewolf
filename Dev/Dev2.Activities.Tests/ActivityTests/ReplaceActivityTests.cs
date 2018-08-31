@@ -166,6 +166,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Replace_Recordset_Fields_With_CaseMatch_On_Expected_One_Replace_Success()
         {
@@ -245,6 +246,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         
         [TestMethod]
         [DeploymentItem("SQLite.Interop.dll")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ReplaceInAllRecordsetFieldsExpectedTwoReplacesSuccess()
         {

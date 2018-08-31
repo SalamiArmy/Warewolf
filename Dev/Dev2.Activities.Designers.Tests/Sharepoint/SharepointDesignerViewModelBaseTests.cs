@@ -211,6 +211,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SharepointListDesignerViewModelBase_SetSelectedSharepointServer")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SharepointListDesignerViewModelBase_SetSelectedSharepointServer_EditCommand_ShouldCallOpenResource()
         {

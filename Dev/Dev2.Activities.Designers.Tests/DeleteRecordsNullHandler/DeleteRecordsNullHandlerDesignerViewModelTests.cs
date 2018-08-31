@@ -40,6 +40,7 @@ namespace Dev2.Activities.Designers.Tests.DeleteRecordsNullHandler
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DeleteRecordsDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DeleteRecordsNullHandlerDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

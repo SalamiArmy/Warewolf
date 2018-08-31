@@ -49,6 +49,7 @@ namespace Dev2.Core.Tests.Controller
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ExecuteCommand_GivenReturnExploreAuthorizationError_ShouldShowCorrectPopup()
         {
@@ -80,6 +81,7 @@ namespace Dev2.Core.Tests.Controller
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ExecuteCommandAsync_GivenReturnExploreAuthorizationError_ShouldShowCorrectPopup()
         {

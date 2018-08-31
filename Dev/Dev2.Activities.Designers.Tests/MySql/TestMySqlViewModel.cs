@@ -163,6 +163,7 @@ namespace Dev2.Activities.Designers.Tests.MySql
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MySql_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void MySql_UpdateHelp_ShouldCallToHelpViewMode()
         {

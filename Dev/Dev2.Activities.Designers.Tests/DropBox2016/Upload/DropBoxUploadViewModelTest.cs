@@ -54,6 +54,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Upload
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DropBoxUploadViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DropBoxUploadViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
@@ -184,6 +185,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Upload
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectedOperation_EditSource")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void DropboxUploadViewModel_NewSourcePublishesMessage()
         {

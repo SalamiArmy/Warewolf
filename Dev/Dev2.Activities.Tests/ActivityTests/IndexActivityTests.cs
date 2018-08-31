@@ -37,6 +37,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         #region Index Positive Tests
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Index_Recordset_With_Index_Expected_Index_Of_Four_Returned()
         {
@@ -53,6 +54,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Index_Recordset_With_Star_And_Star_Search_Criteria_Expected_Index_Of_Four_Returned()
         {

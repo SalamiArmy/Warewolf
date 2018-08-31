@@ -159,6 +159,7 @@ namespace Dev2.Activities.Designers.Tests.Core.Database
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void UpdateOnActionSelection_GivenHasInputs_ShouldWriteToActiveDatalist()
         {
@@ -190,6 +191,7 @@ namespace Dev2.Activities.Designers.Tests.Core.Database
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void UpdateOnActionSelection_GivenHasInputs_ShouldWriteToActiveDatalistAndPopulatesInputValues()
         {

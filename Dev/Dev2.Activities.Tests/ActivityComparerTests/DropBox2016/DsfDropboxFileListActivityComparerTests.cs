@@ -44,6 +44,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
         }
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Equals_Given_Same_Object_IsEqual()
         {
@@ -61,6 +62,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal()
         {
@@ -78,6 +80,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal_CaseSensitive()
         {
@@ -94,6 +97,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
         }
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Result_Same_Object_IsEqual()
         {
@@ -111,6 +115,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Result_Different_Object_Is_Not_Equal()
         {
@@ -128,6 +133,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void Result_Different_Object_Is_Not_Equal_CaseSensitive()
         {

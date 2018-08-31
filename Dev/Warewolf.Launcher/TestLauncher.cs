@@ -785,53 +785,47 @@ namespace Warewolf.Launcher
 
         public void RunAllUnitTestJobs(int startIndex, int NumberOfUnitTestJobs)
         {
-            JobName = string.Join(",", JobSpecs.Keys.ToList().GetRange(startIndex, NumberOfUnitTestJobs));
             RunTestJobs();
-            this.CleanupServerStudio(JobName, ApplyDotCover);
+            this.CleanupServerStudio("All Unit Tests", ApplyDotCover);
         }
 
         public void RunAllServerTestJobs(int startIndex, int NumberOfServerTestJobs)
         {
-            JobName = string.Join(",", JobSpecs.Keys.ToList().GetRange(startIndex, NumberOfServerTestJobs));
             ResourcesType = "ServerTests";
             DoServerStart = "true";
             RunTestJobs();
-            this.CleanupServerStudio(JobName, ApplyDotCover);
+            this.CleanupServerStudio("All Server Tests", ApplyDotCover);
         }
 
         public void RunAllReleaseResourcesTestJobs(int startIndex, int NumberOfReleaseResourcesTestJobs)
         {
-            JobName = string.Join(",", JobSpecs.Keys.ToList().GetRange(startIndex, NumberOfReleaseResourcesTestJobs));
             ResourcesType = "Release";
             DoServerStart = "true";
             RunTestJobs();
-            this.CleanupServerStudio(JobName, ApplyDotCover);
+            this.CleanupServerStudio("All Release Resource Tests", ApplyDotCover);
         }
 
         public void RunAllDesktopUITestJobs(int startIndex, int NumberOfDesktopUITestJobs)
         {
-            JobName = string.Join(",", JobSpecs.Keys.ToList().GetRange(startIndex, NumberOfDesktopUITestJobs));
             ResourcesType = "UITests";
             DoStudioStart = "true";
             RunTestJobs();
-            this.CleanupServerStudio(JobName, ApplyDotCover);
+            this.CleanupServerStudio("All Desktop UI Tests", ApplyDotCover);
         }
 
         public void RunAllWebUITestJobs(int startIndex, int NumberOfWebUITestJobs)
         {
-            JobName = string.Join(",", JobSpecs.Keys.ToList().GetRange(startIndex, NumberOfWebUITestJobs));
             DomywarewolfioStart = "true";
             RunTestJobs();
-            this.CleanupServerStudio(JobName, ApplyDotCover);
+            this.CleanupServerStudio("All Web UI Tests", ApplyDotCover);
         }
 
         public void RunAllLoadTestJobs(int startIndex, int NumberOfLoadTestJobs)
         {
-            JobName = string.Join(",", JobSpecs.Keys.ToList().GetRange(startIndex, NumberOfLoadTestJobs));
             ResourcesType = "Load";
             DoStudioStart = "true";
             RunTestJobs();
-            this.CleanupServerStudio(JobName, ApplyDotCover);
+            this.CleanupServerStudio("All Load Tests", ApplyDotCover);
         }
 
         public void RunTestJobs(string jobName = "")

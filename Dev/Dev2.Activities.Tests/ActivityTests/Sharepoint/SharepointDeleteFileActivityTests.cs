@@ -38,6 +38,7 @@ namespace Dev2.Tests.Activities.ActivityTests.Sharepoint
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SharepointDeleteFile_Execute")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void SharepointDeleteSource_DoesNotExist_OnResourceCatalog_ShouldSetSharepointSource_ToGuidEmpty()
         {

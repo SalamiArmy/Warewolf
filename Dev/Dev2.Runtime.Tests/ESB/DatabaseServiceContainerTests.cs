@@ -33,7 +33,6 @@ namespace Dev2.Tests.Runtime.ESB
         #region Execute
 
         [TestMethod]
-        [TestCategory("MSSql")]
         public void DatabaseServiceContainer_UnitTest_ExecuteWhereHasDatabaseServiceExecution_Guid()
         {
             //------------Setup for test--------------------------

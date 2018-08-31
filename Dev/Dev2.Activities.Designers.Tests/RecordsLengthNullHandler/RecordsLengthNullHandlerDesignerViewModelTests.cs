@@ -39,6 +39,7 @@ namespace Dev2.Activities.Designers.Tests.RecordsLengthNullHandler
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("RecordsLengthDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void RecordsLengthDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {

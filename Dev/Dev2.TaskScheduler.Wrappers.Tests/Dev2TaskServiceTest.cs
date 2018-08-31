@@ -50,6 +50,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_Dev2TaskServiceTest_Constructor")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TaskShedulerWrapper_Dev2TaskServiceTest_Constructor()
         {
@@ -60,6 +61,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_Dev2TaskServiceTest_PassThrough")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TaskShedulerWrapper_Dev2TaskServiceTest_PassThrough()
         {
@@ -87,6 +89,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_Dev2TaskServiceTest_GetFolder")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TaskShedulerWrapper_Dev2TaskServiceTest_GetFolder()
         {
@@ -99,6 +102,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_Dev2TaskServiceTest_GetTask")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void TaskShedulerWrapper_Dev2TaskServiceTest_GetTask()
         {

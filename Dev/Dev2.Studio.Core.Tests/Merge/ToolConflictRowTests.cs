@@ -8,6 +8,7 @@ namespace Dev2.Core.Tests.Merge
     {
         [TestMethod]
         [Owner("Pieter Terblanche")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void ToolConflictRow_CreateConflictRow()
         {

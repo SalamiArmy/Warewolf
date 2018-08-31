@@ -26,6 +26,7 @@ namespace Dev2.Core.Tests.ConverterTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GridRowNumberConverter_Convert")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GridRowNumberConverter_Convert_WhenInputIsEmpty_ReturnsAZero()
         {
@@ -45,6 +46,7 @@ namespace Dev2.Core.Tests.ConverterTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GridRowNumberConverter_Convert")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GridRowNumberConverter_Convert_WhenInputNotDataGridRow_ReturnsMinus1()
         {
@@ -64,6 +66,7 @@ namespace Dev2.Core.Tests.ConverterTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GridRowNumberConverter_Convert")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GridRowNumberConverter_Convert_WhenValidRow_ReturnsRowIndex()
         {
@@ -92,6 +95,7 @@ namespace Dev2.Core.Tests.ConverterTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("GridRowNumberConverter_Convert")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void GridRowNumberConverter_Convert_WhenNotFirstOne_ReturnsRowIndex()
         {

@@ -14,6 +14,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_SetMinimumPrefixLength")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_SetMinimumPrefixLength_WhenTextLengthGreaterThanOrEqual_ShouldFilter()
         {
@@ -34,6 +35,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_SetMinimumPrefixLength")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_SetMinimumPrefixLength_WhenTextLengthLessThan_ShouldNotFilter()
         {
@@ -53,6 +55,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_DefaultText")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_DefaultText_Set_ShouldSetValue()
         {
@@ -68,6 +71,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_WhenText_ShouldFilter()
         {
@@ -88,6 +92,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_WhenSetSelectedItem_ShouldUpdateText()
         {
@@ -111,6 +116,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_WhenCustomSelection_ShouldNotUpdateText()
         {
@@ -135,6 +141,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_WhenTextFilterSet_ShouldUseFilterGetItems()
         {
@@ -164,6 +171,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_WhenTextFilterSet_ShouldUseFilterNoItes()
         {
@@ -190,6 +198,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_WhenItemFilterSet_ShouldUseFilterGetItems()
         {
@@ -219,6 +228,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_Text")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_WhenItemFilterSet_ShouldUseFilterNoItes()
         {
@@ -246,6 +256,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_PopulateComplete")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_WhenPopulateComplete_ShouldUpdateTextCompletion()
         {
@@ -282,6 +293,7 @@ namespace Dev2.Runtime.Configuration.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AutoCompleteBox_PopulateComplete")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void AutoCompleteBox_WhenRefreshView_ShouldInsertResults()
         {

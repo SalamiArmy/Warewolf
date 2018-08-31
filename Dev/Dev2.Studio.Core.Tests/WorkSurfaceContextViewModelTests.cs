@@ -118,6 +118,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkSurfaceContextViewModel_EnvironmentModelIsConnectedChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_EnvironmentModelIsConnectedChanged_False_DebugStatusFinished()
         {
@@ -234,6 +235,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkSurfaceContextViewModel_EnvironmentModelIsConnectedChanged")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_EnvironmentModelIsConnectedChanged_True_DebugStatusNotChanged()
         {
@@ -255,6 +257,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WorkSurfaceContextViewModel_Debug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_Debug_ExpectReturn()
         {
@@ -274,6 +277,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WorkSurfaceContextViewModel_Debug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_Debug_StopExecution()
         {
@@ -316,6 +320,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WorkSurfaceContextViewModel_Debug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_Debug_ViewInBrowser()
         {
@@ -341,6 +346,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WorkSurfaceContextViewModel_Debug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_Debug_QuickViewInBrowser()
         {
@@ -366,6 +372,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WorkSurfaceContextViewModel_Debug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_Debug_QuickDebug()
         {
@@ -392,6 +399,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WorkSurfaceContextViewModel_Debug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_ShowSaveDialog()
         {
@@ -419,6 +427,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkSurfaceContextViewModel_SetDebugStatus")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_SetDebugStatus_StatusConfigure_ClearsDebugOutputViewModel()
         {
@@ -439,6 +448,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkSurfaceContextViewModel_SetDebugStatus")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_SetDebugStatus_StatusFinished_DebugStatusFinished()
         {
@@ -454,6 +464,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkSurfaceContextViewModel_IsEnvironmentConnected")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_IsEnvironmentConnected_WhenEnvironmentConnected_ReturnsTrue()
         {
@@ -479,6 +490,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkSurfaceContextViewModel_IsEnvironmentConnected")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_IsEnvironmentConnected_WhenEnvironmentNotConnected_ReturnsFalse()
         {
@@ -501,6 +513,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("WorkSurfaceContextViewModel_IsEnvironmentConnected")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_IsEnvironmentConnected_WhenEnvironmentNull_ReturnsFalse()
         {
@@ -516,6 +529,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Ashley Lewis")]
         [TestCategory("WorkSurfaceContextViewModel_HandleUpdateDisplayName")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_HandleUpdateDisplayName_NewName_ContextualResourceModelNameChanged()
         {
@@ -562,6 +576,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WorkSurfaceContextViewModel_CanDebug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_CanDebug_ExpectTrue()
         {
@@ -594,6 +609,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WorkSurfaceContextViewModel_CanDebug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_CanSave_ExpectTrue()
         {
@@ -623,6 +639,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WorkSurfaceContextViewModel_CanDebug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_CanExecute_ExpectTrue()
         {
@@ -647,6 +664,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WorkSurfaceContextViewModel_CanDebug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_CanViewInBrowser_ExpectTrue()
         {
@@ -1034,6 +1052,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("WorkSurfaceContextViewModel_DebugCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_DebugCommand_UserHasAdministratorPermissions_CanExecuteIsTrue()
         {
@@ -1043,6 +1062,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("WorkSurfaceContextViewModel_DebugCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_DebugCommand_UserHasContributePermissions_CanExecuteIsTrue()
         {
@@ -1052,6 +1072,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("WorkSurfaceContextViewModel_DebugCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_DebugCommand_UserHasViewAndExecutePermissions_CanExecuteIsTrue()
         {
@@ -1061,6 +1082,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("WorkSurfaceContextViewModel_DebugCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_DebugCommand_UserHasViewPermissions_CanExecuteIsFalse()
         {
@@ -1070,6 +1092,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("WorkSurfaceContextViewModel_DebugCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_DebugCommand_UserHasExecutePermissions_CanExecuteIsFalse()
         {
@@ -1140,6 +1163,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("WorkSurfaceContextViewModel_DebugCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_DebugCommand_UserHasNoContributePermissions_SaveIsNotInvoked()
         {
@@ -1172,6 +1196,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("WorkSurfaceContextViewModel_DebugCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_DebugCommand_UserHasContributePermissions_SaveIsInvoked()
         {
@@ -1198,6 +1223,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("WorkSurfaceContextViewModel_DebugCommand")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_DebugCommand_UserHasContributePermissions_WfChanged_SaveIsInvokedAgain()
         {
@@ -1232,6 +1258,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WorkSurfaceContextViewModel_Debug")]
+        [TestCategory("Not Parallelizable")]
         [DoNotParallelize]
         public void WorkSurfaceContextViewModel_Debug_ValidateDataList()
         {
