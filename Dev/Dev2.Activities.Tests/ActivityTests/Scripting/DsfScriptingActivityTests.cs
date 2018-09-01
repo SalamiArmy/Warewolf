@@ -267,6 +267,8 @@ namespace Dev2.Tests.Activities.ActivityTests.Scripting
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Activities Unit Tests")]
+        [DoNotParallelize]
         public void ScriptingContext_GivenRubyScript_ShouldSetNestedClassValues()
         {
             var context = new ScriptingEngineRepo();
