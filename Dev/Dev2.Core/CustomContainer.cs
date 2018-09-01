@@ -9,6 +9,7 @@
 */
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace Dev2
@@ -17,7 +18,7 @@ namespace Dev2
     {
         public static List<Type> LoadedTypes { get; set; }
 
-        static readonly Dictionary<Type, object> RegisterdTypes = new Dictionary<Type, object>();
+        static readonly ConcurrentDictionary<Type, object> RegisterdTypes = new ConcurrentDictionary<Type, object>();
         static readonly Dictionary<Type, Func<object>> RegisterdPerRequestTypes = new Dictionary<Type, Func<object>>();
 
         public static int EntiresCount => RegisterdTypes.Count;
@@ -28,14 +29,9 @@ namespace Dev2
             RegisterdTypes.Clear();
         }
 
-        public static void Register<T>(T concrete)
-        {
-            if(RegisterdTypes.ContainsKey(typeof(T)))
-            {
-                DeRegister<T>();
-            }
-            RegisterdTypes.Add(typeof(T), concrete);
-        }
+        public static void Register<T>(T concrete) => RegisterdTypes.TryAdd(typeof(T), concrete);
+
+        public static void DeRegister<T>() => RegisterdTypes.TryRemove(typeof(T), out object value);
 
         public static T Get<T>() where T : class
         {
@@ -57,14 +53,6 @@ namespace Dev2
                 return registerdType;
             }
             return null;
-        }
-
-        public static void DeRegister<T>()
-        {
-            if(RegisterdTypes.ContainsKey(typeof(T)))
-            {
-                RegisterdTypes.Remove(typeof(T));
-            }
         }
 
         public static void AddToLoadedTypes(Type type)
