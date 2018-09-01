@@ -37,14 +37,10 @@ using Warewolf.Storage.Interfaces;
 
 
 namespace ActivityUnitTests
-
 {
     [TestClass]
     public class BaseActivityUnitTest
     {
-        
-       
-
         public BaseActivityUnitTest()
         {
             CustomContainer.Register<IActivityParser>(new ActivityParser());
@@ -53,9 +49,7 @@ namespace ActivityUnitTests
                 Action = new DsfCommentActivity()
             };
            DataObject = new DsfDataObject("",Guid.NewGuid());
-      
         }
-
         
         protected Guid ExecutionId { get; set; }
 

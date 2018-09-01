@@ -56,7 +56,6 @@ using Dev2.Instrumentation;
 
 namespace Dev2.Core.Tests.Workflows
 {
-
     [TestClass]
     public partial class WorkflowDesignerUnitTest
     {
