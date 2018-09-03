@@ -40,6 +40,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CustomContainer_Deregister")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CustomContainer_Deregister_TypeExists_TypeRemoved()
         {
             //------------Setup for test--------------------------
@@ -58,6 +60,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CustomContainer_Register")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CustomContainer_Register_TypeTwice_OneEntryIsRegistered()
         {
             //------------Setup for test--------------------------
@@ -67,6 +71,7 @@ namespace Dev2.Core.Tests
             CustomContainer.Register<ISimpleObject>(o);
             //------------Assert Results-------------------------
             Assert.AreEqual(1, CustomContainer.EntiresCount);
+            Assert.IsTrue(CustomContainer.EntiresCount >= 1, "No object was added to the container");
         }
 
         [TestMethod]
@@ -86,6 +91,8 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CustomContainer_Get")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void CustomContainer_Get_ThereIsATypeRegisted_Type()
         {
             var simpleObject = new SimpleObject();
@@ -93,8 +100,8 @@ namespace Dev2.Core.Tests
             //------------Execute Test---------------------------
             var o = CustomContainer.Get<ISimpleObject>();
             //------------Assert Results-------------------------
-            Assert.IsTrue(CustomContainer.EntiresCount >= 1, "No object was added to the container");
-            Assert.AreEqual(simpleObject.SimpleInt, simpleObject.SimpleInt);
+            Assert.AreEqual(1, CustomContainer.EntiresCount);
+            Assert.AreEqual(simpleObject, o);
         }
     }
 

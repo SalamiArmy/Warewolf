@@ -34,7 +34,10 @@ namespace Dev2.Tests.Runtime.ESB.Execution
             }
             _directoryWrapper.Delete(EnvironmentVariables.DetailLogPath, true);
         }
+
         [TestMethod]
+        [TestCategory("Not Parallelizable Runtime Unit Tests")]
+        [DoNotParallelize]
         public void Dev2StateLogger_SubscribeToEventNotifications_Tests()
         {
             TestSetup(out _fileWrapper, out _directoryWrapper, out _dev2StateLogger, out _activity, out _detailedLog);

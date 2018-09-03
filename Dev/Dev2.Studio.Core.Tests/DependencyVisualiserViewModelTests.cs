@@ -291,6 +291,7 @@ namespace Dev2.Core.Tests
             //---------------Test Result -----------------------
             Assert.AreEqual("Dependency - a", dependencyVisualiserViewModel.DisplayName);
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         public void DisplayName_GivenNotDependsOnMe_ShouldBuildDisplayNameCorrectly()
