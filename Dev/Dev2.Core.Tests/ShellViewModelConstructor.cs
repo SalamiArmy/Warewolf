@@ -20,7 +20,6 @@ namespace Dev2.Tests
             shellVm.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             shellVm.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
-            CustomContainer.Register(shellVm.Object);
             return shellVm;
         }
     }

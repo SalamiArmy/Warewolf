@@ -61,7 +61,6 @@ namespace Dev2.Core.Tests
             //---------------Test Result -----------------------
             Assert.IsTrue(wasCalled);
             Assert.AreEqual(10, dependencyVisualiserViewModel.AvailableWidth);
-
         }
 
         [TestMethod]
@@ -176,7 +175,6 @@ namespace Dev2.Core.Tests
         public void ResourceModel_GivenIsSet_ShouldNotifyOfPropertyChange()
         {
             //---------------Set up test pack-------------------
-
             var aggreMock = new Mock<IEventAggregator>();
             var resourceModel = new Mock<IContextualResourceModel>();
             var depGrap = new Mock<IDependencyGraphGenerator>();
@@ -221,7 +219,6 @@ namespace Dev2.Core.Tests
         public void NestingLevel_GivenIsSet_ShouldNotifyOfPropertyChange()
         {
             //---------------Set up test pack-------------------
-
             var aggreMock = new Mock<IEventAggregator>();
             var resourceModel = new Mock<IContextualResourceModel>();
             var depGrap = new Mock<IDependencyGraphGenerator>();
@@ -261,7 +258,6 @@ namespace Dev2.Core.Tests
         public void DisplayName_GivenDependsOnMe_ShouldBuildDisplayNameCorrectly()
         {
             //---------------Set up test pack-------------------
-
             var aggreMock = new Mock<IEventAggregator>();
             var resourceModel = new Mock<IContextualResourceModel>();
             var depGrap = new Mock<IDependencyGraphGenerator>();
@@ -297,7 +293,6 @@ namespace Dev2.Core.Tests
         public void DisplayName_GivenNotDependsOnMe_ShouldBuildDisplayNameCorrectly()
         {
             //---------------Set up test pack-------------------
-
             var aggreMock = new Mock<IEventAggregator>();
             var resourceModel = new Mock<IContextualResourceModel>();
             var depGrap = new Mock<IDependencyGraphGenerator>();
@@ -333,7 +328,6 @@ namespace Dev2.Core.Tests
         public void FavoritesLabel_GivenIsSet_ShouldNotifyOfPropertyChange()
         {
             //---------------Set up test pack-------------------
-
             var aggreMock = new Mock<IEventAggregator>();
             var resourceModel = new Mock<IContextualResourceModel>();
             var depGrap = new Mock<IDependencyGraphGenerator>();
@@ -368,7 +362,6 @@ namespace Dev2.Core.Tests
         public void GetItems_GivenEmptyNodes_ShouldZeroExploreNodes()
         {
             //---------------Set up test pack-------------------
-
             var aggreMock = new Mock<IEventAggregator>();
             var resourceModel = new Mock<IContextualResourceModel>();
             var depGrap = new Mock<IDependencyGraphGenerator>();
@@ -399,10 +392,11 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void GetItems_GivenNodesAndChilrenWithDependencies_ShouldReturnNodesAndChildDependencies()
         {
             //---------------Set up test pack-------------------
-
             var explorerTooltips = new Mock<IExplorerTooltips>();
             CustomContainer.Register(explorerTooltips.Object);
             var serverRepository = new Mock<IServerRepository>();
@@ -470,16 +464,12 @@ namespace Dev2.Core.Tests
             Assert.AreEqual(2, explorerItemNodeViewModels.Count);
             Assert.AreEqual(2, guids.Count);
         }
-
-
-
+        
         Task<ExecuteMessage> ValueFunction()
         {
             var executeMessage = new ExecuteMessage();
             var fromResult = Task.FromResult(executeMessage);
             return fromResult;
         }
-
-
     }
 }
