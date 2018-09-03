@@ -70,7 +70,9 @@ namespace Dev2.Tests.Runtime.ESB.Execution
                 notifier.Dispose();
             }
         }
+
         [TestMethod]
+        [DoNotParallelize]
         public void Dev2StateLogger_LogPreExecuteState_Tests()
         {
             TestSetup(out _fileWrapper, out _directoryWrapper, out _dev2StateLogger, out _activity, out _detailedLog);
@@ -89,6 +91,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Dev2StateLogger_LogPostExecuteState_Tests()
         {
             TestSetup(out _fileWrapper, out _directoryWrapper, out _dev2StateLogger, out _activity, out _detailedLog);
@@ -109,6 +112,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Dev2StateLogger_LogExecuteException_Tests()
         {
             TestSetup(out _fileWrapper, out _directoryWrapper, out _dev2StateLogger, out _activity, out _detailedLog);
@@ -131,6 +135,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Dev2StateLogger_LogExecuteCompleteState_Tests()
         {
             TestSetup(out _fileWrapper, out _directoryWrapper, out _dev2StateLogger, out _activity, out _detailedLog);
@@ -147,6 +152,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Dev2StateLogger_LogStopExecutionState_Tests()
         {
             TestSetup(out _fileWrapper, out _directoryWrapper, out _dev2StateLogger, out _activity, out _detailedLog);
@@ -229,6 +235,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Dev2StateAuditLogger_LogExecuteCompleteState_Tests()
         {
             var expectedWorkflowId = Guid.NewGuid();
@@ -251,6 +258,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Dev2StateAuditLogger_LogExecuteException_Tests()
         {
             var expectedWorkflowId = Guid.NewGuid();
@@ -274,6 +282,7 @@ namespace Dev2.Tests.Runtime.ESB.Execution
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Dev2StateAuditLogger_LogPostExecuteState_Tests()
         {
             var expectedWorkflowId = Guid.NewGuid();

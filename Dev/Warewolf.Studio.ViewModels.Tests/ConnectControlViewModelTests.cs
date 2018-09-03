@@ -545,6 +545,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         [TestMethod,Timeout(60000)]
         [Owner("Pieter Terblanche")]
         [TestCategory("ConnectControlViewModel_EditServer")]
+        [DoNotParallelize]
         public void ConnectControlViewModelEditServerServerIDMatchIsTrue()
         {
             var serverGuid = Guid.NewGuid();

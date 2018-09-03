@@ -38,7 +38,8 @@ namespace Dev2.Tests.Activities.ActivityTests.Sharepoint
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SharepointFileDownLoad_Execute")]
-        public void SharepointSource_DoesNotExist_OnResourceCatalog_ShouldSetSharepointSource_ToGuidEmpty()
+        [DoNotParallelize]
+        public void SharepointDownloadSource_DoesNotExist_OnResourceCatalog_ShouldSetSharepointSource_ToGuidEmpty()
         {
             //------------Setup for test--------------------------
             const string activityName = "SharepointFileDownLoad";

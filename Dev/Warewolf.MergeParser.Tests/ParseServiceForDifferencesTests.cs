@@ -19,6 +19,7 @@ namespace Warewolf.MergeParser.Tests
     public class ParseServiceForDifferencesTests
     {
         [TestMethod]
+        [DoNotParallelize]
         public void GetDifferences_WhenSame_ShouldReturnNohasConflictItems()
         {
             var activityParser = new ActivityParser();
@@ -103,21 +104,15 @@ namespace Warewolf.MergeParser.Tests
             Assert.AreEqual(calculateUniqueId, devActivityDiff1.UniqueID);
         }
 
-        
-
-        [TestInitialize]
-        public void Init()
-        {
-
-        }
-
         [TestCleanup]
         public void CleanUp()
         {
             CustomContainer.DeRegister<IActivityParser>();
             CustomContainer.DeRegister<IShellViewModel>();
         }
+
         [TestMethod]
+        [DoNotParallelize]
         public void GetDifferences_WhenDifferent_ShouldReturnhasConflictItems()
         {
             var activityParser = new ActivityParser();
@@ -230,6 +225,7 @@ namespace Warewolf.MergeParser.Tests
         }
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void GetDifferences_WhenFlatToolAddedOnRemote_ShouldNullOnLocalChart()
         {
             var activityParser = new ActivityParser();
@@ -335,6 +331,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void GetDifferences_WhenFlatToolAddedOnLocal_ShouldNullOnRemoteChart()
         {
             var activityParser = new ActivityParser();
@@ -433,6 +430,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void GetDifferences_WhenDecisionAddedOnLocal_ShouldNullOnRemoteChart()
         {
             var activityParser = new ActivityParser();
@@ -550,6 +548,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void GetDifferences_WhenToolModifiedOnBithSides_ShouldNullOnRemoteChart()
         {
             var activityParser = new ActivityParser();
@@ -631,6 +630,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void FlowDecision_GetDifferences_WhenFlowArmsModifiedOnBithSides_DecisionToolHasNoConflict()
         {
             var activityParser = new ActivityParser();
@@ -778,6 +778,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void FlowDecision_GetDifferences_WhenMainDecisionModified_DecisionToolHasConflict()
         {
             var activityParser = new ActivityParser();
@@ -921,6 +922,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void FlowDecision_GetDifferences_WhenArmToolsTheSame_DecisionHasNoConflict()
         {
             var activityParser = new ActivityParser();
@@ -1069,6 +1071,7 @@ namespace Warewolf.MergeParser.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void FlowSwitch_GetDifferences_WhenCasesTheSame_SwitchHasNoConflict()
         {
             var activityParser = new ActivityParser();

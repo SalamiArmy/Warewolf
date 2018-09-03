@@ -28,6 +28,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DotNetMethodRegion_Constructor")]
+        [DoNotParallelize]
         public void DotNetMethodRegion_Constructor_IsNew_ValidateDependencies()
         {
             //------------Setup for test--------------------------
@@ -111,6 +112,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void SelectedMethod_GivenIsSet_ShouldFireIsMethodChanges()
         {
             //------------Setup for test--------------------------
@@ -146,6 +148,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void SelectedMethod_GivenIsSet_ShouldFireIsRecordsetNameChanges()
         {
             //------------Setup for test--------------------------
@@ -216,6 +219,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void SelectedMethod_GivenIsSet_ShouldFireIsRecordsetIsObjectNameChanges()
         {
             //------------Setup for test--------------------------
@@ -251,6 +255,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void SelectedMethod_GivenIsSet_ShouldFireIsRecordsetIsObjectResultChanges()
         {
             //------------Setup for test--------------------------
@@ -286,6 +291,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void SelectedMethod_GivenIsSet_ShouldFireIsRecordsetIsInputsChanges()
         {
             //------------Setup for test--------------------------
@@ -433,6 +439,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void IsObject_GivenIsSet_ShouldPropertyChangesChanges()
         {
             //------------Setup for test--------------------------
@@ -472,6 +479,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ObjectName_GivenIsSet_ShouldPropertyChangesChanges()
         {
             //------------Setup for test--------------------------
@@ -557,6 +565,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Inputs_GivenIsSet_ShouldPropertyChangesChanges()
         {
             //------------Setup for test--------------------------
@@ -750,6 +759,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void CloneRegion_GivenRegion_ShouldCopyIsEnabled()
         {
             //------------Setup for test--------------------------
@@ -1144,6 +1154,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ViewObjectResult_GivenObjectServiceInput_ShouldObjectPopup()
         {
             //---------------Set up test pack-------------------

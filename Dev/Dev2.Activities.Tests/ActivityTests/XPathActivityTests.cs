@@ -72,6 +72,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("XPath_Execute")]
+        [DoNotParallelize]
         public void XPath_Execute_WhenLoadingTestResultsFile_ExpectParsableXML()
         {
             //------------Setup for test--------------------------
@@ -89,6 +90,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod] // - OK
+        [DoNotParallelize]
         public void EmptySourceStringExpectedNoData()
         {
             _resultsCollection.Add(new XPathDTO("[[OutVar1]]", "//type/method", 1));
@@ -147,6 +149,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("XPathActivity_OnExecute")]
+        [DoNotParallelize]
         public void XPathActivity_Execute_MultipleScalars_XPathExecuteAndInsertMutipleScalars()
         {
 

@@ -306,6 +306,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("ActivityCollectionDesignerViewModel_AddTitleBarQuickVariableInputToggle")]
+        [DoNotParallelize]
         public void ActivityCollectionDesignerViewModel_AddTitleBarQuickVariableInputToggle_Added()
         {
             //------------Setup for test--------------------------

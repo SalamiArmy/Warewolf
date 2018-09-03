@@ -111,6 +111,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfFileWrite_UpdateForEachOutputs")]
+        [DoNotParallelize]
         public void DsfFileWrite_UpdateForEachOutputs_1Updates_UpdateResult()
         {
             //------------Setup for test--------------------------
@@ -129,6 +130,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfFileWrite_GetForEachInputs")]
+        [DoNotParallelize]
         public void DsfFileWrite_GetForEachInputs_WhenHasExpression_ReturnsInputList()
         {
             //------------Setup for test--------------------------

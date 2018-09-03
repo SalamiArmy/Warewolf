@@ -41,8 +41,10 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
             //---------------Test Result -----------------------
             Assert.IsFalse(@equals);
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Equals_Given_Same_Object_IsEqual()
         {
             //---------------Set up test pack-------------------
@@ -59,6 +61,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal()
         {
             //---------------Set up test pack-------------------
@@ -75,6 +78,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal_CaseSensitive()
         {
             //---------------Set up test pack-------------------
@@ -88,8 +92,10 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
             //---------------Test Result -----------------------
             Assert.IsFalse(@equals);
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Result_Same_Object_IsEqual()
         {
             //---------------Set up test pack-------------------
@@ -106,6 +112,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Result_Different_Object_Is_Not_Equal()
         {
             //---------------Set up test pack-------------------
@@ -122,6 +129,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.DropBox2016
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Result_Different_Object_Is_Not_Equal_CaseSensitive()
         {
             //---------------Set up test pack-------------------

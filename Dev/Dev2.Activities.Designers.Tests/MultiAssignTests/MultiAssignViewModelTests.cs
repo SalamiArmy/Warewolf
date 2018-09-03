@@ -27,6 +27,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfMultiAssignActivityViewModel_Construct")]
+        [DoNotParallelize]
         public void DsfMultiAssignActivityViewModel_Construct_IsInstanceOfActivityViewModelBase_True()
         {
             //------------Setup for test--------------------------
@@ -39,6 +40,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignTests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DsfMultiAssignActivityViewModel_Construct")]
+        [DoNotParallelize]
         public void DsfMultiAssignActivityViewModel_Construct_ShouldHaveCorrectDisplayName()
         {
             //------------Setup for test--------------------------
@@ -54,6 +56,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignTests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DsfMultiAssignActivityViewModel_Construct")]
+        [DoNotParallelize]
         public void DsfMultiAssignActivityViewModel_AddNewRow_ShouldUpdateDisplayName()
         {
             //------------Setup for test--------------------------
@@ -75,6 +78,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfMultiAssignActivityViewModel_Construct")]
+        [DoNotParallelize]
         public void DsfMultiAssignActivityViewModel_Construct_IsInstanceOfActivityCollectionViewModelBaseOfActivityDTO_True()
         {
             //------------Setup for test--------------------------
@@ -87,6 +91,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignTests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("MultiAssignActivityViewModel_Handle")]
+        [DoNotParallelize]
         public void MultiAssignActivityViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -105,7 +110,8 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignTests
         [TestMethod]
         [TestCategory("MultiAssignActivityViewModel_Constructor")]
         [Owner("Ashley Lewis")]
-        
+
+        [DoNotParallelize]
         public void MultiAssignActivityViewModel_Constructor_CollectionNameInitialized()
 
         {
@@ -126,6 +132,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("MultiAssignActivityViewModel_ErrorsProperty")]
+        [DoNotParallelize]
         public void MultiAssignActivityViewModel_ErrorsProperty_Constructor_IsNull()
         {
             //------------Setup for test--------------------------

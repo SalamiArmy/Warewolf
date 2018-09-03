@@ -120,6 +120,7 @@ namespace Dev2.Activities.Designers.Tests.ExecuteCommandLine
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("CommandLineDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void CommandLineDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

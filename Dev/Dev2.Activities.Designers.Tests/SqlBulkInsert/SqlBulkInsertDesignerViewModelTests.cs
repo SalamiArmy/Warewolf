@@ -74,6 +74,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -131,6 +132,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Constructor_ModelItemIsNew_InitializesProperties()
         {
             //------------Setup for test--------------------------
@@ -181,6 +183,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Properties")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Properties()
         {
             //------------Setup for test--------------------------
@@ -211,6 +214,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Constructor_ModelItemIsNotNew_InitializesProperties()
         {
             //------------Setup for test--------------------------
@@ -262,6 +266,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_SelectedDatabase")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedDatabase_Changed_LoadsDatabaseTables()
         {
             //------------Setup for test--------------------------
@@ -287,6 +292,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_SelectedDatabase")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedDatabase_ChangedAndTableNameExists_SelectsTableAndLoadsColumns()
         {
             //------------Setup for test--------------------------
@@ -327,6 +333,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Database")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedDatabase_ChangedAndTableNameDoesNotExists_ClearsTableNameAndTableColumns()
         {
             //------------Setup for test--------------------------
@@ -364,6 +371,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Database")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedDatabase_ChangedAndTableListHasErrors_ErrorsNotNull()
         {
             //------------Setup for test--------------------------
@@ -407,6 +415,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_SelectedTable")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedTable_Changed_LoadsTableColumns()
         {
             //------------Setup for test--------------------------
@@ -435,6 +444,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_SelectedTable")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedTable_ChangedAndColumnListHasErrors_ErrorsNotNull()
         {
             //------------Setup for test--------------------------
@@ -468,6 +478,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_SelectedTable")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_SelectedTable_Changed_LoadsDefaultInputColumnMappings()
         {
             //------------Setup for test--------------------------
@@ -495,6 +506,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_RefreshTablesCommand")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_RefreshTablesCommand_ReloadsTableAndColumns()
         {
             //------------Setup for test--------------------------
@@ -527,6 +539,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("SqlBulkInsertDesignerViewModel_RefreshTablesCommand")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_RefreshTablesCommand_SecondTime_ReloadsTableAndColumns()
         {
             //------------Setup for test--------------------------
@@ -559,6 +572,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_EditDbSource")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_EditDbSource_PublishesShowEditResourceWizardMessage()
         {
             //------------Setup for test--------------------------
@@ -590,6 +604,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_CreateDbSource")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_CreateDbSource_PublishesShowEditResourceWizardMessage()
         {
             //------------Setup for test--------------------------
@@ -629,6 +644,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_NotNullableColumnWithNoValue_SetsErrors()
         {
             //------------Setup for test--------------------------
@@ -659,6 +675,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_NullableColumnWithNoValue_SetsNoErrors()
         {
             //------------Setup for test--------------------------
@@ -686,6 +703,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_IdentityColumnWithNoValueKeepIdentitySet_SetsErrors()
         {
             //------------Setup for test--------------------------
@@ -716,6 +734,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_IdentityColumnWithNoValueKeepIdentityNotSet_SetsNoErrors()
         {
             //------------Setup for test--------------------------
@@ -742,6 +761,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_IdentityColumnWithValueKeepIdentityNotSet_SetsErrors()
         {
             //------------Setup for test--------------------------
@@ -772,6 +792,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_InvalidValues_SetsErrors()
         {
             //------------Setup for test--------------------------
@@ -800,6 +821,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_ValidValues_DoesNotSetErrors()
         {
             //------------Setup for test--------------------------
@@ -842,6 +864,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_InputMappingsHasAllEmptyInputColumns_SetsErrors()
         {
             //------------Setup for test--------------------------
@@ -874,6 +897,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_InputMappingsHasOneNonEmptyInputColumn_DoesNotSetErrors()
         {
             //------------Setup for test--------------------------
@@ -910,6 +934,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_InvalidVariables_SetsErrors()
         {
             //------------Setup for test--------------------------
@@ -954,6 +979,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_Validate")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_Validate_ValidVariables_DoesNotSetErrors()
         {
             //------------Setup for test--------------------------
@@ -1011,6 +1037,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_AddToCollection")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_AddToCollection_AlwaysUpdatesInputMappings()
         {
             Verify_AddToCollection_AlwaysUpdatesInputMappings(true);
@@ -1053,6 +1080,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_ShowQuickVariableInputProperty")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_ShowQuickVariableInputProperty_IsFalse_DoesNothing()
         {
             //------------Setup for test--------------------------
@@ -1081,6 +1109,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_ShowQuickVariableInputProperty")]
+        [DoNotParallelize]
         public void SqlBulkInsertDesignerViewModel_ShowQuickVariableInputProperty_IsTrue_InitializesQuickVariableInputViewModel()
         {
             //------------Setup for test--------------------------

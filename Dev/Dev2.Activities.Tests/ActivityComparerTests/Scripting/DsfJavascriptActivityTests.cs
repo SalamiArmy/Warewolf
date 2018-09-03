@@ -16,6 +16,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
     {
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void UniqueIDEquals_EmptyJavascript_Object_IsEqual()
         {
             //---------------Set up test pack-------------------
@@ -32,6 +33,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void UniqueIDDifferent_EmptyCountRecordset_Object_Is_Equal()
         {
             //---------------Set up test pack-------------------
@@ -47,6 +49,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Equals_Given_Same_Object_IsEqual()
         {
             //---------------Set up test pack-------------------
@@ -63,6 +66,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal()
         {
             //---------------Set up test pack-------------------
@@ -79,6 +83,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Equals_Given_Different_Object_Is_Not_Equal_CaseSensitive()
         {
             //---------------Set up test pack-------------------
@@ -95,6 +100,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Script_Same_Object_IsEqual()
         {
             //---------------Set up test pack-------------------
@@ -111,6 +117,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Script_Different_Object_Is_Not_Equal()
         {
             //---------------Set up test pack-------------------
@@ -127,6 +134,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Script_Different_Object_Is_Not_Equal_CaseSensitive()
         {
             //---------------Set up test pack-------------------
@@ -143,6 +151,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Result_Same_Object_IsEqual()
         {
             //---------------Set up test pack-------------------
@@ -159,6 +168,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Result_Different_Object_Is_Not_Equal()
         {
             //---------------Set up test pack-------------------
@@ -175,6 +185,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void Result_Different_Object_Is_Not_Equal_CaseSensitive()
         {
             //---------------Set up test pack-------------------
@@ -191,6 +202,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void IncludeFile_Same_Object_IsEqual()
         {
             //---------------Set up test pack-------------------
@@ -207,6 +219,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void IncludeFile_Different_Object_Is_Not_Equal()
         {
             //---------------Set up test pack-------------------
@@ -223,6 +236,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void IncludeFile_Different_Object_Is_Not_Equal_CaseSensitive()
         {
             //---------------Set up test pack-------------------
@@ -239,6 +253,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ScriptType_Same_Object_IsEqual()
         {
             //---------------Set up test pack-------------------
@@ -255,6 +270,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void ScriptType_Different_Object_Is_Not_Equal()
         {
             //---------------Set up test pack-------------------
@@ -272,6 +288,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void EscapeScript_Different_Object_Is_Not_Equal()
         {
             //---------------Set up test pack-------------------
@@ -290,6 +307,7 @@ namespace Dev2.Tests.Activities.ActivityComparerTests.Scripting
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void EscapeScript_Same_Object_Is_Equal()
         {
             //---------------Set up test pack-------------------

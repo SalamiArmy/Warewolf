@@ -96,6 +96,7 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void AddMissingDataListItems_AddRecordSetWhenDataListContainsScalarWithSameName()
         {
             Setup();
@@ -116,6 +117,7 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void AddMissingScalarItemWhereItemsAlreadyExistsInDataListExpectedNoItemsAdded()
         {
             Setup();
@@ -138,6 +140,7 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void AddMissingRecordsetItemWhereItemsAlreadyExistsInDataListExpectedNoItemsAdded()
         {
             Setup();
@@ -293,6 +296,7 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Pieter Terblanche")]
+        [DoNotParallelize]
         public void ConvertDataListStringToCollections_DataListWithAddScalarWithNullAttributeAndSearchText_ShouldPopulateScalarSetNameWithBrackets()
         {
             Setup();
@@ -348,6 +352,7 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Pieter Terblanche")]
+        [DoNotParallelize]
         public void ConvertDataListStringToCollections_DataListWithAddScalarWithNullAttribute_ShouldPopulateScalarSetNameWithBrackets()
         {
             Setup();
@@ -386,6 +391,7 @@ namespace Dev2.Core.Tests
         #region RemoveUnused Tests
 
         [TestMethod]
+        [DoNotParallelize]
         public void RemoveUnusedDataListItems_RemoveScalars_ExpectedItemRemovedFromDataList()
         {
             Setup();
@@ -438,6 +444,7 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Sort_ScalarCollection()
         {
             //---------------------------Setup----------------------------------------------------------
@@ -459,6 +466,7 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Sort_RecordSetCollection()
         {
             //---------------------------Setup----------------------------------------------------------
@@ -483,6 +491,7 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void Sort_RecordSetFieldsCollection()
         {
             //---------------------------Setup----------------------------------------------------------
@@ -550,6 +559,7 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void RemoveUnusedDataListItems_RemoveMalformedRecordSet_ExpectedRecordSetRemove()
         {
             Setup();
@@ -572,6 +582,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DataListViewModel_HasUnusedDataListItems")]
+        [DoNotParallelize]
         public void DataListViewModel_HasUnusedDataListItems_RemoveMalformedRecordSet_ExpectedRecordSetRemove()
         {
             Setup();
@@ -612,9 +623,11 @@ namespace Dev2.Core.Tests
             _dataListViewModel.SetIsUsedDataListItems(parts, false);
             Assert.AreEqual(0, _dataListViewModel.ComplexObjectCollectionCount);
         }
+
         [TestMethod]
         [Owner("Sanele Mthembu")]
         [TestCategory("DataListViewModel_HasUnusedDataListItems")]
+        [DoNotParallelize]
         public void DataListViewModel_NameAroundBracket_ExpectedComplexObjectToBeAdded()
         {
             Setup();
@@ -634,6 +647,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DataListViewModel_HasUnusedDataListItems")]
+        [DoNotParallelize]
         public void DataListViewModel_HasUnusedDataListItems_RemoveMalformedComplexObject_ExpectedComplexObjectRemove()
         {
             Setup();
@@ -660,6 +674,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DataListViewModel_HasNoUnusedDataListItems")]
+        [DoNotParallelize]
         public void DataListViewModel_HasNoUnusedDataListItems_NoMalformedComplexObject_ExpectedComplexObjectSame()
         {
             Setup();
@@ -703,6 +718,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DataListViewModel_AddMissingDataListItems")]
+        [DoNotParallelize]
         public void DataListViewModel_AddMissingDataListItems_ComplexObject_ExpectedAddComplexObjectIsArray()
         {
             Setup();
@@ -739,6 +755,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DataListViewModel_GenerateComplexObject")]
+        [DoNotParallelize]
         public void DataListViewModel_GenerateComplexObject_FromXML_ShouldCreateComplexObjectVariables()
         {
             Setup();
@@ -862,6 +879,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_AddRecordSetNamesIfMissing")]
+        [DoNotParallelize]
         public void AddRecordSetNamesIfMissing_DataListContainingRecordSet_WithSingleBracketedRecsetName_Expected_Positive()
         {
 
@@ -893,6 +911,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_AddRecordSetNamesIfMissing")]
+        [DoNotParallelizeAttribute]
         public void AddRecordSetNamesIfMissing_DataListContainingRecordSet_WithDoubleBracketedScalar_Expected_Positive()
         {
 
@@ -923,6 +942,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_WriteResourceModel")]
+        [DoNotParallelize]
         public void WriteResourceModel_DataListContainingScalarWithError_WithDoubleBracketedScalar_Expected_Positive()
         {
 
@@ -1111,6 +1131,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DataListViewModel_HasErrors")]
+        [DoNotParallelize]
         public void DataListViewModel_HasErrors_ArrayObjAndObjNameIsDuplicated_HasErrorsTrue()
         {
             //------------Setup for test--------------------------
@@ -1242,6 +1263,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [DoNotParallelize]
         public void ValidateNames_WhenAddItemFalseAndItemExist_ShouldCauseErrorToShow()
         {
             //------------Setup for test--------------------------
@@ -1358,6 +1380,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Candice Daniel")]
         [TestCategory("DataListViewModel_TrackEvent_InputVariableCheckboxCommand")]
+        [DoNotParallelize]
         public void TrackEvent_InputVariableCheckboxCommand()
         {
             var _applicationTrackerMock = new Mock<IApplicationTracker>();
@@ -1375,6 +1398,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Candice Daniel")]
         [TestCategory("DataListViewModel_TrackEvent_OutputVariableCheckboxCommand")]
+        [DoNotParallelize]
         public void TrackEvent_OutputVariableCheckboxCommand()
         {
             var _applicationTrackerMock = new Mock<IApplicationTracker>();
@@ -1505,6 +1529,7 @@ namespace Dev2.Core.Tests
         #region Sort
 
         [TestMethod]
+        [DoNotParallelize]
         public void SortOnceExpectedSortsAscendingOrder()
         {
             Setup();
@@ -1538,6 +1563,7 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void SortOnceExpectedSorts_ShouldSortRecsetfields()
         {
             Setup();
@@ -1667,6 +1693,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DataListViewModel_ValidateNames")]
+        [DoNotParallelize]
         public void DataListViewModel_ValidateNames_RecordsetWithValidNameWithInvalidCharacter_ShouldNotHaveError()
         {
             //------------Setup for test--------------------------

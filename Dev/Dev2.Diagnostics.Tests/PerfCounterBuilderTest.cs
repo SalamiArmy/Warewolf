@@ -17,14 +17,13 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("PerformanceCounterBuilder_CtorBuildCounters")]
-
+        [DoNotParallelize]
         public void PerformanceCounterBuilder_CtorBuildCounters_Valid_ExpectNewCounters()
         {
             try
             {
                 PerformanceCounterCategory.Delete("Warewolf");
             }
-            
             catch
             {
 
@@ -55,14 +54,13 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("PerformanceCounterBuilder_CtorBuildCounters")]
-
+        [DoNotParallelize]
         public void PerformanceCounterBuilder_CtorBuildCounters_RebuildDoesNotReset_ExpectNewCounters()
         {
             try
             {
                 PerformanceCounterCategory.Delete("Warewolf");
             }
-            
             catch
             {
 
@@ -97,6 +95,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("PerformanceCounterBuilder_CtorBuildCounters")]
+        [DoNotParallelize]
         public void PerformanceCounterBuilder_CtorBuildCounters_NewResets_ExpectNewCounters()
         {
             try

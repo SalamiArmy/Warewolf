@@ -19,6 +19,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_Construct")]
+        [DoNotParallelize]
         public void CreateJsonDesignerViewModel_Construct_IsInstanceOfActivityViewModelBase_True()
         {
             //------------Setup for test--------------------------
@@ -31,6 +32,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_Construct")]
+        [DoNotParallelize]
         public void CreateJsonDesignerViewModel_Construct_IsInstanceOfActivityCollectionViewModelBaseOfJsonMappingTo_True()
         {
             //------------Setup for test--------------------------
@@ -43,6 +45,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [TestCategory("CreateJsonDesignerViewModel_Constructor")]
         [Owner("Hagashen Naidu")]
+        [DoNotParallelize]
         public void CreateJsonDesignerViewModel_Constructor_CollectionNameInitialized()
         {
             //------------Setup for test--------------------------
@@ -62,6 +65,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_ErrorsProperty")]
+        [DoNotParallelize]
         public void CreateJsonDesignerViewModel_ErrorsProperty_Constructor_IsNull()
         {
             //------------Setup for test--------------------------
@@ -75,6 +79,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_CustomAction")]
+        [DoNotParallelize]
         public void CreateJsonDesignerViewModel_CustomAction_WhenSourceNameChangedToScalar_UpdatesDestinationNameScalarName()
         {
             //------------Setup for test--------------------------
@@ -93,6 +98,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_CustomAction")]
+        [DoNotParallelize]
         public void CreateJsonDesignerViewModel_CustomAction_WhenSourceNameChangedToRecsetWithField_UpdatesDestinationNameRecsetName()
         {
             //------------Setup for test--------------------------
@@ -111,6 +117,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_CustomAction")]
+        [DoNotParallelize]
         public void CreateJsonDesignerViewModel_CustomAction_WhenSourceNameChangedToRecsetNoField_UpdatesDestinationNameRecsetName()
         {
             //------------Setup for test--------------------------
@@ -129,6 +136,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_CustomAction")]
+        [DoNotParallelize]
         public void CreateJsonDesignerViewModel_CustomAction_WhenSourceNameChangedToNonVariable_DoesNotUpdatesDestinationName()
         {
             //------------Setup for test--------------------------
@@ -147,6 +155,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("CreateJsonDesignerViewModel_CustomAction")]
+        [DoNotParallelize]
         public void CreateJsonDesignerViewModel_CustomAction_WhenSourceNameChangedToVariableButDestinationAlreadyPopulated_DoesNotUpdatesDestinationName()
         {
             //------------Setup for test--------------------------
@@ -169,6 +178,7 @@ namespace Dev2.Activities.Designers.Tests.CreateJsonDesignerViewModelTests
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("CreateJsonDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void CreateJsonDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

@@ -80,6 +80,7 @@ namespace Dev2.Activities.Designers.Tests.Script
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void ScriptDesignerViewModel_Constructor_PropertiesInitialized()
         {
             var modelItem = CreateModelItem();
@@ -108,6 +109,7 @@ namespace Dev2.Activities.Designers.Tests.Script
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_SelectedScriptType")]
+        [DoNotParallelize]
         public void ScriptDesignerViewModel_ChooseDirectoryShould_ReturnFile()
         {
             var modelItem = CreateModelItem();
@@ -154,6 +156,7 @@ namespace Dev2.Activities.Designers.Tests.Script
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("ScriptDesignerViewModel_SelectedScriptType")]
+        [DoNotParallelize]
         public void ScriptDesignerViewModel_SelectedScriptType_Ruby_PropertiesInitialized()
         {
             var modelItem = CreateModelItem();

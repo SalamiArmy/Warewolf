@@ -438,6 +438,11 @@ namespace Warewolf.Launcher
             }
             PlayList += "</Playlist>";
             CopyOnWrite(OutPlaylistPath);
+            string parentDirectory = Path.GetDirectoryName(OutPlaylistPath);
+            if (!Directory.Exists(parentDirectory))
+            {
+                Directory.CreateDirectory(parentDirectory);
+            }
             File.WriteAllText(OutPlaylistPath, PlayList);
             Console.WriteLine($"Playlist file written to \"{OutPlaylistPath}\".");
         }

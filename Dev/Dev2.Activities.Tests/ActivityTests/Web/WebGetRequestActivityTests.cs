@@ -109,6 +109,7 @@ namespace ActivityUnitTests.ActivityTest
 
 
         [TestMethod]
+        [DoNotParallelize]
         public void WebGetRequestExecuteWhereStaticValuesExpectCorrectResults()
         {
             //------------Setup for test--------------------------
@@ -229,6 +230,7 @@ namespace ActivityUnitTests.ActivityTest
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("GetOutputs")]
+        [DoNotParallelize]
         public void GetOutputs_Called_ShouldReturnListWithResultValueInIt()
         {
             //------------Setup for test--------------------------

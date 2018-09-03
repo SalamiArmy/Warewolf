@@ -102,7 +102,8 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        public void WebPut_BodyIsJSonNoHeaders_ExpectNewHeadersAdded()
+        [DoNotParallelize]
+        public void WebPost_BodyIsJSonNoHeaders_ExpectNewHeadersAdded()
         {
             //---------------Set up test pack-------------------
             CustomContainer.LoadedTypes = new List<Type>()
@@ -139,7 +140,7 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        public void WebPut_BodyIsXmlNoHeaders_ExpectNewHeadersAdded()
+        public void WebPost_BodyIsXmlNoHeaders_ExpectNewHeadersAdded()
         {
             //---------------Set up test pack-------------------
             CustomContainer.LoadedTypes = new List<Type>()
@@ -175,7 +176,8 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        public void WebPut_BodyIsXmlExistingHeaders_ExpectNoHeadersAdded()
+        [DoNotParallelize]
+        public void WebPost_BodyIsXmlExistingHeaders_ExpectNoHeadersAdded()
         {
             //---------------Set up test pack-------------------
             CustomContainer.LoadedTypes = new List<Type>()

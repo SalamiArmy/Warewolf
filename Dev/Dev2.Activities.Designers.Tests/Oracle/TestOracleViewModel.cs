@@ -258,6 +258,7 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_Handle")]
+        [DoNotParallelize]
         public void Oracle_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------   
@@ -434,6 +435,7 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_TestAction")]
+        [DoNotParallelize]
         public void Oracle_TestActionSetSourceHasRecSet()
         {
             //------------Setup for test--------------------------

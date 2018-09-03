@@ -106,6 +106,7 @@ namespace Dev2.Tests.Activities.ActivityTests.SelectAndApply
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SelectAndApplyActivity_SetupExecute")]
+        [DoNotParallelize]
         public void SelectAndApplyActivity_SetupExecute_GivenCaseConvertActivityApplied_ToCorrectIndex()
         {
             //------------Setup for test--------------------------
@@ -134,6 +135,7 @@ namespace Dev2.Tests.Activities.ActivityTests.SelectAndApply
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectAndApplyActivity_SetupExecute")]
+        [DoNotParallelize]
         public void SelectAndApplyActivity_SetupExecute_GivenCaseConvertActivityApplied_ToCorrectIndex_ComplexObjects()
         {
             //------------Setup for test--------------------------

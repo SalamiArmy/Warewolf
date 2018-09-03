@@ -164,6 +164,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("QueryManagerProxy_FetchConstructors")]
+        [DoNotParallelize]
         public void QueryManagerProxy_FetchConstructors()
         {
             var ser = new Dev2JsonSerializer();
@@ -183,6 +184,7 @@ namespace Dev2.Core.Tests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("QueryManagerProxy_FetchConstructors")]
+        [DoNotParallelize]
         public void QueryManagerProxy_FetchConstructors_GivenEnvHasObjectVariablesAddsvariables()
         {
             var ser = new Dev2JsonSerializer();
@@ -438,6 +440,7 @@ namespace Dev2.Core.Tests
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
+        [DoNotParallelize]
         public void QueryManagerProxy_LoadExplorer_WhenLongerThan30Sec_ShouldLoadExplorerItemsShowPopup()
         {
             //------------Setup for test--------------------------

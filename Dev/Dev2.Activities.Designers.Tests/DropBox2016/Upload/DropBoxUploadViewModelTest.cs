@@ -54,6 +54,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Upload
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DropBoxUploadViewModel_Handle")]
+        [DoNotParallelize]
         public void DropBoxUploadViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -183,6 +184,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Upload
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectedOperation_EditSource")]
+        [DoNotParallelize]
         public void DropboxUploadViewModel_NewSourcePublishesMessage()
         {
             var agg = new Mock<IEventAggregator>();

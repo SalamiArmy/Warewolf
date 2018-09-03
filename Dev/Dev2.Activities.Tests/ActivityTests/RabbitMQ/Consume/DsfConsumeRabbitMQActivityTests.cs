@@ -466,6 +466,7 @@ namespace Dev2.Tests.Activities.ActivityTests.RabbitMQ.Consume
         [TestMethod]
         [Owner("Mthembu Sanele")]
         [TestCategory("DsfConsumeRabbitMQActivity_Execute")]
+        [DoNotParallelize]
         public void DsfConsumeRabbitMQActivity_Execute_Empty_Queue_Exception()
         {
             //------------Setup for test--------------------------
@@ -541,6 +542,7 @@ namespace Dev2.Tests.Activities.ActivityTests.RabbitMQ.Consume
         [TestMethod]
         [Owner("Mthembu Sanele")]
         [TestCategory("DsfConsumeRabbitMQActivity_Execute")]
+        [DoNotParallelize]
         public void PerformExecution_Given_DsfBaseActivity_Inputs_ReturnsInputsInTheDebug()
         {
             //------------Setup for test--------------------------
@@ -713,6 +715,7 @@ namespace Dev2.Tests.Activities.ActivityTests.RabbitMQ.Consume
         [TestMethod]
         [Owner("Mthembu Sanele")]
         [TestCategory("DsfConsumeRabbitMQActivity_Execute")]
+        [DoNotParallelize]
         public void PerformExecution_Given_UnExisting_Queue_Returns_QeueuNotFoundException_Timeout()
         {
             //------------Setup for test--------------------------
@@ -801,6 +804,7 @@ namespace Dev2.Tests.Activities.ActivityTests.RabbitMQ.Consume
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfConsumeRabbitMQActivity_Execute")]
+        [DoNotParallelize]
         public void PerformExecution_Given_ItemsInQueue_ExecuteAndReqeue_WhenExecutedMultipleTimes_ShouldNotAppend_NoTimeout()
         {
             //------------Setup for test--------------------------

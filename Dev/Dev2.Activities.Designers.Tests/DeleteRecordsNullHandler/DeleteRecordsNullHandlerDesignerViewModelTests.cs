@@ -26,7 +26,7 @@ namespace Dev2.Activities.Designers.Tests.DeleteRecordsNullHandler
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DeleteRecordsDesignerViewModel_SetRecordsetNameValue")]
-        public void DeleteRecordsDesignerViewModel_SetRecordsetNameValue_ModelItemIsValid_RecordSetOnModelItemIsSet()
+        public void DeleteRecordsNullHandlerDesignerViewModel_SetRecordsetNameValue_ModelItemIsValid_RecordSetOnModelItemIsSet()
         {
             var modelItem = CreateModelItem();
             var viewModel = new TestDeleteRecordsDesignerViewModel(modelItem);
@@ -40,7 +40,8 @@ namespace Dev2.Activities.Designers.Tests.DeleteRecordsNullHandler
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DeleteRecordsDesignerViewModel_Handle")]
-        public void DeleteRecordsDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
+        [DoNotParallelize]
+        public void DeleteRecordsNullHandlerDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
             var mockMainViewModel = new Mock<IShellViewModel>();

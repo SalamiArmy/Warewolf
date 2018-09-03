@@ -17,11 +17,10 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
     [TestClass]
     public class IntallerActionsForDevelopmentTest
     {
-        
-
         [TestMethod]
         [Owner("Travis Frisinger")]
         [TestCategory("InstallerActionsForDevelopment_ExecuteInstallerActions")]
+        [DoNotParallelize]
         public void InstallerActionsForDevelopment_ExecuteInstallerActions_WhenNormalOperation_ExpectGroupCreatedAndUserAdded()
         {
             var warewolfGroupOps = MoqInstallerActionFactory.CreateSecurityOperationsObject();
@@ -42,8 +41,8 @@ namespace Dev2.Infrastructure.Tests.MoqInstallerActions
 
         [TestMethod]
         [Owner("Travis Frisinger")]
-        [TestCategory("InstallerActionsForDevelopment_ExecuteInstallerActions")]
-        
+        [TestCategory("InstallerActionsForDevelopment_ExecuteInstallerActions")]        
+        [DoNotParallelize]
         public void InstallerActionsForDevelopment_ExecuteInstallerActions_WhenGroupExist_ExpectUserNotAdded()
         {
             var warewolfGroupOps = MoqInstallerActionFactory.CreateSecurityOperationsObject();

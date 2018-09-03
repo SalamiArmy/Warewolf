@@ -25,16 +25,12 @@ namespace Dev2.Tests.Activities.ActivityTests
     
     public class DeleteRecordsNullHandlerActivityTest : BaseActivityUnitTest
     {
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
         public TestContext TestContext { get; set; }
 
         #region Delete Using Index
 
         [TestMethod]
-        public void DeleteRecord_Using_Index_When_Record_Exists_Expected_RecordToBeRemovedFromRecordset_Success()
+        public void DeleteRecordsNullHandler_Using_Index_When_Record_Exists_Expected_RecordToBeRemovedFromRecordset_Success()
         {
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1(1)]]", "[[res]]");
 
@@ -56,7 +52,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         #region Delete Using Star
 
         [TestMethod]
-        public void DeleteRecord_Using_Star_When_Record_Exists_Expected_WholeRecordsetToBeRemoved_Success()
+        public void DeleteRecordsNullHandler_Using_Star_When_Record_Exists_Expected_WholeRecordsetToBeRemoved_Success()
         {
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1(*)]]", "[[res]]");
 
@@ -75,7 +71,8 @@ namespace Dev2.Tests.Activities.ActivityTests
         #region Delete Using Blank Index
 
         [TestMethod]
-        public void DeleteRecord_Using_Blank_Index_When_Record_Exists_Expected_LastRecordToBeRemoved_Success()
+        [DoNotParallelize]
+        public void DeleteRecordsNullHandler_Using_Blank_Index_When_Record_Exists_Expected_LastRecordToBeRemoved_Success()
         {
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1()]]", "[[res]]");
 
@@ -161,7 +158,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         #region Error Test Cases
 
         [TestMethod]
-        public void DeleteRecord_Blank_RecordSet_Name_When_Record_Exists_Expected_No_Change_Failure()
+        public void DeleteRecordsNullHandler_Blank_RecordSet_Name_When_Record_Exists_Expected_No_Change_Failure()
         {
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "", "[[res]]");
 
@@ -177,7 +174,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
-        public void DeleteRecord_Blank_Result_Field_When_Record_Exists_Expected_RecordRemove()
+        public void DeleteRecordsNullHandler_Blank_Result_Field_When_Record_Exists_Expected_RecordRemove()
         {
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1(1)]]", "");
 
@@ -194,7 +191,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
-        public void DeleteRecord_Scalar_When_Record_Exists_Expected_NoChange()
+        public void DeleteRecordsNullHandler_Scalar_When_Record_Exists_Expected_NoChange()
         {
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[res]]", "[[res]]");
 
@@ -209,7 +206,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
-        public void DeleteRecord_When_Index_Doesnt_Exist_Expected_NoChange()
+        public void DeleteRecordsNullHandler_When_Index_Doesnt_Exist_Expected_NoChange()
         {
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1(8)]]", "[[res]]");
 
@@ -224,7 +221,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
-        public void DeleteRecord_When_Index_Is_Negative_Expected_No_Change_Failure()
+        public void DeleteRecordsNullHandler_When_Index_Is_Negative_Expected_No_Change_Failure()
         {
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1(-1)]]", "[[res]]");
 
@@ -239,7 +236,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         [TestMethod]
-        public void DeleteRecord_When_Index_Is_Zero_Expected_No_Change_Failure()
+        public void DeleteRecordsNullHandler_When_Index_Is_Zero_Expected_No_Change_Failure()
         {
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1(0)]]", "[[res]]");
 
@@ -255,9 +252,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         #endregion Error Test Cases
-
-
-
+        
         #region Private Test Methods
 
         void SetupArguments(string currentDl, string testData, string recordSetName, string resultVar, bool treatNullAsZero = false)
@@ -272,13 +267,11 @@ namespace Dev2.Tests.Activities.ActivityTests
         }
 
         #endregion Private Test Methods
-
-
-
+        
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfDeleteRecordActivity_UpdateForEachInputs")]
-        public void DsfDeleteRecordActivity_UpdateForEachInputs_NullUpdates_DoesNothing()
+        public void DsfDeleteRecordsNullHandlerActivity_UpdateForEachInputs_NullUpdates_DoesNothing()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Numeric()]]";
@@ -292,7 +285,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfDeleteRecordActivity_UpdateForEachInputs")]
-        public void DsfDeleteRecordActivity_UpdateForEachInputs_MoreThan1Updates_DoesNothing()
+        public void DsfDeleteRecordsNullHandlerActivity_UpdateForEachInputs_MoreThan1Updates_DoesNothing()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Numeric()]]";
@@ -308,7 +301,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfDeleteRecordActivity_UpdateForEachInputs")]
-        public void DsfDeleteRecordActivity_UpdateForEachInputs_UpdatesNotMatching_DoesNotUpdateRecordsetName()
+        public void DsfDeleteRecordsNullHandlerActivity_UpdateForEachInputs_UpdatesNotMatching_DoesNotUpdateRecordsetName()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Numeric()]]";
@@ -323,7 +316,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfDeleteRecordActivity_UpdateForEachOutputs")]
-        public void DsfDeleteRecordActivity_UpdateForEachOutputs_NullUpdates_DoesNothing()
+        public void DsfDeleteRecordsNullHandlerActivity_UpdateForEachOutputs_NullUpdates_DoesNothing()
         {
             //------------Setup for test--------------------------
             const string result = "[[res]]";
@@ -336,7 +329,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfDeleteRecordActivity_UpdateForEachOutputs")]
-        public void DsfDeleteRecordActivity_UpdateForEachOutputs_MoreThan1Updates_DoesNothing()
+        public void DsfDeleteRecordsNullHandlerActivity_UpdateForEachOutputs_MoreThan1Updates_DoesNothing()
         {
             //------------Setup for test--------------------------
             const string result = "[[res]]";
@@ -352,7 +345,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfDeleteRecordActivity_UpdateForEachOutputs")]
-        public void DsfDeleteRecordActivity_UpdateForEachOutputs_1Updates_UpdateResult()
+        public void DsfDeleteRecordsNullHandlerActivity_UpdateForEachOutputs_1Updates_UpdateResult()
         {
             //------------Setup for test--------------------------
             var act = new DsfDeleteRecordNullHandlerActivity { RecordsetName = "[[Numeric()]]", Result = "[[res]]" };
@@ -366,7 +359,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfDeleteRecordActivity_GetForEachInputs")]
-        public void DsfDeleteRecordActivity_GetForEachInputs_WhenHasExpression_ReturnsInputList()
+        public void DsfDeleteRecordsNullHandlerActivity_GetForEachInputs_WhenHasExpression_ReturnsInputList()
         {
             //------------Setup for test--------------------------
             const string recordsetName = "[[Numeric()]]";
@@ -382,7 +375,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfDeleteRecordActivityGetForEachOutputs")]
-        public void DsfDeleteRecordActivity_GetForEachOutputs_WhenHasResult_ReturnsOutputList()
+        public void DsfDeleteRecordsNullHandlerActivity_GetForEachOutputs_WhenHasResult_ReturnsOutputList()
         {
             //------------Setup for test--------------------------
             var act = new DsfDeleteRecordNullHandlerActivity { RecordsetName = "[[Numeric()]]", Result = "[[res]]" };
@@ -399,7 +392,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DsfDeleteRecordActivity_Execute")]
-        public void DsfDeleteRecordActivity_Execute_EmptyRecordsetName_Failure()
+        public void DsfDeleteRecordsNullHandlerActivity_Execute_EmptyRecordsetName_Failure()
         {
             //------------Setup for test--------------------------
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "", "[[res]]");
@@ -424,7 +417,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("DsfDeleteRecordActivity_Execute")]
-        public void DsfDeleteRecordActivity_ExecuteTreatNullAsZero_EmptyRecordsetName_Success()
+        public void DsfDeleteRecordsNullHandlerActivity_ExecuteTreatNullAsZero_EmptyRecordsetName_Success()
         {
             //------------Setup for test--------------------------
             SetupArguments(ActivityStrings.EmptyRecordSetNoData, ActivityStrings.EmptyRecordSet, "", "[[res]]", true);
@@ -453,7 +446,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DsfDeleteRecordActivity_Execute")]
-        public void DsfDeleteRecordActivity_Execute_RecordsetHasFieldName_Failure()
+        public void DsfDeleteRecordsNullHandlerActivity_Execute_RecordsetHasFieldName_Failure()
         {
             //------------Setup for test--------------------------
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1().field1]]", "[[res]]");
@@ -467,7 +460,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DsfDeleteRecordActivity_Execute")]
-        public void DsfDeleteRecordActivity_Execute_RecordsetHasAnIndex_Failure()
+        public void DsfDeleteRecordsNullHandlerActivity_Execute_RecordsetHasAnIndex_Failure()
         {
             //------------Setup for test--------------------------
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1(8)]]", "[[res]]");
@@ -481,7 +474,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DsfDeleteRecordActivity_Execute")]
-        public void DsfDeleteRecordActivity_Execute_TwoInputVariables_Failure()
+        public void DsfDeleteRecordsNullHandlerActivity_Execute_TwoInputVariables_Failure()
         {
             //------------Setup for test--------------------------
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1()]][[recset1()]]", "[[res]]");
@@ -495,7 +488,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DsfDeleteRecordActivity_Execute")]
-        public void DsfDeleteRecordActivity_Execute_InputIsAScalar_Failure()
+        public void DsfDeleteRecordsNullHandlerActivity_Execute_InputIsAScalar_Failure()
         {
             //------------Setup for test--------------------------
             SetupArguments(ActivityStrings.DeleteRecordsDataListWithData, ActivityStrings.DeleteRecordsDataListShape, "[[recset1]]", "[[res]]");

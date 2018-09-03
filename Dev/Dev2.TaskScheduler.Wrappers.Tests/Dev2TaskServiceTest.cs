@@ -50,6 +50,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_Dev2TaskServiceTest_Constructor")]
+        [DoNotParallelize]
         public void TaskShedulerWrapper_Dev2TaskServiceTest_Constructor()
         {
             var service = new Dev2TaskService(new TaskServiceConvertorFactory());
@@ -59,6 +60,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_Dev2TaskServiceTest_PassThrough")]
+        [DoNotParallelize]
         public void TaskShedulerWrapper_Dev2TaskServiceTest_PassThrough()
         {
             using (var service = new Dev2TaskService(new TaskServiceConvertorFactory()))
@@ -85,6 +87,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_Dev2TaskServiceTest_GetFolder")]
+        [DoNotParallelize]
         public void TaskShedulerWrapper_Dev2TaskServiceTest_GetFolder()
         {
             using (var service = new Dev2TaskService(new TaskServiceConvertorFactory()))
@@ -96,6 +99,7 @@ namespace Dev2.TaskScheduler.Wrappers.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("TaskShedulerWrapper_Dev2TaskServiceTest_GetTask")]
+        [DoNotParallelize]
         public void TaskShedulerWrapper_Dev2TaskServiceTest_GetTask()
         {
             using (var service = new Dev2TaskService(new TaskServiceConvertorFactory()))

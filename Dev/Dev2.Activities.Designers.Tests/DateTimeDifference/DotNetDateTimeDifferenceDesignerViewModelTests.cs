@@ -27,7 +27,7 @@ namespace Dev2.Activities.Designers.Tests.DateTimeDifference
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DateTimeDifferenceDesignerViewModel_Constructor")]
-        public void DateTimeDifferenceDesignerViewModel_Constructor_ModelItemIsValid_SelectedOutputTypeIsInitialized()
+        public void DotNetDateTimeDifferenceDesignerViewModel_Constructor_ModelItemIsValid_SelectedOutputTypeIsInitialized()
         {
             var modelItem = CreateModelItem();
             var viewModel = new TestDotNetDateTimeDifferenceDesignerViewModel(modelItem);
@@ -39,7 +39,7 @@ namespace Dev2.Activities.Designers.Tests.DateTimeDifference
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DateTimeDifferenceDesignerViewModel_Constructor")]
-        public void DateTimeDifferenceDesignerViewModel_Constructor_ModelItemIsValid_SelectedOutputTypeAreInitialized()
+        public void DotNetDateTimeDifferenceDesignerViewModel_Constructor_ModelItemIsValid_SelectedOutputTypeAreInitialized()
         {
             var modelItem = CreateModelItem();
             var viewModel = new TestDotNetDateTimeDifferenceDesignerViewModel(modelItem);
@@ -50,7 +50,7 @@ namespace Dev2.Activities.Designers.Tests.DateTimeDifference
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("DateTimeDifferenceDesignerViewModel_SetSelectedOutputType")]
-        public void DateTimeDifferenceDesignerViewModel_SetSelectedOutputType_ValidType_OutputTypeOnModelItemIsAlsoSet()
+        public void DotNetDateTimeDifferenceDesignerViewModel_SetSelectedOutputType_ValidType_OutputTypeOnModelItemIsAlsoSet()
         {
             var modelItem = CreateModelItem();
             var viewModel = new TestDotNetDateTimeDifferenceDesignerViewModel(modelItem);
@@ -61,7 +61,7 @@ namespace Dev2.Activities.Designers.Tests.DateTimeDifference
         }
 
         [TestMethod]
-        public void DateTimeDifferenceDesignerViewModel_ShouldSetInputFormat_WhenNoInputFormat()
+        public void DotNetDateTimeDifferenceDesignerViewModel_ShouldSetInputFormat_WhenNoInputFormat()
         {
             var modelItem = CreateModelItem();
             var viewModel = new TestDotNetDateTimeDifferenceDesignerViewModel(modelItem);
@@ -70,7 +70,7 @@ namespace Dev2.Activities.Designers.Tests.DateTimeDifference
         }
 
         [TestMethod]
-        public void DateTimeDifferenceDesignerViewModel_ShouldNotSetInputFormat_WhenInputFormat()
+        public void DotNetDateTimeDifferenceDesignerViewModel_ShouldNotSetInputFormat_WhenInputFormat()
         {
             var modelItem = CreateModelItem("yyyy-mm-dd");
             var viewModel = new TestDotNetDateTimeDifferenceDesignerViewModel(modelItem);
@@ -82,7 +82,8 @@ namespace Dev2.Activities.Designers.Tests.DateTimeDifference
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DateTimeDifferenceDesignerViewModel_Handle")]
-        public void DateTimeDifferenceDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
+        [DoNotParallelize]
+        public void DotNetDateTimeDifferenceDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
             var mockMainViewModel = new Mock<IShellViewModel>();

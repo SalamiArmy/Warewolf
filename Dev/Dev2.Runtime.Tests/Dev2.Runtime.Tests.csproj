@@ -229,6 +229,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AppUsageStatsTests.cs" />
     <Compile Include="AssemblyLoaderTests.cs" />
     <Compile Include="ESB\ComPlugin\ComPluginRuntimeHandlerTest.cs" />

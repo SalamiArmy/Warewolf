@@ -378,6 +378,7 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void WebPut_BodyIsJSonNoHeaders_ExpectNewHeadersAdded()
         {
             //---------------Set up test pack-------------------

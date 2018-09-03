@@ -43,6 +43,7 @@ namespace Dev2.Activities.Designers.Tests.Core
     {
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void OnCreation_GivenIsDraggedTrue_ShouldShowLarge()
         {
             //---------------Set up test pack-------------------
@@ -56,8 +57,10 @@ namespace Dev2.Activities.Designers.Tests.Core
             Assert.IsTrue(showLarge);
             
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void OnCreation_GivenIsDraggedTrue_ShouldShowLargeOnAllTools()
         {
             //---------------Set up test pack-------------------
@@ -101,6 +104,7 @@ namespace Dev2.Activities.Designers.Tests.Core
         
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [DoNotParallelize]
         public void OnCreation_GivenIsDraggedFalse_ShouldNotShowLarge()
         {
             //---------------Set up test pack-------------------

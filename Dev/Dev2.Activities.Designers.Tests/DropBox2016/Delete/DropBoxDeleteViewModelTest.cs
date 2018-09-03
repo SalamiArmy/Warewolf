@@ -52,6 +52,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Delete
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DropBoxDeleteViewModel_Handle")]
+        [DoNotParallelize]
         public void DropBoxDeleteViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -128,6 +129,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Delete
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("DropBoxDeleteViewModel_Sources")]
+        [DoNotParallelize]
         public void DropBoxDeleteViewModel_Sources_EditSource_PublishesMessage()
         {
             //------------Setup for test--------------------------

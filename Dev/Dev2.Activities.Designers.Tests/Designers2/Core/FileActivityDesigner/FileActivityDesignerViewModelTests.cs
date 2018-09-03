@@ -329,6 +329,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.FileActivityDesigner
         [TestMethod]
         [Owner("Robin van den Heever")]
         [TestCategory("FileActivityDesignerViewModel_ValidateFileContent")]
+        [DoNotParallelize]
         public void FileActivityDesignerViewModelVerifyValidateFileContentValidExpressionPass()
         {
             const string Content = "File [[contains]] Stored Here";
@@ -382,6 +383,7 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.FileActivityDesigner
         [TestMethod]
         [Owner("Robin van den Heever")]
         [TestCategory("FileActivityDesignerViewModel_ValidateArchivePassword")]
+        [DoNotParallelize]
         public void FileActivityDesignerViewModelValidateArchiveVariablePasswordPass()
         {
             const string Password = "[[password]]";

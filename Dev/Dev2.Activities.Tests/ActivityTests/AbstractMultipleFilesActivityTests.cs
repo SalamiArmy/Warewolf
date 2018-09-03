@@ -64,6 +64,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("AbstractMultipleFiles_Execute")]
+        [DoNotParallelize]
         public void AbstractMultipleFiles_Execute_WhenOutputPathNotIsRooted_ExceptionCaughtErrorAdded()
         {
             //---------------Setup----------------------------------------------

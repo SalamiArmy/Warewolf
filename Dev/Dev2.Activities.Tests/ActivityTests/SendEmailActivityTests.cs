@@ -121,6 +121,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [TestCategory("SendEmail_Execute")]
+        [DoNotParallelize]
         public void SendEmail_Execute_StaticValues_CorrectResults_IsHTML()
         {
             //------------Setup for test--------------------------
@@ -201,6 +202,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [TestCategory("SendEmail_Execute")]
+        [DoNotParallelize]
         public void SendEmail_Execute_ScalarValuesHasToList_CorrectResults()
         {
             //------------Setup for test--------------------------
@@ -240,6 +242,7 @@ namespace Dev2.Tests.Activities.ActivityTests
 
         [TestMethod]
         [TestCategory("SendEmail_Execute")]
+        [DoNotParallelize]
         public void SendEmail_Execute_ScalarValuesHasBCCList_CorrectResults()
         {
             //------------Setup for test--------------------------
@@ -347,6 +350,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SendEmail_Execute")]
+        [DoNotParallelize]
         public void SendEmail_Execute_FromAccount_EmailSourceIsCorrect()
         {
             Verify_Execute_FromAccount_EmailSourceIsCorrect(true);

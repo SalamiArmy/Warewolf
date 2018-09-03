@@ -41,7 +41,6 @@ Background: Setup for workflows for tests
 			| Test3    | Windows            | false | false       | false       | true        | false      |
 			| Test4    | Windows            | false | false       | true        | false       | false      |
 
-
 Scenario: Test Wf With Dropbox Upload Tool
 	Given I have a workflow "TestWFWithDropBoxUpload"	
 	And "TestWFWithDropBoxUpload" contains a DropboxUpload "UploadTool" Setup as
@@ -56,6 +55,7 @@ Scenario: Test Wf With Dropbox Upload Tool
 	Then test result is Passed
 	When I delete "Test 1"
 
+@MSTest:DoNotParallelize
 Scenario: Test Wf With Dropbox Delete Tool
 	Given I have a workflow "TestWFWithDropBoxDelete"	
 	And "TestWFWithDropBoxDelete" contains a DropboxUpload "UploadTool" Setup as
@@ -92,6 +92,7 @@ Scenario: Test Wf With Dropbox Download Tool
 	Then test result is Passed
 	When I delete "Test 1"
 
+@MSTest:DoNotParallelize
 Scenario: Test Wf With Dropbox List Tool
 	Given I have a workflow "TestWFWithDropBoxList"	
 	And "TestWFWithDropBoxList" contains a DropboxUpload "UploadTool" Setup as

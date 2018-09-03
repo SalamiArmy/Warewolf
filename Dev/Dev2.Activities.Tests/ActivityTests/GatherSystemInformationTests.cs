@@ -779,6 +779,7 @@ namespace Dev2.Tests.Activities.ActivityTests
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DsfGatherSystemInformationActivity_UpdateForEachInputs")]
+        [DoNotParallelize]
         public void DsfGatherSystemInformationActivity_UpdateForEachOutputs_MoreThan1Updates_Collection()
         {
             //------------Setup for test--------------------------

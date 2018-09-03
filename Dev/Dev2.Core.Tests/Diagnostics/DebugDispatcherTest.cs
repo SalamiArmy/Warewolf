@@ -20,7 +20,6 @@ namespace Dev2.Tests.Diagnostics
     [TestClass]
     public class DebugDispatcherTest
     {
-
         #region Add
 
         [TestMethod]
@@ -52,9 +51,9 @@ namespace Dev2.Tests.Diagnostics
         #region Remove
 
         [TestMethod]
+        [DoNotParallelize]
         public void RemoveWithInvalidID()
         {
-
             var workspaceID = Guid.NewGuid();
             var writer = new Mock<IDebugWriter>();
             DebugDispatcher.Instance.Add(workspaceID, writer.Object);
@@ -62,10 +61,10 @@ namespace Dev2.Tests.Diagnostics
             var countBefore = DebugDispatcher.Instance.Count;
             DebugDispatcher.Instance.Remove(Guid.NewGuid());
             Assert.AreEqual(countBefore, DebugDispatcher.Instance.Count);
-
         }
 
         [TestMethod]
+        [DoNotParallelize]
         public void RemoveWithValidID()
         {
 

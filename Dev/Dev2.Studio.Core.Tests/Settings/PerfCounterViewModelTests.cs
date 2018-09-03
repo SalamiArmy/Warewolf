@@ -416,6 +416,7 @@ namespace Dev2.Core.Tests.Settings
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("PerfcounterViewModel_ResetCounters")]
+        [DoNotParallelize]
         public void PerfcounterViewModel_ResetCounters_Command_NoError_ShouldCallCommunicationsController()
         {
             //------------Setup for test--------------------------

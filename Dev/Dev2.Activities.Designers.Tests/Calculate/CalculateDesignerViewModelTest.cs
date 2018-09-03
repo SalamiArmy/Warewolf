@@ -49,6 +49,7 @@ namespace Dev2.Activities.Designers.Tests.Calculate
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("CalculateDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void CalculateDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

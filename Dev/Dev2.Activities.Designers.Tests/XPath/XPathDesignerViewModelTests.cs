@@ -27,6 +27,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_Constructor_ModelItemIsValid_CollectionNameIsSetToResultsCollection()
         {
             var items = new List<XPathDTO> { new XPathDTO() };
@@ -37,6 +38,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("XPathDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
@@ -57,6 +59,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_Constructor_ModelItemIsValid_ResultsCollectionHasTwoItems()
         {
             var modelItem = ModelItemUtils.CreateModelItem(new DsfXPathActivity());
@@ -68,6 +71,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_Constructor")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_Constructor_ModelItemIsInitializedWith4Items_ResultsCollectionHasFourItems()
         {
             var items = new List<XPathDTO>
@@ -85,6 +89,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringIsNotEmpty_DoesNotHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -102,6 +107,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_XPathIsInvalid_DoesHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -119,6 +125,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_OutputVariableHasSpecialCharacter_DoesHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -136,6 +143,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_XPathIsValidButNoOuputVariable_DoesHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -154,6 +162,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringIsEmpty_DoesHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -171,6 +180,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringIsInValidXml_DoesHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -188,6 +198,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringIsValidRecordset_DoesNotHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -204,6 +215,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringRecordsetHasANegativeIndex_DoesHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -221,6 +233,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateThis")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateThis_SourceStringRecordsetHasASpecialCharacter_DoesHaveErrors()
         {
             //------------Setup for test--------------------------
@@ -239,6 +252,7 @@ namespace Dev2.Activities.Designers.Tests.XPath
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("XPathDesignerViewModel_ValidateCollectionItem")]
+        [DoNotParallelize]
         public void XPathDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {
             //------------Setup for test--------------------------

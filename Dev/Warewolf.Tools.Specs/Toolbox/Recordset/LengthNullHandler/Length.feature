@@ -9,7 +9,7 @@ Background: Setup for workflows for tests
 	Then activity is DsfCountRecordsetNullHandlerActivity
 
 @MSTest:DoNotParallelize
-Scenario: Length of a recordset with 3 rows
+Scenario: Length of a recordset with null handling with 3 rows
 	Given I get the length from a recordset that looks like with this shape
 	| [[rs]]    |   |
 	| rs(1).row | 1 |
@@ -29,7 +29,7 @@ Scenario: Length of a recordset with 3 rows
 	| [[result]] = 5 |
 
 @MSTest:DoNotParallelize
-Scenario: Length of a recordset with 8 rows
+Scenario: Length of a recordset with null handling with 8 rows
 	Given I get the length from a recordset that looks like with this shape
 	| rs        |   |
 	| rs(1).row | 1 |
@@ -59,7 +59,7 @@ Scenario: Length of a recordset with 8 rows
 	| [[result]] = 8 |
 
 @MSTest:DoNotParallelize
-Scenario: Recordset length for coloumn
+Scenario: Recordset length with null handling for coloumn
 	Given I get the length from a recordset that looks like with this shape
 	| rs        |   |
 	| rs(1).row | 1 |
@@ -78,7 +78,7 @@ Scenario: Recordset length for coloumn
 	And the debug output as 
 	|                |
 
-Scenario: Recordset length for coloumns invalid
+Scenario: Recordset length with null handling for coloumns invalid
 	Given I get the length from a recordset that looks like with this shape
 	| rs        |   |
 	| rs().row  | 1 |
@@ -97,7 +97,7 @@ Scenario: Recordset length for coloumns invalid
 	|                |
 
 @MSTest:DoNotParallelize
-Scenario: Recordset length 
+Scenario: Recordset length with null handling 
 	Given I get the length from a recordset that looks like with this shape
 	| rs        |   |
 	| rs().row  | 1 |
@@ -124,7 +124,7 @@ Scenario: Recordset length
 	|                |
 	| [[result]] = 6 |
 
-Scenario: Recordset length for invalid recordset
+Scenario: Recordset length with null handling for invalid recordset
 	Given I get the length from a recordset that looks like with this shape
 	| rs        |   |
 	| rs(1).row | 1 |
@@ -144,7 +144,7 @@ Scenario: Recordset length for invalid recordset
 	|                |
 
 @MSTest:DoNotParallelize
-Scenario Outline: Ensure Recordset length inputs work as expected 
+Scenario Outline: Ensure Recordset length with null handling inputs work as expected 
 	Given I get the length from a recordset that looks like with this shape
 	| rs        |   |
 	| rs().row  | 1 |
@@ -168,7 +168,7 @@ Examples:
 | [[rec([[int]])]] | ""   | AN    |                                                   | [[sdasd]]          | 3               |
 | [[c]]            | ""   | AN    | Scalar not allowed                                | [[d]]              | Failure         |
 
-Scenario: Length of an null recordset
+Scenario: Length of an null recordset with null handling
 	Given I get the length from a recordset that looks like with this shape
 	| rs           |      |
 	| [[rs().row]] | NULL |

@@ -40,7 +40,8 @@ namespace Dev2.Tests.Activities.ActivityTests.Sharepoint
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("SharepointReadList_Execute")]
-        public void SharepointSource_DoesNotExist_OnResourceCatalog_ShouldSetSharepointSource_ToGuidEmpty()
+        [DoNotParallelize]
+        public void SharepointReadListSource_DoesNotExist_OnResourceCatalog_ShouldSetSharepointSource_ToGuidEmpty()
         {
             //------------Setup for test--------------------------
             const string activityName = "SharepointReadList";

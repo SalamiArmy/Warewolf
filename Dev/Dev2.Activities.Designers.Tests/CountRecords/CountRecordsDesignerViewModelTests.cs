@@ -37,6 +37,7 @@ namespace Dev2.Activities.Designers.Tests.CountRecords
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("CountRecordsDesignerViewModel_Handle")]
+        [DoNotParallelize]
         public void CountRecordsDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
