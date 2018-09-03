@@ -513,6 +513,8 @@ namespace Dev2.Core.Tests
         [TestCategory("DebugOutputViewModel_OpenItem")]
         [Description("DebugOutputViewModel OpenItem must set the DebugState's properties.")]
         [Owner("Trevor Williams-Ros")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DebugOutputViewModel_OpenItemWithRemoteEnvironment_OpensResourceFromRemoteEnvironment()
         {
             const string ResourceName = "TestResource";
@@ -1295,6 +1297,8 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void DebugOutputViewModel_TestUpdateHelpDescriptor()
         {
             //arrange
@@ -1303,7 +1307,7 @@ namespace Dev2.Core.Tests
                 new Mock<IDebugOutputFilterStrategy>().Object)
             { DebugStatus = DebugStatus.Finished };
 
-            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mainViewModelMock = new Mock<IShellViewModel>();
             var helpViewModelMock = new Mock<IHelpWindowViewModel>();
             mainViewModelMock.SetupGet(it => it.HelpViewModel).Returns(helpViewModelMock.Object);
             CustomContainer.Register(mainViewModelMock.Object);

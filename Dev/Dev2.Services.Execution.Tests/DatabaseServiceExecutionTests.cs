@@ -32,6 +32,8 @@ namespace Dev2.Services.Execution.Tests
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
+        [DoNotParallelize]
         public void TranslateDataTableToEnvironment_Given3PopulatedOutPuts_ShouldMappAll()
         {
             //---------------Set up test pack-------------------
