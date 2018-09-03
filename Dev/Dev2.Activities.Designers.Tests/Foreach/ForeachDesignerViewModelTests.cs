@@ -16,6 +16,7 @@ using Dev2.Common.Interfaces.Help;
 using Dev2.Data.Interfaces.Enums;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
@@ -47,6 +48,8 @@ namespace Dev2.Activities.Designers.Tests.Foreach
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("ForeachDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ForeachDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

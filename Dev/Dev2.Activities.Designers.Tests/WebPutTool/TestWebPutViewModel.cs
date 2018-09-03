@@ -14,6 +14,7 @@ using Dev2.Common.Interfaces.WebService;
 using Dev2.Communication;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using TestingDotnetDllCascading;
@@ -93,7 +94,7 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
             {
                 typeof(ManageWebServiceModel)
             };
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             var updateProxy = new Mock<IStudioUpdateManager>();
             var updateManager = new Mock<IQueryManager>();
@@ -121,7 +122,7 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
             {
                 typeof(ManageWebServiceModel)
             };
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             var updateProxy = new Mock<IStudioUpdateManager>();
             var updateManager = new Mock<IQueryManager>();
@@ -172,7 +173,7 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
         public void WebPutDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -391,7 +392,7 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
             {
                 typeof(ManageWebServiceModel)
             };
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             var updateProxy = new Mock<IStudioUpdateManager>();
             var updateManager = new Mock<IQueryManager>();
@@ -428,13 +429,7 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
             {
                 typeof(ManageWebServiceModel)
             };
-            var shellVm = new Mock<IShellViewModel>();
-            var serverMock = new Mock<IServer>();
-            var updateProxy = new Mock<IStudioUpdateManager>();
-            var updateManager = new Mock<IQueryManager>();
-            serverMock.Setup(server => server.UpdateRepository).Returns(updateProxy.Object);
-            serverMock.Setup(server => server.QueryProxy).Returns(updateManager.Object);
-            shellVm.Setup(model => model.ActiveServer).Returns(serverMock.Object);
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             var mod = GetMockModel();
             var act = GetPostActivityWithOutPuts(mod);
@@ -489,7 +484,7 @@ namespace Dev2.Activities.Designers.Tests.WebPutTool
             {
                 typeof(ManageWebServiceModel)
             };
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             var updateProxy = new Mock<IStudioUpdateManager>();
             var updateManager = new Mock<IQueryManager>();

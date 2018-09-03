@@ -15,6 +15,7 @@ using Dev2.Providers.Errors;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Warewolf.Core;
@@ -44,7 +45,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_Constructor_Valid_ShouldSetupViewModel()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -83,7 +84,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_Validate_HasErrorsIfNoSource()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -102,7 +103,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_GenerateOutputsVisible_Set_SetsOtherProperties()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -132,7 +133,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_ToModel()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -153,7 +154,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_ClearValidationMessage()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -172,7 +173,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_SetDisplayName()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -194,7 +195,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -215,7 +216,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_ErrorMessage()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -236,7 +237,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_FixErrors()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -255,7 +256,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_UpdateWorstDesignError()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -279,7 +280,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void ComDllViewModel_Test()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -295,7 +296,7 @@ namespace Dev2.Activities.Designers.Tests.ComDll
         public void BuildRegions_GivenNamespacesRegionHasErrors_ShouldhaveErrors()
         {
             //---------------Set up test pack-------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
 

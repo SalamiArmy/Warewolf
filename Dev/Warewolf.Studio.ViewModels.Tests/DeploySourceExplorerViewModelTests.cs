@@ -11,6 +11,7 @@ using Dev2.Studio.Interfaces.Deploy;
 using Microsoft.Practices.Prism.PubSubEvents;
 using Moq;
 using Dev2;
+using Dev2.Tests;
 
 namespace Warewolf.Studio.ViewModels.Tests
 {
@@ -39,7 +40,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             CustomContainer.Register(explorerTooltips.Object);
             _selectedEnvironment = new Mock<IEnvironmentViewModel>();
             _selectedEnvironment.Setup(p => p.DisplayName).Returns("someResName");
-            _shellViewModelMock = new Mock<IShellViewModel>();
+            _shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockExplorerViewModel = new Mock<IExplorerViewModel>();
             _shellViewModelMock.Setup(model => model.ExplorerViewModel).Returns(mockExplorerViewModel.Object);
             _shellViewModelMock.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);

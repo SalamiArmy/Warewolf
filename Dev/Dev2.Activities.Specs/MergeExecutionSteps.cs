@@ -41,7 +41,7 @@
 //            }
 
 //            var mockServer = new Mock<IServer>();
-//            var mockshell = new Mock<IShellViewModel>();
+//            var mockshell = ShellViewModelConstructor.ShellViewModelForTesting();
 //            mockshell.Setup(a => a.ActiveServer).Returns(mockServer.Object);
 //            mockServer.Setup(a => a.GetServerVersion()).Returns("1.0.0.0");
 //            CustomContainer.Register(mockServer.Object);

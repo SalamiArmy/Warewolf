@@ -53,6 +53,7 @@ using Dev2.Data.Interfaces.Enums;
 using Dev2.Data.Interfaces;
 using Dev2.Studio.Interfaces.Enums;
 using Dev2.Instrumentation;
+using Dev2.Tests;
 
 namespace Dev2.Core.Tests.Workflows
 {
@@ -1682,7 +1683,7 @@ namespace Dev2.Core.Tests.Workflows
             wd.SetActiveEnvironment(env.Object);
             var activeEnvironment = wd.GetActiveEnvironment();
             Assert.AreEqual(activeEnvironment, env.Object);
-            wd.SetDataObject(new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object));
+            wd.SetDataObject(new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object));
 
             // Execute unit
             wd.TestModelServiceModelChanged(eventArgs.Object);
@@ -2341,7 +2342,7 @@ namespace Dev2.Core.Tests.Workflows
 
             var wd = new WorkflowDesignerViewModelMock(crm.Object, workflowHelper.Object, new Mock<IEventAggregator>().Object);
             var explorerItem = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object,
-                a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object);
+                a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object);
 
 
             explorerItem.ResourceId = resourceId;
@@ -2419,7 +2420,7 @@ namespace Dev2.Core.Tests.Workflows
 
             var wd = new WorkflowDesignerViewModelMock(crm.Object, workflowHelper.Object, new Mock<IEventAggregator>().Object);
             var explorerItem = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object,
-                a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object);
+                a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object);
 
             explorerItem.ResourceId = resourceId;
             wd.SetDataObject(explorerItem);

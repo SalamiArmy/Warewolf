@@ -15,6 +15,7 @@ using Castle.DynamicProxy.Generators;
 using Dev2.Common.Interfaces.Studio.Controller;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.Views.Workflow;
+using Dev2.Tests;
 using Dev2.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -100,7 +101,7 @@ namespace Dev2.Core.Tests
             CustomContainer.Register(explorerTooltips.Object);
             //------------Setup for test--------------------------
             AppUsageStats.LocalHost = "http://localhost";
-            var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object);
+            var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object);
             data.IsService = true;
             var dataContext = new Mock<IWorkflowDesignerViewModel>();
             var differentEnvironment = new Mock<IServer>();
@@ -126,7 +127,7 @@ namespace Dev2.Core.Tests
         {
             //------------Setup for test--------------------------
             AppUsageStats.LocalHost = "http://localhost";
-            var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object);
+            var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object);
             data.ResourceType = "WorkflowService";
             var dataContext = new Mock<IWorkflowDesignerViewModel>();
 
@@ -154,7 +155,7 @@ namespace Dev2.Core.Tests
         {
             //------------Setup for test--------------------------
             AppUsageStats.LocalHost = "http://localhost";
-            var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object) { ResourceType = "WorkflowService" };
+            var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object) { ResourceType = "WorkflowService" };
             var dataContext = new Mock<IWorkflowDesignerViewModel>();
 
             var differentEnvironment = new Mock<IServer>();
@@ -176,7 +177,7 @@ namespace Dev2.Core.Tests
             //------------Setup for test--------------------------
             var dragDropHelpers = new DragDropHelpers(GetMockWorkflowDesignerView());
 
-            var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object);
+            var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object);
             data.ResourceType = "DbSource";
             //------------Execute Test---------------------------
             var canDoDrop = dragDropHelpers.PreventDrop(GetMockDataObjectWithFormatData(new[] { "ExplorerItemViewModel" }, data));
@@ -195,7 +196,7 @@ namespace Dev2.Core.Tests
             AppUsageStats.LocalHost = "http://localhost";
             var resourceId = Guid.NewGuid();
             var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object,
-                a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object)
+                a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object)
             {
                 ResourceType = "WorkflowService",
                 ResourceId = resourceId,
@@ -229,7 +230,7 @@ namespace Dev2.Core.Tests
         public void DragDropHelpers_PreventDrop_UserIsNotAuthorized_True()
         {
             //------------Setup for test--------------------------
-            var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object);
+            var data = new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object);
             data.ResourceType = "WorkflowService";
             var dataContext = new object();
             var dragDropHelpers = new DragDropHelpers(GetMockWorkflowDesignerView(dataContext));

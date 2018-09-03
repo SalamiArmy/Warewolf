@@ -27,6 +27,7 @@ using Dev2.Settings;
 using Dev2.Settings.Security;
 using Dev2.Studio.Core;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Dev2.Threading;
 using Microsoft.Practices.Prism.PubSubEvents;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -42,7 +43,7 @@ namespace Dev2.Core.Tests.Settings
         [TestInitialize]
         public void SetupForTest()
         {
-            var shell = new Mock<IShellViewModel>();
+            var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             var lcl = new Mock<IServer>();
             lcl.Setup(a => a.DisplayName).Returns("Localhost");
             shell.Setup(x => x.LocalhostServer).Returns(lcl.Object);

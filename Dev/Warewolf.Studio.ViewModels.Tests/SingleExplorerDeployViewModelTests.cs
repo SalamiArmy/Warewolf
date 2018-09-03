@@ -15,6 +15,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Dev2.Threading;
 using Dev2;
+using Dev2.Tests;
 
 namespace Warewolf.Studio.ViewModels.Tests
 {
@@ -40,7 +41,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _sourceView = new Mock<IDeploySourceExplorerViewModel>();
             _statsView = new Mock<IDeployStatsViewerViewModel>();
             _statsView.SetupAllProperties();
-            _shellVm = new Mock<IShellViewModel>();
+            _shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             _serverMock = new Mock<IServer>();
             var mockEnvironmentConnection = SetupMockConnection();
             mockEnvironmentConnection.Setup(connection => connection.IsConnected).Returns(true);
@@ -759,7 +760,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _destView.Setup(model => model.MinSupportedVersion).Returns(new Version("2.0.0.0"));
             var explorerItemViewModels = new List<IExplorerItemViewModel>
             {
-                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
+                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
             };
             _destView.Setup(model => model.SelectedEnvironment.AsList()).Returns(explorerItemViewModels);
             _sourceView.Setup(model => model.ServerVersion).Returns(new Version("1.0.0.0"));
@@ -807,7 +808,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _destView.Setup(model => model.MinSupportedVersion).Returns(new Version("1.0.0.0"));
             var explorerItemViewModels = new List<IExplorerItemViewModel>
             {
-                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
+                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
             };
             _destView.Setup(model => model.SelectedEnvironment.AsList()).Returns(explorerItemViewModels);
             _sourceView.Setup(model => model.ServerVersion).Returns(new Version("1.0.0.0"));
@@ -855,7 +856,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _destView.Setup(model => model.MinSupportedVersion).Returns(new Version("2.0.0.0"));
             var explorerItemViewModels = new List<IExplorerItemViewModel>
             {
-                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
+                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
             };
             _destView.Setup(model => model.SelectedEnvironment.AsList()).Returns(explorerItemViewModels);
             _sourceView.Setup(model => model.ServerVersion).Returns(new Version("1.0.0.0"));
@@ -1307,7 +1308,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _destView.Setup(model => model.ConnectControlViewModel).Returns(connectControl.Object);
             var explorerItemViewModels = new List<IExplorerItemViewModel>
             {
-                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
+                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
             };
             _destView.Setup(model => model.SelectedEnvironment.AsList()).Returns(explorerItemViewModels);
             _sourceView.Setup(model => model.ConnectControlViewModel).Returns(connectControl.Object);
@@ -1350,7 +1351,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _destView.Setup(model => model.ConnectControlViewModel).Returns(connectControl.Object);
             var explorerItemViewModels = new List<IExplorerItemViewModel>
             {
-                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
+                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
             };
             _destView.Setup(model => model.SelectedEnvironment.AsList()).Returns(explorerItemViewModels);
             _sourceView.Setup(model => model.ConnectControlViewModel).Returns(connectControl.Object);
@@ -1398,7 +1399,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             };
             var explorerItemViewModels = new List<IExplorerItemViewModel>
             {
-                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
+                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
             };
             var sourceEnv = new Mock<IEnvironmentViewModel>();
             sourceEnv.Setup(model => model.IsConnected).Returns(true);
@@ -1462,7 +1463,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             };
             var explorerItemViewModels = new List<IExplorerItemViewModel>
             {
-                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
+                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
             };
             var sourceEnv = new Mock<IEnvironmentViewModel>();
             sourceEnv.Setup(model => model.IsConnected).Returns(true);
@@ -1529,7 +1530,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             };
             var explorerItemViewModels = new List<IExplorerItemViewModel>
             {
-                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, new Mock<IShellViewModel>().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
+                new ExplorerItemViewModel(new Mock<IServer>().Object, new Mock<IExplorerTreeItem>().Object, a => { }, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<IPopupController>().Object) { ResourcePath = "Somepath" }
             };
             var sourceEnv = new Mock<IEnvironmentViewModel>();
             sourceEnv.Setup(model => model.IsConnected).Returns(true);

@@ -9,6 +9,7 @@ using Dev2.Common.Interfaces.Help;
 using Dev2.Common.Interfaces.ServerProxyLayer;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Dev2.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -23,6 +24,8 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_MethodName")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void Oracle_MethodName_ValidateExpectErrors()
         {
             //------------Setup for test--------------------------
@@ -58,6 +61,8 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_MethodName")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void Oracle_MethodName_ClearErrors()
         {
             //------------Setup for test--------------------------
@@ -101,7 +106,7 @@ namespace Dev2.Activities.Designers.Tests.Oracle
             {
                 typeof(ManageDbServiceModel)
             };
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -129,6 +134,8 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_MethodName")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void Oracle_TestActionSetSource()
         {
             //------------Setup for test--------------------------
@@ -167,6 +174,8 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_MethodName")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void Oracle_TestActionSetSourceAndTestClickOkHasMappings()
         {
             //------------Setup for test--------------------------
@@ -216,6 +225,8 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_MethodName")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void Oracle_TestActionSetSourceAndTestClickOkHasMappingsErrorFromServer()
         {
             //------------Setup for test--------------------------
@@ -271,7 +282,7 @@ namespace Dev2.Activities.Designers.Tests.Oracle
             {
                 typeof(ManageDbServiceModel)
             };
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -299,6 +310,8 @@ namespace Dev2.Activities.Designers.Tests.Oracle
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_MethodName")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void Oracle_TestActionSetSourceAndTestClickOkHasHeaders()
         {
             //------------Setup for test--------------------------
@@ -345,9 +358,12 @@ namespace Dev2.Activities.Designers.Tests.Oracle
             Assert.IsTrue(oracle.ManageServiceInputViewModel.InputArea.Inputs.First().Name == "[[a]]");
             Assert.AreEqual(0, oracle.ManageServiceInputViewModel.Errors.Count);
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("Oracle_MethodName")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void Oracle_TestActionSetSourceAndTestClickOkHasQueryStringAndHeaders()
         {
             //------------Setup for test--------------------------
@@ -407,7 +423,7 @@ namespace Dev2.Activities.Designers.Tests.Oracle
             {
                 typeof(ManageDbServiceModel)
             };
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -447,7 +463,7 @@ namespace Dev2.Activities.Designers.Tests.Oracle
             {
                 typeof(ManageDbServiceModel)
             };
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);

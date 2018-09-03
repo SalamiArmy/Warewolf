@@ -10,6 +10,7 @@ using Dev2.Communication;
 using Dev2.Studio.Controller;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.ViewModels.DependencyVisualization;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Warewolf.Studio.ViewModels;
@@ -411,7 +412,7 @@ namespace Dev2.Core.Tests
             var resourceId = Guid.NewGuid();
             var resourceId1 = Guid.NewGuid();
             var server = new Mock<IServer>();
-            var mVm = new Mock<IShellViewModel>();
+            var mVm = ShellViewModelConstructor.ShellViewModelForTesting();
             var env = new Mock<IEnvironmentViewModel>();
             var exploreItm = new Mock<IExplorerItemViewModel>();
             exploreItm.SetupGet(model => model.ResourceName).Returns("a");

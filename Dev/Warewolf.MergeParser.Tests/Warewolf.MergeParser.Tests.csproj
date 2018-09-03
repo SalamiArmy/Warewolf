@@ -95,6 +95,10 @@
       <Project>{13C0C6E9-7DC3-4DC3-8535-031C263CEE0B}</Project>
       <Name>Dev2.Common.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dev2.Core.Tests\Dev2.Core.Tests.csproj">
+      <Project>{6A65D99B-61C5-4376-B4F7-71A503F9351F}</Project>
+      <Name>Dev2.Core.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dev2.Core\Dev2.Core.csproj">
       <Project>{6007C1F1-CE38-474A-A88C-0C05A77BC415}</Project>
       <Name>Dev2.Core</Name>
@@ -128,9 +132,7 @@
       <Name>Warewolf.MergeParser</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="XML Parser\AssignOutPut.xml" />
   </ItemGroup>

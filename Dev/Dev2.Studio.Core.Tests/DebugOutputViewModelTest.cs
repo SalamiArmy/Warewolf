@@ -31,7 +31,7 @@ using Dev2.Studio.ViewModels.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Dev2.Studio.Interfaces.Enums;
-
+using Dev2.Tests;
 
 namespace Dev2.Core.Tests
 {
@@ -133,7 +133,7 @@ namespace Dev2.Core.Tests
             var lineItem = new Mock<IDebugLineItem>();
             lineItem.SetupGet(l => l.MoreLink).Returns("Something");
 
-            var mainViewModel = new Mock<IShellViewModel>();
+            var mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpWindowViewModel = new Mock<IHelpWindowViewModel>();
             mainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpWindowViewModel.Object);
             vm.HighlightError = false;
@@ -151,7 +151,7 @@ namespace Dev2.Core.Tests
             var lineItem = new Mock<IDebugLineItem>();
             lineItem.SetupGet(l => l.MoreLink).Returns("Something");
 
-            var mainViewModel = new Mock<IShellViewModel>();
+            var mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpWindowViewModel = new Mock<IHelpWindowViewModel>();
             mainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpWindowViewModel.Object);
 
@@ -172,7 +172,7 @@ namespace Dev2.Core.Tests
             var lineItem = new Mock<IDebugLineItem>();
             lineItem.SetupGet(l => l.MoreLink).Returns("Something");
 
-            var mainViewModel = new Mock<IShellViewModel>();
+            var mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpWindowViewModel = new Mock<IHelpWindowViewModel>();
             mainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpWindowViewModel.Object);
             var dbgS = new Mock<IDebugState>();
@@ -191,7 +191,7 @@ namespace Dev2.Core.Tests
             var lineItem = new Mock<IDebugLineItem>();
             lineItem.SetupGet(l => l.MoreLink).Returns("Something");
 
-            var mainViewModel = new Mock<IShellViewModel>();
+            var mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpWindowViewModel = new Mock<IHelpWindowViewModel>();
             mainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpWindowViewModel.Object);
 
@@ -212,7 +212,7 @@ namespace Dev2.Core.Tests
             var lineItem = new Mock<IDebugLineItem>();
             lineItem.SetupGet(l => l.MoreLink).Returns("Something");
 
-            var mainViewModel = new Mock<IShellViewModel>();
+            var mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpWindowViewModel = new Mock<IHelpWindowViewModel>();
             mainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpWindowViewModel.Object);
 
@@ -515,10 +515,9 @@ namespace Dev2.Core.Tests
         [Owner("Trevor Williams-Ros")]
         public void DebugOutputViewModel_OpenItemWithRemoteEnvironment_OpensResourceFromRemoteEnvironment()
         {
-
             const string ResourceName = "TestResource";
             var environmentID = Guid.NewGuid();
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(viewModel => viewModel.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(),It.IsAny<IServer>()))
                 .Verifiable();
             CustomContainer.Register(mockShellViewModel.Object);
@@ -1304,7 +1303,7 @@ namespace Dev2.Core.Tests
                 new Mock<IDebugOutputFilterStrategy>().Object)
             { DebugStatus = DebugStatus.Finished };
 
-            var mainViewModelMock = new Mock<IShellViewModel>();
+            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             var helpViewModelMock = new Mock<IHelpWindowViewModel>();
             mainViewModelMock.SetupGet(it => it.HelpViewModel).Returns(helpViewModelMock.Object);
             CustomContainer.Register(mainViewModelMock.Object);

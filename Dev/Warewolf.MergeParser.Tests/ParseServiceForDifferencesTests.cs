@@ -12,6 +12,7 @@ using Dev2.Utilities;
 using Dev2.Studio.Interfaces;
 using Moq;
 using Dev2.Common.Interfaces.Diagnostics.Debug;
+using Dev2.Tests;
 
 namespace Warewolf.MergeParser.Tests
 {
@@ -24,7 +25,7 @@ namespace Warewolf.MergeParser.Tests
         public void GetDifferences_WhenSame_ShouldReturnNohasConflictItems()
         {
             var activityParser = new ActivityParser();
-            var shellView = new Mock<IShellViewModel>();
+            var shellView = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             shellView.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             CustomContainer.Register(shellView.Object);
@@ -118,7 +119,7 @@ namespace Warewolf.MergeParser.Tests
         public void GetDifferences_WhenDifferent_ShouldReturnhasConflictItems()
         {
             var activityParser = new ActivityParser();
-            var shellView = new Mock<IShellViewModel>();
+            var shellView = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             shellView.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             CustomContainer.Register(shellView.Object);
@@ -232,7 +233,7 @@ namespace Warewolf.MergeParser.Tests
         public void GetDifferences_WhenFlatToolAddedOnRemote_ShouldNullOnLocalChart()
         {
             var activityParser = new ActivityParser();
-            var shellView = new Mock<IShellViewModel>();
+            var shellView = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             shellView.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             CustomContainer.Register(shellView.Object);
@@ -339,7 +340,7 @@ namespace Warewolf.MergeParser.Tests
         public void GetDifferences_WhenFlatToolAddedOnLocal_ShouldNullOnRemoteChart()
         {
             var activityParser = new ActivityParser();
-            var shellView = new Mock<IShellViewModel>();
+            var shellView = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             shellView.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             CustomContainer.Register(shellView.Object);
@@ -439,7 +440,7 @@ namespace Warewolf.MergeParser.Tests
         public void GetDifferences_WhenDecisionAddedOnLocal_ShouldNullOnRemoteChart()
         {
             var activityParser = new ActivityParser();
-            var shellView = new Mock<IShellViewModel>();
+            var shellView = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             shellView.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             CustomContainer.Register(shellView.Object);
@@ -558,7 +559,7 @@ namespace Warewolf.MergeParser.Tests
         public void GetDifferences_WhenToolModifiedOnBithSides_ShouldNullOnRemoteChart()
         {
             var activityParser = new ActivityParser();
-            var shellView = new Mock<IShellViewModel>();
+            var shellView = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             shellView.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             CustomContainer.Register(shellView.Object);
@@ -641,7 +642,7 @@ namespace Warewolf.MergeParser.Tests
         public void FlowDecision_GetDifferences_WhenFlowArmsModifiedOnBithSides_DecisionToolHasNoConflict()
         {
             var activityParser = new ActivityParser();
-            var shellView = new Mock<IShellViewModel>();
+            var shellView = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             shellView.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             CustomContainer.Register(shellView.Object);
@@ -790,7 +791,7 @@ namespace Warewolf.MergeParser.Tests
         public void FlowDecision_GetDifferences_WhenMainDecisionModified_DecisionToolHasConflict()
         {
             var activityParser = new ActivityParser();
-            var shellView = new Mock<IShellViewModel>();
+            var shellView = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             shellView.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             CustomContainer.Register(shellView.Object);
@@ -935,7 +936,7 @@ namespace Warewolf.MergeParser.Tests
         public void FlowDecision_GetDifferences_WhenArmToolsTheSame_DecisionHasNoConflict()
         {
             var activityParser = new ActivityParser();
-            var shellView = new Mock<IShellViewModel>();
+            var shellView = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             shellView.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             CustomContainer.Register(shellView.Object);
@@ -1085,7 +1086,7 @@ namespace Warewolf.MergeParser.Tests
         public void FlowSwitch_GetDifferences_WhenCasesTheSame_SwitchHasNoConflict()
         {
             var activityParser = new ActivityParser();
-            var shellView = new Mock<IShellViewModel>();
+            var shellView = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             shellView.Setup(model => model.ActiveServer).Returns(serverMock.Object);
             CustomContainer.Register(shellView.Object);

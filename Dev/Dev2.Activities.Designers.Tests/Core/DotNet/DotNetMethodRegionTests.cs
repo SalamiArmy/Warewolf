@@ -14,6 +14,7 @@ using Dev2.Common.Interfaces.ToolBase.DotNet;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Warewolf.Core;
@@ -44,7 +45,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -74,7 +75,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
         [TestCategory("DotNetMethodRegion_Constructor")]
         [ExpectedException(typeof(ArgumentNullException))]
         public void DotNetMethodRegion_Constructor_IsNew_ValidateMapperVmDependencies()
-            => new DotNetMethodRegion(new Mock<IShellViewModel>().Object, default(IActionInputDatatalistMapper));
+            => new DotNetMethodRegion(ShellViewModelConstructor.ShellViewModelForTesting().Object, default(IActionInputDatatalistMapper));
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
@@ -94,7 +95,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -131,7 +132,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -168,7 +169,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -205,7 +206,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -242,7 +243,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -279,7 +280,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -316,7 +317,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -353,7 +354,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -391,7 +392,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -429,7 +430,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -471,7 +472,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -512,7 +513,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             shellVm.Setup(model => model.UpdateCurrentDataListWithObjectFromJson(It.IsAny<string>(), It.IsAny<string>()));
             CustomContainer.Register(shellVm.Object);
 
@@ -556,7 +557,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             shellVm.Setup(model => model.UpdateCurrentDataListWithObjectFromJson(It.IsAny<string>(), It.IsAny<string>()));
             CustomContainer.Register(shellVm.Object);
 
@@ -601,7 +602,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
             var pluginAction = new PluginAction() { };
@@ -652,7 +653,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
             var pluginAction = new PluginAction() { };
@@ -692,7 +693,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -730,7 +731,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -770,7 +771,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -804,7 +805,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object)
             {
@@ -839,7 +840,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -874,7 +875,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
@@ -909,7 +910,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             var wasCalled = false;
             //---------------Execute Test ----------------------
@@ -949,7 +950,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             //---------------Execute Test ----------------------
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
@@ -982,7 +983,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace).Returns(new NamespaceItem());
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             //---------------Execute Test ----------------------
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
@@ -1011,7 +1012,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace);
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             //---------------Execute Test ----------------------
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
@@ -1040,7 +1041,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace).Returns(new NamespaceItem());
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             //---------------Execute Test ----------------------
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
@@ -1069,7 +1070,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new PluginSourceDefinition());
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace).Returns(new NamespaceItem());
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             //---------------Execute Test ----------------------
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
@@ -1102,7 +1103,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new PluginSourceDefinition());
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace).Returns(new NamespaceItem());
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             //---------------Execute Test ----------------------
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
@@ -1134,7 +1135,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new PluginSourceDefinition());
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace).Returns(new NamespaceItem());
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             //---------------Execute Test ----------------------
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
@@ -1188,7 +1189,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new PluginSourceDefinition());
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace).Returns(new NamespaceItem());
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             var mock = new Mock<IJsonObjectsView>();
             mock.Setup(view => view.ShowJsonString(It.IsAny<string>()));
             CustomContainer.Register(shellVm.Object);
@@ -1223,7 +1224,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new PluginSourceDefinition());
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace).Returns(new NamespaceItem());
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             var mock = new Mock<IJsonObjectsView>();
             mock.Setup(view => view.ShowJsonString(It.IsAny<string>()));
             CustomContainer.Register(shellVm.Object);
@@ -1255,7 +1256,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new PluginSourceDefinition());
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace).Returns(new NamespaceItem());
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             //---------------Execute Test ----------------------
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
@@ -1282,7 +1283,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new PluginSourceDefinition());
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace).Returns(new NamespaceItem());
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             //---------------Execute Test ----------------------
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object) { IsObject = false };
@@ -1306,7 +1307,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new PluginSourceDefinition());
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             nameSpaceRegion.Setup(region => region.SelectedNamespace).Returns(new NamespaceItem());
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object) { IsObject = false };
             var pluginAction = new PluginAction()

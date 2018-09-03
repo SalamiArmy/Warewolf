@@ -12,8 +12,7 @@ using Dev2.Common.Interfaces.SaveDialog;
 using Dev2.Common.Interfaces.Threading;
 using Dev2.Studio.Interfaces;
 using Dev2.Threading;
-
-
+using Dev2.Tests;
 
 namespace Warewolf.Studio.ViewModels.Tests
 {
@@ -656,7 +655,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         {
             //arrange
             var helpText = "helpText";
-            var mainViewModelMock = new Mock<IShellViewModel>();
+            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             var helpViewModelMock = new Mock<IHelpWindowViewModel>();
             mainViewModelMock.SetupGet(it => it.HelpViewModel).Returns(helpViewModelMock.Object);
             CustomContainer.Register(mainViewModelMock.Object);

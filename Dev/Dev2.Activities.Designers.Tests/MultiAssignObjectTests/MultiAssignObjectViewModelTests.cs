@@ -18,7 +18,7 @@ using System.Activities.Presentation.Model;
 using Dev2.Common.Interfaces.Help;
 using Dev2.Studio.Interfaces;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
-
+using Dev2.Tests;
 
 namespace Dev2.Activities.Designers.Tests.MultiAssignObjectTests
 {
@@ -61,7 +61,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignObjectTests
         public void MultiAssignObjectActivityViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -116,7 +116,7 @@ namespace Dev2.Activities.Designers.Tests.MultiAssignObjectTests
         {
             if (CustomContainer.Get<IShellViewModel>() == null)
             {
-                CustomContainer.Register(new Mock<IShellViewModel>().Object);
+                CustomContainer.Register(ShellViewModelConstructor.ShellViewModelForTesting().Object);
             }
             var dsfMultiAssignObjectActivityViewModel = new MultiAssignObjectDesignerViewModel(ModelItemUtils.CreateModelItem(new DsfMultiAssignObjectActivity()));
             return dsfMultiAssignObjectActivityViewModel;

@@ -33,8 +33,7 @@ using Dev2.Activities.Specs.BaseTypes;
 using Dev2.Common.Interfaces.Enums;
 using Dev2.Common.Interfaces.Studio.Controller;
 using Dev2.Studio.Interfaces;
-
-
+using Dev2.Tests;
 
 namespace Dev2.Activities.Specs.Scheduler
 {
@@ -88,7 +87,7 @@ namespace Dev2.Activities.Specs.Scheduler
         {
             AppUsageStats.LocalHost = "http://localhost:3142";
             var mockServer = new Mock<IServer>();
-            var mockshell = new Mock<IShellViewModel>();
+            var mockshell = ShellViewModelConstructor.ShellViewModelForTesting();
             mockshell.Setup(a => a.ActiveServer).Returns(mockServer.Object);
             mockshell.Setup(a => a.LocalhostServer).Returns(mockServer.Object);
             mockServer.Setup(a => a.GetServerVersion()).Returns("1.0.0.0");

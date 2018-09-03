@@ -16,6 +16,7 @@ using Dev2.Common.Interfaces.Help;
 using Dev2.Providers.Validation.Rules;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Dev2.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -165,7 +166,6 @@ namespace Dev2.Activities.Designers.Tests.FindRecordsMultipleCriteria
 
             //------------Execute Test---------------------------
             viewModel.SearchTypeUpdatedCommand.Execute(indexObject);
-            //viewModel.SearchTypeUpdatedCommand.Execute(0);
 
             //------------Assert Results-------------------------
             Assert.AreEqual(isSearchCriteriaEnabled, findRecordsTO.IsSearchCriteriaEnabled);
@@ -175,6 +175,8 @@ namespace Dev2.Activities.Designers.Tests.FindRecordsMultipleCriteria
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("FindRecordsMultipleCriteriaViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void FindRecordsMultipleCriteriaViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------   

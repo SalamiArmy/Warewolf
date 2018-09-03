@@ -8,6 +8,7 @@ using Microsoft.Practices.Prism.PubSubEvents;
 using Moq;
 using Dev2;
 using Dev2.ConnectionHelpers;
+using Dev2.Tests;
 
 namespace Warewolf.Studio.ViewModels.Tests
 {
@@ -37,7 +38,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             CustomContainer.Register(serverRepository.Object);
             var connectControlSingleton = new Mock<IConnectControlSingleton>();
             CustomContainer.Register(connectControlSingleton.Object);
-            _shellViewModelMock = new Mock<IShellViewModel>();
+            _shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             _shellViewModelMock.Setup(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
             _shellViewModelMock.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);
             var env = new Mock<IEnvironmentViewModel>();

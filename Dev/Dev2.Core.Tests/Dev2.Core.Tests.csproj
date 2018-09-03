@@ -168,6 +168,7 @@
     <Compile Include="ExtMethods\StringExtensionTests.cs" />
     <Compile Include="GatherSystemInformationTOTests.cs" />
     <Compile Include="MathOperationTest\InfragisticsEvaluationTest.cs" />
+    <Compile Include="ShellViewModelConstructor.cs" />
     <Compile Include="StringExtensionTests.cs" />
     <Compile Include="TestModelItemUtil.cs" />
     <Compile Include="TestUtils.cs" />
@@ -249,6 +250,10 @@
     <ProjectReference Include="..\Dev2.Runtime\Dev2.Runtime.csproj">
       <Project>{9623C7DD-85EE-41AB-89B1-1A9784A97DA7}</Project>
       <Name>Dev2.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dev2.Studio.Interfaces\Dev2.Studio.Interfaces.csproj">
+      <Project>{37149E8E-FEF2-47C0-8391-80DCCE86D26D}</Project>
+      <Name>Dev2.Studio.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Warewolf.Exchange.Email.Wrapper\Warewolf.Exchange.Email.Wrapper.csproj">
       <Project>{b02e76f0-9b4b-41f6-8d3a-00e4564142b3}</Project>

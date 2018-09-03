@@ -13,8 +13,7 @@ using System.Windows;
 using Dev2.Common.Interfaces.Core;
 using Dev2.Common.Interfaces.Help;
 using Dev2.Studio.Interfaces;
-
-
+using Dev2.Tests;
 
 namespace Dev2.Activities.Designers.Tests.RabbitMQ.Consume
 {
@@ -81,7 +80,7 @@ namespace Dev2.Activities.Designers.Tests.RabbitMQ.Consume
         [TestCategory("RabbitMQConsumeDesignerViewModelTest_IsObject")]
         public void RabbitMQConsumeDesignerViewModel_IsObject_IsChanged()
         {
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             var model = new Mock<IRabbitMQSourceModel>();
             model.Setup(m => m.RetrieveSources()).Returns(new List<IRabbitMQServiceSourceDefinition>());
@@ -95,15 +94,13 @@ namespace Dev2.Activities.Designers.Tests.RabbitMQ.Consume
             Assert.IsTrue(vm.IsObject);
             Assert.IsTrue(consumeRabbitMqActivity.IsObject);
         }
-
-     
-
+        
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("RabbitMQConsumeDesignerViewModelTest_ObjectName")]
         public void RabbitMQConsumeDesignerViewModel_ObjectName_IsChanged()
         {
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             var model = new Mock<IRabbitMQSourceModel>();
             model.Setup(m => m.RetrieveSources()).Returns(new List<IRabbitMQServiceSourceDefinition>());
@@ -165,7 +162,7 @@ namespace Dev2.Activities.Designers.Tests.RabbitMQ.Consume
         public void RabbitMQConsumeDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);

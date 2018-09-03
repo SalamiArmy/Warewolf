@@ -19,6 +19,7 @@ using Dev2.Studio.Core.Activities.Utils;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 using Dev2.Common;
 using Dev2.Activities.DateAndTime;
+using Dev2.Tests;
 
 namespace Dev2.Activities.Designers.Tests.DateTimeTests
 {
@@ -101,7 +102,7 @@ namespace Dev2.Activities.Designers.Tests.DateTimeTests
             propertyCollection.Protected().Setup<ModelProperty>("Find", TimeModifierAmountDisplay, true).Returns(prop.Object);
             mockModel.Setup(s => s.Properties).Returns(propertyCollection.Object);
 
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);

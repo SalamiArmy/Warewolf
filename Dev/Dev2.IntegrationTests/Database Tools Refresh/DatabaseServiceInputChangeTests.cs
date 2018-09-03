@@ -11,6 +11,7 @@ using Dev2.Studio.Core;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.ViewModels.DataList;
+using Dev2.Tests;
 using Dev2.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -61,7 +62,7 @@ namespace Dev2.Integration.Tests.Database_Tools_Refresh
             var environmentConnection = environmentModel.Connection;
             var controllerFactory = new CommunicationControllerFactory();
             var _proxyLayer = new StudioServerProxy(controllerFactory, environmentConnection);
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var dbServiceModel = new ManageDbServiceModel(new StudioResourceUpdateManager(controllerFactory, environmentConnection)
                                                                                     , _proxyLayer.QueryManagerProxy
                                                                                     , mock.Object
@@ -122,7 +123,7 @@ namespace Dev2.Integration.Tests.Database_Tools_Refresh
             var environmentConnection = environmentModel.Connection;
             var controllerFactory = new CommunicationControllerFactory();
             var _proxyLayer = new StudioServerProxy(controllerFactory, environmentConnection);
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var dbServiceModel = new ManageDbServiceModel(new StudioResourceUpdateManager(controllerFactory, environmentConnection)
                                                                                     , _proxyLayer.QueryManagerProxy
                                                                                     , mock.Object

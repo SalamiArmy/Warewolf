@@ -1,5 +1,6 @@
 ﻿using Dev2.Common.Interfaces;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -17,9 +18,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //------------Setup for test--------------------------
             var updateManager = new Mock<IStudioUpdateManager>();
             var queryManager = new Mock<IQueryManager>();
-            var shellViewModel = new Mock<IShellViewModel>();
-
-            
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             
             //------------Execute Test---------------------------
             var manageRabbitMQSourceModel = new ManageRabbitMQSourceModel(updateManager.Object, queryManager.Object, shellViewModel.Object);
@@ -30,10 +29,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             Assert.IsNotNull(p.GetField("_queryManager"));
             Assert.IsNotNull(p.GetField("_shellViewModel"));
         }
-
         
-
-
         [TestMethod,Timeout(60000)]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("ManageRabbitMQSourceModel_Retrieve")]
@@ -42,7 +38,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //------------Setup for test--------------------------
             var updateManager = new Mock<IStudioUpdateManager>();
             var queryManager = new Mock<IQueryManager>();
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var manageRabbitMQSourceModel = new ManageRabbitMQSourceModel(updateManager.Object, queryManager.Object, shellViewModel.Object);
 
 
@@ -62,7 +58,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //------------Setup for test--------------------------
             var updateManager = new Mock<IStudioUpdateManager>();
             var queryManager = new Mock<IQueryManager>();
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var manageRabbitMQSourceModel = new ManageRabbitMQSourceModel(updateManager.Object, queryManager.Object, shellViewModel.Object);
             var src = new Mock<IRabbitMQServiceSourceDefinition>();
 
@@ -82,7 +78,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //------------Setup for test--------------------------
             var updateManager = new Mock<IStudioUpdateManager>();
             var queryManager = new Mock<IQueryManager>();
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var manageRabbitMQSourceModel = new ManageRabbitMQSourceModel(updateManager.Object, queryManager.Object, shellViewModel.Object);
             var src = new Mock<IRabbitMQServiceSourceDefinition>();
 
@@ -102,7 +98,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //------------Setup for test--------------------------
             var updateManager = new Mock<IStudioUpdateManager>();
             var queryManager = new Mock<IQueryManager>();
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var manageRabbitMQSourceModel = new ManageRabbitMQSourceModel(updateManager.Object, queryManager.Object, shellViewModel.Object);
             var src = new Mock<IRabbitMQServiceSourceDefinition>();
             updateManager.Setup(a => a.TestConnection(src.Object)).Returns("bob");
@@ -122,7 +118,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             //------------Setup for test--------------------------
             var updateManager = new Mock<IStudioUpdateManager>();
             var queryManager = new Mock<IQueryManager>();
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var manageRabbitMQSourceModel = new ManageRabbitMQSourceModel(updateManager.Object, queryManager.Object, shellViewModel.Object);
             var src = new Mock<IRabbitMQServiceSourceDefinition>();
            

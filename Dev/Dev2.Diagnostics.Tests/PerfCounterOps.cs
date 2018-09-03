@@ -66,7 +66,7 @@ namespace Dev2.Diagnostics.Test
 
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void TestLocater()
         {
@@ -77,7 +77,7 @@ namespace Dev2.Diagnostics.Test
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void ConcurrentCounterTest()
         {
@@ -98,7 +98,7 @@ namespace Dev2.Diagnostics.Test
         }
 
         [TestMethod]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void ConcurrentCounterTestByResource()
         {
@@ -131,7 +131,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfErrorCounter_TestOps")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void WarewolfErrorCounter_TestOps_Valid_ExpectValidValues()
         {
@@ -154,7 +154,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfErrorCounter_TestOps")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void WarewolfErrorCounterResource_TestOps_Valid_ExpectValidValues()
         {
@@ -209,7 +209,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfRequestsPerSecondCounter_TestOps")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void WarewolfRequestPerSecondCounter_TestOps_Valid_ExpectValidValues()
         {
@@ -232,7 +232,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfRequestsPerSecondCounter_TestOps")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void WarewolfRequestPerSecondCounterResource_TestOps_Valid_ExpectValidValues()
         {
@@ -263,7 +263,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void WarewolfServicesNotFound_TestOps_Valid_ExpectValidValues()
         {
@@ -296,7 +296,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void WarewolfAuthErrors_TestOps_Valid_ExpectValidValues()
         {
@@ -319,7 +319,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void WarewolfAverageExectionTimeCounter_TestOps_Valid_ExpectValidValues()
         {
@@ -354,7 +354,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("WarewolfAverageExectionTimeCounter_TestOps")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void WarewolfAverageExectionTimeCounterResource_TestOps_Valid_ExpectValidValues()
         {

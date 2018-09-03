@@ -13,6 +13,7 @@ using Dev2.Common.Interfaces.WebService;
 using Dev2.Communication;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using TestingDotnetDllCascading;
@@ -111,7 +112,7 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
             {
                 typeof(ManageWebServiceModel)
             };
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             var updateProxy = new Mock<IStudioUpdateManager>();
             var updateManager = new Mock<IQueryManager>();
@@ -150,7 +151,7 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
             {
                 typeof(ManageWebServiceModel)
             };
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             var updateProxy = new Mock<IStudioUpdateManager>();
             var updateManager = new Mock<IQueryManager>();
@@ -188,7 +189,7 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
             {
                 typeof(ManageWebServiceModel)
             };
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             var updateProxy = new Mock<IStudioUpdateManager>();
             var updateManager = new Mock<IQueryManager>();
@@ -220,7 +221,7 @@ namespace Dev2.Activities.Designers.Tests.WebPostTool
         public void WebPostDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);

@@ -13,6 +13,7 @@ using Dev2.Studio.Core;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.Interfaces.DataList;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
@@ -68,6 +69,8 @@ namespace Dev2.Activities.Designers.Tests.Create
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("CreateDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CreateDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

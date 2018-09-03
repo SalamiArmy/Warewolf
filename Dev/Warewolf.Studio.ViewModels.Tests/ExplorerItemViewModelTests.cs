@@ -11,6 +11,7 @@ using Dev2.Common.Interfaces.Security;
 using Dev2.Common.Interfaces.Threading;
 using Dev2.Common.Interfaces.Versioning;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Dev2.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -47,7 +48,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _serverMock.Setup(a => a.UpdateRepository).Returns(_updateManager.Object);
 
             _explorerTreeItemMock = new Mock<IExplorerTreeItem>();
-            _shellViewModelMock = new Mock<IShellViewModel>();
+            _shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             _explorerRepositoryMock = new Mock<IExplorerRepository>();
             _windowsGroupPermissionsMock = new Mock<IWindowsGroupPermission>();
             _serverMock.SetupGet(it => it.ExplorerRepository).Returns(_explorerRepositoryMock.Object);

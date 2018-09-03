@@ -6,6 +6,7 @@ using Dev2.Common.ExtMethods;
 using Dev2.Common.Interfaces.DB;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json.Serialization;
@@ -279,7 +280,7 @@ namespace Dev2.Activities.Designers.Tests.Core
         {
             //---------------Set up test pack-------------------
             CustomContainer.DeRegister<IShellViewModel>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             shellVm.Setup(model => model.UpdateCurrentDataListWithObjectFromJson(It.IsAny<string>(), It.IsAny<string>())).Verifiable();
             CustomContainer.Register(shellVm.Object);
             var act = new DsfWebGetActivity { SourceId = Guid.NewGuid(), Outputs = null, IsObject = true };

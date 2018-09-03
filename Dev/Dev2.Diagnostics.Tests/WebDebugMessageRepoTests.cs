@@ -9,7 +9,7 @@ namespace Dev2.Diagnostics.Test
     {
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void WebDebugMessageRepo_Constructor_GivenIsNew_ShouldInitiase()
         {

@@ -61,6 +61,7 @@ using Dev2.ViewModels;
 using Warewolf.Studio.ViewModels;
 using Dev2.Common.Interfaces.Studio.Controller;
 using Dev2.Instrumentation;
+using Dev2.Tests;
 
 namespace Dev2.Core.Tests
 {
@@ -1951,7 +1952,7 @@ namespace Dev2.Core.Tests
             source.Setup(a => a.IsService).Returns(true);
             source.Setup(a => a.IsFolder).Returns(false);
 
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = new Mock<IServer>();
             server.SetupGet(server1 => server1.IsConnected).Returns(true);
             viewModel.SetupGet(model => model.ActiveServer).Returns(server.Object);
@@ -2044,7 +2045,7 @@ namespace Dev2.Core.Tests
             source.Setup(a => a.ResourceName).Returns("TestResourceName");
             source.Setup(a => a.ResourceType).Returns("Version");
 
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = new Mock<IServer>();
             server.SetupGet(server1 => server1.IsConnected).Returns(true);
             viewModel.SetupGet(model => model.ActiveServer).Returns(server.Object);
@@ -2080,7 +2081,7 @@ namespace Dev2.Core.Tests
             var difItem = new Mock<IContextualResourceModel>();
             var resourceRepo = new Mock<IResourceRepository>();
             resourceRepo.Setup(p => p.LoadContextualResourceModel(It.IsAny<Guid>())).Returns(currentItem.Object);
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = new Mock<IServer>();
             var serverDef = new Mock<IServer>();
             serverDef.Setup(p => p.ResourceRepository.LoadContextualResourceModel(It.IsAny<Guid>())).Returns(difItem.Object);
@@ -2126,7 +2127,7 @@ namespace Dev2.Core.Tests
             source.Setup(a => a.IsService).Returns(true);
             source.Setup(a => a.IsFolder).Returns(false);
 
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = new Mock<IServer>();
             server.SetupGet(server1 => server1.IsConnected).Returns(true);
             viewModel.SetupGet(model => model.ActiveServer).Returns(server.Object);
@@ -3065,7 +3066,7 @@ namespace Dev2.Core.Tests
 
             environmentRepository.Setup(repo => repo.Source).Returns(environmentModel.Object);
 
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = (IServer)CustomContainer.Get(typeof(IServer));
             viewModel.SetupGet(model => model.ActiveServer).Returns(server);
 
@@ -3111,7 +3112,7 @@ namespace Dev2.Core.Tests
         [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_ClosesRemoteEnvironmants()
         {
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = (IServer)CustomContainer.Get(typeof(IServer));
             var mockEnvironmentConnection = SetupMockConnection();
             server.Connection = mockEnvironmentConnection.Object;
@@ -3169,7 +3170,7 @@ namespace Dev2.Core.Tests
         [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsSettingsOnClosing()
         {
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = new Mock<IServer>();
             server.SetupGet(server1 => server1.IsConnected).Returns(true);
             viewModel.SetupGet(model => model.ActiveServer).Returns(server.Object);
@@ -3233,7 +3234,7 @@ namespace Dev2.Core.Tests
         [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsSettingsOnClosingDirty()
         {
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = (IServer)CustomContainer.Get(typeof(IServer));
             var mockEnvironmentConnection = SetupMockConnection();
             server.Connection = mockEnvironmentConnection.Object;
@@ -3288,7 +3289,7 @@ namespace Dev2.Core.Tests
         [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsSchedulerOnClosingClosesSuccessfully()
         {
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = (IServer)CustomContainer.Get(typeof(IServer));
             var mockEnvironmentConnection = SetupMockConnection();
             server.Connection = mockEnvironmentConnection.Object;
@@ -3344,7 +3345,7 @@ namespace Dev2.Core.Tests
         [DoNotParallelize]
         public void MainViewModel_OnStudioClosing_CallsWorkflowOnClosing()
         {
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = new Mock<IServer>();
             server.SetupGet(server1 => server1.IsConnected).Returns(true);
             viewModel.SetupGet(model => model.ActiveServer).Returns(server.Object);
@@ -3408,7 +3409,7 @@ namespace Dev2.Core.Tests
 
         void InitSourceViewModel(out Mock<IServer> environmentModel, out ShellViewModel mvm)
         {
-            var viewModel = new Mock<IShellViewModel>();
+            var viewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var server = new Mock<IServer>();
             server.SetupGet(server1 => server1.IsConnected).Returns(true);
             server.Setup(server1 => server1.UpdateRepository).Returns(new Mock<IStudioUpdateManager>().Object);
@@ -3840,7 +3841,7 @@ namespace Dev2.Core.Tests
         [DoNotParallelize]
         public void MainViewModel_HandleAddWorkSurfaceMessage_ShowDebugWindowOnLoadIsTrue_DoesExecuteDebugCommand()
         {
-            CustomContainer.Register(new Mock<IShellViewModel>().Object);
+            CustomContainer.Register(ShellViewModelConstructor.ShellViewModelForTesting().Object);
             Verify_HandleAddWorkSurfaceMessage_ShowDebugWindowOnLoad(true);
         }
 
@@ -3851,7 +3852,7 @@ namespace Dev2.Core.Tests
         [DoNotParallelize]
         public void MainViewModel_HandleAddWorkSurfaceMessage_ShowDebugWindowOnLoadIsFalse_DoesNotExecuteDebugCommand()
         {
-            CustomContainer.Register(new Mock<IShellViewModel>().Object);
+            CustomContainer.Register(ShellViewModelConstructor.ShellViewModelForTesting().Object);
             Verify_HandleAddWorkSurfaceMessage_ShowDebugWindowOnLoad(false);
         }
 

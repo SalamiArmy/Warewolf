@@ -9,7 +9,7 @@ namespace Dev2.Diagnostics.Test
     {
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void DebugMessageRepo_Constructor_GivenIsNew_ShouldInitiase()
         {
@@ -26,7 +26,7 @@ namespace Dev2.Diagnostics.Test
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void DebugMessageRepo_AddDebugItem_GivenValidArgs_ShouldAdd1Item()
         {
@@ -46,7 +46,7 @@ namespace Dev2.Diagnostics.Test
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void DebugMessageRepo_AddDebugItem_GivenValidArgsAndSessions_ShouldNotMixUpDebugStates()
         {
@@ -74,7 +74,7 @@ namespace Dev2.Diagnostics.Test
 
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void DebugMessageRepo_AddDebugItem_GivenKeyExists_ShouldNotMixUpDebugStates()
         {

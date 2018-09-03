@@ -15,6 +15,7 @@ using Dev2.Studio;
 using Dev2.Studio.Core.Messages;
 using Dev2.Studio.Diagnostics;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Moq.Protected;
@@ -156,7 +157,7 @@ namespace Dev2.Core.Tests.Diagnostics
             mockApp.Setup(c => c.Shutdown()).Verifiable();
             mockApp.SetupProperty(c => c.ShouldRestart);
 
-            var mainViewModel = new Mock<IShellViewModel>();
+            var mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
 
             //Execute
             var handler = new MockExceptionHandler(mockApp.Object, mainViewModel.Object);
@@ -178,7 +179,7 @@ namespace Dev2.Core.Tests.Diagnostics
             mockApp.Setup(c => c.Shutdown()).Verifiable();
             mockApp.SetupProperty(c => c.ShouldRestart);
 
-            var mainViewModel = new Mock<IShellViewModel>();
+            var mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
 
             //Execute
             var handler = new MockExceptionHandler(mockApp.Object, mainViewModel.Object);

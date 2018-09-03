@@ -22,6 +22,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Dev2.Data.TO;
 using Warewolf.Storage.Interfaces;
+using Dev2.Tests;
 
 namespace Dev2.Activities.Designers.Tests.Decision
 {
@@ -482,6 +483,8 @@ namespace Dev2.Activities.Designers.Tests.Decision
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("DecisionDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void DecisionDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------            

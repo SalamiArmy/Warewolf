@@ -16,6 +16,7 @@ using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Core.Models;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.ViewModels.DataList;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
@@ -48,6 +49,8 @@ namespace Dev2.Activities.Designers.Tests.Zip
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("ZipDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ZipDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

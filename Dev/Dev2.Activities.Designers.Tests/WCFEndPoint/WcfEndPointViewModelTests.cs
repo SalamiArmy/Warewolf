@@ -15,6 +15,7 @@ using Warewolf.Testing;
 using Dev2.Common.Interfaces.Core;
 using Dev2.Common.Interfaces.Help;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 
 namespace Dev2.Activities.Designers.Tests.WCFEndPoint
 {
@@ -41,7 +42,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         }
         public WcfEndPointViewModel GetViewModel()
         {
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -94,7 +95,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         {
             //------------Setup for test--------------------------      
             var viewModel = GetViewModel();
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);

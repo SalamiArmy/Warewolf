@@ -22,15 +22,9 @@ namespace Dev2
         static readonly Dictionary<Type, Func<object>> RegisterdPerRequestTypes = new Dictionary<Type, Func<object>>();
 
         public static int EntiresCount => RegisterdTypes.Count;
-
-    
-        public static void Clear()
-        {
-            RegisterdTypes.Clear();
-        }
+        public static void Clear() => RegisterdTypes.Clear();
 
         public static void Register<T>(T concrete) => RegisterdTypes.TryAdd(typeof(T), concrete);
-
         public static void DeRegister<T>() => RegisterdTypes.TryRemove(typeof(T), out object value);
 
         public static T Get<T>() where T : class

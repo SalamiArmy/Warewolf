@@ -13,6 +13,7 @@ using Dev2.Data.ServiceModel;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Core.Messages;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Dev2.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -64,7 +65,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
         public void DropBoxFileListViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -246,7 +247,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
         {
             var agg = new Mock<IEventAggregator>();
             var model = CreateModelItem();
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverMock = new Mock<IServer>();
             mockShellViewModel.Setup(viewModel => viewModel.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<IServer>()));
             mockShellViewModel.Setup(viewModel => viewModel.ActiveServer).Returns(() => serverMock.Object);
@@ -270,7 +271,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
             var agg = new Mock<IEventAggregator>();
             var model = CreateModelItem();
             CustomContainer.DeRegister<IShellViewModel>();
-            var shellViewModelMock = new Mock<IShellViewModel>();
+            var shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModelMock.Setup(viewModel => viewModel.NewDropboxSource(It.IsAny<string>()));
             CustomContainer.Register(shellViewModelMock.Object);
             //------------Setup for test--------------------------
@@ -523,13 +524,11 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
             var agg = new Mock<IEventAggregator>();
             agg.Setup(aggregator => aggregator.Publish(It.IsAny<IMessage>()));
             var model = CreateModelItem();
-            var shellViewModelMock = new Mock<IShellViewModel>();
+            var shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModelMock.Setup(viewModel => viewModel.NewDropboxSource(It.IsAny<string>()));
             CustomContainer.Register(shellViewModelMock.Object);
             //------------Setup for test--------------------------
             
-
-
             var mockVM = new DropBoxFileListDesignerViewModel(model, TestResourceCatalog.LazySourceManager.Value);
             //---------------Assert Precondition----------------
             //---------------Execute Test ----------------------

@@ -11,6 +11,7 @@ using Dev2.Instrumentation;
 using Dev2.Studio.Core;
 using Dev2.Studio.Core.Models;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.Practices.Prism.PubSubEvents;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -198,7 +199,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             _serverMock.SetupGet(it => it.EnvironmentID).Returns(Guid.NewGuid());
             _serverMock.SetupGet(it => it.AllowEdit).Returns(true);
 
-            var mainViewModelMock = new Mock<IShellViewModel>();
+            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(mainViewModelMock.Object);
 
             //act
@@ -214,7 +215,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestSelectedConnectionNonLocalhostLabel()
         {
             //arrange
-            var mainViewModelMock = new Mock<IShellViewModel>();
+            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(mainViewModelMock.Object);
             var newSelectedConnection = new Mock<IServer>();
             var newSelectedConnectionEnvironmentId = Guid.NewGuid();
@@ -254,7 +255,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestSelectedConnectionLocalhostLabel()
         {
             //arrange
-            var mainViewModelMock = new Mock<IShellViewModel>();
+            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(mainViewModelMock.Object);
             var newSelectedConnection = new Mock<IServer>();
             var newSelectedConnectionEnvironmentId = Guid.NewGuid();
@@ -335,7 +336,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestUpdateHelpDescriptor()
         {
             //arrange
-            var mainViewModelMock = new Mock<IShellViewModel>();
+            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             var helpViewModelMock = new Mock<IHelpWindowViewModel>();
             mainViewModelMock.SetupGet(it => it.HelpViewModel).Returns(helpViewModelMock.Object);
             CustomContainer.Register(mainViewModelMock.Object);
@@ -387,7 +388,7 @@ namespace Warewolf.Studio.ViewModels.Tests
                 {
                     serverConnectedRaised = sender == _target && Equals(e, serverMock.Object);
                 };
-            var mainViewModelMock = new Mock<IShellViewModel>();
+            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(mainViewModelMock.Object);
 
             //act
@@ -416,7 +417,7 @@ namespace Warewolf.Studio.ViewModels.Tests
                 {
                     serverConnectedRaised = sender == _target && Equals(e, serverMock.Object);
                 };
-            var mainViewModelMock = new Mock<IShellViewModel>();
+            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(mainViewModelMock.Object);
             var popupControllerMock = new Mock<IPopupController>();
             popupControllerMock.Setup(it => it.ShowConnectionTimeoutConfirmation("DisplayName"))
@@ -552,7 +553,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var serverGuid = Guid.NewGuid();
             var uri = new Uri("http://bravo.com/");
 
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockExplorerRepository = new Mock<IExplorerRepository>();
             var mockEnvironmentConnection = new Mock<IEnvironmentConnection>();
 
@@ -826,7 +827,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var uri = new Uri("http://bravo.com/");
             var serverDisplayName = "johnnyBravoServer";
 
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockExplorerRepository = new Mock<IExplorerRepository>();
             var mockEnvironmentConnection = new Mock<IEnvironmentConnection>();
 

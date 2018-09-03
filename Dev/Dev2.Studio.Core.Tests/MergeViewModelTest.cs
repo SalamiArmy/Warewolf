@@ -12,6 +12,7 @@ using Dev2.Common.Interfaces.Studio.Controller;
 using Dev2.Studio.Core;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.Interfaces.Enums;
+using Dev2.Tests;
 using Dev2.ViewModels;
 using Dev2.ViewModels.Merge;
 using Microsoft.Practices.Prism.Mvvm;
@@ -118,7 +119,7 @@ namespace Dev2.Core.Tests
 
             _mockParseServiceForDifferences = new Mock<IServiceDifferenceParser>();
 
-            _shellViewModel = new Mock<IShellViewModel>();
+            _shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             _shellViewModel.Setup(model => model.HelpViewModel.UpdateHelpText(It.IsAny<string>()));
 
             CustomContainer.Register(newServerRepo.Object);

@@ -13,6 +13,7 @@ using Dev2.Data.ServiceModel;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Core.Messages;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -60,7 +61,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Download
         public void DropBoxDownloadViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -137,13 +138,12 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Download
             //---------------Test Result -----------------------
             Assert.IsNull(downloadViewModel.SelectedSource);
         }
-
-
-
-
+        
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         [TestCategory("SelectedOperation_EditSource")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void DropboxDownload_downloadViewModel_EditSourcePublishesMessage()
         {
             var agg = new Mock<IEventAggregator>();
@@ -318,7 +318,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Download
             res.Setup(a => a.FindSingle(It.IsAny<Expression<Func<IResourceModel, bool>>>(), false, false)).Returns(new Mock<IResourceModel>().Object);
             agg.Setup(aggregator => aggregator.Publish(It.IsAny<IMessage>()));
             var model = CreateModelItem();
-            var shellViewModelMock = new Mock<IShellViewModel>();
+            var shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModelMock.Setup(viewModel => viewModel.NewDropboxSource(It.IsAny<string>()));
             CustomContainer.Register(shellViewModelMock.Object);
             //---------------Setup for test-----------------------

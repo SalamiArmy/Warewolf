@@ -15,6 +15,7 @@ using Caliburn.Micro;
 using Dev2.Studio.Core.Messages;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.Views.ResourceManagement;
+using Dev2.Tests;
 using Dev2.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -77,7 +78,7 @@ namespace Dev2.Core.Tests.Utils
             var mockResourceModelDependant = new Mock<IResourceModel>();
             var server = new Mock<IServer>();
             server.Setup(a => a.DisplayName).Returns("LocalHost");
-            var shell = new Mock<IShellViewModel>();
+            var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register<IShellViewModel>(shell.Object);
             shell.Setup(a => a.LocalhostServer).Returns(server.Object);
             shell.Setup(a => a.ActiveServer).Returns(server.Object);

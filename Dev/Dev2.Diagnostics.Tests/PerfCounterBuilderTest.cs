@@ -17,7 +17,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("PerformanceCounterBuilder_CtorBuildCounters")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void PerformanceCounterBuilder_CtorBuildCounters_Valid_ExpectNewCounters()
         {
@@ -55,7 +55,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("PerformanceCounterBuilder_CtorBuildCounters")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void PerformanceCounterBuilder_CtorBuildCounters_RebuildDoesNotReset_ExpectNewCounters()
         {
@@ -97,7 +97,7 @@ namespace Dev2.Diagnostics.Test
         [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("PerformanceCounterBuilder_CtorBuildCounters")]
-        [TestCategory("Not Parallelizable")]
+        [TestCategory("Not Parallelizable Core Unit Tests")]
         [DoNotParallelize]
         public void PerformanceCounterBuilder_CtorBuildCounters_NewResets_ExpectNewCounters()
         {

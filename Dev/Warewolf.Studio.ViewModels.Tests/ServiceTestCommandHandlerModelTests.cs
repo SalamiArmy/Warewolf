@@ -17,6 +17,7 @@ using Dev2.Studio.Core.Models.DataList;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.Interfaces.DataList;
 using Dev2.Studio.ViewModels.DataList;
+using Dev2.Tests;
 using Dev2.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -443,7 +444,7 @@ namespace Warewolf.Studio.ViewModels.Tests
 
             var mockPopupController = new Mock<IPopupController>();
             mockPopupController.Setup(controller => controller.Show(Resources.Languages.Core.ServiceTestResourceDeletedMessage, Resources.Languages.Core.ServiceTestResourceDeletedHeader, MessageBoxButton.OK, MessageBoxImage.Error, null, false, true, false, false, false, false)).Verifiable();
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.CloseResourceTestView(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<Guid>())).Verifiable();
             CustomContainer.Register(mockPopupController.Object);
             CustomContainer.Register(mockShellViewModel.Object);
@@ -708,7 +709,7 @@ namespace Warewolf.Studio.ViewModels.Tests
 
             var mockPopupController = new Mock<IPopupController>();
             mockPopupController.Setup(controller => controller.Show(Resources.Languages.Core.ServiceTestResourceDeletedMessage, Resources.Languages.Core.ServiceTestResourceDeletedHeader, MessageBoxButton.OK, MessageBoxImage.Error, null, false, true, false, false, false, false)).Verifiable();
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.CloseResourceTestView(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<Guid>())).Verifiable();
             CustomContainer.Register(mockPopupController.Object);
             CustomContainer.Register(mockShellViewModel.Object);
@@ -771,7 +772,7 @@ namespace Warewolf.Studio.ViewModels.Tests
 
             var mockPopupController = new Mock<IPopupController>();
             mockPopupController.Setup(controller => controller.Show(Resources.Languages.Core.ServiceTestResourceDeletedMessage, Resources.Languages.Core.ServiceTestResourceDeletedHeader, MessageBoxButton.OK, MessageBoxImage.Error, null, false, true, false, false, false, false)).Verifiable();
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.CloseResourceTestView(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<Guid>())).Verifiable();
             CustomContainer.Register(mockPopupController.Object);
             CustomContainer.Register(mockShellViewModel.Object);

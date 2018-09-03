@@ -43,6 +43,7 @@ using System.IO;
 using Dev2.Common.Interfaces.Scheduler.Interfaces;
 using Dev2.Activities.Specs.Composition;
 using Warewolf.Launcher;
+using Dev2.Tests;
 
 namespace Dev2.Activities.Specs.TestFramework
 {
@@ -231,7 +232,7 @@ namespace Dev2.Activities.Specs.TestFramework
                 CustomContainer.Register(popupController.Object);
                 MyContext["popupController"] = popupController;
             }
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModel.Setup(model => model.CloseResourceTestView(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<Guid>()));
             CustomContainer.Register(shellViewModel.Object);
             MyContext["shellViewModel"] = shellViewModel;

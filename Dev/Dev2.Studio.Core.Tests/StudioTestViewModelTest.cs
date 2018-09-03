@@ -10,6 +10,7 @@ using Dev2.Studio.Core;
 using Dev2.Studio.Core.Messages;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.ViewModels.Diagnostics;
+using Dev2.Tests;
 using Dev2.Threading;
 using Dev2.ViewModels;
 using Microsoft.Practices.Prism.Mvvm;
@@ -122,7 +123,7 @@ namespace Dev2.Core.Tests
             mockWorkSurfaceViewModel.Setup(model => model.Server).Returns(environmentModel);
 
             //------------Execute Test---------------------------
-            var mvm = new Mock<IShellViewModel>();
+            var mvm = ShellViewModelConstructor.ShellViewModelForTesting();
             mvm.Setup(model => model.HelpViewModel.UpdateHelpText(It.IsAny<string>()));
             CustomContainer.Register(mvm.Object);
             CustomContainer.Register(new Mock<IPopupController>().Object);
@@ -183,7 +184,7 @@ namespace Dev2.Core.Tests
             mockWorkSurfaceViewModel.Setup(model => model.Server).Returns(environmentModel);
 
             //------------Execute Test---------------------------
-            var mvm = new Mock<IShellViewModel>();
+            var mvm = ShellViewModelConstructor.ShellViewModelForTesting();
             mvm.Setup(model => model.HelpViewModel.UpdateHelpText(It.IsAny<string>()));
             CustomContainer.Register(mvm.Object);
             CustomContainer.Register(new Mock<IPopupController>().Object);
@@ -286,7 +287,7 @@ namespace Dev2.Core.Tests
 
             //------------Execute Test---------------------------
             CustomContainer.Register(new Mock<IPopupController>().Object);
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(new Mock<IHelpWindowViewModel>().Object);
             CustomContainer.Register(mockMainViewModel.Object);
             var eventAggregator = new Mock<IEventAggregator>();

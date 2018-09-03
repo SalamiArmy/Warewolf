@@ -8,6 +8,7 @@ using Dev2.Common.Interfaces.Infrastructure.Providers.Errors;
 using Dev2.Providers.Errors;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Dev2.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -188,7 +189,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
             sharepointFileCopyDesignerViewModel.Validate();
         
             var inputPathfrom = modelItem.GetProperty<string>("ServerInputPathFrom");
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpWindowViewModel = new Mock<IHelpWindowViewModel>();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpWindowViewModel.Object);
             CustomContainer.Register(mockMainViewModel.Object);

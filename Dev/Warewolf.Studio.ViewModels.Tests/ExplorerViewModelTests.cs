@@ -12,6 +12,7 @@ using Dev2.Common.Interfaces.Help;
 using Dev2.Common.Interfaces.Infrastructure;
 using Dev2.Studio.Interfaces;
 using Moq;
+using Dev2.Tests;
 
 namespace Warewolf.Studio.ViewModels.Tests
 {
@@ -35,7 +36,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         [TestInitialize]
         public void TestInitialize()
         { 
-            _shellViewModelMock = new Mock<IShellViewModel>();
+            _shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             _localhostServerEnvironmentId = Guid.NewGuid();
             _localhostServerMock = new Mock<IServer>();
             _localhostServerMock.Setup(it => it.EnvironmentID).Returns(_localhostServerEnvironmentId);
@@ -698,7 +699,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         {
             //arrange
             var helpWindowViewModelMock = new Mock<IHelpWindowViewModel>();
-            var mainViewModelMock = new Mock<IShellViewModel>();
+            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             mainViewModelMock.SetupGet(it => it.HelpViewModel).Returns(helpWindowViewModelMock.Object);
             CustomContainer.Register(mainViewModelMock.Object);
 

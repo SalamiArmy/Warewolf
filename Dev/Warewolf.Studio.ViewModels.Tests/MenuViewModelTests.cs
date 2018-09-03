@@ -6,6 +6,7 @@ using Dev2.Common.Interfaces.Enums;
 using Dev2.Common.Interfaces.Help;
 using Dev2.Security;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -37,7 +38,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            _mainViewModelMock = new Mock<IShellViewModel>();
+            _mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             _deployCommandMock = new Mock<ICommand>();
             _newCommand = new AuthorizeCommand<string>(new AuthorizationContext(), str => { }, str => true);
             _saveCommand = new AuthorizeCommand(new AuthorizationContext(), obj => { }, obj => true);

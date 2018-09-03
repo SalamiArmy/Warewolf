@@ -2,6 +2,7 @@ using Dev2.Common.Interfaces.Data;
 using Dev2.Common.Interfaces.Studio.Controller;
 using Dev2.Common.Interfaces.Wrappers;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -19,7 +20,7 @@ namespace Dev2.Studio
         {
             var popupController = new Mock<IPopupController>();
             popupController.Setup(p => p.ShowResourcesNotInCorrectPath()).Returns(System.Windows.MessageBoxResult.Cancel);
-            var shellViewModel = new Mock<IShellViewModel>().Object;
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
             var file = new Mock<IFile>();
             var path = new Mock<IFilePath>();
             path.Setup(p => p.GetFileName(It.IsAny<string>())).Returns(It.IsAny<string>());
@@ -44,7 +45,7 @@ namespace Dev2.Studio
             resource.Setup(p => p.ResourceName).Returns("AssignOutput");
             resource.Setup(p => p.ResourceType).Returns("Workflow");            
             popupController.Setup(p => p.ShowResourcesNotInCorrectPath()).Returns(System.Windows.MessageBoxResult.OK);
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModel.Setup(p => p.ActiveServer).Returns(server.Object);
             shellViewModel.Setup(p => p.CreateResourceFromStreamContent(It.IsAny<string>())).Returns(resource.Object);
             shellViewModel.Setup(p => p.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<IServer>(), It.IsAny<IContextualResourceModel>()));
@@ -62,7 +63,7 @@ namespace Dev2.Studio
             var content = new MemoryStream(Encoding.ASCII.GetBytes(SourceContent));
             var activeServer = new Mock<IServer>();
             var resourceRepo = new Mock<IResourceRepository>();
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverRepository = new Mock<IServerRepository>();
             var explorerViewModel = new Mock<IExplorerViewModel>();
             var popupController = new Mock<IPopupController>();
@@ -104,7 +105,7 @@ namespace Dev2.Studio
             resource.Setup(p => p.ResourceName).Returns("AssignOutput");
             resource.Setup(p => p.ResourceType).Returns("Workflow");
             popupController.Setup(p => p.ShowResourcesNotInCorrectPath()).Returns(System.Windows.MessageBoxResult.OK);
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModel.Setup(p => p.ActiveServer).Returns(server.Object);
             shellViewModel.Setup(p => p.CreateResourceFromStreamContent(It.IsAny<string>())).Returns(resource.Object);
             shellViewModel.Setup(p => p.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<IServer>(), It.IsAny<IContextualResourceModel>()));
@@ -122,7 +123,7 @@ namespace Dev2.Studio
             var content = new MemoryStream(Encoding.ASCII.GetBytes(SourceContent));
             var activeServer = new Mock<IServer>();
             var resourceRepo = new Mock<IResourceRepository>();
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var serverRepository = new Mock<IServerRepository>();
             var explorerViewModel = new Mock<IExplorerViewModel>();
             var popupController = new Mock<IPopupController>();

@@ -20,6 +20,7 @@ using Dev2.Providers.Errors;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using TestingDotnetDllCascading;
@@ -52,7 +53,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         public void DotNetDllEnhancedViewModel_Constructor_Valid_ShouldSetupViewModel()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -92,7 +93,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         public void DotNetDllEnhancedViewModel_ToModel()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -113,7 +114,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         public void DotNetDllEnhancedViewModel_ClearValidationMessage()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -133,7 +134,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         public void DotNetDllEnhancedViewModel_SetDisplayName()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -155,7 +156,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         public void DotNetDllEnhancedViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -176,7 +177,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         public void DotNetDllEnhancedViewModel_ErrorMessage()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -199,7 +200,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         public void DotNetDllEnhancedViewModel_FixErrors()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -218,7 +219,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         public void DotNetDllEnhancedViewModel_UpdateWorstDesignError()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
             var ps = SetupEmptyMockSource();
@@ -241,7 +242,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         public void BuildRegions_GivenNamespacesRegionHasErrors_ShouldhaveErrors()
         {
             //---------------Set up test pack-------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
 
@@ -430,7 +431,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         {
             //---------------Set up test pack-------------------
             var mock = new Mock<IPluginServiceModel>();
-            CustomContainer.Register(new Mock<IShellViewModel>().Object);
+            CustomContainer.Register(ShellViewModelConstructor.ShellViewModelForTesting().Object);
             var type = typeof(Human);
             var guid = Guid.NewGuid();
             mock.Setup(model => model.RetrieveSources()).Returns(new ObservableCollection<IPluginSource>
@@ -537,7 +538,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
                 new PluginSourceDefinition {Name = "Source1", Id = guid , GACAssemblyName = "GACAssemblyName", }
             });
 
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.ActiveServer).Returns(new ServerForTesting(new Mock<IExplorerRepository>()));
             CustomContainer.Register(mockShellViewModel.Object);
 
@@ -616,7 +617,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         public async Task DeleteActionCommand_GivenMethodRegion_ShouldFirePropertyChangeOnTheRegionList()
         {
             //---------------Set up test pack-------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mock = new Mock<IPluginServiceModel>();
             CustomContainer.Register(mockShellViewModel.Object);
             var type = typeof(Human);
@@ -789,7 +790,7 @@ namespace Dev2.Activities.Designers.Tests.DotNetDll
         {
             //---------------Set up test pack-------------------
             var mock = new Mock<IPluginServiceModel>();
-            var shellVm = new Mock<IShellViewModel>();
+            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shellVm.Object);
             mock.Setup(model => model.RetrieveSources()).Returns(new ObservableCollection<IPluginSource>());
             mock.Setup(model => model.GetNameSpacesWithJsonRetunrs(It.IsAny<IPluginSource>())).Returns(new List<INamespaceItem>());

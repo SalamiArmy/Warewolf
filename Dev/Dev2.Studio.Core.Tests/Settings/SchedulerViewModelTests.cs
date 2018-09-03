@@ -45,6 +45,7 @@ using Moq;
 using Dev2.Studio.Interfaces.Enums;
 using Warewolf.Studio.ViewModels;
 using Dev2.Services.Events;
+using Dev2.Tests;
 
 namespace Dev2.Core.Tests.Settings
 {
@@ -56,7 +57,7 @@ namespace Dev2.Core.Tests.Settings
         public void SetupForTest()
         {
             AppUsageStats.LocalHost = "http://localhost:3142";
-            var shell = new Mock<IShellViewModel>();
+            var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             var lcl = new Mock<IServer>();
             lcl.Setup(a => a.DisplayName).Returns("Localhost");
             shell.Setup(x => x.LocalhostServer).Returns(lcl.Object);
@@ -1627,7 +1628,7 @@ namespace Dev2.Core.Tests.Settings
             //------------Setup for test--------------------------
             var server = new Mock<IServer>();
             server.Setup(a => a.DisplayName).Returns("LocalHost");
-            var shell = new Mock<IShellViewModel>();
+            var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register<IShellViewModel>(shell.Object);
             shell.Setup(a => a.LocalhostServer).Returns(server.Object);
             shell.Setup(a => a.ActiveServer).Returns(server.Object);
@@ -2251,7 +2252,7 @@ namespace Dev2.Core.Tests.Settings
     class MySchedulerTaskManager : SchedulerTaskManager
     {
         internal MySchedulerTaskManager(IServer server, SchedulerViewModel vm, Task<IResourcePickerDialog> resourcePickerDialog)
-                                 : this(server, vm, resourcePickerDialog, new Mock<IShellViewModel>().Object)
+                                 : this(server, vm, resourcePickerDialog, ShellViewModelConstructor.ShellViewModelForTesting().Object)
         {
         }
         internal MySchedulerTaskManager(IServer server, SchedulerViewModel vm, Task<IResourcePickerDialog> resourcePickerDialog, IShellViewModel shellVm)

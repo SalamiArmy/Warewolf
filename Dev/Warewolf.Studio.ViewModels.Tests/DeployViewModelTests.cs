@@ -16,6 +16,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Warewolf.Studio.Core;
 using Dev2.ConnectionHelpers;
+using Dev2.Tests;
 
 namespace Warewolf.Studio.ViewModels.Tests
 {
@@ -28,7 +29,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void DeployViewModel_Ctor_NullParamsFirst_ExprecErrors()
         {
             //------------Setup for test--------------------------
-            var deployViewModel = new SingleExplorerDeployViewModel(null, new Mock<IDeploySourceExplorerViewModel>().Object, new List<IExplorerTreeItem>(), new Mock<IDeployStatsViewerViewModel>().Object, new Mock<IShellViewModel>().Object, new Mock<Dev2.Common.Interfaces.Studio.Controller.IPopupController>().Object);
+            var deployViewModel = new SingleExplorerDeployViewModel(null, new Mock<IDeploySourceExplorerViewModel>().Object, new List<IExplorerTreeItem>(), new Mock<IDeployStatsViewerViewModel>().Object, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<Dev2.Common.Interfaces.Studio.Controller.IPopupController>().Object);
             //------------Execute Test---------------------------
             //------------Assert Results-------------------------
         }
@@ -39,7 +40,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void DeployViewModel_Ctor_NullParamsSecond_ExprecErrors()
         {
             //------------Setup for test--------------------------
-            var deployViewModel = new SingleExplorerDeployViewModel(new Mock<IDeployDestinationExplorerViewModel>().Object, null, new List<IExplorerTreeItem>(), new Mock<IDeployStatsViewerViewModel>().Object, new Mock<IShellViewModel>().Object, new Mock<Dev2.Common.Interfaces.Studio.Controller.IPopupController>().Object);
+            var deployViewModel = new SingleExplorerDeployViewModel(new Mock<IDeployDestinationExplorerViewModel>().Object, null, new List<IExplorerTreeItem>(), new Mock<IDeployStatsViewerViewModel>().Object, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<Dev2.Common.Interfaces.Studio.Controller.IPopupController>().Object);
             //------------Execute Test---------------------------
             //------------Assert Results-------------------------
         }
@@ -50,7 +51,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void DeployViewModel_Ctor_NullParamsThird_ExprecErrors()
         {
             //------------Setup for test--------------------------
-            var deployViewModel = new SingleExplorerDeployViewModel(new Mock<IDeployDestinationExplorerViewModel>().Object, new Mock<IDeploySourceExplorerViewModel>().Object, null, new Mock<IDeployStatsViewerViewModel>().Object, new Mock<IShellViewModel>().Object, new Mock<Dev2.Common.Interfaces.Studio.Controller.IPopupController>().Object);
+            var deployViewModel = new SingleExplorerDeployViewModel(new Mock<IDeployDestinationExplorerViewModel>().Object, new Mock<IDeploySourceExplorerViewModel>().Object, null, new Mock<IDeployStatsViewerViewModel>().Object, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<Dev2.Common.Interfaces.Studio.Controller.IPopupController>().Object);
             //------------Execute Test---------------------------
             //------------Assert Results-------------------------
         }
@@ -61,7 +62,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void DeployViewModel_Ctor_NullParamsFourth_ExprecErrors()
         {
             //------------Setup for test--------------------------
-            var deployViewModel = new SingleExplorerDeployViewModel(new Mock<IDeployDestinationExplorerViewModel>().Object, new Mock<IDeploySourceExplorerViewModel>().Object, new List<IExplorerTreeItem>(), null, new Mock<IShellViewModel>().Object, new Mock<Dev2.Common.Interfaces.Studio.Controller.IPopupController>().Object);
+            var deployViewModel = new SingleExplorerDeployViewModel(new Mock<IDeployDestinationExplorerViewModel>().Object, new Mock<IDeploySourceExplorerViewModel>().Object, new List<IExplorerTreeItem>(), null, ShellViewModelConstructor.ShellViewModelForTesting().Object, new Mock<Dev2.Common.Interfaces.Studio.Controller.IPopupController>().Object);
             //------------Execute Test---------------------------
             //------------Assert Results-------------------------
         }
@@ -94,7 +95,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             server.Setup(a => a.DisplayName).Returns("LocalHost");
             var mockEnvironmentConnection = SetupMockConnection();
             server.SetupGet(it => it.Connection).Returns(mockEnvironmentConnection.Object);
-            var shell = new Mock<IShellViewModel>();
+            var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             shell.Setup(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
             shell.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);
             CustomContainer.Register(shell.Object);
@@ -135,7 +136,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             server.Setup(a => a.DisplayName).Returns("LocalHost");
             var mockEnvironmentConnection = SetupMockConnection();
             server.SetupGet(it => it.Connection).Returns(mockEnvironmentConnection.Object);
-            var shell = new Mock<IShellViewModel>();
+            var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             shell.Setup(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
             shell.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);
             CustomContainer.Register<IShellViewModel>(shell.Object);
@@ -175,7 +176,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var explorerTooltips = new Mock<IExplorerTooltips>();
             CustomContainer.Register(explorerTooltips.Object);
             //------------Setup for test--------------------------
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModel.Setup(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
             shellViewModel.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);
             var envMock = new Mock<IEnvironmentViewModel>();
@@ -231,7 +232,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var explorerTooltips = new Mock<IExplorerTooltips>();
             CustomContainer.Register(explorerTooltips.Object);
             //------------Setup for test--------------------------
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModel.Setup(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
             shellViewModel.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);
             var envMock = new Mock<IEnvironmentViewModel>();
@@ -298,7 +299,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var explorerTooltips = new Mock<IExplorerTooltips>();
             CustomContainer.Register(explorerTooltips.Object);
             //------------Setup for test--------------------------
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModel.Setup(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
             shellViewModel.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);
             var envMock = new Mock<IEnvironmentViewModel>();

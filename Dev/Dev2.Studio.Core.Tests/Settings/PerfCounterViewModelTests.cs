@@ -18,6 +18,7 @@ using Dev2.Settings.Perfcounters;
 using Dev2.Studio.Core;
 using Dev2.Studio.Core.Models;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Dev2.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -42,7 +43,7 @@ namespace Dev2.Core.Tests.Settings
             _mockConnection.Setup(connection => connection.ServerID).Returns(Guid.Empty);
             _mockEnvironment.Setup(model => model.Connection).Returns(_mockConnection.Object);
             ServerRepository.Instance.ActiveServer = _mockEnvironment.Object;
-            CustomContainer.Register(new Mock<IShellViewModel>().Object);
+            CustomContainer.Register(ShellViewModelConstructor.ShellViewModelForTesting().Object);
         }
 
         [TestMethod]
@@ -588,7 +589,7 @@ namespace Dev2.Core.Tests.Settings
         public void PerfcounterViewModel_UpdateHelpDescriptor_HelpText_ShouldCallUpdateHelpText()
         {
             //------------Setup for test--------------------------
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpWindowViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpWindowViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpWindowViewModel.Object);

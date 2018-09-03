@@ -1,6 +1,7 @@
 ﻿using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Explorer;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Dev2.ViewModels.Search;
 using Microsoft.Practices.Prism.PubSubEvents;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -30,7 +31,7 @@ namespace Warewolf.Studio.ViewModels.Tests.Search
         [TestInitialize]
         public void TestInitialize()
         {
-            _shellViewModelMock = new Mock<IShellViewModel>();
+            _shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             _shellViewModelMock.Setup(model => model.ExplorerViewModel).Returns(new Mock<IExplorerViewModel>().Object);
             _shellViewModelMock.Setup(model => model.ExplorerViewModel.ConnectControlViewModel).Returns(new Mock<IConnectControlViewModel>().Object);
             _serverMock = new Mock<IServer>();

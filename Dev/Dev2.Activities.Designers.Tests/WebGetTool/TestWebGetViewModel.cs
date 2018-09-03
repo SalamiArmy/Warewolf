@@ -16,6 +16,7 @@ using Dev2.Communication;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Unlimited.Framework.Converters.Graph.String.Xml;
@@ -113,6 +114,8 @@ namespace Dev2.Activities.Designers.Tests.WebGetTool
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("WebGetDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void WebGetDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

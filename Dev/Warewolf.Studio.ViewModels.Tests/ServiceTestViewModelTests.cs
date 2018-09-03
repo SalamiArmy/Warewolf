@@ -30,6 +30,7 @@ using Dev2.Studio.Core.Messages;
 using Dev2.Studio.Core.Models.DataList;
 using Dev2.Studio.Interfaces;
 using Dev2.Studio.ViewModels.DataList;
+using Dev2.Tests;
 using Dev2.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -941,7 +942,7 @@ namespace Warewolf.Studio.ViewModels.Tests
 		public void TestUpdateHelpDescriptor()
 		{
 			//arrange
-			var mainViewModelMock = new Mock<IShellViewModel>();
+			var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
 			var helpViewModelMock = new Mock<IHelpWindowViewModel>();
 			mainViewModelMock.SetupGet(it => it.HelpViewModel).Returns(helpViewModelMock.Object);
 			CustomContainer.Register(mainViewModelMock.Object);

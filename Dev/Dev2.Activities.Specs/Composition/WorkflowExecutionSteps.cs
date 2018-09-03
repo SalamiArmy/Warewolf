@@ -93,6 +93,7 @@ using Dev2.Runtime.ESB.Execution;
 using System.Linq.Expressions;
 using Warewolf.Launcher;
 using System.Reflection;
+using Dev2.Tests;
 
 namespace Dev2.Activities.Specs.Composition
 {
@@ -134,8 +135,7 @@ namespace Dev2.Activities.Specs.Composition
             }
 
             var mockServer = new Mock<IServer>();
-            var mockshell = new Mock<IShellViewModel>();
-            mockshell.Setup(a => a.ActiveServer).Returns(mockServer.Object);
+            var mockshell = ShellViewModelConstructor.ShellViewModelForTesting();
             mockServer.Setup(a => a.GetServerVersion()).Returns("1.0.0.0");
             CustomContainer.Register(mockServer.Object);
             CustomContainer.Register(mockshell.Object);
@@ -2097,7 +2097,7 @@ namespace Dev2.Activities.Specs.Composition
             var environmentConnection = environmentModel.Connection;
             var controllerFactory = new CommunicationControllerFactory();
             var _proxyLayer = new StudioServerProxy(controllerFactory, environmentConnection);
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var manageWebServiceModel = new ManageWebServiceModel(
                                                                                     new StudioResourceUpdateManager(controllerFactory, environmentConnection)
                                                                                     , _proxyLayer.QueryManagerProxy
@@ -2160,7 +2160,7 @@ namespace Dev2.Activities.Specs.Composition
             var environmentConnection = environmentModel.Connection;
             var controllerFactory = new CommunicationControllerFactory();
             var _proxyLayer = new StudioServerProxy(controllerFactory, environmentConnection);
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var manageWebServiceModel = new ManageWebServiceModel(
                   new StudioResourceUpdateManager(controllerFactory, environmentConnection)
                   , _proxyLayer.QueryManagerProxy
@@ -2226,7 +2226,7 @@ namespace Dev2.Activities.Specs.Composition
             var environmentConnection = environmentModel.Connection;
             var controllerFactory = new CommunicationControllerFactory();
             var _proxyLayer = new StudioServerProxy(controllerFactory, environmentConnection);
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var manageWebServiceModel = new ManageWebServiceModel(
                                                                                     new StudioResourceUpdateManager(controllerFactory, environmentConnection)
                                                                                     , _proxyLayer.QueryManagerProxy
@@ -2293,7 +2293,7 @@ namespace Dev2.Activities.Specs.Composition
             var environmentConnection = environmentModel.Connection;
             var controllerFactory = new CommunicationControllerFactory();
             var _proxyLayer = new StudioServerProxy(controllerFactory, environmentConnection);
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var manageWebServiceModel = new ManageWebServiceModel(
                                                                                     new StudioResourceUpdateManager(controllerFactory, environmentConnection)
                                                                                     , _proxyLayer.QueryManagerProxy
@@ -3012,7 +3012,7 @@ namespace Dev2.Activities.Specs.Composition
             var controllerFactory = new CommunicationControllerFactory();
             var sourceId = "ed7c3655-4922-4f24-9881-83462661832d".ToGuid();
             var environmentConnection = LocalEnvModel.Connection;
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var proxy = new StudioServerProxy(controllerFactory, environmentConnection);
             var fetchComPluginSources = proxy.QueryManagerProxy.FetchComPluginSources();
             var pluginSource = fetchComPluginSources.Single(source => source.Id == sourceId);
@@ -3958,7 +3958,7 @@ namespace Dev2.Activities.Specs.Composition
             var environmentConnection = environmentModel.Connection;
             var controllerFactory = new CommunicationControllerFactory();
             var _proxyLayer = new StudioServerProxy(controllerFactory, environmentConnection);
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var dbServiceModel = new ManageDbServiceModel(new StudioResourceUpdateManager(controllerFactory, environmentConnection)
                                                                                     , _proxyLayer.QueryManagerProxy
                                                                                     , mock.Object
@@ -4062,7 +4062,7 @@ namespace Dev2.Activities.Specs.Composition
             var environmentConnection = environmentModel.Connection;
             var controllerFactory = new CommunicationControllerFactory();
             var _proxyLayer = new StudioServerProxy(controllerFactory, environmentConnection);
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var dbServiceModel = new ManageDbServiceModel(new StudioResourceUpdateManager(controllerFactory, environmentConnection)
                                                                                     , _proxyLayer.QueryManagerProxy
                                                                                     , mock.Object
@@ -4161,7 +4161,7 @@ namespace Dev2.Activities.Specs.Composition
             var environmentConnection = environmentModel.Connection;
             var controllerFactory = new CommunicationControllerFactory();
             var _proxyLayer = new StudioServerProxy(controllerFactory, environmentConnection);
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var dbServiceModel = new ManageDbServiceModel(new StudioResourceUpdateManager(controllerFactory, environmentConnection)
                                                                                     , _proxyLayer.QueryManagerProxy
                                                                                     , mock.Object
@@ -4241,7 +4241,7 @@ namespace Dev2.Activities.Specs.Composition
             var environmentConnection = environmentModel.Connection;
             var controllerFactory = new CommunicationControllerFactory();
             var _proxyLayer = new StudioServerProxy(controllerFactory, environmentConnection);
-            var mock = new Mock<IShellViewModel>();
+            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
             var dbServiceModel = new ManageDbServiceModel(new StudioResourceUpdateManager(controllerFactory, environmentConnection)
                                                                                     , _proxyLayer.QueryManagerProxy
                                                                                     , mock.Object

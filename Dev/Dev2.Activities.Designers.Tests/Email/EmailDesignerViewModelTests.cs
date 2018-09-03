@@ -27,6 +27,7 @@ using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Core.Messages;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Dev2.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -147,7 +148,7 @@ namespace Dev2.Activities.Designers.Tests.Email
             var modelItem = CreateModelItem();
             modelItem.SetProperty("SelectedEmailSource", selectedEmailSource);
 
-            var mockMainViewModel = new Mock<IShellViewModel>();
+            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -252,7 +253,7 @@ namespace Dev2.Activities.Designers.Tests.Email
             modelItem.SetProperty("SelectedEmailSource", selectedEmailSource);
 
             var eventPublisher = new Mock<IEventAggregator>();
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.EditResource(It.IsAny<IEmailServiceSource>())).Verifiable();
             CustomContainer.Register(mockShellViewModel.Object);
             var resourceModel = new Mock<IResourceModel>();
@@ -271,6 +272,8 @@ namespace Dev2.Activities.Designers.Tests.Email
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("EmailDesignerViewModel_CreateEmailSource")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void EmailDesignerViewModel_CreateEmailSource_PublishesShowNewResourceWizard()
         {
             //------------Setup for test--------------------------
@@ -1224,7 +1227,7 @@ namespace Dev2.Activities.Designers.Tests.Email
         {
             if (CustomContainer.Get<IShellViewModel>() == null)
             {
-                CustomContainer.Register(new Mock<IShellViewModel>().Object);
+                CustomContainer.Register(ShellViewModelConstructor.ShellViewModelForTesting().Object);
             }
             var environment = new Mock<IServer>();
             environment.Setup(e => e.ResourceRepository.FindSourcesByType<EmailSource>(It.IsAny<IServer>(), enSourceType.EmailSource))

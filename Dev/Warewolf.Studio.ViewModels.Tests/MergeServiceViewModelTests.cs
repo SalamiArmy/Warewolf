@@ -16,6 +16,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Warewolf.Studio.Core;
 using IEventAggregator = Microsoft.Practices.Prism.PubSubEvents.IEventAggregator;
+using Dev2.Tests;
 
 namespace Warewolf.Studio.ViewModels.Tests
 {
@@ -61,7 +62,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             mockExplorerViewModel.Setup(model => model.Environments).Returns(new AsyncObservableCollection<IEnvironmentViewModel> { _selectedEnvironment.Object });
             mockExplorerViewModel.Setup(model => model.ConnectControlViewModel).Returns(mockConnectControl.Object);
 
-            _shellViewModelMock = new Mock<IShellViewModel>();
+            _shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             _shellViewModelMock.Setup(model => model.ExplorerViewModel).Returns(mockExplorerViewModel.Object);
             _shellViewModelMock.SetupGet(it => it.LocalhostServer).Returns(_serverMock.Object);
             _shellViewModelMock.SetupGet(it => it.ExplorerViewModel).Returns(mockExplorerViewModel.Object);

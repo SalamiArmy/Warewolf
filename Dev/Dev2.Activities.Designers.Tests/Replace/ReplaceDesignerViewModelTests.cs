@@ -13,6 +13,7 @@ using Dev2.Activities.Designers2.Replace;
 using Dev2.Common.Interfaces.Help;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
@@ -40,6 +41,8 @@ namespace Dev2.Activities.Designers.Tests.Replace
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("ReplaceDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void ReplaceDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      

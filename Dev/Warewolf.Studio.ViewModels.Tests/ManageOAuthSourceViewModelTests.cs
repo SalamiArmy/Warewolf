@@ -11,6 +11,7 @@ using Dev2.Common.Interfaces.Threading;
 using Dev2.Studio.Interfaces;
 using Dev2.Threading;
 using Warewolf.Studio.Core;
+using Dev2.Tests;
 
 namespace Warewolf.Studio.ViewModels.Tests
 {
@@ -341,7 +342,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestUpdateHelpDescriptor()
         {
             //arrange
-            var mainViewModelMock = new Mock<IShellViewModel>();
+            var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             var helpViewModelMock = new Mock<IHelpWindowViewModel>();
             mainViewModelMock.SetupGet(it => it.HelpViewModel).Returns(helpViewModelMock.Object);
             CustomContainer.Register(mainViewModelMock.Object);
@@ -403,11 +404,10 @@ namespace Warewolf.Studio.ViewModels.Tests
         [TestMethod,Timeout(60000)]
         public void TestSaveConnection_GiveN_AuthSource()
         {
-            //arrange_updateManager.Setup(u => u.Save(It.IsAny<IOAuthSource>())).Throws(new Exception("Test save exception"));
             _manageOAuthSourceViewModel = new ManageOAuthSourceViewModel(_updateManager.Object, _oAuthSource.Object, new SynchronousAsyncWorker()) { Name = "Testing OAuth" };
             _manageOAuthSourceViewModel.Item = new DropBoxSource() { ResourceName = "testing", ResourcePath = "" };
 
-            var mockShellVM = new Mock<IShellViewModel>();
+            var mockShellVM = ShellViewModelConstructor.ShellViewModelForTesting();
             var shellVMExplorer = new Mock<IExplorerViewModel>();
             var requestServiceNameVM = new Mock<IRequestServiceNameViewModel>();
             var mockEnvironment = new Mock<IEnvironmentViewModel>();

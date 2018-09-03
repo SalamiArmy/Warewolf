@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Infrastructure;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -31,7 +32,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            _shellViewModelMock = new Mock<IShellViewModel>();
+            _shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             _localhostServerEnvironmentId = Guid.NewGuid();
             _localhostServerMock = new Mock<IServer>();
             _localhostServerMock.Setup(it => it.EnvironmentID).Returns(_localhostServerEnvironmentId);

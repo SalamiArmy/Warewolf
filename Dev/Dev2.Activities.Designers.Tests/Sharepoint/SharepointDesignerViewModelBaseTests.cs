@@ -13,6 +13,7 @@ using Dev2.Data.ServiceModel;
 using Dev2.Runtime.ServiceModel.Data;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Studio.Interfaces;
+using Dev2.Tests;
 using Dev2.Threading;
 using Dev2.TO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -216,7 +217,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
         public void SharepointListDesignerViewModelBase_SetSelectedSharepointServer_EditCommand_ShouldCallOpenResource()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = new Mock<IShellViewModel>();
+            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(),It.IsAny<IServer>())).Verifiable();
             var serverMock = new Mock<IServer>();
             mockShellViewModel.Setup(viewModel => viewModel.ActiveServer).Returns(() => serverMock.Object);
@@ -244,6 +245,8 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("SharepointListDesignerViewModelBase_SetSelectedSharepointServer")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void SharepointListDesignerViewModelBase_SetSelectedSharepointServer_SetToNewSharepointServer_ShouldPublishEvent()
         {
             //------------Setup for test--------------------------

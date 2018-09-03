@@ -18,12 +18,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 using System;
-using Dev2.TO;
 
 namespace Dev2.Activities.Designers.Tests.CaseConvert
 {
     [TestClass]
-    [DoNotParallelize]
     public class CaseConvertDesignerViewModelTests
     {
         [TestMethod]
@@ -78,9 +76,11 @@ namespace Dev2.Activities.Designers.Tests.CaseConvert
         [TestMethod]
         [Owner("Pieter Terblanche")]
         [TestCategory("CaseConvertDesignerViewModel_Handle")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CaseConvertDesignerViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
-            //------------Setup for test--------------------------      
+            //------------Setup for test--------------------------
             var mockMainViewModel = new Mock<IShellViewModel>();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();

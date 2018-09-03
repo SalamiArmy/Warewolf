@@ -14,6 +14,7 @@ using Moq;
 using Warewolf.Studio.Core;
 using Caliburn.Micro;
 using Dev2.ConnectionHelpers;
+using Dev2.Tests;
 
 namespace Warewolf.Studio.ViewModels.Tests
 {
@@ -37,7 +38,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void TestInitialize()
         {
             _serverMock = new Mock<IServer>();
-            _shellViewModelMock = new Mock<IShellViewModel>();
+            _shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             _popupControllerMock = new Mock<IPopupController>();
             CustomContainer.Register(_popupControllerMock.Object);
             var serverRepo = new Mock<IServerRepository>();
@@ -925,7 +926,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             localhost.Setup(a => a.DisplayName).Returns("Localhost");
             localhost.SetupGet(server => server.CanDeployTo).Returns(true);
 
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
 
             var env = new Mock<IEnvironmentViewModel>();
             var exploreItm = new Mock<IExplorerItemViewModel>();
@@ -995,7 +996,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             localhost.Setup(a => a.DisplayName).Returns("Localhost");
             localhost.SetupGet(server => server.CanDeployTo).Returns(true);
 
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
 
             var env = new Mock<IEnvironmentViewModel>();
             var exploreItm = new Mock<IExplorerItemViewModel>();
@@ -1066,7 +1067,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             localhost.Setup(a => a.DisplayName).Returns("Localhost");
             localhost.SetupGet(server => server.CanDeployTo).Returns(true);
 
-            var shellViewModel = new Mock<IShellViewModel>();
+            var shellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
 
             var env = new Mock<IEnvironmentViewModel>();
             var exploreItm = new Mock<IExplorerItemViewModel>();
