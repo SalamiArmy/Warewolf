@@ -95,7 +95,7 @@ namespace Dev2.Activities.Designers.Tests.WCFEndPoint
         {
             //------------Setup for test--------------------------      
             var viewModel = GetViewModel();
-            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mockMainViewModel = new Mock<IShellViewModel>();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);

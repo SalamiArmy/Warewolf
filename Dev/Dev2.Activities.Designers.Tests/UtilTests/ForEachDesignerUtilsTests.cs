@@ -325,7 +325,7 @@ namespace Dev2.Core.Tests.Activities
         {
             //------------Setup for test--------------------------
             var activityDesignerUtils = new DropEnabledActivityDesignerUtils();
-            var mock = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mock = new Mock<IShellViewModel>();
             mock.Setup(model => model.ShowPopup(It.IsAny<IPopupMessage>()));
             CustomContainer.Register(mock.Object);
             var dataObject = new Mock<IDataObject>();

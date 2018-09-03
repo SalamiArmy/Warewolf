@@ -58,7 +58,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Delete
         public void DropBoxDeleteViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
-            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mockMainViewModel = new Mock<IShellViewModel>();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -136,10 +136,9 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Delete
         public void DropBoxDeleteViewModel_Sources_EditSource_PublishesMessage()
         {
             //------------Setup for test--------------------------
-
             var agg = new Mock<IEventAggregator>();
             var model = CreateModelItem();
-            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mockShellViewModel = new Mock<IShellViewModel>();
             var serverMock = new Mock<IServer>();
             mockShellViewModel.Setup(viewModel => viewModel.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<IServer>()));
             mockShellViewModel.Setup(viewModel => viewModel.ActiveServer).Returns(() => serverMock.Object);

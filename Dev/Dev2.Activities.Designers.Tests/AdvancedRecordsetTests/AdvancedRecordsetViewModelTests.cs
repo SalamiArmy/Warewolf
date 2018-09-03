@@ -611,7 +611,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
         [TestCategory("AdvancedRecordset_Handle")]
         [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
         [DoNotParallelize]
-        public void UpdateHelp_ShouldCallToHelpViewMode()
+        public void AdvancedRecordsetViewModel_UpdateHelp_ShouldCallToHelpViewModel()
         {
             //------------Setup for test--------------------------      
             CustomContainer.LoadedTypes = new List<Type>

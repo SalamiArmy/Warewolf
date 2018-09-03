@@ -513,7 +513,7 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var pluginSourceRegion = new Mock<ISourceToolRegion<IPluginSource>>();
             pluginSourceRegion.Setup(region => region.SelectedSource).Returns(new Mock<IPluginSource>().Object);
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
-            var shellVm = ShellViewModelConstructor.ShellViewModelForTesting();
+            var shellVm = new Mock<IShellViewModel>();
             shellVm.Setup(model => model.UpdateCurrentDataListWithObjectFromJson(It.IsAny<string>(), It.IsAny<string>()));
             CustomContainer.Register(shellVm.Object);
 

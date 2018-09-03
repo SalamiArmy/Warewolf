@@ -217,7 +217,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
         public void SharepointListDesignerViewModelBase_SetSelectedSharepointServer_EditCommand_ShouldCallOpenResource()
         {
             //------------Setup for test--------------------------
-            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mockShellViewModel = new Mock<IShellViewModel>();
             mockShellViewModel.Setup(model => model.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(),It.IsAny<IServer>())).Verifiable();
             var serverMock = new Mock<IServer>();
             mockShellViewModel.Setup(viewModel => viewModel.ActiveServer).Returns(() => serverMock.Object);

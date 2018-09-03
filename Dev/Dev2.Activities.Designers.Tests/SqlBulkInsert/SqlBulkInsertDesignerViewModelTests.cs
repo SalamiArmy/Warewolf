@@ -81,7 +81,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
         {
             //------------Setup for test--------------------------      
             AppUsageStats.LocalHost = "http://localhost:1245";
-            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mockMainViewModel = new Mock<IShellViewModel>();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -583,6 +583,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
 
             VerifyColumns(selectedTable.Columns, actual);
         }
+
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("SqlBulkInsertDesignerViewModel_EditDbSource")]
@@ -637,7 +638,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
 
             var eventPublisher = new Mock<IEventAggregator>();
 
-            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mockShellViewModel = new Mock<IShellViewModel>();
             mockShellViewModel.Setup(model => model.NewSqlServerSource(It.IsAny<string>()));
             var shellViewModel = mockShellViewModel.Object;
             CustomContainer.Register(shellViewModel);

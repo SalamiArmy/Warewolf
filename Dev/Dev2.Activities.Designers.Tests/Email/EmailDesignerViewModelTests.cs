@@ -148,7 +148,7 @@ namespace Dev2.Activities.Designers.Tests.Email
             var modelItem = CreateModelItem();
             modelItem.SetProperty("SelectedEmailSource", selectedEmailSource);
 
-            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mockMainViewModel = new Mock<IShellViewModel>();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -253,7 +253,7 @@ namespace Dev2.Activities.Designers.Tests.Email
             modelItem.SetProperty("SelectedEmailSource", selectedEmailSource);
 
             var eventPublisher = new Mock<IEventAggregator>();
-            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mockShellViewModel = new Mock<IShellViewModel>();
             mockShellViewModel.Setup(model => model.EditResource(It.IsAny<IEmailServiceSource>())).Verifiable();
             CustomContainer.Register(mockShellViewModel.Object);
             var resourceModel = new Mock<IResourceModel>();

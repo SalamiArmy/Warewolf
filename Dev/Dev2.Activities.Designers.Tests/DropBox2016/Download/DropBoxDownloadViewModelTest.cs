@@ -61,7 +61,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Download
         public void DropBoxDownloadViewModel_UpdateHelp_ShouldCallToHelpViewMode()
         {
             //------------Setup for test--------------------------      
-            var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mockMainViewModel = new Mock<IShellViewModel>();
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
@@ -318,7 +318,7 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Download
             res.Setup(a => a.FindSingle(It.IsAny<Expression<Func<IResourceModel, bool>>>(), false, false)).Returns(new Mock<IResourceModel>().Object);
             agg.Setup(aggregator => aggregator.Publish(It.IsAny<IMessage>()));
             var model = CreateModelItem();
-            var shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
+            var shellViewModelMock = new Mock<IShellViewModel>();
             shellViewModelMock.Setup(viewModel => viewModel.NewDropboxSource(It.IsAny<string>()));
             CustomContainer.Register(shellViewModelMock.Object);
             //---------------Setup for test-----------------------
