@@ -27,6 +27,8 @@ namespace Dev2.Activities.Designers.Tests.CaseConvert
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CaseConvertDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CaseConvertDesignerViewModel_Constructor__ModelItemIsValid_ListHasFourItems()
         {
             var items = new List<CaseConvertTO> { new CaseConvertTO() };
@@ -38,6 +40,8 @@ namespace Dev2.Activities.Designers.Tests.CaseConvert
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CaseConvertDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CaseConvertDesignerViewModel_Constructor__ModelItemIsValid_CollectionNameIsSetToConvertCollection()
         {
             var items = new List<CaseConvertTO> { new CaseConvertTO() };
@@ -48,6 +52,8 @@ namespace Dev2.Activities.Designers.Tests.CaseConvert
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CaseConvertDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CaseConvertDesignerViewModel_Constructor_ModelItemIsValid_ConvertCollectionHasTwoItems()
         {
             var modelItem = ModelItemUtils.CreateModelItem(new DsfCaseConvertActivity());
@@ -59,6 +65,8 @@ namespace Dev2.Activities.Designers.Tests.CaseConvert
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CaseConvertDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CaseConvertDesignerViewModel_Constructor_ModelItemIsInitializedWith4Items_ConvertCollectionHasFourItems()
         {
             var items = new List<CaseConvertTO>
@@ -104,6 +112,8 @@ namespace Dev2.Activities.Designers.Tests.CaseConvert
         [TestMethod]
         [Owner("Tshepo Ntlhokoa")]
         [TestCategory("CaseConvertDesignerViewModel_Constructor")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CaseConvertDesignerViewModel_Constructor_ModelItemIsEmpty_ConvertCollectionHasTwoItems()
         {
             var viewModel = new CaseConvertDesignerViewModel(CreateModelItem(null));
@@ -114,6 +124,8 @@ namespace Dev2.Activities.Designers.Tests.CaseConvert
         [TestMethod]
         [Owner("Trevor Williams-Ros")]
         [TestCategory("CaseConvertDesignerViewModel_ValidateCollectionItem")]
+        [TestCategory("Not Parallelizable Activity Designers Unit Tests")]
+        [DoNotParallelize]
         public void CaseConvertDesignerViewModel_ValidateCollectionItem_ValidatesPropertiesOfDTO()
         {
             //------------Setup for test--------------------------

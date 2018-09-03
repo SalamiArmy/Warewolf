@@ -1295,7 +1295,7 @@ namespace Dev2.Core.Tests
         }
 
         [TestMethod]
-        public void TestUpdateHelpDescriptor()
+        public void DebugOutputViewModel_TestUpdateHelpDescriptor()
         {
             //arrange
             var mockedEnvRepo = new Mock<IServerRepository>();

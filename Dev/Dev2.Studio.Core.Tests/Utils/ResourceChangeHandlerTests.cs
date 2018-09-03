@@ -67,6 +67,8 @@ namespace Dev2.Core.Tests.Utils
         [TestMethod]
         [Owner("Hagashen Naidu")]
         [TestCategory("ResourceChangeHandler_ShowResourceChanged")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void ResourceChangeHandler_ShowResourceChanged_WithOneDependant_FiresAddWorkSurfaceMessageMessage()
         {
             //------------Setup for test--------------------------

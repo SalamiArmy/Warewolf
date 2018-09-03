@@ -25,6 +25,7 @@ namespace Dev2.Tests.Runtime.ESB.Control
             var pCounter = new Mock<IWarewolfPerformanceCounterLocater>();
             CustomContainer.Register(pCounter.Object);
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         public void Construnct_ShouldNotThrowException()
@@ -60,6 +61,7 @@ namespace Dev2.Tests.Runtime.ESB.Control
                 Assert.AreEqual(ErrorResource.ServiceIsNull, e.Message);
             }
         }
+
         [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         public void FindService_GivenEmptyServiceName_ShouldThrowExpection()
@@ -84,6 +86,8 @@ namespace Dev2.Tests.Runtime.ESB.Control
 
         [TestMethod]
         [Owner("Hagashen Naidu")]
+        [TestCategory("Not Parallelizable Studio Core Unit Tests")]
+        [DoNotParallelize]
         public void FindService_GivenServiceName_ReturnsNull_ShouldUpdatePerfCounter()
         {
             //---------------Set up test pack-------------------
