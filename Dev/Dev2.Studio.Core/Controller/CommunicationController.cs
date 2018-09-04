@@ -24,8 +24,6 @@ using Dev2.Studio.Interfaces;
 using Warewolf.Resource.Errors;
 
 
-
-
 namespace Dev2.Controller
 {
     public interface ICommunicationController
@@ -36,12 +34,12 @@ namespace Dev2.Controller
         void AddPayloadArgument(string key, string value);
         
         void AddPayloadArgument(string key, StringBuilder value);
-        
-#pragma warning disable S2360 // Optional parameters should not be used
-        T ExecuteCommand<T>(IEnvironmentConnection connection, Guid workspaceId, IPopupController popupController = null) where T : class;
 
-        Task<T> ExecuteCommandAsync<T>(IEnvironmentConnection connection, Guid workspaceId, IPopupController popupController = null) where T : class;
-#pragma warning restore S2360 // Optional parameters should not be used
+        T ExecuteCommand<T>(IEnvironmentConnection connection, Guid workspaceId) where T : class;
+        T ExecuteCommand<T>(IEnvironmentConnection connection, Guid workspaceId, IPopupController popupController) where T : class;
+
+        Task<T> ExecuteCommandAsync<T>(IEnvironmentConnection connection, Guid workspaceId) where T : class;
+        Task<T> ExecuteCommandAsync<T>(IEnvironmentConnection connection, Guid workspaceId, IPopupController popupController) where T : class;
 
         Task<T> ExecuteCompressedCommandAsync<T>(IEnvironmentConnection connection, Guid workspaceId) where T : class;
 
@@ -101,8 +99,9 @@ namespace Dev2.Controller
             popupController?.Show(ex, ErrorResource.ServiceNotAuthorizedExceptionHeader, MessageBoxButton.OK,
                 MessageBoxImage.Error, "", false, false, true, false, false, false);
         }
-        
-        public T ExecuteCommand<T>(IEnvironmentConnection connection, Guid workspaceId, IPopupController popupController = null) where T : class
+
+        public T ExecuteCommand<T>(IEnvironmentConnection connection, Guid workspaceId) where T : class => ExecuteCommand<T>(connection, workspaceId, null);
+        public T ExecuteCommand<T>(IEnvironmentConnection connection, Guid workspaceId, IPopupController popupController) where T : class
         {
             var serializer = new Dev2JsonSerializer();
             if (connection == null || !connection.IsConnected)
@@ -210,7 +209,8 @@ namespace Dev2.Controller
 
         public void FetchResourceAffectedMessages(IEnvironmentConnection connection, Guid resourceId) => connection.FetchResourcesAffectedMemo(resourceId);
 
-        public async Task<T> ExecuteCommandAsync<T>(IEnvironmentConnection connection, Guid workspaceId, IPopupController popupController = null) where T : class
+        public async Task<T> ExecuteCommandAsync<T>(IEnvironmentConnection connection, Guid workspaceId) where T : class => await ExecuteCommandAsync<T>(connection, workspaceId, null).ConfigureAwait(true);
+        public async Task<T> ExecuteCommandAsync<T>(IEnvironmentConnection connection, Guid workspaceId, IPopupController popupController) where T : class
         {
             // build the service request payload ;)
             var serializer = new Dev2JsonSerializer();

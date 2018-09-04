@@ -18,6 +18,7 @@ namespace Dev2.Common.Interfaces
         IExecuteMessage FetchDependants(Guid resourceId);
     
         StringBuilder FetchResourceXaml(Guid resourceId);
+        Task<IExplorerItem> Load(bool reloadCatalogue);
         Task<IExplorerItem> Load(bool reloadCatalogue, IPopupController popupController);
         IList<IToolDescriptor> FetchTools();
         IList<IExchangeSource> FetchExchangeSources();

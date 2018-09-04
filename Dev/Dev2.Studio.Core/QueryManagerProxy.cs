@@ -79,8 +79,9 @@ namespace Dev2.Studio.Core
             var result = comsController.ExecuteCommand<ExecuteMessage>(Connection, Connection.WorkspaceID);
             return result.Message;
         }
-        
-        public async Task<IExplorerItem> Load(bool reloadCatalogue, IPopupController popupController = null)
+
+        public async Task<IExplorerItem> Load(bool reloadCatalogue) => await Load(reloadCatalogue, null).ConfigureAwait(true);
+        public async Task<IExplorerItem> Load(bool reloadCatalogue, IPopupController popupController)
         {
             if (!Connection.IsConnected)
             {
