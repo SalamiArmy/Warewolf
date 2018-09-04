@@ -30,11 +30,7 @@ namespace Dev2.Activities.Designers2.SharePointFileUpload
 
         #region Overrides of ActivityCollectionDesignerViewModel<SharepointSearchTo>
 
-        public override void UpdateHelpDescriptor(string helpText)
-        {
-            var mainViewModel = CustomContainer.Get<IShellViewModel>();
-            mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
-        }
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
         public string LocalInputPath => GetProperty<string>();
 
         protected override IEnumerable<IActionableErrorInfo> ValidateThis()

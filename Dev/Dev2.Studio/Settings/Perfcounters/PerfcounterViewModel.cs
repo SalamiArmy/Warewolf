@@ -289,11 +289,7 @@ namespace Dev2.Settings.Perfcounters
 
         #region Implementation of IUpdatesHelp
 
-        public void UpdateHelpDescriptor(string helpText)
-        {
-            var mainViewModel = CustomContainer.Get<IShellViewModel>();
-            mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
-        }
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
 
         #endregion
 

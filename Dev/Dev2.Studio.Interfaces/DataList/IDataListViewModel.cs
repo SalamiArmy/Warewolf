@@ -80,7 +80,7 @@ namespace Dev2.Studio.Interfaces.DataList
 
         void ClearCollections();
 
-        void UpdateHelpDescriptor(string helpText);
+        void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel);
 
         void GenerateComplexObjectFromJson(string parentObjectName, string json);
         void LogCustomTrackerEvent(string eventCategory, string eventName, string text);

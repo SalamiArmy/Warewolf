@@ -63,17 +63,13 @@ namespace Warewolf.Studio.ViewModels
 			DatabaseName = source.DbName;
 		}
 
-		public override void UpdateHelpDescriptor(string helpText)
-		{
-			var mainViewModel = CustomContainer.Get<IShellViewModel>();
-			mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
-		}
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
 
-		#endregion
+        #endregion
 
-		#region Overrides of DatabaseSourceViewModelBase
+        #region Overrides of DatabaseSourceViewModelBase
 
-		protected override IDbSource ToNewDbSource() => new DbSourceDefinition
+        protected override IDbSource ToNewDbSource() => new DbSourceDefinition
 		{
 			AuthenticationType = AuthenticationType,
 			ServerName = GetServerName(),

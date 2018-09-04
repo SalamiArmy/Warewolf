@@ -1,7 +1,9 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interactivity;
+using Dev2;
 using Dev2.Common.Interfaces;
+using Dev2.Studio.Interfaces;
 
 namespace Warewolf.Studio.Core
 {
@@ -33,7 +35,8 @@ namespace Warewolf.Studio.Core
 
         void OnGotFocus(object sender, RoutedEventArgs args)
         {
-            DataContext?.UpdateHelpDescriptor(Text);
+            var mainViewModel = CustomContainer.Get<IShellViewModel>();
+            DataContext?.UpdateHelpDescriptor(Text, mainViewModel);
         }
     }
 }

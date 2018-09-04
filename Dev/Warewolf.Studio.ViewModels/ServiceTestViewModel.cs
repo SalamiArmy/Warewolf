@@ -93,7 +93,7 @@ namespace Warewolf.Studio.ViewModels
             DuplicateTestCommand = new DelegateCommand(DuplicateTest, () => CanDuplicateTest);
             RunAllTestsUrl = WebServer.GetWorkflowUri(resourceModel, "", UrlType.Tests)?.ToString();
 
-            UpdateHelpDescriptor(Resources.Languages.HelpText.ServiceTestGenericHelpText);
+            UpdateHelpDescriptor(Resources.Languages.HelpText.ServiceTestGenericHelpText, _shellViewModel);
 
             WorkflowDesignerViewModel = workflowDesignerViewModel;
             WorkflowDesignerViewModel.IsTestView = true;
@@ -2554,11 +2554,6 @@ namespace Warewolf.Studio.ViewModels
                 ResourceModel.Environment.Connection.ReceivedResourceAffectedMessage -= OnReceivedResourceAffectedMessage;
             }
         }
-
-        public void UpdateHelpDescriptor(string helpText)
-        {
-            var mainViewModel = CustomContainer.Get<IShellViewModel>();
-            mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
-        }
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
     }
 }

@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using Dev2;
 using Dev2.Studio.Interfaces;
 using Dev2.UI;
 using Microsoft.Practices.Prism.Mvvm;
@@ -95,14 +96,16 @@ namespace Warewolf.Studio.Views
         void MainGrid_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var serviceTestViewModel = DataContext as IServiceTestViewModel;
-            serviceTestViewModel?.UpdateHelpDescriptor(Studio.Resources.Languages.HelpText.ServiceTestGenericHelpText);
+            var mainViewModel = CustomContainer.Get<IShellViewModel>();
+            serviceTestViewModel?.UpdateHelpDescriptor(Studio.Resources.Languages.HelpText.ServiceTestGenericHelpText, mainViewModel);
             e.Handled = true;
         }
 
         void ListBoxItemGrid_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var serviceTestViewModel = DataContext as IServiceTestViewModel;
-            serviceTestViewModel?.UpdateHelpDescriptor(Studio.Resources.Languages.HelpText.ServiceTestSelectedTestHelpText);
+            var mainViewModel = CustomContainer.Get<IShellViewModel>();
+            serviceTestViewModel?.UpdateHelpDescriptor(Studio.Resources.Languages.HelpText.ServiceTestSelectedTestHelpText, mainViewModel);
             e.Handled = true;
         }
 

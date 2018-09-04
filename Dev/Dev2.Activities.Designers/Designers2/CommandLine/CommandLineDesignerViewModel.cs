@@ -72,10 +72,6 @@ namespace Dev2.Activities.Designers2.CommandLine
             };
         }
 
-        public override void UpdateHelpDescriptor(string helpText)
-        {
-            var mainViewModel = CustomContainer.Get<IShellViewModel>();
-            mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
-        }
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
     }
 }

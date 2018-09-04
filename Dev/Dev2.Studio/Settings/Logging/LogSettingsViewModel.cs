@@ -290,10 +290,7 @@ namespace Dev2.Settings.Logging
 
         #region Implementation of IUpdatesHelp
 
-        public void UpdateHelpDescriptor(string helpText)
-        {
-            HelpText = helpText;
-        }
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => HelpText = helpText;
 
         #endregion
 

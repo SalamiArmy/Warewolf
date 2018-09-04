@@ -35,7 +35,8 @@ namespace Dev2.ViewModels.Merge
         public MergeWorkflowViewModel(IContextualResourceModel currentResourceModel, IContextualResourceModel differenceResourceModel, bool loadworkflowFromServer)
         {
             var _serviceDifferenceParser = CustomContainer.Get<IServiceDifferenceParser>();
-            UpdateHelpDescriptor(Warewolf.Studio.Resources.Languages.HelpText.MergeWorkflowStartupHelp);
+            var mainViewModel = CustomContainer.Get<IShellViewModel>();
+            UpdateHelpDescriptor(Warewolf.Studio.Resources.Languages.HelpText.MergeWorkflowStartupHelp, mainViewModel);
 
             MergePreviewWorkflowDesignerViewModel = new MergePreviewWorkflowDesignerViewModel(currentResourceModel);
 
@@ -255,10 +256,6 @@ namespace Dev2.ViewModels.Merge
         {
         }
 
-        public void UpdateHelpDescriptor(string helpText)
-        {
-            var mainViewModel = CustomContainer.Get<IShellViewModel>();
-            mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
-        }
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
     }
 }

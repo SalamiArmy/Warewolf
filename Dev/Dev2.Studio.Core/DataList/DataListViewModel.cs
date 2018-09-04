@@ -885,11 +885,7 @@ namespace Dev2.Studio.ViewModels.DataList
             BaseCollection.Clear();
         }
 
-        public void UpdateHelpDescriptor(string helpText)
-        {
-            var mainViewModel = CustomContainer.Get<IShellViewModel>();
-            mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
-        }
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
 
         public void GenerateComplexObjectFromJson(string parentObjectName, string json)
         {

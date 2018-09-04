@@ -391,7 +391,6 @@
     <Compile Include="ITestCatalog.cs" />
     <Compile Include="IToolboxView.cs" />
     <Compile Include="IToolConflictRow.cs" />
-    <Compile Include="IUpdatesHelp.cs" />
     <Compile Include="ISharepointListTo.cs" />
     <Compile Include="ISharepointReadListTo.cs" />
     <Compile Include="ISharepointSource.cs" />

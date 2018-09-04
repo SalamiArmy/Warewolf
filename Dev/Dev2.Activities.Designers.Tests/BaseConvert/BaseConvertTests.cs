@@ -73,10 +73,9 @@ namespace Dev2.Activities.Designers.Tests.BaseConvert
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
-            CustomContainer.Register(mockMainViewModel.Object);
             var viewModel = new BaseConvertDesignerViewModel(CreateModelItem(items));
             //------------Execute Test---------------------------
-            viewModel.UpdateHelpDescriptor("help");
+            viewModel.UpdateHelpDescriptor("help", mockMainViewModel.Object);
             //------------Assert Results-------------------------
             mockHelpViewModel.Verify(model => model.UpdateHelpText(It.IsAny<string>()), Times.Once());
         }

@@ -75,7 +75,7 @@ namespace Warewolf.Studio.ViewModels
         public abstract bool CanSave();
 
         public event EventHandler IsActiveChanged;
-        public abstract void UpdateHelpDescriptor(string helpText);
+        public abstract void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel);
         
         public abstract void Save();
 

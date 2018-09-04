@@ -597,7 +597,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
 
         #region Overrides of ActivityDesignerViewModel
 
-        public override void UpdateHelpDescriptor(string helpText)
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel)
         {
         }
 

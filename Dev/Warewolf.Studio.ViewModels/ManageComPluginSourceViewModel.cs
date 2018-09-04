@@ -316,11 +316,7 @@ namespace Warewolf.Studio.ViewModels
 
         public override bool CanSave() => _selectedDll != null && !string.IsNullOrEmpty(AssemblyName) && !string.IsNullOrEmpty(ClsId) && HasChanged;
 
-        public override void UpdateHelpDescriptor(string helpText)
-        {
-            var mainViewModel = CustomContainer.Get<IShellViewModel>();
-            mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
-        }
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
 
         public string ResourceName
         {

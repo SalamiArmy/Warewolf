@@ -166,11 +166,7 @@ namespace Dev2.Activities.Designers2.Core
         }
 
         #region Overrides of UIElement
-
-        /// <summary>
-        /// Invoked when an unhandled <see cref="E:System.Windows.Input.Keyboard.KeyDown"/> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for this event.
-        /// </summary>
-        /// <param name="e">The <see cref="T:System.Windows.Input.KeyEventArgs"/> that contains the event data.</param>
+        
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -183,7 +179,8 @@ namespace Dev2.Activities.Designers2.Core
         {
             if (ViewModel != null && e.OriginalSource.GetType() == typeof(Border))
             {
-                UpdateHelpDescriptor(ViewModel.HelpText);
+                var mainViewModel = CustomContainer.Get<IShellViewModel>();
+                UpdateHelpDescriptor(ViewModel.HelpText, mainViewModel);
             }
         }
 
@@ -308,7 +305,7 @@ namespace Dev2.Activities.Designers2.Core
 
         #region IDisposable Members
 
-        public void UpdateHelpDescriptor(string helpText) => ViewModel?.UpdateHelpDescriptor(helpText);
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => ViewModel?.UpdateHelpDescriptor(helpText);
 
         void OnRoutedEventHandler(object sender, RoutedEventArgs args) => Application.Current?.Dispatcher?.InvokeAsync(OnLoaded, DispatcherPriority.Background);
 

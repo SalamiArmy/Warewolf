@@ -7,6 +7,7 @@ using Dev2.Activities.DropBox2016.DownloadActivity;
 using Dev2.Activities.DropBox2016.DropboxFileActivity;
 using Dev2.Activities.DropBox2016.UploadActivity;
 using Dev2.Studio.Core.Activities.Utils;
+using Dev2.Studio.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
@@ -31,7 +32,7 @@ namespace Dev2.Activities.Designers.Tests.Core
         {
         }
 
-        public override void UpdateHelpDescriptor(string helpText)
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel)
         {
         }
 

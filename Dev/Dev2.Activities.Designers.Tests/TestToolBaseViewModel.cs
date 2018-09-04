@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using Dev2.Activities.Designers2.Core;
 using Dev2.Common.Interfaces.ToolBase;
 using Dev2.Studio.Core.Activities.Utils;
+using Dev2.Studio.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Unlimited.Applications.BusinessDesignStudio.Activities;
 
@@ -94,7 +95,7 @@ namespace Dev2.Activities.Designers.Tests
         {
         }
 
-        public override void UpdateHelpDescriptor(string helpText)
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel)
         {
         }
 

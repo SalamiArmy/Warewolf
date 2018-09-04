@@ -243,11 +243,7 @@ namespace Warewolf.Studio.ViewModels
 
         public event SelectedExplorerItemChanged SelectedItemChanged;
 
-        public void UpdateHelpDescriptor(string helpText)
-        {
-            var mainViewModel = CustomContainer.Get<IShellViewModel>();
-            mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
-        }
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
 
         public ICommand ClearSearchTextCommand { get; }
         public ICommand CreateFolderCommand { get; }

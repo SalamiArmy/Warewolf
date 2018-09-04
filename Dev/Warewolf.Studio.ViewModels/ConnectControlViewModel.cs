@@ -459,10 +459,6 @@ namespace Warewolf.Studio.ViewModels
         public EventHandler<IServer> ServerReConnected { get; set; }
         public EventHandler<IServer> ServerDisconnected { get; set; }
 
-        public void UpdateHelpDescriptor(string helpText)
-        {
-            var mainViewModel = CustomContainer.Get<IShellViewModel>();
-            mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
-        }
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
     }
 }

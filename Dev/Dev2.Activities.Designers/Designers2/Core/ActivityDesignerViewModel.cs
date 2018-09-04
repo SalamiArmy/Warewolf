@@ -28,6 +28,7 @@ using Dev2.Common.Interfaces.Infrastructure.Providers.Validation;
 using Dev2.Runtime.Configuration.ViewModels.Base;
 using Dev2.Studio.Core.Activities.Utils;
 using Dev2.Common;
+using Dev2.Studio.Interfaces;
 
 namespace Dev2.Activities.Designers2.Core
 {
@@ -381,7 +382,7 @@ namespace Dev2.Activities.Designers2.Core
 
         #region Implementation of IUpdatesHelp
 
-        public abstract void UpdateHelpDescriptor(string helpText);
+        public abstract void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel);
 
         #endregion
     }

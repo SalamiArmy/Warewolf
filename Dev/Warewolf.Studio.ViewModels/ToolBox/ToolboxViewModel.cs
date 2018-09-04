@@ -191,7 +191,7 @@ namespace Warewolf.Studio.ViewModels.ToolBox
         }
 
         #endregion
-
+        
         public void UpdateHelpDescriptor(string helpText)
         {
             var mainViewModel = CustomContainer.Get<IShellViewModel>();

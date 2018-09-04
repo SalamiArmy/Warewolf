@@ -527,12 +527,10 @@ namespace Dev2.Settings.Security
             }
             return false;
         }
+
         #region Implementation of IUpdatesHelp
 
-        public void UpdateHelpDescriptor(string helpText)
-        {
-            HelpText = helpText;
-        }
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => HelpText = helpText;
 
         #endregion
 
