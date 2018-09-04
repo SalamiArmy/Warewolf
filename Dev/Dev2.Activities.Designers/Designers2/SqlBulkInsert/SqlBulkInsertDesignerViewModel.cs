@@ -76,7 +76,7 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
         }
 
         public SqlBulkInsertDesignerViewModel(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher, IShellViewModel mainViewModel)
-            : base(modelItem)
+            : this(modelItem, asyncWorker, server, eventPublisher)
         {
             _shellViewModel = mainViewModel;
         }
