@@ -1297,19 +1297,18 @@ namespace Dev2.Studio.ViewModels
 
         public void NewComPluginSource(string resourcePath) => _worksurfaceContextManager.NewComPluginSource(resourcePath);
 
-        void ShowServerDisconnectedPopup()
+        void ShowServerDisconnectedPopup(IPopupController controller)
         {
-            var controller = CustomContainer.Get<IPopupController>();
             controller?.Show(string.Format(Warewolf.Studio.Resources.Languages.Core.ServerDisconnected, ActiveServer.DisplayName.Replace("(Connected)", "")) + Environment.NewLine +
                              Warewolf.Studio.Resources.Languages.Core.ServerReconnectForActions, Warewolf.Studio.Resources.Languages.Core.ServerDisconnectedHeader, MessageBoxButton.OK,
                 MessageBoxImage.Error, "", false, true, false, false, false, false);
         }
 
-        public void DuplicateResource(IExplorerItemViewModel explorerItemViewModel)
+        public void DuplicateResource(IExplorerItemViewModel explorerItemViewModel, IPopupController popupController)
         {
             if (!ActiveServer.IsConnected)
             {
-                ShowServerDisconnectedPopup();
+                ShowServerDisconnectedPopup(popupController);
             }
             else
             {

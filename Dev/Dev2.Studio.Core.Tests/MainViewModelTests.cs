@@ -4311,7 +4311,6 @@ namespace Dev2.Core.Tests
             CreateFullExportsAndVm();
             var mock = new Mock<Common.Interfaces.Studio.Controller.IPopupController>();
             mock.Setup(controller => controller.Show(It.IsAny<string>(), Warewolf.Studio.Resources.Languages.Core.ServerDisconnectedHeader, MessageBoxButton.OK, MessageBoxImage.Error, "", false, true, false, false, false, false));
-            CustomContainer.Register(mock.Object);
             var explorerVm = new Mock<IExplorerItemViewModel>();
 
             //---------------Assert Precondition----------------
@@ -4322,7 +4321,7 @@ namespace Dev2.Core.Tests
             ShellViewModel.ActiveServer = mock1.Object;
 
             //---------------Execute Test ----------------------
-            ShellViewModel.DuplicateResource(explorerVm.Object);
+            ShellViewModel.DuplicateResource(explorerVm.Object, mock.Object);
 
             //---------------Test Result -----------------------
             mock.VerifyAll();

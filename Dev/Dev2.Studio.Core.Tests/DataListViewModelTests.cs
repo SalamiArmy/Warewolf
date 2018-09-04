@@ -1547,6 +1547,7 @@ namespace Dev2.Core.Tests
             //------------Assert Results-------------------------
             _applicationTrackerMock.Verify(controller => controller.TrackCustomEvent(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()), Times.AtLeastOnce());
         }
+
         #endregion AddMode Tests
 
 

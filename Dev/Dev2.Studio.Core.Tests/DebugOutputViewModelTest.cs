@@ -519,10 +519,9 @@ namespace Dev2.Core.Tests
         {
             const string ResourceName = "TestResource";
             var environmentID = Guid.NewGuid();
-            var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
+            var mockShellViewModel = new Mock<IShellViewModel>();
             mockShellViewModel.Setup(viewModel => viewModel.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(),It.IsAny<IServer>()))
                 .Verifiable();
-            CustomContainer.Register(mockShellViewModel.Object);
             var envList = new List<IServer>();
             var envRepository = new Mock<IServerRepository>();
             envRepository.Setup(e => e.All()).Returns(envList);
@@ -539,7 +538,7 @@ namespace Dev2.Core.Tests
             envList.Add(env.Object);
 
             var model = new DebugOutputViewModel(new Mock<IEventPublisher>().Object, envRepository.Object,
-                new Mock<IDebugOutputFilterStrategy>().Object);
+                new Mock<IDebugOutputFilterStrategy>().Object, null, mockShellViewModel.Object);
 
             var debugState = new DebugState
             {

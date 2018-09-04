@@ -82,6 +82,7 @@ namespace Dev2.Studio.ViewModels.Diagnostics
         bool _continueDebugDispatch;
         bool _dispatchLastDebugState;
         string _addNewTestTooltip;
+        readonly IShellViewModel _shellViewModel;
 
         public DebugOutputViewModel(IEventPublisher serverEventPublisher, IServerRepository serverRepository, IDebugOutputFilterStrategy debugOutputFilterStrategy)
             : this(serverEventPublisher, serverRepository, debugOutputFilterStrategy, null)
@@ -114,6 +115,12 @@ namespace Dev2.Studio.ViewModels.Diagnostics
             ClearSearchTextCommand = new Microsoft.Practices.Prism.Commands.DelegateCommand(() => SearchText = "");
             AddNewTestCommand = new DelegateCommand(o => AddNewTest(EventPublishers.Aggregator), o=> CanAddNewTest());
             _outputViewModelUtil = new DebugOutputViewModelUtil(SessionID);
+        }
+
+        public DebugOutputViewModel(IEventPublisher serverEventPublisher, IServerRepository serverRepository, IDebugOutputFilterStrategy debugOutputFilterStrategy, IContextualResourceModel contextualResourceModel, IShellViewModel shellViewModel)
+            : this(serverEventPublisher, serverRepository, debugOutputFilterStrategy, null)
+        {
+            _shellViewModel = shellViewModel;
         }
 
         public bool IsTestView { get; set; }
@@ -556,8 +563,7 @@ namespace Dev2.Studio.ViewModels.Diagnostics
 
             if (debugState?.ActivityType == ActivityType.Workflow)
             {
-                var shellViewModel = CustomContainer.Get<IShellViewModel>();
-                shellViewModel?.OpenResource(debugState.OriginatingResourceID, debugState.EnvironmentID, shellViewModel.ActiveServer);
+                _shellViewModel?.OpenResource(debugState.OriginatingResourceID, debugState.EnvironmentID, _shellViewModel.ActiveServer);
             }
         }
         

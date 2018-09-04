@@ -369,7 +369,7 @@ namespace Warewolf.Studio.ViewModels
 
         void DuplicateResource()
         {
-            _explorerItemViewModelCommandController.DuplicateResource(this);
+            _explorerItemViewModelCommandController.DuplicateResource(this, _popupController);
         }
 
         void CreateTest()

@@ -59,7 +59,7 @@ namespace Dev2.Studio.Interfaces
         void NewDropboxSource(string resourcePath);
         void NewWcfSource(string resourcePath);
         void NewComPluginSource(string resourcePath);
-        void DuplicateResource(IExplorerItemViewModel explorerItemViewModel);
+        void DuplicateResource(IExplorerItemViewModel explorerItemViewModel, Common.Interfaces.Studio.Controller.IPopupController popupController);
     }
 
     public interface IShellViewModelOpen

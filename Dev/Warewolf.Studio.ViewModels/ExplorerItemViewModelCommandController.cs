@@ -223,7 +223,7 @@ namespace Warewolf.Studio.ViewModels
             }
         }
 
-        public void DuplicateResource(IExplorerItemViewModel explorerItemViewModel) => _shellViewModel.DuplicateResource(explorerItemViewModel);
+        public void DuplicateResource(IExplorerItemViewModel explorerItemViewModel, IPopupController popupController) => _shellViewModel.DuplicateResource(explorerItemViewModel, popupController);
 
         public void TryDeleteCommand(IExplorerTreeItem parent, IExplorerRepository explorerRepository, ExplorerItemViewModel explorerItemViewModel, IPopupController popupController, IServer server)
         {

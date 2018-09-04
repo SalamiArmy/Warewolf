@@ -850,7 +850,7 @@ namespace Dev2.Studio.ViewModels.Workflow
 
                     if (explorerItem != null)
                     {
-                        mvm.DuplicateResource(explorerItem);
+                        mvm.DuplicateResource(explorerItem, PopUp);
                     }
                 }
             }
