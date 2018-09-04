@@ -29,24 +29,30 @@ using Dev2.Instrumentation;
 using Dev2.Studio.InterfaceImplementors;
 using Dev2.Studio.Interfaces;
 
-
-
-
-
-
-
-
-
 namespace Dev2.UI
 {
     public class IntellisenseTextBox : AutoCompleteBox, INotifyPropertyChanged
     {
         readonly List<Key> _wrapInBracketKey = new List<Key> { Key.F6, Key.F7 };
         readonly IApplicationTracker _applicationTracker;
+        readonly IPopupController _popupController;
 
         public IntellisenseTextBox()
+            : this(null, null)
         {
-            _applicationTracker = CustomContainer.Get<IApplicationTracker>();
+        }
+        public IntellisenseTextBox(IPopupController popupController)
+            : this(null, popupController)
+        {
+        }
+        public IntellisenseTextBox(IApplicationTracker applicationTracker)
+            : this(applicationTracker, null)
+        {
+        }
+        public IntellisenseTextBox(IApplicationTracker applicationTracker, IPopupController popupController)
+        {
+            _applicationTracker = applicationTracker ?? CustomContainer.Get<IApplicationTracker>();
+            _popupController = popupController ?? CustomContainer.Get<IPopupController>();
             FilterMode = AutoCompleteFilterMode.Custom;
             TextFilter = (search, item) => true;
             _toolTip = new ToolTip();
@@ -380,9 +386,7 @@ namespace Dev2.UI
         public bool IsPaste { get; set; }
 
         public int LineCount { get; set; }
-
-
-
+        
         public bool CheckHasUnicodeInText(string inputText)
         {
             var hasUnicode = inputText.ContainsUnicodeCharacter();
@@ -390,9 +394,7 @@ namespace Dev2.UI
             {
                 var previousInput = inputText;
                 Text = "";
-                CustomContainer.Get<IPopupController>()
-                    .ShowInvalidCharacterMessage(previousInput);
-
+                _popupController.ShowInvalidCharacterMessage(previousInput);
                 return true;
             }
             return false;

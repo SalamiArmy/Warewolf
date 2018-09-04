@@ -537,11 +537,10 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
             CustomContainer.DeRegister<IPopupController>();
             var mockPopupController = new Mock<IPopupController>();
             mockPopupController.Setup(controller => controller.ShowInvalidCharacterMessage(It.IsAny<string>()));
-            CustomContainer.Register(mockPopupController.Object);
             var intellisenseProvider = new Mock<IIntellisenseProvider>();
             intellisenseProvider.Setup(a => a.HandlesResultInsertion).Returns(false);
             //------------Execute Test---------------------------
-            var textBox = new IntellisenseTextBox();
+            var textBox = new IntellisenseTextBox(mockPopupController.Object);
             textBox.CreateVisualTree();
             var checkHasUnicodeInText = textBox.CheckHasUnicodeInText("أَبْجَدِي");
             //------------Assert Results-------------------------
@@ -698,11 +697,10 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         {
             var _applicationTrackerMock = new Mock<IApplicationTracker>();
             _applicationTrackerMock.Setup(controller => controller.TrackCustomEvent(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
-            CustomContainer.Register(_applicationTrackerMock.Object);
 
             const string expectTooltipError = "Variable name \"[[Var!]]\" contains invalid character(s). Only use alphanumeric _ and - ";
 
-            var textBoxTest = new IntellisenseTextBox { AllowMultipleVariables = true };
+            var textBoxTest = new IntellisenseTextBox(_applicationTrackerMock.Object) { AllowMultipleVariables = true };
             textBoxTest.CreateVisualTree();
             textBoxTest.Text = "\"[[Var!]]\"";
 
@@ -721,11 +719,10 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         {
             var _applicationTrackerMock = new Mock<IApplicationTracker>();
             _applicationTrackerMock.Setup(controller => controller.TrackCustomEvent(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
-            CustomContainer.Register(_applicationTrackerMock.Object);
 
             const string expectTooltipError = "Variable name \"[[Var()!]]\" contains invalid character(s). Only use alphanumeric _ and - ";
 
-            var textBoxTest = new IntellisenseTextBox { AllowMultipleVariables = true };
+            var textBoxTest = new IntellisenseTextBox(_applicationTrackerMock.Object) { AllowMultipleVariables = true };
             textBoxTest.CreateVisualTree();
             textBoxTest.Text = "\"[[Var()!]]\"";
 
@@ -744,11 +741,10 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         {
             var _applicationTrackerMock = new Mock<IApplicationTracker>();
             _applicationTrackerMock.Setup(controller => controller.TrackCustomEvent(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
-            CustomContainer.Register(_applicationTrackerMock.Object);
 
             const string expectTooltipError = "Variable name \"[[obj!]]\" contains invalid character(s). Only use alphanumeric _ and - ";
 
-            var textBoxTest = new IntellisenseTextBox { FilterType = enIntellisensePartType.JsonObject };
+            var textBoxTest = new IntellisenseTextBox (_applicationTrackerMock.Object) { FilterType = enIntellisensePartType.JsonObject };
             textBoxTest.CreateVisualTree();
             textBoxTest.Text = "\"[[obj!]]\"";
 
@@ -766,10 +762,10 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
         public void IntellisenseBox_Function_HasIsCalcMode_SetTo_True()
         {
             var textBoxTest = new IntellisenseTextBoxTestHelper { AllowUserCalculateMode = true };
-            textBoxTest.EnsureIntellisenseResults(null, false,IntellisenseDesiredResultSet.Default);
+            textBoxTest.EnsureIntellisenseResults(null, false, IntellisenseDesiredResultSet.Default);
             Assert.IsTrue(string.IsNullOrEmpty(textBoxTest.Text));
             var input = textBoxTest.Text = "=Sum(5,5)";
-            textBoxTest.EnsureIntellisenseResults(input,false,IntellisenseDesiredResultSet.Default);
+            textBoxTest.EnsureIntellisenseResults(input,false, IntellisenseDesiredResultSet.Default);
             Assert.IsTrue(textBoxTest.IsInCalculateMode);
         }
 

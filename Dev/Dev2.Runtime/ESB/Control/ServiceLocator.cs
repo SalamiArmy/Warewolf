@@ -19,25 +19,20 @@ using Warewolf.Resource.Errors;
 
 namespace Dev2.Runtime.ESB.Control
 {
-    /// <summary>
-    /// Used to locate a service to execute ;)
-    /// </summary>
     public class ServiceLocator : IServiceLocator
     {
-        readonly IPerformanceCounter _perfCounter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>().GetCounter("Count of requests for workflows which don't exist");
         readonly IResourceCatalog _resourceCatalog = ResourceCatalog.Instance;
         #region New Mgt Methods
 
-        /// <summary>
-        /// Finds the service by name
-        /// </summary>
-        /// <param name="serviceName">Name of the service.</param>
-        /// <param name="workspaceID">The workspace ID.</param>
-        /// <exception cref="System.IO.InvalidDataException">Empty or null service passed in</exception>
-        /// <exception cref="System.Runtime.Serialization.InvalidDataContractException">Null workspace</exception>
-        public DynamicService FindService(string serviceName, Guid workspaceID)
+        public DynamicService FindService(string serviceName, Guid workspaceID) => FindService(serviceName, workspaceID, null);
+        public DynamicService FindService(string serviceName, Guid workspaceID, IWarewolfPerformanceCounterLocater _perfCounter)
         {
-            if(string.IsNullOrEmpty(serviceName))
+            if (_perfCounter == null)
+            {
+                _perfCounter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>();
+            }
+            var perfCounter = _perfCounter.GetCounter("Count of requests for workflows which don't exist");
+            if (string.IsNullOrEmpty(serviceName))
             {
                 throw new InvalidDataException(ErrorResource.ServiceIsNull);
             }
@@ -53,22 +48,21 @@ namespace Dev2.Runtime.ESB.Control
                 ret = _resourceCatalog.GetDynamicObjects<DynamicService>(workspaceID, serviceName).FirstOrDefault();                
                 if (ret == null)
                 {
-                    _perfCounter.Increment();
+                    perfCounter.Increment();
                 }
             }
             return ret;
         }
 
-        /// <summary>
-        /// Finds the service by ID
-        /// </summary>
-        /// <param name="serviceID">ID of the service.</param>
-        /// <param name="workspaceID">The workspace ID.</param>
-        /// <exception cref="System.IO.InvalidDataException">Empty or null service passed in</exception>
-        /// <exception cref="System.Runtime.Serialization.InvalidDataContractException">Null workspace</exception>
-        public DynamicService FindService(Guid serviceID, Guid workspaceID)
+        public DynamicService FindService(Guid serviceID, Guid workspaceID) => FindService(serviceID, workspaceID, null);
+        public DynamicService FindService(Guid serviceID, Guid workspaceID, IWarewolfPerformanceCounterLocater _perfCounter)
         {
-            if(serviceID == Guid.Empty)
+            if (_perfCounter == null)
+            {
+                _perfCounter = CustomContainer.Get<IWarewolfPerformanceCounterLocater>();
+            }
+            var perfCounter = _perfCounter.GetCounter("Count of requests for workflows which don't exist");
+            if (serviceID == Guid.Empty)
             {
                 throw new InvalidDataException(ErrorResource.ServiceIsNull);
             }
@@ -88,20 +82,13 @@ namespace Dev2.Runtime.ESB.Control
                 }
                 if (firstOrDefault == null)
                 {
-                    _perfCounter.Increment();
+                    perfCounter.Increment();
                 }
             }
 
             return firstOrDefault;
         }
-
-        /// <summary>
-        /// Finds the source by name
-        /// </summary>
-        /// <param name="sourceName">Name of the source.</param>
-        /// <param name="workspaceID">The workspace ID.</param>
-        /// <exception cref="System.IO.InvalidDataException">Empty or null service passed in</exception>
-        /// <exception cref="System.Runtime.Serialization.InvalidDataContractException">Null workspace</exception>
+        
         public Source FindSourceByName(string sourceName, Guid workspaceID)
         {
             if (string.IsNullOrEmpty(sourceName))
