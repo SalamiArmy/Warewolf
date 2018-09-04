@@ -19,12 +19,9 @@ using Warewolf.Studio.Core.Popup;
 
 namespace Dev2.Activities.Utils
 {
-    /// <summary>
-    /// Utility class used for the foreach activity designer backing logic
-    /// </summary>
     public class DropEnabledActivityDesignerUtils
     {
-        public bool LimitDragDropOptions(IDataObject data)
+        public bool LimitDragDropOptions(IDataObject data, IShellViewModel mainViewModel)
         {
             var formats = data.GetFormats();
             if(!formats.Any())
@@ -53,30 +50,25 @@ namespace Dev2.Activities.Utils
                 }
             }
             var objectData = data.GetData(modelItemString);
-            return DropPointOnDragEnter(objectData);
+            return DropPointOnDragEnter(objectData, mainViewModel);
         }
 
 
         #region DropPointOnDragEnter
-
-        /// <summary>
-        /// Used to decide if the dragged activity can be dropped onto the foreach activity 
-        /// </summary>
-        /// <param name="objectData">The ModelItem of the dragged activity</param>
-        /// <returns>If the activity is drop-able into a foreach</returns>
-        bool DropPointOnDragEnter(object objectData)
+        
+        bool DropPointOnDragEnter(object objectData, IShellViewModel mainViewModel)
         {
             var data = objectData as ModelItem;
 
-            if (!ValidateDecision(objectData, data, true))
+            if (!ValidateDecision(objectData, data, true, mainViewModel))
             {
                 return false;
             }
-            if (!ValidateSwitch(objectData, data, true))
+            if (!ValidateSwitch(objectData, data, true, mainViewModel))
             {
                 return false;
             }
-            if (!ValidateSelectAndApply(objectData, data, true))
+            if (!ValidateSelectAndApply(objectData, data, true, mainViewModel))
             {
                 return false;
             }
@@ -84,7 +76,7 @@ namespace Dev2.Activities.Utils
             return true;
         }
 
-        bool ValidateDecision(object objectData, ModelItem data, bool dropEnabled)
+        bool ValidateDecision(object objectData, ModelItem data, bool dropEnabled, IShellViewModel mainViewModel)
         {
             var stringValue = objectData as string;
             if ((data != null && data.ItemType.Name == "FlowDecision") || (stringValue != null && stringValue.Contains("Decision")))
@@ -94,12 +86,12 @@ namespace Dev2.Activities.Utils
             if (!dropEnabled)
             {
                 ShowErrorMessage(Warewolf.Studio.Resources.Languages.Core.DecisionDropNotAllowedMessage,
-                    Warewolf.Studio.Resources.Languages.Core.ExplorerDropNotAllowedHeader);
+                    Warewolf.Studio.Resources.Languages.Core.ExplorerDropNotAllowedHeader, mainViewModel);
             }
             return dropEnabled;
         }
 
-        bool ValidateSwitch(object objectData, ModelItem data, bool dropEnabled)
+        bool ValidateSwitch(object objectData, ModelItem data, bool dropEnabled, IShellViewModel mainViewModel)
         {
             var stringValue = objectData as string;
             if ((data != null && data.ItemType.Name == "FlowSwitch`1") || (stringValue != null && stringValue.Contains("Switch")))
@@ -110,12 +102,12 @@ namespace Dev2.Activities.Utils
             if (!dropEnabled)
             {
                 ShowErrorMessage(Warewolf.Studio.Resources.Languages.Core.SwitchDropNotAllowedMessage,
-                    Warewolf.Studio.Resources.Languages.Core.ExplorerDropNotAllowedHeader);
+                    Warewolf.Studio.Resources.Languages.Core.ExplorerDropNotAllowedHeader, mainViewModel);
             }
             return dropEnabled;
         }
 
-        bool ValidateSelectAndApply(object objectData, ModelItem data, bool dropEnabled)
+        bool ValidateSelectAndApply(object objectData, ModelItem data, bool dropEnabled, IShellViewModel mainViewModel)
         {
             var stringValue = objectData as string;
             if ((data != null && data.ItemType.Name == "DsfSelectAndApplyActivity") || (stringValue != null && stringValue.Contains("SelectAndApply")))
@@ -126,14 +118,14 @@ namespace Dev2.Activities.Utils
             if (!dropEnabled)
             {
                 ShowErrorMessage(Warewolf.Studio.Resources.Languages.Core.SelectAndApplyDropNotAllowedMessage,
-                    Warewolf.Studio.Resources.Languages.Core.ExplorerDropNotAllowedHeader);
+                    Warewolf.Studio.Resources.Languages.Core.ExplorerDropNotAllowedHeader, mainViewModel);
             }
             return dropEnabled;
         }
 
         #endregion
 
-        void ShowErrorMessage(string errorMessage, string header)
+        void ShowErrorMessage(string errorMessage, string header, IShellViewModel mainViewModel)
         {
             var a = new PopupMessage
             {
@@ -142,8 +134,7 @@ namespace Dev2.Activities.Utils
                 Header = header,
                 Image = MessageBoxImage.Error
             };
-            var popup = CustomContainer.Get<IShellViewModel>();
-            popup.ShowPopup(a);
+            mainViewModel.ShowPopup(a);
         }
     }
 }

@@ -174,9 +174,8 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Upload
             var serverMock = new Mock<IServer>();
             mockShellViewModel.Setup(viewModel => viewModel.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<IServer>()));
             mockShellViewModel.Setup(viewModel => viewModel.ActiveServer).Returns(() => serverMock.Object);
-            CustomContainer.Register(mockShellViewModel.Object);
             //------------Setup for test--------------------------
-            var dropBoxUploadViewModel = new DropBoxUploadViewModel(model, TestResourceCatalog.LazySourceManager.Value) { SelectedSource = new DropBoxSource() };
+            var dropBoxUploadViewModel = new DropBoxUploadViewModel(model, TestResourceCatalog.LazySourceManager.Value, mockShellViewModel.Object) { SelectedSource = new DropBoxSource() };
             dropBoxUploadViewModel.EditDropboxSourceCommand.Execute(null);
             //------------Execute Test---------------------------
             //------------Assert Results-------------------------

@@ -48,6 +48,7 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
         readonly IEventAggregator _eventPublisher;
         readonly IServer _server;
         readonly IAsyncWorker _asyncWorker;
+        readonly IShellViewModel _shellViewModel;
 
         bool _isInitializing;
 
@@ -74,7 +75,13 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
             this.RunViewSetup();
         }
 
-        public SqlBulkInsertDesignerViewModel(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher)
+        public SqlBulkInsertDesignerViewModel(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher, IShellViewModel mainViewModel)
+            : base(modelItem)
+        {
+            _shellViewModel = mainViewModel;
+        }
+
+            public SqlBulkInsertDesignerViewModel(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher)
             : base(modelItem)
         {
             VerifyArgument.IsNotNull("asyncWorker", asyncWorker);
@@ -439,17 +446,16 @@ namespace Dev2.Activities.Designers2.SqlBulkInsert
 
         void EditDbSource()
         {
-            var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            if(shellViewModel != null)
+            if(_shellViewModel != null)
             {
-                shellViewModel.OpenResource(SelectedDatabase.ResourceID,_server.EnvironmentID, shellViewModel.ActiveServer);
+                _shellViewModel.OpenResource(SelectedDatabase.ResourceID,_server.EnvironmentID, _shellViewModel.ActiveServer);
                 RefreshDatabases();
             }            
         }
 
         void CreateDbSource()
         {
-            CustomContainer.Get<IShellViewModel>().NewSqlServerSource(string.Empty);
+            _shellViewModel.NewSqlServerSource(string.Empty);
             RefreshDatabases();
         }
 

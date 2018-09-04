@@ -32,7 +32,7 @@ namespace Dev2.Activities.Designers2.Sequence
             {
                 if (_dropEnabledActivityDesignerUtils != null)
                 {
-                    var dropEnabled = _dropEnabledActivityDesignerUtils.LimitDragDropOptions(e.Data);
+                    var dropEnabled = _dropEnabledActivityDesignerUtils.LimitDragDropOptions(e.Data, CustomContainer.Get<IShellViewModel>());
                     if (!dropEnabled)
                     {
                         e.Effects = DragDropEffects.None;

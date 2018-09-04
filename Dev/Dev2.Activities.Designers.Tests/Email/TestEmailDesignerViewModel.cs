@@ -19,6 +19,12 @@ namespace Dev2.Activities.Designers.Tests.Email
 {
     public class TestEmailDesignerViewModel : EmailDesignerViewModel
     {
+        public TestEmailDesignerViewModel(ModelItem modelItem, IServer server, IEventAggregator eventPublisher, IShellViewModel mainViewModel)
+            : base(modelItem, new SynchronousAsyncWorker(), server, eventPublisher, mainViewModel)
+        {
+
+        }
+
         public TestEmailDesignerViewModel(ModelItem modelItem, IServer server, IEventAggregator eventPublisher)
             : base(modelItem, new SynchronousAsyncWorker(), server, eventPublisher)
         {

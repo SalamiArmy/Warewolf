@@ -30,7 +30,7 @@ namespace Dev2.Activities.Designers2.Foreach
 
             if (_dropEnabledActivityDesignerUtils != null)
             {
-                var dropEnabled = _dropEnabledActivityDesignerUtils.LimitDragDropOptions(dataObject);
+                var dropEnabled = _dropEnabledActivityDesignerUtils.LimitDragDropOptions(dataObject, CustomContainer.Get<IShellViewModel>());
                 if (!dropEnabled)
                 {
                     e.Effects = DragDropEffects.None;

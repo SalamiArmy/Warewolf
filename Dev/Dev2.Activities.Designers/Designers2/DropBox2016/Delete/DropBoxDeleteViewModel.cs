@@ -14,11 +14,6 @@ using Dev2.Runtime.Interfaces;
 using Dev2.Studio.Interfaces;
 
 
-
-
-
-
-
 namespace Dev2.Activities.Designers2.DropBox2016.Delete
 {
     public class DropBoxDeleteViewModel : FileActivityDesignerViewModel, INotifyPropertyChanged
@@ -29,25 +24,18 @@ namespace Dev2.Activities.Designers2.DropBox2016.Delete
         string _result;
         readonly IShellViewModel _shellViewModel;
 
-
         public DropBoxDeleteViewModel(ModelItem modelItem)
            : this(modelItem, new DropboxSourceManager())
         {
             this.RunViewSetup();
         }
+
         public DropBoxDeleteViewModel(ModelItem modelItem, IDropboxSourceManager sourceManager, IShellViewModel mainViewModel)
-            : base(modelItem, "File Or Folder", String.Empty)
+            : this(modelItem, sourceManager)
         {
             _shellViewModel = mainViewModel;
-            _sourceManager = sourceManager;
-            EditDropboxSourceCommand = new RelayCommand(o => EditDropBoxSource(), p => IsDropboxSourceSelected);
-            NewSourceCommand = new Microsoft.Practices.Prism.Commands.DelegateCommand(CreateOAuthSource);
-
-            Sources = LoadOAuthSources();
-            AddTitleBarLargeToggle();
-            EditDropboxSourceCommand.RaiseCanExecuteChanged();
-            HelpText = Warewolf.Studio.Resources.Languages.HelpText.Tool_Dropbox_Delete;
         }
+
         public DropBoxDeleteViewModel(ModelItem modelItem, IDropboxSourceManager sourceManager)
             : base(modelItem, "File Or Folder", String.Empty)
         {

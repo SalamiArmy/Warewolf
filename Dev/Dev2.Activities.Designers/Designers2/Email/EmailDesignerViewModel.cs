@@ -49,6 +49,7 @@ namespace Dev2.Activities.Designers2.Email
         readonly IEventAggregator _eventPublisher;
         readonly IServer _server;
         readonly IAsyncWorker _asyncWorker;
+        readonly IShellViewModel _shellViewModel;
 
         bool _isInitializing;
         internal Func<string> GetDatalistString = () => DataListSingleton.ActiveDataList.Resource.DataList;
@@ -57,6 +58,12 @@ namespace Dev2.Activities.Designers2.Email
             : this(modelItem, new AsyncWorker(), ServerRepository.Instance.ActiveServer, EventPublishers.Aggregator)
         {
             this.RunViewSetup();
+        }
+
+        public EmailDesignerViewModel(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher, IShellViewModel mainViewModel)
+            : this(modelItem, asyncWorker, server, eventPublisher)
+        {
+            _shellViewModel = mainViewModel;
         }
 
         public EmailDesignerViewModel(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher)
@@ -182,7 +189,7 @@ namespace Dev2.Activities.Designers2.Email
 
         public void CreateEmailSource()
         {
-            CustomContainer.Get<IShellViewModel>().NewEmailSource(string.Empty);
+            _shellViewModel.NewEmailSource(string.Empty);
             RefreshSources();
         }
 
@@ -200,7 +207,7 @@ namespace Dev2.Activities.Designers2.Email
                 EnableSsl = SelectedEmailSource.EnableSsl
             };
 
-            CustomContainer.Get<IShellViewModel>().EditResource(def);
+            _shellViewModel.EditResource(def);
         }
 
         string GetTestEmailAccount()
@@ -244,8 +251,7 @@ namespace Dev2.Activities.Designers2.Email
             {
                 try
                 {
-                    var shellViewModel = CustomContainer.Get<IShellViewModel>();
-                    shellViewModel?.ActiveServer?.UpdateRepository?.TestConnection(emailServiceSourceDefinition);
+                    _shellViewModel?.ActiveServer?.UpdateRepository?.TestConnection(emailServiceSourceDefinition);
                 }
                 catch (Exception ex)
                 {

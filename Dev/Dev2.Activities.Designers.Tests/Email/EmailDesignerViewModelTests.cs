@@ -254,10 +254,9 @@ namespace Dev2.Activities.Designers.Tests.Email
             var eventPublisher = new Mock<IEventAggregator>();
             var mockShellViewModel = new Mock<IShellViewModel>();
             mockShellViewModel.Setup(model => model.EditResource(It.IsAny<IEmailServiceSource>())).Verifiable();
-            CustomContainer.Register(mockShellViewModel.Object);
             var resourceModel = new Mock<IResourceModel>();
 
-            var viewModel = CreateViewModel(emailSources, modelItem, eventPublisher.Object, resourceModel.Object);
+            var viewModel = CreateViewModel(emailSources, modelItem, eventPublisher.Object, resourceModel.Object, mockShellViewModel.Object);
 
             //------------Execute Test---------------------------
             viewModel.EditEmailSourceCommand.Execute(null);
@@ -288,8 +287,6 @@ namespace Dev2.Activities.Designers.Tests.Email
             var resourceModel = new Mock<IResourceModel>();
             var mockShellViewModel = new Mock<IShellViewModel>();
             mockShellViewModel.Setup(model => model.NewEmailSource(It.IsAny<string>()));
-            var shellViewModel = mockShellViewModel.Object;
-            CustomContainer.Register(shellViewModel);
             var viewModel = CreateViewModel(emailSources, modelItem, eventPublisher.Object, resourceModel.Object);
 
             var createEmailSource = viewModel.EmailSources[0];
@@ -1217,24 +1214,23 @@ namespace Dev2.Activities.Designers.Tests.Email
             return result;
         }
 
-        static TestEmailDesignerViewModel CreateViewModel(List<EmailSource> sources, ModelItem modelItem)
+        static TestEmailDesignerViewModel CreateViewModel(List<EmailSource> sources, ModelItem modelItem, IShellViewModel mainViewModel = null)
         {
-            return CreateViewModel(sources, modelItem, new Mock<IEventAggregator>().Object, new Mock<IResourceModel>().Object);
+            return CreateViewModel(sources, modelItem, new Mock<IEventAggregator>().Object, new Mock<IResourceModel>().Object, mainViewModel);
         }
 
-        static TestEmailDesignerViewModel CreateViewModel(List<EmailSource> sources, ModelItem modelItem, IEventAggregator eventPublisher, IResourceModel resourceModel)
+        static TestEmailDesignerViewModel CreateViewModel(List<EmailSource> sources, ModelItem modelItem, IEventAggregator eventPublisher, IResourceModel resourceModel, IShellViewModel mainViewModel = null)
         {
-            if (CustomContainer.Get<IShellViewModel>() == null)
-            {
-                CustomContainer.Register(ShellViewModelConstructor.ShellViewModelForTesting().Object);
-            }
             var environment = new Mock<IServer>();
             environment.Setup(e => e.ResourceRepository.FindSourcesByType<EmailSource>(It.IsAny<IServer>(), enSourceType.EmailSource))
                 .Returns(sources);
             environment.Setup(e => e.ResourceRepository.FindSingle(It.IsAny<Expression<Func<IResourceModel, bool>>>(), false, false))
                 .Returns(resourceModel);
-
-            var testEmailDesignerViewModel = new TestEmailDesignerViewModel(modelItem, environment.Object, eventPublisher)
+            if (mainViewModel == null)
+            {
+                mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
+            }
+            var testEmailDesignerViewModel = new TestEmailDesignerViewModel(modelItem, environment.Object, eventPublisher, mainViewModel.Object)
                 {
                     GetDatalistString = () =>
                         {

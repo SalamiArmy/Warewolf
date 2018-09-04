@@ -46,7 +46,7 @@ namespace Dev2.Core.Tests.Activities
             var dataObject = new Mock<IDataObject>();
             dataObject.Setup(o => o.GetFormats()).Returns(new string[] { });
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsTrue(dropEnabled);
         }
@@ -61,7 +61,7 @@ namespace Dev2.Core.Tests.Activities
             var dataObject = new Mock<IDataObject>();
             dataObject.Setup(o => o.GetFormats()).Returns(new[] { "SomeOtherFormat" });
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsTrue(dropEnabled);
         }
@@ -81,7 +81,7 @@ namespace Dev2.Core.Tests.Activities
             //------------Execute Test---------------------------
             var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shell.Object);
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
@@ -98,7 +98,7 @@ namespace Dev2.Core.Tests.Activities
             var modelItemList = new List<ModelItem> { ModelItemUtils.CreateModelItem(new DsfCountRecordsetNullHandlerActivity()), ModelItemUtils.CreateModelItem(new FlowDecision()) };
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns(modelItemList);
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
@@ -115,7 +115,7 @@ namespace Dev2.Core.Tests.Activities
             var modelItemList = new List<ModelItem> { ModelItemUtils.CreateModelItem(new DsfCountRecordsetNullHandlerActivity()), ModelItemUtils.CreateModelItem(new FlowSwitch<string>()) };
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns(modelItemList);
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
@@ -135,7 +135,7 @@ namespace Dev2.Core.Tests.Activities
             //------------Execute Test---------------------------
             var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shell.Object);
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
@@ -151,7 +151,7 @@ namespace Dev2.Core.Tests.Activities
             dataObject.Setup(o => o.GetFormats()).Returns(new[] { "ModelItemFormat" });
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns("Act");
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsTrue(dropEnabled);
         }
@@ -167,7 +167,7 @@ namespace Dev2.Core.Tests.Activities
             dataObject.Setup(o => o.GetFormats()).Returns(new[] { "ModelItemFormat" });
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns("Activity");
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsTrue(dropEnabled);
         }
@@ -185,7 +185,7 @@ namespace Dev2.Core.Tests.Activities
             //------------Execute Test---------------------------
             var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shell.Object);
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
@@ -203,7 +203,7 @@ namespace Dev2.Core.Tests.Activities
             //------------Execute Test---------------------------
             var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shell.Object);
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
@@ -218,7 +218,7 @@ namespace Dev2.Core.Tests.Activities
             dataObject.Setup(o => o.GetFormats()).Returns(new[] { "WorkflowItemTypeNameFormat" });
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns("Act");
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsTrue(dropEnabled);
         }
@@ -234,7 +234,7 @@ namespace Dev2.Core.Tests.Activities
             dataObject.Setup(o => o.GetFormats()).Returns(new[] { "WorkflowItemTypeNameFormat" });
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns("Activity");
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsTrue(dropEnabled);
         }
@@ -255,7 +255,7 @@ namespace Dev2.Core.Tests.Activities
             var modelItem = ModelItemUtils.CreateModelItem(new FlowDecision());
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns(modelItem);
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
@@ -274,7 +274,7 @@ namespace Dev2.Core.Tests.Activities
             var modelItem = ModelItemUtils.CreateModelItem(new FlowSwitch<string>());
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns(modelItem);
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
@@ -292,7 +292,7 @@ namespace Dev2.Core.Tests.Activities
             var modelItem = ModelItemUtils.CreateModelItem(new DsfMultiAssignActivity());
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns(modelItem);
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsTrue(dropEnabled);
         }
@@ -311,7 +311,7 @@ namespace Dev2.Core.Tests.Activities
             var modelItem = ModelItemUtils.CreateModelItem(new FlowDecision());
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns(modelItem);
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
@@ -327,13 +327,12 @@ namespace Dev2.Core.Tests.Activities
             var activityDesignerUtils = new DropEnabledActivityDesignerUtils();
             var mock = new Mock<IShellViewModel>();
             mock.Setup(model => model.ShowPopup(It.IsAny<IPopupMessage>()));
-            CustomContainer.Register(mock.Object);
             var dataObject = new Mock<IDataObject>();
             dataObject.Setup(o => o.GetFormats()).Returns(new[] { "WorkflowItemTypeNameFormat" });
             var modelItem = ModelItemUtils.CreateModelItem(new FlowSwitch<string>());
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns(modelItem);
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, mock.Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
             mock.VerifyAll();
@@ -351,7 +350,7 @@ namespace Dev2.Core.Tests.Activities
             var modelItem = ModelItemUtils.CreateModelItem(new DsfMultiAssignActivity());
             dataObject.Setup(o => o.GetData(It.IsAny<string>())).Returns(modelItem);
             //------------Execute Test---------------------------
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsTrue(dropEnabled);
         }
@@ -370,7 +369,7 @@ namespace Dev2.Core.Tests.Activities
             //------------Execute Test---------------------------
             var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shell.Object);
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }
@@ -388,7 +387,7 @@ namespace Dev2.Core.Tests.Activities
             //------------Execute Test---------------------------
             var shell = ShellViewModelConstructor.ShellViewModelForTesting();
             CustomContainer.Register(shell.Object);
-            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object);
+            var dropEnabled = activityDesignerUtils.LimitDragDropOptions(dataObject.Object, new Mock<IShellViewModel>().Object);
             //------------Assert Results-------------------------
             Assert.IsFalse(dropEnabled);
         }

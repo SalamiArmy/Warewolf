@@ -605,10 +605,9 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             var eventPublisher = new Mock<IEventAggregator>();
             var mockShellViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             mockShellViewModel.Setup(model => model.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<IServer>()));
-            CustomContainer.Register(mockShellViewModel.Object);
             var resourceModel = new Mock<IResourceModel>();
 
-            var viewModel = CreateViewModel(modelItem, databases, eventPublisher.Object, resourceModel.Object, true);
+            var viewModel = CreateViewModel(modelItem, databases, eventPublisher.Object, resourceModel.Object, true, "", mockShellViewModel.Object);
             viewModel.SelectedDatabase = selectedDatabase;
             //------------Execute Test---------------------------
             viewModel.EditDatabaseCommand.Execute(null);
@@ -639,12 +638,10 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
 
             var mockShellViewModel = new Mock<IShellViewModel>();
             mockShellViewModel.Setup(model => model.NewSqlServerSource(It.IsAny<string>()));
-            var shellViewModel = mockShellViewModel.Object;
-            CustomContainer.Register(shellViewModel);
 
             var resourceModel = new Mock<IResourceModel>();
 
-            var viewModel = CreateViewModel(modelItem, databases, eventPublisher.Object, resourceModel.Object);
+            var viewModel = CreateViewModel(modelItem, databases, eventPublisher.Object, resourceModel.Object, mockShellViewModel.Object);
 
             var createDatabase = viewModel.Databases[0];
             Assert.AreEqual("New Database Source...", createDatabase.ResourceName);
@@ -1197,19 +1194,49 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             }
         }
 
-        static TestSqlBulkInsertDesignerViewModel CreateViewModel(Dictionary<DbSource, DbTableList> sources, string columnListErrors = "")
+        static TestSqlBulkInsertDesignerViewModel CreateViewModel(ModelItem modelItem, Dictionary<DbSource, DbTableList> sources, IEventAggregator eventAggregator, IResourceModel resourceModel, IShellViewModel mainViewModel = null)
         {
+            if (mainViewModel == null)
+            {
+                mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
+            }
+            return CreateViewModel(modelItem, sources, eventAggregator, resourceModel, false, "", mainViewModel);
+        }
+
+        static TestSqlBulkInsertDesignerViewModel CreateViewModel(ModelItem modelItem, Dictionary<DbSource, DbTableList> sources, string columnListErrors = "", IShellViewModel mainViewModel = null)
+        {
+            if (mainViewModel == null)
+            {
+                mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
+            }
+            return CreateViewModel(modelItem, sources, new Mock<IEventAggregator>().Object, new Mock<IResourceModel>().Object, false, columnListErrors, mainViewModel);
+        }
+
+        static TestSqlBulkInsertDesignerViewModel CreateViewModel(Dictionary<DbSource, DbTableList> sources, string columnListErrors = "", IShellViewModel mainViewModel = null)
+        {
+            if (mainViewModel == null)
+            {
+                mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
+            }
             var modelItem = CreateModelItem();
-            return CreateViewModel(modelItem, sources, false, columnListErrors);
+            return CreateViewModel(modelItem, sources, false, columnListErrors, mainViewModel);
         }
 
-        static TestSqlBulkInsertDesignerViewModel CreateViewModel(ModelItem modelItem, Dictionary<DbSource, DbTableList> sources, bool single = false, string columnListErrors = "")
+        static TestSqlBulkInsertDesignerViewModel CreateViewModel(ModelItem modelItem, Dictionary<DbSource, DbTableList> sources, bool single = false, string columnListErrors = "", IShellViewModel mainViewModel = null)
         {
-            return CreateViewModel(modelItem, sources, new Mock<IEventAggregator>().Object, new Mock<IResourceModel>().Object, single, columnListErrors);
+            if (mainViewModel == null)
+            {
+                mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
+            }
+            return CreateViewModel(modelItem, sources, new Mock<IEventAggregator>().Object, new Mock<IResourceModel>().Object, single, columnListErrors, mainViewModel);
         }
 
-        static TestSqlBulkInsertDesignerViewModel CreateViewModel(ModelItem modelItem, Dictionary<DbSource, DbTableList> sources, IEventAggregator eventAggregator, IResourceModel resourceModel, bool configureFindSingle = false, string columnListErrors = "")
+        static TestSqlBulkInsertDesignerViewModel CreateViewModel(ModelItem modelItem, Dictionary<DbSource, DbTableList> sources, IEventAggregator eventAggregator, IResourceModel resourceModel, bool configureFindSingle = false, string columnListErrors = "", IShellViewModel mainViewModel = null)
         {
+            if (mainViewModel == null)
+            {
+                mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
+            }
             var sourceDefs = sources?.Select(s => s.Key.ToXml().ToString());
 
             var envModel = new Mock<IServer>();
@@ -1273,7 +1300,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
                 envModel.Setup(e => e.ResourceRepository.FindSingle(It.IsAny<Expression<Func<IResourceModel, bool>>>(), false, false)).Returns(resourceModel);
             }
 
-            return new TestSqlBulkInsertDesignerViewModel(modelItem, envModel.Object, eventAggregator);
+            return new TestSqlBulkInsertDesignerViewModel(modelItem, envModel.Object, eventAggregator, mainViewModel);
         }
 
 

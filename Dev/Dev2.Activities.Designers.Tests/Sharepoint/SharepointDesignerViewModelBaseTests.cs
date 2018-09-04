@@ -119,18 +119,26 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
             Assert.AreEqual(sharepointListDesignerViewModelBase.GetNewSharepointSource, sharepointServerList[0]);
         }
 
-        static TestSharepointListDesignerViewModelBase CreateSharepointListDesignerViewModel()
+        static TestSharepointListDesignerViewModelBase CreateSharepointListDesignerViewModel(IShellViewModel mainViewModel = null)
         {
-            return CreateSharepointListDesignerViewModel(new Mock<IServer>());
+            return CreateSharepointListDesignerViewModel(new Mock<IServer>(), mainViewModel);
         }
 
-        static TestSharepointListDesignerViewModelBase CreateSharepointListDesignerViewModel(Mock<IServer> mockEnvironmentModel)
+        static TestSharepointListDesignerViewModelBase CreateSharepointListDesignerViewModel(Mock<IServer> mockEnvironmentModel, IShellViewModel mainViewModel = null)
         {
-            return CreateSharepointListDesignerViewModel(mockEnvironmentModel, new Mock<IEventAggregator>());
+            if (mainViewModel == null)
+            {
+                mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
+            }
+            return CreateSharepointListDesignerViewModel(mockEnvironmentModel, new Mock<IEventAggregator>(), mainViewModel);
         }
 
-        static TestSharepointListDesignerViewModelBase CreateSharepointListDesignerViewModel(Mock<IServer> mockEnvironmentModel, Mock<IEventAggregator> mockEventAggregator)
+        static TestSharepointListDesignerViewModelBase CreateSharepointListDesignerViewModel(Mock<IServer> mockEnvironmentModel, Mock<IEventAggregator> mockEventAggregator, IShellViewModel mainViewModel = null)
         {
+            if (mainViewModel == null)
+            {
+                mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
+            }
             return new TestSharepointListDesignerViewModelBase(CreateModelItem(), new SynchronousAsyncWorker(), mockEnvironmentModel.Object, mockEventAggregator.Object, false);
         }
 
@@ -221,7 +229,6 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
             mockShellViewModel.Setup(model => model.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(),It.IsAny<IServer>())).Verifiable();
             var serverMock = new Mock<IServer>();
             mockShellViewModel.Setup(viewModel => viewModel.ActiveServer).Returns(() => serverMock.Object);
-            CustomContainer.Register(mockShellViewModel.Object);
             var mockEnvironmentModel = new Mock<IServer>();
             var mockResourceRepo = new Mock<IResourceRepository>();
             var sharepointSource = new SharepointSource
@@ -232,7 +239,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
             var sharepointSources = new List<SharepointSource> { sharepointSource };
             mockResourceRepo.Setup(repository => repository.FindSourcesByType<SharepointSource>(It.IsAny<IServer>(), enSourceType.SharepointServerSource)).Returns(sharepointSources);
             mockEnvironmentModel.Setup(model => model.ResourceRepository).Returns(mockResourceRepo.Object);
-            var sharepointListDesignerViewModelBase = CreateSharepointListDesignerViewModel(mockEnvironmentModel);
+            var sharepointListDesignerViewModelBase = CreateSharepointListDesignerViewModel(mockEnvironmentModel, mockShellViewModel.Object);
             sharepointListDesignerViewModelBase.SelectedSharepointServer = sharepointSource;
             //------------Execute Test---------------------------
             sharepointListDesignerViewModelBase.EditSharepointServerCommand.Execute(null);
@@ -263,9 +270,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
             var mockEventAggregator = new Mock<IEventAggregator>();
             var mockShellViewModel = new Mock<IShellViewModel>();
             mockShellViewModel.Setup(model => model.NewSharepointSource(It.IsAny<string>()));
-            var shellViewModel = mockShellViewModel.Object;
-            CustomContainer.Register(shellViewModel);
-            var sharepointListDesignerViewModelBase = CreateSharepointListDesignerViewModel(mockEnvironmentModel,mockEventAggregator);
+            var sharepointListDesignerViewModelBase = CreateSharepointListDesignerViewModel(mockEnvironmentModel, mockEventAggregator, mockShellViewModel.Object);
             //------------Execute Test---------------------------
             sharepointListDesignerViewModelBase.SelectedSharepointServer = sharepointListDesignerViewModelBase.GetNewSharepointSource;
             //------------Assert Results-------------------------
@@ -590,6 +595,13 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
     {
         public TestSharepointListDesignerViewModelBase(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher, bool loadOnlyEditableFields)
             : base(modelItem, asyncWorker, server, eventPublisher, loadOnlyEditableFields)
+        {
+            dynamic mi = ModelItem;
+            InitializeItems(mi.FilterCriteria);
+        }
+
+        public TestSharepointListDesignerViewModelBase(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher, bool loadOnlyEditableFields, IShellViewModel mainViewModel)
+            : base(modelItem, asyncWorker, server, eventPublisher, loadOnlyEditableFields, mainViewModel)
         {
             dynamic mi = ModelItem;
             InitializeItems(mi.FilterCriteria);

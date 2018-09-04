@@ -10,6 +10,7 @@
 
 using System.Windows;
 using Dev2.Activities.Utils;
+using Dev2.Studio.Interfaces;
 
 namespace Dev2.Activities.Designers2.SelectAndApply
 {
@@ -28,7 +29,7 @@ namespace Dev2.Activities.Designers2.SelectAndApply
         {
             if (_dropEnabledActivityDesignerUtils != null)
             {
-                var dropEnabled = _dropEnabledActivityDesignerUtils.LimitDragDropOptions(e.Data);
+                var dropEnabled = _dropEnabledActivityDesignerUtils.LimitDragDropOptions(e.Data, CustomContainer.Get<IShellViewModel>());
                 if (!dropEnabled)
                 {
                     e.Effects = DragDropEffects.None;

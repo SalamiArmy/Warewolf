@@ -26,11 +26,18 @@ namespace Dev2.Activities.Designers2.DropBox2016.Upload
         bool _overWriteMode;
         bool _addMode;
         readonly IDropboxSourceManager _sourceManager;
+        readonly IShellViewModel _shellViewModel;
 
         public DropBoxUploadViewModel(ModelItem modelItem)
             : this(modelItem, new DropboxSourceManager())
         {
             this.RunViewSetup();
+        }
+
+        public DropBoxUploadViewModel(ModelItem modelItem, IDropboxSourceManager sourceManager, IShellViewModel mainViewModel)
+            : this(modelItem, sourceManager)
+        {
+            _shellViewModel = mainViewModel;
         }
 
         public DropBoxUploadViewModel(ModelItem modelItem, IDropboxSourceManager sourceManager)
@@ -159,22 +166,20 @@ namespace Dev2.Activities.Designers2.DropBox2016.Upload
 
         void EditDropBoxSource()
         {
-            var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            var activeServer = shellViewModel.ActiveServer;
+            var activeServer = _shellViewModel.ActiveServer;
             if (activeServer != null)
             {
-                shellViewModel.OpenResource(SelectedSource.ResourceID, activeServer.EnvironmentID, activeServer);
+                _shellViewModel.OpenResource(SelectedSource.ResourceID, activeServer.EnvironmentID, activeServer);
             }
         }
 
         public void CreateOAuthSource()
         {
-            var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            if(shellViewModel == null)
+            if(_shellViewModel == null)
             {
                 return;
             }
-            shellViewModel.NewDropboxSource(string.Empty);
+            _shellViewModel.NewDropboxSource(string.Empty);
             Sources = LoadOAuthSources();
             OnPropertyChanged(@"Sources");
         }

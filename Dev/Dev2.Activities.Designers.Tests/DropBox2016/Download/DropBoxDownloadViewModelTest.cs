@@ -151,9 +151,8 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Download
             var serverMock = new Mock<IServer>();
             mockShellViewModel.Setup(viewModel => viewModel.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<IServer>()));
             mockShellViewModel.Setup(viewModel => viewModel.ActiveServer).Returns(() => serverMock.Object);
-            CustomContainer.Register(mockShellViewModel.Object);
             //------------Setup for test--------------------------
-            var downloadViewModel = new DropBoxDownloadViewModel(model, TestResourceCatalog.LazySourceManager.Value) { SelectedSource = new DropBoxSource() };
+            var downloadViewModel = new DropBoxDownloadViewModel(model, TestResourceCatalog.LazySourceManager.Value, mockShellViewModel.Object) { SelectedSource = new DropBoxSource() };
             downloadViewModel.EditDropboxSourceCommand.Execute(null);
             //------------Execute Test---------------------------
             //------------Assert Results-------------------------
@@ -319,10 +318,9 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Download
             var model = CreateModelItem();
             var shellViewModelMock = new Mock<IShellViewModel>();
             shellViewModelMock.Setup(viewModel => viewModel.NewDropboxSource(It.IsAny<string>()));
-            CustomContainer.Register(shellViewModelMock.Object);
             //---------------Setup for test-----------------------
             
-            var mockVM = new DropBoxDownloadViewModel(model, TestResourceCatalog.LazySourceManager.Value);
+            var mockVM = new DropBoxDownloadViewModel(model, TestResourceCatalog.LazySourceManager.Value, shellViewModelMock.Object);
             //---------------Assert Precondition------------------
 
             //---------------Execute Test ------------------------

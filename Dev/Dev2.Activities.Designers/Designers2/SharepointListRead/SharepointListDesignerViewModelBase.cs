@@ -45,8 +45,15 @@ namespace Dev2.Activities.Designers2.SharepointListRead
         bool _isInitializing;
         readonly IServer _server;
         readonly IAsyncWorker _asyncWorker;
+        readonly IShellViewModel _shellViewModel;
 
-        protected SharepointListDesignerViewModelBase(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher, bool loadOnlyEditableFields)
+        protected SharepointListDesignerViewModelBase(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher, bool loadOnlyEditableFields, IShellViewModel mainViewModel)
+            : this(modelItem, asyncWorker, server, eventPublisher, loadOnlyEditableFields)
+        {
+            _shellViewModel = mainViewModel;
+        }
+
+            protected SharepointListDesignerViewModelBase(ModelItem modelItem, IAsyncWorker asyncWorker, IServer server, IEventAggregator eventPublisher, bool loadOnlyEditableFields)
             :base(modelItem)
         {
             VerifyArgument.IsNotNull("asyncWorker", asyncWorker);
@@ -343,7 +350,7 @@ namespace Dev2.Activities.Designers2.SharepointListRead
         void CreateSharepointServerSource()
         {
             IsRefreshing = true;
-            CustomContainer.Get<IShellViewModel>().NewSharepointSource(string.Empty);
+            _shellViewModel.NewSharepointSource(string.Empty);
             RefreshSharepointSources();
             IsRefreshing = false;
         }
@@ -490,11 +497,10 @@ namespace Dev2.Activities.Designers2.SharepointListRead
 
         void EditSharepointSource()
         {
-            var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            var activeServer = shellViewModel.ActiveServer;
+            var activeServer = _shellViewModel.ActiveServer;
             if (activeServer != null)
             {
-                shellViewModel.OpenResource(SelectedSharepointServer.ResourceID,activeServer.EnvironmentID, activeServer);
+                _shellViewModel.OpenResource(SelectedSharepointServer.ResourceID,activeServer.EnvironmentID, activeServer);
             }
         }
 

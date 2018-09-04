@@ -27,10 +27,18 @@ namespace Dev2.Activities.Designers2.DropBox2016.Download
         string _fromPath;
         bool _overwriteFile;
         readonly IDropboxSourceManager _sourceManager;
+        readonly IShellViewModel _shellViewModel;
+
         public DropBoxDownloadViewModel(ModelItem modelItem)
             : this(modelItem, new DropboxSourceManager())
         {
             this.RunViewSetup();
+        }
+        
+        public DropBoxDownloadViewModel(ModelItem modelItem, IDropboxSourceManager sourceManager, IShellViewModel mainViewModel)
+            : this(modelItem, sourceManager)
+        {
+            _shellViewModel = mainViewModel;
         }
 
         public DropBoxDownloadViewModel(ModelItem modelItem, IDropboxSourceManager sourceManager)
@@ -156,16 +164,14 @@ namespace Dev2.Activities.Designers2.DropBox2016.Download
 
         public void CreateOAuthSource()
         {
-            var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            if (shellViewModel == null)
+            if (_shellViewModel == null)
             {
                 return;
             }
-            shellViewModel.NewDropboxSource(string.Empty);
+            _shellViewModel.NewDropboxSource(string.Empty);
             Sources = LoadOAuthSources();
             OnPropertyChanged(@"Sources");
         }
-        //Used by specs
 
         public ObservableCollection<DropBoxSource> LoadOAuthSources()
         {

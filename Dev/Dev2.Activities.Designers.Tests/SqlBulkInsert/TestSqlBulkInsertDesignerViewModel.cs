@@ -21,8 +21,8 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
 {
     class TestSqlBulkInsertDesignerViewModel : SqlBulkInsertDesignerViewModel
     {
-        public TestSqlBulkInsertDesignerViewModel(ModelItem modelItem, IServer server, IEventAggregator eventPublisher)
-            : base(modelItem, new SynchronousAsyncWorker(), server, eventPublisher)
+        public TestSqlBulkInsertDesignerViewModel(ModelItem modelItem, IServer server, IEventAggregator eventPublisher, IShellViewModel mainViewModel)
+            : base(modelItem, new SynchronousAsyncWorker(), server, eventPublisher, mainViewModel)
         {
         }
 
