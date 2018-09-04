@@ -26,7 +26,6 @@ namespace Dev2.Core.Tests.Controller
             //---------------Set up test pack-------------------
             var mock = new Mock<IPopupController>();
             mock.Setup(c => c.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Error, "", false, false, true, false, false, false));
-            CustomContainer.Register(mock.Object);
             var connection = new Mock<IEnvironmentConnection>();
             connection.Setup(environmentConnection => environmentConnection.IsConnected).Returns(true);
             var serializer = new Dev2JsonSerializer();
@@ -41,7 +40,7 @@ namespace Dev2.Core.Tests.Controller
             //---------------Assert Precondition----------------
             //---------------Execute Test ----------------------
 
-            controller.ExecuteCommand<ExecuteMessage>(connection.Object, GlobalConstants.ServerWorkspaceID);
+            controller.ExecuteCommand<ExecuteMessage>(connection.Object, GlobalConstants.ServerWorkspaceID, mock.Object);
             //---------------Test Result -----------------------
             mock.Verify(c => c.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Error, "", false, false, true, false, false, false), Times.Once);
         }
@@ -55,7 +54,6 @@ namespace Dev2.Core.Tests.Controller
             //---------------Set up test pack-------------------
             var mock = new Mock<IPopupController>();
             mock.Setup(c => c.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Error, "", false, false, true, false, false, false));
-            CustomContainer.Register(mock.Object);
             var connection = new Mock<IEnvironmentConnection>();
             connection.Setup(environmentConnection => environmentConnection.IsConnected).Returns(true);
             var serializer = new Dev2JsonSerializer();
@@ -73,7 +71,7 @@ namespace Dev2.Core.Tests.Controller
             //---------------Assert Precondition----------------
             //---------------Execute Test ----------------------
 
-            controller.ExecuteCommand<ExplorerRepositoryResult>(connection.Object, GlobalConstants.ServerWorkspaceID);
+            controller.ExecuteCommand<ExplorerRepositoryResult>(connection.Object, GlobalConstants.ServerWorkspaceID, mock.Object);
             //---------------Test Result -----------------------
             mock.Verify(c => c.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Error, "", false, false, true, false, false, false), Times.Once);
         }
@@ -87,7 +85,6 @@ namespace Dev2.Core.Tests.Controller
             //---------------Set up test pack-------------------
             var mock = new Mock<IPopupController>();
             mock.Setup(c => c.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Error, "", false, false, true, false, false, false));
-            CustomContainer.Register(mock.Object);
             var connection = new Mock<IEnvironmentConnection>();
             connection.Setup(environmentConnection => environmentConnection.IsConnected).Returns(true);
             var serializer = new Dev2JsonSerializer();
@@ -105,7 +102,7 @@ namespace Dev2.Core.Tests.Controller
             //---------------Assert Precondition----------------
             //---------------Execute Test ----------------------
 
-            var explorerRepositoryResult = controller.ExecuteCommandAsync<ExplorerRepositoryResult>(connection.Object, GlobalConstants.ServerWorkspaceID).Result;
+            var explorerRepositoryResult = controller.ExecuteCommandAsync<ExplorerRepositoryResult>(connection.Object, GlobalConstants.ServerWorkspaceID, mock.Object).Result;
             //---------------Test Result -----------------------
             mock.Verify(c => c.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Error, "", false, false, true, false, false, false), Times.Once);
         }
@@ -119,7 +116,6 @@ namespace Dev2.Core.Tests.Controller
             //---------------Set up test pack-------------------
             var mock = new Mock<IPopupController>();
             mock.Setup(c => c.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Error, "", false, false, true, false, false, false));
-            CustomContainer.Register(mock.Object);
             var connection = new Mock<IEnvironmentConnection>();
             connection.Setup(environmentConnection => environmentConnection.IsConnected).Returns(true);
             connection.Setup(environmentConnection => environmentConnection.ExecuteCommandAsync(It.IsAny<StringBuilder>(), GlobalConstants.ServerWorkspaceID))
@@ -128,7 +124,7 @@ namespace Dev2.Core.Tests.Controller
             //---------------Assert Precondition----------------
             //---------------Execute Test ----------------------
 
-            controller.ExecuteCommandAsync<ExecuteMessage>(connection.Object, GlobalConstants.ServerWorkspaceID).ContinueWith((d) =>
+            controller.ExecuteCommandAsync<ExecuteMessage>(connection.Object, GlobalConstants.ServerWorkspaceID, mock.Object).ContinueWith((d) =>
             {
                 //---------------Test Result -----------------------
                 Assert.IsNotNull(d);
@@ -145,7 +141,6 @@ namespace Dev2.Core.Tests.Controller
             //---------------Set up test pack-------------------
             var mock = new Mock<IPopupController>();
             mock.Setup(c => c.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Error, "", false, false, true, false, false, false));
-            CustomContainer.Register(mock.Object);
             var connection = new Mock<IEnvironmentConnection>();
             connection.Setup(environmentConnection => environmentConnection.IsConnected).Returns(true);
             var aggregateException = new AggregateException();
@@ -156,7 +151,7 @@ namespace Dev2.Core.Tests.Controller
             //---------------Assert Precondition----------------
             //---------------Execute Test ----------------------
 
-            controller.ExecuteCommandAsync<ExecuteMessage>(connection.Object, GlobalConstants.ServerWorkspaceID).ContinueWith((d) =>
+            controller.ExecuteCommandAsync<ExecuteMessage>(connection.Object, GlobalConstants.ServerWorkspaceID, mock.Object).ContinueWith((d) =>
             {
                 //---------------Test Result -----------------------
                 Assert.IsNotNull(d);
