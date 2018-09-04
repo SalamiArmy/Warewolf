@@ -287,7 +287,7 @@ namespace Dev2.Activities.Designers.Tests.Email
             var resourceModel = new Mock<IResourceModel>();
             var mockShellViewModel = new Mock<IShellViewModel>();
             mockShellViewModel.Setup(model => model.NewEmailSource(It.IsAny<string>()));
-            var viewModel = CreateViewModel(emailSources, modelItem, eventPublisher.Object, resourceModel.Object);
+            var viewModel = CreateViewModel(emailSources, modelItem, eventPublisher.Object, resourceModel.Object, mockShellViewModel.Object);
 
             var createEmailSource = viewModel.EmailSources[0];
             Assert.AreEqual("Email0", createEmailSource.ResourceName);

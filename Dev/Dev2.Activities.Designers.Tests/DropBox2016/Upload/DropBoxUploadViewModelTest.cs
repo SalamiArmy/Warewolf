@@ -195,9 +195,8 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Upload
             CustomContainer.DeRegister<IShellViewModel>();
             var shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModelMock.Setup(viewModel => viewModel.NewDropboxSource(It.IsAny<string>()));
-            CustomContainer.Register(shellViewModelMock.Object);
             //------------Setup for test--------------------------
-            var dropBoxUploadViewModel = new DropBoxUploadViewModel(model, TestResourceCatalog.LazySourceManager.Value) { SelectedSource = new DropBoxSource() };
+            var dropBoxUploadViewModel = new DropBoxUploadViewModel(model, TestResourceCatalog.LazySourceManager.Value, shellViewModelMock.Object) { SelectedSource = new DropBoxSource() };
             //------------Execute Test---------------------------
             dropBoxUploadViewModel.NewSourceCommand.Execute(null);
             //------------Assert Results-------------------------

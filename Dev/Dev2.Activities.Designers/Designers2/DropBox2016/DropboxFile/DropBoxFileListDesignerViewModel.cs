@@ -31,6 +31,7 @@ namespace Dev2.Activities.Designers2.DropBox2016.DropboxFile
         bool _isFoldersSelected;
         bool _isFilesAndFoldersSelected;
         readonly IDropboxSourceManager _sourceManager;
+        readonly IShellViewModel _shellViewModel;
         public DropBoxFileListDesignerViewModel(ModelItem modelItem)
             : this(modelItem, new DropboxSourceManager())
         {
@@ -52,6 +53,12 @@ namespace Dev2.Activities.Designers2.DropBox2016.DropboxFile
             IsRecursive = false;
             IncludeMediaInfo = false;
             HelpText = Warewolf.Studio.Resources.Languages.HelpText.Tool_Dropbox_List_Contents;
+        }
+
+        public DropBoxFileListDesignerViewModel(ModelItem modelItem, IDropboxSourceManager sourceManager, IShellViewModel mainViewModel)
+            : this(modelItem, sourceManager)
+        {
+            _shellViewModel = mainViewModel;
         }
 
         public ICommand NewSourceCommand { get; set; }
@@ -222,22 +229,20 @@ namespace Dev2.Activities.Designers2.DropBox2016.DropboxFile
 
         void EditDropBoxSource()
         {
-            var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            var activeServer = shellViewModel.ActiveServer;
+            var activeServer = _shellViewModel.ActiveServer;
             if (activeServer != null)
             {
-                shellViewModel.OpenResource(SelectedSource.ResourceID, activeServer.EnvironmentID, activeServer);
+                _shellViewModel.OpenResource(SelectedSource.ResourceID, activeServer.EnvironmentID, activeServer);
             }
         }
 
         public void CreateOAuthSource()
         {
-            var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            if (shellViewModel == null)
+            if (_shellViewModel == null)
             {
                 return;
             }
-            shellViewModel.NewDropboxSource(string.Empty);
+            _shellViewModel.NewDropboxSource(string.Empty);
             Sources = LoadOAuthSources();
             OnPropertyChanged(@"Sources");
         }
@@ -268,9 +273,5 @@ namespace Dev2.Activities.Designers2.DropBox2016.DropboxFile
                 ToPath = String.Empty;
             }
         }
-
-
     }
-
-
 }

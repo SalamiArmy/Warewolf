@@ -149,16 +149,13 @@ namespace Dev2.Activities.Designers2.DropBox2016.Download
                 OnPropertyChanged();
             }
         }
-
-
-
+        
         void EditDropBoxSource()
         {
-            var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            var activeServer = shellViewModel.ActiveServer;
+            var activeServer = _shellViewModel.ActiveServer;
             if (activeServer != null)
             {
-                shellViewModel.OpenResource(SelectedSource.ResourceID, activeServer.EnvironmentID, activeServer);
+                _shellViewModel.OpenResource(SelectedSource.ResourceID, activeServer.EnvironmentID, activeServer);
             }
         }
 

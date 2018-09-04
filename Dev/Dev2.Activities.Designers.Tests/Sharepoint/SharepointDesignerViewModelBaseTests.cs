@@ -139,7 +139,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
             {
                 mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
             }
-            return new TestSharepointListDesignerViewModelBase(CreateModelItem(), new SynchronousAsyncWorker(), mockEnvironmentModel.Object, mockEventAggregator.Object, false);
+            return new TestSharepointListDesignerViewModelBase(CreateModelItem(), new SynchronousAsyncWorker(), mockEnvironmentModel.Object, mockEventAggregator.Object, false, mainViewModel);
         }
 
         [TestMethod]
