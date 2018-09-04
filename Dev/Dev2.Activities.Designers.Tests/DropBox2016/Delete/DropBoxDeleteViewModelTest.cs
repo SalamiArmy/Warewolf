@@ -141,13 +141,11 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.Delete
             var serverMock = new Mock<IServer>();
             mockShellViewModel.Setup(viewModel => viewModel.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<IServer>()));
             mockShellViewModel.Setup(viewModel => viewModel.ActiveServer).Returns(() => serverMock.Object);
-            CustomContainer.Register(mockShellViewModel.Object);
             //------------Execute Test---------------------------
-            var dropBoxDeleteViewModel = new DropBoxDeleteViewModel(model, TestResourceCatalog.LazySourceManager.Value) { SelectedSource = new DropBoxSource() };
+            var dropBoxDeleteViewModel = new DropBoxDeleteViewModel(model, TestResourceCatalog.LazySourceManager.Value, mockShellViewModel.Object) { SelectedSource = new DropBoxSource() };
             dropBoxDeleteViewModel.EditDropboxSourceCommand.Execute(null);
             //------------Assert Results-------------------------
             mockShellViewModel.Verify(viewModel => viewModel.OpenResource(It.IsAny<Guid>(), It.IsAny<Guid>(), It.IsAny<IServer>()));
-            CustomContainer.DeRegister<IShellViewModel>();
         }
 
         [TestMethod]

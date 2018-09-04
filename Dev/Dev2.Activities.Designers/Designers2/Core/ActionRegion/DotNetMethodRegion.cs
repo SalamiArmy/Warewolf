@@ -54,6 +54,50 @@ namespace Dev2.Activities.Designers2.Core.ActionRegion
             _datatalistMapper = datatalistMapper;
         }
 
+        public DotNetMethodRegion(IPluginServiceModel model, ModelItem modelItem, ISourceToolRegion<IPluginSource> source, INamespaceToolRegion<INamespaceItem> namespaceItem, IShellViewModel mainViewModel)
+            : this(mainViewModel, new ActionInputDatatalistMapper())
+        {
+            try
+            {
+                Errors = new List<string>();
+
+                LabelWidth = 70;
+                ToolRegionName = "DotNetMethodRegion";
+                _modelItem = modelItem;
+                _model = model;
+                _source = source;
+                _namespace = namespaceItem;
+                _namespace.SomethingChanged += SourceOnSomethingChanged;
+                Dependants = new List<IToolRegion>();
+                IsRefreshing = false;
+                if (_source.SelectedSource != null)
+                {
+                    MethodsToRun = model.GetActionsWithReturns(_source.SelectedSource, _namespace.SelectedNamespace);
+                }
+                if (Method != null && MethodsToRun != null)
+                {
+                    SelectedMethod = Method;
+                }
+                RefreshMethodsCommand = new Microsoft.Practices.Prism.Commands.DelegateCommand(() =>
+                {
+                    IsRefreshing = true;
+                    if (_source.SelectedSource != null)
+                    {
+                        MethodsToRun = model.GetActionsWithReturns(_source.SelectedSource, _namespace.SelectedNamespace);
+                    }
+                    IsRefreshing = false;
+                }, CanRefresh);
+
+                IsMethodExpanded = false;
+                IsEnabled = true;
+                _modelItem = modelItem;
+            }
+            catch (Exception e)
+            {
+                Errors.Add(e.Message);
+            }
+        }
+
         public DotNetMethodRegion(IPluginServiceModel model, ModelItem modelItem, ISourceToolRegion<IPluginSource> source, INamespaceToolRegion<INamespaceItem> namespaceItem)
             : this(CustomContainer.Get<IShellViewModel>(), new ActionInputDatatalistMapper())
         {

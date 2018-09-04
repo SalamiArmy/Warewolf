@@ -515,10 +515,9 @@ namespace Dev2.Activities.Designers.Tests.Core.DotNet
             var nameSpaceRegion = new Mock<INamespaceToolRegion<INamespaceItem>>();
             var shellVm = new Mock<IShellViewModel>();
             shellVm.Setup(model => model.UpdateCurrentDataListWithObjectFromJson(It.IsAny<string>(), It.IsAny<string>()));
-            CustomContainer.Register(shellVm.Object);
 
             //------------Execute Test---------------------------
-            var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object);
+            var dotNetMethodRegion = new DotNetMethodRegion(serviceModel.Object, modelItem, pluginSourceRegion.Object, nameSpaceRegion.Object, shellVm.Object);
             var wasCalled = false;
             var pluginAction = new PluginAction() { };
             var methodInfo = typeof(DotNetMethodRegion).GetMethod("SetSelectedAction", BindingFlags.Instance | BindingFlags.NonPublic);

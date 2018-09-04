@@ -27,12 +27,26 @@ namespace Dev2.Activities.Designers2.DropBox2016.Delete
         readonly IDropboxSourceManager _sourceManager;
         string _deletePath;
         string _result;
+        readonly IShellViewModel _shellViewModel;
 
 
         public DropBoxDeleteViewModel(ModelItem modelItem)
            : this(modelItem, new DropboxSourceManager())
         {
             this.RunViewSetup();
+        }
+        public DropBoxDeleteViewModel(ModelItem modelItem, IDropboxSourceManager sourceManager, IShellViewModel mainViewModel)
+            : base(modelItem, "File Or Folder", String.Empty)
+        {
+            _shellViewModel = mainViewModel;
+            _sourceManager = sourceManager;
+            EditDropboxSourceCommand = new RelayCommand(o => EditDropBoxSource(), p => IsDropboxSourceSelected);
+            NewSourceCommand = new Microsoft.Practices.Prism.Commands.DelegateCommand(CreateOAuthSource);
+
+            Sources = LoadOAuthSources();
+            AddTitleBarLargeToggle();
+            EditDropboxSourceCommand.RaiseCanExecuteChanged();
+            HelpText = Warewolf.Studio.Resources.Languages.HelpText.Tool_Dropbox_Delete;
         }
         public DropBoxDeleteViewModel(ModelItem modelItem, IDropboxSourceManager sourceManager)
             : base(modelItem, "File Or Folder", String.Empty)
@@ -117,22 +131,20 @@ namespace Dev2.Activities.Designers2.DropBox2016.Delete
 
         void EditDropBoxSource()
         {
-            var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            var activeServer = shellViewModel.ActiveServer;
+            var activeServer = _shellViewModel.ActiveServer;
             if (activeServer != null)
             {
-                shellViewModel.OpenResource(SelectedSource.ResourceID, activeServer.EnvironmentID, activeServer);
+                _shellViewModel.OpenResource(SelectedSource.ResourceID, activeServer.EnvironmentID, activeServer);
             }
         }
 
         public void CreateOAuthSource()
         {
-            var shellViewModel = CustomContainer.Get<IShellViewModel>();
-            if (shellViewModel == null)
+            if (_shellViewModel == null)
             {
                 return;
             }
-            shellViewModel.NewDropboxSource(string.Empty);
+            _shellViewModel.NewDropboxSource(string.Empty);
             Sources = LoadOAuthSources();
             OnPropertyChanged(@"Sources");
         }
