@@ -1230,7 +1230,7 @@ namespace Dev2.Activities.Designers.Tests.Email
             {
                 mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
             }
-            var testEmailDesignerViewModel = new TestEmailDesignerViewModel(modelItem, environment.Object, eventPublisher, mainViewModel.Object)
+            var testEmailDesignerViewModel = new TestEmailDesignerViewModel(modelItem, environment.Object, eventPublisher, mainViewModel)
                 {
                     GetDatalistString = () =>
                         {

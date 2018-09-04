@@ -90,7 +90,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             const int DatabaseCount = 2;
             var databases = CreateDatabases(DatabaseCount);
 
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
             //------------Execute Test---------------------------
             viewModel.UpdateHelpDescriptor("help", mockMainViewModel.Object);
             //------------Assert Results-------------------------
@@ -148,7 +148,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             var databases = CreateDatabases(DatabaseCount);
 
             //------------Execute Test---------------------------
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
 
 
             //------------Assert Results-------------------------
@@ -196,7 +196,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             var databases = CreateDatabases(DatabaseCount);
 
             //------------Execute Test---------------------------
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
             viewModel.IsTimeoutFocused = true;
             Assert.IsTrue(viewModel.IsTimeoutFocused);
 
@@ -239,7 +239,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             };
 
             //------------Execute Test---------------------------
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
 
 
             //------------Assert Results-------------------------
@@ -317,7 +317,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             modelItem.SetProperty("TableName", initialTable.FullName);
             modelItem.SetProperty("InputMappings", initialTable.Columns.Select(c => new DataColumnMapping { OutputColumn = c, InputColumn = "monkey see" }).ToList());
 
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
 
             Assert.AreEqual(initialTable.Columns.Count, viewModel.InputMappings.Count);
 
@@ -357,7 +357,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             modelItem.SetProperty("TableName", initialTable.TableName);
             modelItem.SetProperty("InputMappings", initialTable.Columns.Select(c => new DataColumnMapping { OutputColumn = c }).ToList());
 
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
 
             Assert.AreEqual(initialTable.Columns.Count, viewModel.InputMappings.Count);
 
@@ -398,7 +398,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             modelItem.SetProperty("TableName", initialTable.TableName);
             modelItem.SetProperty("InputMappings", initialTable.Columns.Select(c => new DataColumnMapping { OutputColumn = c }).ToList());
 
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
 
             Assert.AreEqual(initialTable.Columns.Count, viewModel.InputMappings.Count);
 
@@ -533,7 +533,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             modelItem.SetProperty("TableName", selectedTable.FullName);
             modelItem.SetProperty("InputMappings", selectedTable.Columns.Select(c => new DataColumnMapping { OutputColumn = c, InputColumn = "bob the" }).ToList());
 
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
 
             //------------Execute Test---------------------------
             viewModel.RefreshTablesCommand.Execute(null);
@@ -567,7 +567,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             modelItem.SetProperty("TableName", selectedTable.FullName);
             modelItem.SetProperty("InputMappings", selectedTable.Columns.Select(c => new DataColumnMapping { OutputColumn = c, InputColumn = "bob the" }).ToList());
 
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
 
             //------------Execute Test---------------------------
             viewModel.RefreshTablesCommand.Execute(null);
@@ -901,7 +901,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             modelItem.SetProperty("TableName", selectedTable.TableName);
             modelItem.SetProperty("InputMappings", selectedTable.Columns.Select(c => new DataColumnMapping { OutputColumn = c }).ToList());
 
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
             viewModel.GetDatalistString = () => "<DataList><Db0_Table_1><Db0_Column_1_0/></Db0_Table_1></DataList>";
 
             var inputMapping = viewModel.InputMappings.FirstOrDefault(m => !string.IsNullOrEmpty(m.InputColumn));
@@ -938,7 +938,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             modelItem.SetProperty("InputMappings", selectedTable.Columns
                 .Select(c => new DataColumnMapping { OutputColumn = c, InputColumn = n++ == 0 ? "[[rs(*).f1]]" : null }).ToList());
 
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
             viewModel.GetDatalistString = () => "<DataList></DataList>";
             var inputMapping = viewModel.InputMappings.FirstOrDefault(m => !string.IsNullOrEmpty(m.InputColumn));
             Assert.IsNotNull(inputMapping);
@@ -975,7 +975,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             modelItem.SetProperty("TableName", selectedTable.TableName);
             modelItem.SetProperty("InputMappings", inputMappings);
 
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
             viewModel.GetDatalistString = () => "<DataList><Db0_Table_1><Db0_Column_1_0/></Db0_Table_1></DataList>";
 
             //------------Execute Test---------------------------
@@ -1021,7 +1021,7 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
             modelItem.SetProperty("TableName", selectedTable.TableName);
             modelItem.SetProperty("InputMappings", inputMappings);
 
-            var viewModel = CreateViewModel(modelItem, databases);
+            var viewModel = CreateViewModel(modelItem, databases, "", null);
             viewModel.GetDatalistString = () => "<DataList><Db0_Table_1><Db0_Column_1_0/></Db0_Table_1></DataList>";
             //------------Execute Test---------------------------
             Verify_Validate_Variables_SetsErrors(viewModel, true, true, true, true, inputMapping.OutputColumn.ColumnName);
@@ -1219,10 +1219,10 @@ namespace Dev2.Activities.Designers.Tests.SqlBulkInsert
                 mainViewModel = ShellViewModelConstructor.ShellViewModelForTesting().Object;
             }
             var modelItem = CreateModelItem();
-            return CreateViewModel(modelItem, sources, false, columnListErrors, mainViewModel);
+            return CreateViewModel(modelItem, sources, columnListErrors, false, mainViewModel);
         }
 
-        static TestSqlBulkInsertDesignerViewModel CreateViewModel(ModelItem modelItem, Dictionary<DbSource, DbTableList> sources, bool single = false, string columnListErrors = "", IShellViewModel mainViewModel = null)
+        static TestSqlBulkInsertDesignerViewModel CreateViewModel(ModelItem modelItem, Dictionary<DbSource, DbTableList> sources, string columnListErrors = "", bool single = false, IShellViewModel mainViewModel = null)
         {
             if (mainViewModel == null)
             {
