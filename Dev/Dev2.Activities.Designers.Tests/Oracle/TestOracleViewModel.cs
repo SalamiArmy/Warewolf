@@ -294,15 +294,13 @@ namespace Dev2.Activities.Designers.Tests.Oracle
             server.Setup(server1 => server1.QueryProxy).Returns(queryManager.Object);
             mockMainViewModel.Setup(model => model.ActiveServer).Returns(server.Object);
 
-            CustomContainer.Register(mockMainViewModel.Object);
-
             var mod = new OracleModel();
             mod.HasRecError = true;
             var act = new DsfOracleDatabaseActivity();
             var oracle = new OracleDatabaseDesignerViewModel(ModelItemUtils.CreateModelItem(act), new SynchronousAsyncWorker(), new ViewPropertyBuilder());
             
             //------------Execute Test---------------------------
-            oracle.UpdateHelpDescriptor("help");
+            oracle.UpdateHelpDescriptor("help", mockMainViewModel.Object);
             //------------Assert Results-------------------------
             mockHelpViewModel.Verify(model => model.UpdateHelpText(It.IsAny<string>()), Times.Once());
         }

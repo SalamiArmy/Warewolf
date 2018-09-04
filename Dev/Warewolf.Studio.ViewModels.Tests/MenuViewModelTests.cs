@@ -721,7 +721,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var helpText = "someText";
 
             //act
-            _target.UpdateHelpDescriptor(helpText);
+            _target.UpdateHelpDescriptor(helpText, new Mock<IShellViewModel>().Object);
 
             //assert
             helpViewModel.Verify(it=>it.UpdateHelpText(helpText));

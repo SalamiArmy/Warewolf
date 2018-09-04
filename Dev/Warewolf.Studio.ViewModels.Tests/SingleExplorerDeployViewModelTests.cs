@@ -1020,7 +1020,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             var singleExplorerDeployViewModel = new SingleExplorerDeployViewModel(_destView.Object, _sourceView.Object, new List<IExplorerTreeItem>(), _statsView.Object, _shellVm.Object, popupController.Object);
             //---------------Assert Precondition----------------
             //---------------Execute Test ----------------------
-            singleExplorerDeployViewModel.UpdateHelpDescriptor("SomeMessage");
+            singleExplorerDeployViewModel.UpdateHelpDescriptor("SomeMessage", _shellVm.Object);
             //---------------Test Result -----------------------
         }
 

@@ -118,7 +118,8 @@ namespace Dev2.ViewModels
 
         public bool DoDeactivate(bool showMessage)
         {
-            ViewModel.UpdateHelpDescriptor(string.Empty);
+            var mainViewModel = CustomContainer.Get<IShellViewModel>();
+            ViewModel.UpdateHelpDescriptor(string.Empty, mainViewModel);
             if (showMessage)
             {
                 if (IsDirty)

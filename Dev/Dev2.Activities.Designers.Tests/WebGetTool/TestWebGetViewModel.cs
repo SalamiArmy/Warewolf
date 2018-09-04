@@ -123,13 +123,12 @@ namespace Dev2.Activities.Designers.Tests.WebGetTool
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
-            CustomContainer.Register(mockMainViewModel.Object);
 
             var mod = new MyWebModel();
             var act = new DsfWebGetActivity();
             var viewModel = new WebServiceGetViewModel(ModelItemUtils.CreateModelItem(act), mod);
             //------------Execute Test---------------------------
-            viewModel.UpdateHelpDescriptor("help");
+            viewModel.UpdateHelpDescriptor("help", mockMainViewModel.Object);
             //------------Assert Results-------------------------
             mockHelpViewModel.Verify(model => model.UpdateHelpText(It.IsAny<string>()), Times.Once());
         }

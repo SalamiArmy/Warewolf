@@ -595,7 +595,6 @@ namespace Dev2.Core.Tests.Settings
             var mockHelpWindowViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpWindowViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpWindowViewModel.Object);
-            CustomContainer.Register(mockMainViewModel.Object);
             var performanceCounterTo = new PerformanceCounterTo();
             performanceCounterTo.NativeCounters.Add(new TestCounter(WarewolfPerfCounterType.AverageExecutionTime));
             performanceCounterTo.NativeCounters.Add(new TestCounter(WarewolfPerfCounterType.ConcurrentRequests));
@@ -604,7 +603,7 @@ namespace Dev2.Core.Tests.Settings
             performanceCounterTo.ResourceCounters.Add(new TestResourceCounter(WarewolfPerfCounterType.RequestsPerSecond, resourceId));
             var perfcounterViewModel = new PerfcounterViewModel(performanceCounterTo, new Mock<IServer>().Object, () => new Mock<IResourcePickerDialog>().Object);            
             //------------Execute Test---------------------------
-            perfcounterViewModel.UpdateHelpDescriptor("Help");
+            perfcounterViewModel.UpdateHelpDescriptor("Help", mockMainViewModel.Object);
             //------------Assert Results-------------------------
             mockHelpWindowViewModel.Verify(model => model.UpdateHelpText(It.IsAny<string>()));
         }

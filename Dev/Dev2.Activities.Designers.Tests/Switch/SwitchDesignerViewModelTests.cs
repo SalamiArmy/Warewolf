@@ -164,7 +164,6 @@ namespace Dev2.Activities.Designers.Tests.Switch
             var mockHelpViewModel = new Mock<IHelpWindowViewModel>();
             mockHelpViewModel.Setup(model => model.UpdateHelpText(It.IsAny<string>())).Verifiable();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpViewModel.Object);
-            CustomContainer.Register(mockMainViewModel.Object);
 
             #region setup first Mock ModelItem
             var popupController = new Mock<IPopupController>();
@@ -219,7 +218,7 @@ namespace Dev2.Activities.Designers.Tests.Switch
 
             var switchDesigner = new SwitchDesignerViewModel(mockModelItem.Object, "");
             //------------Execute Test---------------------------
-            switchDesigner.UpdateHelpDescriptor("help");
+            switchDesigner.UpdateHelpDescriptor("help", mockMainViewModel.Object);
             //------------Assert Results-------------------------
             mockHelpViewModel.Verify(model => model.UpdateHelpText(It.IsAny<string>()), Times.Once());
         }

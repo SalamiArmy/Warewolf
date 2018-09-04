@@ -283,7 +283,7 @@ namespace Warewolf.Studio.ViewModels.Tests
             viewModel.Item = null;
 
             var model = viewModel.ToModel();
-            viewModel.UpdateHelpDescriptor("tests");
+            viewModel.UpdateHelpDescriptor("tests", new Mock<IShellViewModel>().Object);
 
             Assert.IsNotNull(model.AutoDiscoverUrl);
             Assert.IsNotNull(model.UserName);

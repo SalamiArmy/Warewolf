@@ -701,10 +701,9 @@ namespace Warewolf.Studio.ViewModels.Tests
             var helpWindowViewModelMock = new Mock<IHelpWindowViewModel>();
             var mainViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             mainViewModelMock.SetupGet(it => it.HelpViewModel).Returns(helpWindowViewModelMock.Object);
-            CustomContainer.Register(mainViewModelMock.Object);
 
             //act
-            _target.UpdateHelpDescriptor("someHelpText");
+            _target.UpdateHelpDescriptor("someHelpText", mainViewModelMock.Object);
 
             //assert
             helpWindowViewModelMock.Verify(it => it.UpdateHelpText("someHelpText"));

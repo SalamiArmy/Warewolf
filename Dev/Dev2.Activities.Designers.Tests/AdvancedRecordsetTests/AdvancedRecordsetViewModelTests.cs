@@ -628,7 +628,6 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
             server.Setup(server1 => server1.UpdateRepository).Returns(updatemanager.Object);
             server.Setup(server1 => server1.QueryProxy).Returns(queryManager.Object);
             mockMainViewModel.Setup(model => model.ActiveServer).Returns(server.Object);
-            CustomContainer.Register(mockMainViewModel.Object);
 
             var mod = new SqliteModel{
                 HasRecError = true
@@ -637,7 +636,7 @@ namespace Dev2.Activities.Designers.Tests.AdvancedRecordset
             using (var viewModel = new AdvancedRecordsetDesignerViewModel(ModelItemUtils.CreateModelItem(act), new ViewPropertyBuilder()))
             {
                 //------------Execute Test---------------------------
-                viewModel.UpdateHelpDescriptor("help");
+                viewModel.UpdateHelpDescriptor("help", mockMainViewModel.Object);
             }
             //------------Assert Results-------------------------
             mockHelpViewModel.Verify(model => model.UpdateHelpText(It.IsAny<string>()), Times.Once());

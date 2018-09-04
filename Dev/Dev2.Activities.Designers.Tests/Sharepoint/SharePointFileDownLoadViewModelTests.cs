@@ -83,7 +83,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
             //------------Execute Test---------------------------
             var sharepointFileDownLoadDesignerViewModel = new SharePointFileDownLoadDesignerViewModel(CreateModelItem(), new SynchronousAsyncWorker(), new Mock<IServer>().Object);
 
-            sharepointFileDownLoadDesignerViewModel.UpdateHelpDescriptor("Test");
+            sharepointFileDownLoadDesignerViewModel.UpdateHelpDescriptor("Test", new Mock<IShellViewModel>().Object);
 
             Assert.IsNotNull(sharepointFileDownLoadDesignerViewModel);
             Assert.IsNotNull(sharepointFileDownLoadDesignerViewModel.CollectionName);
@@ -110,8 +110,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
             var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpWindowViewModel = new Mock<IHelpWindowViewModel>();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpWindowViewModel.Object);
-            CustomContainer.Register(mockMainViewModel.Object);
-            sharepointReadFolderDesignerViewModel.UpdateHelpDescriptor("Test");
+            sharepointReadFolderDesignerViewModel.UpdateHelpDescriptor("Test", mockMainViewModel.Object);
 
             Assert.IsNotNull(inputPath);
             Assert.IsNotNull(sharepointReadFolderDesignerViewModel.LocalInputPath);

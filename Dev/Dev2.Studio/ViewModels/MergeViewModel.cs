@@ -102,9 +102,10 @@ namespace Dev2.ViewModels
 
         public bool DoDeactivate(bool showMessage)
         {
+            var mainViewModel = CustomContainer.Get<IShellViewModel>();
             if (showMessage)
             {
-                ViewModel.UpdateHelpDescriptor(string.Empty);
+                ViewModel.UpdateHelpDescriptor(string.Empty, mainViewModel);
                 if (ViewModel.IsDirty)
                 {
                     var result = _popupController.Show(string.Format(StringResources.ItemSource_NotSaved),
@@ -129,7 +130,7 @@ namespace Dev2.ViewModels
             }
             else
             {
-                ViewModel.UpdateHelpDescriptor(string.Empty);
+                ViewModel.UpdateHelpDescriptor(string.Empty, mainViewModel);
                 if (ViewModel.CanSave)
                 {
                     ViewModel.Save();

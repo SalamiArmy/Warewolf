@@ -192,9 +192,8 @@ namespace Warewolf.Studio.ViewModels.ToolBox
 
         #endregion
         
-        public void UpdateHelpDescriptor(string helpText)
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel)
         {
-            var mainViewModel = CustomContainer.Get<IShellViewModel>();
             mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
             if (_applicationTracker != null)
             {

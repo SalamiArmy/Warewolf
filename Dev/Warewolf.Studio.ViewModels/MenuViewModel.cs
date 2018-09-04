@@ -24,7 +24,7 @@ using Dev2.Instrumentation;
 
 namespace Warewolf.Studio.ViewModels
 {
-    public class MenuViewModel : BindableBase, IMenuViewModel, IMenuView,IUpdatesHelp
+    public class MenuViewModel : BindableBase, IMenuViewModel, IMenuView, IUpdatesHelp
     {
         bool _hasNewVersion;
         bool _panelLockedOpen;
@@ -150,7 +150,7 @@ namespace Warewolf.Studio.ViewModels
 
         public ICommand StartPageCommand { get; private set; }
 
-        public void UpdateHelpDescriptor(string helpText)
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel)
         {
             _viewModel?.HelpViewModel?.UpdateHelpText(helpText);
         }

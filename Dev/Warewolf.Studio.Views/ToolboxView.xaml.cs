@@ -6,14 +6,12 @@ using Dev2;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Studio.Controller;
 using Dev2.Instrumentation;
+using Dev2.Studio.Interfaces;
 using Infragistics.Windows.DockManager;
 using Warewolf.Studio.ViewModels.ToolBox;
 
 namespace Warewolf.Studio.Views
 {
-    /// <summary>
-    /// Interaction logic for ToolboxView.xaml
-    /// </summary>
     public partial class ToolboxView : IToolboxView
     {
         public ToolboxView()
@@ -90,7 +88,8 @@ namespace Warewolf.Studio.Views
                 if (e.ClickCount == 1)
                 {
                     var toolboxViewModel = DataContext as ToolboxViewModel;
-                    toolboxViewModel?.UpdateHelpDescriptor(viewModel?.Tool.ResourceHelpText);
+                    var mainViewModel = CustomContainer.Get<IShellViewModel>();
+                    toolboxViewModel?.UpdateHelpDescriptor(viewModel?.Tool.ResourceHelpText, mainViewModel);
                 }
                 else
                 {

@@ -305,7 +305,7 @@ namespace Dev2.Activities.Designers2.Core
 
         #region IDisposable Members
 
-        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => ViewModel?.UpdateHelpDescriptor(helpText);
+        public void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => ViewModel?.UpdateHelpDescriptor(helpText, mainViewModel);
 
         void OnRoutedEventHandler(object sender, RoutedEventArgs args) => Application.Current?.Dispatcher?.InvokeAsync(OnLoaded, DispatcherPriority.Background);
 

@@ -87,7 +87,7 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
             //------------Execute Test---------------------------
             var sharepointFileCopyDesignerViewModel = new SharePointCopyFileDesignerViewModel(CreateModelItem(), new SynchronousAsyncWorker(), new Mock<IServer>().Object);
 
-            sharepointFileCopyDesignerViewModel.UpdateHelpDescriptor("Test");
+            sharepointFileCopyDesignerViewModel.UpdateHelpDescriptor("Test", new Mock<IShellViewModel>().Object);
 
             Assert.IsNotNull(sharepointFileCopyDesignerViewModel);
             Assert.IsNotNull(sharepointFileCopyDesignerViewModel.CollectionName);
@@ -192,9 +192,8 @@ namespace Dev2.Activities.Designers.Tests.Sharepoint
             var mockMainViewModel = ShellViewModelConstructor.ShellViewModelForTesting();
             var mockHelpWindowViewModel = new Mock<IHelpWindowViewModel>();
             mockMainViewModel.Setup(model => model.HelpViewModel).Returns(mockHelpWindowViewModel.Object);
-            CustomContainer.Register(mockMainViewModel.Object);
 
-            sharepointFileCopyDesignerViewModel.UpdateHelpDescriptor("Test");
+            sharepointFileCopyDesignerViewModel.UpdateHelpDescriptor("Test", mockMainViewModel.Object);
             Assert.IsNotNull(inputPathfrom);
             Assert.IsNotNull(sharepointFileCopyDesignerViewModel.ServerInputPathTo);
             //------------Assert Results-------------------------

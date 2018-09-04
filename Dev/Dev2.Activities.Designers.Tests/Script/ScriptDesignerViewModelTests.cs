@@ -19,6 +19,8 @@ using Dev2.Common.Interfaces.Enums.Enums;
 using Dev2.Runtime.Configuration.ViewModels.Base;
 using Dev2.Studio.Core.Activities.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using Dev2.Studio.Interfaces;
 
 namespace Dev2.Activities.Designers.Tests.Script
 {
@@ -139,7 +141,7 @@ namespace Dev2.Activities.Designers.Tests.Script
             var viewModel = new TestScriptDesignerViewModel(modelItem);
             Assert.AreEqual(enScriptType.JavaScript, viewModel.ScriptType);
             Assert.AreEqual("JavaScript", viewModel.SelectedScriptType);
-            viewModel.UpdateHelpDescriptor("Help me");
+            viewModel.UpdateHelpDescriptor("Help me", new Mock<IShellViewModel>().Object);
             
         }
 

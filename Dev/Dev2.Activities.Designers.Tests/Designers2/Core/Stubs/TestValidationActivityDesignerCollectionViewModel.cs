@@ -47,7 +47,8 @@ namespace Dev2.Activities.Designers.Tests.Designers2.Core.Stubs
 
         public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel)
         {
-            UpdateHelpDescriptor(helpText);
+            UpdateHelpDescriptor(helpText, mainViewModel
+                );
         }
 
         #endregion

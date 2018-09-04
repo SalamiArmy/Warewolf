@@ -58,7 +58,7 @@ namespace Warewolf.Studio.ViewModels.Tests
         public void WcfSource_InstantiateNewModel_Returns_Success()
         {
             var model = GetModel();
-            model.UpdateHelpDescriptor("Test");
+            model.UpdateHelpDescriptor("Test", new Mock<IShellViewModel>().Object);
             Assert.IsNotNull(model);
         }
 
