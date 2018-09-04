@@ -10,6 +10,7 @@
 
 using System.Windows;
 using Dev2.Activities.Utils;
+using Dev2.Studio.Interfaces;
 
 namespace Dev2.Activities.Designers2.Sequence
 {
