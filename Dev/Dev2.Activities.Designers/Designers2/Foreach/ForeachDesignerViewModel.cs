@@ -20,6 +20,7 @@ using Dev2.Studio.Interfaces;
 using System.Activities;
 using System.Windows.Media;
 using Dev2.Studio.Core.Activities.Utils;
+using Dev2.Studio.Core.Interfaces;
 
 namespace Dev2.Activities.Designers2.Foreach
 {
@@ -37,7 +38,7 @@ namespace Dev2.Activities.Designers2.Foreach
             var type = dataFunc?.Handler?.GetType();
             if (type != null)
             {
-                DataFuncIcon = ModelItemUtils.GetImageSourceForToolFromType(type);
+                DataFuncIcon = ModelItemUtils.GetImageSourceForToolFromType(type, CustomContainer.Get<IApplicationAdaptor>());
             }
         }
 

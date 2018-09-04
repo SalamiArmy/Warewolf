@@ -108,7 +108,6 @@ namespace Dev2.Core.Tests.Merge
             //------------Setup for test--------------------------
             var adapter = new Mock<IApplicationAdaptor>();
             adapter.Setup(p => p.TryFindResource(It.IsAny<object>())).Returns(new object());
-            CustomContainer.Register(adapter.Object);
             var node = new Mock<IConflictTreeNode>();
             var contextualResource = new Mock<IContextualResourceModel>();
             var value = new DsfMultiAssignActivity();
@@ -119,7 +118,7 @@ namespace Dev2.Core.Tests.Merge
             node.Setup(p => p.Activity).Returns(value);
             var toolConflictItem = new ToolConflictItem(new ViewModels.Merge.Utils.ConflictRowList(new Mock<IConflictModelFactory>().Object, new Mock<IConflictModelFactory>().Object,new List<ConflictTreeNode>(), new List<ConflictTreeNode>()),ViewModels.Merge.Utils.ConflictRowList.Column.Current);
             //------------Execute Test---------------------------
-            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object);
+            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object, adapter.Object);
             //------------Assert Results-------------------------
             Assert.IsNotNull(completeConflict);
             adapter.Verify(p => p.TryFindResource(It.IsAny<object>()));
@@ -135,7 +134,6 @@ namespace Dev2.Core.Tests.Merge
             //------------Setup for test--------------------------
             var adapter = new Mock<IApplicationAdaptor>();
             adapter.Setup(p => p.TryFindResource(It.IsAny<object>())).Returns(new object());
-            CustomContainer.Register(adapter.Object);
             var node = new Mock<IConflictTreeNode>();
             var contextualResource = new Mock<IContextualResourceModel>();
             var value = new DsfMultiAssignActivity();
@@ -152,7 +150,7 @@ namespace Dev2.Core.Tests.Merge
             currentResourceModel.Setup(resModel => resModel.DisplayName).Returns("Hello World");
             var toolConflictItem = new ToolConflictItem(new ViewModels.Merge.Utils.ConflictRowList(new Mock<IConflictModelFactory>().Object, new Mock<IConflictModelFactory>().Object, new List<ConflictTreeNode>(), new List<ConflictTreeNode>()), ViewModels.Merge.Utils.ConflictRowList.Column.Current);
             //------------Execute Test---------------------------
-            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object);
+            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object, adapter.Object);
             //------------Assert Results-------------------------
             Assert.IsNotNull(completeConflict);
             completeConflict.GetDataList(currentResourceModel.Object);
@@ -169,7 +167,6 @@ namespace Dev2.Core.Tests.Merge
             //------------Setup for test--------------------------
             var adapter = new Mock<IApplicationAdaptor>();
             adapter.Setup(p => p.TryFindResource(It.IsAny<object>())).Returns(new object());
-            CustomContainer.Register(adapter.Object);
             var node = new Mock<IConflictTreeNode>();
             var contextualResource = new Mock<IContextualResourceModel>();
             var value = new DsfMultiAssignActivity();
@@ -187,7 +184,7 @@ namespace Dev2.Core.Tests.Merge
             currentResourceModel.Setup(resModel => resModel.DataList).Returns("");
             var toolConflictItem = new ToolConflictItem(new ViewModels.Merge.Utils.ConflictRowList(new Mock<IConflictModelFactory>().Object, new Mock<IConflictModelFactory>().Object, new List<ConflictTreeNode>(), new List<ConflictTreeNode>()), ViewModels.Merge.Utils.ConflictRowList.Column.Current);
             //------------Execute Test---------------------------
-            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object);
+            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object, adapter.Object);
             //------------Assert Results-------------------------
             Assert.IsNotNull(completeConflict);
             completeConflict.GetDataList(currentResourceModel.Object);
@@ -204,7 +201,6 @@ namespace Dev2.Core.Tests.Merge
             //------------Setup for test--------------------------
             var adapter = new Mock<IApplicationAdaptor>();
             adapter.Setup(p => p.TryFindResource(It.IsAny<object>())).Returns(new object());
-            CustomContainer.Register(adapter.Object);
             var node = new Mock<IConflictTreeNode>();
             var contextualResource = new Mock<IContextualResourceModel>();
             var dev2DecisionStack = new Dev2DecisionStack
@@ -232,11 +228,11 @@ namespace Dev2.Core.Tests.Merge
             node.Setup(p => p.Activity).Returns(value);
             var toolConflictItem = new ToolConflictItem(new ViewModels.Merge.Utils.ConflictRowList(new Mock<IConflictModelFactory>().Object, new Mock<IConflictModelFactory>().Object, new List<ConflictTreeNode>(), new List<ConflictTreeNode>()), ViewModels.Merge.Utils.ConflictRowList.Column.Current);
             //------------Execute Test---------------------------
-            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object);
+            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object, adapter.Object);
             //------------Assert Results-------------------------
             Assert.IsNotNull(completeConflict);
             adapter.Verify(p => p.TryFindResource(It.IsAny<object>()));
-            var mergeToolModel = completeConflict.CreateModelItem(toolConflictItem, node.Object);
+            var mergeToolModel = completeConflict.CreateModelItem(toolConflictItem, node.Object, adapter.Object);
             Assert.AreEqual("a", mergeToolModel.MergeDescription);
             Assert.AreEqual(typeof(DecisionDesignerViewModel).FullName, ((ToolConflictItem)mergeToolModel).ActivityDesignerViewModel.GetType().FullName);
         }
@@ -254,7 +250,6 @@ namespace Dev2.Core.Tests.Merge
             severRepo.Setup(p => p.ActiveServer).Returns(new Mock<IServer>().Object);
             CustomContainer.Register(severRepo.Object);
             adapter.Setup(p => p.TryFindResource(It.IsAny<object>())).Returns(new object());
-            CustomContainer.Register(adapter.Object);
             var node = new Mock<IConflictTreeNode>();
             var contextualResource = new Mock<IContextualResourceModel>();
             var value = new DsfActivity();
@@ -268,11 +263,11 @@ namespace Dev2.Core.Tests.Merge
             var toolConflictItem = new ToolConflictItem(new ViewModels.Merge.Utils.ConflictRowList(new Mock<IConflictModelFactory>().Object, new Mock<IConflictModelFactory>().Object, new List<ConflictTreeNode>(), new List<ConflictTreeNode>()), ViewModels.Merge.Utils.ConflictRowList.Column.Current);
             //------------Execute Test---------------------------
 
-            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object);
+            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object, adapter.Object);
             //------------Assert Results-------------------------
             Assert.IsNotNull(completeConflict);
             adapter.Verify(p => p.TryFindResource(It.IsAny<object>()));
-            var mergeToolModel = completeConflict.CreateModelItem(toolConflictItem, node.Object);
+            var mergeToolModel = completeConflict.CreateModelItem(toolConflictItem, node.Object, adapter.Object);
             Assert.AreEqual("DsfActivity", mergeToolModel.MergeDescription);
             Assert.AreEqual(typeof(ServiceDesignerViewModel).FullName, ((ToolConflictItem)mergeToolModel).ActivityDesignerViewModel.GetType().FullName);
         }
@@ -289,7 +284,6 @@ namespace Dev2.Core.Tests.Merge
             severRepo.Setup(p => p.ActiveServer).Returns(new Mock<IServer>().Object);
             CustomContainer.Register(severRepo.Object);
             adapter.Setup(p => p.TryFindResource(It.IsAny<object>())).Returns(new object());
-            CustomContainer.Register(adapter.Object);
             var node = new Mock<IConflictTreeNode>();
             var contextualResource = new Mock<IContextualResourceModel>();
             var value = new DsfActivity();
@@ -303,11 +297,11 @@ namespace Dev2.Core.Tests.Merge
             var toolConflictItem = new ToolConflictItem(new ViewModels.Merge.Utils.ConflictRowList(new Mock<IConflictModelFactory>().Object, new Mock<IConflictModelFactory>().Object, new List<ConflictTreeNode>(), new List<ConflictTreeNode>()), ViewModels.Merge.Utils.ConflictRowList.Column.Current);
             //------------Execute Test---------------------------
 
-            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object);
+            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object, adapter.Object);
             //------------Assert Results-------------------------
             Assert.IsNotNull(completeConflict);
             adapter.Verify(p => p.TryFindResource(It.IsAny<object>()));
-            var mergeToolModel = completeConflict.CreateModelItem(toolConflictItem, node.Object);
+            var mergeToolModel = completeConflict.CreateModelItem(toolConflictItem, node.Object, adapter.Object);
             Assert.AreEqual("DsfActivity", mergeToolModel.MergeDescription);
             Assert.AreEqual(typeof(ServiceDesignerViewModel).FullName, ((ToolConflictItem)mergeToolModel).ActivityDesignerViewModel.GetType().FullName);
         }
@@ -321,7 +315,6 @@ namespace Dev2.Core.Tests.Merge
             //------------Setup for test--------------------------
             var adapter = new Mock<IApplicationAdaptor>();
             adapter.Setup(p => p.TryFindResource(It.IsAny<object>())).Returns(new object());
-            CustomContainer.Register(adapter.Object);
             var node = new Mock<IConflictTreeNode>();
             var contextualResource = new Mock<IContextualResourceModel>();
             var dev2DecisionStack = new Dev2DecisionStack
@@ -354,10 +347,10 @@ namespace Dev2.Core.Tests.Merge
             node.Setup(p => p.Activity).Returns(value);
             var toolConflictItem = new ToolConflictItem(new ViewModels.Merge.Utils.ConflictRowList(new Mock<IConflictModelFactory>().Object, new Mock<IConflictModelFactory>().Object, new List<ConflictTreeNode>(), new List<ConflictTreeNode>()), ViewModels.Merge.Utils.ConflictRowList.Column.Current);
             //------------Execute Test---------------------------
-            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object);
+            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object, adapter.Object);
             //------------Assert Results-------------------------
             Assert.IsNotNull(completeConflict);
-            var mergeToolModel = completeConflict.CreateModelItem(toolConflictItem, node.Object);
+            var mergeToolModel = completeConflict.CreateModelItem(toolConflictItem, node.Object, adapter.Object);
             Assert.AreEqual("bbb", mergeToolModel.MergeDescription);
             Assert.AreEqual(typeof(SwitchDesignerViewModel).FullName, ((ToolConflictItem)mergeToolModel).ActivityDesignerViewModel.GetType().FullName);
         }
@@ -371,16 +364,15 @@ namespace Dev2.Core.Tests.Merge
             //------------Setup for test--------------------------
             var adapter = new Mock<IApplicationAdaptor>();
             adapter.Setup(p => p.TryFindResource(It.IsAny<object>())).Returns(new object());
-            CustomContainer.Register(adapter.Object);
             var node = new Mock<IConflictTreeNode>();
             var contextualResource = new Mock<IContextualResourceModel>();
 
             node.Setup(p => p.Activity).Returns(new DsfCalculateActivity());
             var toolConflictItem = new ToolConflictItem(new ViewModels.Merge.Utils.ConflictRowList(new Mock<IConflictModelFactory>().Object, new Mock<IConflictModelFactory>().Object, new List<ConflictTreeNode>(), new List<ConflictTreeNode>()), ViewModels.Merge.Utils.ConflictRowList.Column.Current);
             //------------Execute Test---------------------------
-            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object);
+            var completeConflict = new ConflictModelFactory(toolConflictItem, contextualResource.Object, node.Object, adapter.Object);
             //------------Assert Results-------------------------
-            var mergeToolModel = completeConflict.CreateModelItem(toolConflictItem, node.Object);
+            var mergeToolModel = completeConflict.CreateModelItem(toolConflictItem, node.Object, adapter.Object);
             Assert.IsNotNull(mergeToolModel);
         }
     }

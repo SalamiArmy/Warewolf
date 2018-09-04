@@ -14,6 +14,7 @@ using Dev2.Common;
 using System;
 using Dev2.Studio.Interfaces;
 using System.Linq;
+using Dev2.Studio.Core.Interfaces;
 
 namespace Dev2.ViewModels.Merge.Utils
 {
@@ -129,7 +130,7 @@ namespace Dev2.ViewModels.Merge.Utils
                 else
                 {
                     currentToolConflictItem = new ToolConflictItem(_list, ConflictRowList.Column.Current);
-                    _modelFactoryCurrent.CreateModelItem(currentToolConflictItem, current);
+                    _modelFactoryCurrent.CreateModelItem(currentToolConflictItem, current, CustomContainer.Get<IApplicationAdaptor>());
                 }
                 indexCurr++;
 
@@ -143,7 +144,7 @@ namespace Dev2.ViewModels.Merge.Utils
                 else
                 {
                     diffToolConflictItem = new ToolConflictItem(_list, ConflictRowList.Column.Different);
-                    _modelFactoryDifferent.CreateModelItem(diffToolConflictItem, diff);
+                    _modelFactoryDifferent.CreateModelItem(diffToolConflictItem, diff, CustomContainer.Get<IApplicationAdaptor>());
                 }
                 indexDiff++;
             }

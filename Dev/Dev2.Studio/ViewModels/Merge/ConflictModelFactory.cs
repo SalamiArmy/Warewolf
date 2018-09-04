@@ -23,6 +23,7 @@ using Dev2.Common.ExtMethods;
 using Caliburn.Micro;
 using Dev2.Common;
 using Dev2.Studio.Interfaces.DataList;
+using Dev2.Studio.Core.Interfaces;
 
 namespace Dev2.ViewModels.Merge
 {
@@ -43,10 +44,10 @@ namespace Dev2.ViewModels.Merge
             GetDataList(_resourceModel);
         }
 
-        public ConflictModelFactory(IToolConflictItem toolConflictItem, IContextualResourceModel resourceModel, IConflictTreeNode conflict)
+        public ConflictModelFactory(IToolConflictItem toolConflictItem, IContextualResourceModel resourceModel, IConflictTreeNode conflict, IApplicationAdaptor currentApp)
         {
             _resourceModel = resourceModel;
-            CreateModelItem(toolConflictItem, conflict);
+            CreateModelItem(toolConflictItem, conflict, currentApp);
         }
 
         public ConflictModelFactory()
@@ -138,12 +139,12 @@ namespace Dev2.ViewModels.Merge
         }
         public IDataListViewModel DataListViewModel { get; set; }
 
-        public IToolConflictItem CreateModelItem(IToolConflictItem toolConflictItem, IConflictTreeNode node)
+        public IToolConflictItem CreateModelItem(IToolConflictItem toolConflictItem, IConflictTreeNode node, IApplicationAdaptor currentApp)
         {
             var modelItem = ModelItemUtils.CreateModelItem(node.Activity);
             var viewModel = GetViewModel(toolConflictItem, modelItem, node);
 
-            return ConfigureToolConflictItem(toolConflictItem, modelItem, node, viewModel);
+            return ConfigureToolConflictItem(toolConflictItem, modelItem, node, viewModel, currentApp);
         }
 
         public ActivityDesignerViewModel GetViewModel(IToolConflictItem toolConflictItem, ModelItem modelItem, IConflictTreeNode node)
@@ -196,7 +197,7 @@ namespace Dev2.ViewModels.Merge
             return instance;
         }
 
-        IToolConflictItem ConfigureToolConflictItem(IToolConflictItem toolConflictItem, ModelItem modelItem, IConflictTreeNode node, ActivityDesignerViewModel instance)
+        IToolConflictItem ConfigureToolConflictItem(IToolConflictItem toolConflictItem, ModelItem modelItem, IConflictTreeNode node, ActivityDesignerViewModel instance, IApplicationAdaptor currentApp)
         {
             toolConflictItem.Activity = node.Activity;
             toolConflictItem.UniqueId = node.Activity.UniqueID.ToGuid();
@@ -208,7 +209,7 @@ namespace Dev2.ViewModels.Merge
             toolConflictItem.ModelItem = modelItem;
             toolConflictItem.NodeLocation = node.Location;
 
-            toolConflictItem.MergeIcon = modelItem.GetImageSourceForTool();
+            toolConflictItem.MergeIcon = modelItem.GetImageSourceForTool(currentApp);
             if (toolConflictItem is ToolConflictItem toolConflictItemObject)
             {
                 toolConflictItemObject.ActivityDesignerViewModel = instance;

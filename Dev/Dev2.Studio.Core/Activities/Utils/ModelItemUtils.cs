@@ -133,7 +133,7 @@ namespace Dev2.Studio.Core.Activities.Utils
             return currentValue as T;
         }
 
-        public static ImageSource GetImageSourceForTool(this ModelItem modelItem)
+        public static ImageSource GetImageSourceForTool(this ModelItem modelItem, IApplicationAdaptor currentApp)
         {
             var computedValue = modelItem.GetCurrentValue();
             if (computedValue is FlowStep && modelItem.Content?.Value != null)
@@ -142,10 +142,10 @@ namespace Dev2.Studio.Core.Activities.Utils
             }
 
             var type = computedValue.GetType();
-            var image = GetImageSourceForToolFromType(type);
+            var image = GetImageSourceForToolFromType(type, currentApp);
             return image;
         }
-        public static ImageSource GetImageSourceForToolFromType(Type itemType)
+        public static ImageSource GetImageSourceForToolFromType(Type itemType, IApplicationAdaptor currentApp)
         {
             var type = itemType;
             if (type.Name == "DsfDecision" || type.Name == "FlowDecision")
@@ -156,7 +156,6 @@ namespace Dev2.Studio.Core.Activities.Utils
             {
                 type = typeof(DsfFlowSwitchActivity);
             }
-            var currentApp = CustomContainer.Get<IApplicationAdaptor>();
             var application = currentApp ?? new ApplicationAdaptor(Application.Current);
             if (type.GetCustomAttributes().Any(a => a is ToolDescriptorInfo))
             {

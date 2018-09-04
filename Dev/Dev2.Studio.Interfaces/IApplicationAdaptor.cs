@@ -66,7 +66,6 @@ namespace Dev2.Studio.Core.Interfaces
         // Returns:
         //     A System.Windows.ResourceDictionary object that contains zero or more application-scope
         //     resources.
-        [Ambient]
          ResourceDictionary Resources { get; set; }
         //
         // Summary:

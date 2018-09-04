@@ -10,6 +10,7 @@
 
 using Dev2.Common;
 using Dev2.Common.Interfaces;
+using Dev2.Studio.Core.Interfaces;
 using Dev2.Studio.Interfaces.DataList;
 
 namespace Dev2.Studio.Interfaces
@@ -25,7 +26,7 @@ namespace Dev2.Studio.Interfaces
         IDataListViewModel DataListViewModel { get; set; }
         void GetDataList(IContextualResourceModel resourceModel);
 
-        IToolConflictItem CreateModelItem(IToolConflictItem toolConflictItem, IConflictTreeNode node);
+        IToolConflictItem CreateModelItem(IToolConflictItem toolConflictItem, IConflictTreeNode node, IApplicationAdaptor currentApp);
 
         event ConflictModelChanged SomethingConflictModelChanged;
     }
