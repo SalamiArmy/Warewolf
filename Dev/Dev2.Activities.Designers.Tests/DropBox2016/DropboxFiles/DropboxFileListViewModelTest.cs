@@ -271,9 +271,8 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
             CustomContainer.DeRegister<IShellViewModel>();
             var shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModelMock.Setup(viewModel => viewModel.NewDropboxSource(It.IsAny<string>()));
-            CustomContainer.Register(shellViewModelMock.Object);
             //------------Setup for test--------------------------
-            var dropBoxUploadViewModel = new DropBoxFileListDesignerViewModel(model, TestResourceCatalog.LazySourceManager.Value) { SelectedSource = new DropBoxSource() };
+            var dropBoxUploadViewModel = new DropBoxFileListDesignerViewModel(model, TestResourceCatalog.LazySourceManager.Value, shellViewModelMock.Object) { SelectedSource = new DropBoxSource() };
             //------------Execute Test---------------------------
             dropBoxUploadViewModel.NewSourceCommand.Execute(null);
             //------------Assert Results-------------------------
@@ -524,10 +523,9 @@ namespace Dev2.Activities.Designers.Tests.DropBox2016.DropboxFiles
             var model = CreateModelItem();
             var shellViewModelMock = ShellViewModelConstructor.ShellViewModelForTesting();
             shellViewModelMock.Setup(viewModel => viewModel.NewDropboxSource(It.IsAny<string>()));
-            CustomContainer.Register(shellViewModelMock.Object);
             //------------Setup for test--------------------------
             
-            var mockVM = new DropBoxFileListDesignerViewModel(model, TestResourceCatalog.LazySourceManager.Value);
+            var mockVM = new DropBoxFileListDesignerViewModel(model, TestResourceCatalog.LazySourceManager.Value, shellViewModelMock.Object);
             //---------------Assert Precondition----------------
             //---------------Execute Test ----------------------
             mockVM.CreateOAuthSource();
