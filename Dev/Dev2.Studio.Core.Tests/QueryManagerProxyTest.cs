@@ -463,9 +463,8 @@ namespace Dev2.Core.Tests
             controller.Setup(a => a.ExecuteCompressedCommandAsync<IExplorerItem>(env.Object, It.IsAny<Guid>())).Returns(Task.Delay(70000).ContinueWith(t => new Mock<IExplorerItem>().Object));
             var mockPopupController = new Mock<IPopupController>();
             mockPopupController.Setup(popup => popup.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Warning, "", false, false, true, false, false, false)).Returns(MessageBoxResult.OK);
-            CustomContainer.Register(mockPopupController.Object);
             //------------Execute Test---------------------------
-            var item = queryManagerProxy.Load(false).Result;
+            var item = queryManagerProxy.Load(false, mockPopupController.Object).Result;
             //------------Assert Results-------------------------
             Assert.IsNotNull(item);
             mockPopupController.Verify(popup => popup.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Warning, "", false, false, true, false, false, false), Times.AtLeastOnce);
@@ -491,9 +490,8 @@ namespace Dev2.Core.Tests
             controller.Setup(a => a.ExecuteCompressedCommandAsync<IExplorerItem>(env.Object, It.IsAny<Guid>())).Returns(Task.Delay(70000).ContinueWith(t => new Mock<IExplorerItem>().Object));
             var mockPopupController = new Mock<IPopupController>();
             mockPopupController.Setup(popup => popup.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Warning, "", false, false, true, false, false, false)).Returns(MessageBoxResult.OK);
-            CustomContainer.Register(mockPopupController.Object);
             //------------Execute Test---------------------------
-            var item = queryManagerProxy.Load(false).Result;
+            var item = queryManagerProxy.Load(false, mockPopupController.Object).Result;
             //------------Assert Results-------------------------
             Assert.IsNotNull(item);
             mockPopupController.Verify(popup => popup.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButton.OK, MessageBoxImage.Warning, "", false, false, true, false, false, false), Times.Never);

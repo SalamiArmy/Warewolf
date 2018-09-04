@@ -13,13 +13,9 @@ using Dev2.Common.Interfaces.Diagnostics.Debug;
 
 
 namespace Dev2.Studio.Core.Messages
-
 {
     public class DebugOutputMessage : IMessage
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:System.Object"/> class.
-        /// </summary>
         public DebugOutputMessage(IList<IDebugState> debugStates)
         {
             DebugStates = debugStates;

@@ -4,26 +4,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Dev2.Common.Interfaces.DB;
 using Dev2.Common.Interfaces.Explorer;
-using Dev2.Common.Interfaces.Infrastructure;
 using Dev2.Common.Interfaces.Infrastructure.Communication;
 using Dev2.Common.Interfaces.ServerProxyLayer;
 using Dev2.Common.Interfaces.Toolbox;
 using Dev2.Common.Interfaces.ToolBase.ExchangeEmail;
+using Dev2.Common.Interfaces.Studio.Controller;
 
 namespace Dev2.Common.Interfaces
 {
-    /// <summary>
-    /// Common interface for server queries
-    /// </summary>
     public interface IQueryManager
     {
-        
-    
         IExecuteMessage FetchDependencies(Guid resourceId);
         IExecuteMessage FetchDependants(Guid resourceId);
     
         StringBuilder FetchResourceXaml(Guid resourceId);
-        Task<IExplorerItem> Load(bool reloadCatalogue);
+        Task<IExplorerItem> Load(bool reloadCatalogue, IPopupController popupController);
         IList<IToolDescriptor> FetchTools();
         IList<IExchangeSource> FetchExchangeSources();
         IList<string> GetComputerNames();

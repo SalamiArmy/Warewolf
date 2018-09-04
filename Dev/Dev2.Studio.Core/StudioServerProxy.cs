@@ -44,7 +44,7 @@ namespace Dev2.Studio.Core
 
         public async Task<IExplorerItem> LoadExplorer(bool reloadCatalogue)
         {
-            var explorerItems = await QueryManagerProxy.Load(reloadCatalogue).ConfigureAwait(true);
+            var explorerItems = await QueryManagerProxy.Load(reloadCatalogue, CustomContainer.Get<IPopupController>()).ConfigureAwait(true);
             return explorerItems;
         }
         public Task<List<string>> LoadExplorerDuplicates()
