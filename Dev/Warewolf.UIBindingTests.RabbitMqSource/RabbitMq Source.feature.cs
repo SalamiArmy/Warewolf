@@ -43,7 +43,7 @@ namespace Warewolf.UIBindingTests.RabbitMqSource
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "RabbitMq Source", "\tIn order to share settings\r\n\tI want to save my RabbitMq source Settings\r\n\tSo tha" +
                     "t I can reuse them", ProgrammingLanguage.CSharp, new string[] {
                         "RabbitMqSource",
@@ -135,7 +135,7 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enable Send and Enable Save")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Enable Rabbit MQ Send and Enable Rabbit MQ Save")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "RabbitMq Source")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("RabbitMqSource")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DeploymentItemAttribute("InfragisticsWPF4.Controls.Interactions.XamDialogWindow.v15.1.dll")]
@@ -146,9 +146,9 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.DeploymentItemAttribute("Microsoft.Practices.Prism.SharedInterfaces.dll")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DeploymentItemAttribute("System.Windows.Interactivity.dll")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DeploymentItemAttribute("Warewolf.Studio.Themes.Luna.dll")]
-        public virtual void EnableSendAndEnableSave()
+        public virtual void EnableRabbitMQSendAndEnableRabbitMQSave()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enable Send and Enable Save", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Enable Rabbit MQ Send and Enable Rabbit MQ Save", ((string[])(null)));
 #line 27
 this.ScenarioSetup(scenarioInfo);
 #line 28

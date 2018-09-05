@@ -24,7 +24,7 @@ Scenario: Create New RabbitMq source
 	And "Test Connection" is "Disabled"
 	And "Save" is "Disabled"
 
-Scenario: Enable Send and Enable Save
+Scenario: Enable Rabbit MQ Send and Enable Rabbit MQ Save
 	Given I open New RabbitMq Source
 	Then "New RabbitMQ Source" tab is opened
 	And I type Host as "test-rabbitmq"
