@@ -76,6 +76,7 @@ namespace Dev2.Activities.Specs.BaseTypes
         {
 
             var expectedError = anError.Equals("AN", StringComparison.OrdinalIgnoreCase);
+            var expectNoError = anError.Equals("NO", StringComparison.OrdinalIgnoreCase);
             var result = _scenarioContext.Get<IDSFDataObject>("result");
 
             var fetchErrors = result.Environment.FetchErrors();
@@ -100,6 +101,11 @@ namespace Dev2.Activities.Specs.BaseTypes
 
                 var errorThrown = allErrors.Contains(fetchErrors);
                 Assert.IsTrue(allErrors.Count > 0, "Expected " + anError + " error but the environment did not contain any.");
+            }
+
+            if (expectNoError)
+            {
+                Assert.IsTrue(allErrors.Count <= 0, "Expected no errors but the environment had errors.");
             }
         } 
         
