@@ -29,30 +29,26 @@ using Dev2.Instrumentation;
 using Dev2.Studio.InterfaceImplementors;
 using Dev2.Studio.Interfaces;
 
+
+
+
+
+
+
+
+
 namespace Dev2.UI
 {
     public class IntellisenseTextBox : AutoCompleteBox, INotifyPropertyChanged
     {
         readonly List<Key> _wrapInBracketKey = new List<Key> { Key.F6, Key.F7 };
-        readonly IApplicationTracker _applicationTracker;
-        readonly IPopupController _popupController;
+        private IApplicationTracker applicationTracker;
+        private IPopupController popupController;
 
         public IntellisenseTextBox()
-            : this(null, null)
         {
-        }
-        public IntellisenseTextBox(IPopupController popupController)
-            : this(null, popupController)
-        {
-        }
-        public IntellisenseTextBox(IApplicationTracker applicationTracker)
-            : this(applicationTracker, null)
-        {
-        }
-        public IntellisenseTextBox(IApplicationTracker applicationTracker, IPopupController popupController)
-        {
-            _applicationTracker = applicationTracker ?? CustomContainer.Get<IApplicationTracker>();
-            _popupController = popupController ?? CustomContainer.Get<IPopupController>();
+            ApplicationTracker = CustomContainer.Get<IApplicationTracker>();
+            PopupController = CustomContainer.Get<IPopupController>();
             FilterMode = AutoCompleteFilterMode.Custom;
             TextFilter = (search, item) => true;
             _toolTip = new ToolTip();
@@ -386,7 +382,9 @@ namespace Dev2.UI
         public bool IsPaste { get; set; }
 
         public int LineCount { get; set; }
-        
+
+
+
         public bool CheckHasUnicodeInText(string inputText)
         {
             var hasUnicode = inputText.ContainsUnicodeCharacter();
@@ -394,7 +392,8 @@ namespace Dev2.UI
             {
                 var previousInput = inputText;
                 Text = "";
-                _popupController.ShowInvalidCharacterMessage(previousInput);
+                PopupController.ShowInvalidCharacterMessage(previousInput);
+
                 return true;
             }
             return false;
@@ -477,17 +476,17 @@ namespace Dev2.UI
         {
             if (FilterType == enIntellisensePartType.JsonObject)
             {
-                _applicationTracker?.TrackCustomEvent(Warewolf.Resource.Tracking.IntellisenseTrackerMenu.EventCategory,
+                ApplicationTracker?.TrackCustomEvent(Warewolf.Resource.Tracking.IntellisenseTrackerMenu.EventCategory,
                     Warewolf.Resource.Tracking.IntellisenseTrackerMenu.IncorrectSyntax, "Incorrect JSON input: " + text);
             }
             if (!(text.Contains("(")) && FilterType != enIntellisensePartType.JsonObject)
             {
-                _applicationTracker?.TrackCustomEvent(Warewolf.Resource.Tracking.IntellisenseTrackerMenu.EventCategory,
+                ApplicationTracker?.TrackCustomEvent(Warewolf.Resource.Tracking.IntellisenseTrackerMenu.EventCategory,
                     Warewolf.Resource.Tracking.IntellisenseTrackerMenu.IncorrectSyntax, "Incorrect Scalar input: " + text);
             }
             if (text.Contains("(") || text.Contains(")"))
             {
-                _applicationTracker?.TrackCustomEvent(Warewolf.Resource.Tracking.IntellisenseTrackerMenu.EventCategory,
+                ApplicationTracker?.TrackCustomEvent(Warewolf.Resource.Tracking.IntellisenseTrackerMenu.EventCategory,
                     Warewolf.Resource.Tracking.IntellisenseTrackerMenu.IncorrectSyntax, "Incorrect Recordset input: " + text);
             }
         }
@@ -894,6 +893,9 @@ namespace Dev2.UI
                 SetValue(IntellisenseProviderProperty, value);
             }
         }
+
+        public IPopupController PopupController { get => popupController; set => popupController = value; }
+        public IApplicationTracker ApplicationTracker { get => applicationTracker; set => applicationTracker = value; }
 
         readonly ToolTip _toolTip;
         List<IntellisenseProviderResult> _intellisenseResults;

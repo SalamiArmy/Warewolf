@@ -540,7 +540,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
             var intellisenseProvider = new Mock<IIntellisenseProvider>();
             intellisenseProvider.Setup(a => a.HandlesResultInsertion).Returns(false);
             //------------Execute Test---------------------------
-            var textBox = new IntellisenseTextBox(mockPopupController.Object);
+            var textBox = new IntellisenseTextBox() { PopupController = mockPopupController.Object };
             textBox.CreateVisualTree();
             var checkHasUnicodeInText = textBox.CheckHasUnicodeInText("أَبْجَدِي");
             //------------Assert Results-------------------------
@@ -700,7 +700,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
 
             const string expectTooltipError = "Variable name \"[[Var!]]\" contains invalid character(s). Only use alphanumeric _ and - ";
 
-            var textBoxTest = new IntellisenseTextBox(_applicationTrackerMock.Object) { AllowMultipleVariables = true };
+            var textBoxTest = new IntellisenseTextBox() { AllowMultipleVariables = true, ApplicationTracker = _applicationTrackerMock.Object };
             textBoxTest.CreateVisualTree();
             textBoxTest.Text = "\"[[Var!]]\"";
 
@@ -722,7 +722,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
 
             const string expectTooltipError = "Variable name \"[[Var()!]]\" contains invalid character(s). Only use alphanumeric _ and - ";
 
-            var textBoxTest = new IntellisenseTextBox(_applicationTrackerMock.Object) { AllowMultipleVariables = true };
+            var textBoxTest = new IntellisenseTextBox() { AllowMultipleVariables = true, ApplicationTracker = _applicationTrackerMock.Object };
             textBoxTest.CreateVisualTree();
             textBoxTest.Text = "\"[[Var()!]]\"";
 
@@ -744,7 +744,7 @@ namespace Dev2.Core.Tests.Custom_Dev2_Controls.Intellisense
 
             const string expectTooltipError = "Variable name \"[[obj!]]\" contains invalid character(s). Only use alphanumeric _ and - ";
 
-            var textBoxTest = new IntellisenseTextBox (_applicationTrackerMock.Object) { FilterType = enIntellisensePartType.JsonObject };
+            var textBoxTest = new IntellisenseTextBox () { FilterType = enIntellisensePartType.JsonObject, ApplicationTracker = _applicationTrackerMock.Object };
             textBoxTest.CreateVisualTree();
             textBoxTest.Text = "\"[[obj!]]\"";
 
