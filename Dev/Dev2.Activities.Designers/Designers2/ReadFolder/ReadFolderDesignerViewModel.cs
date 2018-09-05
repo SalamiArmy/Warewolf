@@ -41,6 +41,6 @@ namespace Dev2.Activities.Designers2.ReadFolder
         bool IsFoldersSelected => GetProperty<bool>();
         bool IsFilesSelected { set => SetProperty(value); get => GetProperty<bool>(); }
 
-        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
     }
 }

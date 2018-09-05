@@ -1,6 +1,7 @@
 using System;
 using Dev2.Common;
 using Dev2.Common.Interfaces;
+using Dev2.Common.Interfaces.Studio.Controller;
 using Dev2.Studio.Interfaces;
 
 namespace Dev2.Studio.Core
@@ -39,7 +40,7 @@ namespace Dev2.Studio.Core
                 if (explorerItemViewModel.ResourceType != "Version" && explorerItemViewModel.ResourceType != "Folder")
                 {
                     var dep = _repository.QueryManagerProxy.FetchDependants(explorerItemViewModel.ResourceId);
-                    var deleteFileMeta = _repository.HasDependencies(explorerItemViewModel, graphGenerator, dep);
+                    var deleteFileMeta = _repository.HasDependencies(explorerItemViewModel, graphGenerator, dep, CustomContainer.Get<IPopupController>());
                     if (deleteFileMeta.IsDeleted || deleteFileMeta.DeleteAnyway)
                     {
                         deleteFileMeta.IsDeleted = true;
@@ -80,7 +81,7 @@ namespace Dev2.Studio.Core
                 if (itemViewModel.ResourceType != "Folder")
                 {
                     var dependants = _repository.QueryManagerProxy.FetchDependants(itemViewModel.ResourceId);
-                    var deletedFileMetadata = _repository.HasDependencies(itemViewModel, graphGenerator, dependants);
+                    var deletedFileMetadata = _repository.HasDependencies(itemViewModel, graphGenerator, dependants, CustomContainer.Get<IPopupController>());
                     ShowDependencies(graphGenerator, deleteFileMetaData, showDependenciesApplyToAll, itemViewModel, dependants, deletedFileMetadata);
 
                     if (dependants != null && !showDependenciesApplyToAll && deletedFileMetadata.DeleteAnyway && deletedFileMetadata.ApplyToAll)

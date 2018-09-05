@@ -383,7 +383,7 @@ namespace Warewolf.Studio.ViewModels
 
         public override bool CanSave() => TestPassed;
         
-        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
 
         public void Save(IWcfServerSource source)
         {

@@ -63,7 +63,7 @@ namespace Warewolf.Studio.ViewModels
             DatabaseName = source.DbName;
         }
 
-        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
 
         #endregion
 

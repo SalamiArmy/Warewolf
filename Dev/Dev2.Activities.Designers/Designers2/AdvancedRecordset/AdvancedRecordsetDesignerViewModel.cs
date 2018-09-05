@@ -591,7 +591,7 @@ namespace Dev2.Activities.Designers2.AdvancedRecordset
         private Guid GetUniqueId() => GetProperty<Guid>();
         readonly IViewPropertyBuilder _propertyBuilder;
         public string ButtonDisplayValue { get; set; }
-        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
         void UpdateWorstError()
         {
             if (DesignValidationErrors.Count == 0)

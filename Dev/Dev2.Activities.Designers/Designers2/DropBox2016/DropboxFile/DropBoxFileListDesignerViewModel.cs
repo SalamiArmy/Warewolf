@@ -257,7 +257,7 @@ namespace Dev2.Activities.Designers2.DropBox2016.DropboxFile
         public override void Validate()
         {
         }
-        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
 
         #endregion
 

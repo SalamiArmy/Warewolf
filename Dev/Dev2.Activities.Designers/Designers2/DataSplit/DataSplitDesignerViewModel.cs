@@ -149,7 +149,7 @@ namespace Dev2.Activities.Designers2.DataSplit
             }
         }
 
-        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
 
         IRuleSet GetRuleSet(string propertyName)
         {

@@ -657,7 +657,7 @@ namespace Warewolf.Studio.ViewModels
             }
         }
 
-        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
         
         public override string ToString() => _headerText;
 

@@ -66,7 +66,7 @@ namespace Dev2.Activities.Designers2.DateTimStandard
         string InputFormat { set => SetProperty(value); get => GetProperty<string>(); }
         string OutputFormat { set => SetProperty(value); get => GetProperty<string>(); }
 
-        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
 
         public override void Validate()
         {

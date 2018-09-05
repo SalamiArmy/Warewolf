@@ -287,7 +287,7 @@ namespace Dev2.Activities.Designers2.Net_Dll_Enhanced
 
         public string ButtonDisplayValue { get; set; }
 
-        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel.UpdateHelpText(helpText);
+        public override void UpdateHelpDescriptor(string helpText, IShellViewModel mainViewModel) => mainViewModel?.HelpViewModel?.UpdateHelpText(helpText);
 
         #endregion
 
