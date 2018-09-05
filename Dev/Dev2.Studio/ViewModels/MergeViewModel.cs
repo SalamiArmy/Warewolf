@@ -25,7 +25,7 @@ namespace Dev2.ViewModels
     {
         readonly IPopupController _popupController;
 
-        public MergeViewModel(IEventAggregator eventPublisher, IMergeWorkflowViewModel vm, IPopupController popupController, IView view)
+        public MergeViewModel(IEventAggregator eventPublisher, IMergeWorkflowViewModel vm, IPopupController popupController, IView view, IShellViewModel mainViewModel)
             : base(eventPublisher)
         {
             ViewModel = vm;
@@ -33,7 +33,6 @@ namespace Dev2.ViewModels
             _popupController = popupController;
             ViewModel.PropertyChanged += (sender, args) =>
             {
-                var mainViewModel = CustomContainer.Get<IShellViewModel>();
                 if (mainViewModel != null)
                 {
                     ViewModelUtils.RaiseCanExecuteChanged(mainViewModel.SaveCommand);

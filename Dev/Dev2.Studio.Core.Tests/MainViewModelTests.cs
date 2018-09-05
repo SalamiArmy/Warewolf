@@ -1260,12 +1260,10 @@ namespace Dev2.Core.Tests
         {
             var _applicationTrackerMock = new Mock<IApplicationTracker>();
             _applicationTrackerMock.Setup(controller => controller.TrackEvent(It.IsAny<string>(), It.IsAny<string>()));
-            CustomContainer.Register(_applicationTrackerMock.Object);
-            CreateFullExportsAndVm();
+            CreateFullExportsAndVm(_applicationTrackerMock.Object);
             var versionChecker = Mock.Get(ShellViewModel.Version);
             versionChecker.Setup(v => v.CommunityPageUri).Verifiable();
-
-
+            
             ShellViewModel.ShowStartPageAsync();
             versionChecker.Verify(v => v.CommunityPageUri);
             _applicationTrackerMock.Verify(controller => controller.TrackEvent(It.IsAny<string>(), It.IsAny<string>()), Times.AtLeastOnce());

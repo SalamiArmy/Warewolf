@@ -402,8 +402,16 @@ namespace Dev2.Studio.ViewModels
         }
 
         public ShellViewModel(IEventAggregator eventPublisher, IAsyncWorker asyncWorker, IServerRepository serverRepository,
-            IVersionChecker versionChecker, IViewFactory factory, bool createDesigners, IBrowserPopupController browserPopupController,
+            IVersionChecker versionChecker, IViewFactory factory, bool createDesigners, IBrowserPopupController browserPopupController, 
             IPopupController popupController, IExplorerViewModel explorer)
+            : this(eventPublisher, asyncWorker, serverRepository, versionChecker, factory, createDesigners, browserPopupController, popupController, explorer, null)
+        {
+            _applicationTracker = CustomContainer.Get<IApplicationTracker>();
+        }
+
+        public ShellViewModel(IEventAggregator eventPublisher, IAsyncWorker asyncWorker, IServerRepository serverRepository,
+            IVersionChecker versionChecker, IViewFactory factory, bool createDesigners, IBrowserPopupController browserPopupController,
+            IPopupController popupController, IExplorerViewModel explorer, IApplicationTracker applicationTracker)
             : base(eventPublisher)
         {
             _file = new FileWrapper();
@@ -429,8 +437,7 @@ namespace Dev2.Studio.ViewModels
             AddWorkspaceItems();
             ShowStartPageAsync();
             DisplayName = @"Warewolf" + $" ({ClaimsPrincipal.Current.Identity.Name})".ToUpperInvariant();
-            _applicationTracker = CustomContainer.Get<IApplicationTracker>();
-
+            _applicationTracker = applicationTracker;
         }
 
         public void Handle(ShowReverseDependencyVisualizer message)

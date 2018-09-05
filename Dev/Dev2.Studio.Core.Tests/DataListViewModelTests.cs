@@ -1533,10 +1533,9 @@ namespace Dev2.Core.Tests
         {
             var _applicationTrackerMock = new Mock<IApplicationTracker>();
             _applicationTrackerMock.Setup(controller => controller.TrackCustomEvent(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
-            CustomContainer.Register(_applicationTrackerMock.Object);
             //------------Setup for test--------------------------
             var resourceModel = new Mock<IResourceModel>().Object;
-            var dataListViewModel = new DataListViewModel(new Mock<IEventAggregator>().Object);
+            var dataListViewModel = new DataListViewModel(new Mock<IEventAggregator>().Object, _applicationTrackerMock.Object);
             dataListViewModel.InitializeDataListViewModel(resourceModel);
             const string scalarName = "scalar";
             var scalarItem = new ScalarItemModel(scalarName) { IsUsed = false };

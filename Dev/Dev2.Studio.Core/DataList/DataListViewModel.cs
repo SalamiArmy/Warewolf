@@ -285,6 +285,12 @@ namespace Dev2.Studio.ViewModels.DataList
 
         }
 
+        public DataListViewModel(IEventAggregator eventPublisher, IApplicationTracker applicationTracker)
+            : this(eventPublisher)
+        {
+            _applicationTracker = applicationTracker;
+        }
+
         public IJsonObjectsView JsonObjectsView => CustomContainer.GetInstancePerRequestType<IJsonObjectsView>();
 
         void ViewJsonObjects(IComplexObjectItemModel item)

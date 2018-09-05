@@ -430,14 +430,13 @@ namespace Dev2.Core.Tests.Settings
             //------------Setup for test--------------------------
             var mockPopupController = new Mock<IPopupController>();
             mockPopupController.Setup(controller => controller.Show(It.IsAny<string>(),It.IsAny<string>(),It.IsAny<MessageBoxButton>(),It.IsAny<MessageBoxImage>(),It.IsAny<string>(),It.IsAny<bool>(),It.IsAny<bool>(),It.IsAny<bool>(),It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<bool>())).Verifiable();
-            CustomContainer.Register(mockPopupController.Object);
             var performanceCounterTo = new PerformanceCounterTo();
             performanceCounterTo.NativeCounters.Add(new TestCounter(WarewolfPerfCounterType.AverageExecutionTime));
             performanceCounterTo.NativeCounters.Add(new TestCounter(WarewolfPerfCounterType.ConcurrentRequests));
             var resourceId = Guid.NewGuid();
             performanceCounterTo.ResourceCounters.Add(new TestResourceCounter(WarewolfPerfCounterType.AverageExecutionTime, resourceId));
             performanceCounterTo.ResourceCounters.Add(new TestResourceCounter(WarewolfPerfCounterType.RequestsPerSecond, resourceId));
-            var perfcounterViewModel = new PerfcounterViewModel(performanceCounterTo, new Mock<IServer>().Object, () => new Mock<IResourcePickerDialog>().Object);
+            var perfcounterViewModel = new PerfcounterViewModel(performanceCounterTo, new Mock<IServer>().Object, () => new Mock<IResourcePickerDialog>().Object, mockPopupController.Object);
             var mockCommsController = new Mock<ICommunicationController>();
             mockCommsController.SetupAllProperties();
             var executeMessage = new ExecuteMessage { HasError = false };
@@ -461,14 +460,13 @@ namespace Dev2.Core.Tests.Settings
             //------------Setup for test--------------------------
             var mockPopupController = new Mock<IPopupController>();
             mockPopupController.Setup(controller => controller.Show(It.IsAny<string>(),It.IsAny<string>(),It.IsAny<MessageBoxButton>(),It.IsAny<MessageBoxImage>(),It.IsAny<string>(),It.IsAny<bool>(),It.IsAny<bool>(),It.IsAny<bool>(),It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<bool>())).Verifiable();
-            CustomContainer.Register(mockPopupController.Object);
             var performanceCounterTo = new PerformanceCounterTo();
             performanceCounterTo.NativeCounters.Add(new TestCounter(WarewolfPerfCounterType.AverageExecutionTime));
             performanceCounterTo.NativeCounters.Add(new TestCounter(WarewolfPerfCounterType.ConcurrentRequests));
             var resourceId = Guid.NewGuid();
             performanceCounterTo.ResourceCounters.Add(new TestResourceCounter(WarewolfPerfCounterType.AverageExecutionTime, resourceId));
             performanceCounterTo.ResourceCounters.Add(new TestResourceCounter(WarewolfPerfCounterType.RequestsPerSecond, resourceId));
-            var perfcounterViewModel = new PerfcounterViewModel(performanceCounterTo, new Mock<IServer>().Object, () => new Mock<IResourcePickerDialog>().Object);
+            var perfcounterViewModel = new PerfcounterViewModel(performanceCounterTo, new Mock<IServer>().Object, () => new Mock<IResourcePickerDialog>().Object, mockPopupController.Object);
             var mockCommsController = new Mock<ICommunicationController>();
             mockCommsController.SetupAllProperties();
             var executeMessage = new ExecuteMessage { HasError = true,Message=new StringBuilder("Error") };

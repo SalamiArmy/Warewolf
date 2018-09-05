@@ -95,7 +95,6 @@ namespace Dev2.Tests.Runtime.ESB.Control
             var mockPerformanceCounter = new Mock<IPerformanceCounter>();
             mockPerformanceCounter.Setup(counter => counter.Increment()).Verifiable();
             mockWarewolfPerformanceCounterLocater.Setup(locater => locater.GetCounter(It.IsAny<string>())).Returns(mockPerformanceCounter.Object);
-            CustomContainer.Register(mockWarewolfPerformanceCounterLocater.Object);
             var recCat = new Mock<IResourceCatalog>();
             recCat.Setup(catalog => catalog.GetDynamicObjects<DynamicService>(Guid.Empty, "service")).Returns(new List<DynamicService> { null });
             var locator = new ServiceLocator();
@@ -104,7 +103,7 @@ namespace Dev2.Tests.Runtime.ESB.Control
             //---------------Assert Precondition----------------
             Assert.IsNotNull(locator);
             //---------------Execute Test ----------------------
-            var dynamicService = locator.FindService("service", Guid.Empty);
+            var dynamicService = locator.FindService("service", Guid.Empty, mockWarewolfPerformanceCounterLocater.Object);
             recCat.Verify(catalog => catalog.GetDynamicObjects<DynamicService>(Guid.Empty, "service"));
             mockPerformanceCounter.Verify(counter => counter.Increment());
             Assert.IsNull(dynamicService);

@@ -34,6 +34,7 @@ using Moq;
 using Newtonsoft.Json;
 using Dev2.Studio.Interfaces.Enums;
 using Microsoft.Practices.Prism.Mvvm;
+using Dev2.Instrumentation;
 
 namespace Dev2.Core.Tests
 {
@@ -114,7 +115,7 @@ namespace Dev2.Core.Tests
             ShellViewModel.ExplorerViewModel = viewModel;
         }
 
-        protected void CreateFullExportsAndVm()
+        protected void CreateFullExportsAndVm(IApplicationTracker applicationTracker = null)
         {
             CreateResourceRepo();
             var environmentRepo = GetEnvironmentRepository();
@@ -135,7 +136,7 @@ namespace Dev2.Core.Tests
             var viewMock = new Mock<IView>();
             vieFactory.Setup(factory => factory.GetViewGivenServerResourceType(It.IsAny<string>()))
                 .Returns(viewMock.Object);
-            ShellViewModel = new ShellViewModel(EventAggregator.Object, asyncWorker.Object, environmentRepo, new Mock<IVersionChecker>().Object, vieFactory.Object, false, BrowserPopupController.Object, PopupController.Object, explorerViewModel.Object);
+            ShellViewModel = new ShellViewModel(EventAggregator.Object, asyncWorker.Object, environmentRepo, new Mock<IVersionChecker>().Object, vieFactory.Object, false, BrowserPopupController.Object, PopupController.Object, explorerViewModel.Object, applicationTracker);
             var activeEnvironment = new Mock<IServer>();
             activeEnvironment.Setup(server => server.DisplayName).Returns("localhost");
             ActiveEnvironment = activeEnvironment;

@@ -32,9 +32,10 @@ namespace Dev2.Settings.Perfcounters
         readonly IServer _environment;
         ObservableCollection<IPerformanceCountersByMachine> _serverCounters;
         ObservableCollection<IPerformanceCountersByResource> _resourceCounters;
+        readonly IPopupController _popupController;
 
         internal PerfcounterViewModel(IPerformanceCounterTo counters, IServer environment)
-            : this(counters, environment, null)
+            : this(counters, environment, null, null)
         {
         }
 
@@ -68,9 +69,15 @@ namespace Dev2.Settings.Perfcounters
         }
 
         public PerfcounterViewModel(IPerformanceCounterTo counters, IServer environment, Func<IResourcePickerDialog> createfunc)
+            :this(counters, environment, createfunc, null)
+        {
+        }
+
+        public PerfcounterViewModel(IPerformanceCounterTo counters, IServer environment, Func<IResourcePickerDialog> createfunc, IPopupController popupController)
         {
             VerifyArgument.IsNotNull("counters", counters);
             VerifyArgument.IsNotNull("environment", environment);
+            _popupController = popupController ?? CustomContainer.Get<IPopupController>();
             _resourcePicker =(createfunc?? CreateResourcePickerDialog)();
             _environment = environment;
             
@@ -91,11 +98,11 @@ namespace Dev2.Settings.Perfcounters
             var message = controller.ExecuteCommand<IExecuteMessage>(_environment.Connection, Guid.Empty);
             if (!message.HasError)
             {
-                CustomContainer.Get<IPopupController>().Show(Warewolf.Studio.Resources.Languages.Core.ResetPerfMonCountersHasNoError, Warewolf.Studio.Resources.Languages.Core.ResetPerfMonCountersHeader, MessageBoxButton.OK, MessageBoxImage.None, "", false, false, true, false, false, false);
+                _popupController.Show(Warewolf.Studio.Resources.Languages.Core.ResetPerfMonCountersHasNoError, Warewolf.Studio.Resources.Languages.Core.ResetPerfMonCountersHeader, MessageBoxButton.OK, MessageBoxImage.None, "", false, false, true, false, false, false);
             }
             else
             {
-                CustomContainer.Get<IPopupController>().Show(Warewolf.Studio.Resources.Languages.Core.ResetPerfMonCountersHasError + Environment.NewLine + message.Message, Warewolf.Studio.Resources.Languages.Core.ResetPerfMonCountersHeader, MessageBoxButton.OK, MessageBoxImage.Information, "", false, true, false, false, false, false);
+                _popupController.Show(Warewolf.Studio.Resources.Languages.Core.ResetPerfMonCountersHasError + Environment.NewLine + message.Message, Warewolf.Studio.Resources.Languages.Core.ResetPerfMonCountersHeader, MessageBoxButton.OK, MessageBoxImage.Information, "", false, true, false, false, false, false);
             }
         }
 

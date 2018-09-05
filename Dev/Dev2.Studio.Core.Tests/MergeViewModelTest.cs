@@ -151,7 +151,7 @@ namespace Dev2.Core.Tests
 
             var viewModel = new Mock<IMergeWorkflowViewModel>();
             viewModel.Setup(model => model.MergePreviewWorkflowDesignerViewModel).Returns(mockWorkSurfaceViewModel.Object);
-            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, new Mock<IPopupController>().Object, new Mock<IView>().Object);
+            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, new Mock<IPopupController>().Object, new Mock<IView>().Object, _shellViewModel.Object);
 
             Assert.IsNotNull(vm);
             Assert.IsFalse(vm.HasVariables);
@@ -192,7 +192,7 @@ namespace Dev2.Core.Tests
 
             var viewModel = new Mock<IMergeWorkflowViewModel>();
             viewModel.Setup(model => model.MergePreviewWorkflowDesignerViewModel).Returns(mockWorkSurfaceViewModel.Object);
-            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, new Mock<IPopupController>().Object, new Mock<IView>().Object);
+            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, new Mock<IPopupController>().Object, new Mock<IView>().Object, _shellViewModel.Object);
 
             Assert.IsNotNull(vm);
             Assert.IsFalse(vm.HasVariables);
@@ -242,7 +242,7 @@ namespace Dev2.Core.Tests
 
             var viewModel = new Mock<IMergeWorkflowViewModel>();
             viewModel.Setup(model => model.MergePreviewWorkflowDesignerViewModel).Returns(mockWorkSurfaceViewModel.Object);
-            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, new Mock<IPopupController>().Object, new Mock<IView>().Object);
+            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, new Mock<IPopupController>().Object, new Mock<IView>().Object, new Mock<IShellViewModel>().Object);
 
             Assert.IsNotNull(vm);
             Assert.IsFalse(vm.HasVariables);
@@ -282,7 +282,7 @@ namespace Dev2.Core.Tests
 
             var viewModel = new Mock<IMergeWorkflowViewModel>();
             viewModel.Setup(model => model.MergePreviewWorkflowDesignerViewModel).Returns(mockWorkSurfaceViewModel.Object);
-            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, new Mock<IPopupController>().Object, new Mock<IView>().Object);
+            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, new Mock<IPopupController>().Object, new Mock<IView>().Object, _shellViewModel.Object);
 
             var mergeWorkflowViewModel = new MergeWorkflowViewModel(_firstResource.Object, _firstResource.Object, false);
             mergeWorkflowViewModel.HasMergeStarted = true;
@@ -332,7 +332,7 @@ namespace Dev2.Core.Tests
 
             var viewModel = new Mock<IMergeWorkflowViewModel>();
             viewModel.Setup(model => model.MergePreviewWorkflowDesignerViewModel).Returns(mockWorkSurfaceViewModel.Object);
-            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, new Mock<IPopupController>().Object, new Mock<IView>().Object);
+            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, new Mock<IPopupController>().Object, new Mock<IView>().Object, _shellViewModel.Object);
 
             var mergeWorkflowViewModel = new MergeWorkflowViewModel(_firstResource.Object, _firstResource.Object, false);
             mergeWorkflowViewModel.HasMergeStarted = true;
@@ -394,7 +394,7 @@ namespace Dev2.Core.Tests
             var viewModel = new Mock<IMergeWorkflowViewModel>();
             viewModel.Setup(model => model.MergePreviewWorkflowDesignerViewModel).Returns(mockWorkSurfaceViewModel.Object);
             viewModel.Setup(model => model.Conflicts).Returns(conflicts);
-            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, popupController.Object, new Mock<IView>().Object);
+            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, popupController.Object, new Mock<IView>().Object, _shellViewModel.Object);
 
             Assert.IsNotNull(vm);
             Assert.IsFalse(vm.HasVariables);
@@ -455,7 +455,7 @@ namespace Dev2.Core.Tests
 
             var viewModel = new Mock<IMergeWorkflowViewModel>();
             viewModel.Setup(model => model.MergePreviewWorkflowDesignerViewModel).Returns(mockWorkSurfaceViewModel.Object);
-            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, popupController.Object, new Mock<IView>().Object);
+            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, popupController.Object, new Mock<IView>().Object, _shellViewModel.Object);
 
             Assert.IsNotNull(vm);
             Assert.IsFalse(vm.HasVariables);
@@ -508,7 +508,7 @@ namespace Dev2.Core.Tests
 
             var viewModel = new Mock<IMergeWorkflowViewModel>();
             viewModel.Setup(model => model.MergePreviewWorkflowDesignerViewModel).Returns(mockWorkSurfaceViewModel.Object);
-            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, _popupController.Object, new Mock<IView>().Object);
+            var vm = new MergeViewModel(_eventAggregator.Object, viewModel.Object, _popupController.Object, new Mock<IView>().Object, _shellViewModel.Object);
 
             Assert.IsNotNull(vm);
             Assert.IsFalse(vm.HasVariables);
