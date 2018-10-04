@@ -7,6 +7,7 @@ open DataStorage
 open WarewolfParserInterop
 open CommonFunctions
 open System.Diagnostics.CodeAnalysis
+open System
 
 // this method will given a language string return an AST based on FSLex and FSYacc
 let mutable ParseCache : Map<string, LanguageExpression> = Map.empty
@@ -209,8 +210,31 @@ and Clean(buffer : LanguageExpression) =
         if (List.length a) = 1 then Clean a.[0]
         else ComplexExpression a)
 
+and validateLang (lang : string) =
+    let mutable i = 0
+    let mutable count = 0
+    while (i+1 < lang.Length) do
+        let open1 = lang.[i] = '['
+        let close1 = lang.[i] = ']'
+        i <- i + 1
+        if (open1 && lang.[i] = '[') then
+            count <- count + 1
+            i <- i + 1
+        if (close1 && lang.[i] = ']') then
+            count <- count - 1
+            i <- i + 1
+
+    if (count > 0) then
+        let e = new System.Exception "missing closing brackets"
+        raise e
+    else
+        let e = new System.Exception "missing opening brackets"
+        raise e
+
+
 ///Simple parse. convert a string to a language expression
 and parseLanguageExpressionWithoutUpdate (lang : string) : LanguageExpression = 
+    validateLang lang
     if (lang.Contains "[[") then 
         let exp = ParseCache.TryFind lang
         match exp with

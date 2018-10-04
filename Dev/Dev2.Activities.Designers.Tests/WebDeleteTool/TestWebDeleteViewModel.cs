@@ -59,6 +59,61 @@ namespace Dev2.Activities.Designers.Tests.WebDeleteTool
         #endregion
 
         [TestMethod]
+        [Owner("Rory McGuire")]
+        public void ToModel_GivenInvalidQueryString_ShouldHaveError()
+        {
+            //---------------Set up test pack-------------------
+            var id = Guid.NewGuid();
+            var mod = GetMockModel();
+            var act = GetPostActivityWithOutPuts(mod);
+            var deleteViewModel = new WebServiceDeleteViewModel(ModelItemUtils.CreateModelItem(act), mod);
+            deleteViewModel.InputArea.QueryString = "/v1/media/[[media_id]]/comments/[[comment_id]]?access_token=[[AccessToken";
+            //---------------Assert Precondition----------------
+            //---------------Execute Test ----------------------
+            //---------------Test Result -----------------------
+
+            Exception exception = null;
+            try
+            {
+                deleteViewModel.ToModel();
+            }
+            catch (Exception e)
+            {
+                exception = e;
+            }
+            Assert.AreEqual("missing closing brackets", exception.Message);
+            deleteViewModel.ValidateTestComplete();
+        }
+
+
+        [TestMethod]
+        [Owner("Rory McGuire")]
+        public void ToModel_GivenInvalidQueryString2_ShouldHaveError()
+        {
+            //---------------Set up test pack-------------------
+            var id = Guid.NewGuid();
+            var mod = GetMockModel();
+            var act = GetPostActivityWithOutPuts(mod);
+            var deleteViewModel = new WebServiceDeleteViewModel(ModelItemUtils.CreateModelItem(act), mod);
+            deleteViewModel.InputArea.QueryString = "/v1/media/[[media_id]]/comments/[[comment_id]]?access_token=AccessToken]]";
+            //---------------Assert Precondition----------------
+            //---------------Execute Test ----------------------
+            //---------------Test Result -----------------------
+
+            Exception exception = null;
+            try
+            {
+                deleteViewModel.ToModel();
+            }
+            catch (Exception e)
+            {
+                exception = e;
+            }
+            Assert.AreEqual("missing closing brackets", exception.Message);
+            deleteViewModel.ValidateTestComplete();
+        }
+
+        [TestMethod]
         [Owner("Nkosinathi Sangweni")]
         public void OnLoad_GivenHasModelAndId_ShouldHaveDefaultHeightValues()
         {
