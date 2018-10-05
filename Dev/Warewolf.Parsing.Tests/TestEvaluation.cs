@@ -463,6 +463,30 @@ namespace WarewolfParsingTest
         }
 
         [TestMethod]
+        [Owner("Pieter Terblanche")]
+        [TestCategory("EvalCalculate")]
+        public void EvalCalculate_recset_Complex()
+        {
+            //------------Setup for test--------------------------
+            var env = CreateEnvironmentWithData();
+
+            //------------Execute Test---------------------------
+            var res = EvaluationFunctions.evalForCalculate(env, 0, "[[Rec([[x]])]]");
+            //------------Assert Results-------------------------
+            Assert.IsTrue(res.IsWarewolfRecordSetResult);
+            Assert.AreEqual("1,a", CommonFunctions.evalResultToString(res));
+
+            var r = res as CommonFunctions.WarewolfEvalResult.WarewolfRecordSetResult;
+            Assert.AreEqual(1, r.Item.Count);
+            Assert.AreEqual(1, r.Item.Data["a"].Count);
+            Assert.AreEqual(1, r.Item.Data["b"].Count);
+            Assert.IsTrue(r.Item.Data["a"][0].IsDataString);
+            Assert.IsTrue(r.Item.Data["b"][0].IsDataString);
+            Assert.AreEqual("1", r.Item.Data["a"][0].ToString());
+            Assert.AreEqual("a", r.Item.Data["b"][0].ToString());
+        }
+
+        [TestMethod]
         [Owner("Leon Rajindrapersadh")]
         [TestCategory("EvalCalculate")]
         public void EvalCalculate_RecSet()

@@ -211,27 +211,31 @@ and Clean(buffer : LanguageExpression) =
         else ComplexExpression a)
 
 and validateLang (lang : string) =
-    let mutable i = 0
-    let mutable count = 0
-    while (i+1 < lang.Length) do
-        let open1 = lang.[i] = '['
-        let close1 = lang.[i] = ']'
-        i <- i + 1
-        if (open1 && lang.[i] = '[') then
-            count <- count + 1
-            i <- i + 1
-        if (close1 && lang.[i] = ']') then
-            count <- count - 1
-            i <- i + 1
-
-    if (count > 0) then
-        let e = new System.Exception "missing closing brackets"
-        raise e
-    else if (count < 0) then
-        let e = new System.Exception "missing opening brackets"
-        raise e
-    else
+    
+    if (lang = "[[" || lang = "]]") then
         true
+    else
+        let mutable i = 0
+        let mutable count = 0
+        while (i+1 < lang.Length) do
+            let open1 = lang.[i] = '['
+            let close1 = lang.[i] = ']'
+            i <- i + 1
+            if (open1 && lang.[i] = '[') then
+                count <- count + 1
+                i <- i + 1
+            if (close1 && lang.[i] = ']') then
+                count <- count - 1
+                i <- i + 1
+
+        if (count > 0) then
+            let e = new System.Exception "missing closing brackets"
+            raise e
+        else if (count < 0) then
+            let e = new System.Exception "missing opening brackets"
+            raise e
+        else
+            true
 
 
 ///Simple parse. convert a string to a language expression
@@ -273,7 +277,6 @@ and parseLanguageExpressionWithoutUpdate (lang : string) : LanguageExpression =
 
 ///Simple parse. convert a string to a language expression and replace * with the update value
 and parseLanguageExpression (lang : string) (update : int) : LanguageExpression = 
-    validateLang lang
     let data = parseLanguageExpressionWithoutUpdate lang
     match update with
     | 0 -> data
@@ -302,7 +305,6 @@ and parseLanguageExpression (lang : string) (update : int) : LanguageExpression 
         | _ -> data
 
 and parseLanguageExpressionStrict (lang : string) (update : int) : LanguageExpression = 
-    validateLang lang
     let data = parseLanguageExpressionWithoutUpdateStrict lang
     match update with
     | 0 -> data
