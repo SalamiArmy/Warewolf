@@ -227,9 +227,11 @@ and validateLang (lang : string) =
     if (count > 0) then
         let e = new System.Exception "missing closing brackets"
         raise e
-    else
+    else if (count < 0) then
         let e = new System.Exception "missing opening brackets"
         raise e
+    else
+        true
 
 
 ///Simple parse. convert a string to a language expression
@@ -252,6 +254,7 @@ and parseLanguageExpressionWithoutUpdate (lang : string) : LanguageExpression =
     else WarewolfAtomExpression(parseAtom lang)
 
  and parseLanguageExpressionWithoutUpdateStrict (lang : string) : LanguageExpression = 
+    validateLang lang
     if (lang.Contains "[[" && lang.EndsWith"]]") then 
         let exp = ParseCache.TryFind lang
         match exp with
@@ -270,6 +273,7 @@ and parseLanguageExpressionWithoutUpdate (lang : string) : LanguageExpression =
 
 ///Simple parse. convert a string to a language expression and replace * with the update value
 and parseLanguageExpression (lang : string) (update : int) : LanguageExpression = 
+    validateLang lang
     let data = parseLanguageExpressionWithoutUpdate lang
     match update with
     | 0 -> data
@@ -298,6 +302,7 @@ and parseLanguageExpression (lang : string) (update : int) : LanguageExpression 
         | _ -> data
 
 and parseLanguageExpressionStrict (lang : string) (update : int) : LanguageExpression = 
+    validateLang lang
     let data = parseLanguageExpressionWithoutUpdateStrict lang
     match update with
     | 0 -> data
