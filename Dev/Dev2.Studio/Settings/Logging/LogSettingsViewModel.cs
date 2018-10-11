@@ -33,8 +33,8 @@ namespace Dev2.Settings.Logging
             set
             {
                 _currentEnvironment = value;
-                OnPropertyChanged("CanEditStudioLogSettings");
-                OnPropertyChanged("CanEditLogSettings");
+                OnPropertyChanged(nameof(CanEditStudioLogSettings));
+                OnPropertyChanged(nameof(CanEditLogSettings));
             }
         }
         string _serverLogMaxSize;
@@ -243,7 +243,7 @@ namespace Dev2.Settings.Logging
                     return;
                 }
 
-                var logLevel = LoggingTypes.Single(p => p.ToString().Contains(value));
+                var logLevel = LoggingTypes.Single(p => p.Contains(value));
                 _selectedLoggingType = logLevel;
 
                 var enumFromDescription = EnumHelper<LogLevel>.GetEnumFromDescription(logLevel);
@@ -301,8 +301,8 @@ namespace Dev2.Settings.Logging
                 IsDirty = !Equals(Item);
                 _auditFilePath = value;
                 OnPropertyChanged();
-                OnPropertyChanged("AuditNotice");
-                OnPropertyChanged("AuditAvailableSpace");
+                OnPropertyChanged(nameof(AuditNotice));
+                OnPropertyChanged(nameof(AuditAvailableSpace));
             }
         }
 
@@ -314,8 +314,8 @@ namespace Dev2.Settings.Logging
                 IsDirty = !Equals(Item);
                 _auditFileSize = value;
                 OnPropertyChanged();
-                OnPropertyChanged("AuditNotice");
-                OnPropertyChanged("AuditAvailableSpace");
+                OnPropertyChanged(nameof(AuditNotice));
+                OnPropertyChanged(nameof(AuditAvailableSpace));
             }
         }
 
@@ -327,8 +327,8 @@ namespace Dev2.Settings.Logging
                 IsDirty = !Equals(Item);
                 _auditFilesToKeep = value;
                 OnPropertyChanged();
-                OnPropertyChanged("AuditNotice");
-                OnPropertyChanged("AuditAvailableSpace");
+                OnPropertyChanged(nameof(AuditNotice));
+                OnPropertyChanged(nameof(AuditAvailableSpace));
             }
         }
 
