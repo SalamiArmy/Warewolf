@@ -86,7 +86,7 @@ namespace Dev2.Common.Tests
             Config.ConfigureSettings(mockConfig);
 
             var settings = Config.Server.Get();
-            Assert.AreEqual(6, settings.GetType().GetProperties().Length);
+            Assert.AreEqual(8, settings.GetType().GetProperties().Length);
 
             Assert.AreEqual(0, settings.WebServerPort);
             Assert.AreEqual(0, settings.WebServerSslPort);
