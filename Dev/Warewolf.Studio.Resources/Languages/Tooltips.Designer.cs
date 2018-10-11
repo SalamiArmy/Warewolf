@@ -1699,6 +1699,24 @@ namespace Warewolf.Studio.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Size of the Audit file.
+        /// </summary>
+        public static string LoggingViewAuditFileSizeToolTip {
+            get {
+                return ResourceManager.GetString("LoggingViewAuditFileSizeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount of files to keep.
+        /// </summary>
+        public static string LoggingViewAuditFilesToKeepToolTip {
+            get {
+                return ResourceManager.GetString("LoggingViewAuditFilesToKeepToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Audits Folder Path.
         /// </summary>
         public static string LoggingViewAuditsFilePathToolTip {

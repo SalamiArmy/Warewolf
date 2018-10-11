@@ -588,4 +588,10 @@ Please note that tabs are fully supported at runtime, in variables and when read
   <data name="ConnectionTimeoutLabel" xml:space="preserve">
     <value>Timeout</value>
   </data>
+  <data name="AuditNoticeLabel" xml:space="preserve">
+    <value>NOTE: Log files will use {0} MB which is more than the current availability</value>
+  </data>
+  <data name="RevulyticsSdkError" xml:space="preserve">
+    <value>Revulytics Sdk Error</value>
+  </data>
 </root>

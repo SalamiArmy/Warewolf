@@ -58,7 +58,9 @@ namespace Dev2.Common.Tests
                 SslCertificateName = "SslCertificateName",
                 CollectUsageStats = true,
                 DaysToKeepTempFiles = 2,
-                AuditFilePath = "AuditFilePath"
+                AuditFilePath = "AuditFilePath",
+                AuditFileSize = 0,
+                AuditFilesToKeep = 0
             };
 
             var serverSettingsData = new ServerSettingsData
@@ -68,7 +70,9 @@ namespace Dev2.Common.Tests
                 SslCertificateName = "SslCertificateName",
                 CollectUsageStats = true,
                 DaysToKeepTempFiles = 2,
-                AuditFilePath = "AuditFilePath"
+                AuditFilePath = "AuditFilePath",
+                AuditFileSize = 0,
+                AuditFilesToKeep = 0
             };
 
             Assert.IsTrue(serverSettingsData.Equals(expectedServerSettingsData));
@@ -90,6 +94,8 @@ namespace Dev2.Common.Tests
             Assert.AreEqual(false, settings.CollectUsageStats);
             Assert.AreEqual(0, settings.DaysToKeepTempFiles);
             Assert.AreEqual(expectedPath, settings.AuditFilePath);
+            Assert.AreEqual(0, settings.AuditFileSize);
+            Assert.AreEqual(0, settings.AuditFilesToKeep);
         }
 
         [TestMethod]
