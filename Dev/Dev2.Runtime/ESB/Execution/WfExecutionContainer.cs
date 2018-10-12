@@ -176,7 +176,7 @@ namespace Dev2.Runtime.ESB.Execution
             {
                 dsfDataObject.Settings = new Dev2WorkflowSettingsTO
                 {
-                    EnableDetailedLogging = Config.Server.EnableDetailedLogging,
+                    EnableDetailedLogging = false,
                     LoggerType = LoggerType.JSON,
                     KeepLogsForDays = 2,
                     CompressOldLogFiles = true
