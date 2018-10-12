@@ -2309,4 +2309,10 @@ To create a SFTP Key, put the full path and file or folder name here.</value>
   <data name="LoggingViewAuditsFilePathToolTip" xml:space="preserve">
     <value>Audits Folder Path</value>
   </data>
+  <data name="LoggingViewAuditFileSizeToolTip" xml:space="preserve">
+    <value>Size of the Audit file</value>
+  </data>
+  <data name="LoggingViewAuditFilesToKeepToolTip" xml:space="preserve">
+    <value>Amount of files to keep</value>
+  </data>
 </root>

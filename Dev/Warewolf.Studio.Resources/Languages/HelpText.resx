@@ -2246,4 +2246,10 @@ The conflicts on the left will show your current workflow changes and the confli
   <data name="LoggingViewAuditsFilePathHelpText" xml:space="preserve">
     <value>The Folder Path to store the audit database. The default Folder Path is C:\ProgramData\Warewolf\Audits</value>
   </data>
+  <data name="LoggingViewAuditFileSizeHelpText" xml:space="preserve">
+    <value>The size of the Audit file in MB.</value>
+  </data>
+  <data name="LoggingViewAuditFilesToKeepHelpText" xml:space="preserve">
+    <value>The amount of files to keep.</value>
+  </data>
 </root>

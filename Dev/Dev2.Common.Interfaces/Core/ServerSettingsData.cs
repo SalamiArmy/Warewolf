@@ -10,7 +10,8 @@ namespace Dev2.Common.Interfaces.Core
         public bool? CollectUsageStats { get; set; }
         public int? DaysToKeepTempFiles { get; set; }
         public string AuditFilePath { get; set; }
-        public bool? EnableDetailedLogging { get; set; }
+        public int AuditFileSize { get; set; }
+        public int AuditFilesToKeep { get; set; }
 
         public bool Equals(ServerSettingsData other)
         {
@@ -19,7 +20,8 @@ namespace Dev2.Common.Interfaces.Core
             equals &= string.Equals(SslCertificateName, other.SslCertificateName, StringComparison.InvariantCultureIgnoreCase);
             equals &= DaysToKeepTempFiles == other.DaysToKeepTempFiles;
             equals &= string.Equals(AuditFilePath, other.AuditFilePath, StringComparison.InvariantCultureIgnoreCase);
-            equals &= EnableDetailedLogging == other.EnableDetailedLogging;
+            equals &= AuditFileSize == other.AuditFileSize;
+            equals &= AuditFilesToKeep == other.AuditFilesToKeep;
 
             return equals;
         }

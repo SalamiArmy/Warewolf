@@ -38,6 +38,22 @@ namespace Warewolf.UI.Tests
             Assert.IsTrue(UIMap.ControlExistsNow(SettingsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.SettingsTab.WorksurfaceContext.SettingsView.TabList.LoggingTab.LogSettingsView.LoggingTypesComboBox.FatalOnlylogeventsthText));
         }
 
+        [TestMethod, DeploymentItem("EnableDocker.txt")]
+        [TestCategory("Settings")]
+        public void Open_SettingsTab_Then_ConfigureLogging_AuditsDefault_UITest()
+        {
+            UIMap.Click_ConfigureSetting_From_Menu();
+            Assert.IsTrue(SettingsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.SettingsTab.Exists, "Settings tab does not exist after the Configure/Setting Menu button is clicked");
+            Assert.IsTrue(SettingsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.SettingsTab.WorksurfaceContext.SettingsView.TabList.LoggingTab.Exists, "Logging tab does not exist after the Configure/Setting Menu button is clicked");
+            Assert.IsTrue(SettingsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.SettingsTab.WorksurfaceContext.SettingsView.TabList.LoggingTab.Enabled, "Logging tab is disabled after the Configure/Setting Menu button is clicked");
+            Assert.IsTrue(SettingsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.SettingsTab.WorksurfaceContext.SettingsView.TabList.LoggingTab.LogSettingsView.AuditsFilePathComboBox.AuditsFilePathTextbox.Exists, "Audit File Path TextBox does not exist after the Configure/Setting Menu button is clicked");
+            Assert.IsTrue(SettingsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.SettingsTab.WorksurfaceContext.SettingsView.TabList.LoggingTab.LogSettingsView.AuditsFilePathComboBox.AuditsFilePathTextbox.Enabled, "Audit File Path TextBox is not enabled after the Configure/Setting Menu button is clicked");
+            Assert.IsTrue(SettingsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.SettingsTab.WorksurfaceContext.SettingsView.TabList.LoggingTab.LogSettingsView.AuditFileSizeTextBoxEdit.Exists, "Audit File Size TextBox does not exist after the Configure/Setting Menu button is clicked");
+            Assert.IsTrue(SettingsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.SettingsTab.WorksurfaceContext.SettingsView.TabList.LoggingTab.LogSettingsView.AuditFileSizeTextBoxEdit.Enabled, "Audit File Size TextBox is not enabled after the Configure/Setting Menu button is clicked");
+            Assert.IsTrue(SettingsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.SettingsTab.WorksurfaceContext.SettingsView.TabList.LoggingTab.LogSettingsView.AuditFilesToKeepTextEdit.Exists, "Audit Files To Keep TextBox does not exist after the Configure/Setting Menu button is clicked");
+            Assert.IsTrue(SettingsUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.SettingsTab.WorksurfaceContext.SettingsView.TabList.LoggingTab.LogSettingsView.AuditFilesToKeepTextEdit.Enabled, "Audit Files To Keep TextBox is not enabled after the Configure/Setting Menu button is clicked");
+        }
+
         [TestMethod]
         [TestCategory("Settings")]
         public void ChangeAuditsFilePath_ThenSave_PersistsChanges_UITest()

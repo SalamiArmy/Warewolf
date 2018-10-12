@@ -61,6 +61,15 @@ namespace Warewolf.Studio.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NOTE: Log files will use {0} MB which is more than the current availability.
+        /// </summary>
+        public static string AuditNoticeLabel {
+            get {
+                return ResourceManager.GetString("AuditNoticeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Authentication Type:.
         /// </summary>
         public static string AuthenticationTypeLabel {
@@ -919,7 +928,7 @@ namespace Warewolf.Studio.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Revulytics sdk error.
+        ///   Looks up a localized string similar to Revulytics Sdk Error.
         /// </summary>
         public static string RevulyticsSdkError {
             get {

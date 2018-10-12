@@ -339,6 +339,112 @@ namespace Dev2.Core.Tests.Settings
             Assert.IsTrue(logSettingsViewModel.IsDirty);
         }
 
+        [TestMethod]
+        [Owner("Pieter Terblanche")]
+        [TestCategory("LogSettingsViewModel_AuditFileSize")]
+        public void LogSettingsViewModel_AuditFileSize_PropertyChangeFired()
+        {
+            //------------Setup for test--------------------------
+            var logSettingsViewModel = CreateLogSettingViewModel();
+            var hasPropertyChanged = false;
+            var propertyChangeCount = 0;
+            logSettingsViewModel.PropertyChanged += (sender, args) =>
+            {
+                if (args.PropertyName == "AuditFileSize")
+                {
+                    hasPropertyChanged = true;
+                    propertyChangeCount += 1;
+                }
+                if (args.PropertyName == "AuditNotice")
+                {
+                    propertyChangeCount += 1;
+                }
+                if (args.PropertyName == "AuditAvailableSpace")
+                {
+                    propertyChangeCount += 1;
+                }
+            };
+            //---------------Assert Precondition----------------
+            Assert.IsFalse(logSettingsViewModel.IsDirty);
+            //------------Execute Test---------------------------
+            logSettingsViewModel.AuditFileSize = 0;
+            //------------Assert Results-------------------------
+            Assert.AreEqual(0, logSettingsViewModel.AuditFileSize);
+            Assert.IsTrue(hasPropertyChanged);
+            Assert.AreEqual(3, propertyChangeCount);
+            Assert.IsTrue(logSettingsViewModel.IsDirty);
+        }
+
+        [TestMethod]
+        [Owner("Pieter Terblanche")]
+        [TestCategory("LogSettingsViewModel_AuditNotice")]
+        public void LogSettingsViewModel_AuditNotice_ExpectedNoError()
+        {
+            //------------Setup for test--------------------------
+            var logSettingsViewModel = CreateLogSettingViewModel();
+            //---------------Assert Precondition----------------
+            Assert.IsFalse(logSettingsViewModel.IsDirty);
+            //------------Execute Test---------------------------
+            logSettingsViewModel.AuditFileSize = 100;
+            //------------Assert Results-------------------------
+            Assert.AreEqual(100, logSettingsViewModel.AuditFileSize);
+            Assert.AreEqual("", logSettingsViewModel.AuditNotice);
+            Assert.IsTrue(logSettingsViewModel.IsDirty);
+        }
+
+        [TestMethod]
+        [Owner("Pieter Terblanche")]
+        [TestCategory("LogSettingsViewModel_AuditAvailableSpace")]
+        public void LogSettingsViewModel_AuditAvailableSpace_ExpectedNoError()
+        {
+            //------------Setup for test--------------------------
+            var logSettingsViewModel = CreateLogSettingViewModel();
+            //---------------Assert Precondition----------------
+            Assert.IsFalse(logSettingsViewModel.IsDirty);
+            //------------Execute Test---------------------------
+            logSettingsViewModel.AuditFileSize = 100;
+            //------------Assert Results-------------------------
+            Assert.AreEqual(100, logSettingsViewModel.AuditFileSize);
+            Assert.AreEqual("", logSettingsViewModel.AuditAvailableSpace);
+            Assert.IsTrue(logSettingsViewModel.IsDirty);
+        }
+
+        [TestMethod]
+        [Owner("Pieter Terblanche")]
+        [TestCategory("LogSettingsViewModel_AuditFilesToKeep")]
+        public void LogSettingsViewModel_AuditFilesToKeep_PropertyChangeFired()
+        {
+            //------------Setup for test--------------------------
+            var logSettingsViewModel = CreateLogSettingViewModel();
+            var hasPropertyChanged = false;
+            var propertyChangeCount = 0;
+            logSettingsViewModel.PropertyChanged += (sender, args) =>
+            {
+                if (args.PropertyName == "AuditFilesToKeep")
+                {
+                    hasPropertyChanged = true;
+                    propertyChangeCount += 1;
+                }
+                if (args.PropertyName == "AuditNotice")
+                {
+                    propertyChangeCount += 1;
+                }
+                if (args.PropertyName == "AuditAvailableSpace")
+                {
+                    propertyChangeCount += 1;
+                }
+            };
+            //---------------Assert Precondition----------------
+            Assert.IsFalse(logSettingsViewModel.IsDirty);
+            //------------Execute Test---------------------------
+            logSettingsViewModel.AuditFilesToKeep = 0;
+            //------------Assert Results-------------------------
+            Assert.AreEqual(0, logSettingsViewModel.AuditFilesToKeep);
+            Assert.IsTrue(hasPropertyChanged);
+            Assert.AreEqual(3, propertyChangeCount);
+            Assert.IsTrue(logSettingsViewModel.IsDirty);
+        }
+
         static LogSettingsViewModel CreateLogSettingViewModel()
         {
             XmlConfigurator.ConfigureAndWatch(new FileInfo("Settings.config"));
@@ -346,7 +452,7 @@ namespace Dev2.Core.Tests.Settings
 
             var _resourceRepo = new Mock<IResourceRepository>();
             var env = new Mock<IServer>();
-            var serverSettingsData = new ServerSettingsData { AuditFilePath = "somePath" };
+            var serverSettingsData = new ServerSettingsData { AuditFilePath = "somePath", AuditFileSize = 0, AuditFilesToKeep = 0 };
             _resourceRepo.Setup(res => res.GetServerSettings(env.Object)).Returns(serverSettingsData);
             env.Setup(a => a.ResourceRepository).Returns(_resourceRepo.Object);
 
