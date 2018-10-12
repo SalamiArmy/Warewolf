@@ -82,7 +82,7 @@ namespace Dev2.Common.Tests
             Config.ConfigureSettings(mockConfig);
 
             var settings = Config.Server.Get();
-            Assert.AreEqual(8, settings.GetType().GetProperties().Length);
+            Assert.AreEqual(9, settings.GetType().GetProperties().Length);
 
             Assert.AreEqual((ushort)0, settings.WebServerPort);
             Assert.AreEqual((ushort)0, settings.WebServerSslPort);
@@ -92,6 +92,7 @@ namespace Dev2.Common.Tests
             Assert.AreEqual(expectedPath, settings.AuditFilePath);
             Assert.AreEqual(0, settings.AuditFileSize);
             Assert.AreEqual(0, settings.AuditFilesToKeep);
+            Assert.AreEqual(true, settings.EnableDetailedLogging);
         }
 
         [TestMethod]

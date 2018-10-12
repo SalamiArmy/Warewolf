@@ -41,7 +41,8 @@ namespace Dev2.Common
             }
         }
         public bool EnableDetailedLogging => StringToBool(manager[nameof(EnableDetailedLogging)], true);
-
+        public int AuditFileSize => StringToInt(manager[nameof(AuditFileSize)], 0);
+        public int AuditFilesToKeep => StringToInt(manager[nameof(AuditFilesToKeep)], 0);
         public ushort WebServerPort         => StringToUShort(manager[nameof(WebServerPort)], 0);
         public ushort WebServerSslPort      => StringToUShort(manager[nameof(WebServerSslPort)], 0);
         public string SslCertificateName    => manager[nameof(SslCertificateName)];
