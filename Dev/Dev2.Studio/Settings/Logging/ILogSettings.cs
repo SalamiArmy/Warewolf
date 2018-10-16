@@ -16,5 +16,9 @@ namespace Dev2.Settings.Logging
         LogLevel StudioFileLogLevel { get; }
         IEnumerable<string> LoggingTypes { get; }
         string AuditFilePath { get; set; }
+        int AuditFileSize { get; set; }
+        int AuditFilesToKeep { get; set; }
+        string AuditNotice { get; }
+        string AuditAvailableSpace { get; }
     }
 }

@@ -2040,6 +2040,38 @@ namespace Warewolf.UI.Tests.Settings.SettingsUIMapClasses
                 return this.mServerLogFileItemText;
             }
         }
+        
+        public WpfEdit AuditFileSizeTextBoxEdit
+        {
+            get
+            {
+                if ((this.mAuditFileSizeTextBoxEdit == null))
+                {
+                    this.mAuditFileSizeTextBoxEdit = new WpfEdit(this);
+                    #region Search Criteria
+                    this.mAuditFileSizeTextBoxEdit.SearchProperties[WpfEdit.PropertyNames.AutomationId] = "AuditFileSizeTextBox";
+                    this.mAuditFileSizeTextBoxEdit.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+                    #endregion
+                }
+                return this.mAuditFileSizeTextBoxEdit;
+            }
+        }
+        
+        public WpfEdit AuditFilesToKeepTextEdit
+        {
+            get
+            {
+                if ((this.mAuditFilesToKeepTextEdit == null))
+                {
+                    this.mAuditFilesToKeepTextEdit = new WpfEdit(this);
+                    #region Search Criteria
+                    this.mAuditFilesToKeepTextEdit.SearchProperties[WpfEdit.PropertyNames.AutomationId] = "AuditFilesToKeepTextBox";
+                    this.mAuditFilesToKeepTextEdit.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
+                    #endregion
+                }
+                return this.mAuditFilesToKeepTextEdit;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2054,6 +2086,10 @@ namespace Warewolf.UI.Tests.Settings.SettingsUIMapClasses
         private AuditsFilePathComboBox mAuditsFilePathComboBox;
         
         private ServerLogFileItemText mServerLogFileItemText;
+        
+        private WpfEdit mAuditFileSizeTextBoxEdit;
+        
+        private WpfEdit mAuditFilesToKeepTextEdit;
         #endregion
     }
     
@@ -3254,29 +3290,10 @@ namespace Warewolf.UI.Tests.Settings.SettingsUIMapClasses
                 return this.mUIUI_SettingsView_AutoCustom;
             }
         }
-        
-        public WpfCustom UILogSettingsViewConteCustom
-        {
-            get
-            {
-                if ((this.mUILogSettingsViewConteCustom == null))
-                {
-                    this.mUILogSettingsViewConteCustom = new WpfCustom(this);
-                    #region Search Criteria
-                    this.mUILogSettingsViewConteCustom.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.LoggingView";
-                    this.mUILogSettingsViewConteCustom.SearchProperties[WpfControl.PropertyNames.AutomationId] = "LogSettingsViewContent";
-                    this.mUILogSettingsViewConteCustom.WindowTitles.Add("Warewolf (DEV2\\PIETER.TERBLANCHE)");
-                    #endregion
-                }
-                return this.mUILogSettingsViewConteCustom;
-            }
-        }
         #endregion
         
         #region Fields
         private UIUI_SettingsView_AutoCustom mUIUI_SettingsView_AutoCustom;
-        
-        private WpfCustom mUILogSettingsViewConteCustom;
         #endregion
     }
     

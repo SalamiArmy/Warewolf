@@ -33,10 +33,8 @@ namespace Dev2.Settings.Logging
             set
             {
                 _currentEnvironment = value;
-
-                OnPropertyChanged("CanEditStudioLogSettings");
-
-                OnPropertyChanged("CanEditLogSettings");
+                OnPropertyChanged(nameof(CanEditStudioLogSettings));
+                OnPropertyChanged(nameof(CanEditLogSettings));
             }
         }
         string _serverLogMaxSize;
@@ -51,6 +49,8 @@ namespace Dev2.Settings.Logging
         LogLevel _studioFileLogLevel;
         LogSettingsViewModel _item;
         string _auditFilePath;
+        int _auditFileSize;
+        int _auditFilesToKeep;
 
         public LogSettingsViewModel()
         {
@@ -243,7 +243,7 @@ namespace Dev2.Settings.Logging
                     return;
                 }
 
-                var logLevel = LoggingTypes.Single(p => p.ToString().Contains(value));
+                var logLevel = LoggingTypes.Single(p => p.Contains(value));
                 _selectedLoggingType = logLevel;
 
                 var enumFromDescription = EnumHelper<LogLevel>.GetEnumFromDescription(logLevel);
@@ -301,7 +301,68 @@ namespace Dev2.Settings.Logging
                 IsDirty = !Equals(Item);
                 _auditFilePath = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(AuditNotice));
+                OnPropertyChanged(nameof(AuditAvailableSpace));
             }
+        }
+
+        public int AuditFileSize
+        {
+            get => _auditFileSize;
+            set
+            {
+                IsDirty = !Equals(Item);
+                _auditFileSize = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(AuditNotice));
+                OnPropertyChanged(nameof(AuditAvailableSpace));
+            }
+        }
+
+        public int AuditFilesToKeep
+        {
+            get => _auditFilesToKeep;
+            set
+            {
+                IsDirty = !Equals(Item);
+                _auditFilesToKeep = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(AuditNotice));
+                OnPropertyChanged(nameof(AuditAvailableSpace));
+            }
+        }
+
+        public string AuditNotice => UpdateNotice();
+        public string AuditAvailableSpace => GetAvailableSpace();
+
+        string UpdateNotice()
+        {
+            var drive = DriveInfo.GetDrives().FirstOrDefault(o => AuditFilePath.StartsWith(o.Name, StringComparison.Ordinal));
+
+            long requestSpace = AuditFileSize * AuditFilesToKeep;
+            var availableSpace = drive?.TotalFreeSpace / 1024 / 1024;
+
+            var text = "";
+
+            if (requestSpace > availableSpace)
+            {
+                text = string.Format(Warewolf.Studio.Resources.Languages.Core.AuditNoticeLabel, requestSpace);
+            }
+            return text;
+        }
+
+        string GetAvailableSpace()
+        {
+            var drive = DriveInfo.GetDrives().FirstOrDefault(o => AuditFilePath.StartsWith(o.Name, StringComparison.Ordinal));
+            var availableSpace = drive?.TotalFreeSpace / 1024 / 1024;
+
+            var text = "";
+
+            if (availableSpace != null)
+            {
+                text = "Available Space: " + availableSpace + " MB";
+            }
+            return text;
         }
 
         public void UpdateHelpDescriptor(string helpText)
@@ -329,6 +390,8 @@ namespace Dev2.Settings.Logging
             equalsSeq &= int.Parse(_serverLogMaxSize) == int.Parse(other._serverLogMaxSize);
             equalsSeq &= int.Parse(_studioLogMaxSize) == int.Parse(other._studioLogMaxSize);
             equalsSeq &= Equals(_auditFilePath, other._auditFilePath);
+            equalsSeq &= Equals(_auditFileSize, other._auditFileSize);
+            equalsSeq &= Equals(_auditFilesToKeep, other._auditFilesToKeep);
             return equalsSeq;
         }
 
