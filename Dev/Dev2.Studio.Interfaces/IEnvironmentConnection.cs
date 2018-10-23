@@ -62,6 +62,7 @@ namespace Dev2.Studio.Interfaces
         void Verify(Action<ConnectResult> callback, bool wait);
         
         void StartAutoConnect();
+        void EnsureConnected();
 
         bool IsLocalHost { get; }
 

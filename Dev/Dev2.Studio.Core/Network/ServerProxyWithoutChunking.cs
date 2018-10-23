@@ -517,6 +517,18 @@ namespace Dev2.Network
             }
             StartReconnectTimer();
         }
+        public void EnsureConnected()
+        {
+            if (ID == Guid.Empty)
+            {
+                throw new Exception($"cannot ensure connection to {ID}");
+            }
+            if (IsConnected)
+            {
+                return;
+            }
+            Connect(ID);
+        }
 
         public IEventPublisher ServerEvents { get; }
 

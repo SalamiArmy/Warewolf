@@ -99,9 +99,16 @@ namespace Dev2.Controller
             popupController?.Show(ex, ErrorResource.ServiceNotAuthorizedExceptionHeader, MessageBoxButton.OK,
                 MessageBoxImage.Error, "", false, false, true, false, false, false);
         }
+
+        protected void EnsureConnected(IEnvironmentConnection connection)
+        {
+            connection.EnsureConnected();
+        }
         
         public T ExecuteCommand<T>(IEnvironmentConnection connection, Guid workspaceId) where T : class
         {
+            EnsureConnected(connection);
+
             var serializer = new Dev2JsonSerializer();
             var popupController = CustomContainer.Get<IPopupController>();
             if (connection == null || !connection.IsConnected)

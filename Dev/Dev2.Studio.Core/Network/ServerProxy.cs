@@ -187,6 +187,15 @@ namespace Dev2.Network
         {
             _wrappedConnection.StartAutoConnect();
         }
+        public void EnsureConnected()
+        {
+            if (IsConnected)
+            {
+                return;
+            }
+            Connect(ID);
+        }
+
 
         public bool IsLocalHost => _wrappedConnection.IsLocalHost;
 
