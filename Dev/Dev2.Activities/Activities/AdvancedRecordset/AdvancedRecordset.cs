@@ -135,30 +135,42 @@ namespace Dev2.Activities
             return recSetHash;
         }
 
-        public string UpdateSqlWithHashCodes(TSQLStatement statement)
+        public string UpdateSqlWithHashCodes(TSQLStatement statement, string SqlQuery)
         {
-            var sqlBuildUp = new List<string>();
-            foreach (var token in statement.Tokens)
+            var correctedItems = statement.Tokens.Select(token =>
             {
-                if (token.Type == TSQLTokenType.Identifier && sqlBuildUp.Count >=1)
+                var nextCharIndex = token.EndPosition + 1;
+                var appendText = nextCharIndex < SqlQuery.Length && IsWhiteSpace(SqlQuery[nextCharIndex]) ? "" + SqlQuery[nextCharIndex] : "";
+                if (appendText == "\r")
                 {
-                    if (sqlBuildUp[sqlBuildUp.Count - 1] == ".")
-                    {
-                        sqlBuildUp.Add(token.Text);
-                    }
-                    else
-                    {
-                        var hash = HashedRecSets.FirstOrDefault(x => x.recSet == token.Text);
-                        sqlBuildUp.Add(!hash.Equals(default) ? hash.hashCode : token.Text);
-                    }
+                    nextCharIndex++;
+                    appendText = nextCharIndex < SqlQuery.Length && SqlQuery[nextCharIndex] == '\n' ? "" + SqlQuery[nextCharIndex] : "";
                 }
-                else
+                if (token.Type == TSQL.Tokens.TSQLTokenType.Identifier)
                 {
-                    sqlBuildUp.Add(token.Text);
+                    var hash = HashedRecSets.FirstOrDefault(x => x.recSet == token.Text);
+                    return !hash.Equals(default) ? hash.hashCode + appendText : token.Text + appendText;
                 }
-            }
-            return string.Join(" ", sqlBuildUp);
+                if ((token.Type == TSQL.Tokens.TSQLTokenType.Character || token.Type == TSQL.Tokens.TSQLTokenType.Operator) && token.Text != ")")
+                {
+                    return token.Text;
+                }
+
+                return token.Text + appendText;
+            });
+
+            return string.Join("", correctedItems);
         }
+
+        static bool IsWhiteSpace(char ch)
+        {
+            var eq = ch == ' ';
+            eq |= ch == '\t';
+            eq |= ch == '\r';
+            eq |= ch == '\n';
+            return eq;
+        }
+
         public void CreateVariableTable()
         {
             using (var cmd = _dbManager.CreateCommand())

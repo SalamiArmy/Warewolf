@@ -365,19 +365,36 @@ namespace Dev2.Activities.Designers2.AdvancedRecordset
         {
             var correctedItems = statement.Tokens.Select(token =>
             {
+                var nextCharIndex = token.EndPosition + 1;
+                var appendText = nextCharIndex < SqlQuery.Length && IsWhiteSpace(SqlQuery[nextCharIndex]) ? ""+ SqlQuery[nextCharIndex] : "";
+                if (appendText == "\r")
+                {
+                    nextCharIndex++;
+                    appendText = nextCharIndex < SqlQuery.Length && SqlQuery[nextCharIndex] == '\n' ? ""+ SqlQuery[nextCharIndex] : "";
+                }
                 if (token.Type == TSQL.Tokens.TSQLTokenType.Identifier)
                 {
                     var hash = _hashedRecSets.FirstOrDefault(x => x.recSet.DisplayName == token.Text);
-                    return !hash.Equals(default((string, IRecordSetItemModel))) ? hash.hashCode +" " : token.Text + " ";
+                    return !hash.Equals(default((string, IRecordSetItemModel))) ? hash.hashCode + appendText : token.Text + appendText;
                 }
                 if ((token.Type == TSQL.Tokens.TSQLTokenType.Character || token.Type == TSQL.Tokens.TSQLTokenType.Operator) && token.Text != ")")
                 {
                     return token.Text;
                 }
-                return token.Text + " ";
+
+                return token.Text + appendText;
             });
 
             return string.Join("", correctedItems);
+        }
+
+        static bool IsWhiteSpace(char ch)
+        {
+            var eq = ch == ' ';
+            eq |= ch == '\t';
+            eq |= ch == '\r';
+            eq |= ch == '\n';
+            return eq;
         }
 
         private static List<string> GetFields(DataTable table)

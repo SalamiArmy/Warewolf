@@ -145,10 +145,10 @@ namespace Dev2.Activities
             }
 
         }
-
+        string realSqlQuery;
         private void ExecuteSql(int update, ref bool started)
         {
-            var queryText = AddSqlForVariables(SqlQuery);
+            var queryText = realSqlQuery = AddSqlForVariables(SqlQuery);
             var statements = TSQLStatementReader.ParseStatements(queryText);
 
             if (queryText.Contains("UNION") && statements.Count == 2)
@@ -201,7 +201,7 @@ namespace Dev2.Activities
 
         void ProcessSelectStatement(TSQLSelectStatement selectStatement, int update, ref bool started)
         {
-            var sqlQuery = AdvancedRecordset.UpdateSqlWithHashCodes(selectStatement);
+            var sqlQuery = AdvancedRecordset.UpdateSqlWithHashCodes(selectStatement, realSqlQuery);
             var results = AdvancedRecordset.ExecuteQuery(sqlQuery);
             foreach (DataTable dt in results.Tables)
             {
@@ -268,7 +268,7 @@ namespace Dev2.Activities
                 }
             }
 
-            var sqlQuery = AdvancedRecordset.UpdateSqlWithHashCodes(complexStatement);
+            var sqlQuery = AdvancedRecordset.UpdateSqlWithHashCodes(complexStatement, realSqlQuery);
 
             var recordset = new DataTable();
             recordset.Columns.Add("records_affected", typeof(int));

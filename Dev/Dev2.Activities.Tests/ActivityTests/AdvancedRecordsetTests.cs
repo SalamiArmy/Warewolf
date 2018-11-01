@@ -97,7 +97,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             string query = "select * from person";
             var worker = CreatePersonAddressWorkers();
             var statements = TSQLStatementReader.ParseStatements(query);
-            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0]);
+            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0], query);
 
             var results = worker.ExecuteQuery(updatedQuery);
             var started = false;
@@ -131,7 +131,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             string query = "select * from person";
             var worker = CreatePersonAddressWorkers();
             var statements = TSQLStatementReader.ParseStatements(query);
-            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0]);
+            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0], query);
 
             var results = worker.ExecuteQuery(updatedQuery);
             Assert.AreEqual(4, results.Tables[0].Rows.Count);
@@ -145,7 +145,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             string query = "select name as username from person";
             var worker = CreatePersonAddressWorkers();
             var statements = TSQLStatementReader.ParseStatements(query);
-            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0]);
+            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0], query);
 
             var results = worker.ExecuteQuery(updatedQuery);
             Assert.AreEqual(4, results.Tables[0].Rows.Count);
@@ -159,7 +159,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             var worker = CreatePersonAddressWorkers();
             string query = "select * from person p join address a on p.address_id=a.id";
             var statements = TSQLStatementReader.ParseStatements(query);
-            var updatedQuery= worker.UpdateSqlWithHashCodes(statements[0]);
+            var updatedQuery= worker.UpdateSqlWithHashCodes(statements[0], query);
 
             var results = worker.ExecuteQuery(updatedQuery);
 
@@ -176,7 +176,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             string query = "SELECT * FROM person JOIN address on person.address_id = address.id";
             var worker = CreatePersonAddressWorkers();
             var statements = TSQLStatementReader.ParseStatements(query);
-            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0]);
+            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0], query);
 
             var results = worker.ExecuteQuery(updatedQuery);
 
@@ -196,7 +196,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             string query = "select * from person p join address a on p.address_id=a.id where a.addr=\"11 test lane\" order by Name";
             var worker = CreatePersonAddressWorkers();
             var statements = TSQLStatementReader.ParseStatements(query);
-            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0]);
+            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0], query);
 
             var results = worker.ExecuteQuery(updatedQuery);
             Assert.AreEqual(Encoding.UTF8.GetString(results.Tables[0].Rows[0]["name"] as byte[]), "bob");
@@ -217,7 +217,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             string query = "select * from person p join address a on p.address_id=a.id where p.Name=\"zak\"";
             var worker = CreatePersonAddressWorkers();
             var statements = TSQLStatementReader.ParseStatements(query);
-            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0]);
+            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0], query);
 
             var results = worker.ExecuteQuery(updatedQuery);
 
@@ -238,7 +238,7 @@ namespace Dev2.Tests.Activities.ActivityTests
             var updatedQuery = "";
             foreach(var statement in statements)
             {
-                updatedQuery += worker.UpdateSqlWithHashCodes(statement)+";";
+                updatedQuery += worker.UpdateSqlWithHashCodes(statement, query) +";";
             }
             
 
@@ -264,12 +264,12 @@ namespace Dev2.Tests.Activities.ActivityTests
             var worker = CreatePersonAddressWorkers();
             string query = "update person set Age=65 where Name=\"zak\";";
             var statements = TSQLStatementReader.ParseStatements(query);
-            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0]);
+            var updatedQuery = worker.UpdateSqlWithHashCodes(statements[0], query);
             var results = worker.ExecuteNonQuery(updatedQuery);
             Assert.AreEqual(1, results);
             query = "select * from person where Name=\"zak\";";
             statements = TSQLStatementReader.ParseStatements(query);
-            updatedQuery = worker.UpdateSqlWithHashCodes(statements[0]);
+            updatedQuery = worker.UpdateSqlWithHashCodes(statements[0], query);
             var result = worker.ExecuteQuery(updatedQuery);
             
             Assert.AreEqual("zak",Encoding.UTF8.GetString(result.Tables[0].Rows[0]["Name"] as byte[]));
