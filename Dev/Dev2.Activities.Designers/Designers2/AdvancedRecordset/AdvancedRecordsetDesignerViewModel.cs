@@ -363,27 +363,21 @@ namespace Dev2.Activities.Designers2.AdvancedRecordset
 
         private string UpdateSqlWithHashCodes(TSQLStatement statement)
         {
-            var sqlBuildUp = new List<string>();
-            foreach (var token in statement.Tokens)
+            var correctedItems = statement.Tokens.Select(token =>
             {
-                if (token.Type == TSQL.Tokens.TSQLTokenType.Identifier && sqlBuildUp.Count >= 1)
+                if (token.Type == TSQL.Tokens.TSQLTokenType.Identifier)
                 {
-                    if (sqlBuildUp[sqlBuildUp.Count - 1] == ".")
-                    {
-                        sqlBuildUp.Add(token.Text);
-                    }
-                    else
-                    {
-                        var hash = _hashedRecSets.FirstOrDefault(x => x.recSet.DisplayName == token.Text);
-                        sqlBuildUp.Add(!hash.Equals(default((string, IRecordSetItemModel))) ? hash.hashCode : token.Text);
-                    }
+                    var hash = _hashedRecSets.FirstOrDefault(x => x.recSet.DisplayName == token.Text);
+                    return !hash.Equals(default((string, IRecordSetItemModel))) ? hash.hashCode +" " : token.Text + " ";
                 }
-                else
+                if ((token.Type == TSQL.Tokens.TSQLTokenType.Character || token.Type == TSQL.Tokens.TSQLTokenType.Operator) && token.Text != ")")
                 {
-                    sqlBuildUp.Add(token.Text);
+                    return token.Text;
                 }
-            }
-            return string.Join(" ", sqlBuildUp);
+                return token.Text + " ";
+            });
+
+            return string.Join("", correctedItems);
         }
 
         private static List<string> GetFields(DataTable table)
