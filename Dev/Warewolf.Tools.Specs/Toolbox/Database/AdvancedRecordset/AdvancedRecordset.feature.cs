@@ -13303,15 +13303,13 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Join statement with underscore in the field name and fieldname is same as table n" +
-            "ame")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Join statement with fieldname is same as table name")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AdvancedRecordset")]
-        public virtual void JoinStatementWithUnderscoreInTheFieldNameAndFieldnameIsSameAsTableName()
+        public virtual void JoinStatementWithFieldnameIsSameAsTableName()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Join statement with underscore in the field name and fieldname is same as table n" +
-                    "ame", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Join statement with fieldname is same as table name", ((string[])(null)));
 #line 4526
-   this.ScenarioSetup(scenarioInfo);
+this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table732 = new TechTalk.SpecFlow.Table(new string[] {
                         "[[person]]",

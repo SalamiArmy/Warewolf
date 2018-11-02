@@ -137,29 +137,46 @@ namespace Dev2.Activities
 
         public string UpdateSqlWithHashCodes(TSQLStatement statement, string SqlQuery)
         {
+            var tableNameFollowsKeywords = new List<string> { "JOIN", "FROM", "UPDATE" };
+            var columnNameFollowsKeywords = new List<string> { "ON", "WHERE", "ORDER BY", "HAVING", "GROUP BY" };
+
+            bool inFromOrJoin = false;
+            bool nextTokenIsDot = false;
             var correctedItems = statement.Tokens.Select(token =>
             {
+                var uppedText = token.Text.ToUpperInvariant();
+                if (tableNameFollowsKeywords.Contains(uppedText))
+                {
+                    inFromOrJoin = true;
+                } else
+                {
+                    if (columnNameFollowsKeywords.Contains(uppedText))
+                    {
+                        inFromOrJoin = false;
+                    }
+                }
+
+
                 var nextCharIndex = token.EndPosition + 1;
+                nextTokenIsDot = nextCharIndex < SqlQuery.Length && SqlQuery[nextCharIndex] == '.';
                 var appendText = nextCharIndex < SqlQuery.Length && IsWhiteSpace(SqlQuery[nextCharIndex]) ? "" + SqlQuery[nextCharIndex] : "";
                 if (appendText == "\r")
                 {
                     nextCharIndex++;
                     appendText = nextCharIndex < SqlQuery.Length && SqlQuery[nextCharIndex] == '\n' ? "" + SqlQuery[nextCharIndex] : "";
                 }
-                if (token.Type == TSQL.Tokens.TSQLTokenType.Identifier)
+                var canBeTableName = inFromOrJoin || nextTokenIsDot;
+                if (canBeTableName && token.Type == TSQL.Tokens.TSQLTokenType.Identifier)
                 {
                     var hash = HashedRecSets.FirstOrDefault(x => x.recSet == token.Text);
                     return !hash.Equals(default) ? hash.hashCode + appendText : token.Text + appendText;
-                }
-                if ((token.Type == TSQL.Tokens.TSQLTokenType.Character || token.Type == TSQL.Tokens.TSQLTokenType.Operator) && token.Text != ")")
-                {
-                    return token.Text;
                 }
 
                 return token.Text + appendText;
             });
 
-            return string.Join("", correctedItems);
+            var res = string.Join("", correctedItems);
+            return res;
         }
 
         static bool IsWhiteSpace(char ch)

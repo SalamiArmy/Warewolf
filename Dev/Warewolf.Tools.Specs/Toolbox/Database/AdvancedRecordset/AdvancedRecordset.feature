@@ -4523,7 +4523,7 @@ Scenario:   Join statement with underscore in the field name and star after sele
     | [[TableCopy(2).line1]] = 2a Lane Place |
    
 
-   Scenario:   Join statement with underscore in the field name and fieldname is same as table name
+Scenario:   Join statement with fieldname is same as table name
     Given I have a recordset with this shape
     | [[person]]         |               |
     | person(1).name     | Hatter        |
