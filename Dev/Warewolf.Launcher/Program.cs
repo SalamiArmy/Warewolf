@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Security.Principal;
+using System.Threading;
 using Warewolf.Launcher.Utils;
 
 namespace Warewolf.Launcher
@@ -11,6 +12,7 @@ namespace Warewolf.Launcher
     {
         public static void Main(string[] args)
         {
+            Thread.Sleep(30000);
             using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
             {
                 WindowsPrincipal principal = new WindowsPrincipal(identity);
