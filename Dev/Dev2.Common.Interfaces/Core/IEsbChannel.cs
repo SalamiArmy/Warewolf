@@ -9,8 +9,8 @@
 */
 
 using System;
+using Dev2.Common.Interfaces.Data.TO;
 using Dev2.Communication;
-using Dev2.Data.TO;
 using Dev2.Interfaces;
 using Warewolf.Storage.Interfaces;
 
@@ -22,13 +22,13 @@ namespace Dev2
     public interface IEsbChannel
     {
         Guid ExecuteRequest(IDSFDataObject dataObject, EsbExecuteRequest request, Guid workspaceId,
-            out ErrorResultTO errors);
+            out IErrorResultTO errors);
         
-        IExecutionEnvironment ExecuteSubRequest(IDSFDataObject dataObject, Guid workspaceId, string inputDefs, string outputDefs, out ErrorResultTO errors, int update, bool handleErrors);
+        IExecutionEnvironment ExecuteSubRequest(IDSFDataObject dataObject, Guid workspaceId, string inputDefs, string outputDefs, out IErrorResultTO errors, int update, bool handleErrors);
 
-        void ExecuteLogErrorRequest(IDSFDataObject dataObject, Guid workspaceId, string uri, out ErrorResultTO errors, int update);
+        void ExecuteLogErrorRequest(IDSFDataObject dataObject, Guid workspaceId, string uri, out IErrorResultTO errors, int update);
         
-        IExecutionEnvironment UpdatePreviousEnvironmentWithSubExecutionResultUsingOutputMappings(IDSFDataObject dataObject, string outputDefs, int update, bool handleErrors, ErrorResultTO errors);
+        IExecutionEnvironment UpdatePreviousEnvironmentWithSubExecutionResultUsingOutputMappings(IDSFDataObject dataObject, string outputDefs, int update, bool handleErrors, IErrorResultTO errors);
 
         void CreateNewEnvironmentFromInputMappings(IDSFDataObject dataObject, string inputDefs, int update);
     }

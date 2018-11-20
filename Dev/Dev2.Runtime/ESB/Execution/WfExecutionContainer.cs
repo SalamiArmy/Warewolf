@@ -25,6 +25,7 @@ using Dev2.Runtime.Hosting;
 using Dev2.Runtime.Security;
 using Dev2.Workspaces;
 using Dev2.Data;
+using Dev2.Common.Logging;
 
 namespace Dev2.Runtime.ESB.Execution
 {

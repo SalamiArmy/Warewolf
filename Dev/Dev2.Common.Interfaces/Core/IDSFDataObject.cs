@@ -17,7 +17,6 @@ using Dev2.Common.Interfaces.Diagnostics.Debug;
 using Dev2.Data.Interfaces.Enums;
 using Dev2.Web;
 using Warewolf.Storage.Interfaces;
-using Dev2;
 
 namespace Dev2.Interfaces
 {

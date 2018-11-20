@@ -17,26 +17,12 @@ using Dev2.Common.Wrappers;
 using Dev2.Common.Interfaces.Logging;
 using System.Threading;
 using Dev2.Common.Interfaces.Container;
+using Dev2.Common.Logging;
 
 namespace Dev2.Runtime.ESB.Execution
 {
-    interface IDev2StateAuditLogger : IDisposable
-    {
-        IStateListener NewStateListener(IDSFDataObject dataObject);
-        void Flush();
-    }
 
-    public class SQLiteConfiguration : DbConfiguration
-    {
-        public SQLiteConfiguration()
-        {
-            SetProviderFactory("System.Data.SQLite", SQLiteFactory.Instance);
-            SetProviderFactory("System.Data.SQLite.EF6", SQLiteProviderFactory.Instance);
-            SetProviderServices("System.Data.SQLite", (DbProviderServices)SQLiteProviderFactory.Instance.GetService(typeof(DbProviderServices)));
-        }
-    }
-
-    class Dev2StateAuditLogger : IDev2StateAuditLogger, IWarewolfLogWriter
+    public class Dev2StateAuditLogger : IDev2StateAuditLogger, IWarewolfLogWriter
     {
         const int MAX_DATABASE_TRIES = 10;
         const int DATABASE_RETRY_DELAY = 100;
@@ -158,65 +144,6 @@ namespace Dev2.Runtime.ESB.Execution
 
                 Flush(database, MAX_DATABASE_TRIES);
             }
-        }
-    }
-
-    interface IAuditDatabaseContext : IDisposable
-    {
-        DbSet<AuditLog> Audits { get; set; }
-        int SaveChanges();
-    }
-    interface IDatabaseContextFactory
-    {
-        IAuditDatabaseContext Get();
-    }
-    class DatabaseContextFactory : IDatabaseContextFactory
-    {
-        public IAuditDatabaseContext Get()
-        {
-            return new DatabaseContext();
-        }
-    }
-
-    [Database]
-    class DatabaseContext : DbContext, IAuditDatabaseContext
-    {
-        public DatabaseContext() : base(new SQLiteConnection
-        {
-            ConnectionString = new SQLiteConnectionStringBuilder
-            {
-                DataSource = Path.Combine(Config.Server.AuditFilePath, "auditDB.db"),
-                ForeignKeys = true
-            }.ConnectionString
-        }, true)
-        {
-            var userPrinciple = Common.Utilities.ServerUser;
-            Common.Utilities.PerformActionInsideImpersonatedContext(userPrinciple, () =>
-            {
-                var directoryWrapper = new DirectoryWrapper();
-                directoryWrapper.CreateIfNotExists(Config.Server.AuditFilePath);
-                DbConfiguration.SetConfiguration(new SQLiteConfiguration());
-                this.Database.CreateIfNotExists();
-                this.Database.Initialize(false);
-                this.Database.ExecuteSqlCommand("CREATE TABLE IF NOT EXISTS \"AuditLog\" ( `Id` INTEGER PRIMARY KEY AUTOINCREMENT, `WorkflowID` TEXT, `WorkflowName` TEXT, `ExecutionID` TEXT, `AuditType` TEXT, `PreviousActivity` TEXT, `PreviousActivityType` TEXT, `PreviousActivityID` TEXT, `NextActivity` TEXT, `NextActivityType` TEXT, `NextActivityID` TEXT, `ServerID` TEXT, `ParentID` TEXT, `ClientID` TEXT, `ExecutingUser` TEXT, `ExecutionOrigin` INTEGER, `ExecutionOriginDescription` TEXT, `ExecutionToken` TEXT, `AdditionalDetail` TEXT, `IsSubExecution` INTEGER, `IsRemoteWorkflow` INTEGER, `Environment` TEXT, `AuditDate` TEXT )");
-            });
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            base.OnModelCreating(modelBuilder);
-        }
-
-        public DbSet<AuditLog> Audits { get; set; }
-    }
-
-    static class ExecutionTokenExtensionMethods
-    {
-        public static string ToJson(this Common.Interfaces.IExecutionToken executionToken)
-        {
-            var json = new Dev2JsonSerializer();
-            return json.Serialize(executionToken, Formatting.None);
         }
     }
 }

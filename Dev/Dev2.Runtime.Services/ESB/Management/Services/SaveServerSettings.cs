@@ -1,21 +1,25 @@
 ﻿using Dev2.Common;
-using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Core;
 using Dev2.Common.Interfaces.Enums;
-using Dev2.Common.Interfaces.Wrappers;
+using Dev2.Common.Interfaces.Logging;
 using Dev2.Common.Wrappers;
 using Dev2.Communication;
 using Dev2.DynamicServices;
 using Dev2.Workspaces;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 
 namespace Dev2.Runtime.ESB.Management.Services
 {
     public class SaveServerSettings : IEsbManagementEndpoint
     {
+        readonly ILogManager _logManager;
+
+        public SaveServerSettings()
+        {
+            _logManager = CustomContainer.Get<ILogManager>();
+    }
         public StringBuilder Execute(Dictionary<string, StringBuilder> values, IWorkspace theWorkspace)
         {
             var msg = new ExecuteMessage();
@@ -29,22 +33,11 @@ namespace Dev2.Runtime.ESB.Management.Services
 
                 var updatedServerSettings = serializer.Deserialize<ServerSettingsData>(resourceDefinition);
 
-                var sourceFilePath = Config.Server.AuditFilePath;
-
                 var auditsFilePath = updatedServerSettings.AuditFilePath;
 
-                if (sourceFilePath != auditsFilePath)
+                if (_logManager.SaveLoggingPath(auditsFilePath))
                 {
-                    var source = Path.Combine(sourceFilePath, "auditDB.db");
-                    IFile _file = new FileWrapper();
-                    if (_file.Exists(source))
-                    {
-                        var destination = Path.Combine(auditsFilePath, "auditDB.db");
-                        CreateIfNotExists(auditsFilePath);
-                        _file.Move(source, destination);
-                        Config.Server.AuditFilePath = auditsFilePath;
-                        msg.Message = new StringBuilder("Moved");
-                    }
+                    msg.Message = new StringBuilder("Moved");
                 }
                 else
                 {
@@ -59,12 +52,6 @@ namespace Dev2.Runtime.ESB.Management.Services
                 Dev2Logger.Error(err, GlobalConstants.WarewolfError);
             }
             return serializer.SerializeToBuilder(msg);
-        }
-
-        static void CreateIfNotExists(string path)
-        {
-            var directoryWrapper = new DirectoryWrapper();
-            directoryWrapper.CreateIfNotExists(path);
         }
 
         public Guid GetResourceID(Dictionary<string, StringBuilder> requestArgs) => Guid.Empty;

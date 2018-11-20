@@ -1,8 +1,13 @@
-﻿using Dev2.Common.Interfaces;
-using System;
+﻿using System;
 
 namespace WarewolfParserInterop
 {
+    public interface IAssignValue
+    {
+        string Name { get; }
+        string Value { get; }
+    }
+
     public class AssignValue : IAssignValue, IEquatable<AssignValue>
     {
         public AssignValue(string name, string value)

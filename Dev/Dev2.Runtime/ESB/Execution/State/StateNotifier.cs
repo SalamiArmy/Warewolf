@@ -71,4 +71,12 @@ namespace Dev2.Runtime.ESB.Execution.State
             _stateListeners.Add(listener);
         }
     }
+
+    public class StateNotifierFactory : IStateNotifierFactory
+    {
+        public IStateNotifier NewInstance()
+        {
+            return new StateNotifier();
+        }
+    }
 }

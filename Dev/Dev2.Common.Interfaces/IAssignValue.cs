@@ -1,8 +1,7 @@
-﻿namespace Dev2.Common.Interfaces
+﻿using System.Runtime.CompilerServices;
+using WarewolfParserInterop;
+
+[assembly: TypeForwardedTo(typeof(IAssignValue))]
+namespace Dev2.Common.Interfaces
 {
-    public interface IAssignValue
-    {
-        string Name { get; }
-        string Value { get;  }
-    }
 }

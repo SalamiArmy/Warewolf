@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Dev2.Common.Common;
-using Warewolf.Resource.Errors;
 
 namespace WarewolfParserInterop
 {

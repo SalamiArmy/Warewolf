@@ -30,6 +30,7 @@ using Dev2.Common.Common;
 using Dev2.Common.Interfaces;
 using Dev2.Common.Interfaces.Monitoring;
 using Dev2.Common.Interfaces.Scheduler.Interfaces;
+using Dev2.Common.Logging;
 using Dev2.Common.Wrappers;
 using Dev2.Data;
 using Dev2.Diagnostics.Debug;
@@ -45,6 +46,9 @@ using Dev2.Services.Security.MoqInstallerActions;
 using Dev2.Workspaces;
 using log4net.Config;
 using WarewolfCOMIPC.Client;
+using Dev2.Runtime.ESB.Execution;
+using Dev2.Common.Container;
+using Dev2.Runtime.ESB.Execution.State;
 
 namespace Dev2
 {
@@ -221,6 +225,7 @@ namespace Dev2
                 MigrateOldTests();
                 InitializeServer();
                 LoadSettingsProvider();
+                LogManager.Initialize(new Dev2StateAuditLogger(new DatabaseContextFactory(), new WarewolfQueue()), new StateNotifierFactory(), new FileWrapper(), new DirectoryWrapper());
                 ConfigureLoggging();
                 OpenCOMStream();
                 var catalog = LoadResourceCatalog();

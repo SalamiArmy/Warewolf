@@ -45,9 +45,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>False</Visible>
     </None>
-    <AdditionalFiles Include="..\SonarQube\SonarLint.xml" >
+    <AdditionalFiles Include="..\SonarQube\SonarLint.xml">
       <Visible>False</Visible>
-	</AdditionalFiles>
+    </AdditionalFiles>
     <None Include="Dev2.Data.Interfaces.ruleset" />
     <None Include="packages.config" />
     <Reference Include="Ionic.Zip.Reduced">
@@ -63,11 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\DataListMergeFrequency.cs" />
     <Compile Include="Enums\Dev2ArgumentType.cs" />
     <Compile Include="Enums\enActionType.cs" />
     <Compile Include="Enums\enActivityPathType.cs" />
-    <Compile Include="Enums\enDataListMergeTypes.cs" />
     <Compile Include="Enums\enDev2ColumnArgumentDirection.cs" />
     <Compile Include="Enums\enForEachExecutionType.cs" />
     <Compile Include="Enums\enForEachType.cs" />
@@ -81,7 +79,6 @@
     <Compile Include="Enums\enRecordsetIndexType.cs" />
     <Compile Include="Enums\enRoundingType.cs" />
     <Compile Include="Enums\enSystemTags.cs" />
-    <Compile Include="Enums\enTranslationDepth.cs" />
     <Compile Include="Enums\enTranslationTypes.cs" />
     <Compile Include="Enums\enTypeOfSystemInformationToGather.cs" />
     <Compile Include="Enums\ReadTypes.cs" />

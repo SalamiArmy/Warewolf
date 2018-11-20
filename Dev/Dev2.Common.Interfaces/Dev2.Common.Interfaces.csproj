@@ -208,6 +208,10 @@
     <Compile Include="Core\Database\DbSourceDefinition.cs" />
     <Compile Include="Core\DynamicServices\Globals.cs" />
     <Compile Include="Core\DynamicServices\IDynamicServiceObject.cs" />
+    <Compile Include="Core\IDev2Activity.cs" />
+    <Compile Include="Core\IDSFDataObject.cs" />
+    <Compile Include="Core\IEsbChannel.cs" />
+    <Compile Include="Core\IExecutionEnvironment.cs" />
     <Compile Include="Core\RabbitMQServiceSourceDefinition.cs" />
     <Compile Include="Core\EmailServiceSourceDefinition.cs" />
     <Compile Include="Core\ExchangeSourceDefinition.cs" />
@@ -408,6 +412,8 @@
     <Compile Include="IWcfServiceModel.cs" />
     <Compile Include="IWcfSource.cs" />
     <Compile Include="IWebSource.cs" />
+    <Compile Include="Logging\ILogManager.cs" />
+    <Compile Include="Logging\IStateListener.cs" />
     <Compile Include="Logging\IWarewolfLogWriter.cs" />
     <Compile Include="Monitoring\IPerformanceCounter.cs" />
     <Compile Include="Monitoring\IPerformanceCounterFactory.cs" />
@@ -494,6 +500,13 @@
     <Compile Include="Toolbox\IToolDescriptor.cs" />
     <Compile Include="Toolbox\IToolDescriptorViewModel.cs" />
     <Compile Include="Toolbox\IToolManager.cs" />
+    <Compile Include="Types\DataListMergeFrequency.cs" />
+    <Compile Include="Types\EmitionTypes.cs" />
+    <Compile Include="Types\enDataListMergeTypes.cs" />
+    <Compile Include="Types\enFindMissingType.cs" />
+    <Compile Include="Types\enTranslationDepth.cs" />
+    <Compile Include="Types\EsbExecuteRequest.cs" />
+    <Compile Include="Types\State\StateVariable.cs" />
     <Compile Include="UndoFramework\IAction.cs" />
     <Compile Include="WarewolfException.cs" />
     <Compile Include="WebRequestMethod.cs" />
