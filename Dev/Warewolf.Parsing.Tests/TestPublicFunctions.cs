@@ -354,5 +354,155 @@ namespace WarewolfParsingTest
                 var res = enumerator.ToArray();
             });
         }
+
+        [TestMethod]
+        [Owner("Rory McGuire")]
+        [TestCategory("PublicFunctions")]
+        public void PublicFunctions_EvalAssign_AsTableWithEmptyFields()
+        {
+            PublicFunctions_EvalAssign_AsTableWithEmptyFields(true);
+        }
+
+        [TestMethod]
+        [Owner("Rory McGuire")]
+        [TestCategory("PublicFunctions")]
+        public void PublicFunctions_EvalAssign_AsTableWithSkippedFields()
+        {
+            PublicFunctions_EvalAssign_AsTableWithEmptyFields(false);
+        }
+
+        public void PublicFunctions_EvalAssign_AsTableWithEmptyFields(bool assignEmpties)
+        {
+
+            var env = PublicFunctions.CreateEnv(@"");
+            env = PublicFunctions.EvalAssign("[[recset().a]]", "aa", 0, env);
+            if (assignEmpties) { env = PublicFunctions.EvalAssign("[[recset().b]]", "", 0, env); }
+            env = PublicFunctions.EvalAssign("[[recset().c]]", "ac", 0, env);
+            env = PublicFunctions.EvalAssign("[[recset().a]]", "ba", 0, env);
+            if (assignEmpties) { env = PublicFunctions.EvalAssign("[[recset().b]]", "", 0, env); }
+            env = PublicFunctions.EvalAssign("[[recset().c]]", "bc", 0, env);
+            if (assignEmpties) { env = PublicFunctions.EvalAssign("[[recset().a]]", "", 0, env); }
+            env = PublicFunctions.EvalAssign("[[recset().b]]", "cb", 0, env);
+            env = PublicFunctions.EvalAssign("[[recset().c]]", "cc", 0, env);
+            env = PublicFunctions.RemoveFraming(env);
+
+            var result = PublicFunctions.EvalEnvExpressionToTable("[[recset(*)]]", 0, env, true);
+
+            var expectedLine1 = new List<System.Tuple<string, DataStorage.WarewolfAtom>> {
+                new Tuple<string, DataStorage.WarewolfAtom>("a", DataStorage.WarewolfAtom.NewDataString("aa")),
+                new Tuple<string, DataStorage.WarewolfAtom>("b", DataStorage.WarewolfAtom.NewDataString("")),
+                new Tuple<string, DataStorage.WarewolfAtom>("c", DataStorage.WarewolfAtom.NewDataString("ac")),
+            };
+
+            var enumerator = result.GetEnumerator();
+
+            Assert.IsTrue(enumerator.MoveNext());
+            var line1 = enumerator.Current;
+            Assert.AreEqual(expectedLine1[0].Item1, line1[0].Item1);
+            Assert.AreEqual(expectedLine1[0].Item2, line1[0].Item2);
+            Assert.AreEqual(expectedLine1[1].Item1, line1[1].Item1);
+            Assert.AreEqual(expectedLine1[1].Item2, line1[1].Item2);
+            Assert.AreEqual(expectedLine1[2].Item1, line1[2].Item1);
+            Assert.AreEqual(expectedLine1[2].Item2, line1[2].Item2);
+
+            var expectedLine2 = new List<System.Tuple<string, DataStorage.WarewolfAtom>> {
+                new Tuple<string, DataStorage.WarewolfAtom>("a", DataStorage.WarewolfAtom.NewDataString("ba")),
+                new Tuple<string, DataStorage.WarewolfAtom>("b", DataStorage.WarewolfAtom.NewDataString("")),
+                new Tuple<string, DataStorage.WarewolfAtom>("c", DataStorage.WarewolfAtom.NewDataString("bc")),
+            };
+
+            Assert.IsTrue(enumerator.MoveNext());
+            var line2 = enumerator.Current;
+            Assert.AreEqual(expectedLine2[0].Item1, line2[0].Item1);
+            Assert.AreEqual(expectedLine2[0].Item2, line2[0].Item2);
+            Assert.AreEqual(expectedLine2[1].Item1, line2[1].Item1);
+            Assert.AreEqual(expectedLine2[1].Item2, line2[1].Item2);
+            Assert.AreEqual(expectedLine2[2].Item1, line2[2].Item1);
+            Assert.AreEqual(expectedLine2[2].Item2, line2[2].Item2);
+
+            var expectedLine3 = new List<System.Tuple<string, DataStorage.WarewolfAtom>> {
+                new Tuple<string, DataStorage.WarewolfAtom>("a", DataStorage.WarewolfAtom.NewDataString("")),
+                new Tuple<string, DataStorage.WarewolfAtom>("b", DataStorage.WarewolfAtom.NewDataString("cb")),
+                new Tuple<string, DataStorage.WarewolfAtom>("c", DataStorage.WarewolfAtom.NewDataString("cc")),
+            };
+
+            Assert.IsTrue(enumerator.MoveNext());
+            var line3 = enumerator.Current;
+            Assert.AreEqual(expectedLine3[0].Item1, line3[0].Item1);
+            Assert.AreEqual(expectedLine3[0].Item2, line3[0].Item2);
+            Assert.AreEqual(expectedLine3[1].Item1, line3[1].Item1);
+            Assert.AreEqual(expectedLine3[1].Item2, line3[1].Item2);
+            Assert.AreEqual(expectedLine3[2].Item1, line3[2].Item1);
+            Assert.AreEqual(expectedLine3[2].Item2, line3[2].Item2);
+        }
+
+
+        [TestMethod]
+        [Owner("Rory McGuire")]
+        [TestCategory("PublicFunctions")]
+        public void PublicFunctions_EvalAssign_AsTableWithNoMissingFields()
+        {
+
+            var env = PublicFunctions.CreateEnv(@"");
+            env = PublicFunctions.EvalAssign("[[recset().a]]", "aa", 0, env);
+            env = PublicFunctions.EvalAssign("[[recset().b]]", "ab", 0, env);
+            env = PublicFunctions.EvalAssign("[[recset().c]]", "ac", 0, env);
+            env = PublicFunctions.EvalAssign("[[recset().a]]", "ba", 0, env);
+            env = PublicFunctions.EvalAssign("[[recset().b]]", "bb", 0, env);
+            env = PublicFunctions.EvalAssign("[[recset().c]]", "bc", 0, env);
+            env = PublicFunctions.EvalAssign("[[recset().a]]", "ca", 0, env);
+            env = PublicFunctions.EvalAssign("[[recset().b]]", "cb", 0, env);
+            env = PublicFunctions.EvalAssign("[[recset().c]]", "cc", 0, env);
+            env = PublicFunctions.RemoveFraming(env);
+
+            var result = PublicFunctions.EvalEnvExpressionToTable("[[recset(*)]]", 0, env, true);
+
+            var expectedLine1 = new List<System.Tuple<string, DataStorage.WarewolfAtom>> {
+                new Tuple<string, DataStorage.WarewolfAtom>("a", DataStorage.WarewolfAtom.NewDataString("aa")),
+                new Tuple<string, DataStorage.WarewolfAtom>("b", DataStorage.WarewolfAtom.NewDataString("ab")),
+                new Tuple<string, DataStorage.WarewolfAtom>("c", DataStorage.WarewolfAtom.NewDataString("ac")),
+            };
+
+            var enumerator = result.GetEnumerator();
+
+            Assert.IsTrue(enumerator.MoveNext());
+            var line1 = enumerator.Current;
+            Assert.AreEqual(expectedLine1[0].Item1, line1[0].Item1);
+            Assert.AreEqual(expectedLine1[0].Item2, line1[0].Item2);
+            Assert.AreEqual(expectedLine1[1].Item1, line1[1].Item1);
+            Assert.AreEqual(expectedLine1[1].Item2, line1[1].Item2);
+            Assert.AreEqual(expectedLine1[2].Item1, line1[2].Item1);
+            Assert.AreEqual(expectedLine1[2].Item2, line1[2].Item2);
+
+            var expectedLine2 = new List<System.Tuple<string, DataStorage.WarewolfAtom>> {
+                new Tuple<string, DataStorage.WarewolfAtom>("a", DataStorage.WarewolfAtom.NewDataString("ba")),
+                new Tuple<string, DataStorage.WarewolfAtom>("b", DataStorage.WarewolfAtom.NewDataString("bb")),
+                new Tuple<string, DataStorage.WarewolfAtom>("c", DataStorage.WarewolfAtom.NewDataString("bc")),
+            };
+
+            Assert.IsTrue(enumerator.MoveNext());
+            var line2 = enumerator.Current;
+            Assert.AreEqual(expectedLine2[0].Item1, line2[0].Item1);
+            Assert.AreEqual(expectedLine2[0].Item2, line2[0].Item2);
+            Assert.AreEqual(expectedLine2[1].Item1, line2[1].Item1);
+            Assert.AreEqual(expectedLine2[1].Item2, line2[1].Item2);
+            Assert.AreEqual(expectedLine2[2].Item1, line2[2].Item1);
+            Assert.AreEqual(expectedLine2[2].Item2, line2[2].Item2);
+
+            var expectedLine3 = new List<System.Tuple<string, DataStorage.WarewolfAtom>> {
+                new Tuple<string, DataStorage.WarewolfAtom>("a", DataStorage.WarewolfAtom.NewDataString("ca")),
+                new Tuple<string, DataStorage.WarewolfAtom>("b", DataStorage.WarewolfAtom.NewDataString("cb")),
+                new Tuple<string, DataStorage.WarewolfAtom>("c", DataStorage.WarewolfAtom.NewDataString("cc")),
+            };
+
+            Assert.IsTrue(enumerator.MoveNext());
+            var line3 = enumerator.Current;
+            Assert.AreEqual(expectedLine3[0].Item1, line3[0].Item1);
+            Assert.AreEqual(expectedLine3[0].Item2, line3[0].Item2);
+            Assert.AreEqual(expectedLine3[1].Item1, line3[1].Item1);
+            Assert.AreEqual(expectedLine3[1].Item2, line3[1].Item2);
+            Assert.AreEqual(expectedLine3[2].Item1, line3[2].Item1);
+            Assert.AreEqual(expectedLine3[2].Item2, line3[2].Item2);
+        }
     }
 }
