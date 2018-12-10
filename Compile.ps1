@@ -64,11 +64,24 @@ if (!(Test-Path "$MSBuildPath" -ErrorAction SilentlyContinue)) {
     if (Test-Path $MSBuildPath.Replace("Enterprise", "BuildTools")) {
         $MSBuildPath = $MSBuildPath.Replace("Enterprise", "BuildTools")
     }
+	if ("$env:MSBuildPath" -ne "" -and (Test-Path "$env:MSBuildPath")) {
+		$MSBuildPath = $env:MSBuildPath
+	}
 }
 if (!(Test-Path "$MSBuildPath" -ErrorAction SilentlyContinue)) {
-	Write-Host MSBuild not found. Download from: https://aka.ms/vs/15/release/vs_buildtools.exe
-    sleep 10
-    exit 1
+	if ("$env:MSBuildPath" -ne "" -and (Test-Path "$env:MSBuildPath")) {
+		$MSBuildPath = $env:MSBuildPath
+	} else {
+	    $env:MSBuildPath = Read-Host 'Please enter the path to MSBuild.exe. For example: C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe. Or change the value of the MSBuildPath environment varialbe to be the path to MSBuild.exe'
+	    if ("$env:MSBuildPath" -ne "" -and (Test-Path "$env:MSBuildPath")) {
+		    Write-Host MSBuild not found. Download from: https://aka.ms/vs/15/release/vs_buildtools.exe
+		    sleep 10
+		    exit 1
+	    } else {
+		    $MSBuildPath = $env:MSBuildPath
+            [System.Environment]::SetEnvironmentVariable('MSBuildPath', $MSBuildPath, [System.EnvironmentVariableTarget]::Machine)
+        }
+	}
 }
 
 #Find NuGet
