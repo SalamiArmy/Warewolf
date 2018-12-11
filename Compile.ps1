@@ -101,7 +101,7 @@ if ("$NuGet" -eq "" -or !(Test-Path "$NuGet" -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
-#Nuget Consolidation Report
+#Report Nuget Consolidation
 class Package
 {
     [String]$id
@@ -135,7 +135,7 @@ function FindAllProjectFiles ([string]$solutionFolder) {
     return $allPackages
 }
 
-function NugetConsolidationReport() {
+function ReportNugetConsolidation() {
     $allresults = FindAllProjectFiles($PSScriptRoot + "\Dev")
 
     $Results = $allresults | group -p id |
@@ -150,7 +150,7 @@ function NugetConsolidationReport() {
     }
 }
 
-NugetConsolidationReport
+ReportNugetConsolidation
 
 #Version
 $GitCommitID = git -C "$PSScriptRoot" rev-parse HEAD
