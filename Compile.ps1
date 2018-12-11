@@ -101,6 +101,57 @@ if ("$NuGet" -eq "" -or !(Test-Path "$NuGet" -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
+#Nuget Consolidation Report
+class Package
+{
+    [String]$id
+    [String]$version
+    [String]$targetFramework
+    [String]$path
+}
+
+function GatherPackageInfo([string]$path) {
+    $packages = @()
+    [xml]$XmlDocument = Get-Content -Path $path
+    Foreach($p in $XmlDocument.Packages.package) {
+        $pak = New-Object Package
+        $pak.id = $p.id
+        $pak.version = $p.version
+        $pak.targetFramework = $p.targetFramework
+        $pak.path = $path
+        $packages += $pak 
+    }
+    return $packages 
+}
+
+function FindAllProjectFiles ([string]$solutionFolder) {
+    $allPackages = @()
+    $filesToWorkWith = gci $solutionFolder -recurse -filter "packages.config" -file -ErrorAction SilentlyContinue 
+    ForEach ($file in $filesToWorkWith)
+    {
+       $allPackages += $packages = GatherPackageInfo($file.FullName);
+    }
+
+    return $allPackages
+}
+
+function NugetConsolidationReport() {
+    $allresults = FindAllProjectFiles($PSScriptRoot + "\Dev")
+
+    $Results = $allresults | group -p id |
+    where { $_.count -ge 2 } | % { $_.Group } | 
+    sort -u id, version | 
+    group -p id |
+    where { $_.count -ge 2 } | % { $_.Group } | 
+    sort -u id, version
+    if ($Results.Count -gt 0) {
+        Write-Error ($Results | Format-Table | Out-String)
+        exit 1
+    }
+}
+
+NugetConsolidationReport
+
 #Version
 $GitCommitID = git -C "$PSScriptRoot" rev-parse HEAD
 if ($AutoVersion.IsPresent -or $CustomVersion -ne "") {
