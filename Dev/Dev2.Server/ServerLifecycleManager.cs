@@ -20,6 +20,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Runtime;
+using System.Security.Claims;
 using System.Security.Principal;
 using System.ServiceProcess;
 using System.Text;
@@ -36,6 +37,7 @@ using Dev2.Data;
 using Dev2.Diagnostics.Debug;
 using Dev2.Diagnostics.Logging;
 using Dev2.Instrumentation;
+using Dev2.Instrumentation.Factory;
 using Dev2.PerformanceCounters.Management;
 using Dev2.Runtime;
 using Dev2.Runtime.ESB.Execution;
@@ -43,6 +45,7 @@ using Dev2.Runtime.Hosting;
 using Dev2.Runtime.Security;
 using Dev2.Runtime.WebServer;
 using Dev2.Services.Security.MoqInstallerActions;
+using Dev2.Studio.Utils;
 using Dev2.Workspaces;
 using log4net.Config;
 using WarewolfCOMIPC.Client;
@@ -97,7 +100,6 @@ namespace Dev2
             return Result;
         }
 
-
         public class ServerLifecycleManagerService : ServiceBase
         {
             public ServerLifecycleManagerService()
@@ -132,7 +134,6 @@ namespace Dev2
         int _daysToKeepTempFiles;
         readonly PulseTracker _pulseTracker;
         IpcClient _ipcIpcClient;
-
 
         ServerLifecycleManager(string[] arguments)
         {
@@ -194,7 +195,6 @@ namespace Dev2
             {
                 _daysToKeepTempFiles = daysToKeepTempFiles;
             }
-
         }
 
         void Run(bool interactiveMode)
@@ -211,10 +211,10 @@ namespace Dev2
                 Dev2Logger.Warn("Mocking installer actions for DEBUG config failed to create Warewolf Administrators group and/or to add current user to it [ " + e.Message + " ]", GlobalConstants.WarewolfWarn);
             }
 #endif
-
             try
             {
                 RegisterDependencies();
+                SetupRevulytics();
                 SetWorkingDirectory();
                 Config.Server.SaveIfNotExists();
 
@@ -254,6 +254,14 @@ namespace Dev2
             CustomContainer.Register<IActivityParser>(new ActivityParser());
             CustomContainer.Register<IExecutionManager>(new ExecutionManager());
             CustomContainer.Register<IResumableExecutionContainerFactory>(new ResumableExecutionContainerFactory());
+            CustomContainer.Register(ApplicationTrackerFactory.GetApplicationTrackerProvider());
+        }
+
+        private void SetupRevulytics()
+        {
+            //Create configuration for action tracker and start
+            var applicationTracker = CustomContainer.Get<IApplicationTracker>();
+            applicationTracker?.EnableApplicationTracker(VersionInfo.FetchVersionInfo(), @"Warewolf" + $" ({ClaimsPrincipal.Current.Identity.Name})".ToUpperInvariant());
         }
 
         void OpenCOMStream()
@@ -458,7 +466,6 @@ namespace Dev2
             }
         }
 
-
         void EnableSslForServer(string webServerSslPort, List<Dev2Endpoint> endpoints)
         {
             if (!string.IsNullOrEmpty(webServerSslPort) && _isWebServerSslEnabled)
@@ -484,7 +491,6 @@ namespace Dev2
                 }
             }
         }
-
 
         internal void CleanupServer()
         {
@@ -544,7 +550,6 @@ namespace Dev2
 
         void Dispose(bool disposing)
         {
-
             if (disposing)
             {
                 CleanupServer();
@@ -570,7 +575,6 @@ namespace Dev2
                 locater.CreateCounter(Guid.Parse("a64fc548-3045-407d-8603-2a7337d874a6"), WarewolfPerfCounterType.AverageExecutionTime, "workflow1");
                 locater.CreateCounter(Guid.Parse("a64fc548-3045-407d-8603-2a7337d874a6"), WarewolfPerfCounterType.ConcurrentRequests, "workflow1");
                 locater.CreateCounter(Guid.Parse("a64fc548-3045-407d-8603-2a7337d874a6"), WarewolfPerfCounterType.RequestsPerSecond, "workflow1");
-
 
                 CustomContainer.Register<IWarewolfPerformanceCounterLocater>(locater);
                 CustomContainer.Register<IPerformanceCounterRepository>(locater);
@@ -685,7 +689,6 @@ namespace Dev2
 
         static void LoadServerWorkspace()
         {
-
             Write("Loading server workspace...  ");
 
             var instance = WorkspaceRepository.Instance;
@@ -767,7 +770,6 @@ namespace Dev2
             }
 
         }
-
 
         internal static void Write(string message)
         {
