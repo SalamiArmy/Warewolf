@@ -156,7 +156,10 @@ namespace WarewolfCOMIPC.Client
         protected void Close()
         {
             _pipeWrapper.Close();
-            _process?.Kill();
+            if (_process != null && !_process.HasExited)
+            {
+                _process.Kill();
+            }
         }
 
         ~IpcClient()
