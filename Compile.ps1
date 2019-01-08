@@ -135,22 +135,19 @@ function FindAllProjectFiles ([string]$solutionFolder) {
     return $allPackages
 }
 
-function ReportNugetConsolidation() {
-    $allresults = FindAllProjectFiles($PSScriptRoot + "\Dev")
+#Report Nuget Consolidation
+$allresults = FindAllProjectFiles($PSScriptRoot + "\Dev")
 
-    $Results = $allresults | group -p id |
-    where { $_.count -ge 2 } | % { $_.Group } | 
-    sort -u id, version | 
-    group -p id |
-    where { $_.count -ge 2 } | % { $_.Group } | 
-    sort -u id, version
-    if ($Results.Count -gt 0) {
-        Write-Error ($Results | Format-Table | Out-String)
-        exit 1
-    }
+$Results = $allresults | group -p id |
+where { $_.count -ge 2 } | % { $_.Group } | 
+sort -u id, version | 
+group -p id |
+where { $_.count -ge 2 } | % { $_.Group } | 
+sort -u id, version
+if ($Results.Count -gt 0) {
+    Write-Error ($Results | Format-Table | Out-String)
+    exit 1
 }
-
-ReportNugetConsolidation
 
 #Version
 $GitCommitID = git -C "$PSScriptRoot" rev-parse HEAD
@@ -328,7 +325,8 @@ foreach ($SolutionFile in $KnownSolutionFiles) {
         }
         if ($SolutionParameterIsPresent -or $NoSolutionParametersPresent) {
             if ($SolutionWideOutputs.IsPresent) {
-                $OutputProperty = "/property:OutDir=$PSScriptRoot\Bin\$OutputFolderName"
+                $SolutionBinWideBin = "$PSScriptRoot\Bin\$OutputFolderName"
+                $OutputProperty = "/property:OutDir=$SolutionBinWideBin"
             } else {
                 $OutputProperty = ""
             }
@@ -339,7 +337,39 @@ foreach ($SolutionFile in $KnownSolutionFiles) {
 				Write-Host Build failed. Check your pending changes. If you do not have any pending changes then you can try running 'dev\scorch.bat' to thoroughly clean your workspace. Compiling Warewolf requires at at least MSBuild 15.0, download from: https://aka.ms/vs/15/release/vs_buildtools.exe and FSharp 4.0, download from http://download.microsoft.com/download/9/1/2/9122D406-F1E3-4880-A66D-D6C65E8B1545/FSharp_Bundle.exe
                 exit 1
             }
+            if ($SolutionWideOutputs.IsPresent -and $AutoVersion.IsPresent -or $CustomVersion -ne "") {
+                Write-Host Testing Warewolf assembly file versions...
+                $HighestReadVersion = "0.0.0.0"
+                $LastReadVersion = "0.0.0.0"
+                foreach ($file in Get-ChildItem -recurse $SolutionBinWideBin) {
+	                if (($file.Name.EndsWith(".dll") -or ($file.Name.EndsWith(".exe") -and -Not $file.Name.EndsWith(".vshost.exe"))) -and ($file.Name.StartsWith("Dev2.") -or $file.Name.StartsWith("Warewolf.") -or $file.Name.StartsWith("WareWolf"))) {
+		                # Get version.
+		                $ReadVersion = [system.diagnostics.fileversioninfo]::GetVersionInfo($file.FullName).FileVersion
+		
+		                # Find highest version
+		                $SeperateVersionNumbers = $ReadVersion.split(".")
+		                $SeperateVersionNumbersHighest = $HighestReadVersion.split(".")
+		                if ([convert]::ToInt32($SeperateVersionNumbers[0], 10) -gt [convert]::ToInt32($SeperateVersionNumbersHighest[0], 10)`
+		                -or [convert]::ToInt32($SeperateVersionNumbers[1], 10) -gt [convert]::ToInt32($SeperateVersionNumbersHighest[1], 10)`
+		                -or [convert]::ToInt32($SeperateVersionNumbers[2], 10) -gt [convert]::ToInt32($SeperateVersionNumbersHighest[2], 10)`
+		                -or [convert]::ToInt32($SeperateVersionNumbers[3], 10) -gt [convert]::ToInt32($SeperateVersionNumbersHighest[3], 10)){
+			                $HighestReadVersion = $ReadVersion
+		                }
+
+                        # Check for invalid.
+                        if ($ReadVersion.StartsWith("0.0.") -or ($LastReadVersion -ne $ReadVersion -and $LastReadVersion -ne "0.0.0.0")) {
+			                $getFullPath = $file.FullName
+	                        Write-Host ERROR! Invalid version! $getFullPath $ReadVersion $LastReadVersion
+	                        throw "ERROR! Versioning is turned on but `"$getFullPath $ReadVersion`" is either an invalid version or not equal to `"$LastReadVersion`". All Warewolf assembly versions in `"$SolutionBinWideBin`" must conform to each other and cannot start with 0.0."
+                        }
+                        $LastReadVersion = $ReadVersion
+	                }
+                }
+                Out-File -LiteralPath FullVersionString -InputObject "FullVersionString=$HighestReadVersion" -Encoding default
+            }
         }
     }
 }
+
+
 exit 0
