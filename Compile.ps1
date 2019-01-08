@@ -325,8 +325,8 @@ foreach ($SolutionFile in $KnownSolutionFiles) {
         }
         if ($SolutionParameterIsPresent -or $NoSolutionParametersPresent) {
             if ($SolutionWideOutputs.IsPresent) {
-                $SolutionBinWideBin = "$PSScriptRoot\Bin\$OutputFolderName"
-                $OutputProperty = "/property:OutDir=$SolutionBinWideBin"
+                $SolutionWideBin = "$PSScriptRoot\Bin\$OutputFolderName"
+                $OutputProperty = "/property:OutDir=$SolutionWideBin"
             } else {
                 $OutputProperty = ""
             }
@@ -341,7 +341,7 @@ foreach ($SolutionFile in $KnownSolutionFiles) {
                 Write-Host Testing Warewolf assembly file versions...
                 $HighestReadVersion = "0.0.0.0"
                 $LastReadVersion = "0.0.0.0"
-                foreach ($file in Get-ChildItem -recurse $SolutionBinWideBin) {
+                foreach ($file in Get-ChildItem -recurse $SolutionWideBin) {
 	                if (($file.Name.EndsWith(".dll") -or ($file.Name.EndsWith(".exe") -and -Not $file.Name.EndsWith(".vshost.exe"))) -and ($file.Name.StartsWith("Dev2.") -or $file.Name.StartsWith("Warewolf.") -or $file.Name.StartsWith("WareWolf"))) {
 		                # Get version.
 		                $ReadVersion = [system.diagnostics.fileversioninfo]::GetVersionInfo($file.FullName).FileVersion
@@ -360,7 +360,7 @@ foreach ($SolutionFile in $KnownSolutionFiles) {
                         if ($ReadVersion.StartsWith("0.0.") -or ($LastReadVersion -ne $ReadVersion -and $LastReadVersion -ne "0.0.0.0")) {
 			                $getFullPath = $file.FullName
 	                        Write-Host ERROR! Invalid version! $getFullPath $ReadVersion $LastReadVersion
-	                        throw "ERROR! Versioning is turned on but `"$getFullPath $ReadVersion`" is either an invalid version or not equal to `"$LastReadVersion`". All Warewolf assembly versions in `"$SolutionBinWideBin`" must conform to each other and cannot start with 0.0."
+	                        throw "ERROR! Versioning is turned on but `"$getFullPath $ReadVersion`" is either an invalid version or not equal to `"$LastReadVersion`". All Warewolf assembly versions in `"$SolutionWideBin`" must conform to each other and cannot start with 0.0."
                         }
                         $LastReadVersion = $ReadVersion
 	                }
