@@ -15,7 +15,7 @@ namespace Warewolf.UI.Tests.WorkflowServiceTesting
         public const string xPath = "Utility - XPath";
         public const string RandomWorkFlow = "RandomToolWorkFlow";
         public const string RandomNewWorkFlow = "RandomToolNewWorkFlow";
-        public const string DiceRoll = "Dice Roll";
+        public const string DiceRoll = "Dice Roll CodedUI";
         public const string Nestedwf = "NestedWF";
         public const string Resource = "Resource For MockRadioButton";
         public const string DotnetWfWithObjOutput = "DotnetWfWithObjOutput";

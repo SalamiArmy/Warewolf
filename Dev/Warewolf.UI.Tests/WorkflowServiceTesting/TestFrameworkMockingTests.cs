@@ -14,21 +14,22 @@ namespace Warewolf.UI.Tests.WorkflowServiceTesting
     [CodedUITest]
     public class TestFrameworkMockingTests
     {
-
         [TestMethod]
         [DeploymentItem(@"lib\win32\x86\git2-6311e88.dll", @"lib\win32\x86")]
         [DeploymentItem(@"lib\win32\x64\git2-6311e88.dll", @"lib\win32\x64")]
         [TestCategory("Workflow Mocking Tests")]
-        public void StepsWithoutOutputsShouldBeMarkedInvalid()
+        public void CreateTestForNewWorkflowSaved()
         {
+            const string resourceForTest = "AssignWorkflow";
             UIMap.Click_NewWorkflow_RibbonButton();
             WorkflowTabUIMap.Drag_Toolbox_MultiAssign_Onto_DesignSurface();
-            UIMap.Save_With_Ribbon_Button_And_Dialog("AssignWorkflow");
+            UIMap.Save_With_Ribbon_Button_And_Dialog(resourceForTest);
             UIMap.Press_F6();
             UIMap.Click_Create_Test_From_Debug();
             Assert.IsTrue(WorkflowServiceTestingUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.TestsTab.Exists, "Test tab does not exist after clicking Create Test from debug button");
             Assert.IsTrue(WorkflowServiceTestingUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.TestsTab.WorkSurfaceContext.ServiceTestView.StepTestDataTreeTree.UIWarewolfStudioViewMoTreeItem.AssignAssert.Exists);
             UIMap.Click_Save_Ribbon_Button_With_No_Save_Dialog();
+            Cleanup(resourceForTest);
         }
 
         [TestMethod]
@@ -62,7 +63,7 @@ namespace Warewolf.UI.Tests.WorkflowServiceTesting
         [DeploymentItem(@"lib\win32\x86\git2-6311e88.dll", @"lib\win32\x86")]
         [DeploymentItem(@"lib\win32\x64\git2-6311e88.dll", @"lib\win32\x64")]
         [TestCategory("Workflow Mocking Tests")]
-        public void NestedWorkflowCreatsATestStepAfterClickingCreateTestFromDebugButton()
+        public void NestedWorkflowCreatesATestStepAfterClickingCreateTestFromDebugButton()
         {
             UIMap.Click_NewWorkflow_RibbonButton();
             ExplorerUIMap.Filter_Explorer(WorkflowServiceTestingTests.DiceRoll);
@@ -73,6 +74,7 @@ namespace Warewolf.UI.Tests.WorkflowServiceTesting
             UIMap.Click_Create_Test_From_Debug();
             Assert.IsTrue(WorkflowServiceTestingUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.TestsTab.Exists, "Test tab does not exist after clicking Create Test from debug button");
             Assert.IsTrue(WorkflowServiceTestingUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.TestsTab.WorkSurfaceContext.ServiceTestView.StepTestDataTreeTree.UIWarewolfStudioViewMoTreeItem.DiceRollExpander.Exists);
+            Cleanup(WorkflowServiceTestingTests.Nestedwf);
         }
 
         [TestMethod]
@@ -132,6 +134,7 @@ namespace Warewolf.UI.Tests.WorkflowServiceTesting
             UIMap.Click_Create_Test_From_Debug();
             Assert.IsTrue(WorkflowServiceTestingUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.TestsTab.Exists, "Test tab does not exist after clicking Create Test from debug button");
             Assert.IsTrue(WorkflowServiceTestingUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.TestsTab.WorkSurfaceContext.ServiceTestView.StepTestDataTreeTree.UIWarewolfStudioViewMoTreeItem.RandomTreeItem.Exists);
+            Cleanup(WorkflowServiceTestingTests.RandomNewWorkFlow);
         }
 
         [TestMethod]
@@ -140,16 +143,18 @@ namespace Warewolf.UI.Tests.WorkflowServiceTesting
         [TestCategory("Workflow Mocking Tests")]
         public void CreateTestFromDebugOutputDontSaveCreateAnotherTestFromDebugOutput()
         {
+            const string resourceForTest = "RandomWFForSaveButtonState";
             UIMap.Click_NewWorkflow_RibbonButton();
             WorkflowTabUIMap.Drag_Toolbox_Random_Onto_DesignSurface();
             UtilityToolsUIMap.Enter_Dice_Roll_Values();
-            UIMap.Save_With_Ribbon_Button_And_Dialog("RandomWFForSaveButtonState");
+            UIMap.Save_With_Ribbon_Button_And_Dialog(resourceForTest);
             UIMap.Press_F6();
             UIMap.Click_Create_Test_From_Debug();
             UIMap.Click_New_Workflow_Tab();
             UIMap.Click_Create_Test_From_Debug();
             DialogsUIMap.Click_MessageBox_OK();
             Assert.IsTrue(UIMap.MainStudioWindow.SideMenuBar.SaveButton.Enabled, "Save button is not enabled after creating two new unsaved tests.");
+            Cleanup(resourceForTest);
         }
 
         [TestMethod]
@@ -201,6 +206,13 @@ namespace Warewolf.UI.Tests.WorkflowServiceTesting
             WorkflowServiceTestingUIMap.Click_Output_Step();
             Keyboard.SendKeys("{DEL}");
             Assert.IsTrue(WorkflowServiceTestingUIMap.MainStudioWindow.DockManager.SplitPaneMiddle.TabManSplitPane.TabMan.TestsTab.WorkSurfaceContext.ServiceTestView.UserControl_1Custom.ScrollViewerPane.ActivityBuilderCustom.WorkflowItemPresenteCustom.FlowchartCustom.MultiAssign2.Exists, "Tool does not exist on the design surface after it was selected with the mouse and delete was pressed.");
+        }
+
+        private void Cleanup(string resourceForTest)
+        {
+            ExplorerUIMap.Filter_Explorer(resourceForTest);
+            ExplorerUIMap.Delete_FirstResource_From_ExplorerContextMenu();
+            DialogsUIMap.Click_MessageBox_Yes();
         }
 
         #region Additional test attributes
