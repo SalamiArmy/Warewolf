@@ -5,6 +5,7 @@ Param(
   [string]$NuGet="",
   [string]$Config="Debug",
   [switch]$AutoVersion,
+  [string]$AutoVersionSuffix="",
   [switch]$SolutionWideOutputs,
   [switch]$AcceptanceTesting,
   [switch]$UITesting,
@@ -191,7 +192,15 @@ using System.Runtime.CompilerServices;
 "@ + (Get-Date).year + @"
 ")]
 [assembly: AssemblyVersion("
-"@ + $FullVersionString + @"
+"@
+if ($AutoVersionSuffix -ne "") {
+    $CSharpVersionFileContants += $FullVersionString + $AutoVersionSuffix
+}
+else
+{
+    $CSharpVersionFileContants += $FullVersionString
+}
+$CSharpVersionFileContants += @"
 ")]
 [assembly: AssemblyInformationalVersion("
 "@ + $GitCommitTime + " " + $GitCommitID + " " + $GitBranchName + @"
@@ -228,7 +237,15 @@ open System.Reflection;
 "@ + (Get-Date).year + @"
 ")>]
 [<assembly: AssemblyVersion("
-"@ + $FullVersionString + @"
+"@
+if ($AutoVersionSuffix -ne "") {
+    $FSharpVersionFileContents += $FullVersionString + $AutoVersionSuffix
+}
+else
+{
+    $FSharpVersionFileContents += $FullVersionString
+}
+$FSharpVersionFileContents += @"
 ")>]
 do()
 "@
